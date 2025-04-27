@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Bimal Pharmacy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+        nav a {
+            text-decoration: none;
+            color: #4CAF50;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+   	 <a href="products.html">Product List</a>
+   	 <a href="contact.html">Contact Us</a>
+	 <a href="gallery.html">Photos</a>
+	 <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <section>
+        <h2>Get In Touch</h2>
+        <p>We are always here to help! Feel free to reach out to us with any inquiries.</p>
+
+        <h3>Pharmacy Details</h3>
+        <p><strong>Address:</strong> Bharatpur-7, Nepal</p>
+        <p><strong>Phone:</strong> +977-56-593288</p>
+        <p><strong>Email:</strong> info@bimalpharmacy.com</p>
+
+        <h3>Send Us a Message</h3>
+        <form action="submit_form.php" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+<nav>
+    <a href="index.html">Back to Home</a>
+</nav>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Bimal Pharmacy. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
