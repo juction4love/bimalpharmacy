@@ -1,2 +1,2 @@
 # bimalpharmacy
-Gallery
+# Gallery
