@@ -60,40 +60,32 @@
 	<a href="news.html"> Aricle of the Day</a>
 	    <a href="contact.html">Contact Us</a>
     </nav>
-
-
     <section>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medicine Search</title>
 </head>
 <body>
-   <h2>Search Medicine by Name</h2>
-  <input type="text" id="searchInput" placeholder="Type medicine name..." onkeyup="searchTable()">
+   <h2>Medicine Inventory</h2>
+  <input type="text" id="searchInput" placeholder="Search medicine...">
 
   <table id="medicineTable">
     <thead>
       <tr>
-        <td>Name</td>
-        <td>Code</td>
-        <td>Type</td>
-        <td>Dosage</td>
-        <td>Price</td>
-        <td>Discription </td>
-    </tr>
-     </thead>
-    <tbody>
+    <thead>
     <tr>
     <table>
     <tr>
-        <td>Name</td>
-        <td>Code</td>
-        <td>Type</td>
-        <td>Dosage</td>
-        <td>Price</td>
-        <td>Discription </td>
+        </th>Name</th>
+        <th>Code</th>
+        <th>Type</th>
+        <th>Dosage</th>
+        <th>Price</th>
+        <th>Discription </th>
     </tr>
-    <tr>
+    </thead>
+   <tbody>
+      <tr>
         <td>CODAN SET </td>
         <td>10004</td>
         <td>1</td>
@@ -24539,13 +24531,36 @@
         <td>1</td>
         <td>0</td>
         <td>0</td>
-        <td></td>
-    </tr>
-</table>   
+
+   </tr>
+    </tbody>
+  </table>
+  
+	<script>
+    const searchInput = document.getElementById('searchInput');
+    const table = document.getElementById('medicineTable');
+    const rows = table.getElementsByTagName('tr');
+
+    searchInput.addEventListener('keyup', function() {
+      const filter = searchInput.value.toLowerCase();
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td');
+        let match = false;
+        for (let j = 0; j < cells.length; j++) {
+          if (cells[j].textContent.toLowerCase().includes(filter)) {
+            match = true;
+            break;
+          }
+        }
+        rows[i].style.display = match ? '' : 'none';
+      }
+    });
+  </script>
+
 </body>
 </html>
-
 	    
+
 
 
 
