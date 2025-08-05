@@ -1,69 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            text-align: center;
-            margin: 20px 0;
-        }
-        nav a {
-            text-decoration: none;
-            color: #4CAF50;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-        section {
-            max-width: 800px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Welcome to Bimal Pharmacy</h1> <p>
-    </p>   
-    </header>
-    <nav>
-       <a href="index.html">Home</a>
-	<a href="search.html">Search</a>
-   	 <a href="products.html">Product List</a>
-   	<a href="about.html">About Us</a>
-	 <a href="gallery.html">Photos</a>
-	<a href="Forum.html"> Blog & Forum</a>
-	<a href="news.html"> Aricle of the Day</a>
-	 <a href="contact.html">Contact Us</a>
-    </nav>
-    <section>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicine Search</title>
-</head>
-	    <head>
   <meta charset="UTF-8">
   <title>Searchable Table</title>
   <style>
@@ -89,18 +26,15 @@
       background-color: #f4f4f4;
     }
   </style>
-</head2 >
+</head>
 <body>
-   <h2>Medicine Inventory</h2>
+
+  <h2>Medicine Inventory</h2>
   <input type="text" id="searchInput" placeholder="Search medicine...">
 
   <table id="medicineTable">
     <thead>
       <tr>
-    <thead>
-    <tr>
-    <table>
-    <tr>
         </th>Name</th>
         <th>Code</th>
         <th>Type</th>
@@ -24557,14 +24491,14 @@
         <td>0</td>
         <td>0</td>
    	</tr>
-   
-</tbody>
+   </tbody>
   </table>
-  	 <script>
-   
+
+  <script>
     const searchInput = document.getElementById('searchInput');
     const table = document.getElementById('medicineTable');
     const rows = table.getElementsByTagName('tr');
+
     searchInput.addEventListener('keyup', function() {
       const filter = searchInput.value.toLowerCase();
       for (let i = 1; i < rows.length; i++) {
@@ -24580,9 +24514,10 @@
       }
     });
   </script>
+
 </body>
 </html>
-	    
+
 
 
 
