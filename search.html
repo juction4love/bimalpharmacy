@@ -68,22 +68,12 @@
     <title>Medicine Search</title>
 </head>
 <body>
-    <h2>Search for Medicine Information</h2>
-   
+   <h2>Search Medicine by Name</h2>
+  <input type="text" id="searchInput" placeholder="Type medicine name..." onkeyup="searchTable()">
 
-<input type="text" id="searchInput" placeholder="Search medicine by name..." onkeyup="searchTable()">
-
-<script>
-function searchTable() {
-  const input = document.getElementById("searchInput").value.toLowerCase();
-  const rows = document.querySelectorAll("#medicineTable tbody tr");
-  rows.forEach(row => {
-    const name = row.cells[0].textContent.toLowerCase();
-    row.style.display = name.includes(input) ? "" : "none";
-  });
-}
-<table>
-    <tr>
+  <table id="medicineTable">
+    <thead>
+      <tr>
         <td>Name</td>
         <td>Code</td>
         <td>Type</td>
@@ -91,6 +81,8 @@ function searchTable() {
         <td>Price</td>
         <td>Discription </td>
     </tr>
+     </thead>
+    <tbody>
     <tr>
         <td>CODAN SET </td>
         <td>10004</td>
@@ -3502,7 +3494,19 @@ function searchTable() {
     <tr>
         <td>TELMI-40MG-TAB </td>
         <td>11060</td>
-</script>
+<script>
+    function searchTable() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const rows = document.querySelectorAll("#medicineTable tbody tr");
+      rows.forEach(row => {
+        const name = row.cells[0].textContent.toLowerCase();
+        row.style.display = name.includes(input) ? "" : "none";
+      });
+    }
+  </script>
+
+</body>
+</html>
 </P>
 <P>
 <nav>
@@ -3515,6 +3519,7 @@ function searchTable() {
 	    <footer>
         <p>&copy; 2025 Bimal Pharmacy. All rights reserved.</p>
     </footer>
+
 
 
 
