@@ -63,7 +63,43 @@
     <section>
         
         <p>
-           
+        <!DOCTYPE html>
+<html>
+<head>
+  <title>Story Reveal</title>
+  <style>
+    .details {
+      display: none;
+      margin-top: 10px;
+      font-family: 'Arial', sans-serif;
+      color: #444;
+    }
+    .heading {
+      cursor: pointer;
+      color: #2c3e50;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heading" onclick="toggleDetails()">❝ माया गुमाउनुको अर्थ ❞</div>
+  <div class="details" id="story">
+    म प्रेममा थिएँ। होइन, म प्रेमको कल्पनामा थिएँ। आर्यनको आँखामा मैले देखेको भविष्य, उसका शब्दहरूमा पाएको शान्ति...  
+    <br><br>
+    माया गुमाउनुको अर्थ यही हो—आफूलाई भेट्ने यात्रा सुरु गर्नु।
+  </div>
+
+  <script>
+    function toggleDetails() {
+      var content = document.getElementById("story");
+      content.style.display = content.style.display === "none" ? "block" : "none";
+    }
+  </script>
+
+</body>
+</html>   
         <p>
             
         </p>
@@ -75,6 +111,7 @@
         <p>&copy; 2025 Bimal Pharmacy. All Rights Reserved.</p>
 
     </footer>
+
 
 
 
