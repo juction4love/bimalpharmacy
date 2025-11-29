@@ -10,37 +10,63 @@
     
     <style>
         body { 
-            font-family: 'Segoe UI', sans-serif; 
-            background-color: #f4f7f6; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #eef2f3; 
             margin: 0; 
             padding: 20px; 
         }
+
         .container { 
             max-width: 600px; 
             margin: 0 auto; 
             background: white; 
             padding: 20px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            border-radius: 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            overflow: hidden; /* Keeps the header inside rounded corners */
         }
+
+        /* --- THIS IS THE NEW THEME --- */
+        .header-banner {
+            background: linear-gradient(135deg, #42b983 0%, #2c8558 100%); /* Green Gradient */
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin: -20px -20px 20px -20px; /* Stretches to edges */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
         h2 { 
-            text-align: center; 
-            color: #2c3e50; 
-            margin-bottom: 20px; 
+            margin: 0; 
+            font-size: 24px;
+            letter-spacing: 1px;
         }
+        
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        /* ----------------------------- */
+
         .search-box {
             width: 100%; 
             padding: 15px; 
             font-size: 18px; 
             border: 2px solid #ddd; 
-            border-radius: 8px; 
+            border-radius: 30px; /* Rounder search bar */
             box-sizing: border-box; 
             outline: none;
+            transition: all 0.3s;
         }
-        .search-box:focus { border-color: #3498db; }
+        .search-box:focus { 
+            border-color: #42b983; 
+            box-shadow: 0 0 8px rgba(66, 185, 131, 0.3);
+        }
         
         #loading { text-align: center; margin-top: 20px; color: #666; font-style: italic; }
-        #results { margin-top: 15px; max-height: 65vh; overflow-y: auto; }
+        
+        #results { margin-top: 15px; max-height: 60vh; overflow-y: auto; }
         
         .card { 
             background: #fff; 
@@ -49,16 +75,23 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
+            transition: background 0.2s;
         }
+        .card:hover { background-color: #f9fdfb; } /* Light green hover */
+        
         .name { font-weight: 600; color: #333; font-size: 16px; }
         .price { color: #27ae60; font-weight: bold; font-size: 18px; }
-        .error-msg { color: red; text-align: center; margin-top: 10px; }
+        
+        .error-msg { color: white; background: #e74c3c; padding: 10px; border-radius: 5px; text-align: center; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>💊 Bimal Pharmacy Price List</h2>
+    <div class="header-banner">
+        <h2>💊 Bimal Pharmacy</h2>
+        <div class="subtitle">Price Search Engine</div>
+    </div>
     
     <input type="text" id="searchBox" class="search-box" placeholder="Loading database..." disabled>
     
@@ -67,7 +100,7 @@
 </div>
 
 <script>
-    // ✅ CORRECTED LINK (Do not change this)
+    // ✅ CORRECT LINK
     const excelUrl = "https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx";
 
     let fuse; 
@@ -100,12 +133,12 @@
 
             loading.style.display = 'none';
             searchBox.disabled = false;
-            searchBox.placeholder = "Type medicine name here...";
+            searchBox.placeholder = "🔍 Search Medicine Name...";
             searchBox.focus();
 
         } catch (error) {
             console.error(error);
-            loading.innerHTML = `<div class='error-msg'>Network Error: ${error.message}<br>Please refresh the page.</div>`;
+            loading.innerHTML = `<div class='error-msg'>Network Error: ${error.message}<br>Refresh the page.</div>`;
         }
     }
 
@@ -130,7 +163,7 @@
                     </div>`;
             });
         } else {
-            resultsDiv.innerHTML = `<div style="text-align:center; padding:20px; color:red;">No medicine found.</div>`;
+            resultsDiv.innerHTML = `<div style="text-align:center; padding:20px; color:#888;">No medicine found.</div>`;
         }
     });
 
