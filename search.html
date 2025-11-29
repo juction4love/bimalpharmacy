@@ -9,15 +9,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js"></script>
     
     <style>
-        /* General Body Styling */
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: 'Segoe UI', sans-serif; 
             background-color: #f4f7f6; 
             margin: 0; 
-            padding: 15px; 
+            padding: 20px; 
         }
-
-        /* Container Styling */
         .container { 
             max-width: 600px; 
             margin: 0 auto; 
@@ -26,14 +23,11 @@
             border-radius: 12px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
-
         h2 { 
             text-align: center; 
             color: #2c3e50; 
             margin-bottom: 20px; 
         }
-        
-        /* Search Box Styling */
         .search-box {
             width: 100%; 
             padding: 15px; 
@@ -42,28 +36,12 @@
             border-radius: 8px; 
             box-sizing: border-box; 
             outline: none;
-            transition: border-color 0.3s;
         }
-        .search-box:focus { 
-            border-color: #3498db; 
-        }
+        .search-box:focus { border-color: #3498db; }
         
-        /* Loading Text */
-        #loading { 
-            text-align: center; 
-            margin-top: 20px; 
-            color: #666; 
-            font-style: italic; 
-        }
+        #loading { text-align: center; margin-top: 20px; color: #666; font-style: italic; }
+        #results { margin-top: 15px; max-height: 65vh; overflow-y: auto; }
         
-        /* Results List */
-        #results { 
-            margin-top: 15px; 
-            max-height: 65vh; 
-            overflow-y: auto; 
-        }
-
-        /* Individual Medicine Card */
         .card { 
             background: #fff; 
             border-bottom: 1px solid #f0f0f0; 
@@ -72,30 +50,9 @@
             justify-content: space-between; 
             align-items: center; 
         }
-        .card:hover {
-            background-color: #fafafa;
-        }
-        .name { 
-            font-weight: 600; 
-            color: #333; 
-            font-size: 16px; 
-        }
-        .price { 
-            color: #27ae60; 
-            font-weight: bold; 
-            font-size: 18px; 
-        }
-        
-        /* Error/No Result Messages */
-        .no-result { 
-            text-align: center; 
-            padding: 20px; 
-            color: #e74c3c; 
-        }
-        .error-msg {
-            color: red;
-            text-align: center;
-        }
+        .name { font-weight: 600; color: #333; font-size: 16px; }
+        .price { color: #27ae60; font-weight: bold; font-size: 18px; }
+        .error-msg { color: red; text-align: center; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -103,52 +60,44 @@
 <div class="container">
     <h2>💊 Bimal Pharmacy Price List</h2>
     
-    <input type="text" id="searchBox" class="search-box" placeholder="Loading data..." disabled>
+    <input type="text" id="searchBox" class="search-box" placeholder="Loading database..." disabled>
     
-    <div id="loading">Connecting to GitHub database... please wait.</div>
+    <div id="loading">Connecting to GitHub... please wait.</div>
     <div id="results"></div>
 </div>
 
 <script>
-    // URL to your GitHub Excel file
-    const excelUrl = "https://github.com/juction4love/bimalpharmacy/raw/refs/heads/main/medicines.xlsx";
+    // ✅ CORRECTED LINK (Do not change this)
+    const excelUrl = "https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx";
 
-    let fuse; // Variable to hold the search engine instance
+    let fuse; 
 
-    // Function 1: Fetch and Load Data from GitHub
     async function loadData() {
         const loading = document.getElementById('loading');
         const searchBox = document.getElementById('searchBox');
 
         try {
-            // Fetch the file
             const response = await fetch(excelUrl);
             
-            if (!response.ok) throw new Error("Failed to fetch file from GitHub.");
+            if (!response.ok) throw new Error("Could not find file on GitHub.");
 
-            // Process the file data
             const arrayBuffer = await response.arrayBuffer();
             const data = new Uint8Array(arrayBuffer);
             const workbook = XLSX.read(data, { type: 'array' });
-
-            // Read the first sheet
             const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
             const jsonData = XLSX.utils.sheet_to_json(firstSheet);
 
-            // Map the data (Matches your Excel columns: Prodname & S_price)
             const medicines = jsonData.map(item => ({
                 name: item.Prodname ? String(item.Prodname) : "",
                 price: item.S_price || "N/A"
-            })).filter(item => item.name !== ""); // Remove empty rows
+            })).filter(item => item.name !== ""); 
 
-            // Initialize Fuzzy Search
             fuse = new Fuse(medicines, {
                 keys: ['name'],
-                threshold: 0.3, // Allows slight spelling mistakes
+                threshold: 0.3, 
                 ignoreLocation: true
             });
 
-            // UI Update: Enable search box
             loading.style.display = 'none';
             searchBox.disabled = false;
             searchBox.placeholder = "Type medicine name here...";
@@ -156,27 +105,22 @@
 
         } catch (error) {
             console.error(error);
-            loading.innerHTML = `<div class='error-msg'>Error: ${error.message}<br>Please check your internet connection.</div>`;
+            loading.innerHTML = `<div class='error-msg'>Network Error: ${error.message}<br>Please refresh the page.</div>`;
         }
     }
 
-    // Function 2: Handle Search Input
     document.getElementById('searchBox').addEventListener('input', (e) => {
         const query = e.target.value.trim();
         const resultsDiv = document.getElementById('results');
         resultsDiv.innerHTML = '';
 
-        // Do not search if less than 2 characters
-        if (query.length < 2) return;
+        if (query.length < 2) return; 
 
-        // Perform the search
         const results = fuse.search(query);
 
         if (results.length > 0) {
-            // Limit to top 50 results for performance
             results.slice(0, 50).forEach(result => {
                 const item = result.item;
-                // Format price to 2 decimal places if it's a number
                 const price = typeof item.price === 'number' ? item.price.toFixed(2) : item.price;
                 
                 resultsDiv.innerHTML += `
@@ -186,11 +130,10 @@
                     </div>`;
             });
         } else {
-            resultsDiv.innerHTML = `<div class="no-result">No medicine found with that name.</div>`;
+            resultsDiv.innerHTML = `<div style="text-align:center; padding:20px; color:red;">No medicine found.</div>`;
         }
     });
 
-    // Start loading data when the page opens
     window.onload = loadData;
 </script>
 
