@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bimal Pharmacy Search</title>
+    <title>Bimal Pharmacy</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js"></script>
@@ -17,44 +17,61 @@
         }
 
         .container { 
-            max-width: 600px; 
+            max-width: 800px; /* Made slightly wider to fit menu */
             margin: 0 auto; 
             background: white; 
             padding: 20px; 
             border-radius: 15px; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-            overflow: hidden; /* Keeps the header inside rounded corners */
+            overflow: hidden; 
         }
 
-        /* --- THIS IS THE NEW THEME --- */
+        /* --- GREEN HEADER --- */
         .header-banner {
-            background: linear-gradient(135deg, #42b983 0%, #2c8558 100%); /* Green Gradient */
+            background: linear-gradient(135deg, #42b983 0%, #2c8558 100%);
             color: white;
             text-align: center;
             padding: 25px;
-            margin: -20px -20px 20px -20px; /* Stretches to edges */
+            margin: -20px -20px 0 -20px; 
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
+        h2 { margin: 0; letter-spacing: 1px; }
+        .subtitle { font-size: 14px; opacity: 0.9; margin-top: 5px; }
 
-        h2 { 
-            margin: 0; 
-            font-size: 24px;
-            letter-spacing: 1px;
+        /* --- NAVIGATION MENU (New) --- */
+        nav {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 0 -20px 20px -20px; /* Stretch to edges */
+            border-bottom: 1px solid #eee;
+            text-align: center;
         }
         
-        .subtitle {
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
             font-size: 14px;
-            opacity: 0.9;
-            margin-top: 5px;
+            margin: 5px;
+            padding: 8px 12px;
+            display: inline-block; /* Keeps them side by side */
+            border-radius: 20px;
+            transition: all 0.3s ease;
         }
-        /* ----------------------------- */
 
+        nav a:hover {
+            background-color: #42b983; /* Green on hover */
+            color: white;
+            box-shadow: 0 2px 5px rgba(66, 185, 131, 0.4);
+        }
+
+        /* --- SEARCH BOX --- */
         .search-box {
             width: 100%; 
             padding: 15px; 
             font-size: 18px; 
             border: 2px solid #ddd; 
-            border-radius: 30px; /* Rounder search bar */
+            border-radius: 30px; 
             box-sizing: border-box; 
             outline: none;
             transition: all 0.3s;
@@ -65,7 +82,6 @@
         }
         
         #loading { text-align: center; margin-top: 20px; color: #666; font-style: italic; }
-        
         #results { margin-top: 15px; max-height: 60vh; overflow-y: auto; }
         
         .card { 
@@ -75,13 +91,10 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            transition: background 0.2s;
         }
-        .card:hover { background-color: #f9fdfb; } /* Light green hover */
-        
+        .card:hover { background-color: #f9fdfb; }
         .name { font-weight: 600; color: #333; font-size: 16px; }
         .price { color: #27ae60; font-weight: bold; font-size: 18px; }
-        
         .error-msg { color: white; background: #e74c3c; padding: 10px; border-radius: 5px; text-align: center; }
     </style>
 </head>
@@ -90,9 +103,21 @@
 <div class="container">
     <div class="header-banner">
         <h2>💊 Bimal Pharmacy</h2>
-        <div class="subtitle">Price Search Engine</div>
+        <div class="subtitle">Search Engine</div>
     </div>
-    
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="vlog.html">Exploration</a>
+        <a href="search.html">Search</a>
+        <a href="products.html">Service</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Photos</a>
+        <a href="Forum.html">Blog</a>
+        <a href="news.html">Journals</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
     <input type="text" id="searchBox" class="search-box" placeholder="Loading database..." disabled>
     
     <div id="loading">Connecting to GitHub... please wait.</div>
@@ -100,7 +125,7 @@
 </div>
 
 <script>
-    // ✅ CORRECT LINK
+    // ✅ LINK TO DATABASE
     const excelUrl = "https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx";
 
     let fuse; 
@@ -111,7 +136,6 @@
 
         try {
             const response = await fetch(excelUrl);
-            
             if (!response.ok) throw new Error("Could not find file on GitHub.");
 
             const arrayBuffer = await response.arrayBuffer();
@@ -138,7 +162,7 @@
 
         } catch (error) {
             console.error(error);
-            loading.innerHTML = `<div class='error-msg'>Network Error: ${error.message}<br>Refresh the page.</div>`;
+            loading.innerHTML = `<div class='error-msg'>Network Error: ${error.message}</div>`;
         }
     }
 
