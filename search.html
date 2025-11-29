@@ -9,112 +9,174 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js"></script>
     
     <style>
-        /* मोबाइल र ल्यापटप दुबैमा राम्रो देखिने डिजाइन */
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 15px; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h2 { text-align: center; color: #2c3e50; margin-bottom: 20px; }
+        /* General Body Styling */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f4f7f6; 
+            margin: 0; 
+            padding: 15px; 
+        }
+
+        /* Container Styling */
+        .container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+
+        h2 { 
+            text-align: center; 
+            color: #2c3e50; 
+            margin-bottom: 20px; 
+        }
         
-        /* सर्च बक्सको डिजाइन */
+        /* Search Box Styling */
         .search-box {
-            width: 100%; padding: 15px; font-size: 18px; 
-            border: 2px solid #ddd; border-radius: 8px; 
-            box-sizing: border-box; outline: none;
+            width: 100%; 
+            padding: 15px; 
+            font-size: 18px; 
+            border: 2px solid #ddd; 
+            border-radius: 8px; 
+            box-sizing: border-box; 
+            outline: none;
+            transition: border-color 0.3s;
         }
-        .search-box:focus { border-color: #3498db; }
+        .search-box:focus { 
+            border-color: #3498db; 
+        }
         
-        /* लोडिङ म्यासेज */
-        #loading { text-align: center; margin-top: 20px; color: #666; font-style: italic; }
+        /* Loading Text */
+        #loading { 
+            text-align: center; 
+            margin-top: 20px; 
+            color: #666; 
+            font-style: italic; 
+        }
         
-        /* नतिजा देखाउने लिस्ट */
-        #results { margin-top: 15px; max-height: 65vh; overflow-y: auto; }
+        /* Results List */
+        #results { 
+            margin-top: 15px; 
+            max-height: 65vh; 
+            overflow-y: auto; 
+        }
+
+        /* Individual Medicine Card */
         .card { 
-            background: #fff; border-bottom: 1px solid #f0f0f0; 
-            padding: 12px; display: flex; justify-content: space-between; align-items: center; 
+            background: #fff; 
+            border-bottom: 1px solid #f0f0f0; 
+            padding: 15px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
         }
-        .card:last-child { border-bottom: none; }
-        .name { font-weight: 600; color: #333; font-size: 16px; }
-        .price { color: #27ae60; font-weight: bold; font-size: 18px; }
+        .card:hover {
+            background-color: #fafafa;
+        }
+        .name { 
+            font-weight: 600; 
+            color: #333; 
+            font-size: 16px; 
+        }
+        .price { 
+            color: #27ae60; 
+            font-weight: bold; 
+            font-size: 18px; 
+        }
         
-        /* केही नभेटिएमा */
-        .no-result { text-align: center; padding: 20px; color: #e74c3c; }
+        /* Error/No Result Messages */
+        .no-result { 
+            text-align: center; 
+            padding: 20px; 
+            color: #e74c3c; 
+        }
+        .error-msg {
+            color: red;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>🏥 Bimal Pharmacy Price</h2>
+    <h2>💊 Bimal Pharmacy Price List</h2>
     
     <input type="text" id="searchBox" class="search-box" placeholder="Loading data..." disabled>
     
-    <div id="loading">Connecting to GitHub... please wait.</div>
+    <div id="loading">Connecting to GitHub database... please wait.</div>
     <div id="results"></div>
 </div>
 
 <script>
-    // तपाईंको GitHub को लिंक
+    // URL to your GitHub Excel file
     const excelUrl = "https://github.com/juction4love/bimalpharmacy/raw/refs/heads/main/medicines.xlsx";
 
-    let fuse; // सर्च इन्जिन
+    let fuse; // Variable to hold the search engine instance
 
-    // १. डेटा तान्ने फन्क्सन
+    // Function 1: Fetch and Load Data from GitHub
     async function loadData() {
         const loading = document.getElementById('loading');
         const searchBox = document.getElementById('searchBox');
 
         try {
-            // GitHub बाट फाइल माग्ने
+            // Fetch the file
             const response = await fetch(excelUrl);
             
-            if (!response.ok) throw new Error("Could not fetch file from GitHub.");
+            if (!response.ok) throw new Error("Failed to fetch file from GitHub.");
 
-            // फाइल पढ्ने (Binary Data)
+            // Process the file data
             const arrayBuffer = await response.arrayBuffer();
             const data = new Uint8Array(arrayBuffer);
             const workbook = XLSX.read(data, { type: 'array' });
 
-            // पहिलो सिट (Sheet) लिने
+            // Read the first sheet
             const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
             const jsonData = XLSX.utils.sheet_to_json(firstSheet);
 
-            // डेटा सफा गर्ने (Prodname र S_price मात्र लिने)
+            // Map the data (Matches your Excel columns: Prodname & S_price)
             const medicines = jsonData.map(item => ({
                 name: item.Prodname ? String(item.Prodname) : "",
                 price: item.S_price || "N/A"
-            })).filter(item => item.name !== ""); // नाम नभएको हटाउने
+            })).filter(item => item.name !== ""); // Remove empty rows
 
-            // Fuse Search तयार गर्ने (राम्रो सर्चको लागि)
+            // Initialize Fuzzy Search
             fuse = new Fuse(medicines, {
                 keys: ['name'],
-                threshold: 0.3, // अलिअलि स्पेलिङ बिग्रिए पनि बुझ्ने
+                threshold: 0.3, // Allows slight spelling mistakes
                 ignoreLocation: true
             });
 
-            // सब ठिक भएपछि
+            // UI Update: Enable search box
             loading.style.display = 'none';
             searchBox.disabled = false;
-            searchBox.placeholder = "Search Medicine Name...";
+            searchBox.placeholder = "Type medicine name here...";
             searchBox.focus();
 
         } catch (error) {
             console.error(error);
-            loading.innerHTML = `<span style='color:red'>Error loading data! Please check your internet connection.</span>`;
+            loading.innerHTML = `<div class='error-msg'>Error: ${error.message}<br>Please check your internet connection.</div>`;
         }
     }
 
-    // २. सर्च गर्दा के गर्ने?
+    // Function 2: Handle Search Input
     document.getElementById('searchBox').addEventListener('input', (e) => {
         const query = e.target.value.trim();
         const resultsDiv = document.getElementById('results');
         resultsDiv.innerHTML = '';
 
-        if (query.length < 2) return; // २ अक्षर भन्दा कम टाइप गरे केही नगर्ने
+        // Do not search if less than 2 characters
+        if (query.length < 2) return;
 
+        // Perform the search
         const results = fuse.search(query);
 
         if (results.length > 0) {
-            // ५० वटा भन्दा बढी नदेखाउने (ह्याङ नहोस् भनेर)
+            // Limit to top 50 results for performance
             results.slice(0, 50).forEach(result => {
                 const item = result.item;
+                // Format price to 2 decimal places if it's a number
                 const price = typeof item.price === 'number' ? item.price.toFixed(2) : item.price;
                 
                 resultsDiv.innerHTML += `
@@ -124,11 +186,11 @@
                     </div>`;
             });
         } else {
-            resultsDiv.innerHTML = `<div class="no-result">Medicine not found in list.</div>`;
+            resultsDiv.innerHTML = `<div class="no-result">No medicine found with that name.</div>`;
         }
     });
 
-    // पेज खुल्दा डेटा लोड सुरु गर्ने
+    // Start loading data when the page opens
     window.onload = loadData;
 </script>
 
