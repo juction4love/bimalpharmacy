@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<head>
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
-     crossorigin="anonymous"></script
-								 </head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Bimal Pharmacy</title>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,12 +24,18 @@
         nav {
             text-align: center;
             margin: 20px 0;
+            background-color: #fff;
+            padding: 10px;
         }
         nav a {
             text-decoration: none;
             color: #4CAF50;
-            margin: 0 15px;
+            margin: 0 10px;
             font-weight: bold;
+            display: inline-block;
+        }
+        nav a:hover {
+            text-decoration: underline;
         }
         section {
             max-width: 800px;
@@ -38,6 +43,7 @@
             background: white;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
         form {
             display: flex;
@@ -48,13 +54,16 @@
             padding: 10px;
             font-size: 16px;
             border: 1px solid #ccc;
+            border-radius: 4px;
         }
         button {
             background-color: #4CAF50;
             color: white;
-            padding: 10px;
+            padding: 12px;
             border: none;
             cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
         }
         button:hover {
             background-color: #45a049;
@@ -66,60 +75,64 @@
             padding: 10px 0;
             margin-top: 20px;
         }
+        /* Style for the clickable phone/email links */
+        .contact-link {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
     </style>
-	
 </head>
 <body>
+
     <header>
-        <h1>Welcome to Bimal Pharmacy</h1> <p>
-    </p>
+        <h1>Bimal Pharmacy</h1>
         <h2>Contact Us</h2>
     </header>
 
-   <nav>
-       <a href="index.html">Home</a>
+    <nav>
+        <a href="index.html">Home</a>
         <a href="vlog.html">Exploration of Human</a>
-	<a href="search.html">Search</a>
-   	 <a href="products.html">Our Service</a>
-   	<a href="about.html">About Us</a>
-	 <a href="gallery.html">Photos</a>
-	<a href="Forum.html"> Blog & Forum</a>
-	<a href="news.html">Science Journals</a>
-	    <a href="contact.html">Contact Us</a>
+        <a href="search.html">Search</a>
+        <a href="products.html">Our Service</a>
+        <a href="about.html">About Us</a>
+        <a href="gallery.html">Photos</a>
+        <a href="Forum.html">Blog & Forum</a>
+        <a href="news.html">Science Journals</a>
+        <a href="contact.html">Contact Us</a>
     </nav>
 
     <section>
         <h2>Get In Touch</h2>
-        <p>We are always here to help! Feel free to reach out to us with any inquiries.</p>
+        <p>We are always here to help! Feel free to reach out to us with any inquiries regarding medicines or appointments.</p>
 
         <h3>Pharmacy Details</h3>
-        <p><strong>Address:</strong> Bharatpur-7, Nepal</p>
-        <p><strong>Phone:</strong> +977-56-593288</p>
-        <p><strong> Email Id:</strong><a href="mailto:bimal.lamichhane@gmail.com">bimal.lamichhane@gmail.com</a>
+        <p><strong>📍 Address:</strong> Bharatpur-7, Nepal</p>
+        
+        <p><strong>📞 Phone:</strong> <a href="tel:+97756593288" class="contact-link">+977-56-593288</a></p>
+        
+        <p><strong>✉️ Email:</strong> <a href="mailto:bimal.lamichhane@gmail.com" class="contact-link">bimal.lamichhane@gmail.com</a></p>
+
+        <hr>
+
         <h3>Send Us a Message</h3>
-        <form action="submit_form.php" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <form action="mailto:bimal.lamichhane@gmail.com" method="post" enctype="text/plain">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+            
             <button type="submit">Send Message</button>
         </form>
-<nav>
-    <a href="index.html">Back to Home</a>
-</nav>
     </section>
 
     <footer>
         <p>&copy; 2025 Bimal Pharmacy. All Rights Reserved.</p>
     </footer>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
