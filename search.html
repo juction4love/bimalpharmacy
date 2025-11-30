@@ -31,7 +31,7 @@
             border-radius: 15px; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
             overflow: hidden; 
-            min-height: 80vh; /* Ensures layout doesn't collapse */
+            min-height: 80vh; 
             display: flex;
             flex-direction: column;
         }
@@ -52,7 +52,7 @@
             padding: 10px;
             border-bottom: 1px solid #eee;
             white-space: nowrap;
-            overflow-x: auto; /* Scrollable on mobile */
+            overflow-x: auto; 
             -webkit-overflow-scrolling: touch;
             text-align: center;
         }
@@ -84,10 +84,7 @@
             border-bottom: 1px solid #f0f0f0;
         }
 
-        .input-group {
-            position: relative;
-            width: 100%;
-        }
+        .input-group { position: relative; width: 100%; }
 
         .search-box {
             width: 100%; 
@@ -102,6 +99,7 @@
         
         .search-box:focus { border-color: var(--primary-green); }
 
+        /* Close Button (X) */
         .clear-btn {
             position: absolute;
             right: 15px;
@@ -114,14 +112,14 @@
             width: 24px;
             height: 24px;
             cursor: pointer;
-            display: none; /* Hidden by default */
+            display: none; 
             font-size: 14px;
             line-height: 24px;
             text-align: center;
         }
         .clear-btn:hover { background: #999; }
 
-        /* --- RESULTS & LOADING --- */
+        /* --- RESULTS LIST --- */
         #results-container {
             flex-grow: 1;
             padding: 0 20px 20px 20px;
@@ -135,9 +133,8 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            transition: background 0.2s;
         }
-        .card:hover { background-color: #f9fdfb; cursor: default; }
+        .card:hover { background-color: #f9fdfb; }
         
         .name { 
             font-weight: 600; 
@@ -175,16 +172,6 @@
             margin-bottom: 10px;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        .error-msg { 
-            color: #721c24; 
-            background-color: #f8d7da; 
-            border: 1px solid #f5c6cb; 
-            padding: 15px; 
-            border-radius: 8px; 
-            text-align: center;
-            margin: 20px;
-        }
     </style>
 </head>
 <body>
@@ -192,7 +179,7 @@
 <div class="container">
     <div class="header-banner">
         <h2>💊 Bimal Pharmacy</h2>
-        <div class="subtitle">Real-time Price Search</div>
+        <div class="subtitle">Search Engine</div>
     </div>
 
     <nav>
@@ -209,83 +196,79 @@
 
     <div class="search-wrapper">
         <div class="input-group">
-            <input type="text" id="searchBox" class="search-box" placeholder="Initializing..." disabled autocomplete="off">
+            <input type="text" id="searchBox" class="search-box" placeholder="Loading database..." disabled autocomplete="off">
             <button id="clearBtn" class="clear-btn" title="Clear search">✕</button>
         </div>
     </div>
     
     <div id="loading">
         <div class="spinner"></div>
-        <div>Downloading Database...</div>
+        <div>Connecting to Database...</div>
     </div>
 
     <div id="results-container"></div>
 </div>
 
 <script>
-    // ✅ CONFIGURATION
+    // ✅ URL to your GitHub Excel File
     const EXCEL_URL = "https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx";
+
+    // ✅ Search Settings
     const FUSE_OPTIONS = {
         keys: ['name'],
-        threshold: 0.3, // 0.0 = exact match, 1.0 = match anything
-        ignoreLocation: true,
-        minMatchCharLength: 2
+        threshold: 0.3, // Allows small typos
+        ignoreLocation: true
     };
 
     let fuseInstance; 
     
-    // ✅ ELEMENTS
+    // ✅ DOM Elements
     const searchBox = document.getElementById('searchBox');
     const loadingDiv = document.getElementById('loading');
     const resultsDiv = document.getElementById('results-container');
     const clearBtn = document.getElementById('clearBtn');
 
-    // ✅ LOAD DATA
+    // ✅ LOAD DATABASE
     async function loadDatabase() {
         try {
-            // Fetch with cache enabled to speed up subsequent visits
-            const response = await fetch(EXCEL_URL, { cache: "default" });
-            
-            if (!response.ok) throw new Error(`Server returned ${response.status}`);
+            const response = await fetch(EXCEL_URL);
+            if (!response.ok) throw new Error("Could not fetch Excel file.");
 
             const arrayBuffer = await response.arrayBuffer();
             const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
             
-            // Assume data is in the first sheet
+            // Read first sheet
             const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
             const jsonData = XLSX.utils.sheet_to_json(firstSheet);
 
-            // Sanitize Data
+            // ✅ CRITICAL FIX: Mapping correct column names from your Excel file
             const medicines = jsonData
                 .map(item => ({
-                    name: item.Prodname ? String(item.Prodname).trim() : null,
-                    // Handle cases where price is 0 (valid) vs missing (invalid)
-                    price: (item.S_price !== undefined && item.S_price !== null) ? item.S_price : "N/A"
+                    // Your Excel headers are "Product name" and "Sales price"
+                    name: item["Product name"] ? String(item["Product name"]).trim() : null,
+                    price: item["Sales price"]
                 }))
-                .filter(item => item.name); // Remove empty names
+                .filter(item => item.name); // Remove empty rows
 
-            // Initialize Fuse
+            // Initialize Search Engine
             fuseInstance = new Fuse(medicines, FUSE_OPTIONS);
 
-            // UI Ready State
+            // Enable Search Box
             loadingDiv.style.display = 'none';
             searchBox.disabled = false;
-            searchBox.placeholder = "🔍 Search Medicine Name (e.g. Paracetamol)";
+            searchBox.placeholder = "🔍 Search Medicine Name...";
             searchBox.focus();
 
         } catch (error) {
-            console.error("Database Error:", error);
-            loadingDiv.innerHTML = `<div class='error-msg'>
-                <strong>Failed to load database.</strong><br>
-                Please check your internet connection or try again later.<br>
-                <small>${error.message}</small>
+            console.error(error);
+            loadingDiv.innerHTML = `<div style='color:red; text-align:center;'>
+                Error loading database.<br><small>${error.message}</small>
             </div>`;
         }
     }
 
-    // ✅ SEARCH FUNCTION
+    // ✅ PERFORM SEARCH
     function performSearch(query) {
-        // Clear previous results
         resultsDiv.innerHTML = ''; 
         
         if (query.length < 2) {
@@ -297,17 +280,19 @@
         const results = fuseInstance.search(query);
 
         if (results.length === 0) {
-            resultsDiv.innerHTML = `<div style="text-align:center; padding:30px; color:#888;">No medicines found matching "<b>${escapeHtml(query)}</b>"</div>`;
+            resultsDiv.innerHTML = `<div style="text-align:center; padding:30px; color:#888;">No medicine found.</div>`;
             return;
         }
 
-        // Optimization: Build HTML string once, then inject
-        const htmlBuffer = results.slice(0, 50).map(result => {
+        // Generate HTML for results
+        const html = results.slice(0, 50).map(result => {
             const item = result.item;
-            // Format Price: Check if it's a number to add "Rs." or leave as text
-            const displayPrice = !isNaN(item.price) 
-                ? `Rs. ${Number(item.price).toFixed(2)}` 
-                : item.price;
+            
+            // Format Price (handle cases where price is 0 or text)
+            let displayPrice = item.price;
+            if (typeof item.price === 'number') {
+                displayPrice = "Rs. " + item.price.toFixed(2);
+            }
 
             return `
                 <div class="card">
@@ -316,7 +301,7 @@
                 </div>`;
         }).join('');
 
-        resultsDiv.innerHTML = htmlBuffer;
+        resultsDiv.innerHTML = html;
     }
 
     // ✅ EVENT LISTENERS
@@ -328,17 +313,9 @@
         searchBox.focus();
     });
 
-    // Helper to prevent XSS in "No results" message
-    function escapeHtml(text) {
-        const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
-        return text.replace(/[&<>"']/g, (m) => map[m]);
-    }
-
-    // Start
+    // Start App
     window.onload = loadDatabase;
 </script>
 
 </body>
 </html>
-
-
