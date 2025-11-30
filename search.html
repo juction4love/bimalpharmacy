@@ -3,47 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bimal Pharmacy</title>
+    <title>Bimal Pharmacy | Search Engine</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js"></script>
     
     <style>
+        :root {
+            --primary-green: #42b983;
+            --dark-green: #2c8558;
+            --bg-color: #eef2f3;
+            --text-color: #333;
+        }
+
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #eef2f3; 
+            background-color: var(--bg-color); 
             margin: 0; 
             padding: 20px; 
+            color: var(--text-color);
         }
 
         .container { 
-            max-width: 800px; /* Made slightly wider to fit menu */
+            max-width: 800px; 
             margin: 0 auto; 
             background: white; 
-            padding: 20px; 
             border-radius: 15px; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
             overflow: hidden; 
+            min-height: 80vh; /* Ensures layout doesn't collapse */
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- GREEN HEADER --- */
+        /* --- HEADER --- */
         .header-banner {
-            background: linear-gradient(135deg, #42b983 0%, #2c8558 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
             color: white;
             text-align: center;
-            padding: 25px;
-            margin: -20px -20px 0 -20px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
         }
         h2 { margin: 0; letter-spacing: 1px; }
         .subtitle { font-size: 14px; opacity: 0.9; margin-top: 5px; }
 
-        /* --- NAVIGATION MENU (New) --- */
+        /* --- NAVIGATION --- */
         nav {
             background-color: #f8f9fa;
-            padding: 15px;
-            margin: 0 -20px 20px -20px; /* Stretch to edges */
+            padding: 10px;
             border-bottom: 1px solid #eee;
+            white-space: nowrap;
+            overflow-x: auto; /* Scrollable on mobile */
+            -webkit-overflow-scrolling: touch;
             text-align: center;
         }
         
@@ -52,50 +62,129 @@
             color: #555;
             font-weight: 600;
             font-size: 14px;
-            margin: 5px;
-            padding: 8px 12px;
-            display: inline-block; /* Keeps them side by side */
+            margin: 0 4px;
+            padding: 8px 15px;
+            display: inline-block;
             border-radius: 20px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
-        nav a:hover {
-            background-color: #42b983; /* Green on hover */
+        nav a:hover, nav a.active {
+            background-color: var(--primary-green);
             color: white;
-            box-shadow: 0 2px 5px rgba(66, 185, 131, 0.4);
         }
 
-        /* --- SEARCH BOX --- */
+        /* --- SEARCH SECTION --- */
+        .search-wrapper {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 20px;
+            z-index: 10;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .input-group {
+            position: relative;
+            width: 100%;
+        }
+
         .search-box {
             width: 100%; 
-            padding: 15px; 
-            font-size: 18px; 
+            padding: 15px 45px 15px 20px; 
+            font-size: 16px; 
             border: 2px solid #ddd; 
-            border-radius: 30px; 
+            border-radius: 50px; 
             box-sizing: border-box; 
             outline: none;
-            transition: all 0.3s;
-        }
-        .search-box:focus { 
-            border-color: #42b983; 
-            box-shadow: 0 0 8px rgba(66, 185, 131, 0.3);
+            transition: border-color 0.3s;
         }
         
-        #loading { text-align: center; margin-top: 20px; color: #666; font-style: italic; }
-        #results { margin-top: 15px; max-height: 60vh; overflow-y: auto; }
-        
+        .search-box:focus { border-color: var(--primary-green); }
+
+        .clear-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ccc;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: none; /* Hidden by default */
+            font-size: 14px;
+            line-height: 24px;
+            text-align: center;
+        }
+        .clear-btn:hover { background: #999; }
+
+        /* --- RESULTS & LOADING --- */
+        #results-container {
+            flex-grow: 1;
+            padding: 0 20px 20px 20px;
+            overflow-y: auto;
+        }
+
         .card { 
             background: #fff; 
             border-bottom: 1px solid #f0f0f0; 
-            padding: 15px; 
+            padding: 15px 10px; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
+            transition: background 0.2s;
         }
-        .card:hover { background-color: #f9fdfb; }
-        .name { font-weight: 600; color: #333; font-size: 16px; }
-        .price { color: #27ae60; font-weight: bold; font-size: 18px; }
-        .error-msg { color: white; background: #e74c3c; padding: 10px; border-radius: 5px; text-align: center; }
+        .card:hover { background-color: #f9fdfb; cursor: default; }
+        
+        .name { 
+            font-weight: 600; 
+            color: #333; 
+            font-size: 15px; 
+            padding-right: 15px;
+        }
+        
+        .price-tag { 
+            background: #e8f5e9;
+            color: var(--dark-green);
+            font-weight: bold; 
+            font-size: 15px; 
+            padding: 5px 12px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        /* Loading Spinner */
+        #loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            color: #666;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-green);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .error-msg { 
+            color: #721c24; 
+            background-color: #f8d7da; 
+            border: 1px solid #f5c6cb; 
+            padding: 15px; 
+            border-radius: 8px; 
+            text-align: center;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
@@ -103,13 +192,13 @@
 <div class="container">
     <div class="header-banner">
         <h2>💊 Bimal Pharmacy</h2>
-        <div class="subtitle">Search Engine</div>
+        <div class="subtitle">Real-time Price Search</div>
     </div>
 
     <nav>
         <a href="index.html">Home</a>
         <a href="vlog.html">Exploration</a>
-        <a href="search.html">Search</a>
+        <a href="search.html" class="active">Search</a>
         <a href="products.html">Service</a>
         <a href="about.html">About</a>
         <a href="gallery.html">Photos</a>
@@ -118,80 +207,135 @@
         <a href="contact.html">Contact</a>
     </nav>
 
-    <input type="text" id="searchBox" class="search-box" placeholder="Loading database..." disabled>
+    <div class="search-wrapper">
+        <div class="input-group">
+            <input type="text" id="searchBox" class="search-box" placeholder="Initializing..." disabled autocomplete="off">
+            <button id="clearBtn" class="clear-btn" title="Clear search">✕</button>
+        </div>
+    </div>
     
-    <div id="loading">Connecting to GitHub... please wait.</div>
-    <div id="results"></div>
+    <div id="loading">
+        <div class="spinner"></div>
+        <div>Downloading Database...</div>
+    </div>
+
+    <div id="results-container"></div>
 </div>
 
 <script>
-    // ✅ LINK TO DATABASE
-    const excelUrl = "https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx";
+    // ✅ CONFIGURATION
+    const EXCEL_URL = "https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx";
+    const FUSE_OPTIONS = {
+        keys: ['name'],
+        threshold: 0.3, // 0.0 = exact match, 1.0 = match anything
+        ignoreLocation: true,
+        minMatchCharLength: 2
+    };
 
-    let fuse; 
+    let fuseInstance; 
+    
+    // ✅ ELEMENTS
+    const searchBox = document.getElementById('searchBox');
+    const loadingDiv = document.getElementById('loading');
+    const resultsDiv = document.getElementById('results-container');
+    const clearBtn = document.getElementById('clearBtn');
 
-    async function loadData() {
-        const loading = document.getElementById('loading');
-        const searchBox = document.getElementById('searchBox');
-
+    // ✅ LOAD DATA
+    async function loadDatabase() {
         try {
-            const response = await fetch(excelUrl);
-            if (!response.ok) throw new Error("Could not find file on GitHub.");
+            // Fetch with cache enabled to speed up subsequent visits
+            const response = await fetch(EXCEL_URL, { cache: "default" });
+            
+            if (!response.ok) throw new Error(`Server returned ${response.status}`);
 
             const arrayBuffer = await response.arrayBuffer();
-            const data = new Uint8Array(arrayBuffer);
-            const workbook = XLSX.read(data, { type: 'array' });
+            const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
+            
+            // Assume data is in the first sheet
             const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
             const jsonData = XLSX.utils.sheet_to_json(firstSheet);
 
-            const medicines = jsonData.map(item => ({
-                name: item.Prodname ? String(item.Prodname) : "",
-                price: item.S_price || "N/A"
-            })).filter(item => item.name !== ""); 
+            // Sanitize Data
+            const medicines = jsonData
+                .map(item => ({
+                    name: item.Prodname ? String(item.Prodname).trim() : null,
+                    // Handle cases where price is 0 (valid) vs missing (invalid)
+                    price: (item.S_price !== undefined && item.S_price !== null) ? item.S_price : "N/A"
+                }))
+                .filter(item => item.name); // Remove empty names
 
-            fuse = new Fuse(medicines, {
-                keys: ['name'],
-                threshold: 0.3, 
-                ignoreLocation: true
-            });
+            // Initialize Fuse
+            fuseInstance = new Fuse(medicines, FUSE_OPTIONS);
 
-            loading.style.display = 'none';
+            // UI Ready State
+            loadingDiv.style.display = 'none';
             searchBox.disabled = false;
-            searchBox.placeholder = "🔍 Search Medicine Name...";
+            searchBox.placeholder = "🔍 Search Medicine Name (e.g. Paracetamol)";
             searchBox.focus();
 
         } catch (error) {
-            console.error(error);
-            loading.innerHTML = `<div class='error-msg'>Network Error: ${error.message}</div>`;
+            console.error("Database Error:", error);
+            loadingDiv.innerHTML = `<div class='error-msg'>
+                <strong>Failed to load database.</strong><br>
+                Please check your internet connection or try again later.<br>
+                <small>${error.message}</small>
+            </div>`;
         }
     }
 
-    document.getElementById('searchBox').addEventListener('input', (e) => {
-        const query = e.target.value.trim();
-        const resultsDiv = document.getElementById('results');
-        resultsDiv.innerHTML = '';
-
-        if (query.length < 2) return; 
-
-        const results = fuse.search(query);
-
-        if (results.length > 0) {
-            results.slice(0, 50).forEach(result => {
-                const item = result.item;
-                const price = typeof item.price === 'number' ? item.price.toFixed(2) : item.price;
-                
-                resultsDiv.innerHTML += `
-                    <div class="card">
-                        <div class="name">${item.name}</div>
-                        <div class="price">Rs. ${price}</div>
-                    </div>`;
-            });
-        } else {
-            resultsDiv.innerHTML = `<div style="text-align:center; padding:20px; color:#888;">No medicine found.</div>`;
+    // ✅ SEARCH FUNCTION
+    function performSearch(query) {
+        // Clear previous results
+        resultsDiv.innerHTML = ''; 
+        
+        if (query.length < 2) {
+            clearBtn.style.display = 'none';
+            return;
         }
+
+        clearBtn.style.display = 'block';
+        const results = fuseInstance.search(query);
+
+        if (results.length === 0) {
+            resultsDiv.innerHTML = `<div style="text-align:center; padding:30px; color:#888;">No medicines found matching "<b>${escapeHtml(query)}</b>"</div>`;
+            return;
+        }
+
+        // Optimization: Build HTML string once, then inject
+        const htmlBuffer = results.slice(0, 50).map(result => {
+            const item = result.item;
+            // Format Price: Check if it's a number to add "Rs." or leave as text
+            const displayPrice = !isNaN(item.price) 
+                ? `Rs. ${Number(item.price).toFixed(2)}` 
+                : item.price;
+
+            return `
+                <div class="card">
+                    <div class="name">${item.name}</div>
+                    <div class="price-tag">${displayPrice}</div>
+                </div>`;
+        }).join('');
+
+        resultsDiv.innerHTML = htmlBuffer;
+    }
+
+    // ✅ EVENT LISTENERS
+    searchBox.addEventListener('input', (e) => performSearch(e.target.value.trim()));
+
+    clearBtn.addEventListener('click', () => {
+        searchBox.value = '';
+        performSearch('');
+        searchBox.focus();
     });
 
-    window.onload = loadData;
+    // Helper to prevent XSS in "No results" message
+    function escapeHtml(text) {
+        const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+        return text.replace(/[&<>"']/g, (m) => map[m]);
+    }
+
+    // Start
+    window.onload = loadDatabase;
 </script>
 
 </body>
