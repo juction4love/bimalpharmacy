@@ -29,20 +29,20 @@
             -webkit-touch-callout: none; 
         }
 
-        /* --- FRONT & TRANSPARENT MARQUEE STYLES --- */
+        /* --- FRONT & SOLID MARQUEE STYLES --- */
         .side-marquee {
             position: fixed;
             top: 0;
             bottom: 0;
             
-            /* CHANGE 1: High Z-Index brings it to the FRONT */
+            /* High Z-Index keeps it in FRONT */
             z-index: 9999; 
             
-            /* CHANGE 2: Pointer Events NONE allows you to click buttons BEHIND the photos */
+            /* Pointer Events NONE allows clicks to pass through to the back */
             pointer-events: none; 
             
-            /* CHANGE 3: Low Opacity makes it TRANSPARENT (See-through) */
-            opacity: 0.2; 
+            /* UPDATED: Opacity 1 makes them fully visible (Solid) */
+            opacity: 1; 
 
             overflow: hidden;
             padding: 0 10px;
@@ -93,8 +93,8 @@
                 padding: 0;
                 border: none;
                 
-                /* Make it even more transparent on mobile so text is readable */
-                opacity: 0.15; 
+                /* UPDATED: Fully solid on mobile too */
+                opacity: 1; 
                 
                 /* Distribute lanes to fill screen */
                 display: flex;
@@ -127,7 +127,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
-            z-index: 500; /* Lower than marquee (9999) but higher than content */
+            z-index: 500; 
         }
         nav a {
             margin: 0 10px;
