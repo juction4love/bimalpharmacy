@@ -15,7 +15,48 @@
             padding: 0;
             background-color: #f4f4f4;
             line-height: 1.6;
+            /* Ensure the body is relative so absolute positioning works if needed, 
+               but we are using 'fixed' for the images */
+            overflow-x: hidden; /* Prevents horizontal scrollbar if images stick out */
         }
+
+        /* --- POSTCARD STYLES (NEW) --- */
+        .postcard {
+            position: fixed; /* Keeps them in place while you scroll */
+            width: 140px;    /* Postcard size */
+            height: auto;
+            background: #fff; /* White border */
+            padding: 8px;    /* Thickness of white border */
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.4); /* Shadow for depth */
+            z-index: -1;     /* Puts images BEHIND the form so they don't block text */
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover effect: When you mouse over a small photo, it pops up */
+        .postcard:hover {
+            z-index: 100;
+            transform: scale(1.5) rotate(0deg) !important;
+        }
+
+        /* Positions for 8 different photos scattered around */
+        .pos-1 { top: 120px; left: 20px; transform: rotate(-10deg); }
+        .pos-2 { top: 140px; right: 20px; transform: rotate(5deg); }
+        
+        .pos-3 { top: 350px; left: 5px;  transform: rotate(8deg); }
+        .pos-4 { top: 320px; right: 10px; transform: rotate(-5deg); }
+        
+        .pos-5 { top: 550px; left: 30px; transform: rotate(-12deg); }
+        .pos-6 { top: 530px; right: 40px; transform: rotate(10deg); }
+        
+        .pos-7 { top: 750px; left: 10px; transform: rotate(4deg); }
+        .pos-8 { top: 720px; right: 10px; transform: rotate(-8deg); }
+
+        /* HIDE POSTCARDS ON MOBILE PHONES 
+           (Otherwise they will cover the form on small screens) */
+        @media (max-width: 900px) {
+            .postcard { display: none; }
+        }
+
         header {
             /* Adding heading.png as background */
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('heading.png');
@@ -33,6 +74,9 @@
             padding: 15px;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* High z-index to stay on top of postcards */
         }
         nav a {
             margin: 0 10px;
@@ -48,11 +92,13 @@
             padding: 20px;
             max-width: 800px;
             margin: 20px auto;
+            position: relative; 
+            z-index: 1; /* Ensures content is above the background postcards */
         }
         
         /* Form Container Styles */
         .container {
-            background: white;
+            background: rgba(255, 255, 255, 0.95); /* Slightly transparent so you see background blur */
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -73,7 +119,7 @@
             margin-top: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            box-sizing: border-box; /* Ensures padding doesn't increase width */
+            box-sizing: border-box; 
         }
         
         button {
@@ -108,14 +154,24 @@
             text-align: center;
             padding: 15px 0;
             margin-top: 40px;
+            position: relative;
+            z-index: 2;
         }
     </style>
 </head>
 
 <body>
 
+    <img src="background.jpeg" class="postcard pos-1" alt="Decor">
+    <img src="background.jpeg" class="postcard pos-2" alt="Decor">
+    <img src="background.jpeg" class="postcard pos-3" alt="Decor">
+    <img src="background.jpeg" class="postcard pos-4" alt="Decor">
+    <img src="background.jpeg" class="postcard pos-5" alt="Decor">
+    <img src="background.jpeg" class="postcard pos-6" alt="Decor">
+    <img src="background.jpeg" class="postcard pos-7" alt="Decor">
+    <img src="background.jpeg" class="postcard pos-8" alt="Decor">
     <header>
-        <h1>विमल फार्मेसीमा स्वागत छ</h1>
+        <h1>विमल फार्मेसी - स्वागत छ</h1>
         <h2>तस्बिर ग्यालेरी (Gallery)</h2>
     </header>
 
@@ -141,7 +197,8 @@
         <div class="container">
             <h3>फोटो अपलोड गर्नुहोस् र विवरण भर्नुहोस्</h3>
             
-            <form action="#" method="POST"> <label for="nameInput">तपाईंको नाम (Name):</label>
+            <form action="#" method="POST"> 
+                <label for="nameInput">तपाईंको नाम (Name):</label>
                 <input type="text" id="nameInput" placeholder="तपाईंको पूरा नाम लेख्नुहोस्" required>
 
                 <label for="addressInput">ठेगाना (Address):</label>
@@ -168,7 +225,7 @@
                 reader.onload = function(e) {
                     const preview = document.getElementById('imagePreview');
                     preview.src = e.target.result;
-                    preview.style.display = 'block'; // Ensure it is visible
+                    preview.style.display = 'block'; 
                 };
                 reader.readAsDataURL(file);
             }
