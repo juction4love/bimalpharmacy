@@ -1,93 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
-	<head>
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
-     crossorigin="anonymous"></script>
-		</head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bimal Pharmacy</title>
+    <title>विमल फार्मेसी - फोटो ग्यालेरी</title>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
+      crossorigin="anonymous"></script>
+
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Kalimati', 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
+            line-height: 1.6;
         }
         header {
-            background-color: #4CAF50;
+            /* Adding heading.png as background */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('heading.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
             color: white;
-            padding: 15px;
+            padding: 60px 15px;
             text-align: center;
+            text-shadow: 2px 2px 4px #000000;
         }
         nav {
-            background-color: #f2f2f2;
-            padding: 10px;
+            background-color: #fff;
+            padding: 15px;
             text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         nav a {
-            margin: 0 15px;
+            margin: 0 10px;
             text-decoration: none;
             color: #4CAF50;
+            font-weight: bold;
+            display: inline-block;
+        }
+        nav a:hover {
+            text-decoration: underline;
         }
         section {
             padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
         }
+        
+        /* Form Container Styles */
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        form label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        form input[type="text"], 
+        form textarea, 
+        form input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Ensures padding doesn't increase width */
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #imagePreview {
+            display: block;
+            max-width: 100%;
+            margin-top: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            min-height: 50px;
+            background-color: #fafafa;
+        }
+
         footer {
             background-color: #4CAF50;
             color: white;
             text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 15px 0;
+            margin-top: 40px;
         }
     </style>
-	
 </head>
+
 <body>
-</body>
+
     <header>
-        <h1>Welcome to Bimal Pharmacy</h1>
-         <h2>Gallery</h2>
+        <h1>विमल फार्मेसीमा स्वागत छ</h1>
+        <h2>तस्बिर ग्यालेरी (Gallery)</h2>
     </header>
 
-<nav>
-       <a href="index.html">Home</a>
-        <a href="vlog.html">Exploration of Human</a>
-	<a href="search.html">Search</a>
-   	 <a href="products.html">Our Service</a>
-   	<a href="about.html">About Us</a>
-	 <a href="gallery.html">Photos</a>
-	<a href="Forum.html"> Blog & Forum</a>
-	<a href="news.html">Science Journals</a>
-	    <a href="contact.html">Contact Us</a>
+    <nav>
+        <a href="index.html">गृहपृष्ठ</a>
+        <a href="vlog.html">मानव अन्वेषण</a>
+        <a href="search.html">खोज्नुहोस्</a>
+        <a href="products.html">हाम्रा सेवाहरू</a>
+        <a href="about.html">हाम्रो बारेमा</a>
+        <a href="gallery.html">फोटोहरू</a>
+        <a href="Forum.html">ब्लग र फोरम</a>
+        <a href="news.html">विज्ञान जर्नलहरू</a>
+        <a href="contact.html">सम्पर्क गर्नुहोस्</a>
     </nav>
 
+    <section id="gallery">
+        <h2>हाम्रा तस्बिरहरू (Our Photos)</h2>
+        <p>
+            यहाँ तपाईंले हाम्रा उत्पादनहरू, फार्मेसीको वातावरण, वा स्वास्थ्य सम्बन्धी जानकारीमूलक तस्बिरहरू अपलोड गर्न सक्नुहुन्छ।
+            कृपया आफ्नो नाम र ठेगाना पनि उल्लेख गर्नुहोस्।
+        </p>
 
-</ul>
+        <div class="container">
+            <h3>फोटो अपलोड गर्नुहोस् र विवरण भर्नुहोस्</h3>
+            
+            <form action="#" method="POST"> <label for="nameInput">तपाईंको नाम (Name):</label>
+                <input type="text" id="nameInput" placeholder="तपाईंको पूरा नाम लेख्नुहोस्" required>
+
+                <label for="addressInput">ठेगाना (Address):</label>
+                <input type="text" id="addressInput" placeholder="तपाईंको ठेगाना लेख्नुहोस्" required>
+
+                <label for="imageInput">फोटो छान्नुहोस् (Upload Photo):</label>
+                <input type="file" id="imageInput" accept="image/*" required>
+                
+                <img id="imagePreview" alt="फोटोको प्रिभ्यु यहाँ देखिनेछ (Preview)">
+                
+                <label for="textInput">तस्बिरको बारेमा लेख्नुहोस् (Description):</label>
+                <textarea id="textInput" rows="4" placeholder="तस्बिरको बारेमा वा आफ्नो सन्देश यहाँ टाइप गर्नुहोस्..."></textarea>
+                
+                <button type="submit">पेश गर्नुहोस् (Submit)</button>
+            </form>
+        </div>
     </section>
-<section id="gallery">
-        <h2>Our Photos</h2>
-<p>
-I'd love to see If you upload an image, I can describe it for you. Or,<p>
- if you have a specific type of photo in mind—like a scenic landscape, a historic event,<p> 
-or a product image—I can write something creative or informative about it.<p>
- Let me know what you'd like </p>
-        <ul>
-<div class="container">
-        <h2>Upload a Photo and Write Something</h2>
-        <form>
-            <label for="imageInput">Upload Photo:</label>
-            <input type="file" id="imageInput" accept="image/*">
-            <img id="imagePreview" alt="Preview will appear here">
-            
-            <label for="textInput">Write something:</label>
-            <textarea id="textInput" rows="4" placeholder="Type your thoughts here..."></textarea>
-            
-            <button type="submit">Submit</button>
-        </form>
-    </div>
 
     <script>
         document.getElementById('imageInput').addEventListener('change', function(event) {
@@ -95,27 +166,22 @@ or a product image—I can write something creative or informative about it.<p>
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    document.getElementById('imagePreview').src = e.target.result;
+                    const preview = document.getElementById('imagePreview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block'; // Ensure it is visible
                 };
                 reader.readAsDataURL(file);
             }
         });
     </script>
-<nav>
-<a href="index.html">Back to Home</a>
-</nav>
- <footer>
-        <p>&copy; 2025 Bimal Pharmacy. All Rights Reserved.</p>
+
+    <nav style="margin-top: 20px;">
+        <a href="index.html">गृहपृष्ठमा फर्कनुहोस् (Back to Home)</a>
+    </nav>
+    
+    <footer>
+        <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
     </footer>
+
+</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
