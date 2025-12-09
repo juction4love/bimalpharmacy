@@ -9,12 +9,12 @@
       crossorigin="anonymous"></script>
 
     <style>
-        /* --- SECURITY STYLES --- */
+        /* --- GLOBAL SETTINGS --- */
         body {
-            /* Prevents highlighting text or images */
-            -webkit-user-select: none; /* Safari */
-            -ms-user-select: none; /* IE 10 and IE 11 */
-            user-select: none; /* Standard syntax */
+            /* Security: Prevents highlighting text */
+            -webkit-user-select: none; 
+            -ms-user-select: none; 
+            user-select: none; 
             
             font-family: 'Kalimati', 'Arial', sans-serif;
             margin: 0;
@@ -24,27 +24,34 @@
             overflow-x: hidden; 
         }
 
-        /* Prevents the long-press menu on iOS/Android */
+        /* Security: Prevents long-press on mobiles */
         img {
             -webkit-touch-callout: none; 
-            pointer-events: auto; /* Ensures hover effects still work */
         }
 
-        /* --- VERTICAL MARQUEE STYLES --- */
+        /* --- FRONT & TRANSPARENT MARQUEE STYLES --- */
         .side-marquee {
             position: fixed;
             top: 0;
             bottom: 0;
-            z-index: -1; 
+            
+            /* CHANGE 1: High Z-Index brings it to the FRONT */
+            z-index: 9999; 
+            
+            /* CHANGE 2: Pointer Events NONE allows you to click buttons BEHIND the photos */
+            pointer-events: none; 
+            
+            /* CHANGE 3: Low Opacity makes it TRANSPARENT (See-through) */
+            opacity: 0.2; 
+
             overflow: hidden;
             padding: 0 10px;
             width: 160px; 
             background: transparent;
-            opacity: 1; 
         }
 
-        .left-lane { left: 0; border-right: 1px solid #ddd; }
-        .right-lane { right: 0; border-left: 1px solid #ddd; }
+        .left-lane { left: 0; border-right: 1px solid rgba(0,0,0,0.1); }
+        .right-lane { right: 0; border-left: 1px solid rgba(0,0,0,0.1); }
 
         .track {
             display: flex;
@@ -60,14 +67,6 @@
             padding: 5px;
             box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
             border-radius: 2px;
-            transition: transform 0.3s;
-        }
-        
-        /* Interactive Hover Effect */
-        .track img:hover {
-            transform: scale(1.1);
-            z-index: 50;
-            cursor: no-drop; /* Shows a 'stopped' cursor symbol */
         }
 
         /* --- ANIMATIONS --- */
@@ -87,15 +86,25 @@
         /* --- MOBILE ADJUSTMENTS --- */
         @media (max-width: 768px) {
             .side-marquee {
-                width: 50%; 
+                /* On mobile, cover the WHOLE screen */
+                width: 100%; 
+                left: 0;
+                right: 0;
                 padding: 0;
                 border: none;
-                opacity: 0.15; /* Faded background for mobile */
+                
+                /* Make it even more transparent on mobile so text is readable */
+                opacity: 0.15; 
+                
+                /* Distribute lanes to fill screen */
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
             }
-            .track img:nth-child(odd),
-            .track img:nth-child(even) { 
-                transform: rotate(0deg); 
-            }
+            
+            /* Adjust lanes to take up half screen each */
+            .left-lane { width: 50%; border: none; }
+            .right-lane { width: 50%; border: none; }
         }
 
         /* --- STANDARD PAGE CSS --- */
@@ -109,7 +118,7 @@
             text-align: center;
             text-shadow: 2px 2px 4px #000000;
             position: relative;
-            z-index: 2;
+            z-index: 1; 
         }
         nav {
             background-color: #fff;
@@ -118,7 +127,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
-            z-index: 1000; 
+            z-index: 500; /* Lower than marquee (9999) but higher than content */
         }
         nav a {
             margin: 0 10px;
@@ -136,7 +145,7 @@
             max-width: 700px;
             margin: 20px auto;
             position: relative; 
-            z-index: 10; 
+            z-index: 1; 
         }
         
         .container {
@@ -197,7 +206,7 @@
             padding: 15px 0;
             margin-top: 40px;
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
     </style>
 </head>
@@ -229,7 +238,6 @@
             <img src="background.jpeg" alt="Photo">
         </div>
     </div>
-
     <header>
         <h1>विमल फार्मेसी - स्वागत छ</h1>
         <h2>तस्बिर ग्यालेरी (Gallery)</h2>
@@ -278,7 +286,7 @@
     </section>
 
     <script>
-        // 1. IMAGE PREVIEW SCRIPT
+        // IMAGE PREVIEW SCRIPT
         document.getElementById('imageInput').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
@@ -292,28 +300,19 @@
             }
         });
 
-        // 2. SECURITY SCRIPTS (Prevent Saving/Dragging)
-        
-        // Prevent Dragging Images
+        // SECURITY SCRIPT
         document.querySelectorAll('img').forEach(img => {
             img.addEventListener('dragstart', event => event.preventDefault());
         });
 
-        // Prevent Keyboard Shortcuts (Ctrl+S, Ctrl+U, F12)
         document.onkeydown = function(e) {
-            if (e.ctrlKey && 
-                (e.keyCode === 67 || 
-                 e.keyCode === 86 || 
-                 e.keyCode === 85 || 
-                 e.keyCode === 117 || 
-                 e.keyCode === 83)) {
-                return false; // Blocks Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S
+            if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 117 || e.keyCode === 83)) {
+                return false; 
             } else {
                 return true;
             }
         };
         
-        // Disable Right Click specifically (Redundant backup for the body tag)
         document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 
