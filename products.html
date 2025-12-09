@@ -1,56 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
-	<head>
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
-     crossorigin="anonymous"></script>
-		</head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product List - Bimal Pharmacy</title>
+    <title>हाम्रा सेवाहरू - विमल फार्मेसी</title>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
+      crossorigin="anonymous"></script>
+
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Kalimati', 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
+            line-height: 1.6;
         }
         header {
-            background-color: #4CAF50;
+            /* Applying heading.png background */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('heading.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
             color: white;
-            padding: 20px;
+            padding: 60px 20px;
             text-align: center;
+            text-shadow: 2px 2px 4px #000000;
         }
         nav {
             text-align: center;
-            margin: 20px 0;
+            margin: 0;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         nav a {
             text-decoration: none;
             color: #4CAF50;
-            margin: 0 15px;
+            margin: 0 10px;
             font-weight: bold;
+            display: inline-block;
+        }
+        nav a:hover {
+            text-decoration: underline;
         }
         section {
-            max-width: 800px;
-            margin: 20px auto;
+            max-width: 900px;
+            margin: 30px auto;
             background: white;
-            padding: 20px;
+            padding: 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow-x: auto; /* Allows table to scroll on mobile */
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            min-width: 600px; /* Ensures table doesn't get too squished on mobile */
         }
         th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
+            border: 1px solid #ddd;
+            padding: 12px;
             text-align: left;
         }
         th {
             background-color: #4CAF50;
             color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
         }
         footer {
             background-color: #4CAF50;
@@ -64,71 +88,63 @@
 <body>
 
     <header>
-    <h1>Welcome to Bimal Pharmacy</h1> <p>
-    </p>
-     <h2>Product List</h2>
+        <h1>विमल फार्मेसीमा स्वागत छ</h1>
+        <h2>हाम्रा सेवा तथा उत्पादनहरू (Our Services & Products)</h2>
     </header>
     
-	<nav>
-       <a href="index.html">Home</a>
-        <a href="vlog.html">Exploration of Human</a>
-	<a href="search.html">Search</a>
-   	 <a href="products.html">Our Service</a>
-   	<a href="about.html">About Us</a>
-	 <a href="gallery.html">Photos</a>
-	<a href="Forum.html"> Blog & Forum</a>
-	<a href="news.html">Science Journals</a>
-	    <a href="contact.html">Contact Us</a>
+    <nav>
+        <a href="index.html">गृहपृष्ठ</a>
+        <a href="vlog.html">मानव अन्वेषण</a>
+        <a href="search.html">खोज्नुहोस्</a>
+        <a href="products.html">हाम्रा सेवाहरू</a>
+        <a href="about.html">हाम्रो बारेमा</a>
+        <a href="gallery.html">फोटोहरू</a>
+        <a href="Forum.html">ब्लग र फोरम</a>
+        <a href="news.html">विज्ञान जर्नलहरू</a>
+        <a href="contact.html">सम्पर्क गर्नुहोस्</a>
     </nav>
 
-
-
     <section>
-        <h2>Available Products</h2>
+        <h2>उपलब्ध उत्पादनहरू (Available Products)</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Product Name</th>
-                    <th>Category</th>
-                    <th>Price (NPR)</th>
-                    <th>Description</th>
+                    <th>उत्पादनको नाम (Product Name)</th>
+                    <th>श्रेणी (Category)</th>
+                    <th>मूल्य (Price)</th>
+                    <th>विवरण (Description)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Cancer-Cure</td>
-                    <td>Oncology Medicine</td>
-                    <td>Variable by items</td>
-                    <td>Effective for Cancer relief.</td>
+                    <td>क्यान्सर उपचार औषधी (Cancer-Cure)</td>
+                    <td>अंकोलोजी (Oncology Medicine)</td>
+                    <td>सामान अनुसार फरक (Variable)</td>
+                    <td>क्यान्सर उपचार र राहतको लागि प्रभावकारी।</td>
                 </tr>
                 <tr>
-                    <td>Disposible Surgicals Goods </td>
-                    <td>For use of Cancer Operation </td>
-                    <td>Variable by items</td>
-                    <td>Overall Cancer Operation by Healthcare Persons.</td>
+                    <td>डिस्पोजेबल सर्जिकल सामानहरू (Disposable Surgical Goods)</td>
+                    <td>शल्यक्रिया सामग्री (Operation Use)</td>
+                    <td>सामान अनुसार फरक (Variable)</td>
+                    <td>स्वास्थ्यकर्मीहरूद्वारा गरिने क्यान्सर शल्यक्रियाको लागि।</td>
                 </tr>
                 <tr>
-                    <td>Hospital Sanitiztion and Anesthesiologist Goods</td>
-                    <td>ICU Care</td>
-                    <td>Variable by items</td>
-                    <td>Usbale for ICU instantly.</td>
+                    <td>अस्पताल सरसफाई र एनेस्थेसिया सामानहरू (Sanitization & Anesthesia)</td>
+                    <td>आईसीयू हेरचाह (ICU Care)</td>
+                    <td>सामान अनुसार फरक (Variable)</td>
+                    <td>आईसीयू (ICU) मा तत्काल प्रयोग गर्न सकिने।</td>
                 </tr>
             </tbody>
         </table>
     </section>
-<nav>
-    <a href="index.html">Back to Home</a>
-</nav>
+
+    <nav style="margin-top: 20px;">
+        <a href="index.html">गृहपृष्ठमा फर्कनुहोस् (Back to Home)</a>
+    </nav>
+
     <footer>
-        <p>&copy; 2025 Bimal Pharmacy. All Rights Reserved.</p>
+        <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
     </footer>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
