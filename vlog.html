@@ -3,39 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>विमल फार्मेसी - मानव अन्वेषण</title>
+    <title>विमल फार्मेसी - अन्वेषण</title>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
       crossorigin="anonymous"></script>
 
     <style>
-        /* --- SECURITY CSS --- */
+        /* --- SECURITY SETTINGS --- */
         body {
-            /* 1. Prevents highlighting/selecting anything */
-            -webkit-user-select: none; 
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none; 
+            -webkit-user-select: none; /* Chrome/Safari */
+            -moz-user-select: none;    /* Firefox */
+            -ms-user-select: none;     /* IE/Edge */
+            user-select: none;         /* Standard */
             
             font-family: 'Kalimati', 'Arial', sans-serif;
-            line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
             overflow-x: hidden; 
         }
 
-        /* 2. Prevents Long-Press Menu on Mobile (iOS/Android) */
-        * {
-            -webkit-touch-callout: none;
-        }
-        
+        /* Disable Long Press on Touchscreens */
+        * { -webkit-touch-callout: none; }
+
         header {
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('heading.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            
             color: white;
             padding: 60px 20px;
             text-align: center;
@@ -83,31 +78,33 @@
             width: 100%;
             height: 100%;
             
-            /* IMAGE IS SET AS BACKGROUND (Harder to save than <img> tag) */
-            background-image: url('background22.jpeg');
+            /* --- IMAGE SOURCE --- */
+            background-image: url('background.jpeg'); 
             
+            /* Sizing & Repeat */
             background-size: 600px 600px; 
             background-repeat: repeat;
             
+            /* 3D Transform */
             transform: rotateX(60deg) scale(2);
             transform-style: preserve-3d;
             
+            /* Animation */
             animation: scroll-3d 15s linear infinite;
         }
         
-        /* 3. INVISIBLE SHIELD OVERLAY 
-           This sits on top of the image. If someone tries to click or drag,
-           they hit this empty box instead of the image. */
+        /* Security Shield (Invisible top layer) */
         .security-shield {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 10; /* Above the image */
+            z-index: 10; 
             background: transparent;
         }
 
+        /* Fog Overlay */
         .fog-overlay {
             position: absolute;
             top: 0;
@@ -129,18 +126,13 @@
             color: white;
             text-align: center;
             padding: 10px 0;
-            margin-top: 0; 
+            margin-top: 0;
             position: relative;
             z-index: 2;
         }
 
-        /* Screen Print Blocker (Visual Deterrent) 
-           If they try to print, the page turns white */
-        @media print {
-            html, body {
-                display: none; /* Hides everything when printing */
-            }
-        }
+        /* Hide content if printed */
+        @media print { html, body { display: none; } }
     </style>
 </head>
 
@@ -176,29 +168,23 @@
     </footer>
 
     <script>
-        // 1. Disable Key Combinations (Ctrl+S, Ctrl+U, PrintScreen, F12)
+        // Disable Keyboard Shortcuts (Save, Print, View Source)
         document.onkeydown = function(e) {
             if (e.ctrlKey && 
-                (e.keyCode === 67 || // C (Copy)
-                 e.keyCode === 86 || // V (Paste)
-                 e.keyCode === 85 || // U (Source Code)
+                (e.keyCode === 67 || // Ctrl+C
+                 e.keyCode === 86 || // Ctrl+V
+                 e.keyCode === 85 || // Ctrl+U
                  e.keyCode === 117 || // F6
-                 e.keyCode === 83)) { // S (Save)
+                 e.keyCode === 83)) { // Ctrl+S
                 return false; 
             }
-            // Attempt to block "Print Screen" key (Works in some browsers)
-            if (e.keyCode === 44) {
+            if (e.keyCode === 44) { // PrintScreen
                 return false;
             }
             return true;
         };
 
-        // 2. Clear Clipboard (If they try to Copy/Paste)
-        setInterval(function(){
-           // This function doesn't actively clear, but we blocked Ctrl+C above.
-        }, 1000);
-
-        // 3. Prevent Drag and Drop
+        // Disable Dragging
         window.ondragstart = function() { return false; } 
     </script>
 
