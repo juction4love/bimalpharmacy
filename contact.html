@@ -1,31 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Bimal Pharmacy</title>
+    <title>सम्पर्क गर्नुहोस् - विमल फार्मेसी</title>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Kalimati', 'Arial', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
         }
         header {
-            background-color: #4CAF50;
+            /* Adding heading.png as background */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('heading.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
             color: white;
-            padding: 20px;
+            padding: 60px 20px;
             text-align: center;
+            text-shadow: 2px 2px 4px #000000;
         }
         nav {
             text-align: center;
-            margin: 20px 0;
+            margin: 0;
             background-color: #fff;
-            padding: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         nav a {
             text-decoration: none;
@@ -39,9 +46,9 @@
         }
         section {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 30px auto;
             background: white;
-            padding: 20px;
+            padding: 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
@@ -55,6 +62,7 @@
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-family: inherit;
         }
         button {
             background-color: #4CAF50;
@@ -81,57 +89,63 @@
             text-decoration: none;
             font-weight: bold;
         }
+        h2 {
+            color: #333;
+        }
+        header h2 {
+            color: white; /* Ensure header h2 stays white */
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Bimal Pharmacy</h1>
-        <h2>Contact Us</h2>
+        <h1>विमल फार्मेसी</h1>
+        <h2>सम्पर्क गर्नुहोस्</h2>
     </header>
 
     <nav>
-        <a href="index.html">Home</a>
-        <a href="vlog.html">Exploration of Human</a>
-        <a href="search.html">Search</a>
-        <a href="products.html">Our Service</a>
-        <a href="about.html">About Us</a>
-        <a href="gallery.html">Photos</a>
-        <a href="Forum.html">Blog & Forum</a>
-        <a href="news.html">Science Journals</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="index.html">गृहपृष्ठ</a>
+        <a href="vlog.html">मानव अन्वेषण</a>
+        <a href="search.html">खोज्नुहोस्</a>
+        <a href="products.html">हाम्रा सेवाहरू</a>
+        <a href="about.html">हाम्रो बारेमा</a>
+        <a href="gallery.html">फोटोहरू</a>
+        <a href="Forum.html">ब्लग र फोरम</a>
+        <a href="news.html">विज्ञान जर्नलहरू</a>
+        <a href="contact.html">सम्पर्क गर्नुहोस्</a>
     </nav>
 
     <section>
-        <h2>Get In Touch</h2>
-        <p>We are always here to help! Feel free to reach out to us with any inquiries regarding medicines or appointments.</p>
+        <h2>हामीलाई सम्पर्क गर्नुहोस् (Get In Touch)</h2>
+        <p>हामी सधैं तपाईंको सहयोगको लागि यहाँ छौं! औषधी वा अपोइन्टमेन्ट सम्बन्धी कुनै पनि जिज्ञासा भएमा हामीलाई सम्पर्क गर्नुहोस्।</p>
 
-        <h3>Pharmacy Details</h3>
-        <p><strong>📍 Address:</strong> Bharatpur-7, Nepal</p>
+        <h3>फार्मेसीको विवरण (Pharmacy Details)</h3>
+        <p><strong>📍 ठेगाना:</strong> भरतपुर-७, नेपाल</p>
         
-        <p><strong>📞 Phone:</strong> <a href="tel:+97756593288" class="contact-link">+977-56-593288</a></p>
+        <p><strong>📞 फोन:</strong> <a href="tel:+97756593288" class="contact-link">+९७७-५६-५९३२८८</a></p>
         
-        <p><strong>✉️ Email:</strong> <a href="mailto:bimal.lamichhane@gmail.com" class="contact-link">bimal.lamichhane@gmail.com</a></p>
+        <p><strong>✉️ ईमेल:</strong> <a href="mailto:bimal.lamichhane@gmail.com" class="contact-link">bimal.lamichhane@gmail.com</a></p>
 
         <hr>
 
-        <h3>Send Us a Message</h3>
+        <h3>हामीलाई सन्देश पठाउनुहोस् (Send Us a Message)</h3>
         <form action="mailto:bimal.lamichhane@gmail.com" method="post" enctype="text/plain">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <label for="name">नाम (Name):</label>
+            <input type="text" id="name" name="name" placeholder="तपाईंको नाम लेख्नुहोस्" required>
             
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <label for="email">ईमेल (Email):</label>
+            <input type="email" id="email" name="email" placeholder="तपाईंको ईमेल लेख्नुहोस्" required>
             
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+            <label for="message">सन्देश (Message):</label>
+            <textarea id="message" name="message" rows="5" placeholder="आफ्नो सन्देश यहाँ लेख्नुहोस्..." required></textarea>
             
-            <button type="submit">Send Message</button>
+            <button type="submit">सन्देश पठाउनुहोस् (Send Message)</button>
         </form>
     </section>
 
     <footer>
-        <p>&copy; 2025 Bimal Pharmacy. All Rights Reserved.</p>
+        <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
     </footer>
 
 </body>
