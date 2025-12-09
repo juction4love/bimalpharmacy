@@ -9,23 +9,36 @@
       crossorigin="anonymous"></script>
 
     <style>
+        /* --- MAIN PAGE BACKGROUND (Blue Sky) --- */
         body {
             font-family: 'Kalimati', 'Arial', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            
+            /* This sets the Blue Sky image "Behind the Page" */
+            background-image: url('bluesky.jpg'); 
+            
+            /* If the image is missing, this color will show instead */
+            background-color: #87CEEB; 
+            
+            background-size: cover;       
+            background-position: center;  
+            background-attachment: fixed; /* Keeps sky fixed when scrolling */
         }
         
-        /* --- HEADER STYLES (BIG FONT) --- */
+        /* --- HEADER STYLES (Keep Heading.png here) --- */
         header {
+            /* This ensures the header uses heading.png, NOT the blue sky */
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('heading.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            
             color: white;
             padding: 80px 20px;
             text-align: center;
+            border-bottom: 5px solid #4CAF50; /* Adds a line to separate header from sky */
         }
 
         header h1 {
@@ -47,7 +60,7 @@
             text-align: center;
             background-color: #fff;
             padding: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -63,39 +76,39 @@
             text-decoration: underline;
         }
 
-        /* --- LAYOUT CONTAINER (For Left Content + Right Sidebar) --- */
+        /* --- LAYOUT CONTAINER --- */
         .main-container {
-            display: flex; /* This places items side-by-side */
-            flex-wrap: wrap; /* Allows stacking on mobile phones */
-            max-width: 1100px; /* Wider container to fit sidebar */
+            display: flex; 
+            flex-wrap: wrap; 
+            max-width: 1100px; 
             margin: 30px auto;
-            gap: 20px; /* Space between content and sidebar */
+            gap: 20px; 
             padding: 0 20px;
         }
 
-        /* LEFT COLUMN (Main Content) */
+        /* LEFT COLUMN (Main Content) - White Box on top of Sky */
         .content-column {
-            flex: 3; /* Takes up 3 parts of the space (approx 75%) */
-            background: white;
+            flex: 3; 
+            background: white; /* White background to make text readable against sky */
             padding: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             min-width: 300px;
         }
 
-        /* RIGHT COLUMN (Quick Search Sidebar) */
+        /* RIGHT COLUMN (Sidebar) - White Box on top of Sky */
         .sidebar-column {
-            flex: 1; /* Takes up 1 part of the space (approx 25%) */
+            flex: 1; 
             min-width: 250px;
         }
 
         /* QUICK SEARCH BOX STYLES */
         .search-widget {
-            background: white;
+            background: white; /* White background */
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-top: 5px solid #4CAF50; /* Green top border */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-top: 5px solid #4CAF50; 
             text-align: center;
         }
 
@@ -136,15 +149,15 @@
             text-align: center;
             padding: 10px 0;
             margin-top: 40px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
         }
 
-        /* Mobile Responsive Adjustment */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2.5em; 
             }
             .main-container {
-                flex-direction: column; /* Stack vertically on mobile */
+                flex-direction: column; 
             }
         }
     </style>
