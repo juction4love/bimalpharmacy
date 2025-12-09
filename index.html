@@ -9,27 +9,27 @@
       crossorigin="anonymous"></script>
 
     <style>
-        /* --- MAIN PAGE BACKGROUND (Blue Sky) --- */
+        /* --- MAIN PAGE BACKGROUND --- */
         body {
             font-family: 'Kalimati', 'Arial', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             
-            /* This sets the Blue Sky image "Behind the Page" */
-            background-image: url('bluesky.jpg'); 
+            /* UPDATED: Added a transparent white layer over the photo */
+            /* The '0.7' value controls transparency. 0.1 is very see-through, 0.9 is almost solid white. */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('background.jpeg'); 
             
-            /* If the image is missing, this color will show instead */
-            background-color: #87CEEB; 
-            
-            background-size: cover;       
-            background-position: center;  
-            background-attachment: fixed; /* Keeps sky fixed when scrolling */
+            background-color: #87CEEB; /* Fallback color */
+            background-size: cover;        
+            background-position: center top; 
+            background-attachment: scroll; /* Photo scrolls with the page */
+            background-repeat: no-repeat;
+            min-height: 100vh;
         }
         
-        /* --- HEADER STYLES (Keep Heading.png here) --- */
+        /* --- HEADER STYLES --- */
         header {
-            /* This ensures the header uses heading.png, NOT the blue sky */
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('heading.png');
             background-size: cover;
             background-position: center;
@@ -38,11 +38,11 @@
             color: white;
             padding: 80px 20px;
             text-align: center;
-            border-bottom: 5px solid #4CAF50; /* Adds a line to separate header from sky */
+            border-bottom: 5px solid #4CAF50;
         }
 
         header h1 {
-            font-size: 4.5em; /* BIG FONT */
+            font-size: 4.5em; 
             font-weight: 900; 
             margin: 0;
             text-shadow: 4px 4px 8px #000000; 
@@ -76,6 +76,30 @@
             text-decoration: underline;
         }
 
+        /* --- MARQUEE (SCROLLING TEXT) STYLES --- */
+        .marquee-container {
+            /* Made the background slightly more transparent to match the page */
+            background-color: rgba(255, 255, 255, 0.8); 
+            color: #d32f2f; 
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .marquee-text {
+            display: inline-block;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding-left: 100%; 
+            animation: scroll-left 20s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
         /* --- LAYOUT CONTAINER --- */
         .main-container {
             display: flex; 
@@ -86,17 +110,17 @@
             padding: 0 20px;
         }
 
-        /* LEFT COLUMN (Main Content) - White Box on top of Sky */
+        /* LEFT COLUMN (Main Content) */
         .content-column {
             flex: 3; 
-            background: white; /* White background to make text readable against sky */
+            background: rgba(255, 255, 255, 0.95); 
             padding: 30px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             min-width: 300px;
         }
 
-        /* RIGHT COLUMN (Sidebar) - White Box on top of Sky */
+        /* RIGHT COLUMN (Sidebar) */
         .sidebar-column {
             flex: 1; 
             min-width: 250px;
@@ -104,7 +128,7 @@
 
         /* QUICK SEARCH BOX STYLES */
         .search-widget {
-            background: white; /* White background */
+            background: rgba(255, 255, 255, 0.95);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -181,6 +205,12 @@
         <a href="news.html">विज्ञान जर्नलहरू</a>
         <a href="contact.html">सम्पर्क गर्नुहोस्</a>
     </nav>
+
+    <div class="marquee-container">
+        <div class="marquee-text">
+            स्वागत छ विमल फार्मेसी मा! यहाँ हामी उच्च गुणस्तरको औषधी र स्वास्थ्य सेवा प्रदान गर्दछौं। सम्पर्क: ९८५५०३०६०३
+        </div>
+    </div>
 
     <div class="main-container">
         
