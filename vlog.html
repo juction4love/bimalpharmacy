@@ -9,16 +9,28 @@
       crossorigin="anonymous"></script>
 
     <style>
+        /* --- SECURITY CSS --- */
         body {
+            /* 1. Prevents highlighting/selecting anything */
+            -webkit-user-select: none; 
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none; 
+            
             font-family: 'Kalimati', 'Arial', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
+            overflow-x: hidden; 
+        }
+
+        /* 2. Prevents Long-Press Menu on Mobile (iOS/Android) */
+        * {
+            -webkit-touch-callout: none;
         }
         
         header {
-            /* Applying heading.png background */
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('heading.png');
             background-size: cover;
             background-position: center;
@@ -28,6 +40,8 @@
             padding: 60px 20px;
             text-align: center;
             text-shadow: 2px 2px 4px #000000;
+            position: relative;
+            z-index: 2;
         }
 
         nav {
@@ -36,6 +50,9 @@
             background-color: #fff;
             padding: 15px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         nav a {
             text-decoration: none;
@@ -48,13 +65,63 @@
             text-decoration: underline;
         }
 
-        section {
-            max-width: 800px;
-            margin: 30px auto;
-            background: white;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+        /* --- 3D MARQUEE STYLES --- */
+        .marquee-container-3d {
+            perspective: 800px; 
+            height: 60vh; 
+            width: 100%;
+            overflow: hidden;
+            background-color: #000; 
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .tilted-plane {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            /* IMAGE IS SET AS BACKGROUND (Harder to save than <img> tag) */
+            background-image: url('background22.jpeg');
+            
+            background-size: 600px 600px; 
+            background-repeat: repeat;
+            
+            transform: rotateX(60deg) scale(2);
+            transform-style: preserve-3d;
+            
+            animation: scroll-3d 15s linear infinite;
+        }
+        
+        /* 3. INVISIBLE SHIELD OVERLAY 
+           This sits on top of the image. If someone tries to click or drag,
+           they hit this empty box instead of the image. */
+        .security-shield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10; /* Above the image */
+            background: transparent;
+        }
+
+        .fog-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 60%);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        @keyframes scroll-3d {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 600px; }
         }
 
         footer {
@@ -62,37 +129,22 @@
             color: white;
             text-align: center;
             padding: 10px 0;
-            margin-top: 20px;
+            margin-top: 0; 
+            position: relative;
+            z-index: 2;
         }
 
-        /* Styles for the Story Reveal */
-        .details {
-            display: none; /* Hidden by default */
-            margin-top: 20px;
-            color: #444;
-            background-color: #f4fdf4;
-            padding: 20px;
-            border-left: 5px solid #4CAF50;
-            border-radius: 4px;
-        }
-        .heading-click {
-            cursor: pointer;
-            color: #2c3e50;
-            font-weight: bold;
-            font-size: 22px;
-            padding: 15px;
-            background: #e8f5e9;
-            border-radius: 5px;
-            text-align: center;
-            transition: background 0.3s;
-        }
-        .heading-click:hover {
-            background: #c8e6c9;
+        /* Screen Print Blocker (Visual Deterrent) 
+           If they try to print, the page turns white */
+        @media print {
+            html, body {
+                display: none; /* Hides everything when printing */
+            }
         }
     </style>
 </head>
 
-<body>
+<body oncontextmenu="return false;">
 
     <header>
         <h1>विमल फार्मेसीमा स्वागत छ</h1>
@@ -111,70 +163,44 @@
         <a href="contact.html">सम्पर्क गर्नुहोस्</a>
     </nav>
 
-    <section>
-        <div class="heading-click" onclick="toggleDetails()">
-            ❝ यथार्थको शिल्पकार: मनोविज्ञानमा मानव विचारको अन्वेषण ❞<br>
-            <span style="font-size: 14px; font-weight: normal; color: #666;">(पूरा पढ्न यहाँ क्लिक गर्नुहोस्)</span>
-        </div>
-
-        <div class="details" id="story">
-            <h3>यथार्थको शिल्पकार: मनोविज्ञानमा मानव विचारको अन्वेषण</h3>
-            
-            <p>
-                तर्क, स्मृति र निर्णय क्षमता समेट्ने मानसिक प्रक्रियाहरूको जटिल संरचना नै मानव विचार हो, जुन मनोविज्ञानको 
-                केन्द्रीय स्तम्भ हो। यो त्यो अदृश्य शक्ति हो जसले हाम्रो इन्द्रियहरूले महसुस गरेका कुराहरूलाई (Sensory Input) 
-                अर्थपूर्ण कार्यमा बदल्छ, हाम्रो यथार्थको बुझाइलाई आकार दिन्छ र हाम्रो जीवनको हरेक पक्षलाई निर्देशित गर्दछ। 
-                संज्ञानात्मक मनोविज्ञान (Cognitive Psychology) अन्तर्गत विचारको अध्ययनले यो देखाउँछ कि हाम्रो दिमाग एउटा मात्र 
-                एकीकृत प्रोसेसर होइन, बरु यो एक जटिल, दोहोरो संयन्त्र हो जसले निरन्तर दक्षता र शुद्धता बीच सन्तुलन कायम गर्दछ।
-            </p>
-
-            <p>
-                यसको जगमा, मानव विचारले एक 'सूचना प्रशोधन प्रणाली' (Information-processing system) को रूपमा काम गर्दछ, 
-                जुन एक परिष्कृत कम्प्युटर जस्तै हुन्छ। यो संज्ञानात्मक मोडेलले 'ध्यान' (Attention) जस्ता प्रक्रियाहरूलाई 
-                जोड दिन्छ, जसले वातावरणबाट आउने असंख्य तथ्याङ्कहरूलाई फिल्टर गर्छ, र 'स्मृति' (Memory) जसले जानकारीलाई 
-                भण्डारण र पुनःप्राप्त गर्छ। जब हामी कुनै समस्याको सामना गर्छौं, दिमागले जटिल रणनीतिहरू प्रयोग गर्छ। 
-                यो कहिलेकाहीँ 'एल्गोरिदम' (समस्या समाधानको ग्यारेन्टी गर्ने चरणबद्ध प्रक्रिया) मा भर पर्छ भने धेरैजसो अवस्थामा 
-                'ह्युरिस्टिक्स' (Heuristics - मानसिक सर्टकट वा छिटो निर्णय गर्ने विधि) मा निर्भर हुन्छ। ह्युरिस्टिक्सले हामीलाई 
-                छिटो काम गर्न मद्दत गरे पनि, यसमा त्रुटि हुने सम्भावना रहन्छ।
-            </p>
-
-            <p>
-                गति र शुद्धता बीचको यो अन्तरद्वन्द्वले मानव ज्ञानको दोहोरो प्रकृतिलाई उजागर गर्दछ, जसलाई मनोवैज्ञानिक डेनियल 
-                काहनम्यानले 'प्रणाली १' (System 1) र 'प्रणाली २' (System 2) को रूपमा वर्णन गरेका छन्। प्रणाली १ छिटो, 
-                अन्तर्ज्ञानी (Intuitive), र स्वचालित हुन्छ। जस्तै: परिचित अनुहार चिन्नु। यसको ठीक विपरीत, प्रणाली २ सुस्त, 
-                प्रयासपूर्ण, विश्लेषणात्मक र तार्किक हुन्छ। जस्तै: कठिन गणितीय समस्या हल गर्नु।
-            </p>
-
-            <p>
-                यो द्रुत प्रशोधनमा निर्भरताले गर्दा विचारहरूमा व्यापक र अनुमानित त्रुटिहरू आउन सक्छन्, जसलाई 'संज्ञानात्मक पूर्वाग्रह' 
-                (Cognitive Biases) भनिन्छ। उदाहरणका लागि, 'पुष्टिकरण पूर्वाग्रह' (Confirmation Bias) ले मानिसहरूलाई 
-                त्यस्तो जानकारी मात्र खोज्न प्रेरित गर्छ जसले उनीहरूको पहिलेदेखिको विश्वासलाई पुष्टि गर्छ। यी पूर्वाग्रहहरूले यो देखाउँछन् 
-                कि मानव विचार पूर्ण रूपमा वस्तुपरक (Objective) हुँदैन; बरु यो भावनात्मक सन्दर्भ र मानसिक दक्षताको आवश्यकताद्वारा 
-                आकार लिइरहेको हुन्छ।
-            </p>
-
-            <p>
-                अन्ततः, विचारको मनोवैज्ञानिक अन्वेषणले यसको गहिरो जटिलतालाई जोड दिन्छ। ध्यान, स्मृति र पूर्वाग्रहका संयन्त्रहरू 
-                बुझेर, मनोवैज्ञानिकहरूले दिमागको भित्री कार्यप्रणाली मात्र नक्साङ्कन गर्दैनन्, बरु हामी कसरी अझ प्रभावकारी समस्या 
-                समाधानकर्ता र तार्किक निर्णयकर्ता बन्न सक्छौं भन्ने बारे महत्वपूर्ण अन्तरदृष्टि पनि प्रदान गर्छन्।
-            </p>
-        </div>
-    </section>
-
-    <script>
-        function toggleDetails() {
-            var content = document.getElementById("story");
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
-        }
-    </script>
+    <div class="marquee-container-3d">
+        <div class="fog-overlay"></div>
+        
+        <div class="tilted-plane"></div>
+        
+        <div class="security-shield"></div>
+    </div>
 
     <footer>
         <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
     </footer>
+
+    <script>
+        // 1. Disable Key Combinations (Ctrl+S, Ctrl+U, PrintScreen, F12)
+        document.onkeydown = function(e) {
+            if (e.ctrlKey && 
+                (e.keyCode === 67 || // C (Copy)
+                 e.keyCode === 86 || // V (Paste)
+                 e.keyCode === 85 || // U (Source Code)
+                 e.keyCode === 117 || // F6
+                 e.keyCode === 83)) { // S (Save)
+                return false; 
+            }
+            // Attempt to block "Print Screen" key (Works in some browsers)
+            if (e.keyCode === 44) {
+                return false;
+            }
+            return true;
+        };
+
+        // 2. Clear Clipboard (If they try to Copy/Paste)
+        setInterval(function(){
+           // This function doesn't actively clear, but we blocked Ctrl+C above.
+        }, 1000);
+
+        // 3. Prevent Drag and Drop
+        window.ondragstart = function() { return false; } 
+    </script>
 
 </body>
 </html>
