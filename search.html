@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bimal Pharmacy | Search Engine</title>
+    <title>विमल फार्मेसी | औषाधी खोज इन्जिन</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js"></script>
@@ -17,7 +17,7 @@
         }
 
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: 'Kalimati', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             background-color: var(--bg-color); 
             margin: 0; 
             padding: 20px; 
@@ -38,13 +38,27 @@
 
         /* --- HEADER --- */
         .header-banner {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            /* Applying heading.png background */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('heading.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px; /* Increased padding slightly for better visibility */
         }
-        h2 { margin: 0; letter-spacing: 1px; }
-        .subtitle { font-size: 14px; opacity: 0.9; margin-top: 5px; }
+        h2 { 
+            margin: 0; 
+            letter-spacing: 1px; 
+            text-shadow: 2px 2px 4px #000000;
+        }
+        .subtitle { 
+            font-size: 16px; 
+            opacity: 0.9; 
+            margin-top: 5px; 
+            text-shadow: 1px 1px 2px #000000;
+        }
 
         /* --- NAVIGATION --- */
         nav {
@@ -178,32 +192,32 @@
 
 <div class="container">
     <div class="header-banner">
-        <h2>💊 Bimal Pharmacy</h2>
-        <div class="subtitle">Search Engine</div>
+        <h2>💊 विमल फार्मेसी</h2>
+        <div class="subtitle">औषधी खोज इन्जिन (Search Engine)</div>
     </div>
 
     <nav>
-        <a href="index.html">Home</a>
-        <a href="vlog.html">Exploration</a>
-        <a href="search.html" class="active">Search</a>
-        <a href="products.html">Service</a>
-        <a href="about.html">About</a>
-        <a href="gallery.html">Photos</a>
-        <a href="Forum.html">Blog</a>
-        <a href="news.html">Journals</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html">गृहपृष्ठ</a>
+        <a href="vlog.html">अन्वेषण</a>
+        <a href="search.html" class="active">खोज्नुहोस्</a>
+        <a href="products.html">सेवा</a>
+        <a href="about.html">बारेमा</a>
+        <a href="gallery.html">फोटोहरू</a>
+        <a href="Forum.html">ब्लग</a>
+        <a href="news.html">जर्नल</a>
+        <a href="contact.html">सम्पर्क</a>
     </nav>
 
     <div class="search-wrapper">
         <div class="input-group">
-            <input type="text" id="searchBox" class="search-box" placeholder="Loading database..." disabled autocomplete="off">
-            <button id="clearBtn" class="clear-btn" title="Clear search">✕</button>
+            <input type="text" id="searchBox" class="search-box" placeholder="डाटाबेस लोड हुँदैछ..." disabled autocomplete="off">
+            <button id="clearBtn" class="clear-btn" title="खाली गर्नुहोस्">✕</button>
         </div>
     </div>
     
     <div id="loading">
         <div class="spinner"></div>
-        <div>Connecting to Database...</div>
+        <div>डाटाबेस कनेक्ट हुँदैछ... (Connecting...)</div>
     </div>
 
     <div id="results-container"></div>
@@ -256,13 +270,13 @@
             // Enable Search Box
             loadingDiv.style.display = 'none';
             searchBox.disabled = false;
-            searchBox.placeholder = "🔍 Search Medicine Name...";
+            searchBox.placeholder = "🔍 औषधीको नाम यहाँ लेख्नुहोस्...";
             searchBox.focus();
 
         } catch (error) {
             console.error(error);
             loadingDiv.innerHTML = `<div style='color:red; text-align:center;'>
-                Error loading database.<br><small>${error.message}</small>
+                डाटाबेस लोड गर्न सकिएन।<br><small>${error.message}</small>
             </div>`;
         }
     }
@@ -280,7 +294,7 @@
         const results = fuseInstance.search(query);
 
         if (results.length === 0) {
-            resultsDiv.innerHTML = `<div style="text-align:center; padding:30px; color:#888;">No medicine found.</div>`;
+            resultsDiv.innerHTML = `<div style="text-align:center; padding:30px; color:#888;">कुनै औषधी फेला परेन। (No medicine found)</div>`;
             return;
         }
 
@@ -291,7 +305,7 @@
             // Format Price (handle cases where price is 0 or text)
             let displayPrice = item.price;
             if (typeof item.price === 'number') {
-                displayPrice = "Rs. " + item.price.toFixed(2);
+                displayPrice = "रू. " + item.price.toFixed(2);
             }
 
             return `
