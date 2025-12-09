@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>विमल फार्मेसी - अन्वेषण</title>
+    <title>विमल फार्मेसी - मानव अन्वेषण</title>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
       crossorigin="anonymous"></script>
 
     <style>
-        /* --- SECURITY SETTINGS --- */
+        /* --- SECURITY CSS --- */
         body {
-            -webkit-user-select: none; /* Chrome/Safari */
-            -moz-user-select: none;    /* Firefox */
-            -ms-user-select: none;     /* IE/Edge */
-            user-select: none;         /* Standard */
+            -webkit-user-select: none; 
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none; 
             
             font-family: 'Kalimati', 'Arial', sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
             overflow-x: hidden; 
         }
 
-        /* Disable Long Press on Touchscreens */
         * { -webkit-touch-callout: none; }
 
         header {
@@ -60,65 +60,59 @@
             text-decoration: underline;
         }
 
-        /* --- 3D MARQUEE STYLES --- */
-        .marquee-container-3d {
-            perspective: 800px; 
-            height: 60vh; 
-            width: 100%;
-            overflow: hidden;
-            background-color: #000; 
+        /* --- POSTCARD MARQUEE STYLES --- */
+        .marquee-wrapper {
+            background: #333; /* Dark background to make postcards pop */
+            padding: 30px 0;
+            overflow: hidden; /* Hides images when they go off screen */
             position: relative;
-            margin-top: 20px;
+            width: 100%;
         }
 
-        .tilted-plane {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .marquee-track {
+            display: flex;
+            width: max-content; /* Ensure track is wide enough for all images */
+            gap: 20px;
             
-            /* --- IMAGE SOURCE --- */
-            background-image: url('background.jpeg'); 
-            
-            /* Sizing & Repeat */
-            background-size: 600px 600px; 
-            background-repeat: repeat;
-            
-            /* 3D Transform */
-            transform: rotateX(60deg) scale(2);
-            transform-style: preserve-3d;
-            
-            /* Animation */
-            animation: scroll-3d 15s linear infinite;
+            /* ANIMATION: Moves from Left to Right */
+            animation: scroll-left-to-right 20s linear infinite;
         }
-        
-        /* Security Shield (Invisible top layer) */
+
+        /* Postcard Styling */
+        .postcard-img {
+            height: 250px; /* Postcard Height */
+            width: auto;   /* Maintains aspect ratio */
+            
+            /* Postcard Effect */
+            border: 10px solid #fff; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            background-color: #fff;
+            
+            /* Prevent dragging */
+            pointer-events: none; 
+        }
+
+        /* Invisible Shield to prevent saving */
         .security-shield {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 10; 
+            z-index: 10;
             background: transparent;
         }
 
-        /* Fog Overlay */
-        .fog-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 60%);
-            z-index: 5;
-            pointer-events: none;
-        }
-
-        @keyframes scroll-3d {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 600px; }
+        /* KEYFRAMES: Left to Right */
+        @keyframes scroll-left-to-right {
+            0% {
+                /* Start with the track shifted to the left (showing the second set) */
+                transform: translateX(-50%);
+            }
+            100% {
+                /* Move to 0 (showing the first set) */
+                transform: translateX(0);
+            }
         }
 
         footer {
@@ -131,7 +125,6 @@
             z-index: 2;
         }
 
-        /* Hide content if printed */
         @media print { html, body { display: none; } }
     </style>
 </head>
@@ -145,7 +138,7 @@
 
     <nav>
         <a href="index.html">गृहपृष्ठ</a>
-        <a href="vlog.html">मानव अन्वेषण</a>
+        <a href="vlog.html">अन्वेषण</a>
         <a href="search.html">खोज्नुहोस्</a>
         <a href="products.html">हाम्रा सेवाहरू</a>
         <a href="about.html">हाम्रो बारेमा</a>
@@ -155,12 +148,22 @@
         <a href="contact.html">सम्पर्क गर्नुहोस्</a>
     </nav>
 
-    <div class="marquee-container-3d">
-        <div class="fog-overlay"></div>
-        
-        <div class="tilted-plane"></div>
-        
+    <div class="marquee-wrapper">
         <div class="security-shield"></div>
+        
+        <div class="marquee-track">
+            <img src="background.jpeg" class="postcard-img" alt="Postcard">
+            <img src="background.jpeg" class="postcard-img" alt="Postcard">
+            <img src="background.jpeg" class="postcard-img" alt="Postcard">
+            <img src="background.jpeg" class="postcard-img" alt="Postcard">
+            <img src="background.jpeg" class="postcard-img" alt="Postcard">
+            
+            <img src="background.jpeg" class="postcard-img" alt="Postcard">
+            <img src="background.jpeg" class="postcard-img" alt="Postcard">
+            <img src="background.jpeg" class="postcard-img" alt="Postcard">
+            <img src="background.jpeg" class="postcard-img" alt="Postcard">
+            <img src="background.jpeg" class="postcard-img" alt="Postcard">
+        </div>
     </div>
 
     <footer>
@@ -168,23 +171,13 @@
     </footer>
 
     <script>
-        // Disable Keyboard Shortcuts (Save, Print, View Source)
         document.onkeydown = function(e) {
-            if (e.ctrlKey && 
-                (e.keyCode === 67 || // Ctrl+C
-                 e.keyCode === 86 || // Ctrl+V
-                 e.keyCode === 85 || // Ctrl+U
-                 e.keyCode === 117 || // F6
-                 e.keyCode === 83)) { // Ctrl+S
+            if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 117 || e.keyCode === 83)) {
                 return false; 
             }
-            if (e.keyCode === 44) { // PrintScreen
-                return false;
-            }
+            if (e.keyCode === 44) { return false; }
             return true;
         };
-
-        // Disable Dragging
         window.ondragstart = function() { return false; } 
     </script>
 
