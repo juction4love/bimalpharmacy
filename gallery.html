@@ -9,13 +9,25 @@
       crossorigin="anonymous"></script>
 
     <style>
+        /* --- SECURITY STYLES --- */
         body {
+            /* Prevents highlighting text or images */
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+            
             font-family: 'Kalimati', 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
             line-height: 1.6;
-            overflow-x: hidden; /* Prevents side scrolling */
+            overflow-x: hidden; 
+        }
+
+        /* Prevents the long-press menu on iOS/Android */
+        img {
+            -webkit-touch-callout: none; 
+            pointer-events: auto; /* Ensures hover effects still work */
         }
 
         /* --- VERTICAL MARQUEE STYLES --- */
@@ -23,60 +35,44 @@
             position: fixed;
             top: 0;
             bottom: 0;
-            width: 160px; /* Width of the photo columns */
-            z-index: -1; /* Behind the content */
+            z-index: -1; 
             overflow: hidden;
             padding: 0 10px;
+            width: 160px; 
+            background: transparent;
+            opacity: 1; 
         }
 
-        .left-lane {
-            left: 0;
-            border-right: 1px solid #ddd;
-        }
-
-        .right-lane {
-            right: 0;
-            border-left: 1px solid #ddd;
-        }
+        .left-lane { left: 0; border-right: 1px solid #ddd; }
+        .right-lane { right: 0; border-left: 1px solid #ddd; }
 
         .track {
             display: flex;
             flex-direction: column;
-            gap: 30px; /* Space between photos */
+            gap: 30px; 
             width: 100%;
         }
 
-        /* Image Styling (Postcard Look) */
         .track img {
             width: 100%;
             height: auto;
             background: #fff;
-            padding: 8px; /* White border */
-            box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+            padding: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
             border-radius: 2px;
             transition: transform 0.3s;
         }
-
+        
+        /* Interactive Hover Effect */
         .track img:hover {
             transform: scale(1.1);
             z-index: 50;
+            cursor: no-drop; /* Shows a 'stopped' cursor symbol */
         }
-
-        /* Rotate every other image slightly for natural look */
-        .track img:nth-child(odd) { transform: rotate(-3deg); }
-        .track img:nth-child(even) { transform: rotate(3deg); }
 
         /* --- ANIMATIONS --- */
-        
-        /* Left side scrolls UP */
-        .scroll-up {
-            animation: scrollUp 25s linear infinite;
-        }
-
-        /* Right side scrolls DOWN */
-        .scroll-down {
-            animation: scrollDown 25s linear infinite;
-        }
+        .scroll-up { animation: scrollUp 25s linear infinite; }
+        .scroll-down { animation: scrollDown 25s linear infinite; }
 
         @keyframes scrollUp {
             0% { transform: translateY(0); }
@@ -88,9 +84,18 @@
             100% { transform: translateY(0); }
         }
 
-        /* HIDE ON MOBILE (Screens smaller than 1000px) */
-        @media (max-width: 1000px) {
-            .side-marquee { display: none; }
+        /* --- MOBILE ADJUSTMENTS --- */
+        @media (max-width: 768px) {
+            .side-marquee {
+                width: 50%; 
+                padding: 0;
+                border: none;
+                opacity: 0.15; /* Faded background for mobile */
+            }
+            .track img:nth-child(odd),
+            .track img:nth-child(even) { 
+                transform: rotate(0deg); 
+            }
         }
 
         /* --- STANDARD PAGE CSS --- */
@@ -103,6 +108,8 @@
             padding: 60px 15px;
             text-align: center;
             text-shadow: 2px 2px 4px #000000;
+            position: relative;
+            z-index: 2;
         }
         nav {
             background-color: #fff;
@@ -123,12 +130,13 @@
         nav a:hover {
             text-decoration: underline;
         }
+        
         section {
             padding: 20px;
-            max-width: 700px; /* Made slightly smaller to fit between columns */
+            max-width: 700px;
             margin: 20px auto;
             position: relative; 
-            z-index: 1; 
+            z-index: 10; 
         }
         
         .container {
@@ -194,7 +202,7 @@
     </style>
 </head>
 
-<body>
+<body oncontextmenu="return false;">
 
     <div class="side-marquee left-lane">
         <div class="track scroll-up">
@@ -240,13 +248,13 @@
     </nav>
 
     <section id="gallery">
-        <h2>हाम्रा तस्बिरहरू (Our Photos)</h2>
-        <p>
-            यहाँ तपाईंले हाम्रा उत्पादनहरू, फार्मेसीको वातावरण, वा स्वास्थ्य सम्बन्धी जानकारीमूलक तस्बिरहरू अपलोड गर्न सक्नुहुन्छ।
-            कृपया आफ्नो नाम र ठेगाना पनि उल्लेख गर्नुहोस्।
-        </p>
-
         <div class="container">
+            <h2>हाम्रा तस्बिरहरू (Our Photos)</h2>
+            <p>
+                यहाँ तपाईंले हाम्रा उत्पादनहरू, फार्मेसीको वातावरण, वा स्वास्थ्य सम्बन्धी जानकारीमूलक तस्बिरहरू अपलोड गर्न सक्नुहुन्छ।
+                कृपया आफ्नो नाम र ठेगाना पनि उल्लेख गर्नुहोस्।
+            </p>
+
             <h3>फोटो अपलोड गर्नुहोस् र विवरण भर्नुहोस्</h3>
             
             <form action="#" method="POST"> 
@@ -270,6 +278,7 @@
     </section>
 
     <script>
+        // 1. IMAGE PREVIEW SCRIPT
         document.getElementById('imageInput').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
@@ -282,6 +291,30 @@
                 reader.readAsDataURL(file);
             }
         });
+
+        // 2. SECURITY SCRIPTS (Prevent Saving/Dragging)
+        
+        // Prevent Dragging Images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('dragstart', event => event.preventDefault());
+        });
+
+        // Prevent Keyboard Shortcuts (Ctrl+S, Ctrl+U, F12)
+        document.onkeydown = function(e) {
+            if (e.ctrlKey && 
+                (e.keyCode === 67 || 
+                 e.keyCode === 86 || 
+                 e.keyCode === 85 || 
+                 e.keyCode === 117 || 
+                 e.keyCode === 83)) {
+                return false; // Blocks Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S
+            } else {
+                return true;
+            }
+        };
+        
+        // Disable Right Click specifically (Redundant backup for the body tag)
+        document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 
     <nav style="margin-top: 20px;">
