@@ -11,8 +11,7 @@
     <style>
         /* --- GLOBAL SETTINGS --- */
         body {
-            /* Security: Prevents highlighting text */
-            -webkit-user-select: none; 
+            -webkit-user-select: none; /* Block Text Selection */
             -ms-user-select: none; 
             user-select: none; 
             
@@ -24,26 +23,17 @@
             overflow-x: hidden; 
         }
 
-        /* Security: Prevents long-press on mobiles */
-        img {
-            -webkit-touch-callout: none; 
-        }
+        /* Block Long Press on Mobile */
+        img { -webkit-touch-callout: none; }
 
-        /* --- FRONT & SOLID MARQUEE STYLES --- */
+        /* --- MARQUEE STYLES --- */
         .side-marquee {
             position: fixed;
             top: 0;
             bottom: 0;
-            
-            /* High Z-Index keeps it in FRONT */
-            z-index: 9999; 
-            
-            /* Pointer Events NONE allows clicks to pass through to the back */
-            pointer-events: none; 
-            
-            /* UPDATED: Opacity 1 makes them fully visible (Solid) */
-            opacity: 1; 
-
+            z-index: 9999; /* In Front */
+            pointer-events: none; /* Clicks pass through */
+            opacity: 1; /* Fully Visible */
             overflow: hidden;
             padding: 0 10px;
             width: 160px; 
@@ -58,6 +48,7 @@
             flex-direction: column;
             gap: 30px; 
             width: 100%;
+            position: relative; /* For Watermark positioning */
         }
 
         .track img {
@@ -69,6 +60,34 @@
             border-radius: 2px;
         }
 
+        /* --- NEW: WATERMARK PROTECTION --- */
+        /* This places text ON TOP of the images. If they screenshot, they get this text. */
+        .watermark-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            background-image: linear-gradient(45deg, transparent 48%, rgba(255, 0, 0, 0.3) 50%, transparent 52%);
+            background-size: 20px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* The text that repeats down the column */
+        .watermark-overlay::after {
+            content: "© BIMAL PHARMACY  © BIMAL PHARMACY  © BIMAL PHARMACY  © BIMAL PHARMACY  © BIMAL PHARMACY";
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 18px;
+            font-weight: 900;
+            color: rgba(255, 0, 0, 0.4); /* Semi-transparent Red */
+            letter-spacing: 5px;
+            height: 200%; /* Ensure it covers scrolling area */
+        }
+
         /* --- ANIMATIONS --- */
         .scroll-up { animation: scrollUp 25s linear infinite; }
         .scroll-down { animation: scrollDown 25s linear infinite; }
@@ -77,7 +96,6 @@
             0% { transform: translateY(0); }
             100% { transform: translateY(-50%); }
         }
-
         @keyframes scrollDown {
             0% { transform: translateY(-50%); }
             100% { transform: translateY(0); }
@@ -86,28 +104,18 @@
         /* --- MOBILE ADJUSTMENTS --- */
         @media (max-width: 768px) {
             .side-marquee {
-                /* On mobile, cover the WHOLE screen */
                 width: 100%; 
-                left: 0;
-                right: 0;
-                padding: 0;
-                border: none;
-                
-                /* UPDATED: Fully solid on mobile too */
+                left: 0; right: 0;
+                padding: 0; border: none;
                 opacity: 1; 
-                
-                /* Distribute lanes to fill screen */
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
             }
-            
-            /* Adjust lanes to take up half screen each */
-            .left-lane { width: 50%; border: none; }
-            .right-lane { width: 50%; border: none; }
+            .left-lane, .right-lane { width: 50%; border: none; }
         }
 
-        /* --- STANDARD PAGE CSS --- */
+        /* --- PAGE CONTENT CSS --- */
         header {
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('heading.png');
             background-size: cover;
@@ -136,9 +144,7 @@
             font-weight: bold;
             display: inline-block;
         }
-        nav a:hover {
-            text-decoration: underline;
-        }
+        nav a:hover { text-decoration: underline; }
         
         section {
             padding: 20px;
@@ -155,66 +161,51 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
-        form label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-            color: #333;
+        /* FORM CSS */
+        form label { display: block; margin-top: 15px; font-weight: bold; color: #333; }
+        form input[type="text"], form textarea, form input[type="file"] {
+            width: 100%; padding: 10px; margin-top: 5px;
+            border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; 
         }
-        
-        form input[type="text"], 
-        form textarea, 
-        form input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box; 
-        }
-        
         button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 20px;
-            width: 100%;
-            font-size: 16px;
+            background-color: #4CAF50; color: white; padding: 12px 20px;
+            border: none; border-radius: 4px; cursor: pointer;
+            margin-top: 20px; width: 100%; font-size: 16px;
         }
-        
-        button:hover {
-            background-color: #45a049;
-        }
+        button:hover { background-color: #45a049; }
 
         #imagePreview {
-            display: block;
-            max-width: 100%;
-            margin-top: 15px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-            min-height: 50px;
-            background-color: #fafafa;
+            display: block; max-width: 100%; margin-top: 15px;
+            border-radius: 4px; border: 1px solid #ddd;
+            min-height: 50px; background-color: #fafafa;
         }
 
         footer {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            margin-top: 40px;
-            position: relative;
-            z-index: 1;
+            background-color: #4CAF50; color: white; text-align: center;
+            padding: 15px 0; margin-top: 40px; position: relative; z-index: 1;
+        }
+
+        /* --- BLACKOUT SCREEN (For Privacy) --- */
+        #security-screen {
+            display: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; color: #fff;
+            z-index: 10000;
+            text-align: center; padding-top: 20%;
+            font-size: 24px; font-weight: bold;
         }
     </style>
 </head>
 
 <body oncontextmenu="return false;">
 
+    <div id="security-screen">
+        ⚠️ Security Alert<br>Screen Recording Prohibited
+    </div>
+
     <div class="side-marquee left-lane">
         <div class="track scroll-up">
+            <div class="watermark-overlay"></div>
             <img src="background.jpeg" alt="Photo">
             <img src="background.jpeg" alt="Photo">
             <img src="background.jpeg" alt="Photo">
@@ -228,7 +219,8 @@
 
     <div class="side-marquee right-lane">
         <div class="track scroll-down">
-            <img src="background.jpeg" alt="Photo">
+             <div class="watermark-overlay"></div>
+             <img src="background.jpeg" alt="Photo">
             <img src="background.jpeg" alt="Photo">
             <img src="background.jpeg" alt="Photo">
             <img src="background.jpeg" alt="Photo">
@@ -238,6 +230,7 @@
             <img src="background.jpeg" alt="Photo">
         </div>
     </div>
+
     <header>
         <h1>विमल फार्मेसी - स्वागत छ</h1>
         <h2>तस्बिर ग्यालेरी (Gallery)</h2>
@@ -286,7 +279,7 @@
     </section>
 
     <script>
-        // IMAGE PREVIEW SCRIPT
+        // 1. IMAGE PREVIEW
         document.getElementById('imageInput').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
@@ -300,20 +293,35 @@
             }
         });
 
-        // SECURITY SCRIPT
+        // 2. SECURITY: Prevent Dragging
         document.querySelectorAll('img').forEach(img => {
             img.addEventListener('dragstart', event => event.preventDefault());
         });
 
+        // 3. SECURITY: Disable Keyboard Shortcuts
         document.onkeydown = function(e) {
             if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 117 || e.keyCode === 83)) {
                 return false; 
-            } else {
-                return true;
             }
+            if (e.keyCode === 44) return false; // PrintScreen
+            return true;
         };
         
+        // 4. SECURITY: Disable Right Click
         document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // 5. SECURITY: Blur/Blackout on Visibility Change (Anti-Screen-Recorder)
+        // If the user minimizes the browser or switches tabs to turn on a recorder,
+        // the screen goes black.
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.getElementById('security-screen').style.display = 'block';
+                document.title = "Protected";
+            } else {
+                document.getElementById('security-screen').style.display = 'none';
+                document.title = "विमल फार्मेसी - फोटो ग्यालेरी";
+            }
+        });
     </script>
 
     <nav style="margin-top: 20px;">
