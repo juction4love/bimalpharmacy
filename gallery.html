@@ -15,55 +15,90 @@
             padding: 0;
             background-color: #f4f4f4;
             line-height: 1.6;
-            /* Ensure the body is relative so absolute positioning works if needed, 
-               but we are using 'fixed' for the images */
-            overflow-x: hidden; /* Prevents horizontal scrollbar if images stick out */
+            overflow-x: hidden; /* Prevents side scrolling */
         }
 
-        /* --- POSTCARD STYLES (NEW) --- */
-        .postcard {
-            position: fixed; /* Keeps them in place while you scroll */
-            width: 140px;    /* Postcard size */
+        /* --- VERTICAL MARQUEE STYLES --- */
+        .side-marquee {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 160px; /* Width of the photo columns */
+            z-index: -1; /* Behind the content */
+            overflow: hidden;
+            padding: 0 10px;
+        }
+
+        .left-lane {
+            left: 0;
+            border-right: 1px solid #ddd;
+        }
+
+        .right-lane {
+            right: 0;
+            border-left: 1px solid #ddd;
+        }
+
+        .track {
+            display: flex;
+            flex-direction: column;
+            gap: 30px; /* Space between photos */
+            width: 100%;
+        }
+
+        /* Image Styling (Postcard Look) */
+        .track img {
+            width: 100%;
             height: auto;
-            background: #fff; /* White border */
-            padding: 8px;    /* Thickness of white border */
-            box-shadow: 3px 3px 10px rgba(0,0,0,0.4); /* Shadow for depth */
-            z-index: -1;     /* Puts images BEHIND the form so they don't block text */
-            transition: transform 0.3s ease;
+            background: #fff;
+            padding: 8px; /* White border */
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+            border-radius: 2px;
+            transition: transform 0.3s;
         }
 
-        /* Hover effect: When you mouse over a small photo, it pops up */
-        .postcard:hover {
-            z-index: 100;
-            transform: scale(1.5) rotate(0deg) !important;
+        .track img:hover {
+            transform: scale(1.1);
+            z-index: 50;
         }
 
-        /* Positions for 8 different photos scattered around */
-        .pos-1 { top: 120px; left: 20px; transform: rotate(-10deg); }
-        .pos-2 { top: 140px; right: 20px; transform: rotate(5deg); }
-        
-        .pos-3 { top: 350px; left: 5px;  transform: rotate(8deg); }
-        .pos-4 { top: 320px; right: 10px; transform: rotate(-5deg); }
-        
-        .pos-5 { top: 550px; left: 30px; transform: rotate(-12deg); }
-        .pos-6 { top: 530px; right: 40px; transform: rotate(10deg); }
-        
-        .pos-7 { top: 750px; left: 10px; transform: rotate(4deg); }
-        .pos-8 { top: 720px; right: 10px; transform: rotate(-8deg); }
+        /* Rotate every other image slightly for natural look */
+        .track img:nth-child(odd) { transform: rotate(-3deg); }
+        .track img:nth-child(even) { transform: rotate(3deg); }
 
-        /* HIDE POSTCARDS ON MOBILE PHONES 
-           (Otherwise they will cover the form on small screens) */
-        @media (max-width: 900px) {
-            .postcard { display: none; }
+        /* --- ANIMATIONS --- */
+        
+        /* Left side scrolls UP */
+        .scroll-up {
+            animation: scrollUp 25s linear infinite;
         }
 
+        /* Right side scrolls DOWN */
+        .scroll-down {
+            animation: scrollDown 25s linear infinite;
+        }
+
+        @keyframes scrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        @keyframes scrollDown {
+            0% { transform: translateY(-50%); }
+            100% { transform: translateY(0); }
+        }
+
+        /* HIDE ON MOBILE (Screens smaller than 1000px) */
+        @media (max-width: 1000px) {
+            .side-marquee { display: none; }
+        }
+
+        /* --- STANDARD PAGE CSS --- */
         header {
-            /* Adding heading.png as background */
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('heading.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            
             color: white;
             padding: 60px 15px;
             text-align: center;
@@ -76,7 +111,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
-            z-index: 1000; /* High z-index to stay on top of postcards */
+            z-index: 1000; 
         }
         nav a {
             margin: 0 10px;
@@ -90,15 +125,14 @@
         }
         section {
             padding: 20px;
-            max-width: 800px;
+            max-width: 700px; /* Made slightly smaller to fit between columns */
             margin: 20px auto;
             position: relative; 
-            z-index: 1; /* Ensures content is above the background postcards */
+            z-index: 1; 
         }
         
-        /* Form Container Styles */
         .container {
-            background: rgba(255, 255, 255, 0.95); /* Slightly transparent so you see background blur */
+            background: rgba(255, 255, 255, 0.95); 
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -162,14 +196,32 @@
 
 <body>
 
-    <img src="background.jpeg" class="postcard pos-1" alt="Decor">
-    <img src="background.jpeg" class="postcard pos-2" alt="Decor">
-    <img src="background.jpeg" class="postcard pos-3" alt="Decor">
-    <img src="background.jpeg" class="postcard pos-4" alt="Decor">
-    <img src="background.jpeg" class="postcard pos-5" alt="Decor">
-    <img src="background.jpeg" class="postcard pos-6" alt="Decor">
-    <img src="background.jpeg" class="postcard pos-7" alt="Decor">
-    <img src="background.jpeg" class="postcard pos-8" alt="Decor">
+    <div class="side-marquee left-lane">
+        <div class="track scroll-up">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+        </div>
+    </div>
+
+    <div class="side-marquee right-lane">
+        <div class="track scroll-down">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+            <img src="background.jpeg" alt="Photo">
+        </div>
+    </div>
+
     <header>
         <h1>विमल फार्मेसी - स्वागत छ</h1>
         <h2>तस्बिर ग्यालेरी (Gallery)</h2>
