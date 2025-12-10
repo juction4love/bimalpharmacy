@@ -9,118 +9,238 @@
       crossorigin="anonymous"></script>
 
     <style>
+        /* --- MAIN PAGE BACKGROUND --- */
         body {
             font-family: 'Kalimati', 'Arial', sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            
+            /* Background Image with White Overlay */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('background.jpeg'); 
+            background-color: #87CEEB; 
+            background-size: cover;        
+            background-position: center top; 
+            background-attachment: scroll;
+            background-repeat: no-repeat;
+            min-height: 100vh;
         }
+        
+        /* --- HEADER STYLES --- */
         header {
-            /* Adding the heading.png background image */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('heading.png');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('heading.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             
             color: white;
-            padding: 60px 15px;
+            padding: 80px 20px;
             text-align: center;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            border-bottom: 5px solid #4CAF50;
         }
+
+        header h1 {
+            font-size: 4.5em; 
+            font-weight: 900; 
+            margin: 0;
+            text-shadow: 4px 4px 8px #000000; 
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.5em;
+            margin-top: 10px;
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        /* --- NAVIGATION --- */
         nav {
-            background-color: #f2f2f2;
-            padding: 10px;
             text-align: center;
-            border-bottom: 1px solid #ddd;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         nav a {
-            margin: 0 15px;
             text-decoration: none;
             color: #4CAF50;
+            margin: 0 10px;
             font-weight: bold;
             display: inline-block;
         }
         nav a:hover {
             text-decoration: underline;
         }
-        section {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            margin-bottom: 10px;
+
+        /* --- LAYOUT CONTAINER --- */
+        .main-container {
+            display: flex; 
+            flex-wrap: wrap; 
+            max-width: 1100px; 
+            margin: 30px auto;
+            gap: 20px; 
+            padding: 0 20px;
         }
-        h2 {
+
+        /* LEFT COLUMN (Main Content) */
+        .content-column {
+            flex: 3; 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            min-width: 300px;
+        }
+
+        /* Content Styling inside the column */
+        .content-column h2 {
             color: #4CAF50;
             border-bottom: 2px solid #4CAF50;
             padding-bottom: 10px;
+            margin-top: 0;
         }
+        
+        .content-column ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        
+        .content-column li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        /* RIGHT COLUMN (Sidebar) */
+        .sidebar-column {
+            flex: 1; 
+            min-width: 250px;
+        }
+
+        /* QUICK SEARCH BOX STYLES */
+        .search-widget {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-top: 5px solid #4CAF50; 
+            text-align: center;
+        }
+
+        .search-widget h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        .search-widget input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .search-widget button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .search-widget button:hover {
+            background-color: #45a049;
+        }
+
+        /* --- FOOTER --- */
         footer {
             background-color: #4CAF50;
             color: white;
             text-align: center;
             padding: 10px 0;
-            margin-top: 20px;
-            /* Removing fixed position so it sits at the bottom naturally on mobile */
-            width: 100%;
+            margin-top: 40px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5em; }
+            .main-container { flex-direction: column; }
         }
     </style>
 </head>
+
 <body>
 
     <header>
-        <h1>विमल फार्मेसीमा स्वागत छ</h1>
-        <h2>हाम्रो बारेमा</h2>
+        <h1>विमल फार्मेसी</h1>
+        <p>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</p>
     </header>
-    
+
     <nav>
         <a href="index.html">गृहपृष्ठ</a>
-         <a href="search.html">खोज्नुहोस्</a>
-        <a href="products.html">सेवाहरू</a>
-        <a href="about.html">बारेमा</a>
-        <a href="contact.html">सम्पर्क</a>
+        
+        <a href="search.html">खोज्नुहोस्</a>
+        <a href="products.html">हाम्रा सेवाहरू</a>
+        <a href="about.html">हाम्रो बारेमा</a>
+        
+        <a href="contact.html">सम्पर्क गर्नुहोस्</a>
     </nav>
 
-    <section id="about">
-        <h2>हाम्रो बारेमा (About Us)</h2>
-        <p>विमल फार्मेसीमा, हामी तपाईंको आवश्यकताहरू पूरा गर्न नेपाल सरकारको मापदण्ड अनुसार को  औषधी र स्वास्थ्य सामाग्रीहरू उपलब्ध गराउँछौं। तपाईंको स्वास्थ्य नै हाम्रो प्राथमिकता हो।</p>
-    </section>
-
-    <section id="products">
-        <h2>हाम्रा सेवाहरू (Our Services)</h2>
-        <ul>
-            <li>प्रेस्किप्सन औषधीहरू (Prescription Medications)</li>
-            <li>काउन्टरमा पाइने औषधीहरू (Over-the-counter Drugs)</li>
-            <li>स्वास्थ्य सप्लिमेन्टहरू (Health Supplements)</li>
-            <li>व्यक्तिगत हेरचाहका सामग्रीहरू (Personal Care Items)</li>
-        </ul>
-    </section>
-
-    <section id="gallery">
-        <h2>हाम्रा तस्बिरहरू (Our Photos)</h2>
-        <p>
-            यहाँ हाम्रो फार्मेसी, हाम्रा उत्पादनहरू र हाम्रा सेवा सुविधाहरूका केही झलकहरू हेर्न सक्नुहुन्छ।
-        </p>
-        <ul>
+    <div class="main-container">
+        
+        <section class="content-column">
+            <h2>हाम्रो बारेमा (About Us)</h2>
+            <p>
+                विमल फार्मेसीमा, हामी तपाईंको आवश्यकताहरू पूरा गर्न नेपाल सरकारको मापदण्ड अनुसार को 
+                औषधी र स्वास्थ्य सामाग्रीहरू उपलब्ध गराउँछौं। तपाईंको स्वास्थ्य नै हाम्रो प्राथमिकता हो।
+            </p>
+            <br>
+            
+            <h3>हाम्रा सेवाहरू (Our Services)</h3>
+            <ul>
+                <li>प्रेस्किप्सन औषधीहरू (Prescription Medications)</li>
+                <li>काउन्टरमा पाइने औषधीहरू (Over-the-counter Drugs)</li>
+                <li>स्वास्थ्य सप्लिमेन्टहरू (Health Supplements)</li>
+                <li>व्यक्तिगत हेरचाहका सामग्रीहरू (Personal Care Items)</li>
             </ul>
-    </section>
 
-    <section id="contact">
-        <h2>सम्पर्क गर्नुहोस् (Contact Us)</h2>
-        <p><strong>ठेगाना:</strong> भरतपुर-७, नेपाल</p>
-        <p><strong>फोन:</strong> +९७७-५६-५९३२८८</p>
-        <p><strong>ईमेल:</strong> info@bimalpharmacy.com</p>
-    </section>
+            <br>
+            <hr>
+            
+            <h3>हाम्रो प्रतिबद्धता</h3>
+            <p>
+                हामी हाम्रा ग्राहकहरूलाई सधैं गुणस्तरीय सेवा र सही परामर्श प्रदान गर्न प्रतिबद्ध छौं।
+            </p>
+        </section>
 
-    <nav style="margin-bottom: 60px;"> <a href="index.html">गृहपृष्ठमा फर्कनुहोस् (Back to Home)</a>
-    </nav>
-    
+        <aside class="sidebar-column">
+            <div class="search-widget">
+                <h3>द्रुत खोज (Quick Search)</h3>
+                <p style="font-size: 14px; color: #666;">हाम्रो डाटाबेसमा औषधी खोज्नुहोस्</p>
+                
+                <input type="text" placeholder="औषधीको नाम लेख्नुहोस्...">
+                <button onclick="window.location.href='search.html'">खोज्नुहोस् (Search)</button>
+            </div>
+            
+            <div class="search-widget" style="margin-top: 20px;">
+                <h3>सम्पर्क (Contact Us)</h3>
+                <p>📞 +९७७-५६-५९३२८८</p>
+                <p>📍 भरतपुर-७, नेपाल</p>
+                <p>📧 info@bimalpharmacy.com</p>
+            </div>
+        </aside>
+
+    </div>
+
     <footer>
         <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
     </footer>
 
 </body>
 </html>
-
-
-
