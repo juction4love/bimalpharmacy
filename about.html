@@ -19,18 +19,20 @@
         }
         
         img {
-            pointer-events: none; /* Disables clicking/touching images (Prevents 'Save Image' on Mobile) */
+            pointer-events: none; /* Disables clicking/touching images */
             -webkit-user-drag: none; /* Prevents dragging image to desktop */
         }
 
         /* =========================================
-           2. MAIN PAGE STYLES
+           2. MAIN PAGE STYLES (MATCHING INDEX.HTML)
            ========================================= */
         body {
             font-family: 'Kalimati', 'Arial', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
+            
+            /* Background Image with White Overlay */
             background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('background.jpeg'); 
             background-color: #87CEEB; 
             background-size: cover;        
@@ -45,6 +47,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -56,6 +59,7 @@
             font-weight: 900; 
             margin: 0;
             text-shadow: 4px 4px 8px #000000; 
+            letter-spacing: 2px;
         }
 
         header p {
@@ -64,6 +68,7 @@
             text-shadow: 2px 2px 4px #000000;
         }
 
+        /* --- NAVIGATION --- */
         nav {
             text-align: center;
             background-color: #fff;
@@ -84,6 +89,7 @@
             text-decoration: underline;
         }
 
+        /* --- LAYOUT CONTAINER --- */
         .main-container {
             display: flex; 
             flex-wrap: wrap; 
@@ -93,6 +99,7 @@
             padding: 0 20px;
         }
 
+        /* LEFT COLUMN (Main Content) */
         .content-column {
             flex: 3; 
             background: rgba(255, 255, 255, 0.95); 
@@ -109,11 +116,13 @@
             margin-top: 0;
         }
 
+        /* RIGHT COLUMN (Sidebar) */
         .sidebar-column {
             flex: 1; 
             min-width: 250px;
         }
 
+        /* QUICK SEARCH BOX STYLES */
         .search-widget {
             background: rgba(255, 255, 255, 0.95);
             padding: 20px;
@@ -134,6 +143,10 @@
             font-weight: bold;
             font-size: 16px;
         }
+        
+        .search-widget button:hover {
+            background-color: #45a049;
+        }
 
         footer {
             background-color: #4CAF50;
@@ -141,13 +154,21 @@
             text-align: center;
             padding: 10px 0;
             margin-top: 40px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5em; }
+            .main-container { flex-direction: column; }
         }
 
-        /* --- PAYMENT NOTICE STYLES --- */
+        /* =========================================
+           3. SPECIAL PAYMENT NOTICE STYLES
+           ========================================= */
         .payment-notice {
-            background-color: #fff3f3; 
-            border: 2px solid #d32f2f;
-            padding: 20px;
+            background-color: #fff3f3; /* Reddish background alert */
+            border: 3px solid #d32f2f;
+            padding: 25px;
             border-radius: 8px;
             margin-top: 40px;
             text-align: center;
@@ -155,22 +176,19 @@
 
         .payment-notice h3 {
             color: #d32f2f;
-            border-bottom: 1px solid #d32f2f;
+            border-bottom: 2px solid #d32f2f;
             display: inline-block;
             padding-bottom: 5px;
+            font-size: 1.8em;
+            margin-bottom: 20px;
         }
 
-        /* QR IMAGE STYLE */
         .qr-image {
-            max-width: 250px;
+            max-width: 300px;
             width: 100%;
-            border: 1px solid #ddd;
-            padding: 5px;
-            background: white;
-            margin: 15px 0;
-            /* Extra protection for the QR code specifically */
-            pointer-events: none; 
-            -webkit-user-drag: none;
+            border: 5px solid #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            margin: 20px 0;
         }
 
     </style>
@@ -185,9 +203,11 @@
 
     <nav>
         <a href="index.html">गृहपृष्ठ</a>
+        
         <a href="search.html">खोज्नुहोस्</a>
         <a href="products.html">हाम्रा सेवाहरू</a>
         <a href="about.html">हाम्रो बारेमा</a>
+        
         <a href="contact.html">सम्पर्क गर्नुहोस्</a>
     </nav>
 
@@ -203,32 +223,56 @@
                 हामी विशेष गरी क्यान्सर उपचार (Oncology), शल्यक्रिया (Surgical), र आईसीयू (ICU) सम्बन्धी संवेदनशील 
                 औषधीहरूमा विशेषज्ञता राख्छौं।
             </p>
-            
             <br>
-            <h3 style="color: #4CAF50;">हाम्रो प्रतिबद्धता</h3>
+            <h3 style="color: #4CAF50; border-bottom: 2px solid #4CAF50; padding-bottom: 5px;">हाम्रो प्रतिबद्धता</h3>
             <p>
                 नाफा भन्दा तपाईंको स्वास्थ्य र विश्वास नै हाम्रो सबैभन्दा ठूलो प्राथमिकता हो।
             </p>
 
             <br>
-            <hr>
+            <h3 style="color: #4CAF50; border-bottom: 2px solid #4CAF50; padding-bottom: 5px;">हाम्रा सेवाहरू</h3>
+            <ul style="padding-left: 20px; margin-top: 10px;">
+                <li>प्रेस्किप्सन औषधीहरू (Prescription Medications)</li>
+                <li>काउन्टरमा पाइने औषधीहरू (Over-the-counter Drugs)</li>
+                <li>स्वास्थ्य सप्लिमेन्टहरू (Health Supplements)</li>
+                <li>व्यक्तिगत हेरचाहका सामग्रीहरू (Personal Care Items)</li>
+            </ul>
+
+            <hr style="margin-top: 30px;">
             
             <div class="payment-notice">
-                <h3>⚠️ विनम्र अनुरोध (Payment Appeal) ⚠️</h3>
-                <p style="font-weight: bold; font-size: 1.1em;">नेपाल र भारतका आदरणीय ग्राहक महानुभावहरू,</p>
-                <p>
-                    विगतमा हामीले मानवीय धर्म सम्झेर तपाईंहरूलाई अप्ठ्यारो परेको बेला विश्वास गरेर औषधी उधारो (Credit) मा उपलब्ध गराएका थियौं। 
-                    तर दुःखको कुरा, समस्या टरेपछि धेरैजसो महानुभावहरूले लामो समय बित्दा पनि उक्त रकम भुक्तानी गर्नुभएको छैन।
+                <h3>⚠️ विशेष अनुरोध (Urgent Appeal) ⚠️</h3>
+                
+                <p style="font-weight: bold; font-size: 1.2em; color: #333; margin-bottom: 15px;">
+                    नेपाल र भारतका आदरणीय ग्राहक महानुभावहरू,
                 </p>
-                <p>
-                    व्यवसाय सञ्चालन गर्न गाह्रो भएको हुनाले, कृपया जस-जसको रकम तिर्न बाँकी छ, तलको 
-                    <strong>QR Code</strong> स्क्यान गरी वा हामीलाई सम्पर्क गरी यथाशिघ्र भुक्तानी गरिदिनुहुन हार्दिक अनुरोध गर्दछौं।
+                
+                <p style="text-align: justify; margin-bottom: 15px; font-size: 1.05em;">
+                    विगतमा जब तपाईंहरूलाई अस्पतालको बसाई र उपचार खर्चले आर्थिक तथा मानसिक तनाव थियो, 
+                    हामीले <strong>मानवीय धर्म</strong> सम्झेर र तपाईंहरूको पीडा बुझेर विश्वासका साथ 
+                    औषधीहरू उधारो (Credit) मा उपलब्ध गराएका थियौं। हामीले 'पैसा छैन' भनेर कसैको पनि औषधी रोकेनौं।
+                </p>
+
+                <p style="text-align: justify; margin-bottom: 15px; font-size: 1.05em;">
+                    तर दुःखको कुरा, समस्या टरेपछि र बिरामी निको भएपछि धेरैजसो महानुभावहरूले लामो समय बित्दा पनि 
+                    उक्त रकम भुक्तानी गर्नुभएको छैन। फोन गर्दा नउठाउने वा सम्पर्कविहीन हुने कार्यले हाम्रो 
+                    विश्वासमा चोट पुगेको छ र व्यवसाय सञ्चालन गर्न गाह्रो भएको छ।
+                </p>
+
+                <p style="text-align: justify; color: #d32f2f; font-weight: bold; font-size: 1.1em; background: #ffe6e6; padding: 10px; border-radius: 5px;">
+                    विश्वास नतोड्नुहोस्। यदि तपाईंले आफ्नो दायित्व पूरा गर्नुभयो भने मात्र भविष्यमा 
+                    अरु कसैलाई गाह्रो पर्दा हामीले सहयोग गर्न सक्छौं।
+                </p>
+
+                <p style="margin-top: 20px;">
+                    कृपया तलको <strong>QR Code</strong> स्क्यान गरी वा हामीलाई सम्पर्क गरी 
+                    आफ्नो बाँकी रकम यथाशिघ्र भुक्तानी गरिदिनुहुन हार्दिक अनुरोध गर्दछौं।
                 </p>
                 
                 <img src="qr.jpeg" alt="Payment QR Code" class="qr-image">
                 
-                <p><strong>ESEWA / FONEPAY / BANK TRANSFER</strong></p>
-                <p>सम्पर्क: +९७७-५६-५९३२८८</p>
+                <p style="font-weight: bold; margin-top: 10px; font-size: 1.2em;">ESEWA / FONEPAY / BANK TRANSFER</p>
+                <p style="font-size: 1.2em; color: #4CAF50; font-weight: bold;">सिधा सम्पर्क: +९७७-५६-५९३२८८</p>
             </div>
 
         </section>
@@ -236,8 +280,14 @@
         <aside class="sidebar-column">
             <div class="search-widget">
                 <h3>द्रुत खोज (Quick Search)</h3>
-                <input type="text" placeholder="औषधीको नाम लेख्नुहोस्..." style="width:100%; padding:10px; margin:10px 0;">
+                <input type="text" placeholder="औषधीको नाम लेख्नुहोस्..." style="width:100%; padding:10px; margin:10px 0; box-sizing: border-box; border:1px solid #ccc; border-radius:4px;">
                 <button onclick="window.location.href='search.html'">खोज्नुहोस् (Search)</button>
+            </div>
+            
+            <div class="search-widget" style="margin-top: 20px;">
+                <h3>सम्पर्क (Contact)</h3>
+                <p>📞 +९७७-५६-५९३२८८</p>
+                <p>📍 भरतपुर-७, नेपाल</p>
             </div>
         </aside>
 
