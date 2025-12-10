@@ -3,37 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>हाम्रा सेवाहरू - विमल फार्मेसी</title>
+    <title>विमल फार्मेसी - हाम्रा सेवाहरू</title>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
       crossorigin="anonymous"></script>
 
     <style>
+        /* --- MAIN PAGE BACKGROUND --- */
         body {
             font-family: 'Kalimati', 'Arial', sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-            line-height: 1.6;
+            
+            /* Background Image with White Overlay */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('background.jpeg'); 
+            background-color: #87CEEB; 
+            background-size: cover;        
+            background-position: center top; 
+            background-attachment: scroll;
+            background-repeat: no-repeat;
+            min-height: 100vh;
         }
+        
+        /* --- HEADER STYLES --- */
         header {
-            /* Applying heading.png background */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('heading.png');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('heading.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             
             color: white;
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
+            border-bottom: 5px solid #4CAF50;
+        }
+
+        header h1 {
+            font-size: 4.5em; 
+            font-weight: 900; 
+            margin: 0;
+            text-shadow: 4px 4px 8px #000000; 
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.5em;
+            margin-top: 10px;
             text-shadow: 2px 2px 4px #000000;
         }
+
+        /* --- NAVIGATION --- */
         nav {
             text-align: center;
-            margin: 0;
             background-color: #fff;
             padding: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         nav a {
             text-decoration: none;
@@ -45,20 +73,41 @@
         nav a:hover {
             text-decoration: underline;
         }
-        section {
-            max-width: 900px;
+
+        /* --- LAYOUT CONTAINER --- */
+        .main-container {
+            display: flex; 
+            flex-wrap: wrap; 
+            max-width: 1100px; 
             margin: 30px auto;
-            background: white;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow-x: auto; /* Allows table to scroll on mobile */
+            gap: 20px; 
+            padding: 0 20px;
         }
+
+        /* LEFT COLUMN (Main Content) */
+        .content-column {
+            flex: 3; 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            min-width: 300px;
+            overflow-x: auto; /* Allows table scrolling on small screens */
+        }
+
+        .content-column h2 {
+            color: #4CAF50;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        /* TABLE STYLES */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            min-width: 600px; /* Ensures table doesn't get too squished on mobile */
+            min-width: 600px; /* Ensures table doesn't get too squished */
         }
         th, td {
             border: 1px solid #ddd;
@@ -74,70 +123,143 @@
             background-color: #f2f2f2;
         }
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: #e8f5e9; /* Light green hover effect */
         }
+
+        /* RIGHT COLUMN (Sidebar) */
+        .sidebar-column {
+            flex: 1; 
+            min-width: 250px;
+        }
+
+        /* QUICK SEARCH BOX STYLES */
+        .search-widget {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-top: 5px solid #4CAF50; 
+            text-align: center;
+        }
+
+        .search-widget h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        .search-widget input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .search-widget button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .search-widget button:hover {
+            background-color: #45a049;
+        }
+
+        /* --- FOOTER --- */
         footer {
             background-color: #4CAF50;
             color: white;
             text-align: center;
             padding: 10px 0;
-            margin-top: 20px;
+            margin-top: 40px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5em; }
+            .main-container { flex-direction: column; }
         }
     </style>
 </head>
+
 <body>
 
     <header>
-        <h1>विमल फार्मेसीमा स्वागत छ</h1>
-        <h2>हाम्रा सेवाहरू (Our Services)</h2>
+        <h1>विमल फार्मेसी</h1>
+        <p>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</p>
     </header>
-    
+
     <nav>
         <a href="index.html">गृहपृष्ठ</a>
         
         <a href="search.html">खोज्नुहोस्</a>
         <a href="products.html">हाम्रा सेवाहरू</a>
         <a href="about.html">हाम्रो बारेमा</a>
+        
         <a href="contact.html">सम्पर्क गर्नुहोस्</a>
     </nav>
 
-    <section>
-        <h2>उपलब्ध सेवाहरू (Available Products)</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>सेवाको नाम (Product Name)</th>
-                    <th>श्रेणी (Category)</th>
-                    <th>मूल्य (Price)</th>
-                    <th>विवरण (Description)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>क्यान्सर उपचार औषधी (Cancer-Cure)</td>
-                    <td>अंकोलोजी (Oncology Medicine)</td>
-                    <td>सामान अनुसार फरक (Variable)</td>
-                    <td>क्यान्सर उपचार र राहतको लागि प्रभावकारी।</td>
-                </tr>
-                <tr>
-                    <td>डिस्पोजेबल सर्जिकल सामानहरू (Disposable Surgical Goods)</td>
-                    <td>शल्यक्रिया सामग्री (Operation Use)</td>
-                    <td>सामान अनुसार फरक (Variable)</td>
-                    <td>स्वास्थ्यकर्मीहरूद्वारा गरिने क्यान्सर शल्यक्रियाको लागि।</td>
-                </tr>
-                <tr>
-                    <td>अस्पताल सरसफाई र एनेस्थेसिया सामानहरू (Sanitization & Anesthesia)</td>
-                    <td>आईसीयू हेरचाह (ICU Care)</td>
-                    <td>सामान अनुसार फरक (Variable)</td>
-                    <td>आईसीयू (ICU) मा तत्काल प्रयोग गर्न सकिने।</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+    <div class="main-container">
+        
+        <section class="content-column">
+            <h2>उपलब्ध सेवाहरू (Available Products)</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>सेवाको नाम (Product Name)</th>
+                        <th>श्रेणी (Category)</th>
+                        <th>मूल्य (Price)</th>
+                        <th>विवरण (Description)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>क्यान्सर उपचार औषधी (Cancer-Cure)</td>
+                        <td>अंकोलोजी (Oncology Medicine)</td>
+                        <td>सामान अनुसार फरक (Variable)</td>
+                        <td>क्यान्सर उपचार र राहतको लागि प्रभावकारी।</td>
+                    </tr>
+                    <tr>
+                        <td>डिस्पोजेबल सर्जिकल सामानहरू (Disposable Surgical Goods)</td>
+                        <td>शल्यक्रिया सामग्री (Operation Use)</td>
+                        <td>सामान अनुसार फरक (Variable)</td>
+                        <td>स्वास्थ्यकर्मीहरूद्वारा गरिने क्यान्सर शल्यक्रियाको लागि।</td>
+                    </tr>
+                    <tr>
+                        <td>अस्पताल सरसफाई र एनेस्थेसिया सामानहरू (Sanitization & Anesthesia)</td>
+                        <td>आईसीयू हेरचाह (ICU Care)</td>
+                        <td>सामान अनुसार फरक (Variable)</td>
+                        <td>आईसीयू (ICU) मा तत्काल प्रयोग गर्न सकिने।</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-    <nav style="margin-top: 20px;">
-        <a href="index.html">गृहपृष्ठमा फर्कनुहोस् (Back to Home)</a>
-    </nav>
+        <aside class="sidebar-column">
+            <div class="search-widget">
+                <h3>द्रुत खोज (Quick Search)</h3>
+                <p style="font-size: 14px; color: #666;">हाम्रो डाटाबेसमा औषधी खोज्नुहोस्</p>
+                
+                <input type="text" placeholder="औषधीको नाम लेख्नुहोस्...">
+                <button onclick="window.location.href='search.html'">खोज्नुहोस् (Search)</button>
+            </div>
+            
+            <div class="search-widget" style="margin-top: 20px;">
+                <h3>सम्पर्क (Contact)</h3>
+                <p>📞 +९७७-५६-५९३२८८</p>
+                <p>📍 भरतपुर-७, नेपाल</p>
+            </div>
+        </aside>
+
+    </div>
 
     <footer>
         <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
@@ -145,5 +267,3 @@
 
 </body>
 </html>
-
-
