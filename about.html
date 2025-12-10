@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>विमल फार्मेसी - हाम्रो बारेमा</title>
+    <title>विमल फार्मेसी - सूचना</title>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
       crossorigin="anonymous"></script>
@@ -13,14 +13,14 @@
            1. SECURITY STYLES (PREVENT COPY/SAVE)
            ========================================= */
         body {
-            -webkit-user-select: none; /* Safari */
-            -ms-user-select: none; /* IE 10 and IE 11 */
-            user-select: none; /* Standard syntax */
+            -webkit-user-select: none; 
+            -ms-user-select: none; 
+            user-select: none; 
         }
         
         img {
-            pointer-events: none; /* Disables clicking/touching images */
-            -webkit-user-drag: none; /* Prevents dragging image to desktop */
+            pointer-events: none; 
+            -webkit-user-drag: none; 
         }
 
         /* =========================================
@@ -31,8 +31,6 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            
-            /* Background Image with White Overlay */
             background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('background.jpeg'); 
             background-color: #87CEEB; 
             background-size: cover;        
@@ -47,7 +45,6 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -109,13 +106,6 @@
             min-width: 300px;
         }
 
-        .content-column h2 {
-            color: #4CAF50;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-
         /* RIGHT COLUMN (Sidebar) */
         .sidebar-column {
             flex: 1; 
@@ -163,28 +153,54 @@
         }
 
         /* =========================================
-           3. SPECIAL PAYMENT NOTICE STYLES
+           3. NOTICE SPECIFIC STYLES
            ========================================= */
         .payment-notice {
             background-color: #fff3f3; /* Reddish background alert */
-            border: 3px solid #d32f2f;
+            border: 3px solid #d32f2f; /* Thick red border */
             padding: 25px;
             border-radius: 8px;
-            margin-top: 40px;
             text-align: center;
         }
 
-        .payment-notice h3 {
+        .payment-notice h2 {
             color: #d32f2f;
             border-bottom: 2px solid #d32f2f;
             display: inline-block;
             padding-bottom: 5px;
-            font-size: 1.8em;
+            font-size: 2em;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .notice-subject {
+            font-weight: bold; 
+            margin-bottom: 20px; 
+            text-decoration: underline; 
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .notice-text {
+            text-align: justify;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            color: #000;
+        }
+
+        .alert-box {
+            text-align: justify;
+            background-color: #ffe6e6;
+            padding: 15px;
+            border-left: 5px solid red;
+            font-weight: bold;
+            color: #d32f2f;
+            margin-top: 20px;
             margin-bottom: 20px;
         }
 
         .qr-image {
-            max-width: 300px;
+            max-width: 350px; /* Made QR code bigger */
             width: 100%;
             border: 5px solid #fff;
             box-shadow: 0 0 10px rgba(0,0,0,0.3);
@@ -203,76 +219,54 @@
 
     <nav>
         <a href="index.html">गृहपृष्ठ</a>
-        
         <a href="search.html">खोज्नुहोस्</a>
-        <a href="products.html">सेवाहरू</a>
-        <a href="about.html">सूचना</a>
-        
-        <a href="contact.html">सम्पर्क</a>
+        <a href="products.html">हाम्रा सेवाहरू</a>
+        <a href="about.html">हाम्रो बारेमा</a>
+        <a href="contact.html">सम्पर्क गर्नुहोस्</a>
     </nav>
 
     <div class="main-container">
         
         <section class="content-column">
-            <h2>हाम्रो बारेमा (About Us)</h2>
-            <p>
-                "विमल फार्मेसीमा, हामी नेपाल सरकार र औषधि व्यवस्था विभाग (DDA) को मापदण्ड अनुसारका 
-                <strong>१००% गुणस्तरीय र सुरक्षित</strong> औषधी तथा स्वास्थ्य सामाग्रीहरू उपलब्ध गराउँछौं।
-            </p>
-            <p>
-                हामी विशेष गरी क्यान्सर उपचार (Oncology), शल्यक्रिया (Surgical), र आईसीयू (ICU) सम्बन्धी संवेदनशील 
-                औषधीहरूमा विशेषज्ञता राख्छौं।
-            </p>
-            <br>
-            <h3 style="color: #4CAF50; border-bottom: 2px solid #4CAF50; padding-bottom: 5px;">हाम्रो प्रतिबद्धता</h3>
-            <p>
-                नाफा भन्दा तपाईंको स्वास्थ्य र विश्वास नै हाम्रो सबैभन्दा ठूलो प्राथमिकता हो।
-            </p>
-
-            <br>
-            <h3 style="color: #4CAF50; border-bottom: 2px solid #4CAF50; padding-bottom: 5px;">हाम्रा सेवाहरू</h3>
-            <ul style="padding-left: 20px; margin-top: 10px;">
-                <li>प्रेस्किप्सन औषधीहरू (Prescription Medications)</li>
-                <li>काउन्टरमा पाइने औषधीहरू (Over-the-counter Drugs)</li>
-                <li>स्वास्थ्य सप्लिमेन्टहरू (Health Supplements)</li>
-                <li>व्यक्तिगत हेरचाहका सामग्रीहरू (Personal Care Items)</li>
-            </ul>
-
-            <hr style="margin-top: 30px;">
             
             <div class="payment-notice">
-                <h3>⚠️ विशेष अनुरोध (Urgent Appeal) ⚠️</h3>
+                <h2>📢 अत्यन्त जरुरी सूचना (URGENT NOTICE) 📢</h2>
                 
-                <p style="font-weight: bold; font-size: 1.2em; color: #333; margin-bottom: 15px;">
-                    नेपाल र भारतका आदरणीय ग्राहक महानुभावहरू,
-                </p>
-                
-                <p style="text-align: justify; margin-bottom: 15px; font-size: 1.05em;">
-                    विगतमा जब तपाईंहरूलाई अस्पतालको बसाई र उपचार खर्चले आर्थिक तथा मानसिक तनाव थियो, 
-                    हामीले <strong>मानवीय धर्म</strong> सम्झेर र तपाईंहरूको पीडा बुझेर विश्वासका साथ 
-                    औषधीहरू उधारो (Credit) मा उपलब्ध गराएका थियौं। हामीले 'पैसा छैन' भनेर कसैको पनि औषधी रोकेनौं।
+                <p class="notice-subject">
+                    विषय: बाँकी बक्यौता (Credit) रकम भुक्तानी सम्बन्धमा।
                 </p>
 
-                <p style="text-align: justify; margin-bottom: 15px; font-size: 1.05em;">
+                <p class="notice-text">
+                    नेपाल तथा भारतका समस्त आदरणीय ग्राहक महानुभावहरू,
+                </p>
+
+                <p class="notice-text">
+                    विगतमा तपाईंहरूको स्वास्थ्य समस्या र अस्पतालको खर्चले गर्दा परेको आर्थिक संकटलाई बुझेर, 
+                    हामीले <strong>मानवीय धर्म</strong> सम्झी विश्वासका साथ औषधीहरू उधारो (Credit) मा उपलब्ध गराएका थियौं। 
+                    हामीले कसैलाई पनि पैसाको अभावमा औषधी नपाएर फर्कनु नपरोस् भन्ने चाह्यौं।
+                </p>
+
+                <p class="notice-text">
                     तर दुःखको कुरा, समस्या टरेपछि र बिरामी निको भएपछि धेरैजसो महानुभावहरूले लामो समय बित्दा पनि 
-                    उक्त रकम भुक्तानी गर्नुभएको छैन। फोन गर्दा नउठाउने वा सम्पर्कविहीन हुने कार्यले हाम्रो 
-                    विश्वासमा चोट पुगेको छ र व्यवसाय सञ्चालन गर्न गाह्रो भएको छ।
+                    उक्त रकम भुक्तानी गर्नुभएको छैन। तपाईंहरूको यो बेवास्ता र सम्पर्कविहीन हुने प्रवृत्तिले गर्दा 
+                    हामीलाई फार्मेसी सञ्चालन गर्न र वितरकहरूलाई भुक्तानी गर्न अत्यन्त कठिनाइ भइरहेको छ।
                 </p>
 
-                <p style="text-align: justify; color: #d32f2f; font-weight: bold; font-size: 1.1em; background: #ffe6e6; padding: 10px; border-radius: 5px;">
-                    विश्वास नतोड्नुहोस्। यदि तपाईंले आफ्नो दायित्व पूरा गर्नुभयो भने मात्र भविष्यमा 
-                    अरु कसैलाई गाह्रो पर्दा हामीले सहयोग गर्न सक्छौं।
-                </p>
-
-                <p style="margin-top: 20px;">
-                    कृपया तलको <strong>QR Code</strong> स्क्यान गरी वा हामीलाई सम्पर्क गरी 
-                    आफ्नो बाँकी रकम यथाशिघ्र भुक्तानी गरिदिनुहुन हार्दिक अनुरोध गर्दछौं।
-                </p>
+                <div class="alert-box">
+                    अतः यो सूचना प्रकाशित भइसकेपछि, जस-जसको रकम तिर्न बाँकी छ, कृपया आफ्नो नैतिकता र इमान्दारिता देखाई 
+                    तलको QR Code स्क्यान गरी वा सिधा सम्पर्क गरी यथाशिघ्र भुक्तानी गरिदिनुहुन हार्दिक अनुरोध गर्दछौं।
+                </div>
+                
+                <p style="font-weight: bold; margin-bottom: 5px;">तलको QR स्क्यान गरी भुक्तानी गर्नुहोस्:</p>
                 
                 <img src="qr.jpg" alt="Payment QR Code" class="qr-image">
                 
-                <p style="font-weight: bold; margin-top: 10px; font-size: 1.2em;">ESEWA / FONEPAY / BANK TRANSFER</p>
-                <p style="font-size: 1.2em; color: #4CAF50; font-weight: bold;">सिधा सम्पर्क: +९७७-५६-५९३२८८</p>
+                <p style="font-weight: bold; margin-top: 10px; font-size: 1.3em; color: #4CAF50;">
+                    ESEWA / FONEPAY / BANK TRANSFER
+                </p>
+                <p style="font-size: 1.2em; color: #333; font-weight: bold; margin-top: 5px;">
+                    सिधा सम्पर्क: +९७७-५६-५९३२८८
+                </p>
             </div>
 
         </section>
@@ -298,20 +292,16 @@
     </footer>
 
     <script>
-        // Block Right Click
         document.addEventListener('contextmenu', event => event.preventDefault());
-
-        // Block Key Combinations (Ctrl+C, Ctrl+U, F12, PrintScreen)
         document.onkeydown = function(e) {
-            if(e.keyCode == 123) { return false; } // F12
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } // Ctrl+Shift+I
-            if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) { return false; } // Ctrl+C
-            if(e.ctrlKey && e.keyCode == 'J'.charCodeAt(0)) { return false; } // Ctrl+Shift+J
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } // Ctrl+U
-            if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) { return false; } // Ctrl+S
+            if(e.keyCode == 123) { return false; } 
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } 
+            if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) { return false; } 
+            if(e.ctrlKey && e.keyCode == 'J'.charCodeAt(0)) { return false; } 
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } 
+            if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) { return false; } 
         }
     </script>
 
 </body>
 </html>
-
