@@ -21,7 +21,7 @@
 
         /* --- HEADER & NAV --- */
         header {
-            background-color: #4CAF50; /* Fallback if image missing */
+            background-color: #4CAF50; 
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('heading.png');
             background-size: cover;
             background-position: center;
@@ -123,17 +123,6 @@
             box-sizing: border-box;
         }
 
-        /* File Upload Box */
-        .upload-instruction {
-            background: white;
-            border: 2px dashed #ff9800;
-            padding: 15px;
-            text-align: center;
-            border-radius: 5px;
-            margin-top: 10px;
-            color: #e65100;
-        }
-
         /* Send Button */
         .btn-send-mail {
             background-color: #e65100; /* Orange Button */
@@ -193,7 +182,6 @@
             <h2>💊 औषधी भेटिएन? यहाँ अर्डर गर्नुहोस् (Order Request)</h2>
             <p style="color: #666;">
                 तपाईंले खोज्नुभएको औषधी हाम्रो डाटाबेसमा छैन भने, कृपया तलको फारम भर्नुहोस्। 
-                तपाईं डाक्टरको प्रेस्क्रिप्शन फोटो पनि पठाउन सक्नुहुन्छ।
             </p>
 
             <form id="specialOrderForm">
@@ -215,18 +203,7 @@
 
                 <div class="form-group">
                     <label>औषधीको नाम (Medicine Name):</label>
-                    <input type="text" id="reqMedicine" class="form-input" placeholder="औषधीको नाम (Optional if sending photo)">
-                </div>
-
-                <div class="form-group">
-                    <label>डाक्टरको प्रेस्क्रिप्शन फोटो (Prescription Photo):</label>
-                    <div class="upload-instruction">
-                        <p style="margin:0; font-weight:bold; font-size:18px;">📸 फोटो कसरी पठाउने?</p>
-                        <p style="font-size: 14px; margin: 5px 0;">
-                            तलको बटन थिचेपछि तपाईंको इमेल खुल्नेछ। <br>
-                            त्यहाँ माथि <strong>Paperclip (📎)</strong> आइकन थिचेर ग्यालरीबाट फोटो पठाउनुहोस्।
-                        </p>
-                    </div>
+                    <input type="text" id="reqMedicine" class="form-input" placeholder="औषधीको नाम">
                 </div>
 
                 <button type="button" class="btn-send-mail" onclick="sendOrderEmail()">
@@ -247,7 +224,7 @@
     </footer>
 
     <script>
-        // 1. Search Logic (Placeholder - keeps your existing engine logic)
+        // 1. Search Logic
         function performSearch() {
             var query = document.getElementById("searchInput").value;
             if(query) {
@@ -257,7 +234,7 @@
             }
         }
 
-        // 2. Email Order Logic
+        // 2. Email Order Logic (No Photo instructions)
         function sendOrderEmail() {
             // Get user input
             var name = document.getElementById("reqName").value;
@@ -283,14 +260,14 @@
                        "📍 Address: " + address + "%0D%0A" +
                        "💊 Medicine Name: " + medicine + "%0D%0A" +
                        "--------------------------------%0D%0A%0D%0A" +
-                       "🔴 NOTE: I AM ATTACHING THE PRESCRIPTION PHOTO MANUALLY TO THIS EMAIL.";
+                       "Please contact me to confirm delivery.";
 
             // Open Email App
             window.location.href = "mailto:" + emailTo + "?subject=" + subject + "&body=" + body;
 
             // Alert
             setTimeout(function() {
-                alert("तपाईंको इमेल एप खुल्दैछ।\nकृपया फोटो (Photo) Attach गर्न नबिर्सनुहोला।");
+                alert("तपाईंको इमेल एप खुल्दैछ। (Your email app is opening to send the order).");
             }, 500);
         }
     </script>
