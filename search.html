@@ -3,150 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicine Search - Bimal Pharmacy</title>
+    <title>औषधी खोज्नुहोस् - विमल फार्मेसी</title>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
+      crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
     <style>
+        /* --- 1. GLOBAL STYLES --- */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: 'Kalimati', 'Arial', sans-serif;
+            line-height: 1.6;
             margin: 0;
-            flex-direction: column;
+            padding: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('background.jpeg'); 
+            background-color: #87CEEB; 
+            background-size: cover;        
+            background-position: center top; 
+            background-attachment: scroll;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        
+        /* --- 2. HEADER --- */
+        header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('heading.png');
+            background-size: cover;
+            background-position: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 5px solid #4CAF50;
         }
 
-        .search-container {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        header h1 {
+            font-size: 4.5em; 
+            font-weight: 900; 
+            margin: 0;
+            text-shadow: 4px 4px 8px #000000; 
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.5em;
+            margin-top: 10px;
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        /* --- 3. NAVIGATION --- */
+        nav {
             text-align: center;
-            width: 90%;
-            max-width: 600px;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            text-decoration: none;
+            color: #4CAF50;
+            margin: 0 10px;
+            font-weight: bold;
+            display: inline-block;
+            font-size: 18px;
+        }
+        nav a:hover { text-decoration: underline; }
+
+        /* --- 4. CONTAINER --- */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* --- 5. SEARCH BOX --- */
+        .search-engine-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-align: center;
             border-top: 5px solid #4CAF50;
         }
 
-        h2 { color: #4CAF50; margin-bottom: 20px; }
-
-        input {
-            width: 70%;
-            padding: 12px;
-            font-size: 16px;
-            border: 2px solid #4CAF50;
-            border-radius: 5px;
-            outline: none;
+        .search-engine-box h3 {
+            color: #4CAF50;
+            margin-top: 0;
+            font-size: 1.8em;
         }
 
-        button {
-            padding: 12px 20px;
-            font-size: 16px;
+        .search-engine-box input {
+            width: 60%;
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid #4CAF50;
+            border-radius: 4px;
+            margin-top: 10px;
+            box-sizing: border-box; /* Keeps padding inside width */
+        }
+
+        .search-engine-box button {
+            padding: 15px 30px;
+            font-size: 18px;
             background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
+            margin-left: 10px;
             transition: 0.3s;
         }
+        .search-engine-box button:hover { background-color: #45a049; }
 
-        button:hover { background-color: #45a049; }
-
-        .results {
-            margin-top: 20px;
+        /* --- 6. RESULTS --- */
+        .result-item {
+            background: #fff;
+            border-left: 6px solid #4CAF50;
+            padding: 20px;
+            margin: 15px 0;
             text-align: left;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .result-card {
-            background: #e8f5e9;
-            border-left: 5px solid #4CAF50;
-            padding: 15px;
-            margin-bottom: 10px;
             border-radius: 4px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            word-wrap: break-word; /* Prevents long text breaking mobile view */
+        }
+
+        /* --- 7. FOOTER --- */
+        footer {
+            background-color: #145A32;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-family: 'Kalimati', sans-serif;
+            border-top: 5px solid #4CAF50;
+        }
+
+        /* ========================================= */
+        /* 📱 MOBILE RESPONSIVE STYLES (New Code)   */
+        /* ========================================= */
+        @media (max-width: 768px) {
+            
+            /* Header gets smaller */
+            header { padding: 40px 10px; }
+            header h1 { font-size: 2.5em; }
+            header p { font-size: 1.1em; }
+
+            /* Navigation stacks vertically */
+            nav { padding: 10px 0; }
+            nav a { 
+                display: block; 
+                margin: 10px 0; 
+                border-bottom: 1px solid #eee; 
+                padding-bottom: 5px;
+            }
+
+            /* Search Box adjusts width */
+            .search-engine-box { padding: 20px; }
+            
+            .search-engine-box input {
+                width: 100%; /* Full width on mobile */
+                margin-bottom: 15px; /* Add space below input */
+            }
+
+            .search-engine-box button {
+                width: 100%; /* Full width button */
+                margin-left: 0; /* Remove side margin */
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="search-container">
-        <h2>💊 Search Medicine Database</h2>
-        
-        <input type="text" id="searchInput" placeholder="Enter medicine name..." onkeyup="if(event.key === 'Enter') searchDatabase()">
-        <button onclick="searchDatabase()">Search</button>
+    <header>
+        <h1>विमल फार्मेसी</h1>
+        <p>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</p>
+    </header>
 
-        <div id="resultArea" class="results"></div>
+    <nav>
+        <a href="index.html">गृहपृष्ठ</a>
+        <a href="search.html" style="text-decoration: underline;">खोज्नुहोस्</a>
+        <a href="products.html">हाम्रा सेवाहरू</a>
+        <a href="about.html">सूचना</a>
+        <a href="contact.html">सम्पर्क गर्नुहोस्</a>
+    </nav>
+
+    <div class="container">
+        
+        <div class="search-engine-box">
+            <h3>डाटाबेसमा औषधी खोज्नुहोस्</h3>
+            <p style="color:#666; font-size:16px;">(GitHub Database Connected)</p>
+            
+            <input type="text" id="searchInput" placeholder="Medicine Name (e.g. Paracetamol)..." onkeyup="if(event.key === 'Enter') performSearch()">
+            <button onclick="performSearch()">Search</button>
+            
+            <div id="searchResult" style="margin-top: 30px; color: #555;">
+                </div>
+        </div>
+
     </div>
 
-    <script>
-        async function searchDatabase() {
-            var input = document.getElementById("searchInput").value.toLowerCase();
-            var display = document.getElementById("resultArea");
+    <footer>
+        <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+        <p>📍 भरतपुर-७, नेपाल | 📞 ९८५५०३०६०३</p>
+        
+        <div style="margin-top: 10px; background: white; display: inline-block; padding: 5px; border-radius: 4px;">
+             <img src="https://via.placeholder.com/100x30?text=Counter" alt="Counter">
+        </div>
+    </footer>
 
-            if (!input) {
-                alert("Please enter a name.");
+    <script>
+        async function performSearch() {
+            var query = document.getElementById("searchInput").value.toLowerCase();
+            var resultsDiv = document.getElementById("searchResult");
+            
+            if (!query) {
+                alert("Please enter a medicine name.");
                 return;
             }
 
-            display.innerHTML = "<p style='text-align:center; color:#666;'>Connecting to GitHub Database...</p>";
+            resultsDiv.innerHTML = "<p>Connecting to GitHub Database...</p>";
 
             try {
-                // YOUR GITHUB EXCEL FILE LINK
-                var fileUrl = "https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx";
-
-                // Fetch the file
-                var response = await fetch(fileUrl);
-
+                // YOUR GITHUB RAW LINK
+                const excelUrl = 'https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx';
+                
+                const response = await fetch(excelUrl);
+                
                 if (!response.ok) {
-                    throw new Error("Network Error - File could not be reached.");
+                    throw new Error("Failed to fetch database file.");
                 }
 
-                // Convert file to data we can read
-                var arrayBuffer = await response.arrayBuffer();
-                var workbook = XLSX.read(arrayBuffer, { type: 'array' });
-                var firstSheet = workbook.SheetNames[0];
-                var excelData = XLSX.utils.sheet_to_json(workbook.Sheets[firstSheet]);
+                const arrayBuffer = await response.arrayBuffer();
+                const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+                const firstSheetName = workbook.SheetNames[0];
+                const worksheet = workbook.Sheets[firstSheetName];
+                const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-                // Filter the data based on search
-                var matches = excelData.filter(row => {
+                // Filter Data
+                const filteredData = jsonData.filter(row => {
                     return Object.values(row).some(val => 
-                        String(val).toLowerCase().includes(input)
+                        String(val).toLowerCase().includes(query)
                     );
                 });
 
-                // Clear loading message
-                display.innerHTML = "";
-
-                // Show Results
-                if (matches.length > 0) {
-                    matches.forEach(item => {
+                // Display Results
+                if (filteredData.length > 0) {
+                    resultsDiv.innerHTML = ""; 
+                    filteredData.forEach(item => {
                         var div = document.createElement("div");
-                        div.className = "result-card";
+                        div.className = "result-item";
                         
-                        // Print every column found in the Excel row
-                        var info = "";
-                        for (var key in item) {
-                            info += `<strong>${key}:</strong> ${item[key]} <br>`;
+                        let displayString = "";
+                        // Loop through Excel Columns
+                        for (const [key, value] of Object.entries(item)) {
+                            displayString += `<strong>${key}:</strong> ${value} <br>`;
                         }
-                        div.innerHTML = info;
-                        display.appendChild(div);
+                        div.innerHTML = displayString;
+                        resultsDiv.appendChild(div);
                     });
                 } else {
-                    display.innerHTML = "<p style='text-align:center; color:red;'>❌ Medicine not found in database.</p>";
+                    resultsDiv.innerHTML = "<p style='color:red; font-size:18px;'>❌ Medicine not found in database.</p>";
                 }
 
             } catch (error) {
-                console.error(error);
-                // Specific error message for local testing
+                console.error("Error:", error);
                 if(window.location.protocol === "file:") {
-                    display.innerHTML = "<p style='color:red; font-weight:bold;'>⚠️ ERROR: You are opening this file on your computer.</p><p>You MUST upload this file to GitHub/Website for the database connection to work.</p>";
+                     resultsDiv.innerHTML = "<p style='color:red; background: #ffebee; padding: 15px; border-radius: 5px;'>⚠️ <strong>Error:</strong><br>You are opening this file from your computer.<br>Please upload this file to <strong>GitHub</strong> to make the database work.</p>";
                 } else {
-                    display.innerHTML = "<p style='color:red;'>System Error: " + error.message + "</p>";
+                     resultsDiv.innerHTML = "<p style='color:red;'>System Error: " + error.message + "</p>";
                 }
             }
         }
