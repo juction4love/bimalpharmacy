@@ -1,104 +1,156 @@
-<script>
-        // ============================================
-        // 1. EXCEL DATABASE SEARCH LOGIC
-        // ============================================
-        async function performSearch() {
-            var query = document.getElementById("searchInput").value.toLowerCase();
-            var resultsDiv = document.getElementById("searchResult");
-            
-            if (!query) {
-                alert("Please enter a medicine name.");
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Search - Bimal Pharmacy</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .search-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+            border-top: 5px solid #4CAF50;
+        }
+
+        h2 { color: #4CAF50; margin-bottom: 20px; }
+
+        input {
+            width: 70%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover { background-color: #45a049; }
+
+        .results {
+            margin-top: 20px;
+            text-align: left;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .result-card {
+            background: #e8f5e9;
+            border-left: 5px solid #4CAF50;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <h2>💊 Search Medicine Database</h2>
+        
+        <input type="text" id="searchInput" placeholder="Enter medicine name..." onkeyup="if(event.key === 'Enter') searchDatabase()">
+        <button onclick="searchDatabase()">Search</button>
+
+        <div id="resultArea" class="results"></div>
+    </div>
+
+    <script>
+        async function searchDatabase() {
+            var input = document.getElementById("searchInput").value.toLowerCase();
+            var display = document.getElementById("resultArea");
+
+            if (!input) {
+                alert("Please enter a name.");
                 return;
             }
 
-            resultsDiv.innerHTML = "<p>Reading database...</p>";
+            display.innerHTML = "<p style='text-align:center; color:#666;'>Connecting to GitHub Database...</p>";
 
             try {
-                // ✅ UPDATED: The Direct Raw Link (Better for websites)
-                const excelUrl = 'https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx';
-                
-                const response = await fetch(excelUrl);
-                
+                // YOUR GITHUB EXCEL FILE LINK
+                var fileUrl = "https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx";
+
+                // Fetch the file
+                var response = await fetch(fileUrl);
+
                 if (!response.ok) {
-                    throw new Error("Network response was not ok");
+                    throw new Error("Network Error - File could not be reached.");
                 }
 
-                // Parse Excel
-                const arrayBuffer = await response.arrayBuffer();
-                const workbook = XLSX.read(arrayBuffer, { type: 'array' });
-                const firstSheetName = workbook.SheetNames[0];
-                const worksheet = workbook.Sheets[firstSheetName];
-                const jsonData = XLSX.utils.sheet_to_json(worksheet);
+                // Convert file to data we can read
+                var arrayBuffer = await response.arrayBuffer();
+                var workbook = XLSX.read(arrayBuffer, { type: 'array' });
+                var firstSheet = workbook.SheetNames[0];
+                var excelData = XLSX.utils.sheet_to_json(workbook.Sheets[firstSheet]);
 
-                // Filter Data
-                const filteredData = jsonData.filter(row => {
+                // Filter the data based on search
+                var matches = excelData.filter(row => {
                     return Object.values(row).some(val => 
-                        String(val).toLowerCase().includes(query)
+                        String(val).toLowerCase().includes(input)
                     );
                 });
 
-                // Display Results
-                if (filteredData.length > 0) {
-                    resultsDiv.innerHTML = ""; 
-                    filteredData.forEach(item => {
+                // Clear loading message
+                display.innerHTML = "";
+
+                // Show Results
+                if (matches.length > 0) {
+                    matches.forEach(item => {
                         var div = document.createElement("div");
-                        div.className = "result-item";
+                        div.className = "result-card";
                         
-                        let displayString = "";
-                        // Loop through columns (Name, Price, etc.)
-                        for (const [key, value] of Object.entries(item)) {
-                            // Style the output
-                            displayString += `<strong>${key}:</strong> ${value} &nbsp; | &nbsp; `;
+                        // Print every column found in the Excel row
+                        var info = "";
+                        for (var key in item) {
+                            info += `<strong>${key}:</strong> ${item[key]} <br>`;
                         }
-                        div.innerHTML = displayString;
-                        resultsDiv.appendChild(div);
+                        div.innerHTML = info;
+                        display.appendChild(div);
                     });
                 } else {
-                    resultsDiv.innerHTML = "<p style='color:red;'>❌ Medicine not found. Please order below.</p>";
+                    display.innerHTML = "<p style='text-align:center; color:red;'>❌ Medicine not found in database.</p>";
                 }
 
             } catch (error) {
-                console.error("Error:", error);
-                // Helpful error message for you
+                console.error(error);
+                // Specific error message for local testing
                 if(window.location.protocol === "file:") {
-                     resultsDiv.innerHTML = "<p style='color:red;'>⚠️ <strong>System Error:</strong> You are opening this file directly on your computer.<br>Please <strong>Upload this file to your Website/GitHub</strong> to test the database.</p>";
+                    display.innerHTML = "<p style='color:red; font-weight:bold;'>⚠️ ERROR: You are opening this file on your computer.</p><p>You MUST upload this file to GitHub/Website for the database connection to work.</p>";
                 } else {
-                     resultsDiv.innerHTML = "<p style='color:red;'>System Error: " + error.message + "</p>";
+                    display.innerHTML = "<p style='color:red;'>System Error: " + error.message + "</p>";
                 }
             }
         }
-
-
-        // ============================================
-        // 2. EMAIL ORDER LOGIC
-        // ============================================
-        function sendOrderEmail() {
-            var name = document.getElementById("reqName").value;
-            var mobile = document.getElementById("reqMobile").value;
-            var address = document.getElementById("reqAddress").value;
-            var medicine = document.getElementById("reqMedicine").value;
-
-            if(mobile === "") {
-                alert("Please enter Mobile Number");
-                return;
-            }
-
-            var emailTo = "contact@bimalpharmacy.com.np"; 
-            var subject = "Order Request - " + name;
-            
-            var body = "Namaste Bimal Pharmacy,%0D%0A%0D%0A" +
-                       "I want to order medicines:%0D%0A" +
-                       "--------------------------------%0D%0A" +
-                       "👤 Name: " + name + "%0D%0A" +
-                       "📞 Mobile: " + mobile + "%0D%0A" +
-                       "📍 Address: " + address + "%0D%0A" +
-                       "💊 Medicine: " + medicine + "%0D%0A" +
-                       "--------------------------------";
-
-            window.location.href = "mailto:" + emailTo + "?subject=" + subject + "&body=" + body;
-
-            setTimeout(function() {
-                alert("Your email app is opening...");
-            }, 500);
-        }
     </script>
+
+</body>
+</html>
