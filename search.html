@@ -246,13 +246,29 @@
                     
                     // --- LOOP THROUGH COLUMNS ---
                     for (const [key, value] of Object.entries(item)) {
-                        
-                        // 🛑 HIDE 'UNIT' AND 'SN' COLUMNS
-                        if (key.toLowerCase() === "unit" || key.toLowerCase() === "sn") {
-                            continue; // Skip this one
+                        const k = key.toLowerCase().trim();
+
+                        // 🛑 1. HIDE 'UNIT' AND 'SN' COLUMNS
+                        if (k === "unit" || k === "sn") {
+                            continue; 
                         }
 
-                        displayString += `<strong>${key}:</strong> ${value} <br>`;
+                        // ✅ 2. PRODUCT NAME (Hide label, show only value)
+                        // Checks for "productname", "product name", "particulars", etc.
+                        else if (k === "productname" || k === "product name" || k === "particulars" || k === "itemname") {
+                            displayString += `<span style="font-size: 1.2em; font-weight: bold; color: #145A32;">${value}</span><br>`;
+                        }
+
+                        // 💰 3. SALES PRICE (Hide label, add 'Rs.')
+                        // Checks for "sales price", "price", "mrp", "rate"
+                        else if (k === "sales price" || k === "salesprice" || k === "price" || k === "rate" || k === "mrp") {
+                            displayString += `<span style="font-weight: bold; color: #d32f2f;">Rs. ${value}</span><br>`;
+                        }
+
+                        // 🔹 4. ALL OTHER COLUMNS (Show normal Label: Value)
+                        else {
+                            displayString += `<strong>${key}:</strong> ${value} <br>`;
+                        }
                     }
                     
                     div.innerHTML = displayString;
@@ -272,4 +288,3 @@
 
 </body>
 </html>
-
