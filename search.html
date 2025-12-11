@@ -8,6 +8,8 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
       crossorigin="anonymous"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
     <style>
         /* --- GLOBAL STYLES --- */
         body {
@@ -49,21 +51,21 @@
         }
         nav a:hover { text-decoration: underline; }
 
-        /* --- LAYOUT CONTAINER --- */
+        /* --- CONTAINER --- */
         .container {
             max-width: 900px;
             margin: 30px auto;
             padding: 20px;
         }
 
-        /* --- 1. SEARCH ENGINE STYLE (GREEN) --- */
+        /* --- 1. SEARCH ENGINE STYLE (Green) --- */
         .search-engine-box {
             background: white;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             text-align: center;
-            border-top: 5px solid #4CAF50; /* Green Top */
+            border-top: 5px solid #4CAF50;
             margin-bottom: 40px;
         }
 
@@ -87,11 +89,22 @@
         }
         .search-engine-box button:hover { background-color: #45a049; }
 
-        /* --- 2. ORDER FORM STYLE (ORANGE) --- */
+        /* Results Display Style */
+        .result-item {
+            background: #e8f5e9;
+            border-left: 5px solid #4CAF50;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: left;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* --- 2. ORDER FORM STYLE (Orange) --- */
         .order-box-container {
-            background-color: #fff8e1; /* Light Orange/Cream */
+            background-color: #fff8e1;
             border: 1px solid #ffe0b2;
-            border-top: 5px solid #ff9800; /* Orange Top */
+            border-top: 5px solid #ff9800;
             border-radius: 8px;
             padding: 30px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -105,15 +118,6 @@
             padding-bottom: 10px;
         }
 
-        .form-group { margin-bottom: 15px; }
-        
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            color: #5d4037;
-            margin-bottom: 5px;
-        }
-
         .form-input {
             width: 100%;
             padding: 12px;
@@ -121,11 +125,18 @@
             border-radius: 4px;
             font-size: 16px;
             box-sizing: border-box;
+            margin-bottom: 15px;
         }
 
-        /* Send Button */
+        .form-label {
+            display: block;
+            font-weight: bold;
+            color: #5d4037;
+            margin-bottom: 5px;
+        }
+
         .btn-send-mail {
-            background-color: #e65100; /* Orange Button */
+            background-color: #e65100;
             color: white;
             padding: 15px;
             width: 100%;
@@ -134,8 +145,7 @@
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 20px;
-            transition: background 0.3s;
+            margin-top: 10px;
         }
         .btn-send-mail:hover { background-color: #bf360c; }
 
@@ -170,7 +180,7 @@
             <h3 style="color: #4CAF50; margin-top:0;">डाटाबेसमा औषधी खोज्नुहोस्</h3>
             <p style="color:#666; font-size:14px;">हाम्रो स्टकमा भएको औषधी यहाँ टाइप गर्नुहोस्</p>
             
-            <input type="text" id="searchInput" placeholder="Medicine Name (e.g. Paracetamol)...">
+            <input type="text" id="searchInput" placeholder="Medicine Name (e.g. Cetamol)..." onkeyup="if(event.key === 'Enter') performSearch()">
             <button onclick="performSearch()">Search</button>
             
             <div id="searchResult" style="margin-top: 20px; color: #555;">
@@ -181,30 +191,22 @@
         <div class="order-box-container">
             <h2>💊 औषधी भेटिएन? यहाँ अर्डर गर्नुहोस् (Order Request)</h2>
             <p style="color: #666;">
-                तपाईंले खोज्नुभएको औषधी हाम्रो डाटाबेसमा छैन भने, कृपया तलको फारम भर्नुहोस्। 
+                तपाईंले खोज्नुभएको औषधी हाम्रो डाटाबेसमा छैन भने, कृपया तलको फारम भर्नुहोस्।
             </p>
 
             <form id="specialOrderForm">
                 
-                <div class="form-group">
-                    <label>तपाईंको नाम (Your Name):</label>
-                    <input type="text" id="reqName" class="form-input" placeholder="पूरा नाम लेख्नुहोस्">
-                </div>
+                <label class="form-label">तपाईंको नाम (Your Name):</label>
+                <input type="text" id="reqName" class="form-input" placeholder="पूरा नाम लेख्नुहोस्">
 
-                <div class="form-group">
-                    <label>मोबाइल नम्बर (Mobile Number):</label>
-                    <input type="tel" id="reqMobile" class="form-input" placeholder="98XXXXXXXX" required>
-                </div>
+                <label class="form-label">मोबाइल नम्बर (Mobile Number):</label>
+                <input type="tel" id="reqMobile" class="form-input" placeholder="98XXXXXXXX" required>
 
-                <div class="form-group">
-                    <label>ठेगाना (Address):</label>
-                    <input type="text" id="reqAddress" class="form-input" placeholder="टोल, वडा नं, ठाउँ...">
-                </div>
+                <label class="form-label">ठेगाना (Address):</label>
+                <input type="text" id="reqAddress" class="form-input" placeholder="टोल, वडा नं, ठाउँ...">
 
-                <div class="form-group">
-                    <label>औषधीको नाम (Medicine Name):</label>
-                    <input type="text" id="reqMedicine" class="form-input" placeholder="औषधीको नाम">
-                </div>
+                <label class="form-label">औषधीको नाम (Medicine Name):</label>
+                <input type="text" id="reqMedicine" class="form-input" placeholder="औषधीको नाम">
 
                 <button type="button" class="btn-send-mail" onclick="sendOrderEmail()">
                     ✉️ इमेल पठाउनुहोस् (Send Email Order)
@@ -224,33 +226,102 @@
     </footer>
 
     <script>
-        // 1. Search Logic
-        function performSearch() {
-            var query = document.getElementById("searchInput").value;
-            if(query) {
-                document.getElementById("searchResult").innerHTML = "Searching for '" + query + "'... <br> (Database connection pending)";
-            } else {
+        // ============================================
+        // 1. EXCEL DATABASE SEARCH LOGIC
+        // ============================================
+        async function performSearch() {
+            var query = document.getElementById("searchInput").value.toLowerCase();
+            var resultsDiv = document.getElementById("searchResult");
+            
+            if (!query) {
                 alert("Please enter a medicine name.");
+                return;
+            }
+
+            resultsDiv.innerHTML = "<p>Reading Excel file... Please wait...</p>";
+
+            try {
+                // -----------------------------------------------------------
+                // 🔴 IMPORTANT: REPLACE THE LINK BELOW WITH YOUR GITHUB RAW LINK
+                // Example: https://raw.githubusercontent.com/USERNAME/REPO/main/medicine.xlsx
+                // -----------------------------------------------------------
+                const excelUrl = 'YOUR_GITHUB_RAW_EXCEL_LINK_HERE'; 
+                // -----------------------------------------------------------
+
+                const response = await fetch(excelUrl);
+                
+                if (!response.ok) {
+                    throw new Error("Failed to fetch Excel file");
+                }
+
+                // Convert file to ArrayBuffer
+                const arrayBuffer = await response.arrayBuffer();
+
+                // Parse Excel Data using SheetJS
+                const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+
+                // Read the First Sheet
+                const firstSheetName = workbook.SheetNames[0];
+                const worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert Sheet to JSON
+                const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+                // DEBUG: Log data to console to see column names
+                console.log("Excel Data Loaded:", jsonData);
+
+                // Filter Data
+                // NOTE: This assumes your Excel has a column named "Name" or "Medicine". 
+                // It searches ALL columns just in case.
+                const filteredData = jsonData.filter(row => {
+                    return Object.values(row).some(val => 
+                        String(val).toLowerCase().includes(query)
+                    );
+                });
+
+                // Display Results
+                if (filteredData.length > 0) {
+                    resultsDiv.innerHTML = ""; // Clear loading
+                    filteredData.forEach(item => {
+                        var div = document.createElement("div");
+                        div.className = "result-item";
+                        
+                        // Construct the display string dynamically based on Excel Columns
+                        let displayString = "";
+                        for (const [key, value] of Object.entries(item)) {
+                            displayString += `<strong>${key}:</strong> ${value} <br>`;
+                        }
+                        
+                        div.innerHTML = displayString;
+                        resultsDiv.appendChild(div);
+                    });
+                } else {
+                    resultsDiv.innerHTML = "<p style='color:red;'>❌ Medicine not found. Please order below.</p>";
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+                resultsDiv.innerHTML = "<p style='color:red;'>Error loading database. Check the GitHub Link or Console.</p>";
             }
         }
 
-        // 2. Email Order Logic (No Photo instructions)
+
+        // ============================================
+        // 2. EMAIL ORDER LOGIC
+        // ============================================
         function sendOrderEmail() {
-            // Get user input
             var name = document.getElementById("reqName").value;
             var mobile = document.getElementById("reqMobile").value;
             var address = document.getElementById("reqAddress").value;
             var medicine = document.getElementById("reqMedicine").value;
 
-            // Check
             if(mobile === "") {
-                alert("कृपया मोबाइल नम्बर लेख्नुहोस् (Please enter Mobile Number)");
+                alert("Please enter Mobile Number");
                 return;
             }
 
-            // Prepare Email
             var emailTo = "contact@bimalpharmacy.com.np"; 
-            var subject = "New Medicine Order - " + name;
+            var subject = "Order Request - " + name;
             
             var body = "Namaste Bimal Pharmacy,%0D%0A%0D%0A" +
                        "I want to order medicines:%0D%0A" +
@@ -258,16 +329,13 @@
                        "👤 Name: " + name + "%0D%0A" +
                        "📞 Mobile: " + mobile + "%0D%0A" +
                        "📍 Address: " + address + "%0D%0A" +
-                       "💊 Medicine Name: " + medicine + "%0D%0A" +
-                       "--------------------------------%0D%0A%0D%0A" +
-                       "Please contact me to confirm delivery.";
+                       "💊 Medicine: " + medicine + "%0D%0A" +
+                       "--------------------------------";
 
-            // Open Email App
             window.location.href = "mailto:" + emailTo + "?subject=" + subject + "&body=" + body;
 
-            // Alert
             setTimeout(function() {
-                alert("तपाईंको इमेल एप खुल्दैछ। (Your email app is opening to send the order).");
+                alert("Your email app is opening...");
             }, 500);
         }
     </script>
