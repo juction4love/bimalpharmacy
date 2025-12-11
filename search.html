@@ -125,9 +125,7 @@
             border-top: 5px solid #4CAF50;
         }
 
-        /* ========================================= */
-        /* 📱 MOBILE RESPONSIVE STYLES               */
-        /* ========================================= */
+        /* 📱 MOBILE RESPONSIVE STYLES */
         @media (max-width: 768px) {
             header { padding: 40px 10px; }
             header h1 { font-size: 2.5em; }
@@ -150,7 +148,7 @@
     <nav>
         <a href="index.html">गृहपृष्ठ</a>
         <a href="search.html" style="text-decoration: underline;">खोज्नुहोस्</a>
-        <a href="products.html">सेवा</a>
+        <a href="products.html">हाम्रा सेवाहरू</a>
         <a href="about.html">सूचना</a>
         <a href="contact.html">सम्पर्क गर्नुहोस्</a>
     </nav>
@@ -158,9 +156,9 @@
     <div class="container">
         
         <div class="search-engine-box">
-            <h3>औषधी खोज्नुहोस्</h3>
+            <h3>डाटाबेसमा औषधी खोज्नुहोस्</h3>
             
-            <p id="statusMessage">...</p>
+            <p id="statusMessage">Connecting to Database...</p>
             
             <input type="text" id="searchInput" placeholder="Loading data..." disabled 
                    onkeyup="instantSearch()" autocomplete="off">
@@ -201,21 +199,18 @@
                 const firstSheetName = workbook.SheetNames[0];
                 const worksheet = workbook.Sheets[firstSheetName];
                 
-                // Store data in global variable
+                // Store data
                 allMedicinesData = XLSX.utils.sheet_to_json(worksheet);
 
                 // Enable Input
-                statusMsg.style.display = "none"; // Hide loading text
+                statusMsg.style.display = "none";
                 inputField.disabled = false;
-                inputField.placeholder = "Type at least 2 letters (e.g. pa)...";
+                inputField.placeholder = "Type at least 2 letters...";
                 inputField.focus();
 
             } catch (error) {
                 console.error(error);
                 statusMsg.innerHTML = "<span style='color:red'>⚠️ Error loading database. Please refresh or check connection.</span>";
-                if(window.location.protocol === "file:") {
-                    statusMsg.innerHTML += "<br><small>Note: You must upload this file to GitHub/Website to work.</small>";
-                }
             }
         };
 
@@ -230,7 +225,7 @@
                 return;
             }
 
-            // Filter the data locally (Fast!)
+            // Filter the data
             const matches = allMedicinesData.filter(row => {
                 return Object.values(row).some(val => 
                     String(val).toLowerCase().includes(input)
@@ -248,16 +243,25 @@
                     div.className = "result-item";
                     
                     let displayString = "";
+                    
+                    // --- LOOP THROUGH COLUMNS ---
                     for (const [key, value] of Object.entries(item)) {
+                        
+                        // 🛑 HIDE 'UNIT' AND 'SN' COLUMNS
+                        if (key.toLowerCase() === "unit" || key.toLowerCase() === "sn") {
+                            continue; // Skip this one
+                        }
+
                         displayString += `<strong>${key}:</strong> ${value} <br>`;
                     }
+                    
                     div.innerHTML = displayString;
                     resultsDiv.appendChild(div);
                 });
                 
                 // Show message if more results exist
                 if (matches.length > 30) {
-                    resultsDiv.innerHTML += `<div style="text-align:center; padding:10px; color:#666;">... and ${matches.length - 30} more results. Keep typing to refine.</div>`;
+                    resultsDiv.innerHTML += `<div style="text-align:center; padding:10px; color:#666;">... and ${matches.length - 30} more results. Keep typing.</div>`;
                 }
 
             } else {
@@ -268,5 +272,3 @@
 
 </body>
 </html>
-
-
