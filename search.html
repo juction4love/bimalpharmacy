@@ -38,19 +38,8 @@
             border-bottom: 5px solid #4CAF50;
         }
 
-        header h1 {
-            font-size: 4.5em; 
-            font-weight: 900; 
-            margin: 0;
-            text-shadow: 4px 4px 8px #000000; 
-            letter-spacing: 2px;
-        }
-
-        header p {
-            font-size: 1.5em;
-            margin-top: 10px;
-            text-shadow: 2px 2px 4px #000000;
-        }
+        header h1 { font-size: 4.5em; font-weight: 900; margin: 0; text-shadow: 4px 4px 8px #000; }
+        header p { font-size: 1.5em; margin-top: 10px; text-shadow: 2px 2px 4px #000; }
 
         /* --- 3. NAVIGATION --- */
         nav {
@@ -96,39 +85,33 @@
         }
 
         .search-engine-box input {
-            width: 60%;
+            width: 70%;
             padding: 15px;
             font-size: 18px;
             border: 2px solid #4CAF50;
             border-radius: 4px;
             margin-top: 10px;
-            box-sizing: border-box; /* Keeps padding inside width */
+            box-sizing: border-box;
         }
-
-        .search-engine-box button {
-            padding: 15px 30px;
-            font-size: 18px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-left: 10px;
-            transition: 0.3s;
-        }
-        .search-engine-box button:hover { background-color: #45a049; }
 
         /* --- 6. RESULTS --- */
         .result-item {
             background: #fff;
             border-left: 6px solid #4CAF50;
-            padding: 20px;
-            margin: 15px 0;
+            padding: 15px;
+            margin: 10px 0;
             text-align: left;
             border-radius: 4px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            word-wrap: break-word; /* Prevents long text breaking mobile view */
+            word-wrap: break-word;
+            font-size: 16px;
+        }
+
+        /* Loading Indicator */
+        #statusMessage {
+            font-weight: bold;
+            margin-top: 10px;
+            color: #666;
         }
 
         /* --- 7. FOOTER --- */
@@ -143,36 +126,16 @@
         }
 
         /* ========================================= */
-        /* 📱 MOBILE RESPONSIVE STYLES (New Code)   */
+        /* 📱 MOBILE RESPONSIVE STYLES               */
         /* ========================================= */
         @media (max-width: 768px) {
-            
-            /* Header gets smaller */
             header { padding: 40px 10px; }
             header h1 { font-size: 2.5em; }
             header p { font-size: 1.1em; }
-
-            /* Navigation stacks vertically */
             nav { padding: 10px 0; }
-            nav a { 
-                display: block; 
-                margin: 10px 0; 
-                border-bottom: 1px solid #eee; 
-                padding-bottom: 5px;
-            }
-
-            /* Search Box adjusts width */
+            nav a { display: block; margin: 10px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; }
             .search-engine-box { padding: 20px; }
-            
-            .search-engine-box input {
-                width: 100%; /* Full width on mobile */
-                margin-bottom: 15px; /* Add space below input */
-            }
-
-            .search-engine-box button {
-                width: 100%; /* Full width button */
-                margin-left: 0; /* Remove side margin */
-            }
+            .search-engine-box input { width: 100%; }
         }
     </style>
 </head>
@@ -196,10 +159,11 @@
         
         <div class="search-engine-box">
             <h3>डाटाबेसमा औषधी खोज्नुहोस्</h3>
-            <p style="color:#666; font-size:16px;">(GitHub Database Connected)</p>
             
-            <input type="text" id="searchInput" placeholder="Medicine Name (e.g. Paracetamol)..." onkeyup="if(event.key === 'Enter') performSearch()">
-            <button onclick="performSearch()">Search</button>
+            <p id="statusMessage">Connecting to Database...</p>
+            
+            <input type="text" id="searchInput" placeholder="Loading data..." disabled 
+                   onkeyup="instantSearch()" autocomplete="off">
             
             <div id="searchResult" style="margin-top: 30px; color: #555;">
                 </div>
@@ -217,66 +181,87 @@
     </footer>
 
     <script>
-        async function performSearch() {
-            var query = document.getElementById("searchInput").value.toLowerCase();
-            var resultsDiv = document.getElementById("searchResult");
-            
-            if (!query) {
-                alert("Please enter a medicine name.");
-                return;
-            }
+        // Store all medicines here
+        let allMedicinesData = [];
 
-            resultsDiv.innerHTML = "<p>Connecting to GitHub Database...</p>";
+        // 1. Load Database IMMEDIATELY when page loads
+        window.onload = async function() {
+            const statusMsg = document.getElementById("statusMessage");
+            const inputField = document.getElementById("searchInput");
 
             try {
-                // YOUR GITHUB RAW LINK
+                // Your GitHub Link
                 const excelUrl = 'https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx';
                 
                 const response = await fetch(excelUrl);
-                
-                if (!response.ok) {
-                    throw new Error("Failed to fetch database file.");
-                }
+                if (!response.ok) throw new Error("Connection failed");
 
                 const arrayBuffer = await response.arrayBuffer();
                 const workbook = XLSX.read(arrayBuffer, { type: 'array' });
                 const firstSheetName = workbook.SheetNames[0];
                 const worksheet = workbook.Sheets[firstSheetName];
-                const jsonData = XLSX.utils.sheet_to_json(worksheet);
+                
+                // Store data in global variable
+                allMedicinesData = XLSX.utils.sheet_to_json(worksheet);
 
-                // Filter Data
-                const filteredData = jsonData.filter(row => {
-                    return Object.values(row).some(val => 
-                        String(val).toLowerCase().includes(query)
-                    );
-                });
-
-                // Display Results
-                if (filteredData.length > 0) {
-                    resultsDiv.innerHTML = ""; 
-                    filteredData.forEach(item => {
-                        var div = document.createElement("div");
-                        div.className = "result-item";
-                        
-                        let displayString = "";
-                        // Loop through Excel Columns
-                        for (const [key, value] of Object.entries(item)) {
-                            displayString += `<strong>${key}:</strong> ${value} <br>`;
-                        }
-                        div.innerHTML = displayString;
-                        resultsDiv.appendChild(div);
-                    });
-                } else {
-                    resultsDiv.innerHTML = "<p style='color:red; font-size:18px;'>❌ Medicine not found in database.</p>";
-                }
+                // Enable Input
+                statusMsg.style.display = "none"; // Hide loading text
+                inputField.disabled = false;
+                inputField.placeholder = "Type at least 2 letters (e.g. pa)...";
+                inputField.focus();
 
             } catch (error) {
-                console.error("Error:", error);
+                console.error(error);
+                statusMsg.innerHTML = "<span style='color:red'>⚠️ Error loading database. Please refresh or check connection.</span>";
                 if(window.location.protocol === "file:") {
-                     resultsDiv.innerHTML = "<p style='color:red; background: #ffebee; padding: 15px; border-radius: 5px;'>⚠️ <strong>Error:</strong><br>You are opening this file from your computer.<br>Please upload this file to <strong>GitHub</strong> to make the database work.</p>";
-                } else {
-                     resultsDiv.innerHTML = "<p style='color:red;'>System Error: " + error.message + "</p>";
+                    statusMsg.innerHTML += "<br><small>Note: You must upload this file to GitHub/Website to work.</small>";
                 }
+            }
+        };
+
+        // 2. Instant Search Function
+        function instantSearch() {
+            var input = document.getElementById("searchInput").value.toLowerCase();
+            var resultsDiv = document.getElementById("searchResult");
+            
+            // Clear results if less than 2 letters
+            if (input.length < 2) {
+                resultsDiv.innerHTML = "";
+                return;
+            }
+
+            // Filter the data locally (Fast!)
+            const matches = allMedicinesData.filter(row => {
+                return Object.values(row).some(val => 
+                    String(val).toLowerCase().includes(input)
+                );
+            });
+
+            // LIMIT TO 30 RESULTS
+            const limitedResults = matches.slice(0, 30);
+
+            // Display Results
+            if (limitedResults.length > 0) {
+                resultsDiv.innerHTML = ""; 
+                limitedResults.forEach(item => {
+                    var div = document.createElement("div");
+                    div.className = "result-item";
+                    
+                    let displayString = "";
+                    for (const [key, value] of Object.entries(item)) {
+                        displayString += `<strong>${key}:</strong> ${value} <br>`;
+                    }
+                    div.innerHTML = displayString;
+                    resultsDiv.appendChild(div);
+                });
+                
+                // Show message if more results exist
+                if (matches.length > 30) {
+                    resultsDiv.innerHTML += `<div style="text-align:center; padding:10px; color:#666;">... and ${matches.length - 30} more results. Keep typing to refine.</div>`;
+                }
+
+            } else {
+                resultsDiv.innerHTML = "<p style='color:red;'>❌ No match found.</p>";
             }
         }
     </script>
