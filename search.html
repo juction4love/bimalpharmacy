@@ -21,7 +21,7 @@
             min-height: 100vh;
         }
 
-        /* --- HEADER & NAV --- */
+        /* --- HEADER --- */
         header {
             background-color: #4CAF50; 
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('heading.png');
@@ -34,6 +34,7 @@
         }
         header h1 { margin: 0; font-size: 3em; text-shadow: 2px 2px 4px #000; }
 
+        /* --- NAV --- */
         nav {
             text-align: center;
             background-color: #fff;
@@ -58,7 +59,7 @@
             padding: 20px;
         }
 
-        /* --- 1. SEARCH ENGINE STYLE (Green) --- */
+        /* --- SEARCH ENGINE STYLE --- */
         .search-engine-box {
             background: white;
             padding: 30px;
@@ -89,7 +90,7 @@
         }
         .search-engine-box button:hover { background-color: #45a049; }
 
-        /* Results Display Style */
+        /* Results Display */
         .result-item {
             background: #e8f5e9;
             border-left: 5px solid #4CAF50;
@@ -100,7 +101,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* --- 2. ORDER FORM STYLE (Orange) --- */
+        /* --- ORDER FORM STYLE --- */
         .order-box-container {
             background-color: #fff8e1;
             border: 1px solid #ffe0b2;
@@ -180,7 +181,7 @@
             <h3 style="color: #4CAF50; margin-top:0;">डाटाबेसमा औषधी खोज्नुहोस्</h3>
             <p style="color:#666; font-size:14px;">हाम्रो स्टकमा भएको औषधी यहाँ टाइप गर्नुहोस्</p>
             
-            <input type="text" id="searchInput" placeholder="Medicine Name (e.g. Cetamol)..." onkeyup="if(event.key === 'Enter') performSearch()">
+            <input type="text" id="searchInput" placeholder="Medicine Name (e.g. Paracetamol)..." onkeyup="if(event.key === 'Enter') performSearch()">
             <button onclick="performSearch()">Search</button>
             
             <div id="searchResult" style="margin-top: 20px; color: #555;">
@@ -219,7 +220,6 @@
 
     <footer>
         <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-        
         <div style="margin-top: 10px; background: white; display: inline-block; padding: 5px; border-radius: 4px;">
              <img src="https://via.placeholder.com/100x30?text=Counter" alt="Counter">
         </div>
@@ -238,41 +238,26 @@
                 return;
             }
 
-            resultsDiv.innerHTML = "<p>Reading Excel file... Please wait...</p>";
+            resultsDiv.innerHTML = "<p>Searching Database...</p>";
 
             try {
-                // -----------------------------------------------------------
-                // 🔴 IMPORTANT: REPLACE THE LINK BELOW WITH YOUR GITHUB RAW LINK
-                // Example: https://raw.githubusercontent.com/USERNAME/REPO/main/medicine.xlsx
-                // -----------------------------------------------------------
-                const excelUrl = 'YOUR_GITHUB_RAW_EXCEL_LINK_HERE'; 
-                // -----------------------------------------------------------
-
+                // ✅ YOUR LINK IS INSERTED HERE:
+                const excelUrl = 'https://github.com/juction4love/bimalpharmacy/raw/refs/heads/main/medicines.xlsx'; 
+                
                 const response = await fetch(excelUrl);
                 
                 if (!response.ok) {
-                    throw new Error("Failed to fetch Excel file");
+                    throw new Error("Failed to fetch database file. Status: " + response.status);
                 }
 
-                // Convert file to ArrayBuffer
+                // Parse Excel
                 const arrayBuffer = await response.arrayBuffer();
-
-                // Parse Excel Data using SheetJS
                 const workbook = XLSX.read(arrayBuffer, { type: 'array' });
-
-                // Read the First Sheet
                 const firstSheetName = workbook.SheetNames[0];
                 const worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert Sheet to JSON
                 const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-                // DEBUG: Log data to console to see column names
-                console.log("Excel Data Loaded:", jsonData);
-
-                // Filter Data
-                // NOTE: This assumes your Excel has a column named "Name" or "Medicine". 
-                // It searches ALL columns just in case.
+                // Filter Data (Checks ALL columns for your search text)
                 const filteredData = jsonData.filter(row => {
                     return Object.values(row).some(val => 
                         String(val).toLowerCase().includes(query)
@@ -281,17 +266,16 @@
 
                 // Display Results
                 if (filteredData.length > 0) {
-                    resultsDiv.innerHTML = ""; // Clear loading
+                    resultsDiv.innerHTML = ""; 
                     filteredData.forEach(item => {
                         var div = document.createElement("div");
                         div.className = "result-item";
                         
-                        // Construct the display string dynamically based on Excel Columns
                         let displayString = "";
+                        // Auto-detect columns in your Excel (Name, Price, etc.)
                         for (const [key, value] of Object.entries(item)) {
                             displayString += `<strong>${key}:</strong> ${value} <br>`;
                         }
-                        
                         div.innerHTML = displayString;
                         resultsDiv.appendChild(div);
                     });
@@ -301,7 +285,7 @@
 
             } catch (error) {
                 console.error("Error:", error);
-                resultsDiv.innerHTML = "<p style='color:red;'>Error loading database. Check the GitHub Link or Console.</p>";
+                resultsDiv.innerHTML = "<p style='color:red;'>System Error: " + error.message + "</p>";
             }
         }
 
