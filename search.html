@@ -327,8 +327,86 @@
     // Start App
     window.onload = loadDatabase;
 </script>
+<div class="request-box">
+    <h2 style="margin-top: 0; color: #e65100;">📸 प्रेस्क्रिप्शन अपलोड / अर्डर गर्नुहोस्</h2>
+    <p>औषधीको नाम लेख्नुहोस् वा डाक्टरको प्रेस्क्रिप्शन फोटो खिचेर पठाउनुहोस्।</p>
+    
+    <form id="orderForm">
+        <label style="display:block; margin-top:15px; font-weight:bold; color:#555;">तपाईंको नाम (Your Name):</label>
+        <input type="text" id="custName" placeholder="पूरा नाम लेख्नुहोस्" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ffcc80; border-radius:4px;">
 
+        <label style="display:block; margin-top:15px; font-weight:bold; color:#555;">मोबाइल नम्बर (Mobile Number):</label>
+        <input type="tel" id="custMobile" placeholder="98XXXXXXXX" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ffcc80; border-radius:4px;">
+
+        <label style="display:block; margin-top:15px; font-weight:bold; color:#555;">ठेगाना (Delivery Address):</label>
+        <input type="text" id="custAddress" placeholder="टोल, वडा नं, ठाउँ..." style="width:100%; padding:10px; margin-top:5px; border:1px solid #ffcc80; border-radius:4px;">
+
+        <label style="display:block; margin-top:15px; font-weight:bold; color:#555;">औषधीको नाम (Medicine Name):</label>
+        <input type="text" id="medName" placeholder="औषधीको नाम" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ffcc80; border-radius:4px;">
+
+        <label style="display:block; margin-top:15px; font-weight:bold; color:#555;">डाक्टरको प्रेस्क्रिप्शन फोटो (Upload Prescription):</label>
+        <div style="background:white; border:2px dashed #ff9800; padding:15px; text-align:center; border-radius:5px; margin-top:5px;">
+            <p style="margin:0; font-weight:bold; color:#e65100;">⚠️ कृपया ध्यान दिनुहोस्:</p>
+            <p style="font-size: 13px; color: #555; margin: 5px 0;">
+                इमेल खुलेपछि, कृपया आफ्नो ग्यालरीबाट फोटो <strong>"Attach"</strong> गर्नुहोस्।
+            </p>
+        </div>
+
+        <button type="button" onclick="sendToEmail()" style="background-color:#2196F3; color:white; padding:12px; width:100%; border:none; border-radius:5px; font-size:16px; font-weight:bold; margin-top:25px; cursor:pointer;">
+            <span>✉️</span> इमेल पठाउनुहोस् (Send Email)
+        </button>
+        
+    </form>
+</div>
+    /* REQUEST BOX STYLES */
+.request-box {
+    background: #fff3e0;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #ffe0b2;
+    border-top: 5px solid #ff9800;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-top: 30px; /* Adds space between search engine and this box */
+}
+    <script>
+    function sendToEmail() {
+        // 1. Get Values
+        var name = document.getElementById("custName").value;
+        var mobile = document.getElementById("custMobile").value;
+        var address = document.getElementById("custAddress").value;
+        var medicine = document.getElementById("medName").value;
+
+        // 2. Validation
+        if(mobile === "") {
+            alert("कृपया मोबाइल नम्बर लेख्नुहोस् (Please enter mobile number)");
+            return;
+        }
+
+        // 3. Construct Email Content
+        var emailTo = "contact@bimalpharmacy.com.np"; 
+        var subject = "New Order from " + name;
+        
+        var body = "Namaste Bimal Pharmacy,%0D%0A%0D%0A" + 
+                   "I would like to place an order:%0D%0A" + 
+                   "----------------------------%0D%0A" +
+                   "👤 Name: " + name + "%0D%0A" +
+                   "📞 Mobile: " + mobile + "%0D%0A" +
+                   "📍 Address: " + address + "%0D%0A" +
+                   "💊 Medicine: " + medicine + "%0D%0A" +
+                   "----------------------------%0D%0A%0D%0A" +
+                   "🔴 IMPORTANT: I have attached the prescription photo to this email.";
+
+        // 4. Open Email Client
+        window.location.href = "mailto:" + emailTo + "?subject=" + subject + "&body=" + body;
+        
+        // 5. Alert the user
+        setTimeout(function() {
+            alert("तपाईंको इमेल खुल्दैछ। कृपया फोटो Attach गर्न नबिर्सनुहोला।\n(Your email app is opening. Please ATTACH the photo there.)");
+        }, 1000);
+    }
+</script>
 </body>
 </html>
+
 
 
