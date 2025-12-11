@@ -1,231 +1,4 @@
-<!DOCTYPE html>
-<html lang="ne">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>औषधी खोज्नुहोस् - विमल फार्मेसी</title>
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
-      crossorigin="anonymous"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-
-    <style>
-        /* --- GLOBAL STYLES --- */
-        body {
-            font-family: 'Kalimati', 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            min-height: 100vh;
-        }
-
-        /* --- HEADER --- */
-        header {
-            background-color: #4CAF50; 
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('heading.png');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 5px solid #388E3C;
-        }
-        header h1 { margin: 0; font-size: 3em; text-shadow: 2px 2px 4px #000; }
-
-        /* --- NAV --- */
-        nav {
-            text-align: center;
-            background-color: #fff;
-            padding: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav a {
-            text-decoration: none;
-            color: #4CAF50;
-            margin: 0 10px;
-            font-weight: bold;
-        }
-        nav a:hover { text-decoration: underline; }
-
-        /* --- CONTAINER --- */
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px;
-        }
-
-        /* --- SEARCH ENGINE STYLE --- */
-        .search-engine-box {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
-            border-top: 5px solid #4CAF50;
-            margin-bottom: 40px;
-        }
-
-        .search-engine-box input {
-            width: 70%;
-            padding: 12px;
-            font-size: 16px;
-            border: 2px solid #4CAF50;
-            border-radius: 4px;
-        }
-
-        .search-engine-box button {
-            padding: 12px 25px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .search-engine-box button:hover { background-color: #45a049; }
-
-        /* Results Display */
-        .result-item {
-            background: #e8f5e9;
-            border-left: 5px solid #4CAF50;
-            padding: 15px;
-            margin: 10px 0;
-            text-align: left;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        /* --- ORDER FORM STYLE --- */
-        .order-box-container {
-            background-color: #fff8e1;
-            border: 1px solid #ffe0b2;
-            border-top: 5px solid #ff9800;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin-top: 20px;
-        }
-
-        .order-box-container h2 {
-            color: #e65100;
-            margin-top: 0;
-            border-bottom: 2px solid #ffcc80;
-            padding-bottom: 10px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ffcc80;
-            border-radius: 4px;
-            font-size: 16px;
-            box-sizing: border-box;
-            margin-bottom: 15px;
-        }
-
-        .form-label {
-            display: block;
-            font-weight: bold;
-            color: #5d4037;
-            margin-bottom: 5px;
-        }
-
-        .btn-send-mail {
-            background-color: #e65100;
-            color: white;
-            padding: 15px;
-            width: 100%;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .btn-send-mail:hover { background-color: #bf360c; }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #145A32;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>औषधी खोज्नुहोस्</h1>
-        <p>Search & Order Medicines</p>
-    </header>
-
-    <nav>
-        <a href="index.html">गृहपृष्ठ</a>
-        <a href="search.html" style="text-decoration: underline;">खोज्नुहोस्</a>
-        <a href="products.html">हाम्रा सेवाहरू</a>
-        <a href="about.html">सूचना</a>
-        <a href="contact.html">सम्पर्क गर्नुहोस्</a>
-    </nav>
-
-    <div class="container">
-        
-        <div class="search-engine-box">
-            <h3 style="color: #4CAF50; margin-top:0;">डाटाबेसमा औषधी खोज्नुहोस्</h3>
-            <p style="color:#666; font-size:14px;">हाम्रो स्टकमा भएको औषधी यहाँ टाइप गर्नुहोस्</p>
-            
-            <input type="text" id="searchInput" placeholder="Medicine Name (e.g. Paracetamol)..." onkeyup="if(event.key === 'Enter') performSearch()">
-            <button onclick="performSearch()">Search</button>
-            
-            <div id="searchResult" style="margin-top: 20px; color: #555;">
-                </div>
-        </div>
-
-
-        <div class="order-box-container">
-            <h2>💊 औषधी भेटिएन? यहाँ अर्डर गर्नुहोस् (Order Request)</h2>
-            <p style="color: #666;">
-                तपाईंले खोज्नुभएको औषधी हाम्रो डाटाबेसमा छैन भने, कृपया तलको फारम भर्नुहोस्।
-            </p>
-
-            <form id="specialOrderForm">
-                
-                <label class="form-label">तपाईंको नाम (Your Name):</label>
-                <input type="text" id="reqName" class="form-input" placeholder="पूरा नाम लेख्नुहोस्">
-
-                <label class="form-label">मोबाइल नम्बर (Mobile Number):</label>
-                <input type="tel" id="reqMobile" class="form-input" placeholder="98XXXXXXXX" required>
-
-                <label class="form-label">ठेगाना (Address):</label>
-                <input type="text" id="reqAddress" class="form-input" placeholder="टोल, वडा नं, ठाउँ...">
-
-                <label class="form-label">औषधीको नाम (Medicine Name):</label>
-                <input type="text" id="reqMedicine" class="form-input" placeholder="औषधीको नाम">
-
-                <button type="button" class="btn-send-mail" onclick="sendOrderEmail()">
-                    ✉️ इमेल पठाउनुहोस् (Send Email Order)
-                </button>
-
-            </form>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-        <div style="margin-top: 10px; background: white; display: inline-block; padding: 5px; border-radius: 4px;">
-             <img src="https://via.placeholder.com/100x30?text=Counter" alt="Counter">
-        </div>
-    </footer>
-
-    <script>
+<script>
         // ============================================
         // 1. EXCEL DATABASE SEARCH LOGIC
         // ============================================
@@ -238,16 +11,16 @@
                 return;
             }
 
-            resultsDiv.innerHTML = "<p>Searching Database...</p>";
+            resultsDiv.innerHTML = "<p>Reading database...</p>";
 
             try {
-                // ✅ YOUR LINK IS INSERTED HERE:
-                const excelUrl = 'https://github.com/juction4love/bimalpharmacy/raw/refs/heads/main/medicines.xlsx'; 
+                // ✅ UPDATED: The Direct Raw Link (Better for websites)
+                const excelUrl = 'https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx';
                 
                 const response = await fetch(excelUrl);
                 
                 if (!response.ok) {
-                    throw new Error("Failed to fetch database file. Status: " + response.status);
+                    throw new Error("Network response was not ok");
                 }
 
                 // Parse Excel
@@ -257,7 +30,7 @@
                 const worksheet = workbook.Sheets[firstSheetName];
                 const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-                // Filter Data (Checks ALL columns for your search text)
+                // Filter Data
                 const filteredData = jsonData.filter(row => {
                     return Object.values(row).some(val => 
                         String(val).toLowerCase().includes(query)
@@ -272,9 +45,10 @@
                         div.className = "result-item";
                         
                         let displayString = "";
-                        // Auto-detect columns in your Excel (Name, Price, etc.)
+                        // Loop through columns (Name, Price, etc.)
                         for (const [key, value] of Object.entries(item)) {
-                            displayString += `<strong>${key}:</strong> ${value} <br>`;
+                            // Style the output
+                            displayString += `<strong>${key}:</strong> ${value} &nbsp; | &nbsp; `;
                         }
                         div.innerHTML = displayString;
                         resultsDiv.appendChild(div);
@@ -285,7 +59,12 @@
 
             } catch (error) {
                 console.error("Error:", error);
-                resultsDiv.innerHTML = "<p style='color:red;'>System Error: " + error.message + "</p>";
+                // Helpful error message for you
+                if(window.location.protocol === "file:") {
+                     resultsDiv.innerHTML = "<p style='color:red;'>⚠️ <strong>System Error:</strong> You are opening this file directly on your computer.<br>Please <strong>Upload this file to your Website/GitHub</strong> to test the database.</p>";
+                } else {
+                     resultsDiv.innerHTML = "<p style='color:red;'>System Error: " + error.message + "</p>";
+                }
             }
         }
 
@@ -323,6 +102,3 @@
             }, 500);
         }
     </script>
-
-</body>
-</html>
