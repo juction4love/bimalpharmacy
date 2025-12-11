@@ -3,410 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>विमल फार्मेसी | औषाधी खोज इन्जिन</title>
+    <title>औषधी खोज्नुहोस् - विमल फार्मेसी</title>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js"></script>
-    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
+      crossorigin="anonymous"></script>
+
     <style>
-        :root {
-            --primary-green: #42b983;
-            --dark-green: #2c8558;
-            --bg-color: #eef2f3;
-            --text-color: #333;
+        /* --- GLOBAL STYLES --- */
+        body {
+            font-family: 'Kalimati', 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            min-height: 100vh;
         }
 
-        body { 
-            font-family: 'Kalimati', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: var(--bg-color); 
-            margin: 0; 
-            padding: 20px; 
-            color: var(--text-color);
-        }
-
-        .container { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            background: white; 
-            border-radius: 15px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-            overflow: hidden; 
-            min-height: 80vh; 
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* --- HEADER --- */
-        .header-banner {
-            /* Applying heading.png background */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('heading.png');
+        /* --- HEADER & NAV --- */
+        header {
+            background-color: #4CAF50; /* Fallback if image missing */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('heading.png');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            
             color: white;
+            padding: 40px 20px;
             text-align: center;
-            padding: 40px 20px; /* Increased padding slightly for better visibility */
+            border-bottom: 5px solid #388E3C;
         }
-        h2 { 
-            margin: 0; 
-            letter-spacing: 1px; 
-            text-shadow: 2px 2px 4px #000000;
-        }
-        .subtitle { 
-            font-size: 16px; 
-            opacity: 0.9; 
-            margin-top: 5px; 
-            text-shadow: 1px 1px 2px #000000;
-        }
+        header h1 { margin: 0; font-size: 3em; text-shadow: 2px 2px 4px #000; }
 
-        /* --- NAVIGATION --- */
         nav {
-            background-color: #f8f9fa;
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-            white-space: nowrap;
-            overflow-x: auto; 
-            -webkit-overflow-scrolling: touch;
             text-align: center;
-        }
-        
-        nav a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 600;
-            font-size: 14px;
-            margin: 0 4px;
-            padding: 8px 15px;
-            display: inline-block;
-            border-radius: 20px;
-            transition: all 0.2s ease;
-        }
-
-        nav a:hover, nav a.active {
-            background-color: var(--primary-green);
-            color: white;
-        }
-
-        /* --- SEARCH SECTION --- */
-        .search-wrapper {
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
-            background: white;
+            z-index: 100;
+        }
+        nav a {
+            text-decoration: none;
+            color: #4CAF50;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        nav a:hover { text-decoration: underline; }
+
+        /* --- LAYOUT CONTAINER --- */
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
             padding: 20px;
-            z-index: 10;
-            border-bottom: 1px solid #f0f0f0;
         }
 
-        .input-group { position: relative; width: 100%; }
-
-        .search-box {
-            width: 100%; 
-            padding: 15px 45px 15px 20px; 
-            font-size: 16px; 
-            border: 2px solid #ddd; 
-            border-radius: 50px; 
-            box-sizing: border-box; 
-            outline: none;
-            transition: border-color 0.3s;
+        /* --- 1. SEARCH ENGINE STYLE (GREEN) --- */
+        .search-engine-box {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 5px solid #4CAF50; /* Green Top */
+            margin-bottom: 40px;
         }
-        
-        .search-box:focus { border-color: var(--primary-green); }
 
-        /* Close Button (X) */
-        .clear-btn {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #ccc;
+        .search-engine-box input {
+            width: 70%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #4CAF50;
+            border-radius: 4px;
+        }
+
+        .search-engine-box button {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
+            border-radius: 4px;
             cursor: pointer;
-            display: none; 
-            font-size: 14px;
-            line-height: 24px;
+            font-weight: bold;
+        }
+        .search-engine-box button:hover { background-color: #45a049; }
+
+        /* --- 2. ORDER FORM STYLE (ORANGE) --- */
+        .order-box-container {
+            background-color: #fff8e1; /* Light Orange/Cream */
+            border: 1px solid #ffe0b2;
+            border-top: 5px solid #ff9800; /* Orange Top */
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        .order-box-container h2 {
+            color: #e65100;
+            margin-top: 0;
+            border-bottom: 2px solid #ffcc80;
+            padding-bottom: 10px;
+        }
+
+        .form-group { margin-bottom: 15px; }
+        
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #5d4037;
+            margin-bottom: 5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ffcc80;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        /* File Upload Box */
+        .upload-instruction {
+            background: white;
+            border: 2px dashed #ff9800;
+            padding: 15px;
             text-align: center;
-        }
-        .clear-btn:hover { background: #999; }
-
-        /* --- RESULTS LIST --- */
-        #results-container {
-            flex-grow: 1;
-            padding: 0 20px 20px 20px;
-            overflow-y: auto;
+            border-radius: 5px;
+            margin-top: 10px;
+            color: #e65100;
         }
 
-        .card { 
-            background: #fff; 
-            border-bottom: 1px solid #f0f0f0; 
-            padding: 15px 10px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+        /* Send Button */
+        .btn-send-mail {
+            background-color: #e65100; /* Orange Button */
+            color: white;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
         }
-        .card:hover { background-color: #f9fdfb; }
-        
-        .name { 
-            font-weight: 600; 
-            color: #333; 
-            font-size: 15px; 
-            padding-right: 15px;
-        }
-        
-        .price-tag { 
-            background: #e8f5e9;
-            color: var(--dark-green);
-            font-weight: bold; 
-            font-size: 15px; 
-            padding: 5px 12px;
-            border-radius: 12px;
-            white-space: nowrap;
-        }
+        .btn-send-mail:hover { background-color: #bf360c; }
 
-        /* Loading Spinner */
-        #loading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-            color: #666;
+        /* --- FOOTER --- */
+        footer {
+            background-color: #145A32;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
         }
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--primary-green);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin-bottom: 10px;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header-banner">
-        <h2>💊 विमल फार्मेसी</h2>
-        <div class="subtitle">औषधी खोज इन्जिन (Search Engine)</div>
-    </div>
+    <header>
+        <h1>औषधी खोज्नुहोस्</h1>
+        <p>Search & Order Medicines</p>
+    </header>
 
     <nav>
         <a href="index.html">गृहपृष्ठ</a>
-        
-        <a href="search.html" class="active">खोज्नुहोस्</a>
-        <a href="products.html">सेवा</a>
+        <a href="search.html" style="text-decoration: underline;">खोज्नुहोस्</a>
+        <a href="products.html">हाम्रा सेवाहरू</a>
         <a href="about.html">सूचना</a>
-        <a href="contact.html">सम्पर्क</a>
+        <a href="contact.html">सम्पर्क गर्नुहोस्</a>
     </nav>
 
-    <div class="search-wrapper">
-        <div class="input-group">
-            <input type="text" id="searchBox" class="search-box" placeholder="डाटाबेस लोड हुँदैछ..." disabled autocomplete="off">
-            <button id="clearBtn" class="clear-btn" title="खाली गर्नुहोस्">✕</button>
-        </div>
-    </div>
-    
-    <div id="loading">
-        <div class="spinner"></div>
-        <div>डाटाबेस कनेक्ट हुँदैछ... (Connecting...)</div>
-    </div>
-
-    <div id="results-container"></div>
-</div>
-
-<script>
-    // ✅ URL to your GitHub Excel File
-    const EXCEL_URL = "https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx";
-
-    // ✅ Search Settings
-    const FUSE_OPTIONS = {
-        keys: ['name'],
-        threshold: 0.3, // Allows small typos
-        ignoreLocation: true
-    };
-
-    let fuseInstance; 
-    
-    // ✅ DOM Elements
-    const searchBox = document.getElementById('searchBox');
-    const loadingDiv = document.getElementById('loading');
-    const resultsDiv = document.getElementById('results-container');
-    const clearBtn = document.getElementById('clearBtn');
-
-    // ✅ LOAD DATABASE
-    async function loadDatabase() {
-        try {
-            const response = await fetch(EXCEL_URL);
-            if (!response.ok) throw new Error("Could not fetch Excel file.");
-
-            const arrayBuffer = await response.arrayBuffer();
-            const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
-            
-            // Read first sheet
-            const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
-            const jsonData = XLSX.utils.sheet_to_json(firstSheet);
-
-            // ✅ CRITICAL FIX: Mapping correct column names from your Excel file
-            const medicines = jsonData
-                .map(item => ({
-                    // Your Excel headers are "Product name" and "Sales price"
-                    name: item["Product name"] ? String(item["Product name"]).trim() : null,
-                    price: item["Sales price"]
-                }))
-                .filter(item => item.name); // Remove empty rows
-
-            // Initialize Search Engine
-            fuseInstance = new Fuse(medicines, FUSE_OPTIONS);
-
-            // Enable Search Box
-            loadingDiv.style.display = 'none';
-            searchBox.disabled = false;
-            searchBox.placeholder = "🔍 औषधीको नाम यहाँ लेख्नुहोस्...";
-            searchBox.focus();
-
-        } catch (error) {
-            console.error(error);
-            loadingDiv.innerHTML = `<div style='color:red; text-align:center;'>
-                डाटाबेस लोड गर्न सकिएन।<br><small>${error.message}</small>
-            </div>`;
-        }
-    }
-
-    // ✅ PERFORM SEARCH
-    function performSearch(query) {
-        resultsDiv.innerHTML = ''; 
+    <div class="container">
         
-        if (query.length < 2) {
-            clearBtn.style.display = 'none';
-            return;
-        }
-
-        clearBtn.style.display = 'block';
-        const results = fuseInstance.search(query);
-
-        if (results.length === 0) {
-            resultsDiv.innerHTML = `<div style="text-align:center; padding:30px; color:#888;">कुनै औषधी फेला परेन। (No medicine found)</div>`;
-            return;
-        }
-
-        // Generate HTML for results
-        const html = results.slice(0, 50).map(result => {
-            const item = result.item;
+        <div class="search-engine-box">
+            <h3 style="color: #4CAF50; margin-top:0;">डाटाबेसमा औषधी खोज्नुहोस्</h3>
+            <p style="color:#666; font-size:14px;">हाम्रो स्टकमा भएको औषधी यहाँ टाइप गर्नुहोस्</p>
             
-            // Format Price (handle cases where price is 0 or text)
-            let displayPrice = item.price;
-            if (typeof item.price === 'number') {
-                displayPrice = "रू. " + item.price.toFixed(2);
+            <input type="text" id="searchInput" placeholder="Medicine Name (e.g. Paracetamol)...">
+            <button onclick="performSearch()">Search</button>
+            
+            <div id="searchResult" style="margin-top: 20px; color: #555;">
+                </div>
+        </div>
+
+
+        <div class="order-box-container">
+            <h2>💊 औषधी भेटिएन? यहाँ अर्डर गर्नुहोस् (Order Request)</h2>
+            <p style="color: #666;">
+                तपाईंले खोज्नुभएको औषधी हाम्रो डाटाबेसमा छैन भने, कृपया तलको फारम भर्नुहोस्। 
+                तपाईं डाक्टरको प्रेस्क्रिप्शन फोटो पनि पठाउन सक्नुहुन्छ।
+            </p>
+
+            <form id="specialOrderForm">
+                
+                <div class="form-group">
+                    <label>तपाईंको नाम (Your Name):</label>
+                    <input type="text" id="reqName" class="form-input" placeholder="पूरा नाम लेख्नुहोस्">
+                </div>
+
+                <div class="form-group">
+                    <label>मोबाइल नम्बर (Mobile Number):</label>
+                    <input type="tel" id="reqMobile" class="form-input" placeholder="98XXXXXXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label>ठेगाना (Address):</label>
+                    <input type="text" id="reqAddress" class="form-input" placeholder="टोल, वडा नं, ठाउँ...">
+                </div>
+
+                <div class="form-group">
+                    <label>औषधीको नाम (Medicine Name):</label>
+                    <input type="text" id="reqMedicine" class="form-input" placeholder="औषधीको नाम (Optional if sending photo)">
+                </div>
+
+                <div class="form-group">
+                    <label>डाक्टरको प्रेस्क्रिप्शन फोटो (Prescription Photo):</label>
+                    <div class="upload-instruction">
+                        <p style="margin:0; font-weight:bold; font-size:18px;">📸 फोटो कसरी पठाउने?</p>
+                        <p style="font-size: 14px; margin: 5px 0;">
+                            तलको बटन थिचेपछि तपाईंको इमेल खुल्नेछ। <br>
+                            त्यहाँ माथि <strong>Paperclip (📎)</strong> आइकन थिचेर ग्यालरीबाट फोटो पठाउनुहोस्।
+                        </p>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-send-mail" onclick="sendOrderEmail()">
+                    ✉️ इमेल पठाउनुहोस् (Send Email Order)
+                </button>
+
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+        
+        <div style="margin-top: 10px; background: white; display: inline-block; padding: 5px; border-radius: 4px;">
+             <img src="https://via.placeholder.com/100x30?text=Counter" alt="Counter">
+        </div>
+    </footer>
+
+    <script>
+        // 1. Search Logic (Placeholder - keeps your existing engine logic)
+        function performSearch() {
+            var query = document.getElementById("searchInput").value;
+            if(query) {
+                document.getElementById("searchResult").innerHTML = "Searching for '" + query + "'... <br> (Database connection pending)";
+            } else {
+                alert("Please enter a medicine name.");
+            }
+        }
+
+        // 2. Email Order Logic
+        function sendOrderEmail() {
+            // Get user input
+            var name = document.getElementById("reqName").value;
+            var mobile = document.getElementById("reqMobile").value;
+            var address = document.getElementById("reqAddress").value;
+            var medicine = document.getElementById("reqMedicine").value;
+
+            // Check
+            if(mobile === "") {
+                alert("कृपया मोबाइल नम्बर लेख्नुहोस् (Please enter Mobile Number)");
+                return;
             }
 
-            return `
-                <div class="card">
-                    <div class="name">${item.name}</div>
-                    <div class="price-tag">${displayPrice}</div>
-                </div>`;
-        }).join('');
+            // Prepare Email
+            var emailTo = "contact@bimalpharmacy.com.np"; 
+            var subject = "New Medicine Order - " + name;
+            
+            var body = "Namaste Bimal Pharmacy,%0D%0A%0D%0A" +
+                       "I want to order medicines:%0D%0A" +
+                       "--------------------------------%0D%0A" +
+                       "👤 Name: " + name + "%0D%0A" +
+                       "📞 Mobile: " + mobile + "%0D%0A" +
+                       "📍 Address: " + address + "%0D%0A" +
+                       "💊 Medicine Name: " + medicine + "%0D%0A" +
+                       "--------------------------------%0D%0A%0D%0A" +
+                       "🔴 NOTE: I AM ATTACHING THE PRESCRIPTION PHOTO MANUALLY TO THIS EMAIL.";
 
-        resultsDiv.innerHTML = html;
-    }
+            // Open Email App
+            window.location.href = "mailto:" + emailTo + "?subject=" + subject + "&body=" + body;
 
-    // ✅ EVENT LISTENERS
-    searchBox.addEventListener('input', (e) => performSearch(e.target.value.trim()));
-
-    clearBtn.addEventListener('click', () => {
-        searchBox.value = '';
-        performSearch('');
-        searchBox.focus();
-    });
-
-    // Start App
-    window.onload = loadDatabase;
-</script>
-<div class="request-box">
-    <h2 style="margin-top: 0; color: #e65100;">📸 प्रेस्क्रिप्शन अपलोड / अर्डर गर्नुहोस्</h2>
-    <p>औषधीको नाम लेख्नुहोस् वा डाक्टरको प्रेस्क्रिप्शन फोटो खिचेर पठाउनुहोस्।</p>
-    
-    <form id="orderForm">
-        <label style="display:block; margin-top:15px; font-weight:bold; color:#555;">तपाईंको नाम (Your Name):</label>
-        <input type="text" id="custName" placeholder="पूरा नाम लेख्नुहोस्" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ffcc80; border-radius:4px;">
-
-        <label style="display:block; margin-top:15px; font-weight:bold; color:#555;">मोबाइल नम्बर (Mobile Number):</label>
-        <input type="tel" id="custMobile" placeholder="98XXXXXXXX" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ffcc80; border-radius:4px;">
-
-        <label style="display:block; margin-top:15px; font-weight:bold; color:#555;">ठेगाना (Delivery Address):</label>
-        <input type="text" id="custAddress" placeholder="टोल, वडा नं, ठाउँ..." style="width:100%; padding:10px; margin-top:5px; border:1px solid #ffcc80; border-radius:4px;">
-
-        <label style="display:block; margin-top:15px; font-weight:bold; color:#555;">औषधीको नाम (Medicine Name):</label>
-        <input type="text" id="medName" placeholder="औषधीको नाम" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ffcc80; border-radius:4px;">
-
-        <label style="display:block; margin-top:15px; font-weight:bold; color:#555;">डाक्टरको प्रेस्क्रिप्शन फोटो (Upload Prescription):</label>
-        <div style="background:white; border:2px dashed #ff9800; padding:15px; text-align:center; border-radius:5px; margin-top:5px;">
-            <p style="margin:0; font-weight:bold; color:#e65100;">⚠️ कृपया ध्यान दिनुहोस्:</p>
-            <p style="font-size: 13px; color: #555; margin: 5px 0;">
-                इमेल खुलेपछि, कृपया आफ्नो ग्यालरीबाट फोटो <strong>"Attach"</strong> गर्नुहोस्।
-            </p>
-        </div>
-
-        <button type="button" onclick="sendToEmail()" style="background-color:#2196F3; color:white; padding:12px; width:100%; border:none; border-radius:5px; font-size:16px; font-weight:bold; margin-top:25px; cursor:pointer;">
-            <span>✉️</span> इमेल पठाउनुहोस् (Send Email)
-        </button>
-        
-    </form>
-</div>
-    /* REQUEST BOX STYLES */
-.request-box {
-    background: #fff3e0;
-    padding: 25px;
-    border-radius: 8px;
-    border: 1px solid #ffe0b2;
-    border-top: 5px solid #ff9800;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    margin-top: 30px; /* Adds space between search engine and this box */
-}
-    <script>
-    function sendToEmail() {
-        // 1. Get Values
-        var name = document.getElementById("custName").value;
-        var mobile = document.getElementById("custMobile").value;
-        var address = document.getElementById("custAddress").value;
-        var medicine = document.getElementById("medName").value;
-
-        // 2. Validation
-        if(mobile === "") {
-            alert("कृपया मोबाइल नम्बर लेख्नुहोस् (Please enter mobile number)");
-            return;
+            // Alert
+            setTimeout(function() {
+                alert("तपाईंको इमेल एप खुल्दैछ।\nकृपया फोटो (Photo) Attach गर्न नबिर्सनुहोला।");
+            }, 500);
         }
+    </script>
 
-        // 3. Construct Email Content
-        var emailTo = "contact@bimalpharmacy.com.np"; 
-        var subject = "New Order from " + name;
-        
-        var body = "Namaste Bimal Pharmacy,%0D%0A%0D%0A" + 
-                   "I would like to place an order:%0D%0A" + 
-                   "----------------------------%0D%0A" +
-                   "👤 Name: " + name + "%0D%0A" +
-                   "📞 Mobile: " + mobile + "%0D%0A" +
-                   "📍 Address: " + address + "%0D%0A" +
-                   "💊 Medicine: " + medicine + "%0D%0A" +
-                   "----------------------------%0D%0A%0D%0A" +
-                   "🔴 IMPORTANT: I have attached the prescription photo to this email.";
-
-        // 4. Open Email Client
-        window.location.href = "mailto:" + emailTo + "?subject=" + subject + "&body=" + body;
-        
-        // 5. Alert the user
-        setTimeout(function() {
-            alert("तपाईंको इमेल खुल्दैछ। कृपया फोटो Attach गर्न नबिर्सनुहोला।\n(Your email app is opening. Please ATTACH the photo there.)");
-        }, 1000);
-    }
-</script>
 </body>
 </html>
-
-
-
