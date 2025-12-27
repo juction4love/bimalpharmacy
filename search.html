@@ -12,7 +12,7 @@
             --primary: #1b5e20;
             --accent: #d32f2f;
             --whatsapp: #25d366;
-            --glass: rgba(255, 255, 255, 0.95);
+            --glass-bg: rgba(255, 255, 255, 0.95);
         }
 
         body {
@@ -30,7 +30,6 @@
 
         .main-content { flex: 1; }
 
-        /* --- STICKY TOP BANNER --- */
         .date-banner {
             background: #fff3cd;
             color: #856404;
@@ -48,7 +47,7 @@
             text-align: center;
             backdrop-filter: blur(5px);
         }
-        header h1 { margin: 0; font-size: 2rem; letter-spacing: 1px; }
+        header h1 { margin: 0; font-size: 2rem; }
 
         nav {
             background: white;
@@ -63,7 +62,6 @@
         }
         nav a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 0.95rem; }
 
-        /* --- SEARCH BOX --- */
         .search-container {
             max-width: 600px;
             margin: 30px auto;
@@ -74,19 +72,19 @@
             border-radius: 50px;
             display: flex;
             padding: 5px 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             border: 1px solid #eee;
         }
         #searchInput { flex: 1; border: none; padding: 12px; outline: none; font-size: 16px; border-radius: 50px; }
 
-        /* --- RESULTS LIST --- */
         #searchResult {
             max-width: 600px;
             margin: 0 auto 50px;
             padding: 0 15px;
         }
+        
         .med-row {
-            background: var(--glass);
+            background: var(--glass-bg);
             margin-bottom: 10px;
             padding: 18px 20px;
             border-radius: 12px;
@@ -96,13 +94,12 @@
             align-items: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.3);
-            transition: 0.2s ease;
+            transition: all 0.2s;
         }
-        .med-row:hover { transform: translateY(-3px); background: #ffffff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .med-row:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .med-name { font-weight: bold; color: #111; flex: 1; text-align: left; }
         .med-price { font-weight: bold; color: var(--accent); white-space: nowrap; margin-left: 10px; }
 
-        /* --- MODAL POPUP --- */
         .modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -121,9 +118,9 @@
             padding: 30px;
             position: relative;
             text-align: center;
-            animation: modalPop 0.3s ease;
+            animation: pop 0.3s ease;
         }
-        @keyframes modalPop { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes pop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #bbb; }
         
@@ -131,9 +128,8 @@
         .detail-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; }
         .detail-label { color: #666; font-size: 0.9rem; }
         .detail-value { font-weight: bold; color: #000; }
-        .price-hl { color: var(--accent); font-size: 1.6rem; }
+        .price-hl { color: var(--accent); font-size: 1.5rem; }
 
-        /* --- BUTTONS --- */
         .btn-group { display: flex; flex-direction: column; gap: 10px; }
         .btn {
             display: block;
@@ -144,19 +140,16 @@
             color: white;
             text-align: center;
         }
-        .btn-call { background: var(--primary); }
+        .btn-call { background: #1a2a1b; } /* Dark Greenish Black */
         .btn-ask { background: var(--whatsapp); }
 
-        /* --- FOOTER --- */
         footer {
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
-            padding: 35px 15px;
+            padding: 30px 15px;
             backdrop-filter: blur(5px);
         }
-        footer b { font-size: 1.1rem; }
-        footer p { margin: 8px 0; opacity: 0.8; }
     </style>
 </head>
 <body>
@@ -174,7 +167,7 @@
 
         <div class="search-container">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Loading items..." disabled onkeyup="instantSearch()" autocomplete="off">
+                <input type="text" id="searchInput" placeholder="डाटा लोड हुँदैछ..." disabled onkeyup="instantSearch()" autocomplete="off">
             </div>
         </div>
 
@@ -183,8 +176,7 @@
 
     <footer>
         <p><b>© २०२५ बिमल फार्मेसी। All Rights Reserved.</b></p>
-        <p>📍 भरतपुर-७, चितवन, नेपाल</p>
-        <p>📞 सम्पर्क: ९८५५०३०६०३</p>
+        <p>📍 भरतपुर-७, चितवन | 📞 ९८५५०३०६०३</p>
     </footer>
 
     <div class="modal" id="productModal" onclick="closeModal()">
@@ -194,52 +186,36 @@
             
             <div class="btn-group">
                 <a id="askBtn" href="#" target="_blank" class="btn btn-ask">💬 Ask via WhatsApp</a>
-                <a href="tel:9855030603" class="btn btn-call">📞 Call to Order</a>
+                <a href="tel:9855030603" class="btn btn-call">📞 Call for Information</a>
             </div>
         </div>
     </div>
 
     <script>
         let medicineDb = [];
-        
-        // Dynamic Nepalese Date
         document.getElementById("currentDate").innerText = new Date().toLocaleDateString('ne-NP');
 
-        // Initial Data Fetch
         window.onload = async function() {
             try {
                 const res = await fetch('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx');
                 const arrayBuffer = await res.arrayBuffer();
                 const workbook = XLSX.read(arrayBuffer, { type: 'array' });
-                // Load first sheet
                 medicineDb = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
-                
-                // Enable search once loaded
                 document.getElementById("searchInput").disabled = false;
                 document.getElementById("searchInput").placeholder = "औषधिको नाम लेख्नुहोस्...";
-            } catch (e) {
-                console.error("Load failed", e);
-            }
+            } catch (e) { console.error("Database failed to load"); }
         };
 
-        // Search Engine Function
         function instantSearch() {
             const query = document.getElementById("searchInput").value.toLowerCase();
             const container = document.getElementById("searchResult");
-            
-            if (query.length < 2) { 
-                container.innerHTML = ""; 
-                return; 
-            }
+            if (query.length < 2) { container.innerHTML = ""; return; }
 
-            // Filter logic
             const matches = medicineDb.filter(item => 
                 Object.values(item).some(v => String(v).toLowerCase().includes(query))
             );
 
             container.innerHTML = "";
-            
-            // Limit display to 20 for speed
             matches.slice(0, 20).forEach(item => {
                 const name = item.Product || "Unknown";
                 const price = item.Rate || "0.00";
@@ -252,23 +228,20 @@
             });
         }
 
-        // Single Product Display Function
         function showDetails(item) {
             const name = item.Product || "Unknown Product";
             const rate = item.Rate || "0.00";
 
-            let html = `<h2 style="color:var(--primary); margin:0 0 15px 0; border-bottom: 2px solid #eee; padding-bottom:5px;">औषधि विवरण</h2>`;
+            let html = `<h2 style="color:var(--primary); margin:0 0 15px 0; border-bottom: 2px solid #eee; padding-bottom:5px;">विवरण</h2>`;
             html += `<div class="detail-row"><span class="detail-label">Name:</span><span class="detail-value">${name}</span></div>`;
-            html += `<div class="detail-row"><span class="detail-label">Price:</span><span class="detail-value price-hl">रू. ${rate}</span></div>`;
+            html += `<div class="detail-row"><span class="detail-label">Rate:</span><span class="detail-value price-hl">रू. ${rate}</span></div>`;
             
-            // Add other columns if they exist in Excel (e.g., Company, Batch)
             for (const [key, val] of Object.entries(item)) {
                 if (!['product', 'rate', 'sn'].includes(key.toLowerCase().trim())) {
                     html += `<div class="detail-row"><span class="detail-label">${key}:</span><span class="detail-value">${val}</span></div>`;
                 }
             }
 
-            // Prepare WhatsApp link with pre-filled message
             const whatsappMsg = `नमस्ते बिमल फार्मेसी, मलाई यो औषधिको बारेमा सोध्नु थियो: ${name} (Rate: Rs. ${rate})`;
             document.getElementById("askBtn").href = `https://wa.me/9779855030603?text=${encodeURIComponent(whatsappMsg)}`;
 
@@ -276,9 +249,7 @@
             document.getElementById("productModal").style.display = "flex";
         }
 
-        function closeModal() { 
-            document.getElementById("productModal").style.display = "none"; 
-        }
+        function closeModal() { document.getElementById("productModal").style.display = "none"; }
     </script>
 </body>
 </html>
