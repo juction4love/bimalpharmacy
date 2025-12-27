@@ -3,289 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Medicine Search Engine  - विमल फार्मेसी</title>
+    <title>Medicine Search - विमल फार्मेसी</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
-      crossorigin="anonymous"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
     <style>
-        /* --- 1. GLOBAL STYLES --- */
+        :root {
+            --primary-color: #2e7d32;
+            --accent-color: #d32f2f;
+            --bg-light: #f4f7f6;
+        }
+
         body {
-            font-family: 'Kalimati', 'Arial', sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 0;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('background.jpeg'); 
-            background-color: #87CEEB; 
-            background-size: cover;        
-            background-position: center top; 
-            background-attachment: scroll;
-            background-repeat: no-repeat;
-            min-height: 100vh;
-        }
-        
-        /* --- 2. HEADER --- */
-        header {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('heading.png');
-            background-size: cover;
-            background-position: center;
-            background-color: #4CAF50;
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            border-bottom: 5px solid #4CAF50;
+            background-color: var(--bg-light);
+            color: #333;
         }
 
-        header h1 { font-size: 4.5em; font-weight: 900; margin: 0; text-shadow: 4px 4px 8px #000; }
-        header p { font-size: 1.5em; margin-top: 10px; text-shadow: 2px 2px 4px #000; }
-
-        /* --- 3. NAVIGATION --- */
-        nav {
+        /* --- UPDATED DATE BANNER --- */
+        .update-banner {
+            background-color: #fff3cd;
+            color: #856404;
             text-align: center;
-            background-color: #fff;
-            padding: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav a {
-            text-decoration: none;
-            color: #4CAF50;
-            margin: 0 10px;
+            padding: 10px;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #ffeeba;
             font-weight: bold;
-            display: inline-block;
-            font-size: 18px;
         }
-        nav a:hover { text-decoration: underline; }
 
-        /* --- 4. CONTAINER --- */
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
+        header {
+            background: linear-gradient(135deg, #1b5e20 0%, #43a047 100%);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-size: 2.8rem; margin: 0; }
+        
+        .search-container {
+            max-width: 800px;
+            margin: -30px auto 40px;
             padding: 0 20px;
         }
 
-        /* --- 5. SEARCH BOX --- */
-        .search-engine-box {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            text-align: center;
-            border-top: 5px solid #4CAF50;
+        .search-wrapper {
+            background: white;
+            padding: 8px;
+            border-radius: 50px;
+            display: flex;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        .search-engine-box h3 {
-            color: #4CAF50;
-            margin-top: 0;
-            font-size: 1.8em;
-        }
-
-        .search-engine-box input {
-            width: 70%;
-            padding: 15px;
+        #searchInput {
+            flex: 1;
+            border: none;
+            padding: 15px 25px;
             font-size: 18px;
-            border: 2px solid #4CAF50;
-            border-radius: 4px;
-            margin-top: 10px;
-            box-sizing: border-box;
+            outline: none;
+            border-radius: 50px;
         }
 
-        /* --- 6. RESULTS --- */
-        .result-item {
-            background: #fff;
-            border-left: 6px solid #4CAF50;
-            padding: 15px;
-            margin: 10px 0;
-            text-align: left;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            word-wrap: break-word;
-            font-size: 16px;
+        /* --- RESULTS --- */
+        #searchResult {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
         }
 
-        /* Loading Indicator */
-        #statusMessage {
-            font-weight: bold;
-            margin-top: 10px;
-            color: #666;
-        }
-
-        /* --- 7. FOOTER --- */
-        footer {
-            background-color: #145A32;
-            color: white;
-            text-align: center;
+        .medicine-card {
+            background: white;
             padding: 20px;
-            margin-top: 50px;
-            font-family: 'Kalimati', sans-serif;
-            border-top: 5px solid #4CAF50;
+            border-radius: 12px;
+            border-top: 5px solid var(--primary-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        /* 📱 MOBILE RESPONSIVE STYLES */
-        @media (max-width: 768px) {
-            header { padding: 40px 10px; }
-            header h1 { font-size: 2.5em; }
-            header p { font-size: 1.1em; }
-            nav { padding: 10px 0; }
-            nav a { display: block; margin: 10px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-            .search-engine-box { padding: 20px; }
-            .search-engine-box input { width: 100%; }
+        .med-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 10px;
+            display: block;
         }
+
+        .med-price {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            background: #fff0f0;
+            padding: 5px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .med-meta {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed #ddd;
+        }
+
+        .status { text-align: center; margin-top: 15px; font-weight: bold; color: var(--primary-color); }
     </style>
 </head>
-
 <body>
+
+    <div class="update-banner" id="updateBanner">
+        अद्यावधिक गरिएको मिति: <span id="currentDate">...</span> (दरहरू समय अनुसार फरक हुन सक्छन्)
+    </div>
 
     <header>
         <h1>विमल फार्मेसी</h1>
-        <p>Medicine Search Engine  </p>
+        <p>Medicine Price Information System</p>
     </header>
 
-    <nav>
-        <a href="index.html">गृहपृष्ठ</a>
-        <a href="search.html" style="text-decoration: underline;">खोज्नुहोस्</a>
-        <a href="products.html">सेवा</a>
-        <a href="about.html">सूचना</a>
-        <a href="contact.html">सम्पर्क</a>
-    </nav>
-
-    <div class="container">
-        
-        <div class="search-engine-box">
-            <h3> Search Medicne </h3>
-            
-            <p id="statusMessage">...</p>
-            
-            <input type="text" id="searchInput" placeholder="Loading data..." disabled 
-                   onkeyup="instantSearch()" autocomplete="off">
-            
-            <div id="searchResult" style="margin-top: 30px; color: #555;">
-                </div>
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" placeholder="डाटा लोड हुँदैछ..." disabled onkeyup="instantSearch()" autocomplete="off">
         </div>
-
+        <div id="statusMessage" class="status">प्रणाली तयारी गरिँदैछ...</div>
     </div>
 
-    <footer>
-        <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-        <p>📍 भरतपुर-७, नेपाल | 📞 ९८५५०३०६०३</p>
-        
-        <div style="margin-top: 10px; background: white; display: inline-block; padding: 5px; border-radius: 4px;">
-             <img src="https://via.placeholder.com/100x30?text=Counter" alt="Counter">
-        </div>
-    </footer>
+    <div id="searchResult"></div>
 
     <script>
-        // Store all medicines here
         let allMedicinesData = [];
 
-        // 1. Load Database IMMEDIATELY when page loads
+        // Set the current date at the top
+        document.getElementById("currentDate").innerText = new Date().toLocaleDateString('ne-NP', {
+            year: 'numeric', month: 'long', day: 'numeric'
+        });
+
         window.onload = async function() {
             const statusMsg = document.getElementById("statusMessage");
             const inputField = document.getElementById("searchInput");
 
             try {
-                // Your GitHub Link
                 const excelUrl = 'https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx';
-                
                 const response = await fetch(excelUrl);
-                if (!response.ok) throw new Error("Connection failed");
-
                 const arrayBuffer = await response.arrayBuffer();
                 const workbook = XLSX.read(arrayBuffer, { type: 'array' });
-                const firstSheetName = workbook.SheetNames[0];
-                const worksheet = workbook.Sheets[firstSheetName];
-                
-                // Store data
-                allMedicinesData = XLSX.utils.sheet_to_json(worksheet);
+                allMedicinesData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
 
-                // Enable Input
-                statusMsg.style.display = "none";
+                statusMsg.innerText = "खोज्नको लागि औषधि वा सामानको नाम टाइप गर्नुहोस्।";
                 inputField.disabled = false;
-                inputField.placeholder = "Type at least 2 letters...";
+                inputField.placeholder = "औषधिको नाम लेख्नुहोस्...";
                 inputField.focus();
-
             } catch (error) {
-                console.error(error);
-                statusMsg.innerHTML = "<span style='color:red'>⚠️ Error loading database. Please refresh or check connection.</span>";
+                statusMsg.innerHTML = "<span style='color:red'>⚠️ डाटा लोड गर्न सकिएन। इन्टरनेट चेक गर्नुहोस्।</span>";
             }
         };
 
-        // 2. Instant Search Function
         function instantSearch() {
-            var input = document.getElementById("searchInput").value.toLowerCase();
-            var resultsDiv = document.getElementById("searchResult");
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const resultsDiv = document.getElementById("searchResult");
             
-            // Clear results if less than 2 letters
             if (input.length < 2) {
                 resultsDiv.innerHTML = "";
                 return;
             }
 
-            // Filter the data
             const matches = allMedicinesData.filter(row => {
-                return Object.values(row).some(val => 
-                    String(val).toLowerCase().includes(input)
-                );
+                return Object.values(row).some(val => String(val).toLowerCase().includes(input));
             });
 
-            // LIMIT TO 30 RESULTS
-            const limitedResults = matches.slice(0, 30);
+            resultsDiv.innerHTML = ""; 
 
-            // Display Results
-            if (limitedResults.length > 0) {
-                resultsDiv.innerHTML = ""; 
-                limitedResults.forEach(item => {
-                    var div = document.createElement("div");
-                    div.className = "result-item";
-                    
-                    let displayString = "";
-                    
-                    // --- LOOP THROUGH COLUMNS ---
-                    for (const [key, value] of Object.entries(item)) {
-                        const k = key.toLowerCase().trim();
-
-                        // 🛑 1. HIDE 'UNIT' AND 'SN' COLUMNS
-                        if (k === "unit" || k === "sn") {
-                            continue; 
-                        }
-
-                        // ✅ 2. PRODUCT NAME (Hide label, show only value)
-                        // Checks for "productname", "product name", "particulars", etc.
-                        else if (k === "productname" || k === "product name" || k === "particulars" || k === "itemname") {
-                            displayString += `<span style="font-size: 1.2em; font-weight: bold; color: #145A32;">${value}</span><br>`;
-                        }
-
-                        // 💰 3. SALES PRICE (Hide label, add 'रू.')
-                        // Checks for "sales price", "price", "mrp", "rate"
-                        else if (k === "sales price" || k === "salesprice" || k === "price" || k === "rate" || k === "mrp") {
-                            displayString += `<span style="font-weight: bold; color: #d32f2f;">Rs. ${value}</span><br>`;
-                        }
-
-                        // 🔹 4. ALL OTHER COLUMNS (Show normal Label: Value)
-                        else {
-                            displayString += `<strong>${key}:</strong> ${value} <br>`;
-                        }
-                    }
-                    
-                    div.innerHTML = displayString;
-                    resultsDiv.appendChild(div);
-                });
+            matches.slice(0, 30).forEach(item => {
+                const card = document.createElement("div");
+                card.className = "medicine-card";
                 
-                // Show message if more results exist
-                if (matches.length > 30) {
-                    resultsDiv.innerHTML += `<div style="text-align:center; padding:10px; color:#666;">... and ${matches.length - 30} more results. Keep typing.</div>`;
+                let nameHtml = "";
+                let priceHtml = "";
+                let metaHtml = "";
+
+                for (const [key, value] of Object.entries(item)) {
+                    const k = key.toLowerCase().trim();
+
+                    // NO LABEL FOR NAME & PRICE
+                    if (["productname", "particulars", "itemname", "product name"].includes(k)) {
+                        nameHtml = `<span class="med-name">${value}</span>`;
+                    } 
+                    else if (["sales price", "salesprice", "price", "rate", "mrp"].includes(k)) {
+                        priceHtml = `<span class="med-price">रू. ${value}</span>`;
+                    }
+                    else if (!["sn", "unit"].includes(k)) {
+                        metaHtml += `<div><strong>${key}:</strong> ${value}</div>`;
+                    }
                 }
 
-            } else {
-                resultsDiv.innerHTML = "<p style='color:red;'>❌ No match found.</p>";
-            }
+                card.innerHTML = `
+                    <div>
+                        ${nameHtml}
+                        ${priceHtml}
+                    </div>
+                    <div class="med-meta">
+                        ${metaHtml}
+                    </div>
+                `;
+                resultsDiv.appendChild(card);
+            });
         }
     </script>
-
 </body>
 </html>
-
