@@ -9,18 +9,26 @@
 
     <style>
         :root {
-            --primary: #2e7d32;
+            --primary: #1b5e20;
             --accent: #d32f2f;
-            --bg: #f4f7f6;
+            --glass-bg: rgba(255, 255, 255, 0.9);
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
             margin: 0;
-            background-color: var(--bg);
+            background-image: url('bluesky.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- DATE BANNER --- */
+        .main-content { flex: 1; }
+
         .date-banner {
             background: #fff3cd;
             color: #856404;
@@ -32,14 +40,13 @@
         }
 
         header {
-            background: linear-gradient(135deg, #1b5e20 0%, #43a047 100%);
+            background: rgba(27, 94, 32, 0.85);
             color: white;
-            padding: 30px 20px;
+            padding: 25px 15px;
             text-align: center;
+            backdrop-filter: blur(5px);
         }
-        header h1 { margin: 0; font-size: 2rem; }
 
-        /* --- STICKY NAVIGATION --- */
         nav {
             background: white;
             display: flex;
@@ -49,20 +56,13 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        nav a { 
-            text-decoration: none; 
-            color: var(--primary); 
-            font-weight: bold; 
-            font-size: 0.95rem; 
-        }
-        nav a.active { border-bottom: 3px solid var(--primary); }
+        nav a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 0.95rem; }
 
-        /* --- SEARCH SECTION --- */
         .search-container {
             max-width: 600px;
-            margin: 20px auto;
+            margin: 30px auto;
             padding: 0 15px;
         }
         .search-box {
@@ -70,37 +70,31 @@
             border-radius: 50px;
             display: flex;
             padding: 5px 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             border: 1px solid #eee;
         }
-        #searchInput {
-            flex: 1; border: none; padding: 12px; outline: none; font-size: 16px; border-radius: 50px;
-        }
+        #searchInput { flex: 1; border: none; padding: 12px; outline: none; font-size: 16px; border-radius: 50px; }
 
-        /* --- RESULTS LIST --- */
         #searchResult {
             max-width: 600px;
             margin: 0 auto 50px;
             padding: 0 15px;
         }
         .med-row {
-            background: white;
+            background: var(--glass-bg);
             margin-bottom: 10px;
             padding: 15px 20px;
             border-radius: 12px;
             cursor: pointer;
-            border: 1px solid #eee;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: 0.2s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
         }
-        .med-row:hover { background: #f0fdf4; border-color: var(--primary); }
-        
-        .med-name { font-weight: bold; color: #222; font-size: 1rem; flex: 1; padding-right: 10px; }
-        .med-price { font-weight: bold; color: var(--accent); font-size: 1.1rem; white-space: nowrap; }
+        .med-name { font-weight: bold; color: #111; flex: 1; text-align: left; }
+        .med-price { font-weight: bold; color: var(--accent); white-space: nowrap; }
 
-        /* --- MODAL (SINGLE VIEW) --- */
         .modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -115,24 +109,19 @@
             background: white;
             width: 100%;
             max-width: 450px;
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 20px;
+            padding: 30px;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .close-btn {
-            position: absolute; top: 10px; right: 15px;
-            font-size: 28px; cursor: pointer; color: #999;
-        }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #bbb; }
+        
         .detail-row {
             display: flex;
             justify-content: space-between;
             padding: 12px 0;
             border-bottom: 1px solid #eee;
         }
-        .label { color: #666; font-size: 0.9rem; }
-        .val { font-weight: bold; color: #000; }
-        .price-hl { color: var(--accent); font-size: 1.3rem; }
+        .price-hl { color: var(--accent); font-weight: bold; font-size: 1.4rem; }
 
         .call-btn {
             display: block;
@@ -140,84 +129,95 @@
             color: white;
             text-align: center;
             padding: 15px;
-            border-radius: 10px;
+            border-radius: 12px;
             text-decoration: none;
-            margin-top: 20px;
+            margin-top: 25px;
             font-weight: bold;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+            backdrop-filter: blur(5px);
         }
     </style>
 </head>
 <body>
 
-    <div class="date-banner">अद्यावधिक मिति: <span id="currentDate"></span></div>
+    <div class="main-content">
+        <div class="date-banner">Updated: <span id="currentDate"></span></div>
 
-    <header><h1>विमल फार्मेसी</h1></header>
+        <header><h1>विमल फार्मेसी</h1></header>
 
-    <nav>
-        <a href="index.html">गृहपृष्ठ</a>
-        <a href="search.html" class="active">खोज्नुहोस्</a>
-        <a href="products.html">सेवा</a>
-        <a href="contact.html">सम्पर्क</a>
-    </nav>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="search.html">Search</a>
+            <a href="contact.html">Contact</a>
+        </nav>
 
-    <div class="search-container">
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="डाटा लोड हुँदैछ..." disabled onkeyup="instantSearch()" autocomplete="off">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Loading database..." disabled onkeyup="instantSearch()" autocomplete="off">
+            </div>
+            <p id="status" style="text-align:center; font-size: 0.8rem; color: #fff; text-shadow: 1px 1px 2px #000; margin-top:10px; display: none;"></p>
         </div>
-        <p id="status" style="text-align:center; font-size: 0.8rem; color: #999; margin-top:10px;"></p>
+
+        <div id="searchResult"></div>
     </div>
 
-    <div id="searchResult"></div>
+    <footer>
+        <p><b>© २०२५ विमल फार्मेसी। All Rights Reserved.</b></p>
+        <p>📍 भरतपुर-७, चितवन | 📞 ९८५५०३०६०३</p>
+    </footer>
 
     <div class="modal" id="productModal" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <div id="modalData"></div>
-            <a href="tel:9855030603" class="call-btn">📞 अर्डरको लागि कल गर्नुहोस्</a>
+            <a href="tel:9855030603" class="call-btn">📞 Order Now</a>
         </div>
     </div>
 
     <script>
         let medicineDb = [];
-
-        // Set Current Date
         document.getElementById("currentDate").innerText = new Date().toLocaleDateString('ne-NP');
 
         window.onload = async function() {
+            const statusEl = document.getElementById("status");
             try {
-                // Ensure the link matches your GitHub location
                 const res = await fetch('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx');
                 const arrayBuffer = await res.arrayBuffer();
                 const workbook = XLSX.read(arrayBuffer, { type: 'array' });
                 medicineDb = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
                 
                 document.getElementById("searchInput").disabled = false;
-                document.getElementById("searchInput").placeholder = "औषधिको नाम लेख्नुहोस्...";
-                document.getElementById("status").innerText = "Ready: " + medicineDb.length + " medicines found.";
-            } catch (e) { document.getElementById("status").innerText = "Connection Error."; }
+                document.getElementById("searchInput").placeholder = "Type medicine name...";
+                // status message is not updated here, so it stays hidden
+            } catch (e) { 
+                statusEl.style.display = "block";
+                statusEl.innerText = "Error loading database."; 
+            }
         };
-
-        // helper to find key regardless of case
-        function getValue(item, keywords) {
-            const key = Object.keys(item).find(k => keywords.includes(k.toLowerCase().trim()));
-            return key ? item[key] : null;
-        }
 
         function instantSearch() {
             const query = document.getElementById("searchInput").value.toLowerCase();
             const container = document.getElementById("searchResult");
             if (query.length < 2) { container.innerHTML = ""; return; }
 
-            // Search through all columns
-            const results = medicineDb.filter(item => 
+            const matches = medicineDb.filter(item => 
                 Object.values(item).some(v => String(v).toLowerCase().includes(query))
             );
 
             container.innerHTML = "";
-            results.slice(0, 40).forEach(item => {
-                // Mapping: Looks for "Product" and "Rate" specifically
-                const name = getValue(item, ['product', 'particulars', 'productname', 'itemname']) || "Unknown";
-                const price = getValue(item, ['rate', 'sales price', 'price', 'mrp']) || "0.00";
+            
+            // LIMIT TO 20 MEDICINES AT ONE TIME
+            const limitedMatches = matches.slice(0, 20);
+
+            limitedMatches.forEach(item => {
+                const name = item.Product || "Unknown";
+                const price = item.Rate || "0.00";
                 
                 const div = document.createElement("div");
                 div.className = "med-row";
@@ -225,28 +225,23 @@
                 div.onclick = () => showDetails(item);
                 container.appendChild(div);
             });
+
+            if (matches.length > 20) {
+                container.innerHTML += `<p style="text-align:center; color:white; background:rgba(0,0,0,0.5); padding:5px; border-radius:5px;">Showing top 20 of ${matches.length} results. Keep typing...</p>`;
+            }
         }
 
         function showDetails(item) {
-            let html = `<h2 style="color:var(--primary); margin-top:0; border-bottom: 2px solid #eee; padding-bottom:10px;">Product Info</h2>`;
+            let html = `<h2 style="color:var(--primary); margin-top:0;">Details</h2>`;
             for (const [key, val] of Object.entries(item)) {
-                if (key.toLowerCase().trim() === 'sn') continue;
-                
-                const isPrice = ['rate', 'price', 'mrp', 'sales price'].includes(key.toLowerCase().trim());
-                
-                html += `
-                    <div class="detail-row">
-                        <span class="label">${key}</span>
-                        <span class="val ${isPrice ? 'price-hl' : ''}">${isPrice ? 'रू. ' : ''}${val}</span>
-                    </div>`;
+                const isPrice = key.toLowerCase() === 'rate';
+                html += `<div class="detail-row"><span>${key}</span><span class="${isPrice ? 'price-hl' : ''}">${isPrice ? 'रू. ' : ''}${val}</span></div>`;
             }
             document.getElementById("modalData").innerHTML = html;
             document.getElementById("productModal").style.display = "flex";
         }
 
-        function closeModal() {
-            document.getElementById("productModal").style.display = "none";
-        }
+        function closeModal() { document.getElementById("productModal").style.display = "none"; }
     </script>
 </body>
 </html>
