@@ -80,6 +80,8 @@
             margin: 0 auto 50px;
             padding: 0 15px;
         }
+        
+        /* Interactive Row */
         .med-row {
             background: var(--glass-bg);
             margin-bottom: 10px;
@@ -91,10 +93,16 @@
             align-items: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.3);
+            transition: transform 0.2s, background 0.2s;
+        }
+        .med-row:hover {
+            transform: translateY(-2px);
+            background: #ffffff;
         }
         .med-name { font-weight: bold; color: #111; flex: 1; text-align: left; }
-        .med-price { font-weight: bold; color: var(--accent); white-space: nowrap; }
+        .med-price { font-weight: bold; color: var(--accent); white-space: nowrap; margin-left: 10px; }
 
+        /* Modal / Popup Styles */
         .modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -108,12 +116,18 @@
         .modal-content {
             background: white;
             width: 100%;
-            max-width: 450px;
+            max-width: 400px;
             border-radius: 20px;
             padding: 30px;
             position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            text-align: left;
+            animation: fadeIn 0.3s ease;
         }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #bbb; }
+        .close-btn:hover { color: #333; }
         
         .detail-row {
             display: flex;
@@ -121,7 +135,9 @@
             padding: 12px 0;
             border-bottom: 1px solid #eee;
         }
-        .price-hl { color: var(--accent); font-weight: bold; font-size: 1.4rem; }
+        .detail-label { color: #666; font-size: 0.9rem; }
+        .detail-value { font-weight: bold; color: #000; text-align: right; }
+        .price-hl { color: var(--accent); font-size: 1.4rem; }
 
         .call-btn {
             display: block;
@@ -133,6 +149,7 @@
             text-decoration: none;
             margin-top: 25px;
             font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         footer {
@@ -153,7 +170,7 @@
 
         <nav>
             <a href="index.html">Home</a>
-            <a href="search.html">Search</a>
+            <a href="search.html" style="text-decoration: underline;">Search</a>
             <a href="contact.html">Contact</a>
         </nav>
 
@@ -161,7 +178,7 @@
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Loading database..." disabled onkeyup="instantSearch()" autocomplete="off">
             </div>
-            <p id="status" style="text-align:center; font-size: 0.8rem; color: #fff; text-shadow: 1px 1px 2px #000; margin-top:10px; display: none;"></p>
+            <p id="status" style="display:none; text-align:center; color:white; margin-top:10px;"></p>
         </div>
 
         <div id="searchResult"></div>
@@ -176,7 +193,7 @@
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <div id="modalData"></div>
-            <a href="tel:9855030603" class="call-btn">📞 Order Now</a>
+            <a href="tel:9855030603" class="call-btn">📞 Order via Phone</a>
         </div>
     </div>
 
@@ -185,7 +202,6 @@
         document.getElementById("currentDate").innerText = new Date().toLocaleDateString('ne-NP');
 
         window.onload = async function() {
-            const statusEl = document.getElementById("status");
             try {
                 const res = await fetch('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx');
                 const arrayBuffer = await res.arrayBuffer();
@@ -193,11 +209,11 @@
                 medicineDb = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
                 
                 document.getElementById("searchInput").disabled = false;
-                document.getElementById("searchInput").placeholder = "Type medicine name...";
-                // status message is not updated here, so it stays hidden
+                document.getElementById("searchInput").placeholder = "औषधिको नाम लेख्नुहोस्...";
             } catch (e) { 
-                statusEl.style.display = "block";
-                statusEl.innerText = "Error loading database."; 
+                const s = document.getElementById("status");
+                s.style.display = "block";
+                s.innerText = "Error: Could not load data.";
             }
         };
 
@@ -211,8 +227,6 @@
             );
 
             container.innerHTML = "";
-            
-            // LIMIT TO 20 MEDICINES AT ONE TIME
             const limitedMatches = matches.slice(0, 20);
 
             limitedMatches.forEach(item => {
@@ -221,27 +235,43 @@
                 
                 const div = document.createElement("div");
                 div.className = "med-row";
-                div.innerHTML = `<span class="med-name">${name}</span><span class="med-price">रू. ${price}</span>`;
+                // CLICKING THE ROW OPENS THE POPUP
                 div.onclick = () => showDetails(item);
+                div.innerHTML = `<span class="med-name">${name}</span><span class="med-price">रू. ${price}</span>`;
                 container.appendChild(div);
             });
 
             if (matches.length > 20) {
-                container.innerHTML += `<p style="text-align:center; color:white; background:rgba(0,0,0,0.5); padding:5px; border-radius:5px;">Showing top 20 of ${matches.length} results. Keep typing...</p>`;
+                container.innerHTML += `<p style="text-align:center; color:white; background:rgba(0,0,0,0.5); padding:10px; border-radius:5px;">Showing top 20 of ${matches.length} results.</p>`;
             }
         }
 
         function showDetails(item) {
-            let html = `<h2 style="color:var(--primary); margin-top:0;">Details</h2>`;
+            const name = item.Product || "Unknown";
+            const rate = item.Rate || "0.00";
+
+            let html = `<h2 style="color:var(--primary); margin-top:0; border-bottom: 2px solid #eee; padding-bottom:10px;">औषधि विवरण</h2>`;
+            
+            // Highlight Name
+            html += `<div class="detail-row"><span class="detail-label">Product:</span><span class="detail-value">${name}</span></div>`;
+            
+            // Highlight Rate
+            html += `<div class="detail-row"><span class="detail-label">Rate:</span><span class="detail-value price-hl">रू. ${rate}</span></div>`;
+            
+            // Show any other columns present in Excel (if any)
             for (const [key, val] of Object.entries(item)) {
-                const isPrice = key.toLowerCase() === 'rate';
-                html += `<div class="detail-row"><span>${key}</span><span class="${isPrice ? 'price-hl' : ''}">${isPrice ? 'रू. ' : ''}${val}</span></div>`;
+                if (key.toLowerCase() !== 'product' && key.toLowerCase() !== 'rate' && key.toLowerCase() !== 'sn') {
+                    html += `<div class="detail-row"><span class="detail-label">${key}:</span><span class="detail-value">${val}</span></div>`;
+                }
             }
+
             document.getElementById("modalData").innerHTML = html;
             document.getElementById("productModal").style.display = "flex";
         }
 
-        function closeModal() { document.getElementById("productModal").style.display = "none"; }
+        function closeModal() {
+            document.getElementById("productModal").style.display = "none";
+        }
     </script>
 </body>
 </html>
