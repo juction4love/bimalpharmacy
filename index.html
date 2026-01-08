@@ -3,291 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>विमल फार्मेसी - गृहपृष्ठ</title>
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
-      crossorigin="anonymous"></script>
+    <meta name="description" content="विमल फार्मेसी - भरतपुर-७, चितवनमा गुणस्तरीय औषधी र स्वास्थ्य सामग्री। Bimal Pharmacy - Quality medicines in Bharatpur-7, Chitwan, Nepal.">
+    <meta name="keywords" content="विमल फार्मेसी, भरतपुर फार्मेसी, चितवन औषधी पसल, pharmacy Bharatpur Chitwan, quality medicines Nepal">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="विमल फार्मेसी / Bimal Pharmacy">
+    <meta property="og:description" content="नेपाल सरकार मापदण्ड अनुसार गुणस्तरीय औषधी। Quality medicines per Nepal government standards.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo2.jpg">
+    <meta property="og:url" content="https://bimalpharmacy.com.np">
+
+    <title>विमल फार्मेसी / Bimal Pharmacy</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts (Nepali + English) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Google Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
+
+    <!-- LocalBusiness Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Pharmacy",
+      "name": "विमल फार्मेसी / Bimal Pharmacy",
+      "image": "https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo2.jpg",
+      "telephone": "+9779855030603",
+      "email": "bimal.lamichhane@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "क्यान्सर अस्पताल रोड, भरतपुर-७",
+        "addressLocality": "भरतपुर",
+        "addressRegion": "चितवन",
+        "postalCode": "44207",
+        "addressCountry": "NP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 27.6637,
+        "longitude": 84.4187
+      },
+      "url": "https://bimalpharmacy.com.np",
+      "openingHours": "Mo-Su 07:00-21:00"
+    }
+    </script>
 
     <style>
-        /* --- MAIN PAGE BACKGROUND --- */
-        body {
-            font-family: 'Kalimati', 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/background.jpeg'); 
-            background-color: #87CEEB; 
-            background-size: cover;        
-            background-position: center top; 
-            background-attachment: scroll;
-            background-repeat: no-repeat;
-            min-height: 100vh;
+        :root {
+            --primary: #007bff;
+            --secondary: #28a745;
+            --accent: #17a2b8;
+            --text: #333;
+            --bg: #f8f9fa;
         }
-        
-        /* --- HEADER STYLES --- */
-        header {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/heading.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            border-bottom: 5px solid #4CAF50;
-        }
-
-        header h1 {
-            font-size: 4.5em; 
-            font-weight: 900; 
-            margin: 0;
-            text-shadow: 4px 4px 8px #000000; 
-            letter-spacing: 2px;
-        }
-
-        header p {
-            font-size: 1.5em;
-            margin-top: 10px;
-            text-shadow: 2px 2px 4px #000000;
-        }
-
-        /* --- NAVIGATION --- */
-        nav {
-            text-align: center;
-            background-color: #fff;
-            padding: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav a {
-            text-decoration: none;
-            color: #4CAF50;
-            margin: 0 10px;
-            font-weight: bold;
-            display: inline-block;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* --- MARQUEE --- */
-        .marquee-container {
-            background-color: rgba(255, 255, 255, 0.8); 
-            color: #d32f2f; 
-            padding: 10px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .marquee-text {
-            display: inline-block;
-            font-size: 1.2em;
-            font-weight: bold;
-            padding-left: 100%; 
-            animation: scroll-left 20s linear infinite;
-        }
-
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* --- LAYOUT CONTAINER --- */
-        .main-container {
-            display: flex; 
-            flex-wrap: wrap; 
-            max-width: 1100px; 
-            margin: 30px auto;
-            gap: 20px; 
-            padding: 0 20px;
-        }
-
-        /* LEFT COLUMN */
-        .content-column {
-            flex: 3; 
-            background: rgba(255, 255, 255, 0.95); 
-            padding: 30px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            min-width: 300px;
-        }
-
-        .content-column h3 {
-            color: #4CAF50;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 10px;
-            margin-top: 20px;
-        }
-        .content-column h4 { color: #2E7D32; margin-top: 20px; }
-        .content-column ul { padding-left: 20px; }
-        .content-column li { margin-bottom: 10px; }
-
-        /* RIGHT COLUMN */
-        .sidebar-column {
-            flex: 1; 
-            min-width: 250px;
-        }
-
-        /* SEARCH WIDGET */
-        .search-widget {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border-top: 5px solid #4CAF50; 
-            text-align: center;
-        }
-
-        .search-widget h3 { margin-top: 0; color: #4CAF50; }
-        .search-widget input {
-            width: 100%; padding: 10px; margin: 10px 0;
-            box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;
-        }
-        .search-widget button {
-            width: 100%; padding: 10px; background-color: #4CAF50; color: white;
-            border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 16px;
-        }
-        .search-widget button:hover { background-color: #45a049; }
-
-        /* Custom Image Styles */
-        .inserted-photo {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin: 15px 0;
-            border: 2px solid #e0e0e0;
-        }
-
+        body { font-family: 'Noto Sans Devanagari', 'Roboto', sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--text); line-height: 1.8; }
+        header { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 1.5rem; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; }
+        nav { margin: 1rem 0; }
+        nav a { color: white; margin: 0 1rem; text-decoration: none; font-weight: 600; transition: opacity 0.3s; }
+        nav a:hover { opacity: 0.8; }
+        .lang-switch button { background: rgba(255,255,255,0.2); color: white; border: 1px solid white; padding: 0.5rem 1.2rem; margin: 0 0.5rem; border-radius: 30px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .lang-switch button.active { background: white; color: var(--primary); }
+        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo2.jpg') center/cover no-repeat; color: white; padding: 6rem 2rem; text-align: center; }
+        .hero h2 { font-size: 3rem; font-weight: 700; margin: 0 0 1rem; }
+        .hero p { font-size: 1.3rem; max-width: 800px; margin: auto auto 2rem; }
+        .search-widget { background: rgba(255,255,255,0.95); padding: 1.5rem; border-radius: 15px; max-width: 500px; margin: 2rem auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .search-widget input { width: 70%; padding: 1rem; border: 1px solid #ccc; border-radius: 50px 0 0 50px; font-size: 1rem; }
+        .search-widget button { width: 28%; padding: 1rem; background: var(--secondary); color: white; border: none; border-radius: 0 50px 50px 0; cursor: pointer; font-weight: bold; }
+        .btn { display: inline-block; background: var(--secondary); color: white; padding: 1rem 2.5rem; margin: 0.8rem; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: all 0.3s; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 5px 15px rgba(0,0,0,0.2); } 50% { box-shadow: 0 5px 25px rgba(40,167,69,0.5); } 100% { box-shadow: 0 5px 15px rgba(0,0,0,0.2); } }
+        .btn:hover { transform: translateY(-5px); animation: none; }
+        .btn-call { background: #dc3545; }
+        .btn-wa { background: #25D366; }
+        .ticker { background: rgba(255,255,255,0.95); color: #d32f2f; padding: 1rem; overflow: hidden; white-space: nowrap; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .ticker-text { display: inline-block; animation: scroll 35s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        section { padding: 4rem 2rem; max-width: 1200px; margin: auto; }
+        h2, h3 { text-align: center; color: var(--primary); }
+        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card { background: white; border-radius: 15px; padding: 2.5rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .card i { font-size: 4rem; color: var(--accent); margin-bottom: 1.5rem; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .gallery img { width: 100%; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.5s; }
+        .gallery img:hover { transform: scale(1.08); }
+        .map iframe { width: 100%; height: 500px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        footer { background: #343a40; color: white; text-align: center; padding: 3rem; font-size: 1rem; }
+        .lang-ne { display: block; }
+        .lang-en { display: none; }
         @media (max-width: 768px) {
-            header h1 { font-size: 2.5em; }
-            .main-container { flex-direction: column; }
+            .hero h2 { font-size: 2.2rem; }
+            .btn, .search-widget button { display: block; width: 90%; margin: 1rem auto; border-radius: 50px; }
+            .search-widget input { width: 100%; border-radius: 50px; margin-bottom: 1rem; }
+            nav a { display: block; margin: 0.8rem 0; }
         }
     </style>
 </head>
-
 <body>
 
     <header>
-        <h1>विमल फार्मेसी</h1>
-        <p>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</p>
+        <h1><i class="fas fa-pills"></i> <span class="lang-ne">विमल फार्मेसी</span><span class="lang-en">Bimal Pharmacy</span></h1>
+        <p><span class="lang-ne">तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</span><span class="lang-en">Your Health, Our Priority</span></p>
+        <nav>
+            <a href="index.html"><span class="lang-ne">गृहपृष्ठ</span><span class="lang-en">Home</span></a>
+            <a href="search.html"><span class="lang-ne">खोज्नुहोस्</span><span class="lang-en">Search</span></a>
+            <a href="products.html"><span class="lang-ne">हाम्रा सेवाहरू</span><span class="lang-en">Services</span></a>
+            <a href="about.html"><span class="lang-ne">सूचना</span><span class="lang-en">About</span></a>
+            <a href="contact.html"><span class="lang-ne">सम्पर्क</span><span class="lang-en">Contact</span></a>
+        </nav>
+        <div class="lang-switch">
+            <button id="btn-ne" onclick="switchLang('ne')">नेपाली</button>
+            <button id="btn-en" onclick="switchLang('en')">English</button>
+        </div>
     </header>
 
-    <nav>
-        <a href="index.html">गृहपृष्ठ</a>
-        <a href="search.html">खोज्नुहोस्</a>
-        <a href="products.html">हाम्रा सेवाहरू</a>
-        <a href="about.html">सूचना</a>
-        <a href="contact.html">सम्पर्क गर्नुहोस्</a>
-    </nav>
-
-    <div class="marquee-container">
-        <div class="marquee-text">
-            स्वागत छ विमल फार्मेसी मा! यहाँ हामी नेपाल सरकारको मापदण्ड अनुसार को गुणस्तरको औषधी प्रदान गर्दछौं। सम्पर्क: ९८५५०३०६०३
+    <div class="ticker">
+        <div class="ticker-text">
+            <span class="lang-ne">स्वागत छ विमल फार्मेसीमा! हामी नेपाल सरकारको मापदण्ड अनुसार गुणस्तरीय औषधी प्रदान गर्दछौं। सम्पर्क: ९८५५०३०६०३ | ल्यान्डलाइन: ०५६-५९३२८८</span>
+            <span class="lang-en">Welcome to Bimal Pharmacy! We provide quality medicines according to Nepal government standards. Contact: 9855030603 | Landline: 056-593288</span>
         </div>
     </div>
 
-    <div class="main-container">
-        
-        <section class="content-column">
-            <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo2.jpg" alt="Pharmacy Main View" class="inserted-photo">
+    <section class="hero" data-aos="fade-down">
+        <h2 data-aos="fade-up" data-aos-delay="200"><span class="lang-ne">स्वागत छ विमल फार्मेसीमा!</span><span class="lang-en">Welcome to Bimal Pharmacy!</span></h2>
+        <p data-aos="fade-up" data-aos-delay="400"><span class="lang-ne">नेपाल सरकारको मापदण्ड अनुसार गुणस्तरीय औषधी तथा स्वास्थ्य सामग्री<br>ठेगाना: क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</span><span class="lang-en">Quality medicines and health supplies per Nepal government standards<br>Address: Cancer Hospital Road, Bharatpur-7, Chitwan</span></p>
 
-            <p>
-                <strong>विमल फार्मेसी</strong>मा, हामी हाम्रा आदरणीय ग्राहकहरूलाई नेपाल सरकारको मापदण्ड अनुसार को स्वास्थ्य सामाग्री र औषधीहरू 
-                प्रदान गर्न प्रतिबद्ध छौं। भरतपुर-७, नेपालको मुटुमा अवस्थित हाम्रो फार्मेसी, भरपर्दो र सुलभ स्वास्थ्य सेवाका लागि 
-                समुदायमा एक विश्वसनीय नाम बनेको छ।
-            </p>
-
-            <h3>हाम्रो उद्देश्य (Mission)</h3>
-            <p>
-                गुणस्तरीय नेपाल सरकारको मापदण्ड अनुसार को औषधीहरू को पहुँच पुर्‍याउँदै स्वस्थ र खुसी समुदाय निर्माण गर्नु।
-            </p>
-            
-            <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo1.jpg" alt="Pharmacy Interior" class="inserted-photo">
-
-            <hr>
-
-            <h4> चिकित्साका दुई पक्षहरू</h4>
-            <p>
-                आज म चिकित्साको गहिरो सरलता र एकै साथ देखिने जटिलताको बारेमा सोच्दै छु। जब हामी औषधी खान्छौं, 
-                हामी प्रायः यसले तय गर्ने रसायनिक यात्राको बारेमा मात्र सोच्छौं, तर औषधीको वास्तविक प्रभावकारिता सधैं दोहोरो हुन्छ—जुन 
-                जीव रसायन (Biochemistry) र विश्वास (Belief) बीचको सहकार्य हो।
-            </p>
-
-            <h3>हाम्रा मूल्य र मान्यताहरू</h3>
-            <div style="display: flex; gap: 15px; align-items: flex-start;">
-                <ul>
-                    <li><strong>गुणस्तर:</strong> हामी सुनिश्चित गर्छौं कि हामीले प्रदान गर्ने हरेक औषधीहरूले नेपाल सरकारको  मापदण्ड पूरा गर्दछ।</li>
-                    <li><strong>पहुँच:</strong> हाम्रो पसल र अनलाइन सेवाहरू मार्फत हामी सबैका लागि स्वास्थ्य सेवा सुलभ बनाउँछौं।</li>
-                </ul>
-                <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo1.jpg" style="width: 120px; height: auto; border-radius: 5px; border: 1px solid #ccc;" alt="Small icon">
-            </div>
-            
-        </section>
-
-        <aside class="sidebar-column">
-            
-            <div style="margin-bottom: 20px;">
-                 <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo2.jpg" alt="Featured Product" class="inserted-photo">
-            </div>
-
-            <div class="search-widget">
-                <h3>द्रुत खोज (Quick Search)</h3>
-                <p style="font-size: 14px; color: #666;">हाम्रो डाटाबेसमा औषधी खोज्नुहोस्</p>
-                
-                <input type="text" placeholder="औषधीको नाम लेख्नुहोस्...">
-                <button onclick="window.location.href='search.html'">खोज्नुहोस् (Search)</button>
-            </div>
-            
-            <div class="search-widget" style="margin-top: 20px;">
-                <h3>सम्पर्क (Contact)</h3>
-                <p>📞 +९७७-५६-५९३२८८</p>
-                <p>📍 भरतपुर-७, नेपाल</p>
-                
-                 <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo1.jpg" alt="Contact Us" style="width:100%; margin-top:10px; border-radius:4px;">
-            </div>
-        </aside>
-
-    </div>
-
-    <footer style="background-color: #145A32; color: white; padding: 40px 20px; font-family: 'Kalimati', sans-serif; margin-top: 50px;">
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
-
-            <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-                <h3 style="border-bottom: 2px solid #ffffff; display: inline-block; padding-bottom: 5px;">सम्पर्क गर्नुहोस्</h3>
-                <p style="font-size: 18px; font-weight: bold;">विमल फार्मेसी</p>
-                <p>📍 भरतपुर-७, नेपाल</p>
-                <p>📞 +९७७-५६-५९३२८८ </p>
-               <p> Whatsup sms only :९८५५०३०६०३</p>
-                <p>✉️ Email: bimal.lamichhane@gmail.com</p>
-            </div>
-
-            <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-                <h3 style="border-bottom: 2px solid #ffffff; display: inline-block; padding-bottom: 5px;">महत्वपूर्ण लिंकहरू</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 10px;"><a href="index.html" style="color: #e8f5e9; text-decoration: none;">गृहपृष्ठ</a></li>
-                    <li style="margin-bottom: 10px;"><a href="about.html" style="color: #e8f5e9; text-decoration: none;">हाम्रो बारेमा</a></li>
-                    <li style="margin-bottom: 10px;"><a href="products.html" style="color: #e8f5e9; text-decoration: none;">सेवाहरू</a></li>
-                    <li style="margin-bottom: 10px;"><a href="contact.html" style="color: #e8f5e9; text-decoration: none;">सम्पर्क</a></li>
-                </ul>
-            </div>
-
-            <div style="flex: 1; min-width: 250px; margin-bottom: 20px; text-align: center;">
-                <h3 style="border-bottom: 2px solid #ffffff; display: inline-block; padding-bottom: 5px;"></h3>
-                <p style="font-size: 14px; color: #e8f5e9;"></p>
-                
-                <div style="background: white; padding: 8px; display: inline-block; border-radius: 5px;">
-                    <img src="https://komarev.com/ghpvc/?username=juction4love-bimalpharmacy&label=Visitors&color=0f9d58&style=flat" alt="Real Visitor Counter">
-                </div>
-            </div>
-
+        <div class="search-widget" data-aos="zoom-in" data-aos-delay="600">
+            <h3><span class="lang-ne">द्रुत खोज</span><span class="lang-en">Quick Search</span></h3>
+            <input type="text" placeholder="औषधीको नाम लेख्नुहोस्...">
+            <button onclick="window.location.href='search.html'"><span class="lang-ne">खोज्नुहोस्</span><span class="lang-en">Search</span></button>
         </div>
 
-        <div style="text-align: center; border-top: 1px solid #4da674; margin-top: 20px; padding-top: 20px; font-size: 14px;">
-            &copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।
+        <div data-aos="zoom-in" data-aos-delay="800">
+            <a href="tel:+9779855030603" class="btn btn-call"><i class="fas fa-phone"></i> <span class="lang-ne">कल गर्नुहोस् (९८५५०३०६०३)</span><span class="lang-en">Call (9855030603)</span></a>
+            <a href="https://wa.me/9779855030603" class="btn btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="tel:056593288" class="btn btn-call"><i class="fas fa-phone"></i> <span class="lang-ne">ल्यान्डलाइन (०५६-५९३२८८)</span><span class="lang-en">Landline (056-593288)</span></a>
         </div>
+    </section>
+
+    <section data-aos="fade-up">
+        <h2><span class="lang-ne">हाम्रो बारेमा</span><span class="lang-en">About Us</span></h2>
+        <p><span class="lang-ne"><strong>विमल फार्मेसी</strong>मा, हामी हाम्रा आदरणीय ग्राहकहरूलाई नेपाल सरकारको मापदण्ड अनुसार को स्वास्थ्य सामाग्री र औषधीहरू प्रदान गर्न प्रतिबद्ध छौं। भरतपुर-७, चितवनको मुटुमा अवस्थित हाम्रो फार्मेसी, भरपर्दो र सुलभ स्वास्थ्य सेवाका लागि समुदायमा एक विश्वसनीय नाम बनेको छ।</span><span class="lang-en">At <strong>Bimal Pharmacy</strong>, we are committed to providing quality health supplies and medicines according to Nepal government standards. Located in the heart of Bharatpur-7, Chitwan, our pharmacy has become a trusted name in the community for reliable and accessible healthcare.</span></p>
+
+        <h3><span class="lang-ne">हाम्रो उद्देश्य</span><span class="lang-en">Our Mission</span></h3>
+        <p><span class="lang-ne">गुणस्तरीय औषधीहरूको पहुँच पुर्‍याउँदै स्वस्थ र खुसी समुदाय निर्माण गर्नु।</span><span class="lang-en">To build a healthy and happy community by providing access to quality medicines.</span></p>
+
+        <h3><span class="lang-ne">चिकित्साका दुई पक्षहरू</span><span class="lang-en">The Two Aspects of Medicine</span></h3>
+        <p><span class="lang-ne">आज म चिकित्साको गहिरो सरलता र एकै साथ देखिने जटिलताको बारेमा सोच्दै छु। जब हामी औषधी खान्छौं, हामी प्रायः यसले तय गर्ने रसायनिक यात्राको बारेमा मात्र सोच्छौं, तर औषधीको वास्तविक प्रभावकारिता सधैं दोहोरो हुन्छ—जुन जीव रसायन (Biochemistry) र विश्वास (Belief) बीचको सहकार्य हो।</span><span class="lang-en">Today, I am reflecting on the profound simplicity and apparent complexity of medicine. When we take medicine, we often think only about its chemical journey, but its true effectiveness is always dual—a collaboration between biochemistry and belief.</span></p>
+
+        <h3><span class="lang-ne">हाम्रा मूल्य र मान्यताहरू</span><span class="lang-en">Our Values</span></h3>
+        <ul style="max-width:800px; margin:auto; text-align:left;">
+            <li><strong><span class="lang-ne">गुणस्तर:</span><span class="lang-en">Quality:</span></strong> <span class="lang-ne">हरेक औषधीहरूले नेपाल सरकारको मापदण्ड पूरा गर्दछ।</span><span class="lang-en">Every medicine meets Nepal government standards.</span></li>
+            <li><strong><span class="lang-ne">पहुँच:</span><span class="lang-en">Accessibility:</span></strong> <span class="lang-ne">हाम्रो पसल र अनलाइन सेवाहरू मार्फत सबैका लागि स्वास्थ्य सेवा सुलभ।</span><span class="lang-en">Health services accessible to all through our store and online presence.</span></li>
+        </ul>
+    </section>
+
+    <section data-aos="fade-up">
+        <h2><span class="lang-ne">हाम्रा सेवाहरू</span><span class="lang-en">Our Services</span></h2>
+        <div class="services">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-prescription-bottle-alt"></i>
+                <h3><span class="lang-ne">गुणस्तरीय औषधी</span><span class="lang-en">Quality Medicines</span></h3>
+                <p><span class="lang-ne">प्रेस्क्रिप्सन तथा सामान्य औषधीहरू उपलब्ध।</span><span class="lang-en">Prescription and general medicines available.</span></p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-heartbeat"></i>
+                <h3><span class="lang-ne">स्वास्थ्य सामग्री</span><span class="lang-en">Health Supplies</span></h3>
+                <p><span class="lang-ne">सप्लिमेन्ट र मेडिकल उपकरणहरू।</span><span class="lang-en">Supplements and medical equipment.</span></p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="500">
+                <i class="fas fa-user-md"></i>
+                <h3><span class="lang-ne">विशेषज्ञ परामर्श</span><span class="lang-en">Expert Consultation</span></h3>
+                <p><span class="lang-ne">अनुभवी फार्मासिस्टबाट निःशुल्क सल्लाह।</span><span class="lang-en">Free advice from experienced pharmacists.</span></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" data-aos="fade-up">
+        <h2><span class="lang-ne">हाम्रो फार्मेसीको झलक</span><span class="lang-en">Glimpses of Our Pharmacy</span></h2>
+        <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo2.jpg" alt="Bimal Pharmacy exterior" data-aos="zoom-in">
+        <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo1.jpg" alt="Bimal Pharmacy interior" data-aos="zoom-in" data-aos-delay="200">
+        <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/heading.png" alt="Medicine shelves" data-aos="zoom-in" data-aos-delay="400">
+    </section>
+
+    <section class="map" data-aos="fade-up">
+        <h2><span class="lang-ne">हाम्रो स्थान</span><span class="lang-en">Our Location</span></h2>
+        <iframe src="https://www.google.com/maps/embed/v1/place?q=Bimal+Pharmacy,+Cancer+Hospital+Road,+Bharatpur-7,+Chitwan,+Nepal&key=AIzaSyD4iE2xVSpkLLOX-E3raDA0B6PBr_v-BjM" allowfullscreen="" loading="lazy"></iframe>
+        <p style="text-align:center; margin-top:1rem;"><span class="lang-ne">क्यान्सर अस्पताल रोड नजिकै – सजिलै पुग्नुहोस्!</span><span class="lang-en">Near Cancer Hospital Road – Easy to reach!</span></p>
+    </section>
+
+    <section data-aos="fade-up">
+        <h2><span class="lang-ne">सम्पर्क गर्नुहोस्</span><span class="lang-en">Contact Us</span></h2>
+        <p style="text-align:center; font-size:1.2rem;">
+            <i class="fas fa-phone-alt"></i> <span class="lang-ne">मोबाइल/WhatsApp:</span><span class="lang-en">Mobile/WhatsApp:</span> <a href="tel:+9779855030603">९८५५०३०६०३</a><br>
+            <i class="fas fa-phone"></i> <span class="lang-ne">ल्यान्डलाइन:</span><span class="lang-en">Landline:</span> <a href="tel:056593288">०५६-५९३२८८</a><br>
+            <i class="fas fa-envelope"></i> Email: <a href="mailto:bimal.lamichhane@gmail.com">bimal.lamichhane@gmail.com</a><br>
+            <i class="fas fa-map-marker-alt"></i> <span class="lang-ne">ठेगाना:</span><span class="lang-en">Address:</span> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन
+        </p>
+    </section>
+
+    <footer>
+        <p><span class="lang-ne">© २०८२ विमल फार्मेसी | सबै अधिकार सुरक्षित | भरतपुर-७, चितवन</span><span class="lang-en">© 2026 Bimal Pharmacy | All Rights Reserved | Bharatpur-7, Chitwan</span><br>
+        <img src="https://komarev.com/ghpvc/?username=juction4love-bimalpharmacy&label=Visitors&color=0f9d58&style=flat" alt="Visitors"></p>
     </footer>
-    </body>
+
+    <!-- Language Switch with Persistence -->
+    <script>
+        function switchLang(lang) {
+            localStorage.setItem('lang', lang);
+            document.querySelectorAll('.lang-ne').forEach(el => el.style.display = lang === 'ne' ? 'block' : 'none');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+            document.documentElement.lang = lang;
+            document.getElementById('btn-ne').classList.toggle('active', lang === 'ne');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        }
+        window.onload = function() {
+            let savedLang = localStorage.getItem('lang') || 'ne';
+            switchLang(savedLang);
+        }
+    </script>
+
+    <!-- AOS Initialization -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+    </script>
+
+</body>
 </html>
