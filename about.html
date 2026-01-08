@@ -3,306 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>विमल फार्मेसी - सूचना</title>
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
-      crossorigin="anonymous"></script>
+    <meta name="description" content="विमल फार्मेसी - बाँकी बक्यौता भुक्तानी सम्बन्धी जरुरी सूचना। Urgent notice regarding outstanding credit payments.">
+    <meta name="keywords" content="विमल फार्मेसी सूचना, बक्यौता भुक्तानी, credit payment notice, Bimal Pharmacy notice">
+
+    <title>जरुरी सूचना / Urgent Notice - विमल फार्मेसी</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Google Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
 
     <style>
-        /* =========================================
-           1. SECURITY STYLES (PREVENT COPY/SAVE)
-           ========================================= */
-        body {
-            -webkit-user-select: none; 
-            -ms-user-select: none; 
-            user-select: none; 
+        :root {
+            --primary: #007bff;
+            --secondary: #28a745;
+            --accent: #17a2b8;
+            --alert: #d32f2f;
+            --bg: #f8f9fa;
         }
-        
-        img {
-            pointer-events: none; 
-            -webkit-user-drag: none; 
-        }
-
-        /* =========================================
-           2. MAIN PAGE STYLES (MATCHING INDEX.HTML)
-           ========================================= */
-        body {
-            font-family: 'Kalimati', 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('background.jpeg'); 
-            background-color: #87CEEB; 
-            background-size: cover;        
-            background-position: center top; 
-            background-attachment: scroll;
-            background-repeat: no-repeat;
-            min-height: 100vh;
-        }
-        
-        header {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('heading.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            border-bottom: 5px solid #4CAF50;
-        }
-
-        header h1 {
-            font-size: 4.5em; 
-            font-weight: 900; 
-            margin: 0;
-            text-shadow: 4px 4px 8px #000000; 
-            letter-spacing: 2px;
-        }
-
-        header p {
-            font-size: 1.5em;
-            margin-top: 10px;
-            text-shadow: 2px 2px 4px #000000;
-        }
-
-        /* --- NAVIGATION --- */
-        nav {
-            text-align: center;
-            background-color: #fff;
-            padding: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav a {
-            text-decoration: none;
-            color: #4CAF50;
-            margin: 0 10px;
-            font-weight: bold;
-            display: inline-block;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* --- LAYOUT CONTAINER --- */
-        .main-container {
-            display: flex; 
-            flex-wrap: wrap; 
-            max-width: 1100px; 
-            margin: 30px auto;
-            gap: 20px; 
-            padding: 0 20px;
-        }
-
-        /* LEFT COLUMN (Main Content) */
-        .content-column {
-            flex: 3; 
-            background: rgba(255, 255, 255, 0.95); 
-            padding: 30px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            min-width: 300px;
-        }
-
-        /* RIGHT COLUMN (Sidebar) */
-        .sidebar-column {
-            flex: 1; 
-            min-width: 250px;
-        }
-
-        /* QUICK SEARCH BOX STYLES */
-        .search-widget {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border-top: 5px solid #4CAF50; 
-            text-align: center;
-        }
-
-        .search-widget button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 16px;
-        }
-        
-        .search-widget button:hover {
-            background-color: #45a049;
-        }
-
-        footer {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 40px;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-        }
-        
+        body { font-family: 'Noto Sans Devanagari', 'Roboto', sans-serif; margin: 0; padding: 0; background: var(--bg); color: #333; line-height: 1.8; }
+        header { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 1.5rem; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; }
+        nav a { color: white; margin: 0 1rem; text-decoration: none; font-weight: 600; }
+        nav a:hover { opacity: 0.8; }
+        .lang-switch button { background: rgba(255,255,255,0.2); color: white; border: 1px solid white; padding: 0.5rem 1.2rem; margin: 0 0.5rem; border-radius: 30px; cursor: pointer; font-weight: bold; }
+        .lang-switch button.active { background: white; color: var(--primary); }
+        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo2.jpg') center/cover no-repeat; color: white; padding: 6rem 2rem; text-align: center; }
+        .notice { background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); max-width: 900px; margin: 2rem auto; border: 3px solid var(--alert); }
+        .notice h2 { color: var(--alert); font-size: 2.5rem; }
+        .qr-code { text-align: center; margin: 2rem 0; }
+        .qr-code img { max-width: 400px; width: 100%; border: 5px solid white; box-shadow: 0 0 20px rgba(0,0,0,0.3); border-radius: 10px; }
+        .alert-box { background: #ffe6e6; padding: 1.5rem; border-left: 6px solid var(--alert); margin: 2rem 0; font-weight: bold; color: var(--alert); }
+        .btn { display: inline-block; background: var(--secondary); color: white; padding: 1rem 2rem; margin: 1rem; border-radius: 50px; text-decoration: none; font-weight: bold; }
+        .btn-call { background: #dc3545; }
+        .btn-wa { background: #25D366; }
+        footer { background: #343a40; color: white; text-align: center; padding: 3rem; }
+        .lang-ne { display: block; }
+        .lang-en { display: none; }
         @media (max-width: 768px) {
-            header h1 { font-size: 2.5em; }
-            .main-container { flex-direction: column; }
+            .notice { padding: 2rem; }
+            .qr-code img { max-width: 300px; }
         }
-
-        /* =========================================
-           3. NOTICE SPECIFIC STYLES
-           ========================================= */
-        .payment-notice {
-            background-color: #fff3f3; /* Reddish background alert */
-            border: 3px solid #d32f2f; /* Thick red border */
-            padding: 25px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .payment-notice h2 {
-            color: #d32f2f;
-            border-bottom: 2px solid #d32f2f;
-            display: inline-block;
-            padding-bottom: 5px;
-            font-size: 2em;
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        .notice-subject {
-            font-weight: bold; 
-            margin-bottom: 20px; 
-            text-decoration: underline; 
-            font-size: 1.1em;
-            color: #333;
-        }
-
-        .notice-text {
-            text-align: justify;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            color: #000;
-        }
-
-        .alert-box {
-            text-align: justify;
-            background-color: #ffe6e6;
-            padding: 15px;
-            border-left: 5px solid red;
-            font-weight: bold;
-            color: #d32f2f;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .qr-image {
-            max-width: 350px; /* Made QR code bigger */
-            width: 100%;
-            border: 5px solid #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-            margin: 20px 0;
-        }
-
     </style>
 </head>
-
-<body oncontextmenu="return false;">
+<body>
 
     <header>
-        <h1>विमल फार्मेसी</h1>
-        <p>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</p>
+        <h1><i class="fas fa-pills"></i> <span class="lang-ne">विमल फार्मेसी</span><span class="lang-en">Bimal Pharmacy</span></h1>
+        <p><span class="lang-ne">तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</span><span class="lang-en">Your Health, Our Priority</span></p>
+        <nav>
+            <a href="index.html"><span class="lang-ne">गृहपृष्ठ</span><span class="lang-en">Home</span></a>
+            <a href="search.html"><span class="lang-ne">खोज्नुहोस्</span><span class="lang-en">Search</span></a>
+            <a href="products.html"><span class="lang-ne">सेवाहरू</span><span class="lang-en">Services</span></a>
+            <a href="about.html"><span class="lang-ne">सूचना</span><span class="lang-en">Notice</span></a>
+            <a href="contact.html"><span class="lang-ne">सम्पर्क</span><span class="lang-en">Contact</span></a>
+        </nav>
+        <div class="lang-switch">
+            <button id="btn-ne" onclick="switchLang('ne')">नेपाली</button>
+            <button id="btn-en" onclick="switchLang('en')">English</button>
+        </div>
     </header>
 
-    <nav>
-        <a href="index.html">गृहपृष्ठ</a>
-        <a href="search.html">खोज्नुहोस्</a>
-        <a href="products.html">सेवाहरू</a>
-        <a href="about.html">सूचना</a>
-        <a href="contact.html">सम्पर्क</a>
-    </nav>
+    <section class="hero" data-aos="fade-down">
+        <h2 data-aos="fade-up"><span class="lang-ne">अत्यन्त जरुरी सूचना</span><span class="lang-en">Urgent Notice</span></h2>
+    </section>
 
-    <div class="main-container">
-        
-        <section class="content-column">
-            
-            <div class="payment-notice">
-                <h2>📢 अत्यन्त जरुरी सूचना (URGENT NOTICE) 📢</h2>
-                
-                <p class="notice-subject">
-                    विषय: बाँकी बक्यौता (Credit) रकम भुक्तानी सम्बन्धमा।
-                </p>
+    <section class="notice" data-aos="fade-up">
+        <h2><span class="lang-ne">📢 अत्यन्त जरुरी सूचना (URGENT NOTICE) 📢</span><span class="lang-en">📢 Urgent Notice Regarding Outstanding Payments 📢</span></h2>
 
-                <p class="notice-text">
-                    नेपाल तथा भारतका समस्त आदरणीय ग्राहक महानुभावहरू,
-                </p>
+        <p class="notice-subject"><span class="lang-ne">विषय: बाँकी बक्यौता (Credit) रकम भुक्तानी सम्बन्धमा।</span><span class="lang-en">Subject: Regarding Outstanding Credit Payments</span></p>
 
-                <p class="notice-text">
-                    विगतमा तपाईंहरूको स्वास्थ्य समस्या र अस्पतालको खर्चले गर्दा परेको आर्थिक संकटलाई बुझेर, 
-                    हामीले <strong>मानवीय धर्म</strong> सम्झी विश्वासका साथ औषधीहरू उधारो (Credit) मा उपलब्ध गराएका थियौं। 
-                    हामीले कसैलाई पनि पैसाको अभावमा औषधी नपाएर फर्कनु नपरोस् भन्ने चाह्यौं।
-                </p>
+        <p><span class="lang-ne">नेपाल तथा भारतका समस्त आदरणीय ग्राहक महानुभावहरू,</span><span class="lang-en">Dear Valued Customers from Nepal and India,</span></p>
 
-                <p class="notice-text">
-                    तर दुःखको कुरा, समस्या टरेपछि र बिरामी निको भएपछि धेरैजसो महानुभावहरूले लामो समय बित्दा पनि 
-                    उक्त रकम भुक्तानी गर्नुभएको छैन। तपाईंहरूको यो बेवास्ता र सम्पर्कविहीन हुने प्रवृत्तिले गर्दा 
-                    हामीलाई फार्मेसी सञ्चालन गर्न र वितरकहरूलाई भुक्तानी गर्न अत्यन्त कठिनाइ भइरहेको छ।
-                </p>
+        <p><span class="lang-ne">विगतमा तपाईंहरूको स्वास्थ्य समस्या र अस्पतालको खर्चले गर्दा परेको आर्थिक संकटलाई बुझेर, हामीले मानवीय धर्म सम्झी विश्वासका साथ औषधीहरू उधारो (Credit) मा उपलब्ध गराएका थियौं। हामीले कसैलाई पनि पैसाको अभावमा औषधी नपाएर फर्कनु नपरोस् भन्ने चाह्यौं।</span><span class="lang-en">In the past, understanding your financial difficulties due to health issues and hospital expenses, we provided medicines on credit with trust and humanitarian consideration. We never wanted anyone to go without medicine due to lack of money.</span></p>
 
-                <div class="alert-box">
-                    अतः यो सूचना प्रकाशित भइसकेपछि, जस-जसको रकम तिर्न बाँकी छ, कृपया आफ्नो नैतिकता र इमान्दारिता देखाई 
-                    तलको QR Code स्क्यान गरी वा सिधा सम्पर्क गरी यथाशिघ्र भुक्तानी गरिदिनुहुन हार्दिक अनुरोध गर्दछौं।
-                </div>
-                
-                <p style="font-weight: bold; margin-bottom: 5px;">तलको QR स्क्यान गरी भुक्तानी गर्नुहोस्:</p>
-                
-                <img src="qr.jpg" alt="Payment QR Code" class="qr-image">
-                
-                <p style="font-weight: bold; margin-top: 10px; font-size: 1.3em; color: #4CAF50;">
-                    ESEWA / FONEPAY / BANK TRANSFER
-                </p>
-                <p style="font-size: 1.2em; color: #333; font-weight: bold; margin-top: 5px;">
-                    सिधा सम्पर्क: +९७७-५६-५९३२८८
-                </p>
-            </div>
+        <p><span class="lang-ne">तर दुःखको कुरा, समस्या टरेपछि र बिरामी निको भएपछि धेरैजसो महानुभावहरूले लामो समय बित्दा पनि उक्त रकम भुक्तानी गर्नुभएको छैन। तपाईंहरूको यो बेवास्ता र सम्पर्कविहीन हुने प्रवृत्तिले गर्दा हामीलाई फार्मेसी सञ्चालन गर्न र वितरकहरूलाई भुक्तानी गर्न अत्यन्त कठिनाइ भइरहेको छ।</span><span class="lang-en">Unfortunately, after recovery, many customers have not settled their dues despite the passage of time. This negligence has made it extremely difficult for us to operate the pharmacy and pay our suppliers.</span></p>
 
-        </section>
+        <div class="alert-box">
+            <span class="lang-ne">अतः यो सूचना प्रकाशित भइसकेपछि, जस-जसको रकम तिर्न बाँकी छ, कृपया आफ्नो नैतिकता र इमान्दारिता देखाई तलको QR Code स्क्यान गरी वा सिधा सम्पर्क गरी यथाशिघ्र भुक्तानी गरिदिनुहुन हार्दिक अनुरोध गर्दछौं।</span><span class="lang-en">Therefore, we kindly request all customers with outstanding balances to please settle your payments as soon as possible by scanning the QR code below or contacting us directly, demonstrating your integrity and responsibility.</span>
+        </div>
 
-        <aside class="sidebar-column">
-            <div class="search-widget">
-                <h3>द्रुत खोज (Quick Search)</h3>
-                <input type="text" placeholder="औषधीको नाम लेख्नुहोस्..." style="width:100%; padding:10px; margin:10px 0; box-sizing: border-box; border:1px solid #ccc; border-radius:4px;">
-                <button onclick="window.location.href='search.html'">खोज्नुहोस् (Search)</button>
-            </div>
-            
-            <div class="search-widget" style="margin-top: 20px;">
-                <h3>सम्पर्क (Contact)</h3>
-                <p>📞 +९७७-५६-५९३२८८</p>
-                <p>📍 भरतपुर-७, नेपाल</p>
-            </div>
-        </aside>
+        <div class="qr-code">
+            <p style="font-weight: bold;"><span class="lang-ne">तलको QR स्क्यान गरी भुक्तानी गर्नुहोस्:</span><span class="lang-en">Scan the QR code below to make payment:</span></p>
+            <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/qr.jpg" alt="Payment QR Code">
+            <p style="font-weight: bold; margin-top: 1rem; color: var(--secondary);">
+                <span class="lang-ne">ESEWA / FONEPAY / BANK TRANSFER</span><span class="lang-en">ESEWA / FONEPAY / BANK TRANSFER</span>
+            </p>
+        </div>
 
-    </div>
+        <div style="text-align: center;">
+            <a href="tel:+97756593288" class="btn btn-call"><i class="fas fa-phone"></i> <span class="lang-ne">सम्पर्क गर्नुहोस् (०५६-५९३२८८)</span><span class="lang-en">Contact (056-593288)</span></a>
+            <a href="https://wa.me/9779855030603" class="btn btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+        <p><span class="lang-ne">© २०८२ विमल फार्मेसी | सबै अधिकार सुरक्षित</span><span class="lang-en">© 2026 Bimal Pharmacy | All Rights Reserved</span></p>
     </footer>
 
+    <!-- Language Switch Script -->
     <script>
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123) { return false; } 
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } 
-            if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) { return false; } 
-            if(e.ctrlKey && e.keyCode == 'J'.charCodeAt(0)) { return false; } 
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } 
-            if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) { return false; } 
+        function switchLang(lang) {
+            localStorage.setItem('lang', lang);
+            document.querySelectorAll('.lang-ne').forEach(el => el.style.display = lang === 'ne' ? 'block' : 'none');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+            document.documentElement.lang = lang;
+            document.getElementById('btn-ne').classList.toggle('active', lang === 'ne');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        }
+        window.onload = function() {
+            let savedLang = localStorage.getItem('lang') || 'ne';
+            switchLang(savedLang);
         }
     </script>
 
+    <!-- AOS Init -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 800, easing: 'ease-in-out', once: true });</script>
+
 </body>
 </html>
-
