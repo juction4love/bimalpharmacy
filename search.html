@@ -3,174 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>औषधि खोज्नुहोस् - बिमल फार्मेसी</title>
-    <meta name="description" content="बिमल फार्मेसीको औषधि खोज प्रणाली। यहाँ तपाईं हाम्रो सम्पूर्ण औषधि सूची खोज्न सक्नुहुन्छ र सिधा WhatsApp वा फोन मार्फत सम्पर्क गर्न सक्नुहुन्छ।">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://bimalpharmacy.com.np/search.html">
-
+    <title>Medicine Search | Bimal Pharmacy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
     <style>
-        :root {
-            --primary: #1b5e20;
-            --accent: #d32f2f;
-            --whatsapp: #25d366;
-            --glass-bg: rgba(255, 255, 255, 0.95);
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            margin: 0;
-            background-image: url('bluesky.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            line-height: 1.6;
-        }
-        .main-content { flex: 1; }
-        .date-banner { background: #fff3cd; color: #856404; text-align: center; padding: 8px; font-size: 0.8rem; font-weight: bold; border-bottom: 1px solid #ffeeba; }
-        header { background: rgba(27,94,32,0.85); color: white; padding: 25px 15px; text-align: center; backdrop-filter: blur(5px); }
-        header h1 { margin: 0; font-size: 2rem; }
-        nav { background: white; display: flex; justify-content: center; gap: 20px; padding: 12px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        nav a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 0.95rem; }
-        nav a.active { border-bottom: 3px solid var(--primary); }
-        .search-container { max-width: 600px; margin: 30px auto; padding: 0 15px; }
-        .search-box { background: white; border-radius: 50px; display: flex; padding: 5px 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 1px solid #eee; }
-        #searchInput { flex: 1; border: none; padding: 12px; outline: none; font-size: 16px; border-radius: 50px; }
-        #searchResult { max-width: 600px; margin: 0 auto 50px; padding: 0 15px; }
-        .med-row { background: var(--glass-bg); margin-bottom: 10px; padding: 18px 20px; border-radius: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); transition: all 0.2s; }
-        .med-row:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .med-name { font-weight: bold; color: #111; flex: 1; text-align: left; }
-        .med-price { font-weight: bold; color: var(--accent); white-space: nowrap; margin-left: 10px; }
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 15px; }
-        .modal-content { background: white; width: 100%; max-width: 400px; border-radius: 20px; padding: 30px; position: relative; text-align: center; animation: pop 0.3s ease; }
-        @keyframes pop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #bbb; }
-        .detail-card { text-align: left; margin-bottom: 20px; }
-        .detail-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; }
-        .detail-label { color: #666; font-size: 0.9rem; }
-        .detail-value { font-weight: bold; color: #000; }
-        .price-hl { color: var(--accent); font-size: 1.5rem; }
-        .btn-group { display: flex; flex-direction: column; gap: 10px; }
-        .btn { display: block; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; color: white; text-align: center; }
-        .btn-call { background: #1a2a1b; }
-        .btn-ask { background: var(--whatsapp); }
-        footer { background: rgba(0,0,0,0.8); color: white; text-align: center; padding: 30px 15px; backdrop-filter: blur(5px); }
+        :root { --primary: #0d9488; --bg: #f8fafc; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); margin: 0; padding: 0; }
+        header { background: white; padding: 1rem 5%; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        
+        .search-box { display: flex; gap: 10px; background: white; padding: 10px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .search-box input { flex: 1; border: none; padding: 15px; font-size: 1rem; outline: none; }
+        
+        #results { margin-top: 20px; }
+        .med-card { background: white; padding: 20px; border-radius: 12px; margin-bottom: 10px; border-left: 5px solid var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .med-name { font-weight: 700; color: #1e293b; font-size: 1.1rem; }
+        .med-details { color: #64748b; font-size: 0.9rem; }
+        .loading { text-align: center; color: var(--primary); padding: 20px; }
     </style>
 </head>
 <body>
-    <div class="main-content">
-        <div class="date-banner">अद्यावधिक गरिएको मिति: <span id="currentDate"></span></div>
-        <header><h1>बिमल फार्मेसी</h1></header>
-        <nav>
-            <a href="index.html">गृहपृष्ठ</a>
-            <a href="search.html" class="active">खोज्नुहोस्</a>
-            <a href="contact.html">सम्पर्क</a>
-        </nav>
 
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="डाटा लोड हुँदैछ..." disabled onkeyup="instantSearch()" autocomplete="off">
-            </div>
-        </div>
+<header>
+    <a href="index.html" style="text-decoration:none; color:var(--primary); font-weight:bold;">← Back to Home</a>
+    <span>Medicine Database</span>
+</header>
 
-        <div id="searchResult"></div>
-
-        <!-- SEO fallback for Google -->
-        <noscript>
-            <div id="seoFallback">
-                <h2>सर्व औषधिहरू (All Medicines)</h2>
-                <ul id="seoList"></ul>
-            </div>
-        </noscript>
+<div class="container">
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Enter medicine name (e.g. Paracetamol)..." onkeyup="filterMedicines()">
     </div>
 
-    <footer>
-        <p><b>© २०२५ बिमल फार्मेसी। All Rights Reserved.</b></p>
-        <p>📍 भरतपुर-७, चितवन | 📞 ९८५५०३०६०३</p>
-    </footer>
+    <div id="status" class="loading">Loading medicine database...</div>
+    <div id="results"></div>
+</div>
 
-    <div class="modal" id="productModal" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div id="modalData" class="detail-card"></div>
-            <div class="btn-group">
-                <a id="askBtn" href="#" target="_blank" class="btn btn-ask">💬 WhatsApp मा सोध्नुहोस्</a>
-                <a href="tel:9855030603" class="btn btn-call">📞 फोन गर्नुहोस्</a>
-            </div>
-        </div>
-    </div>
+<script>
+    let medicineData = [];
 
-    <script>
-        let medicineDb = [];
-        document.getElementById("currentDate").innerText = new Date().toLocaleDateString('ne-NP');
-
-        // Load XLSX and initialize search
-        window.onload = async function() {
-            try {
-                const res = await fetch('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx');
-                const arrayBuffer = await res.arrayBuffer();
-                const workbook = XLSX.read(arrayBuffer, { type: 'array' });
-                medicineDb = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
-
-                document.getElementById("searchInput").disabled = false;
-                document.getElementById("searchInput").placeholder = "औषधिको नाम लेख्नुहोस्...";
-
-                // Build SEO fallback for Google
-                const seoList = document.getElementById("seoList");
-                if(seoList) {
-                    medicineDb.forEach(item => {
-                        const li = document.createElement("li");
-                        li.textContent = `${item.Product || 'Unknown'} - रू. ${item.Rate || '0.00'} - ${item.Form || ''} - ${item.Dosage || ''}`;
-                        seoList.appendChild(li);
-                    });
-                }
-
-            } catch (e) { console.error("Failed to load medicines.xlsx", e); }
-        };
-
-        function instantSearch() {
-            const query = document.getElementById("searchInput").value.toLowerCase();
-            const container = document.getElementById("searchResult");
-            if(query.length < 2){ container.innerHTML = ""; return; }
-
-            const matches = medicineDb.filter(item => Object.values(item).some(v => String(v).toLowerCase().includes(query)));
-            container.innerHTML = "";
-            matches.slice(0, 20).forEach(item => {
-                const name = item.Product || "Unknown";
-                const price = item.Rate || "0.00";
-                const div = document.createElement("div");
-                div.className = "med-row";
-                div.onclick = () => showDetails(item);
-                div.innerHTML = `<span class="med-name">${name}</span><span class="med-price">रू. ${price}</span>`;
-                container.appendChild(div);
-            });
+    // Auto-load Excel from your GitHub
+    async function loadDatabase() {
+        const url = "https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicine.xlsx";
+        try {
+            const response = await fetch(url);
+            const data = await response.arrayBuffer();
+            const workbook = XLSX.read(data, { type: 'array' });
+            const sheet = workbook.Sheets[workbook.SheetNames[0]];
+            medicineData = XLSX.utils.sheet_to_json(sheet);
+            document.getElementById('status').innerText = "Database Ready! Type to search.";
+        } catch (error) {
+            document.getElementById('status').innerText = "Error loading database. Please try again.";
+            console.error(error);
         }
+    }
 
-        function showDetails(item) {
-            const name = item.Product || "Unknown Product";
-            const rate = item.Rate || "0.00";
+    function filterMedicines() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = "";
 
-            let html = `<h2 style="color:var(--primary); margin:0 0 15px 0; border-bottom: 2px solid #eee; padding-bottom:5px;">विवरण</h2>`;
-            html += `<div class="detail-row"><span class="detail-label">Name:</span><span class="detail-value">${name}</span></div>`;
-            html += `<div class="detail-row"><span class="detail-label">Rate:</span><span class="detail-value price-hl">रू. ${rate}</span></div>`;
+        if (query.length < 2) return;
 
-            for(const [key,val] of Object.entries(item)){
-                if(!['product','rate','sn'].includes(key.toLowerCase().trim())){
-                    html += `<div class="detail-row"><span class="detail-label">${key}:</span><span class="detail-value">${val}</span></div>`;
-                }
-            }
+        const filtered = medicineData.filter(item => {
+            return Object.values(item).some(val => String(val).toLowerCase().includes(query));
+        });
 
-            const whatsappMsg = `नमस्ते बिमल फार्मेसी, मलाई यो औषधिको बारेमा सोध्नु थियो: ${name} (Rate: Rs. ${rate})`;
-            document.getElementById("askBtn").href = `https://wa.me/9779855030603?text=${encodeURIComponent(whatsappMsg)}`;
+        filtered.forEach(med => {
+            const card = document.createElement('div');
+            card.className = 'med-card';
+            card.innerHTML = `
+                <div class="med-name">${med.Name || med.Medicine || 'Unknown Medicine'}</div>
+                <div class="med-details">Category: ${med.Category || 'N/A'} | Price: ${med.Price || 'Contact Us'}</div>
+            `;
+            resultsDiv.appendChild(card);
+        });
 
-            document.getElementById("modalData").innerHTML = html;
-            document.getElementById("productModal").style.display = "flex";
-        }
+        if (filtered.length === 0) resultsDiv.innerHTML = "<p>No medicines found.</p>";
+    }
 
-        function closeModal() { document.getElementById("productModal").style.display = "none"; }
-    </script>
+    loadDatabase();
+</script>
+
 </body>
 </html>
