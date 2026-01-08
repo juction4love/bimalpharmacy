@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>औषधी खोज्नुहोस् | विमल फार्मेसी</title>
+    <title>खोज्नुहोस् | विमल फार्मेसी</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
@@ -31,21 +31,24 @@
             background: rgba(255, 255, 255, 0.95); 
             padding: 30px; border-radius: 12px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            min-height: 200px;
         }
 
-        .search-bar-container { text-align: center; margin-bottom: 30px; }
+        .search-bar-container { text-align: center; margin-bottom: 20px; }
         .search-input {
             width: 90%; padding: 12px 25px; font-size: 1rem;
             border: 2px solid #4CAF50; border-radius: 50px;
             outline: none; background: white;
         }
 
-        .med-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; margin-top: 20px; }
+        /* Initial state is hidden */
+        #resultsWrapper { display: none; margin-top: 20px; }
+
+        .med-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; }
         .med-table th, .med-table td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; font-size: 0.9rem; }
         .med-table th { background-color: #4CAF50; color: white; }
         .med-table tr:hover { background-color: #f1f8f1; }
 
-        .status-msg { text-align: center; color: #4CAF50; font-weight: bold; padding: 10px; }
         .error-msg { color: white; background: #d32f2f; padding: 15px; border-radius: 8px; display: none; text-align: center; margin-bottom: 10px; }
         
         footer { background: #4CAF50; color: white; text-align: center; padding: 20px; margin-top: 50px; }
@@ -55,7 +58,7 @@
 
 <header>
     <h1>विमल फार्मेसी</h1>
-    <p>औषधी डाटाबेस खोज प्रणाली</p>
+    <p>औषधी खोज प्रणाली (Medicine Search)</p>
 </header>
 
 <nav>
@@ -71,16 +74,16 @@
         <div id="error" class="error-msg"></div>
 
         <div class="search-bar-container">
-            <input type="text" id="userInput" class="search-input" value="" placeholder="औषधीको नाम यहाँ लेख्नुहोस्..." onkeyup="handleFilter()">
+            <input type="text" id="userInput" class="search-input" value="" placeholder="औषधीको नाम यहाँ लेख्नुहोस् (Type medicine name)..." onkeyup="handleFilter()">
         </div>
 
-        <div id="status" class="status-msg">डाटा लोड हुँदैछ...</div>
-
-        <div style="overflow-x: auto;">
-            <table class="med-table" id="medTable">
-                <thead><tr id="tableHeader"></tr></thead>
-                <tbody id="tableBody"></tbody>
-            </table>
+        <div id="resultsWrapper">
+            <div style="overflow-x: auto;">
+                <table class="med-table" id="medTable">
+                    <thead><tr id="tableHeader"></tr></thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -93,38 +96,27 @@
     let fullDatabase = [];
 
     async function loadMedicines() {
-        // FIXED URL: Added 's' to medicines.xlsx to match your GitHub
         const rawUrl = 'https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx?t=' + new Date().getTime();
-        
-        const statusEl = document.getElementById('status');
         const errorEl = document.getElementById('error');
 
         try {
             const resp = await fetch(rawUrl);
-            
-            if (!resp.ok) {
-                throw new Error("फाइल फेला परेन। कृपया GitHub मा फाइलको नाम 'medicines.xlsx' भएको निश्चित गर्नुहोस्।");
-            }
+            if (!resp.ok) throw new Error("फाइल फेला परेन।");
             
             const arrayBuffer = await resp.arrayBuffer();
             const workbook = XLSX.read(new Uint8Array(arrayBuffer), {type: 'array'});
-            
             const firstSheetName = workbook.SheetNames[0];
             const worksheet = workbook.Sheets[firstSheetName];
             
             fullDatabase = XLSX.utils.sheet_to_json(worksheet);
             
+            // Only prepare headers if data exists
             if(fullDatabase.length > 0) {
-                statusEl.innerText = "जम्मा औषधी फेला पर्यो: " + fullDatabase.length;
                 renderHeader(fullDatabase[0]);
-                renderRows(fullDatabase);
-            } else {
-                statusEl.innerText = "फाइल खाली छ।";
             }
         } catch (err) {
-            statusEl.style.display = "none";
             errorEl.style.display = "block";
-            errorEl.innerHTML = "<strong>Error:</strong> " + err.message;
+            errorEl.innerHTML = "<strong>Error:</strong> डाटा लोड गर्न सकिएन।";
             console.error("Fetch error:", err);
         }
     }
@@ -145,12 +137,29 @@
 
     function handleFilter() {
         const query = document.getElementById('userInput').value.toLowerCase();
+        const resultsWrapper = document.getElementById('resultsWrapper');
+
+        // Logic: Only show if 2 or more letters are typed
+        if (query.length < 2) {
+            resultsWrapper.style.display = "none";
+            return;
+        }
+
         const filtered = fullDatabase.filter(item => {
             return Object.values(item).some(val => 
                 String(val).toLowerCase().includes(query)
             );
         });
-        renderRows(filtered);
+
+        // Logic: Show at least 20 medicine (Limit to 20 results)
+        const topResults = filtered.slice(0, 20);
+
+        if (topResults.length > 0) {
+            resultsWrapper.style.display = "block";
+            renderRows(topResults);
+        } else {
+            resultsWrapper.style.display = "none";
+        }
     }
 
     window.onload = loadMedicines;
