@@ -3,132 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="विमल फार्मेसी - बाँकी बक्यौता भुक्तानी सम्बन्धी जरुरी सूचना। Urgent notice regarding outstanding credit payments.">
-    <meta name="keywords" content="विमल फार्मेसी सूचना, बक्यौता भुक्तानी, credit payment notice, Bimal Pharmacy notice">
-
-    <title>जरुरी सूचना / Urgent Notice - विमल फार्मेसी</title>
-
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
+    <title>Urgent Notice | Bimal Pharmacy</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- Google Ads -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
 
     <style>
         :root {
-            --primary: #007bff;
-            --secondary: #28a745;
-            --accent: #17a2b8;
-            --alert: #d32f2f;
-            --bg: #f8f9fa;
+            --primary: #0d9488;
+            --urgent: #e11d48; /* Urgent Red */
+            --bg-light: #fff5f5; /* Light Red tint for warning */
+            --surface: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
         }
-        body { font-family: 'Noto Sans Devanagari', 'Roboto', sans-serif; margin: 0; padding: 0; background: var(--bg); color: #333; line-height: 1.8; }
-        header { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 1.5rem; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; }
-        nav a { color: white; margin: 0 1rem; text-decoration: none; font-weight: 600; }
-        nav a:hover { opacity: 0.8; }
-        .lang-switch button { background: rgba(255,255,255,0.2); color: white; border: 1px solid white; padding: 0.5rem 1.2rem; margin: 0 0.5rem; border-radius: 30px; cursor: pointer; font-weight: bold; }
-        .lang-switch button.active { background: white; color: var(--primary); }
-        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo2.jpg') center/cover no-repeat; color: white; padding: 6rem 2rem; text-align: center; }
-        .notice { background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); max-width: 900px; margin: 2rem auto; border: 3px solid var(--alert); }
-        .notice h2 { color: var(--alert); font-size: 2.5rem; }
-        .qr-code { text-align: center; margin: 2rem 0; }
-        .qr-code img { max-width: 400px; width: 100%; border: 5px solid white; box-shadow: 0 0 20px rgba(0,0,0,0.3); border-radius: 10px; }
-        .alert-box { background: #ffe6e6; padding: 1.5rem; border-left: 6px solid var(--alert); margin: 2rem 0; font-weight: bold; color: var(--alert); }
-        .btn { display: inline-block; background: var(--secondary); color: white; padding: 1rem 2rem; margin: 1rem; border-radius: 50px; text-decoration: none; font-weight: bold; }
-        .btn-call { background: #dc3545; }
-        .btn-wa { background: #25D366; }
-        footer { background: #343a40; color: white; text-align: center; padding: 3rem; }
-        .lang-ne { display: block; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif; background: #fdfdfd; color: var(--text-main); line-height: 1.8; }
+
+        /* Header Navigation (Matches Home Page) */
+        header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo span { font-size: 1.4rem; font-weight: 700; color: var(--primary); }
+        
+        nav ul { display: flex; list-style: none; gap: 1.5rem; }
+        nav a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: var(--primary); }
+
+        .lang-btn { background: var(--primary); color: white; border: none; padding: 6px 14px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-weight: 700; }
+
+        /* Notice Content */
+        .notice-container { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+        
+        .notice-card {
+            background: var(--surface);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            border-top: 8px solid var(--urgent);
+            position: relative;
+        }
+
+        .notice-card h1 { color: var(--urgent); font-size: 2.2rem; text-align: center; margin-bottom: 30px; }
+        
+        .alert-box {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid var(--urgent);
+            margin: 30px 0;
+            color: #991b1b;
+            font-weight: 600;
+        }
+
+        .qr-section {
+            text-align: center;
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        .qr-section img { 
+            max-width: 350px; 
+            width: 100%; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            border: 8px solid white;
+        }
+
+        .contact-btns { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
+        .btn { padding: 14px 30px; border-radius: 12px; text-decoration: none; font-weight: 700; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
+        .btn-call { background: var(--urgent); color: white; }
+        .btn-wa { background: #25D366; color: white; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        footer { background: #0f172a; color: white; padding: 40px 5%; text-align: center; margin-top: 100px; border-radius: 50px 50px 0 0; }
+        
         .lang-en { display: none; }
+
         @media (max-width: 768px) {
-            .notice { padding: 2rem; }
-            .qr-code img { max-width: 300px; }
+            .notice-card { padding: 30px 20px; }
+            header { flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1><i class="fas fa-pills"></i> <span class="lang-ne">विमल फार्मेसी</span><span class="lang-en">Bimal Pharmacy</span></h1>
-        <p><span class="lang-ne">तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</span><span class="lang-en">Your Health, Our Priority</span></p>
-        <nav>
-            <a href="index.html"><span class="lang-ne">गृहपृष्ठ</span><span class="lang-en">Home</span></a>
-            <a href="search.html"><span class="lang-ne">खोज्नुहोस्</span><span class="lang-en">Search</span></a>
-            <a href="products.html"><span class="lang-ne">सेवाहरू</span><span class="lang-en">Services</span></a>
-            <a href="about.html"><span class="lang-ne">सूचना</span><span class="lang-en">Notice</span></a>
-            <a href="contact.html"><span class="lang-ne">सम्पर्क</span><span class="lang-en">Contact</span></a>
-        </nav>
-        <div class="lang-switch">
-            <button id="btn-ne" onclick="switchLang('ne')">नेपाली</button>
-            <button id="btn-en" onclick="switchLang('en')">English</button>
-        </div>
-    </header>
+<header>
+    <a href="index.html" class="logo">
+        <span class="lang-ne">विमल फार्मेसी</span>
+        <span class="lang-en">Bimal Pharmacy</span>
+    </a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="about.html" style="color:var(--urgent)">Notice</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <button class="lang-btn" onclick="toggleLang()">EN / NE</button>
+</header>
 
-    <section class="hero" data-aos="fade-down">
-        <h2 data-aos="fade-up"><span class="lang-ne">अत्यन्त जरुरी सूचना</span><span class="lang-en">Urgent Notice</span></h2>
-    </section>
+<div class="notice-container">
+    <div class="notice-card" data-aos="fade-up">
+        <h1>
+            <span class="lang-ne">📢 अत्यन्त जरुरी सूचना</span>
+            <span class="lang-en">📢 Urgent Notice</span>
+        </h1>
 
-    <section class="notice" data-aos="fade-up">
-        <h2><span class="lang-ne">📢 अत्यन्त जरुरी सूचना (URGENT NOTICE) 📢</span><span class="lang-en">📢 Urgent Notice Regarding Outstanding Payments 📢</span></h2>
+        <p style="font-weight: 700; color: var(--text-muted); margin-bottom: 20px;">
+            <span class="lang-ne">विषय: बाँकी बक्यौता (Credit) रकम भुक्तानी सम्बन्धमा।</span>
+            <span class="lang-en">Subject: Regarding Outstanding Credit Payments.</span>
+        </p>
 
-        <p class="notice-subject"><span class="lang-ne">विषय: बाँकी बक्यौता (Credit) रकम भुक्तानी सम्बन्धमा।</span><span class="lang-en">Subject: Regarding Outstanding Credit Payments</span></p>
-
-        <p><span class="lang-ne">नेपाल तथा भारतका समस्त आदरणीय ग्राहक महानुभावहरू,</span><span class="lang-en">Dear Valued Customers from Nepal and India,</span></p>
-
-        <p><span class="lang-ne">विगतमा तपाईंहरूको स्वास्थ्य समस्या र अस्पतालको खर्चले गर्दा परेको आर्थिक संकटलाई बुझेर, हामीले मानवीय धर्म सम्झी विश्वासका साथ औषधीहरू उधारो (Credit) मा उपलब्ध गराएका थियौं। हामीले कसैलाई पनि पैसाको अभावमा औषधी नपाएर फर्कनु नपरोस् भन्ने चाह्यौं।</span><span class="lang-en">In the past, understanding your financial difficulties due to health issues and hospital expenses, we provided medicines on credit with trust and humanitarian consideration. We never wanted anyone to go without medicine due to lack of money.</span></p>
-
-        <p><span class="lang-ne">तर दुःखको कुरा, समस्या टरेपछि र बिरामी निको भएपछि धेरैजसो महानुभावहरूले लामो समय बित्दा पनि उक्त रकम भुक्तानी गर्नुभएको छैन। तपाईंहरूको यो बेवास्ता र सम्पर्कविहीन हुने प्रवृत्तिले गर्दा हामीलाई फार्मेसी सञ्चालन गर्न र वितरकहरूलाई भुक्तानी गर्न अत्यन्त कठिनाइ भइरहेको छ।</span><span class="lang-en">Unfortunately, after recovery, many customers have not settled their dues despite the passage of time. This negligence has made it extremely difficult for us to operate the pharmacy and pay our suppliers.</span></p>
+        <p>
+            <span class="lang-ne">आदरणीय ग्राहक महानुभावहरू, हामीले मानवीय नाताले विश्वासका साथ औषधीहरू उधारो (Credit) मा उपलब्ध गराएका थियौं। तर दुःखको कुरा, बिरामी निको भएपछि धेरैले रकम भुक्तानी गर्नुभएको छैन। यसले गर्दा हामीलाई फार्मेसी सञ्चालन गर्न गाह्रो भइरहेको छ।</span>
+            <span class="lang-en">Dear Valued Customers, we provided medicines on credit with trust during your difficult times. Unfortunately, many have not settled their dues after recovery, making it hard for us to operate.</span>
+        </p>
 
         <div class="alert-box">
-            <span class="lang-ne">अतः यो सूचना प्रकाशित भइसकेपछि, जस-जसको रकम तिर्न बाँकी छ, कृपया आफ्नो नैतिकता र इमान्दारिता देखाई तलको QR Code स्क्यान गरी वा सिधा सम्पर्क गरी यथाशिघ्र भुक्तानी गरिदिनुहुन हार्दिक अनुरोध गर्दछौं।</span><span class="lang-en">Therefore, we kindly request all customers with outstanding balances to please settle your payments as soon as possible by scanning the QR code below or contacting us directly, demonstrating your integrity and responsibility.</span>
+            <span class="lang-ne">कृपया आफ्नो नैतिकता र इमान्दारिता देखाई तलको QR Code स्क्यान गरी यथाशिघ्र भुक्तानी गरिदिनुहुन हार्दिक अनुरोध गर्दछौं।</span>
+            <span class="lang-en">Please demonstrate your integrity and settle your outstanding payments immediately by scanning the QR code below.</span>
         </div>
 
-        <div class="qr-code">
-            <p style="font-weight: bold;"><span class="lang-ne">तलको QR स्क्यान गरी भुक्तानी गर्नुहोस्:</span><span class="lang-en">Scan the QR code below to make payment:</span></p>
-            <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/qr.jpg" alt="Payment QR Code">
-            <p style="font-weight: bold; margin-top: 1rem; color: var(--secondary);">
-                <span class="lang-ne">ESEWA / FONEPAY / BANK TRANSFER</span><span class="lang-en">ESEWA / FONEPAY / BANK TRANSFER</span>
-            </p>
+        <div class="qr-section">
+            <h3 style="margin-bottom: 20px; color: var(--primary);">Scan to Pay (Fonepay/Esewa)</h3>
+            <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/qr.jpg" alt="Payment QR">
         </div>
 
-        <div style="text-align: center;">
-            <a href="tel:+97756593288" class="btn btn-call"><i class="fas fa-phone"></i> <span class="lang-ne">सम्पर्क गर्नुहोस् (०५६-५९३२८८)</span><span class="lang-en">Contact (056-593288)</span></a>
+        <div class="contact-btns">
+            <a href="tel:056593288" class="btn btn-call"><i class="fas fa-phone"></i> 056-593288</a>
             <a href="https://wa.me/9779855030603" class="btn btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
-    </section>
+    </div>
+</div>
 
-    <footer>
-        <p><span class="lang-ne">© २०८२ विमल फार्मेसी | सबै अधिकार सुरक्षित</span><span class="lang-en">© 2026 Bimal Pharmacy | All Rights Reserved</span></p>
-    </footer>
+<footer>
+    <p>© 2026 Bimal Pharmacy | Bharatpur-7, Chitwan</p>
+</footer>
 
-    <!-- Language Switch Script -->
-    <script>
-        function switchLang(lang) {
-            localStorage.setItem('lang', lang);
-            document.querySelectorAll('.lang-ne').forEach(el => el.style.display = lang === 'ne' ? 'block' : 'none');
-            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
-            document.documentElement.lang = lang;
-            document.getElementById('btn-ne').classList.toggle('active', lang === 'ne');
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-        }
-        window.onload = function() {
-            let savedLang = localStorage.getItem('lang') || 'ne';
-            switchLang(savedLang);
-        }
-    </script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800 });
 
-    <!-- AOS Init -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 800, easing: 'ease-in-out', once: true });</script>
-
+    function toggleLang() {
+        const currentLang = document.documentElement.lang;
+        const newLang = currentLang === 'ne' ? 'en' : 'ne';
+        document.documentElement.lang = newLang;
+        
+        document.querySelectorAll('.lang-ne').forEach(el => el.style.display = newLang === 'ne' ? 'block' : 'none');
+        document.querySelectorAll('.lang-en').forEach(el => el.style.display = newLang === 'en' ? 'block' : 'none');
+    }
+</script>
 </body>
 </html>
