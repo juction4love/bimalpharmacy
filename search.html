@@ -3,88 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicine Search | Bimal Pharmacy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>औषधी खोज्नुहोस् - विमल फार्मेसी</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-
     <style>
-        :root { --primary: #0d9488; --bg: #f8fafc; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); margin: 0; padding: 0; }
-        header { background: white; padding: 1rem 5%; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-        
-        .search-box { display: flex; gap: 10px; background: white; padding: 10px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .search-box input { flex: 1; border: none; padding: 15px; font-size: 1rem; outline: none; }
-        
-        #results { margin-top: 20px; }
-        .med-card { background: white; padding: 20px; border-radius: 12px; margin-bottom: 10px; border-left: 5px solid var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .med-name { font-weight: 700; color: #1e293b; font-size: 1.1rem; }
-        .med-details { color: #64748b; font-size: 0.9rem; }
-        .loading { text-align: center; color: var(--primary); padding: 20px; }
+        /* Shared Styles */
+        body { font-family: 'Arial', sans-serif; margin: 0; background-color: #87CEEB; background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)); }
+        header { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/heading.png'); background-size: cover; color: white; padding: 40px; text-align: center; border-bottom: 5px solid #4CAF50; }
+        nav { text-align: center; background: #fff; padding: 15px; position: sticky; top: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        nav a { text-decoration: none; color: #4CAF50; margin: 0 15px; font-weight: bold; }
+        .main-container { max-width: 1100px; margin: 30px auto; display: flex; gap: 20px; padding: 0 20px; }
+        .content-column { flex: 3; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        input[type="text"] { width: 100%; padding: 12px; margin: 20px 0; border: 1px solid #ddd; border-radius: 4px; }
+        .med-item { padding: 15px; border-bottom: 1px solid #eee; }
+        .med-item:hover { background: #f9f9f9; }
+        footer { background: #4CAF50; color: white; text-align: center; padding: 15px; margin-top: 40px; }
     </style>
 </head>
 <body>
-
-<header>
-    <a href="index.html" style="text-decoration:none; color:var(--primary); font-weight:bold;">← Back to Home</a>
-    <span>Medicine Database</span>
-</header>
-
-<div class="container">
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Enter medicine name (e.g. Paracetamol)..." onkeyup="filterMedicines()">
+    <header><h1>औषधी खोज्नुहोस्</h1></header>
+    <nav>
+        <a href="index.html">गृहपृष्ठ</a>
+        <a href="search.html">खोज्नुहोस्</a>
+        <a href="products.html">सेवाहरू</a>
+        <a href="about.html">सूचना</a>
+        <a href="contact.html">सम्पर्क</a>
+    </nav>
+    <div class="main-container">
+        <section class="content-column">
+            <h2>Search Medicine Database</h2>
+            <input type="text" id="searchInput" placeholder="औषधीको नाम लेख्नुहोस् (e.g. Cetamol)..." onkeyup="searchMed()">
+            <div id="loading" style="color:#4CAF50;">डाटा लोड हुँदैछ... (Loading Database)</div>
+            <div id="results"></div>
+        </section>
     </div>
-
-    <div id="status" class="loading">Loading medicine database...</div>
-    <div id="results"></div>
-</div>
-
-<script>
-    let medicineData = [];
-
-    // Auto-load Excel from your GitHub
-    async function loadDatabase() {
-        const url = "https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicine.xlsx";
-        try {
-            const response = await fetch(url);
-            const data = await response.arrayBuffer();
-            const workbook = XLSX.read(data, { type: 'array' });
-            const sheet = workbook.Sheets[workbook.SheetNames[0]];
-            medicineData = XLSX.utils.sheet_to_json(sheet);
-            document.getElementById('status').innerText = "Database Ready! Type to search.";
-        } catch (error) {
-            document.getElementById('status').innerText = "Error loading database. Please try again.";
-            console.error(error);
+    <script>
+        let medicineList = [];
+        async function loadExcel() {
+            try {
+                const response = await fetch('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicine.xlsx');
+                const data = await response.arrayBuffer();
+                const workbook = XLSX.read(data, { type: 'array' });
+                const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                medicineList = XLSX.utils.sheet_to_json(firstSheet);
+                document.getElementById('loading').style.display = 'none';
+            } catch (e) { document.getElementById('loading').innerText = "Error loading data."; }
         }
-    }
-
-    function filterMedicines() {
-        const query = document.getElementById('searchInput').value.toLowerCase();
-        const resultsDiv = document.getElementById('results');
-        resultsDiv.innerHTML = "";
-
-        if (query.length < 2) return;
-
-        const filtered = medicineData.filter(item => {
-            return Object.values(item).some(val => String(val).toLowerCase().includes(query));
-        });
-
-        filtered.forEach(med => {
-            const card = document.createElement('div');
-            card.className = 'med-card';
-            card.innerHTML = `
-                <div class="med-name">${med.Name || med.Medicine || 'Unknown Medicine'}</div>
-                <div class="med-details">Category: ${med.Category || 'N/A'} | Price: ${med.Price || 'Contact Us'}</div>
-            `;
-            resultsDiv.appendChild(card);
-        });
-
-        if (filtered.length === 0) resultsDiv.innerHTML = "<p>No medicines found.</p>";
-    }
-
-    loadDatabase();
-</script>
-
+        function searchMed() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = "";
+            if(query.length < 2) return;
+            const filtered = medicineList.filter(m => Object.values(m).some(v => String(v).toLowerCase().includes(query)));
+            filtered.forEach(m => {
+                const div = document.createElement('div');
+                div.className = 'med-item';
+                div.innerHTML = `<strong>${m.Name || m.Medicine}</strong> - ${m.Category || ''} <br> <small>Price: ${m.Price || 'N/A'}</small>`;
+                resultsDiv.appendChild(div);
+            });
+        }
+        loadExcel();
+    </script>
 </body>
 </html>
