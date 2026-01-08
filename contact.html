@@ -1,369 +1,219 @@
 <!DOCTYPE html>
 <html lang="ne">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>विमल फार्मेसी - सम्पर्क गर्नुहोस्</title>
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
-      crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        /* =========================================
-           1. SHARED STYLES (EXACTLY SAME AS INDEX.HTML)
-           ========================================= */
+  <title>विमल फार्मेसी | भरतपुर-७, चितवन | सम्पर्क</title>
 
-        /* --- MAIN PAGE BACKGROUND --- */
-        body {
-            font-family: 'Kalimati', 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            
-            /* Background Image with White Overlay */
-            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('background.jpeg'); 
-            background-color: #87CEEB; 
-            background-size: cover;        
-            background-position: center top; 
-            background-attachment: scroll;
-            background-repeat: no-repeat;
-            min-height: 100vh;
-        }
-        
-        /* --- HEADER STYLES --- */
-        header {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('heading.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            border-bottom: 5px solid #4CAF50;
-        }
+  <!-- SEO -->
+  <meta name="description" content="विमल फार्मेसी, भरतपुर-७ चितवन। सबै प्रकारका औषधी, स्वास्थ्य परामर्श तथा २४ घण्टा आकस्मिक सेवा।">
+  <meta name="keywords" content="Bimal Pharmacy, Bharatpur Pharmacy, Chitwan Pharmacy, Nepal Medicine Store">
 
-        header h1 {
-            font-size: 4.5em; 
-            font-weight: 900; 
-            margin: 0;
-            text-shadow: 4px 4px 8px #000000; 
-            letter-spacing: 2px;
-        }
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="PASTE_GOOGLE_VERIFICATION_CODE_HERE">
 
-        header p {
-            font-size: 1.5em;
-            margin-top: 10px;
-            text-shadow: 2px 2px 4px #000000;
-        }
+  <!-- Open Graph -->
+  <meta property="og:title" content="विमल फार्मेसी | भरतपुर-७, चितवन">
+  <meta property="og:description" content="तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ne_NP">
 
-        /* --- NAVIGATION --- */
-        nav {
-            text-align: center;
-            background-color: #fff;
-            padding: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav a {
-            text-decoration: none;
-            color: #4CAF50;
-            margin: 0 10px;
-            font-weight: bold;
-            display: inline-block;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
+    crossorigin="anonymous"></script>
 
-        /* --- LAYOUT CONTAINER --- */
-        .main-container {
-            display: flex; 
-            flex-wrap: wrap; 
-            max-width: 1100px; 
-            margin: 30px auto;
-            gap: 20px; 
-            padding: 0 20px;
-        }
+  <style>
+    body {
+      font-family: 'Kalimati', Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)),
+      url('background.jpeg') center/cover no-repeat;
+    }
 
-        /* LEFT COLUMN (Main Content) */
-        .content-column {
-            flex: 3; 
-            background: rgba(255, 255, 255, 0.95); 
-            padding: 30px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            min-width: 300px;
-        }
+    header {
+      background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+      url('heading.png') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 70px 20px;
+      border-bottom: 5px solid #4CAF50;
+    }
 
-        .content-column h2 {
-            color: #4CAF50;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
+    header h1 {
+      font-size: 3.5em;
+      margin: 0;
+      text-shadow: 3px 3px 6px #000;
+    }
 
-        /* RIGHT COLUMN (Sidebar) */
-        .sidebar-column {
-            flex: 1; 
-            min-width: 250px;
-        }
+    nav {
+      background: #fff;
+      text-align: center;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    }
 
-        /* QUICK SEARCH BOX STYLES */
-        .search-widget {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border-top: 5px solid #4CAF50; 
-            text-align: center;
-        }
+    nav a {
+      color: #4CAF50;
+      font-weight: bold;
+      margin: 0 10px;
+      text-decoration: none;
+    }
 
-        .search-widget h3 {
-            margin-top: 0;
-            color: #4CAF50;
-        }
+    .main-container {
+      max-width: 1100px;
+      margin: 30px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 0 20px;
+    }
 
-        .search-widget input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+    .content-column {
+      flex: 3;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,.2);
+    }
 
-        .search-widget button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 16px;
-        }
+    h2, h3 {
+      color: #4CAF50;
+      border-bottom: 2px solid #4CAF50;
+      padding-bottom: 8px;
+    }
 
-        .search-widget button:hover {
-            background-color: #45a049;
-        }
+    .info-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
 
-        /* --- FOOTER --- */
-        footer {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 40px;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-        }
+    .info-box {
+      flex: 1;
+      background: #f9f9f9;
+      padding: 20px;
+      border-left: 5px solid #4CAF50;
+    }
 
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.5em; }
-            .main-container { flex-direction: column; }
-        }
+    .map-container {
+      height: 300px;
+      margin: 20px 0;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #ccc;
+    }
 
-        /* =========================================
-           2. CONTACT PAGE SPECIFIC STYLES
-           ========================================= */
-        
-        /* Grid for Address/Hours Boxes */
-        .contact-info-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 30px;
-            margin-top: 20px;
-        }
-        
-        .info-box {
-            flex: 1;
-            min-width: 250px;
-            background: #f9f9f9;
-            padding: 20px;
-            border-left: 5px solid #4CAF50;
-            border-radius: 4px;
-        }
+    iframe { width: 100%; height: 100%; border: 0; }
 
-        .info-box h3 {
-            color: #333; /* Darker text for sub-headers inside boxes */
-            margin-top: 0;
-            border-bottom: 1px solid #ddd;
-        }
+    form input, form textarea, form button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
 
-        .contact-link {
-            color: #4CAF50;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        
-        /* Map Container */
-        .map-container {
-            width: 100%;
-            height: 300px;
-            background-color: #ddd;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid #ccc;
-        }
-        
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+    form button {
+      background: #4CAF50;
+      color: #fff;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-        /* Form Styling */
-        form {
-            display: flex;
-            flex-direction: column;
-            margin-top: 10px;
-        }
+    footer {
+      background: #4CAF50;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
 
-        label {
-            font-weight: bold;
-            margin-top: 10px;
-            color: #333;
-        }
-
-        textarea {
-            resize: vertical; /* Allow user to resize height only */
-        }
-        
-        /* Ensure inputs match the sidebar style but full width */
-        .content-column input, 
-        .content-column textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: inherit;
-            box-sizing: border-box;
-        }
-
-        .content-column button[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 4px;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        .content-column button[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-    </style>
+    @media(max-width:768px){
+      header h1 { font-size: 2.5em; }
+      .main-container { flex-direction: column; }
+    }
+  </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>विमल फार्मेसी</h1>
-        <p>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</p>
-    </header>
+<header>
+  <h1>विमल फार्मेसी</h1>
+  <p>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</p>
+</header>
 
-    <nav>
-        <a href="index.html">गृहपृष्ठ</a>
-        
-        <a href="search.html">खोज्नुहोस्</a>
-        <a href="products.html">हाम्रा सेवाहरू</a>
-        <a href="about.html">सूचना</a>
-        
-        <a href="contact.html">सम्पर्क गर्नुहोस्</a>
-    </nav>
+<nav aria-label="मुख्य नेभिगेसन">
+  <a href="index.html">गृहपृष्ठ</a>
+  <a href="products.html">सेवाहरू</a>
+  <a href="about.html">सूचना</a>
+  <a href="contact.html">सम्पर्क</a>
+</nav>
 
-    <div class="main-container">
-        
-        <section class="content-column">
-            <h2>सम्पर्क तथा स्थान (Contact & Location)</h2>
-            <p>हामी सधैं तपाईंको सेवामा छौं। औषधी, परामर्श वा अन्य स्वास्थ्य सामाग्रीको लागि हामीलाई सिधा सम्पर्क गर्नुहोस् वा पसलमा भेट्नुहोस्।</p>
+<div class="main-container">
+  <section class="content-column">
+    <h2>सम्पर्क जानकारी</h2>
 
-            <div class="contact-info-grid">
-                
-                <div class="info-box">
-                    <h3>📍 ठेगाना (Address)</h3>
-                    <p>भरतपुर-७, चितवन, नेपाल</p>
-                    <p style="font-size: 0.9em; color: #666;">(हामीलाई क्यान्सर अस्पताल नजिकै भेट्न सक्नुहुन्छ)</p>
-                    
-                    <br>
-                    <h3>📞 सम्पर्क (Call Us)</h3>
-                    <p>
-                        <a href="tel:+97756593288" class="contact-link" style="font-size: 1.2em;">+९७७-५६-५९३२८८</a>
-                    </p>
-                    <p>✉️ <a href="mailto:bimal.lamichhane@gmail.com" class="contact-link">bimal.lamichhane@gmail.com</a></p>
-                </div>
+    <div class="info-grid">
+      <div class="info-box">
+        <p><strong>📍 ठेगाना:</strong> भरतपुर-७, चितवन</p>
+        <p><strong>📞 फोन:</strong> <a href="tel:+97756593288">056-593288</a></p>
+        <p><strong>✉️ ईमेल:</strong> bimal.lamichhane@gmail.com</p>
+      </div>
 
-                <div class="info-box">
-                    <h3>🕒 खुल्ने समय (Opening Hours)</h3>
-                    <ul style="padding-left: 20px; margin-top: 5px;">
-                        <li><strong>आइतबार - शुक्रबार:</strong><br> बिहान ७:०० - बेलुका ८:००</li>
-                        <li style="margin-top: 10px;"><strong>शनिबार (Saturday):</strong><br> बिहान ७:०० - दिउँसो २:००</li>
-                    </ul>
-                    <hr>
-                    <p style="color: red; font-weight: bold;">🚑 आकस्मिक सेवा (Emergency):</p>
-                    <p>२४ सै घण्टा सेवाको लागि कृपया फोन गर्नुहोस्।</p>
-                </div>
-            
-            </div>
-
-            <h3 style="color: #4CAF50; border-bottom: 2px solid #4CAF50; padding-bottom: 10px;">हामीलाई यहाँ भेट्नुहोस् (Find Us on Map)</h3>
-            <div class="map-container">
-                <iframe src="https://maps.google.com/maps?q=Bharatpur-7%2C%20Nepal&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-
-            <h3 style="color: #4CAF50; border-bottom: 2px solid #4CAF50; padding-bottom: 10px; margin-top: 30px;">हामीलाई सन्देश पठाउनुहोस् (Send a Message)</h3>
-            <p>केही विशेष औषधी खोज्दै हुनुहुन्छ? तलको फारम भर्नुहोस्।</p>
-            
-            <form action="mailto:bimal.lamichhane@gmail.com" method="post" enctype="text/plain">
-                <label for="name">नाम (Name):</label>
-                <input type="text" id="name" name="name" placeholder="तपाईंको पूरा नाम" required>
-                
-                <label for="phone">फोन नम्बर (Phone):</label>
-                <input type="text" id="phone" name="phone" placeholder="तपाईंको मोबाइल नम्बर" required>
-
-                <label for="email">ईमेल (Email):</label>
-                <input type="email" id="email" name="email" placeholder="तपाईंको ईमेल ठेगाना" required>
-                
-                <label for="message">सन्देश / औषधीको नाम (Message):</label>
-                <textarea id="message" name="message" rows="5" placeholder="चाहिएको औषधी वा जिज्ञासा यहाँ लेख्नुहोस्..." required></textarea>
-                
-                <button type="submit">सन्देश पठाउनुहोस् (Send Message)</button>
-            </form>
-        </section>
-
-        <aside class="sidebar-column">
-            <div class="search-widget">
-                <h3>द्रुत खोज (Quick Search)</h3>
-                <p style="font-size: 14px; color: #666;">हाम्रो डाटाबेसमा औषधी खोज्नुहोस्</p>
-                
-                <input type="text" placeholder="औषधीको नाम लेख्नुहोस्...">
-                <button onclick="window.location.href='search.html'">खोज्नुहोस् (Search)</button>
-            </div>
-            
-            <div class="search-widget" style="margin-top: 20px;">
-                <h3>सम्पर्क (Contact)</h3>
-                <p>📞 +९७७-५६-५९३२८८</p>
-                <p>📍 भरतपुर-७, नेपाल</p>
-            </div>
-        </aside>
-
+      <div class="info-box">
+        <p><strong>🕒 समय:</strong></p>
+        <p>आइत-शुक्र: ७:०० – ८:००</p>
+        <p>शनिबार: ७:०० – २:००</p>
+        <p style="color:red;font-weight:bold;">🚑 २४ घण्टा आकस्मिक सेवा</p>
+      </div>
     </div>
 
-    <footer>
-        <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-    </footer>
+    <h3>स्थान</h3>
+    <div class="map-container">
+      <iframe loading="lazy"
+        src="https://maps.google.com/maps?q=Bharatpur-7%2C%20Nepal&z=14&output=embed"></iframe>
+    </div>
+
+    <h3>सन्देश पठाउनुहोस्</h3>
+
+    <!-- Professional Form -->
+    <form action="https://formspree.io/f/xxxxx" method="POST">
+      <input type="text" name="name" placeholder="नाम" required>
+      <input type="tel" name="phone" placeholder="फोन नम्बर" required>
+      <input type="email" name="email" placeholder="ईमेल" required>
+      <textarea name="message" rows="5" placeholder="सन्देश" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</div>
+
+<footer>
+  <p>
+    © २०२५ विमल फार्मेसी | भरतपुर-७, चितवन  
+    <br>📞 056-593288 | ✉️ bimal.lamichhane@gmail.com
+  </p>
+</footer>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Pharmacy",
+  "name":"विमल फार्मेसी",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"भरतपुर-७",
+    "addressLocality":"चितवन",
+    "addressCountry":"NP"
+  },
+  "telephone":"+97756593288",
+  "email":"bimal.lamichhane@gmail.com"
+}
+</script>
 
 </body>
 </html>
-
