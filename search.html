@@ -6,6 +6,7 @@
     <title>खोज्नुहोस् | विमल फार्मेसी</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         body {
@@ -31,7 +32,6 @@
             background: rgba(255, 255, 255, 0.95); 
             padding: 30px; border-radius: 12px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            min-height: 200px;
         }
 
         .search-bar-container { text-align: center; margin-bottom: 20px; }
@@ -41,16 +41,40 @@
             outline: none; background: white;
         }
 
-        /* Initial state is hidden */
         #resultsWrapper { display: none; margin-top: 20px; }
 
+        /* Clickable Table Rows */
         .med-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; }
         .med-table th, .med-table td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; font-size: 0.9rem; }
         .med-table th { background-color: #4CAF50; color: white; }
-        .med-table tr:hover { background-color: #f1f8f1; }
+        .med-table tr { cursor: pointer; transition: 0.2s; }
+        .med-table tr:hover { background-color: #e8f5e9; }
 
-        .error-msg { color: white; background: #d32f2f; padding: 15px; border-radius: 8px; display: none; text-align: center; margin-bottom: 10px; }
-        
+        /* Modal (Pop-up) Styles */
+        .modal {
+            display: none; position: fixed; z-index: 1001; 
+            left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.6); 
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: white; margin: 10% auto; padding: 30px; 
+            border-radius: 15px; width: 80%; max-width: 500px; 
+            border-top: 10px solid #4CAF50; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .close { color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close:hover { color: #d32f2f; }
+
+        .info-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #ddd; }
+        .info-label { font-weight: bold; color: #4CAF50; }
+
+        .wa-btn {
+            display: block; background: #25D366; color: white; 
+            text-align: center; padding: 15px; border-radius: 8px; 
+            text-decoration: none; font-weight: bold; margin-top: 20px;
+        }
+
         footer { background: #4CAF50; color: white; text-align: center; padding: 20px; margin-top: 50px; }
     </style>
 </head>
@@ -58,7 +82,7 @@
 
 <header>
     <h1>विमल फार्मेसी</h1>
-    <p>औषधी खोज प्रणाली (Medicine Search)</p>
+    <p>औषधी जानकारी सेवा (Medicine Information)</p>
 </header>
 
 <nav>
@@ -71,20 +95,33 @@
 
 <div class="main-container">
     <div class="search-section">
-        <div id="error" class="error-msg"></div>
-
         <div class="search-bar-container">
-            <input type="text" id="userInput" class="search-input" value="" placeholder="औषधीको नाम यहाँ लेख्नुहोस् (Type medicine name)..." onkeyup="handleFilter()">
+            <input type="text" id="userInput" class="search-input" placeholder="औषधीको नाम यहाँ लेख्नुहोस्..." onkeyup="handleFilter()">
         </div>
 
         <div id="resultsWrapper">
+            <p style="font-size: 0.8rem; color: #666; text-align: center;">थप जानकारीको लागि औषधीमा क्लिक गर्नुहोस्।</p>
             <div style="overflow-x: auto;">
-                <table class="med-table" id="medTable">
+                <table class="med-table">
                     <thead><tr id="tableHeader"></tr></thead>
                     <tbody id="tableBody"></tbody>
                 </table>
             </div>
         </div>
+    </div>
+</div>
+
+<div id="detailsModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle" style="color: #4CAF50; margin: 0;">औषधीको विवरण</h2>
+            <span class="close" onclick="closeModal()">&times;</span>
+        </div>
+        <div id="modalBody" style="margin-top: 20px;">
+            </div>
+        <a id="whatsappLink" href="#" class="wa-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp मा सोध्नुहोस्
+        </a>
     </div>
 </div>
 
@@ -97,69 +134,81 @@
 
     async function loadMedicines() {
         const rawUrl = 'https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx?t=' + new Date().getTime();
-        const errorEl = document.getElementById('error');
-
         try {
             const resp = await fetch(rawUrl);
-            if (!resp.ok) throw new Error("फाइल फेला परेन।");
-            
             const arrayBuffer = await resp.arrayBuffer();
             const workbook = XLSX.read(new Uint8Array(arrayBuffer), {type: 'array'});
-            const firstSheetName = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[firstSheetName];
-            
+            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
             fullDatabase = XLSX.utils.sheet_to_json(worksheet);
             
-            // Only prepare headers if data exists
             if(fullDatabase.length > 0) {
                 renderHeader(fullDatabase[0]);
             }
-        } catch (err) {
-            errorEl.style.display = "block";
-            errorEl.innerHTML = "<strong>Error:</strong> डाटा लोड गर्न सकिएन।";
-            console.error("Fetch error:", err);
-        }
+        } catch (err) { console.error("Load Error:", err); }
     }
 
     function renderHeader(sampleRow) {
         const header = document.getElementById('tableHeader');
-        header.innerHTML = Object.keys(sampleRow).map(key => `<th>${key}</th>`).join('');
+        // Only show first 3 columns in the main table to keep it clean
+        const keys = Object.keys(sampleRow).slice(0, 3);
+        header.innerHTML = keys.map(key => `<th>${key}</th>`).join('');
     }
 
     function renderRows(data) {
         const body = document.getElementById('tableBody');
-        body.innerHTML = data.map(row => `
-            <tr>
-                ${Object.values(row).map(val => `<td>${val}</td>`).join('')}
-            </tr>
-        `).join('');
+        body.innerHTML = data.map((row, index) => {
+            // Only use values for the first 3 columns
+            const vals = Object.values(row).slice(0, 3);
+            return `<tr onclick='showDetails(${JSON.stringify(row)})'>
+                ${vals.map(val => `<td>${val}</td>`).join('')}
+            </tr>`;
+        }).join('');
     }
 
     function handleFilter() {
         const query = document.getElementById('userInput').value.toLowerCase();
         const resultsWrapper = document.getElementById('resultsWrapper');
-
-        // Logic: Only show if 2 or more letters are typed
-        if (query.length < 2) {
-            resultsWrapper.style.display = "none";
-            return;
-        }
+        if (query.length < 2) { resultsWrapper.style.display = "none"; return; }
 
         const filtered = fullDatabase.filter(item => {
-            return Object.values(item).some(val => 
-                String(val).toLowerCase().includes(query)
-            );
+            return Object.values(item).some(val => String(val).toLowerCase().includes(query));
         });
 
-        // Logic: Show at least 20 medicine (Limit to 20 results)
         const topResults = filtered.slice(0, 20);
-
         if (topResults.length > 0) {
             resultsWrapper.style.display = "block";
             renderRows(topResults);
-        } else {
-            resultsWrapper.style.display = "none";
-        }
+        } else { resultsWrapper.style.display = "none"; }
+    }
+
+    // Modal Functions
+    function showDetails(medicine) {
+        const modal = document.getElementById('detailsModal');
+        const modalBody = document.getElementById('modalBody');
+        const waLink = document.getElementById('whatsappLink');
+        
+        // Build the info rows dynamically
+        modalBody.innerHTML = Object.entries(medicine).map(([key, value]) => `
+            <div class="info-row">
+                <span class="info-label">${key}:</span>
+                <span>${value}</span>
+            </div>
+        `).join('');
+
+        // Update WhatsApp message
+        const medName = medicine.Name || medicine.Medicine || "this medicine";
+        waLink.href = `https://wa.me/9779855030603?text=I want to know more about ${medName}`;
+
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('detailsModal').style.display = "none";
+    }
+
+    // Close modal if user clicks outside of it
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('detailsModal')) { closeModal(); }
     }
 
     window.onload = loadMedicines;
