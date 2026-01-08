@@ -2,138 +2,160 @@
 <html lang="ne">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>विमल फार्मेसी | भरतपुर-७, चितवन | सम्पर्क</title>
-
-  <!-- SEO -->
-  <meta name="description" content="विमल फार्मेसी, भरतपुर-७ चितवन। सबै प्रकारका औषधी, स्वास्थ्य परामर्श तथा २४ घण्टा आकस्मिक सेवा।">
-  <meta name="keywords" content="Bimal Pharmacy, Bharatpur Pharmacy, Chitwan Pharmacy, Nepal Medicine Store">
-
-  <!-- Google Search Console -->
-  <meta name="google-site-verification" content="PASTE_GOOGLE_VERIFICATION_CODE_HERE">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="विमल फार्मेसी | भरतपुर-७, चितवन">
-  <meta property="og:description" content="तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="ne_NP">
-
-  <!-- Google Ads -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
-    crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>सम्पर्क - विमल फार्मेसी</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    /* --- MAIN PAGE BACKGROUND --- */
     body {
-      font-family: 'Kalimati', Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
       margin: 0;
-      background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)),
-      url('background.jpeg') center/cover no-repeat;
+      padding: 0;
+      /* Background with White Overlay */
+      background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
+                        url('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo2.jpg'); 
+      background-color: #87CEEB; 
+      background-size: cover;        
+      background-position: center top; 
+      background-attachment: fixed;
     }
-
+    
+    /* --- HEADER STYLES --- */
     header {
-      background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
-      url('heading.png') center/cover no-repeat;
-      color: #fff;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/heading.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 60px 20px;
       text-align: center;
-      padding: 70px 20px;
       border-bottom: 5px solid #4CAF50;
     }
 
     header h1 {
-      font-size: 3.5em;
+      font-size: 3.5em; 
+      font-weight: 900; 
       margin: 0;
-      text-shadow: 3px 3px 6px #000;
+      text-shadow: 3px 3px 6px #000; 
     }
 
+    /* --- NAVIGATION --- */
     nav {
-      background: #fff;
       text-align: center;
+      background-color: #fff;
       padding: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 5px rgba(0,0,0,.2);
     }
-
     nav a {
-      color: #4CAF50;
-      font-weight: bold;
-      margin: 0 10px;
       text-decoration: none;
+      color: #4CAF50;
+      margin: 0 15px;
+      font-weight: bold;
     }
+    nav a:hover { text-decoration: underline; }
 
+    /* --- LAYOUT CONTAINER --- */
     .main-container {
-      max-width: 1100px;
+      display: flex; 
+      flex-wrap: wrap; 
+      max-width: 1100px; 
       margin: 30px auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+      gap: 20px; 
       padding: 0 20px;
     }
 
+    /* LEFT COLUMN */
     .content-column {
-      flex: 3;
-      background: #fff;
+      flex: 3; 
+      background: rgba(255, 255, 255, 0.95); 
       padding: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,.2);
     }
 
-    h2, h3 {
+    .content-column h2 {
       color: #4CAF50;
       border-bottom: 2px solid #4CAF50;
-      padding-bottom: 8px;
+      padding-bottom: 10px;
     }
 
+    /* INFO BOXES */
     .info-grid {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
+      margin-bottom: 30px;
+    }
+    .info-box {
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+      border-radius: 4px;
     }
 
-    .info-box {
-      flex: 1;
-      background: #f9f9f9;
+    /* CONTACT FORM */
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    form button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      font-size: 18px;
+    }
+    form button:hover { background-color: #45a049; }
+
+    /* RIGHT COLUMN (Sidebar) */
+    .sidebar-column {
+      flex: 1; 
+      min-width: 250px;
+    }
+    .widget {
+      background: white;
       padding: 20px;
-      border-left: 5px solid #4CAF50;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-top: 5px solid #4CAF50;
+      text-align: center;
+      margin-bottom: 20px;
     }
 
     .map-container {
       height: 300px;
-      margin: 20px 0;
-      border-radius: 6px;
+      margin-top: 20px;
+      border-radius: 8px;
       overflow: hidden;
-      border: 1px solid #ccc;
+      border: 1px solid #ddd;
     }
 
-    iframe { width: 100%; height: 100%; border: 0; }
-
-    form input, form textarea, form button {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      font-size: 16px;
-    }
-
-    form button {
-      background: #4CAF50;
-      color: #fff;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
+    /* --- FOOTER --- */
     footer {
-      background: #4CAF50;
-      color: #fff;
+      background-color: #4CAF50;
+      color: white;
       text-align: center;
-      padding: 15px;
+      padding: 20px;
       margin-top: 40px;
     }
 
-    @media(max-width:768px){
-      header h1 { font-size: 2.5em; }
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.2em; }
       .main-container { flex-direction: column; }
     }
   </style>
@@ -141,79 +163,68 @@
 
 <body>
 
-<header>
-  <h1>विमल फार्मेसी</h1>
-  <p>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</p>
-</header>
+  <header>
+    <h1>विमल फार्मेसी</h1>
+    <p>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</p>
+  </header>
 
-<nav aria-label="मुख्य नेभिगेसन">
-  <a href="index.html">गृहपृष्ठ</a>
-  <a href="products.html">सेवाहरू</a>
-  <a href="about.html">सूचना</a>
-  <a href="contact.html">सम्पर्क</a>
-</nav>
+  <nav>
+    <a href="index.html">गृहपृष्ठ</a>
+    <a href="search.html">खोज्नुहोस्</a>
+    <a href="products.html">सेवाहरू</a>
+    <a href="about.html">सूचना</a>
+    <a href="contact.html">सम्पर्क</a>
+  </nav>
 
-<div class="main-container">
-  <section class="content-column">
-    <h2>सम्पर्क जानकारी</h2>
-
-    <div class="info-grid">
-      <div class="info-box">
-        <p><strong>📍 ठेगाना:</strong> भरतपुर-७, चितवन</p>
-        <p><strong>📞 फोन:</strong> <a href="tel:+97756593288">056-593288</a></p>
-        <p><strong>✉️ ईमेल:</strong> bimal.lamichhane@gmail.com</p>
+  <div class="main-container">
+    
+    <section class="content-column">
+      <h2>सम्पर्क गर्नुहोस् (Contact Us)</h2>
+      
+      <div class="info-grid">
+        <div class="info-box">
+          <p><strong><i class="fas fa-map-marker-alt"></i> ठेगाना:</strong><br>भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन</p>
+        </div>
+        <div class="info-box">
+          <p><strong><i class="fas fa-phone"></i> फोन:</strong><br>०५६-५९३२८८<br>९८५५०३०६०३</p>
+        </div>
       </div>
 
-      <div class="info-box">
-        <p><strong>🕒 समय:</strong></p>
+      <h3>सन्देश पठाउनुहोस् (Send a Message)</h3>
+      <form action="https://formspree.io/f/xxxxx" method="POST">
+        <input type="text" name="name" placeholder="तपाईंको नाम (Full Name)" required>
+        <input type="tel" name="phone" placeholder="फोन नम्बर (Phone Number)" required>
+        <input type="email" name="email" placeholder="ईमेल (Email Address)" required>
+        <textarea name="message" rows="5" placeholder="सन्देश (Your Message)" required></textarea>
+        <button type="submit">सन्देश पठाउनुहोस्</button>
+      </form>
+
+      <h3>हाम्रो स्थान (Our Location)</h3>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.844781682352!2d84.4161113!3d27.6637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDM5JzQ5LjMiTiA4NMKwMjQnNTguMCJF!5e0!3m2!1sne!2snp!4v1625000000000" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <aside class="sidebar-column">
+      <div class="widget">
+        <h3>द्रुत सम्पर्क</h3>
+        <p><i class="fab fa-whatsapp" style="color: #25D366;"></i> WhatsApp: ९८५५०३०६०३</p>
+        <p><i class="fas fa-envelope" style="color: #ea4335;"></i> bimal.lamichhane@gmail.com</p>
+      </div>
+
+      <div class="widget">
+        <h3>खुल्ने समय</h3>
         <p>आइत-शुक्र: ७:०० – ८:००</p>
         <p>शनिबार: ७:०० – २:००</p>
-        <p style="color:red;font-weight:bold;">🚑 २४ घण्टा आकस्मिक सेवा</p>
+        <p style="color:red; font-weight:bold;">२४ घण्टा आकस्मिक सेवा</p>
       </div>
-    </div>
+    </aside>
 
-    <h3>स्थान</h3>
-    <div class="map-container">
-      <iframe loading="lazy"
-        src="https://maps.google.com/maps?q=Bharatpur-7%2C%20Nepal&z=14&output=embed"></iframe>
-    </div>
+  </div>
 
-    <h3>सन्देश पठाउनुहोस्</h3>
-
-    <!-- Professional Form -->
-    <form action="https://formspree.io/f/xxxxx" method="POST">
-      <input type="text" name="name" placeholder="नाम" required>
-      <input type="tel" name="phone" placeholder="फोन नम्बर" required>
-      <input type="email" name="email" placeholder="ईमेल" required>
-      <textarea name="message" rows="5" placeholder="सन्देश" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-</div>
-
-<footer>
-  <p>
-    © २०२५ विमल फार्मेसी | भरतपुर-७, चितवन  
-    <br>📞 056-593288 | ✉️ bimal.lamichhane@gmail.com
-  </p>
-</footer>
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Pharmacy",
-  "name":"विमल फार्मेसी",
-  "address":{
-    "@type":"PostalAddress",
-    "streetAddress":"भरतपुर-७",
-    "addressLocality":"चितवन",
-    "addressCountry":"NP"
-  },
-  "telephone":"+97756593288",
-  "email":"bimal.lamichhane@gmail.com"
-}
-</script>
+  <footer>
+    <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित। | भरतपुर-७, चितवन</p>
+  </footer>
 
 </body>
 </html>
