@@ -5,19 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>जरुरी सूचना - विमल फार्मेसी</title>
     <style>
-        body { font-family: 'Arial', sans-serif; margin: 0; background-color: #f8d7da; line-height: 1.6; }
-        header { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/heading.png'); background-size: cover; color: white; padding: 40px; text-align: center; border-bottom: 5px solid #d32f2f; }
-        nav { text-align: center; background: #fff; padding: 15px; position: sticky; top: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        body { font-family: 'Arial', sans-serif; margin: 0; background-color: #f8d7da; line-height: 1.8; color: #333; }
+        header { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/heading.png'); background-size: cover; color: white; padding: 50px 20px; text-align: center; border-bottom: 5px solid #d32f2f; }
+        nav { text-align: center; background: #fff; padding: 15px; position: sticky; top: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 1000; }
         nav a { text-decoration: none; color: #d32f2f; margin: 0 15px; font-weight: bold; }
-        .main-container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
-        .notice-box { background: white; padding: 40px; border-radius: 8px; border-left: 10px solid #d32f2f; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .qr-section { text-align: center; margin-top: 30px; background: #f9f9f9; padding: 20px; border-radius: 8px; }
-        .qr-section img { max-width: 300px; border: 5px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        footer { background: #333; color: white; text-align: center; padding: 15px; margin-top: 40px; }
+        .main-container { max-width: 950px; margin: 30px auto; padding: 0 20px; }
+        .notice-box { background: white; padding: 45px; border-radius: 12px; border-left: 10px solid #d32f2f; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        .notice-box h2 { color: #d32f2f; text-align: center; margin-bottom: 25px; font-size: 2rem; border-bottom: 2px solid #f8d7da; padding-bottom: 10px; }
+        .content-text { text-align: justify; margin-bottom: 20px; }
+        .highlight-box { background: #fff5f5; border: 1px dashed #d32f2f; padding: 20px; border-radius: 8px; margin: 25px 0; font-weight: bold; text-align: center; color: #b91c1c; }
+        .qr-section { text-align: center; margin-top: 30px; background: #fef2f2; padding: 30px; border-radius: 15px; border: 1px solid #fecaca; }
+        .qr-section img { max-width: 350px; width: 100%; border: 8px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-radius: 10px; }
+        .contact-info { margin-top: 30px; text-align: center; font-size: 1.1rem; border-top: 1px solid #eee; pt: 20px; }
+        footer { background: #333; color: white; text-align: center; padding: 25px; margin-top: 50px; }
+        @media (max-width: 600px) { .notice-box { padding: 25px; } .notice-box h2 { font-size: 1.5rem; } }
     </style>
 </head>
 <body>
-    <header><h1>अत्यन्त जरुरी सूचना</h1></header>
+
+    <header>
+        <h1>अत्यन्त जरुरी सूचना (Urgent Notice)</h1>
+    </header>
+
     <nav>
         <a href="index.html">गृहपृष्ठ</a>
         <a href="search.html">खोज्नुहोस्</a>
@@ -25,16 +34,44 @@
         <a href="about.html">सूचना</a>
         <a href="contact.html">सम्पर्क</a>
     </nav>
+
     <div class="main-container">
         <div class="notice-box">
-            <h2 style="color:#d32f2f;">भुक्तानी सम्बन्धी सूचना</h2>
-            <p>आदरणीय ग्राहकहरू, विश्वासका साथ लगिएको औषधीको बाँकी रकम कृपया समयमै भुक्तानी गरिदिनुहोला। तपाईंको सहयोगले नै हामीले सेवालाई निरन्तरता दिन सक्छौं।</p>
+            <h2>आदरणीय ग्राहक महानुभावहरूमा विनम्र अनुरोध</h2>
+            
+            <div class="content-text">
+                <p><strong>नमस्ते एवं हार्दिक अभिवादन,</strong></p>
+                
+                <p>विमल फार्मेसीको तर्फबाट नेपाल र भारतका हाम्रा समस्त आदरणीय ग्राहक तथा बिरामी महानुभावहरूमा सुस्वास्थ्यको कामना गर्दछौं।</p>
+                
+                <p>हामीलाई थाहा छ, बिरामी हुनु आफैमा एउटा कठिन समय हो। अस्पतालको भागदौड र उपचारको खर्चले परिवारमा कस्तो आर्थिक तनाव उत्पन्न गर्छ भन्ने कुरा हामीले नजिकबाट महसुस गरेका छौं। त्यस्तो संकटको समयमा <strong>"कोही पनि बिरामी औषधीको अभावमा उपचारबाट बञ्चित हुन नपरोस्"</strong> भन्ने पवित्र उद्देश्यका साथ हामीले मानवीय धर्म र आपसी विश्वासलाई सर्वोपरि ठानी तपाईंहरूलाई उधारो (Credit) मा औषधीहरू उपलब्ध गराउँदै आएका थियौं।</p>
+                
+                <p>तर, अहिले एउटा गम्भीर परिस्थिति सिर्जना भएको छ। बिरामी निको भएर घर फर्किसक्नुभएपछि पनि धेरैजसो महानुभावहरूले लामो समयसम्म आफ्नो बाँकी बक्यौता रकम भुक्तानी गर्नुभएको छैन। फार्मेसी सञ्चालन गर्न हामीले नियमित रूपमा नयाँ औषधीहरू खरिद गर्नुपर्ने र वितरकहरूलाई समयमै भुक्तानी दिनुपर्ने हुन्छ।</p>
+
+                <div class="highlight-box">
+                    तपाईंहरूले समयमै भुक्तानी नगरिदिँदा हामीलाई नयाँ औषधी स्टक राख्न र सेवालाई निरन्तरता दिन अत्यन्तै कठिनाइ भइरहेको छ। तपाईंको इमान्दारिताले नै हामीलाई भविष्यमा अन्य गम्भीर बिरामीहरूलाई सहयोग गर्ने हौसला प्रदान गर्नेछ।
+                </div>
+
+                <p>अतः, आफ्नो नैतिकतालाई आत्मसात गर्दै, तपाईंको नाममा रहेको बाँकी बक्यौता रकम <strong>यथाशिघ्र चुक्ता गरिदिनुहुन</strong> हामी विनम्र हार्दिक अनुरोध गर्दछौं। तपाईंको सानो सहयोगले धेरैको ज्यान बचाउने हाम्रो यो सेवा जीवित रहनेछ।</p>
+            </div>
+
             <div class="qr-section">
-                <p><strong>QR Code स्क्यान गरी भुक्तानी गर्नुहोस्:</strong></p>
-                <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/qr.jpg" alt="QR Code">
+                <p style="font-weight: bold; font-size: 1.2rem; color: #d32f2f;">QR Code स्क्यान गरी भुक्तानी गर्नुहोस्:</p>
+                <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/qr.jpg" alt="Payment QR Code">
+                <p style="margin-top: 15px; font-weight: bold; color: #4CAF50;">ESEWA / FONEPAY / BANK TRANSFER</p>
+            </div>
+
+            <div class="contact-info">
+                <p>थप जानकारीका लागि सम्पर्क गर्नुहोस्:</p>
+                <p>📞 <strong>०५६-५९३२८८</strong> | 📱 <strong>९८५५०३०६०३ (WhatsApp)</strong></p>
+                <p>📍 भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन, नेपाल</p>
             </div>
         </div>
     </div>
-    <footer><p>© २०२६ विमल फार्मेसी | All Rights Reserved</p></footer>
+
+    <footer>
+        <p>© २०२६ विमल फार्मेसी | तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता | All Rights Reserved</p>
+    </footer>
+
 </body>
 </html>
