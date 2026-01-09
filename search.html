@@ -1,218 +1,95 @@
 <!DOCTYPE html>
-<html lang="ne">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>खोज्नुहोस् | विमल फार्मेसी</title>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
-                              url('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/photo2.jpg'); 
-            background-size: cover; background-attachment: fixed;
-        }
-        
-        header {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/heading.png') center/cover;
-            color: white; padding: 40px 20px; text-align: center; border-bottom: 5px solid #4CAF50;
-        }
-
-        nav { background: #fff; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        nav a { text-decoration: none; color: #4CAF50; margin: 0 15px; font-weight: bold; }
-
-        .main-container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
-        
-        .search-section { 
-            background: rgba(255, 255, 255, 0.95); 
-            padding: 30px; border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-        }
-
-        .search-bar-container { text-align: center; margin-bottom: 20px; }
-        .search-input {
-            width: 90%; padding: 12px 25px; font-size: 1rem;
-            border: 2px solid #4CAF50; border-radius: 50px;
-            outline: none; background: white;
-        }
-
-        #resultsWrapper { display: none; margin-top: 20px; }
-
-        /* Clickable Table Rows */
-        .med-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; }
-        .med-table th, .med-table td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; font-size: 0.9rem; }
-        .med-table th { background-color: #4CAF50; color: white; }
-        .med-table tr { cursor: pointer; transition: 0.2s; }
-        .med-table tr:hover { background-color: #e8f5e9; }
-
-        /* Modal (Pop-up) Styles */
-        .modal {
-            display: none; position: fixed; z-index: 1001; 
-            left: 0; top: 0; width: 100%; height: 100%; 
-            background-color: rgba(0,0,0,0.6); 
-            backdrop-filter: blur(5px);
-        }
-        .modal-content {
-            background-color: white; margin: 10% auto; padding: 30px; 
-            border-radius: 15px; width: 80%; max-width: 500px; 
-            border-top: 10px solid #4CAF50; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .close { color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; }
-        .close:hover { color: #d32f2f; }
-
-        .info-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #ddd; }
-        .info-label { font-weight: bold; color: #4CAF50; }
-
-        .wa-btn {
-            display: block; background: #25D366; color: white; 
-            text-align: center; padding: 15px; border-radius: 8px; 
-            text-decoration: none; font-weight: bold; margin-top: 20px;
-        }
-
-        footer { background: #4CAF50; color: white; text-align: center; padding: 20px; margin-top: 50px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Medicines & Services | Bimal Pharmacy</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<header>
-    <h1>विमल फार्मेसी</h1>
-    <p>औषधी जानकारी सेवा (Medicine Information)</p>
-</header>
-
-<nav>
-    <a href="index.html">गृहपृष्ठ</a>
-    <a href="search.html">खोज्नुहोस्</a>
-    <a href="products.html">सेवाहरू</a>
-    <a href="about.html">सूचना</a>
-    <a href="contact.html">सम्पर्क</a>
-</nav>
-
-<div class="main-container">
-    <div class="search-section">
-        <div class="search-bar-container">
-            <input type="text" id="userInput" class="search-input" placeholder="औषधीको नाम यहाँ लेख्नुहोस्..." onkeyup="handleFilter()">
-        </div>
-
-        <div id="resultsWrapper">
-            <p style="font-size: 0.8rem; color: #666; text-align: center;">थप जानकारीको लागि औषधीमा क्लिक गर्नुहोस्।</p>
-            <div style="overflow-x: auto;">
-                <table class="med-table">
-                    <thead><tr id="tableHeader"></tr></thead>
-                    <tbody id="tableBody"></tbody>
-                </table>
-            </div>
-        </div>
+  <header>
+    <div class="text-header">
+      <h1>BIMAL PHARMACY</h1>
+      <p><i class="fas fa-map-marker-alt"></i> Cancer Hospital Road, Bharatpur-7, Chitwan | <i class="fas fa-phone"></i> 056-593288</p>
     </div>
-</div>
 
-<div id="detailsModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2 id="modalTitle" style="color: #4CAF50; margin: 0;">औषधीको विवरण</h2>
-            <span class="close" onclick="closeModal()">&times;</span>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="notice.html">Notice</a></li>
+        <li><a href="about.html">Information</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="photo-gallery">
+    <img src="photo1.jpg" alt="Pharmacy Interior">
+    <img src="photo2.jpg" alt="Pharmacy Counter">
+  </div>
+
+  <main class="main-content">
+    <div class="card" style="text-align: center;">
+      <h2><i class="fas fa-search"></i> Find Medicine or Service</h2>
+      <p>Enter the name of the medicine or healthcare service you are looking for.</p>
+      
+      <div style="margin: 20px 0;">
+        <input type="text" id="medicineSearch" placeholder="Search (e.g. Oncology, Delivery, BP Check)..." 
+               style="width: 100%; max-width: 500px; padding: 15px; border-radius: 8px; border: 2px solid #4CAF50; font-size: 16px;">
+      </div>
+
+      <div id="resultsList" style="margin-top: 30px; text-align: left;">
+        <div class="search-item card" data-name="oncology cancer medicine">
+          <h3>Oncology Support</h3>
+          <p>We stock essential supportive medicines for cancer treatment near BP Koirala Cancer Hospital.</p>
         </div>
-        <div id="modalBody" style="margin-top: 20px;">
-            </div>
-        <a id="whatsappLink" href="#" class="wa-btn" target="_blank">
-            <i class="fab fa-whatsapp"></i> WhatsApp मा सोध्नुहोस्
-        </a>
+        <div class="search-item card" data-name="home delivery order">
+          <h3>Home Delivery</h3>
+          <p>We deliver medicines across Bharatpur-7 and surrounding areas. Call 056-593288.</p>
+        </div>
+        <div class="search-item card" data-name="bp check blood pressure sugar monitoring">
+          <h3>Health Monitoring</h3>
+          <p>Available services: Blood Pressure (BP) checks and Blood Sugar monitoring.</p>
+        </div>
+        <div class="search-item card" data-name="surgical mask gloves bandage">
+          <h3>Surgical Supplies</h3>
+          <p>We provide high-quality masks, gloves, and specialized surgical supplies.</p>
+        </div>
+      </div>
     </div>
-</div>
+  </main>
 
-<footer>
-    <p>© २०२६ विमल फार्मेसी | भरतपुर-७, चितवन</p>
-</footer>
+  <footer>
+    <div class="footer-info">
+      <strong>BIMAL PHARMACY</strong><br>
+      Cancer Hospital Road, Bharatpur-7, Chitwan<br>
+      <i class="fas fa-phone"></i> 056-593288 | <i class="fab fa-whatsapp"></i> 9855030603
+    </div>
+    <p>&copy; 2026 Bimal Pharmacy. All Rights Reserved.</p>
+  </footer>
 
-<script>
-    let fullDatabase = [];
+  <script>
+    document.getElementById('medicineSearch').addEventListener('keyup', function() {
+      let filter = this.value.toLowerCase();
+      let items = document.querySelectorAll('.search-item');
 
-    async function loadMedicines() {
-        const rawUrl = 'https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.xlsx?t=' + new Date().getTime();
-        try {
-            const resp = await fetch(rawUrl);
-            const arrayBuffer = await resp.arrayBuffer();
-            const workbook = XLSX.read(new Uint8Array(arrayBuffer), {type: 'array'});
-            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-            fullDatabase = XLSX.utils.sheet_to_json(worksheet);
-            
-            if(fullDatabase.length > 0) {
-                renderHeader(fullDatabase[0]);
-            }
-        } catch (err) { console.error("Load Error:", err); }
-    }
-
-    function renderHeader(sampleRow) {
-        const header = document.getElementById('tableHeader');
-        // Only show first 3 columns in the main table to keep it clean
-        const keys = Object.keys(sampleRow).slice(0, 3);
-        header.innerHTML = keys.map(key => `<th>${key}</th>`).join('');
-    }
-
-    function renderRows(data) {
-        const body = document.getElementById('tableBody');
-        body.innerHTML = data.map((row, index) => {
-            // Only use values for the first 3 columns
-            const vals = Object.values(row).slice(0, 3);
-            return `<tr onclick='showDetails(${JSON.stringify(row)})'>
-                ${vals.map(val => `<td>${val}</td>`).join('')}
-            </tr>`;
-        }).join('');
-    }
-
-    function handleFilter() {
-        const query = document.getElementById('userInput').value.toLowerCase();
-        const resultsWrapper = document.getElementById('resultsWrapper');
-        if (query.length < 2) { resultsWrapper.style.display = "none"; return; }
-
-        const filtered = fullDatabase.filter(item => {
-            return Object.values(item).some(val => String(val).toLowerCase().includes(query));
-        });
-
-        const topResults = filtered.slice(0, 20);
-        if (topResults.length > 0) {
-            resultsWrapper.style.display = "block";
-            renderRows(topResults);
-        } else { resultsWrapper.style.display = "none"; }
-    }
-
-    // Modal Functions
-    function showDetails(medicine) {
-        const modal = document.getElementById('detailsModal');
-        const modalBody = document.getElementById('modalBody');
-        const waLink = document.getElementById('whatsappLink');
-        
-        // Build the info rows dynamically
-        modalBody.innerHTML = Object.entries(medicine).map(([key, value]) => `
-            <div class="info-row">
-                <span class="info-label">${key}:</span>
-                <span>${value}</span>
-            </div>
-        `).join('');
-
-        // Update WhatsApp message
-        const medName = medicine.Name || medicine.Medicine || "this medicine";
-        waLink.href = `https://wa.me/9779855030603?text=I want to know more about ${medName}`;
-
-        modal.style.display = "block";
-    }
-
-    function closeModal() {
-        document.getElementById('detailsModal').style.display = "none";
-    }
-
-    // Close modal if user clicks outside of it
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('detailsModal')) { closeModal(); }
-    }
-
-    window.onload = loadMedicines;
-</script>
+      items.forEach(function(item) {
+        let text = item.getAttribute('data-name');
+        if (text.toLowerCase().includes(filter)) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
