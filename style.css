@@ -18,9 +18,13 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color:
 .nav-links li { margin: 0 15px; }
 .nav-links a { color: #fff; text-decoration: none; font-weight: bold; font-size: 16px; }
 
-/* Smart Gallery */
-.photo-gallery { display: flex; gap: 15px; max-width: 1100px; margin: 25px auto; padding: 0 15px; }
-.photo-gallery img { flex: 1; width: 50%; height: 350px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 4px solid #fff; }
+/* Smart Gallery - CURRENTLY HIDDEN */
+.photo-gallery { 
+  display: none; 
+}
+/* Note: If you want to show the photos again later, 
+   delete "display: none;" and restore the old flexbox code.
+*/
 
 /* Content Cards */
 .main-content { max-width: 1100px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
@@ -30,6 +34,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color:
 footer { background: var(--dark); color: #fff; text-align: center; padding: 30px; margin-top: 50px; }
 
 @media (max-width: 768px) {
+  /* This media query is less relevant while gallery is hidden, but kept for future use */
   .photo-gallery { flex-direction: column; }
   .photo-gallery img { width: 100%; height: 250px; }
 }
