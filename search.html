@@ -13,67 +13,70 @@
 </head>
 <body>
 
-  <header>
-    <div class="text-header">
-      <h1>विमल फार्मेसी</h1>
-      <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन | <i class="fas fa-phone"></i> ०५६-५९३२८८</p>
-    </div>
-
-    <nav class="navbar">
-      <ul class="nav-links">
-        <li><a href="index.html">गृहपृष्ठ</a></li>
-        <li><a href="search.html" class="active">खोज्नुहोस्</a></li>
-        <li><a href="service.html">सेवाहरू</a></li>
-        <li><a href="notice.html">सूचना</a></li>
-        <li><a href="about.html">जानकारी</a></li>
-        <li><a href="contact.html">सम्पर्क</a></li>
-      </ul>
-    </nav>
+  <header class="text-header">
+    <h1>विमल फार्मेसी</h1>
+    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन | <i class="fas fa-phone"></i> ०५६-५९३२८८</p>
   </header>
 
-  <div class="photo-gallery">
-    <img src="photo1.jpg" alt="फार्मेसीको भित्री दृश्य">
-    <img src="photo2.jpg" alt="फार्मेसी काउन्टर">
-  </div>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">गृहपृष्ठ</a></li>
+      <li><a href="search.html" class="active">खोज्नुहोस्</a></li>
+      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
+      <li><a href="service.html">सेवाहरू</a></li>
+      <li><a href="notice.html">सूचना</a></li>
+      <li><a href="about.html">जानकारी</a></li>
+      <li><a href="contact.html">सम्पर्क</a></li>
+    </ul>
+  </nav>
 
   <main class="main-content">
-    <div class="card" style="text-align: center;">
+    <div class="card" style="grid-column: 1 / -1; text-align: center; border-top-color: var(--primary);">
       <h2><i class="fas fa-search"></i> औषधी वा सेवा खोज्नुहोस्</h2>
-      <p>तपाईंले खोजिरहनुभएको औषधी वा स्वास्थ्य सेवाको नाम लेख्नुहोस्।</p>
+      <p>तपाईंले खोजिरहनुभएको औषधी वा स्वास्थ्य सेवाको नाम टाइप गर्नुहोस्।</p>
       
-      <div style="margin: 20px 0;">
+      <div style="margin: 25px 0;">
         <input type="text" id="medicineSearch" placeholder="खोज्नुहोस् (जस्तै: अंकोलोजी, डेलिभरी, बीपी चेक)..." 
-               style="width: 100%; max-width: 500px; padding: 15px; border-radius: 8px; border: 2px solid #4CAF50; font-size: 16px;">
-      </div>
-
-      <div id="resultsList" style="margin-top: 30px; text-align: left;">
-        <div class="search-item card" data-name="oncology cancer medicine क्यान्सर औषधी अंकोलोजी">
-          <h3>अंकोलोजी सपोर्ट (क्यान्सर औषधी)</h3>
-          <p>हामी बिपी कोइराला मेमोरियल क्यान्सर अस्पताल नजिकै क्यान्सर उपचारका लागि आवश्यक सहयोगी औषधीहरू उपलब्ध गराउँछौं।</p>
-        </div>
-
-        <div class="search-item card" data-name="home delivery order होम डेलिभरी घरमै औषधी">
-          <h3>होम डेलिभरी (घरमै औषधी)</h3>
-          <p>हामी भरतपुर-७ र आसपासका क्षेत्रमा औषधी पुर्‍याउँछौं। अर्डरको लागि: ०५६-५९३२८८ मा फोन गर्नुहोस्।</p>
-        </div>
-
-        <div class="search-item card" data-name="bp check blood pressure sugar monitoring रक्तचाप सुगर जाँच">
-          <h3>स्वास्थ्य परीक्षण</h3>
-          <p>उपलब्ध सेवाहरू: रक्तचाप (BP) जाँच र ब्लड सुगर (मधुमेह) परीक्षण।</p>
-        </div>
-
-        <div class="search-item card" data-name="surgical mask gloves bandage सर्जिकल मास्क पन्जा ब्यान्डेज">
-          <h3>सर्जिकल सामग्रीहरू</h3>
-          <p>हामी उच्च गुणस्तरको मास्क, पन्जा र विशेष सर्जिकल सामग्रीहरू उपलब्ध गराउँछौं।</p>
-        </div>
+               style="width: 100%; max-width: 600px; padding: 18px; border-radius: 50px; border: 2px solid #e1e8ed; font-size: 18px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);">
       </div>
     </div>
+
+    <div id="resultsList" style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+      
+      <div class="search-item card" data-name="oncology cancer medicine क्यान्सर औषधी अंकोलोजी">
+        <h3><i class="fas fa-pills" style="color: var(--primary);"></i> अंकोलोजी सपोर्ट</h3>
+        <p>क्यान्सर उपचारका लागि आवश्यक सहयोगी औषधीहरू र परामर्श सेवा उपलब्ध छ।</p>
+      </div>
+
+      <div class="search-item card" data-name="home delivery order होम डेलिभरी घरमै औषधी">
+        <h3><i class="fas fa-truck" style="color: var(--primary);"></i> होम डेलिभरी</h3>
+        <p>भरतपुर-७ आसपासका क्षेत्रमा घरमै औषधी पुर्‍याउने व्यवस्था छ।</p>
+        <a href="order.html" class="search-btn" style="padding: 8px 20px; font-size: 14px;">अर्डर गर्नुहोस्</a>
+      </div>
+
+      <div class="search-item card" data-name="bp check blood pressure sugar monitoring रक्तचाप सुगर जाँच">
+        <h3><i class="fas fa-heartbeat" style="color: var(--primary);"></i> स्वास्थ्य परीक्षण</h3>
+        <p>रक्तचाप (BP), ब्लड सुगर र तौल जाँचको सुविधा उपलब्ध छ।</p>
+      </div>
+
+      <div class="search-item card" data-name="surgical mask gloves bandage सर्जिकल मास्क पन्जा ब्यान्डेज">
+        <h3><i class="fas fa-first-aid" style="color: var(--primary);"></i> सर्जिकल सामग्री</h3>
+        <p>मास्क, पन्जा, ब्यान्डेज र अन्य शल्यक्रिया सामग्रीहरू उपलब्ध छन्।</p>
+      </div>
+
+    </div>
   </main>
+
+  <div class="mobile-call-box">
+    <a href="tel:056593288" class="mobile-call-btn">
+      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्
+    </a>
+  </div>
 
   <footer>
     <div class="footer-info">
       <strong>विमल फार्मेसी</strong><br>
-      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन<br>
+      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन, नेपाल<br>
       <i class="fas fa-phone"></i> ०५६-५९३२८८ | <i class="fas fa-envelope"></i> admin@bimalpharmacy.com.np
     </div>
     <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
@@ -92,6 +95,7 @@
         let text = item.getAttribute('data-name');
         if (text.toLowerCase().includes(filter)) {
           item.style.display = "block";
+          item.style.animation = "fadeIn 0.4s ease";
         } else {
           item.style.display = "none";
         }
