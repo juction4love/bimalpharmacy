@@ -31,57 +31,59 @@
   </nav>
 
   <main class="main-content">
-    <div class="card order-card">
+    <div class="card order-card" style="grid-column: 1 / -1; max-width: 700px; margin: 0 auto;">
       <div style="text-align: center; margin-bottom: 25px;">
         <i class="fas fa-file-medical fa-3x" style="color: var(--primary);"></i>
         <h2 style="margin-top: 15px;">पुर्जी (Prescription) पठाउनुहोस्</h2>
         <p>तलको फर्म भर्नुहोस् र आफ्नो पुर्जीको सफा फोटो खिचेर पठाउनुहोस्।</p>
       </div>
 
-      <form action="https://formspree.io/f/your-id" method="POST" enctype="multipart/form-data" class="prescription-form">
+      <form id="orderForm" action="https://formspree.io/f/your-id" method="POST" enctype="multipart/form-data" class="prescription-form">
         
-        <input type="hidden" name="_next" value="https://www.bimalpharmacy.com.np/thanks.html">
-        
-        <div class="form-group">
-          <label for="name">बिरामी वा ग्राहकको नाम:</label>
-          <input type="text" id="name" name="name" placeholder="पुरा नाम लेख्नुहोस्" required>
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="name" style="display: block; font-weight: bold; margin-bottom: 8px;">बिरामी वा ग्राहकको नाम:</label>
+          <input type="text" id="name" name="name" placeholder="पुरा नाम लेख्नुहोस्" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;" required>
         </div>
 
-        <div class="form-group">
-          <label for="phone">मोबाइल नम्बर:</label>
-          <input type="tel" id="phone" name="phone" placeholder="तपाईंलाई सम्पर्क गर्ने नम्बर" required>
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="phone" style="display: block; font-weight: bold; margin-bottom: 8px;">मोबाइल नम्बर:</label>
+          <input type="tel" id="phone" name="phone" placeholder="तपाईंलाई सम्पर्क गर्ने नम्बर" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;" required>
         </div>
 
-        <div class="form-group">
-          <label for="address">डेलिभरी गर्ने ठेगाना:</label>
-          <input type="text" id="address" name="address" placeholder="गाउँ/टोल वा घर नम्बर" required>
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="address" style="display: block; font-weight: bold; margin-bottom: 8px;">डेलिभरी गर्ने ठेगाना:</label>
+          <input type="text" id="address" name="address" placeholder="गाउँ/टोल वा घर नम्बर" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;" required>
         </div>
 
-        <div class="form-group">
-          <label>पुर्जीको फोटो छान्नुहोस्:</label>
-          <div class="file-upload" id="uploadBox">
-            <input type="file" id="prescriptionFile" name="attachment" accept="image/*" required>
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label style="display: block; font-weight: bold; margin-bottom: 8px;">पुर्जीको फोटो छान्नुहोस्:</label>
+          <div class="file-upload" id="uploadBox" style="border: 2px dashed var(--primary); padding: 30px; text-align: center; border-radius: 12px; background: #f9fdf9; cursor: pointer; position: relative;">
+            <input type="file" id="prescriptionFile" name="attachment" accept="image/*" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer;" required>
             <div id="uploadPlaceholder">
-              <i class="fas fa-camera"></i>
+              <i class="fas fa-camera fa-2x" style="color: var(--primary);"></i>
               <p>फोटो खिच्नुहोस् वा ग्यालरीबाट छान्नुहोस्</p>
             </div>
-            <img id="imagePreview" src="" alt="Preview" style="display: none; width: 100%; border-radius: 8px; margin-top: 10px;">
+            <img id="imagePreview" src="" alt="Preview" style="display: none; width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid #ddd;">
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="note">थप केही भन्नु छ? (ऐच्छिक):</label>
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="note" style="display: block; font-weight: bold; margin-bottom: 8px;">थप केही भन्नु छ? (ऐच्छिक):</label>
           <textarea id="note" name="message" rows="3" placeholder="कुनै विशेष निर्देशन छ भने यहाँ लेख्नुहोस्..." style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #ddd; font-family: inherit;"></textarea>
         </div>
 
-        <button type="submit" class="search-btn upload-submit">
-          <i class="fas fa-paper-plane"></i> अर्डर पठाउनुहोस्
+        <button type="button" onclick="sendToWhatsApp()" class="search-btn" style="width: 100%; background: #25D366; margin-bottom: 10px;">
+          <i class="fab fa-whatsapp"></i> ह्वाट्सएपबाट अर्डर पठाउनुहोस्
+        </button>
+
+        <button type="submit" class="search-btn upload-submit" style="width: 100%;">
+          <i class="fas fa-paper-plane"></i> इमेलबाट अर्डर पठाउनुहोस्
         </button>
 
       </form>
     </div>
 
-    <div class="card" style="border-top-color: var(--accent);">
+    <div class="card" style="grid-column: 1 / -1; max-width: 700px; margin: 20px auto; border-top-color: var(--accent);">
         <h3><i class="fas fa-info-circle"></i> अर्डर प्रक्रिया:</h3>
         <ol style="margin-left: 20px; margin-top: 10px; line-height: 2;">
             <li>तपाईंले पुर्जी पठाएपछि हाम्रो फर्मासिस्टले विवरण चेक गर्नुहुनेछ।</li>
@@ -101,12 +103,13 @@
     <div class="footer-info">
       <strong>विमल फार्मेसी</strong><br>
       क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन, नेपाल<br>
-      ०५६-५९३२८८ | admin@bimalpharmacy.com.np
+      <i class="fas fa-phone"></i> ०५६-५९३२८८ | <i class="fas fa-envelope"></i> admin@bimalpharmacy.com.np
     </div>
     <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
   </footer>
 
   <script>
+    // इमेज प्रिभ्यूको लागि
     const fileInput = document.getElementById('prescriptionFile');
     const previewImage = document.getElementById('imagePreview');
     const placeholder = document.getElementById('uploadPlaceholder');
@@ -118,6 +121,24 @@
         previewImage.style.display = 'block';
         placeholder.style.display = 'none';
       }
+    }
+
+    // ह्वाट्सएप फङ्सन
+    function sendToWhatsApp() {
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+      const note = document.getElementById('note').value;
+
+      if(!name || !phone || !address) {
+        alert("कृपया नाम, फोन र ठेगाना भर्नुहोस्।");
+        return;
+      }
+
+      const waMessage = `*नयाँ अर्डर (Bimal Pharmacy)*%0A%0A*नाम:* ${name}%0A*फोन:* ${phone}%0A*ठेगाना:* ${address}%0A*नोट:* ${note}%0A%0A_कृपया यसपछि आफ्नो पुर्जीको फोटो पनि पठाउनुहोला।_`;
+      
+      const waURL = `https://wa.me/9779855065327?text=${waMessage}`;
+      window.open(waURL, '_blank');
     }
   </script>
 
