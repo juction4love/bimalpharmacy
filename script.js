@@ -1,27 +1,45 @@
-/* विमल फार्मेसी - मुख्य स्क्रिप्ट २०२६
-   यसले खोज (Search), युआई इफेक्ट र नेभिगेसन नियन्त्रण गर्दछ।
-*/
+/* =========================================
+   विमल फार्मेसी - मुख्य स्क्रिप्ट २०२६
+   यसले नेभिगेसन, युआई र ग्लोबल फङ्सन नियन्त्रण गर्दछ।
+   ========================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // १. औषधी र सेवा खोज्ने फिल्टर (Search Filter)
-    // यो विशेष गरी 'search.html' पेजको लागि तयार गरिएको हो
-    const searchInput = document.getElementById('medicineSearch');
+    // १. सक्रिय मेनु हाइलाइट गर्ने (Active Navigation Highlighting)
+    // हाल कुन पेज खुल्ला छ, त्यसलाई मेनुमा सुनौलो (Gold) रङले प्रस्ट पार्दछ
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        
+        // पेजको नाम मिल्दा .active क्लास थप्ने
+        if (linkPath === currentPath) {
+            link.classList.add('active');
+            // 'style.css' को भेरिएबल अनुसार सुनौलो रङ दिने
+            link.style.borderBottom = "3px solid var(--accent)"; 
+            link.style.color = "var(--accent)";
+        } else {
+            // यदि मिल्दैन भने पुरानो एक्टिभ हटाइदिने (क्लिट युआईको लागि)
+            link.classList.remove('active');
+        }
+    });
+
+    // २. औषधी खोज्ने फिल्टर (यदि यो सर्च पेज हो भने मात्र चल्छ)
+    // नोट: धेरै औषधीको लागि हामीले 'search.html' मै छुट्टै लोजिक राखेका छौँ, 
+    // यो चाहिँ साना इन्भेन्टरी वा कार्डहरूको लागि मात्र हो।
+    const searchInput = document.getElementById('medicineSearchLocal'); 
     const searchItems = document.querySelectorAll('.search-item');
 
-    if (searchInput) {
-        searchInput.addEventListener('keyup', (e) => {
-            const query = e.target.value.toLowerCase();
+    if (searchInput && searchItems.length > 0) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
 
             searchItems.forEach(item => {
-                const keywords = item.getAttribute('data-name').toLowerCase();
-                const content = item.textContent.toLowerCase();
-                
-                // यदि खोजिएको शब्द 'data-name' वा कार्डको 'text' मा फेला पर्यो भने
-                if (keywords.includes(query) || content.includes(query)) {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(query)) {
                     item.style.display = 'block';
-                    // कार्ड देखिँदा हल्का एनिमेसन थप्न सकिन्छ
-                    item.style.animation = "fadeIn 0.5s ease";
+                    item.style.animation = "fadeIn 0.4s ease";
                 } else {
                     item.style.display = 'none';
                 }
@@ -29,35 +47,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // २. सक्रिय मेनु हाइलाइट गर्ने (Active Navigation Highlighting)
-    // हाल कुन पेज खुल्ला छ, त्यसलाई मेनुमा सुनौलो रङले हाइलाइट गर्दछ
-    const currentPath = window.location.pathname.split("/").pop();
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href');
-        
-        // यदि लिङ्क र हालको पेजको नाम मिल्छ भने
-        if (linkPath === currentPath || (currentPath === "" && linkPath === "index.html")) {
-            link.classList.add('active'); // CSS मा भएको .active क्लास थप्छ
-            
-            // नयाँ स्टाइल अनुसार सुनौलो बोर्डर थपिएको छ
-            link.style.borderBottom = "3px solid #FFD700"; 
-            link.style.color = "#FFD700";
-        }
-    });
-
-    // ३. फोटो नभेटिएमा सम्हाल्ने (Image Error Handling)
-    // यदि कुनै फोटो लोड हुन सकेन भने यसले 'broken icon' देखाउनुको सट्टा फोटोलाई लुकाइदिन्छ
-    const galleryImages = document.querySelectorAll('.photo-gallery img');
-    galleryImages.forEach(img => {
+    // ३. फोटो लोड नभएमा सम्हाल्ने (Image Error Handling)
+    // यो विशेष गरी प्रिस्क्रिप्सन प्रिभ्यु वा ग्यालरीको लागि उपयोगी छ
+    const allImages = document.querySelectorAll('img');
+    allImages.forEach(img => {
         img.onerror = function() {
+            // यदि फोटो भेटिएन भने लुकाइदिने वा डिफल्ट आइकन राख्न सकिन्छ
             this.style.display = 'none'; 
-            console.warn("विमल फार्मेसी चेतावनी: फोटो लोड हुन सकेन -> " + this.src);
+            console.warn("विमल फार्मेसी: फोटो लोड हुन सकेन -> " + this.src);
         };
     });
 
-    // ब्राउजरको कन्सोलमा स्वागत सन्देश
-    console.log("%cविमल फार्मेसी: सबै स्क्रिप्टहरू सफलतापूर्वक सुचारु भए।", "color: #4CAF50; font-weight: bold; font-size: 14px;");
+    // ४. मोबाइलमा क्लिक गर्दा स्मूथ स्क्रोल (Smooth Scroll)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // कन्सोलमा स्वागत सन्देश
+    console.log("%cविमल फार्मेसी २०२६: सबै सुविधाहरू सुचारु छन्।", "color: #388E3C; font-weight: bold; font-size: 14px;");
 
 });
+
+/* ५. ग्लोबल व्हाट्सएप अर्डर फङ्सन (कुनै पनि बटनबाट सिधै प्रयोग गर्न सकिने) */
+function quickWhatsApp(prodName) {
+    const waNumber = "9779855065327";
+    const msg = `नमस्ते विमल फार्मेसी, मलाई यो औषधीको बारेमा जानकारी चाहिएको थियो: ${prodName}`;
+    window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+}
