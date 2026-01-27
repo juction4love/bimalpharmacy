@@ -7,10 +7,7 @@
   --secondary: #81C784; /* हल्का हरियो */
   --accent: #FFD700; /* सुनौलो (Highlight को लागि) */
   --dark: #1a252f;
-  
-  /* ब्याकग्राउन्ड: हल्का मिन्ट ग्रीन (विकल्प १) */
   --bg: #e8f5e9; 
-  
   --header-overlay: rgba(0, 0, 0, 0.6);
   --shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -26,25 +23,20 @@ body {
 }
 
 /* =========================================
-   ब्रान्ड हेडर (फिक्स गरिएको फोटो लिङ्क सहित)
+   ब्रान्ड हेडर
    ========================================= */
 
 .text-header {
-  /* पक्का काम गर्ने तरिका: सिधै फाइलको नाम मात्र राख्ने */
   background-image: linear-gradient(var(--header-overlay), var(--header-overlay)), 
                     url('heading.png');
-  
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
   color: #fff;
-  padding: 100px 20px; /* फोटो प्रस्ट देखिन हाइट बढाइएको */
+  padding: 100px 20px;
   text-align: center;
   position: relative;
-  min-height: 320px; /* हेडरको उचाई निश्चित गरिएको */
-  
-  /* अक्षरहरूलाई बिचमा ल्याउन */
+  min-height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,52 +56,32 @@ body {
 .text-header h1::after {
     content: '';
     display: block;
-    width: 80px;
-    height: 4px;
+    width: 80px; height: 4px;
     background: var(--accent);
     margin: 12px auto 0;
     border-radius: 2px;
 }
 
-.text-header p {
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 1.25rem;
-  font-weight: 500;
-  margin-top: 15px;
-}
-
-.text-header p i {
-    color: var(--accent);
-    margin-right: 8px;
-}
-
 /* =========================================
-   नेभिगेसन बार (NAV BAR)
+   नेभिगेसन बार
    ========================================= */
 
 .navbar {
   background: #2E7D32;
-  position: sticky;
-  top: 0;
+  position: sticky; top: 0;
   z-index: 1000;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .nav-links {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  flex-wrap: wrap;
+  display: flex; justify-content: center;
+  list-style: none; flex-wrap: wrap;
 }
 
 .nav-links a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-  text-transform: uppercase;
-  padding: 20px 25px;
-  display: block;
+  color: #fff; text-decoration: none;
+  font-weight: 600; font-size: 15px;
+  padding: 20px 25px; display: block;
   transition: all 0.3s ease;
 }
 
@@ -118,142 +90,131 @@ body {
   color: var(--accent);
 }
 
-.nav-links a.active {
-    border-bottom: 3px solid var(--accent);
+/* =========================================
+   सर्च बार स्टाइल (NEW)
+   ========================================= */
+
+.search-input-wrapper {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#medicineSearch {
+    width: 100%;
+    padding: 18px 25px;
+    border-radius: 50px;
+    border: 2px solid #e1e8ed;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+#medicineSearch:focus {
+    border-color: var(--primary);
+    box-shadow: 0 4px 20px rgba(56, 142, 60, 0.2);
+    outline: none;
 }
 
 /* =========================================
-   मुख्य सामग्री र कार्डहरू (CONTENT & CARDS)
+   मुख्य सामग्री र कार्डहरू
    ========================================= */
 
 .main-content {
-  max-width: 1100px;
+  max-width: 1150px;
   margin: 40px auto;
   padding: 0 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
+  gap: 25px;
 }
 
 .card {
   background: #fff;
-  padding: 30px;
+  padding: 25px;
   border-radius: 15px;
   box-shadow: var(--shadow);
   border-top: 6px solid var(--primary);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.card h2 {
-    color: var(--primary);
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    transform: translateY(-5px);
 }
 
 /* =========================================
-   अर्डर फर्म र अपलोड (ORDER FORM)
+   JSON नतिजा कार्डहरू (SPECIFIC FIX)
    ========================================= */
 
-.order-card { grid-column: 1 / -1; max-width: 750px; margin: 0 auto; }
-
-.form-group { margin-bottom: 25px; }
-
-.form-group label {
-    display: block;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--dark);
-}
-
-.form-group input, .form-group textarea {
-    width: 100%;
-    padding: 14px;
-    border: 2px solid #e1e8ed;
-    border-radius: 10px;
-    font-size: 16px;
-    background: #fcfcfc;
-}
-
-.form-group input:focus, .form-group textarea:focus {
-    border-color: var(--primary);
+.medicine-result-card {
+    border-left: 5px solid var(--primary);
     background: #fff;
-    outline: none;
 }
 
-.file-upload {
-    border: 2px dashed var(--primary);
-    padding: 40px;
+.category-tag {
+    font-size: 11px;
+    background: #e8f5e9;
+    color: var(--primary);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.price-tag {
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.med-use {
+    font-size: 14px;
+    color: #444;
+    margin: 12px 0;
+}
+
+.side-effects-text {
+    font-size: 13px;
+    color: #777;
+    background: #f9f9f9;
+    padding: 8px;
+    border-radius: 5px;
+    font-style: italic;
+}
+
+/* =========================================
+   बटनहरू र मोबाइल कल
+   ========================================= */
+
+.order-btn-whatsapp {
+    margin-top: auto;
+    background: #25D366;
+    color: white;
     text-align: center;
-    border-radius: 15px;
-    background: #f9fdf9;
-    cursor: pointer;
-    position: relative;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    transition: background 0.3s;
 }
 
-.file-upload i { font-size: 3rem; color: var(--primary); margin-bottom: 10px; }
-
-.file-upload input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
-
-#imagePreview {
-    margin-top: 15px;
-    border: 3px solid #fff;
-    box-shadow: var(--shadow);
-    max-height: 300px;
-    border-radius: 10px;
+.order-btn-whatsapp:hover {
+    background: #128C7E;
 }
-
-/* =========================================
-   बटनहरू (BUTTONS)
-   ========================================= */
-
-.search-btn, .upload-submit {
-  display: inline-block;
-  background: var(--primary);
-  color: #fff;
-  padding: 15px 30px;
-  text-decoration: none;
-  border-radius: 50px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.search-btn:hover {
-    background: #2E7D32;
-    transform: scale(1.02);
-}
-
-/* =========================================
-   मोबाइल कल बटन (MOBILE CALL BUTTON)
-   ========================================= */
 
 .mobile-call-box {
   display: none;
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  z-index: 9999;
+  position: fixed; bottom: 25px; right: 25px; z-index: 9999;
 }
 
 .mobile-call-btn {
-  background: var(--accent);
-  color: var(--dark);
-  padding: 15px 25px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 800;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  background: var(--accent); color: var(--dark);
+  padding: 15px 25px; border-radius: 50px;
+  text-decoration: none; font-weight: 800;
+  display: flex; align-items: center; gap: 12px;
   border: 2px solid #fff;
   animation: pulse 2s infinite;
 }
@@ -264,10 +225,6 @@ body {
   100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
 }
 
-/* =========================================
-   फुटर (FOOTER)
-   ========================================= */
-
 footer {
   background: var(--dark);
   color: #fff;
@@ -276,14 +233,8 @@ footer {
   margin-top: 60px;
 }
 
-/* =========================================
-   मोबाइल रिस्पोन्सिभ (MOBILE)
-   ========================================= */
-
 @media (max-width: 768px) {
   .text-header h1 { font-size: 2.2rem; }
-  .text-header { padding: 60px 15px; min-height: 250px; }
-  .nav-links a { padding: 15px 12px; font-size: 13px; }
   .mobile-call-box { display: block; }
-  .card { padding: 20px; }
+  .main-content { grid-template-columns: 1fr; }
 }
