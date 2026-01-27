@@ -1,5 +1,5 @@
 /* =========================================
-   विमल फार्मेसी - पूर्ण आधुनिक स्टाइल २०२६
+   विमल फार्मेसी - पूर्ण आधुनिक स्टाइल २०२६ (FIXED)
    ========================================= */
 
 :root {
@@ -8,7 +8,7 @@
   --accent: #FFD700; /* सुनौलो (Highlight को लागि) */
   --dark: #1a252f;
   
-  /* अपडेट गरिएको ब्याकग्राउन्ड: हल्का मिन्ट ग्रीन (विकल्प १) */
+  /* ब्याकग्राउन्ड: हल्का मिन्ट ग्रीन (विकल्प १) */
   --bg: #e8f5e9; 
   
   --header-overlay: rgba(0, 0, 0, 0.6);
@@ -26,22 +26,29 @@ body {
 }
 
 /* =========================================
-   ब्रान्ड हेडर (Background Image सहित)
+   ब्रान्ड हेडर (फिक्स गरिएको फोटो लिङ्क सहित)
    ========================================= */
 
 .text-header {
-  /* GitHub बाट सिधै फोटो लोड गरिएको छ */
+  /* पक्का काम गर्ने तरिका: सिधै फाइलको नाम मात्र राख्ने */
   background-image: linear-gradient(var(--header-overlay), var(--header-overlay)), 
-                    url('https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/heading.png');
+                    url('heading.png');
   
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   
   color: #fff;
-  padding: 80px 20px;
+  padding: 100px 20px; /* फोटो प्रस्ट देखिन हाइट बढाइएको */
   text-align: center;
   position: relative;
+  min-height: 320px; /* हेडरको उचाई निश्चित गरिएको */
+  
+  /* अक्षरहरूलाई बिचमा ल्याउन */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   box-shadow: inset 0 -10px 20px -10px rgba(0,0,0,0.5);
 }
 
@@ -51,8 +58,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 10px;
-  text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-  display: inline-block;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
 }
 
 .text-header h1::after {
@@ -173,14 +179,12 @@ body {
     border-radius: 10px;
     font-size: 16px;
     background: #fcfcfc;
-    transition: all 0.3s;
 }
 
 .form-group input:focus, .form-group textarea:focus {
     border-color: var(--primary);
     background: #fff;
     outline: none;
-    box-shadow: 0 0 0 4px rgba(56, 142, 60, 0.1);
 }
 
 .file-upload {
@@ -202,8 +206,6 @@ body {
     border: 3px solid #fff;
     box-shadow: var(--shadow);
     max-height: 300px;
-    margin-left: auto;
-    margin-right: auto;
     border-radius: 10px;
 }
 
@@ -219,14 +221,12 @@ body {
   text-decoration: none;
   border-radius: 50px;
   font-weight: 700;
-  font-size: 16px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(56, 142, 60, 0.3);
 }
 
-.search-btn:hover, .upload-submit:hover {
+.search-btn:hover {
     background: #2E7D32;
     transform: scale(1.02);
 }
@@ -251,7 +251,6 @@ body {
   text-decoration: none;
   font-weight: 800;
   font-size: 18px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -277,15 +276,13 @@ footer {
   margin-top: 60px;
 }
 
-footer a { color: var(--secondary); text-decoration: none; margin: 0 10px; }
-
 /* =========================================
-   रेस्पोन्सिभ डिजाइन (MOBILE)
+   मोबाइल रिस्पोन्सिभ (MOBILE)
    ========================================= */
 
 @media (max-width: 768px) {
   .text-header h1 { font-size: 2.2rem; }
-  .text-header { padding: 60px 15px; }
+  .text-header { padding: 60px 15px; min-height: 250px; }
   .nav-links a { padding: 15px 12px; font-size: 13px; }
   .mobile-call-box { display: block; }
   .card { padding: 20px; }
