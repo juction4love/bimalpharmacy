@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>विमल फार्मेसी - हाम्रा सेवाहरू</title>
+    <title>हाम्रा सेवाहरू | विमल फार्मेसी - भरतपुर-७</title>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
       crossorigin="anonymous"></script>
 
     <style>
-        /* --- MAIN PAGE BACKGROUND --- */
+        /* --- मुख्य पृष्ठको पृष्ठभूमि --- */
         body {
             font-family: 'Kalimati', 'Arial', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            
-            /* Background Image with White Overlay */
             background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('background.jpeg'); 
             background-color: #87CEEB; 
             background-size: cover;        
@@ -26,13 +24,12 @@
             min-height: 100vh;
         }
         
-        /* --- HEADER STYLES --- */
+        /* --- हेडर शैली --- */
         header {
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('heading.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -53,7 +50,7 @@
             text-shadow: 2px 2px 4px #000000;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- नेभिगेसन --- */
         nav {
             text-align: center;
             background-color: #fff;
@@ -74,7 +71,7 @@
             text-decoration: underline;
         }
 
-        /* --- LAYOUT CONTAINER --- */
+        /* --- लेआउट कन्टेनर --- */
         .main-container {
             display: flex; 
             flex-wrap: wrap; 
@@ -84,7 +81,7 @@
             padding: 0 20px;
         }
 
-        /* LEFT COLUMN (Main Content) */
+        /* बायाँ कोलम (मुख्य सामग्री) */
         .content-column {
             flex: 3; 
             background: rgba(255, 255, 255, 0.95); 
@@ -92,7 +89,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             min-width: 300px;
-            overflow-x: auto; /* Allows table scrolling on small screens */
+            overflow-x: auto;
         }
 
         .content-column h2 {
@@ -102,12 +99,12 @@
             margin-top: 0;
         }
 
-        /* TABLE STYLES */
+        /* तालिका शैली */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            min-width: 600px; /* Ensures table doesn't get too squished */
+            min-width: 600px;
         }
         th, td {
             border: 1px solid #ddd;
@@ -123,16 +120,16 @@
             background-color: #f2f2f2;
         }
         tr:hover {
-            background-color: #e8f5e9; /* Light green hover effect */
+            background-color: #e8f5e9;
         }
 
-        /* RIGHT COLUMN (Sidebar) */
+        /* दायाँ कोलम (साइडबार) */
         .sidebar-column {
             flex: 1; 
             min-width: 250px;
         }
 
-        /* QUICK SEARCH BOX STYLES */
+        /* खोज बक्स शैली */
         .search-widget {
             background: rgba(255, 255, 255, 0.95);
             padding: 20px;
@@ -172,12 +169,12 @@
             background-color: #45a049;
         }
 
-        /* --- FOOTER --- */
+        /* --- फुटर --- */
         footer {
             background-color: #4CAF50;
             color: white;
             text-align: center;
-            padding: 10px 0;
+            padding: 15px 0;
             margin-top: 40px;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
         }
@@ -198,46 +195,45 @@
 
     <nav>
         <a href="index.html">गृहपृष्ठ</a>
-        
         <a href="search.html">खोज्नुहोस्</a>
-        <a href="products.html">सेवाहरू</a>
-        <a href="about.html">सूचना</a>
-        
+        <a href="service.html">सेवाहरू</a>
+        <a href="notice.html">सूचना</a>
+        <a href="about.html">जानकारी</a>
         <a href="contact.html">सम्पर्क</a>
     </nav>
 
     <div class="main-container">
         
         <section class="content-column">
-            <h2>उपलब्ध सेवाहरू (Available Products)</h2>
+            <h2>उपलब्ध सेवा तथा सामग्रीहरू</h2>
             
             <table>
                 <thead>
                     <tr>
-                        <th>सेवाको नाम (Product Name)</th>
-                        <th>श्रेणी (Category)</th>
-                        <th>मूल्य (Price)</th>
-                        <th>विवरण (Description)</th>
+                        <th>सामग्रीको नाम</th>
+                        <th>श्रेणी</th>
+                        <th>मूल्य</th>
+                        <th>विवरण</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>क्यान्सर उपचार औषधी (Cancer-Cure)</td>
-                        <td>अंकोलोजी (Oncology Medicine)</td>
-                        <td>सामान अनुसार फरक (Variable)</td>
-                        <td>क्यान्सर उपचार र राहतको लागि प्रभावकारी।</td>
+                        <td>क्यान्सर उपचार औषधी</td>
+                        <td>अंकोलोजी</td>
+                        <td>सामान अनुसार फरक</td>
+                        <td>क्यान्सर उपचार र राहतको लागि प्रभावकारी औषधीहरू।</td>
                     </tr>
                     <tr>
-                        <td>डिस्पोजेबल सर्जिकल सामानहरू (Disposable Surgical Goods)</td>
-                        <td>शल्यक्रिया सामग्री (Operation Use)</td>
-                        <td>सामान अनुसार फरक (Variable)</td>
-                        <td>स्वास्थ्यकर्मीहरूद्वारा गरिने क्यान्सर शल्यक्रियाको लागि।</td>
+                        <td>डिस्पोजेबल सर्जिकल सामानहरू</td>
+                        <td>शल्यक्रिया सामग्री</td>
+                        <td>सामान अनुसार फरक</td>
+                        <td>स्वास्थ्यकर्मीहरूद्वारा गरिने शल्यक्रियाको लागि आवश्यक सामग्री।</td>
                     </tr>
                     <tr>
-                        <td>अस्पताल सरसफाई र एनेस्थेसिया सामानहरू (Sanitization & Anesthesia)</td>
-                        <td>आईसीयू हेरचाह (ICU Care)</td>
-                        <td>सामान अनुसार फरक (Variable)</td>
-                        <td>आईसीयू (ICU) मा तत्काल प्रयोग गर्न सकिने।</td>
+                        <td>सरसफाई र एनेस्थेसिया सामानहरू</td>
+                        <td>आईसीयू हेरचाह</td>
+                        <td>सामान अनुसार फरक</td>
+                        <td>आईसीयू (ICU) र आकस्मिक कक्षमा प्रयोग गरिने सामग्रीहरू।</td>
                     </tr>
                 </tbody>
             </table>
@@ -245,26 +241,25 @@
 
         <aside class="sidebar-column">
             <div class="search-widget">
-                <h3>द्रुत खोज (Quick Search)</h3>
+                <h3>द्रुत खोज</h3>
                 <p style="font-size: 14px; color: #666;">हाम्रो डाटाबेसमा औषधी खोज्नुहोस्</p>
                 
                 <input type="text" placeholder="औषधीको नाम लेख्नुहोस्...">
-                <button onclick="window.location.href='search.html'">खोज्नुहोस् (Search)</button>
+                <button onclick="window.location.href='search.html'">खोज्नुहोस्</button>
             </div>
             
             <div class="search-widget" style="margin-top: 20px;">
-                <h3>सम्पर्क (Contact)</h3>
-                <p>📞 +९७७-५६-५९३२८८</p>
-                <p>📍 भरतपुर-७, नेपाल</p>
+                <h3>सम्पर्क विवरण</h3>
+                <p>📞 ०५६-५९३२८८</p>
+                <p>📍 भरतपुर-७, क्यान्सर अस्पताल रोड</p>
             </div>
         </aside>
 
     </div>
 
     <footer>
-        <p>&copy; २०२५ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+        <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
     </footer>
 
 </body>
 </html>
-
