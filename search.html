@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search Medicines & Services | Bimal Pharmacy</title>
-  <meta name="description" content="Search for available medicines, oncology supplies, and healthcare services at Bimal Pharmacy, Bharatpur-7.">
+  <title>औषधी र सेवाहरू खोज्नुहोस् | विमल फार्मेसी</title>
+  <meta name="description" content="विमल फार्मेसी, भरतपुर-७ मा उपलब्ध औषधीहरू, अंकोलोजी सामग्रीहरू र स्वास्थ्य सेवाहरू खोज्नुहोस्।">
   
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -15,53 +15,56 @@
 
   <header>
     <div class="text-header">
-      <h1>BIMAL PHARMACY</h1>
-      <p><i class="fas fa-map-marker-alt"></i> Cancer Hospital Road, Bharatpur-7, Chitwan | <i class="fas fa-phone"></i> 056-593288</p>
+      <h1>विमल फार्मेसी</h1>
+      <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन | <i class="fas fa-phone"></i> ०५६-५९३२८८</p>
     </div>
 
     <nav class="navbar">
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="search.html" class="active">Search</a></li>
-        <li><a href="service.html">Services</a></li>
-        <li><a href="notice.html">Notice</a></li>
-        <li><a href="about.html">Information</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html">गृहपृष्ठ</a></li>
+        <li><a href="search.html" class="active">खोज्नुहोस्</a></li>
+        <li><a href="service.html">सेवाहरू</a></li>
+        <li><a href="notice.html">सूचना</a></li>
+        <li><a href="about.html">जानकारी</a></li>
+        <li><a href="contact.html">सम्पर्क</a></li>
       </ul>
     </nav>
   </header>
 
   <div class="photo-gallery">
-    <img src="photo1.jpg" alt="Pharmacy Interior">
-    <img src="photo2.jpg" alt="Pharmacy Counter">
+    <img src="photo1.jpg" alt="फार्मेसीको भित्री दृश्य">
+    <img src="photo2.jpg" alt="फार्मेसी काउन्टर">
   </div>
 
   <main class="main-content">
     <div class="card" style="text-align: center;">
-      <h2><i class="fas fa-search"></i> Find Medicine or Service</h2>
-      <p>Enter the name of the medicine or healthcare service you are looking for.</p>
+      <h2><i class="fas fa-search"></i> औषधी वा सेवा खोज्नुहोस्</h2>
+      <p>तपाईंले खोजिरहनुभएको औषधी वा स्वास्थ्य सेवाको नाम लेख्नुहोस्।</p>
       
       <div style="margin: 20px 0;">
-        <input type="text" id="medicineSearch" placeholder="Search (e.g. Oncology, Delivery, BP Check)..." 
+        <input type="text" id="medicineSearch" placeholder="खोज्नुहोस् (जस्तै: अंकोलोजी, डेलिभरी, बीपी चेक)..." 
                style="width: 100%; max-width: 500px; padding: 15px; border-radius: 8px; border: 2px solid #4CAF50; font-size: 16px;">
       </div>
 
       <div id="resultsList" style="margin-top: 30px; text-align: left;">
-        <div class="search-item card" data-name="oncology cancer medicine">
-          <h3>Oncology Support</h3>
-          <p>We stock essential supportive medicines for cancer treatment near BP Koirala Cancer Hospital.</p>
+        <div class="search-item card" data-name="oncology cancer medicine क्यान्सर औषधी अंकोलोजी">
+          <h3>अंकोलोजी सपोर्ट (क्यान्सर औषधी)</h3>
+          <p>हामी बिपी कोइराला मेमोरियल क्यान्सर अस्पताल नजिकै क्यान्सर उपचारका लागि आवश्यक सहयोगी औषधीहरू उपलब्ध गराउँछौं।</p>
         </div>
-        <div class="search-item card" data-name="home delivery order">
-          <h3>Home Delivery</h3>
-          <p>We deliver medicines across Bharatpur-7 and surrounding areas. Call 056-593288.</p>
+
+        <div class="search-item card" data-name="home delivery order होम डेलिभरी घरमै औषधी">
+          <h3>होम डेलिभरी (घरमै औषधी)</h3>
+          <p>हामी भरतपुर-७ र आसपासका क्षेत्रमा औषधी पुर्‍याउँछौं। अर्डरको लागि: ०५६-५९३२८८ मा फोन गर्नुहोस्।</p>
         </div>
-        <div class="search-item card" data-name="bp check blood pressure sugar monitoring">
-          <h3>Health Monitoring</h3>
-          <p>Available services: Blood Pressure (BP) checks and Blood Sugar monitoring.</p>
+
+        <div class="search-item card" data-name="bp check blood pressure sugar monitoring रक्तचाप सुगर जाँच">
+          <h3>स्वास्थ्य परीक्षण</h3>
+          <p>उपलब्ध सेवाहरू: रक्तचाप (BP) जाँच र ब्लड सुगर (मधुमेह) परीक्षण।</p>
         </div>
-        <div class="search-item card" data-name="surgical mask gloves bandage">
-          <h3>Surgical Supplies</h3>
-          <p>We provide high-quality masks, gloves, and specialized surgical supplies.</p>
+
+        <div class="search-item card" data-name="surgical mask gloves bandage सर्जिकल मास्क पन्जा ब्यान्डेज">
+          <h3>सर्जिकल सामग्रीहरू</h3>
+          <p>हामी उच्च गुणस्तरको मास्क, पन्जा र विशेष सर्जिकल सामग्रीहरू उपलब्ध गराउँछौं।</p>
         </div>
       </div>
     </div>
@@ -69,14 +72,14 @@
 
   <footer>
     <div class="footer-info">
-      <strong>BIMAL PHARMACY</strong><br>
-      Cancer Hospital Road, Bharatpur-7, Chitwan<br>
-      <i class="fas fa-phone"></i> 056-593288 | <i class="fas fa-envelope"></i> admin@bimalpharmacy.com.np
+      <strong>विमल फार्मेसी</strong><br>
+      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन<br>
+      <i class="fas fa-phone"></i> ०५६-५९३२८८ | <i class="fas fa-envelope"></i> admin@bimalpharmacy.com.np
     </div>
-    <p>&copy; 2026 Bimal Pharmacy. All Rights Reserved.</p>
+    <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
     <p>
-      <a href="privacy-policy.html">Privacy Policy</a> | 
-      <a href="sitemap.xml">Sitemap</a>
+      <a href="privacy-policy.html">गोपनीयता नीति</a> | 
+      <a href="sitemap.xml">साइटम्याप</a>
     </p>
   </footer>
 
