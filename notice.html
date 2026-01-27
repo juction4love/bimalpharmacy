@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>सूचना - विमल फार्मेसी</title>
-  <meta name="description" content="भरतपुर-७, चितवनमा रहेको विमल फार्मेसीका ग्राहकहरूका लागि महत्त्वपूर्ण सूचनाहरू र भुक्तानी सम्बन्धी जानकारी।">
+  <title>महत्त्वपूर्ण सूचना - विमल फार्मेसी</title>
+  <meta name="description" content="विमल फार्मेसीका ग्राहकहरूका लागि महत्त्वपूर्ण सूचना र भुक्तानी सम्बन्धी जानकारी।">
   
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -13,12 +13,18 @@
 
   <style>
     /* यस पेजको लागि मात्र विशेष स्टाइल */
-    .notice-card { border-top: 8px solid #d32f2f !important; } /* गम्भीर सूचनाका लागि रातो बोर्डर */
-    .notice-header { text-align: center; color: #d32f2f; margin-bottom: 25px; }
+    .notice-card { border-top: 8px solid #d32f2f !important; }
     .important-box { background: #fff3e0; border-left: 6px solid #ff9800; padding: 25px; margin: 25px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
     .qr-container { text-align: center; background: #fdfdfd; padding: 30px; border-radius: 15px; border: 2px dashed var(--primary); margin-top: 35px; }
-    .qr-image { max-width: 250px; height: auto; border: 5px solid #fff; box-shadow: var(--shadow); margin-top: 20px; transition: transform 0.3s; }
+    .qr-image { max-width: 280px; height: auto; border: 5px solid #fff; box-shadow: var(--shadow); margin-top: 20px; transition: transform 0.3s; }
     .qr-image:hover { transform: scale(1.05); }
+    
+    @keyframes warning-pulse {
+      0% { transform: scale(1); color: #d32f2f; }
+      50% { transform: scale(1.1); color: #b71c1c; }
+      100% { transform: scale(1); color: #d32f2f; }
+    }
+    .pulse-icon { animation: warning-pulse 2s infinite; }
   </style>
 </head>
 <body>
@@ -42,24 +48,24 @@
 
   <main class="main-content">
     
-    <div class="card notice-card" style="grid-column: 1 / -1; max-width: 850px; margin: 0 auto;">
-      <div class="notice-header">
-        <i class="fas fa-exclamation-triangle fa-4x" style="animation: pulse 2s infinite;"></i>
-        <h2 style="margin-top:15px; color: #d32f2f;">आदरणीय ग्राहक महानुभावहरूमा विनम्र अनुरोध</h2>
+    <div class="card notice-card" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <i class="fas fa-exclamation-triangle fa-4x pulse-icon"></i>
+        <h2 style="margin-top:20px; color: #d32f2f;">विनम्र अनुरोध</h2>
       </div>
 
-      <div class="notice-body" style="font-size: 1.1rem; line-height: 1.8;">
+      <div class="notice-body" style="font-size: 1.1rem; line-height: 1.8; color: #333;">
         <p><strong>नमस्ते एवं हार्दिक अभिवादन,</strong></p>
         <p>विमल फार्मेसीको तर्फबाट समस्त आदरणीय ग्राहक तथा बिरामी महानुभावहरूमा सुस्वास्थ्यको कामना गर्दछौं।</p>
         
         <p>बिरामीको कठिन समयमा औषधीको अभाव नहोस् भन्ने उद्देश्यले हामीले मानवीय नाताले <strong>उधारो (Credit)</strong> मा औषधीहरू उपलब्ध गराउँदै आएका थियौं।</p>
 
         <div class="important-box">
-          <p><i class="fas fa-info-circle"></i> बिरामी निको भएर घर फर्किसक्नुभएपछि पनि धेरैजसो महानुभावहरूले लामो समयसम्म बाँकी बक्यौता रकम भुक्तानी गर्नुभएको छैन। नयाँ औषधी स्टक राख्न र हाम्रो सेवालाई निरन्तरता दिन हामीलाई अहिले अत्यन्तै कठिनाइ भइरहेको छ।</p>
+          <p><i class="fas fa-info-circle"></i> बिरामी निको भएर घर फर्किसक्नुभएपछि पनि धेरैजसो महानुभावहरूले लामो समयसम्म बाँकी बक्यौता रकम भुक्तानी गर्नुभएको छैन। औषधीको नयाँ स्टक राख्न र सेवालाई निरन्तरता दिन हामीलाई अहिले अत्यन्तै कठिनाइ भइरहेको छ।</p>
         </div>
 
-        <p style="color: #2e7d32; font-weight: 800; font-size: 1.2rem; text-align: center; background: #e8f5e9; padding: 15px; border-radius: 8px;">
-          अतः, आफ्नो नैतिकतालाई आत्मसात गर्दै, तपाईंको नाममा रहेको बाँकी बक्यौता रकम यथाशिघ्र चुक्ता गरिदिनुहुन हामी विनम्र हार्दिक अनुरोध गर्दछौं।
+        <p style="color: #2e7d32; font-weight: 800; font-size: 1.2rem; text-align: center; background: #e8f5e9; padding: 20px; border-radius: 8px; border: 1px solid #c8e6c9;">
+          आफ्नो नैतिकतालाई आत्मसात गर्दै, तपाईंको नाममा रहेको बाँकी बक्यौता रकम यथाशिघ्र चुक्ता गरिदिनुहुन हामी विनम्र हार्दिक अनुरोध गर्दछौं।
         </p>
       </div>
 
@@ -67,14 +73,15 @@
         <h3 style="color: var(--primary);"><i class="fas fa-qrcode"></i> QR Code स्क्यान गरी भुक्तानी गर्नुहोस्</h3>
         <p style="font-size: 1rem; color: #666; margin-top: 5px;">ईसेवा (eSewa) / फोनपे (Fonepay) / बैंक ट्रान्सफर</p>
         
-        
-        
         <img src="qr.jpg" alt="विमल फार्मेसी भुक्तानी QR" class="qr-image">
-        <p style="margin-top: 15px; font-weight: bold; color: var(--dark);">विमल फार्मेसी (BIMAL PHARMACY)</p>
+        
+        <div style="margin-top: 15px; background: #f1f1f1; padding: 10px; border-radius: 5px; display: inline-block;">
+            <p style="font-weight: bold; color: var(--dark); margin: 0;">विमल फार्मेसी (BIMAL PHARMACY)</p>
+        </div>
       </div>
 
-      <div style="margin-top: 40px; border-top: 2px solid #f5f5f5; padding-top: 25px; text-align: center;">
-        <p><i class="fas fa-phone-alt"></i> थप जानकारीका लागि: <strong>०५६-५९३२८८</strong></p>
+      <div style="margin-top: 40px; border-top: 2px solid #eee; padding-top: 25px; text-align: center; color: #555;">
+        <p><i class="fas fa-phone-alt"></i> सम्पर्क: <strong>०५६-५९३२८८ / ९८५५०६५३२७</strong></p>
         <p><i class="fas fa-envelope"></i> इमेल: <strong>admin@bimalpharmacy.com.np</strong></p>
       </div>
     </div>
@@ -91,11 +98,10 @@
     <div class="footer-info">
       <strong>विमल फार्मेसी</strong><br>
       क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन, नेपाल<br>
-      ०५६-५९३२८८ | admin@bimalpharmacy.com.np
+      <i class="fas fa-phone"></i> ०५६-५९३२८८
     </div>
     <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
