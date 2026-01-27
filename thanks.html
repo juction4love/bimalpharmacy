@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>धन्यवाद | विमल फार्मेसी</title>
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
+
     <style>
         .thanks-container {
             text-align: center;
-            padding: 100px 20px;
-            max-width: 600px;
+            padding: 60px 20px;
+            max-width: 700px;
             margin: 0 auto;
         }
         .success-icon {
@@ -18,34 +22,68 @@
             color: var(--primary);
             margin-bottom: 20px;
             animation: bounce 2s infinite;
+            display: block;
         }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
             40% {transform: translateY(-20px);}
             60% {transform: translateY(-10px);}
         }
+        .order-status-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-top: 6px solid var(--primary);
+        }
     </style>
 </head>
-<body style="background-color: var(--bg);">
+<body>
 
     <header class="text-header">
         <h1>विमल फार्मेसी</h1>
+        <p><i class="fas fa-check-circle"></i> अर्डर सफल भयो</p>
     </header>
 
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">गृहपृष्ठ</a></li>
+            <li><a href="search.html">खोज्नुहोस्</a></li>
+            <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
+            <li><a href="contact.html">सम्पर्क</a></li>
+        </ul>
+    </nav>
+
     <main class="thanks-container">
-        <div class="card">
+        <div class="order-status-card">
             <i class="fas fa-check-circle success-icon"></i>
-            <h2>तपाईंको अर्डर प्राप्त भयो!</h2>
-            <p style="margin: 20px 0; font-size: 1.1rem; color: #555;">
-                हाम्रो फर्मासिस्टले तपाईंको पुर्जी (Prescription) हेरेर केही बेरमा फोन गर्नुहुनेछ। हामीलाई रोज्नुभएकोमा धन्यवाद।
+            <h2 style="color: var(--primary); font-size: 2rem;">तपाईंको अर्डर प्राप्त भयो!</h2>
+            
+            <p style="margin: 25px 0; font-size: 1.2rem; color: #444; line-height: 1.8;">
+                नमस्ते! विमल फार्मेसीमा तपाईंको अर्डर सुरक्षित रूपमा प्राप्त भएको छ। <br>
+                हाम्रो फर्मासिस्टले तपाईंको पुर्जी (Prescription) चेक गरेर औषधीको उपलब्धता र मूल्यबारे जानकारी दिन <strong>छिट्टै फोन गर्नुहुनेछ।</strong>
             </p>
-            <a href="index.html" class="search-btn">
-                <i class="fas fa-home"></i> गृहपृष्ठमा फर्कनुहोस्
-            </a>
+
+            <div style="background: #f1f8f1; padding: 15px; border-radius: 10px; margin-bottom: 30px; border-left: 5px solid var(--secondary);">
+                <p><i class="fas fa-clock"></i> <strong>अपेक्षित समय:</strong> १५ - ३० मिनेट भित्र फोन आउनेछ।</p>
+            </div>
+            
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="index.html" class="search-btn">
+                    <i class="fas fa-home"></i> गृहपृष्ठमा फर्कनुहोस्
+                </a>
+                <a href="tel:056593288" class="search-btn" style="background: var(--dark);">
+                    <i class="fas fa-phone-alt"></i> केही सोध्नु छ?
+                </a>
+            </div>
         </div>
     </main>
 
-    <footer style="margin-top: 50px;">
+    <footer>
+        <div class="footer-info" style="margin-bottom: 20px;">
+            <strong>विमल फार्मेसी - तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता।</strong><br>
+            क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन
+        </div>
         <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
     </footer>
 
