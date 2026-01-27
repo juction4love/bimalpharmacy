@@ -1,5 +1,5 @@
 /* =========================================
-   विमल फार्मेसी - मुख्य स्टाइल २०२६
+   विमल फार्मेसी - मुख्य स्टाइल २०२६ (अपडेटेड)
    ========================================= */
 
 :root {
@@ -7,7 +7,10 @@
   --secondary: #81C784; /* हल्का हरियो */
   --accent: #FFD700; /* सुनौलो (Highlight को लागि) */
   --dark: #1a252f;
-  --bg: #f5f7fa; 
+  
+  /* अपडेट गरिएको ब्याकग्राउन्ड: हल्का मिन्ट ग्रीन */
+  --bg: #e8f5e9; 
+  
   --header-gradient: linear-gradient(135deg, #388E3C 0%, #2E7D32 100%);
   --shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -16,9 +19,10 @@
 
 body {
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background: var(--bg);
+  background-color: var(--bg); /* नयाँ रङ यहाँ लागू हुन्छ */
   color: #333;
   line-height: 1.6;
+  min-height: 100vh; /* पूरै पेजमा रङ फैलिएको सुनिश्चित गर्न */
 }
 
 /* =========================================
@@ -119,7 +123,7 @@ body {
 }
 
 .card {
-  background: #fff;
+  background: #fff; /* कार्डहरू सेतो हुँदा मिन्ट ग्रीन ब्याकग्राउन्डमा राम्रो देखिन्छन् */
   padding: 30px;
   border-radius: 15px;
   box-shadow: var(--shadow);
