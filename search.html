@@ -1,31 +1,23 @@
-<div class="mobile-call-box">
-    <a href="tel:+9779855065327" class="mobile-call-btn">
-        <i class="fas fa-phone-alt"></i> कल गर्नुहोस
-    </a>
-</div>
+<script src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/medicines.js"></script>
 
 <script>
-    let medicineData = [];
+    // Note: This script assumes 'medicines.js' defines a variable named 'medicineData'
     const resultsContainer = document.getElementById('resultsList');
     const searchInput = document.getElementById('medicineSearch');
     const countDisplay = document.getElementById('resultsCount');
 
-    async function fetchMedicines() {
-        try {
-            const response = await fetch('medicine.json');
-            medicineData = await response.json();
-            displayResults(''); 
-        } catch (error) {
-            resultsContainer.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: red;">डाटा लोड गर्न सकिएन। औषधि.json फाइल चेक गर्नुहोस्।</p>`;
-        }
-    }
-
-    function displayResults(query) {
+    function displayResults(query = '') {
         resultsContainer.innerHTML = '';
         const filter = query.toLowerCase().trim();
 
+        // Check if medicineData loaded correctly
+        if (typeof medicineData === 'undefined') {
+            resultsContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: red;">डाटा लोड हुन सकेन (medicines.js not found).</p>';
+            return;
+        }
+
         const filtered = medicineData.filter(item => 
-            item.Product.toLowerCase().includes(filter) ||
+            item.Product.toLowerCase().includes(filter) || 
             item.Category.toLowerCase().includes(filter) ||
             item.Use_for.toLowerCase().includes(filter)
         );
@@ -35,10 +27,7 @@
         const itemsToRender = filtered.slice(0, 100);
 
         if (itemsToRender.length === 0) {
-            resultsContainer.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 50px;">
-                <i class="fas fa-pills" style="font-size: 50px; color: #ccc;"></i>
-                <p style="margin-top: 15px;">माफ गर्नुहोला, औषधी भेटिएन।</p>
-            </div>`;
+            resultsContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px;"><p>कुनै औषधी भेटिएन।</p></div>';
             return;
         }
 
@@ -53,8 +42,7 @@
                 <h3 style="margin: 15px 0 5px; color: var(--dark); font-size: 1.3rem;">${item.Product}</h3>
                 <p class="med-use"><strong>प्रयोग:</strong> ${item.Use_for}</p>
                 <p class="side-effects-text"><strong>असरहरू:</strong> ${item.Side_effects.join(', ')}</p>
-                
-                <a href="https://wa.me/9779855065327?text=नमस्ते Bimal Pharmacy, मलाई यो औषधी अर्डर गर्नु छ: ${item.Product}" 
+                <a href="https://wa.me/9779855065327?text=नमस्ते विमल फार्मेसी, मलाई यो अर्डर गर्नु छ: ${item.Product}" 
                    target="_blank" class="order-btn-whatsapp">
                     <i class="fab fa-whatsapp"></i> अर्डर गर्नुहोस्
                 </a>
@@ -63,18 +51,11 @@
         });
     }
 
-    function setSearch(val) {
-        searchInput.value = val;
-        displayResults(val);
-    }
+    // Initial display
+    displayResults('');
 
-    let timeout = null;
+    // Search input listener
     searchInput.addEventListener('input', (e) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            displayResults(e.target.value);
-        }, 300);
+        displayResults(e.target.value);
     });
-
-    fetchMedicines();
 </script>
