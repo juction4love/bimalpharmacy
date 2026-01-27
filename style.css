@@ -1,191 +1,281 @@
+/* =========================================
+   विमल फार्मेसी - मुख्य स्टाइल २०२६
+   ========================================= */
+
 :root {
-  /* प्राइमरी रङलाई अलिकति गाढा र आधुनिक बनाएको छु */
-  --primary: #388E3C; /* Forest Green - More professional than standard green */
-  --secondary: #81C784; /* Lighter accent green */
+  --primary: #388E3C; /* व्यावसायिक फरेस्ट ग्रीन */
+  --secondary: #81C784; /* हल्का हरियो */
+  --accent: #FFD700; /* सुनौलो (Highlight को लागि) */
   --dark: #1a252f;
-  --bg: #f5f7fa; /* Slightly off-white background for better contrast */
-  --header-gradient: linear-gradient(135deg, #388E3C 0%, #2E7D32 100%); /* Professional gradient */
+  --bg: #f5f7fa; 
+  --header-gradient: linear-gradient(135deg, #388E3C 0%, #2E7D32 100%);
+  --shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Added Roboto for better look if available */
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   background: var(--bg);
   color: #333;
   line-height: 1.6;
 }
 
 /* =========================================
-   BRAND HEADER SECTION (नयाँ आकर्षक हेडर)
+   ब्रान्ड हेडर (BRAND HEADER)
    ========================================= */
 
-/* मुख्य हेडर कन्टेनर - यसलाई ब्रान्डको मुख्य भाग बनाइएको छ */
 .text-header {
-  background: var(--header-gradient); /* सादा सेतोको सट्टा आकर्षक हरियो ग्राडियन्ट */
-  color: #fff; /* टेक्स्टको रङ सेतो */
-  padding: 40px 20px; /* अलिकति धेरै ठाउँ (Breathing room) */
-  text-align: center;
-  border-bottom: none; /* पुरानो बोर्डर हटाइयो */
-  position: relative;
-  box-shadow: inset 0 -10px 20px -10px rgba(0,0,0,0.2); /* भित्रपट्टि हल्का छाया */
-}
-
-/* ब्रान्डको नाम (H1) - यसलाई लोगो जस्तो बनाइएको छ */
-.text-header h1 {
+  background: var(--header-gradient);
   color: #fff;
-  font-size: 3rem; /* फन्टको साइज ठूलो बनाइएको */
-  font-weight: 900; /* एकदम मोटो (Extra Bold) */
-  text-transform: uppercase;
-  letter-spacing: 2px; /* अक्षरहरूको बीचमा खाली ठाउँ */
-  margin-bottom: 10px;
-  text-shadow: 3px 3px 6px rgba(0,0,0,0.3); /* थ्रीडी (3D) प्रभावको लागि छाया */
-  display: inline-block;
+  padding: 50px 20px;
+  text-align: center;
   position: relative;
+  box-shadow: inset 0 -10px 20px -10px rgba(0,0,0,0.2);
 }
 
-/* H1 को तल सानो सजावटी लाइन */
+.text-header h1 {
+  font-size: 3.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+  display: inline-block;
+}
+
 .text-header h1::after {
     content: '';
     display: block;
-    width: 60px;
+    width: 80px;
     height: 4px;
-    background: rgba(255,255,255,0.7);
-    margin: 10px auto 0;
+    background: var(--accent); /* सुनौलो अन्डरलाइन */
+    margin: 12px auto 0;
     border-radius: 2px;
 }
 
-/* ठेगाना र फोन नम्बर (Subtitle) */
 .text-header p {
-  color: rgba(255, 255, 255, 0.9); /* सेतो रङ, अलिकति पारदर्शी */
-  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.25rem;
   font-weight: 500;
+  margin-top: 15px;
 }
 
 .text-header p i {
-    color: #FFD700; /* आइकनहरूलाई सुनौलो रङ दिएर हाइलाइट गरिएको */
-    margin-right: 5px;
+    color: var(--accent);
+    margin-right: 8px;
 }
 
 /* =========================================
-   NAVIGATION BAR (मेनु बार)
+   नेभिगेसन बार (NAV BAR)
    ========================================= */
 
 .navbar {
-  background: #2E7D32; /* हेडर भन्दा अलिकति गाढा हरियो */
+  background: #2E7D32;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* स्क्रोल गर्दा माथि बस्ने बलियो छाया */
-  border-top: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .nav-links {
   display: flex;
   justify-content: center;
   list-style: none;
-  padding: 0;
   flex-wrap: wrap;
 }
 
-.nav-links li {
-  margin: 0; /* मार्जिन हटाइयो */
-}
-
-/* मेनुका लिङ्कहरू */
 .nav-links a {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
   font-size: 15px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 20px 25px; /* प्याडिङ बढाएर बटन जस्तो बनाइएको */
+  padding: 20px 25px;
   display: block;
-  transition: all 0.3s ease; /* होभर गर्दा स्मूथ एनिमेसन */
+  transition: all 0.3s ease;
 }
 
-/* होभर गर्दा (Hover Effect) */
-.nav-links a:hover {
-  background: rgba(255, 255, 255, 0.1); /* हल्का सेतो ब्याकग्राउन्ड */
-  color: #FFD700; /* सुनौलो रङ */
+.nav-links a:hover, .nav-links a.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--accent);
 }
 
-/* सक्रिय पेज (Active Page) */
 .nav-links a.active {
-    background: rgba(255,255,255,0.15);
-    color: #FFD700;
-    border-bottom: 3px solid #FFD700; /* सक्रिय पेजको तल सुनौलो लाइन */
+    border-bottom: 3px solid var(--accent);
 }
-
 
 /* =========================================
-   OTHER STYLES (अन्य स्टाइलहरू - यथावत)
+   मुख्य सामग्री र कार्डहरू (CONTENT & CARDS)
    ========================================= */
 
-/* Smart Gallery - CURRENTLY HIDDEN */
-.photo-gallery {
-  display: none;
-}
-
-/* Content Cards */
 .main-content {
   max-width: 1100px;
-  margin: 30px auto; /* माथि अलिकति ग्याप बढाइयो */
-  padding: 20px;
+  margin: 40px auto;
+  padding: 0 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px; /* कार्डहरू बीचको ग्याप बढाइयो */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
 }
 
 .card {
   background: #fff;
-  padding: 30px; /* प्याडिङ बढाइयो */
-  border-radius: 12px; /* कुनाहरू अझै गोलो बनाइयो */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* अझै सफ्ट छाया */
-  border-top: 5px solid var(--primary);
-  transition: transform 0.3s ease; /* कार्डमा होभर गर्दा एनिमेसन */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  border-top: 6px solid var(--primary);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px); /* होभर गर्दा कार्ड अलिकति माथि उठ्ने */
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-.search-btn {
+.card h2 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* =========================================
+   अर्डर फर्म र अपलोड (ORDER FORM)
+   ========================================= */
+
+.order-card { grid-column: 1 / -1; max-width: 750px; margin: 0 auto; }
+
+.form-group { margin-bottom: 25px; }
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e1e8ed;
+    border-radius: 10px;
+    font-size: 16px;
+    background: #fcfcfc;
+    transition: all 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--primary);
+    background: #fff;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(56, 142, 60, 0.1);
+}
+
+/* फोटो अपलोड बक्स */
+.file-upload {
+    border: 2px dashed var(--primary);
+    padding: 40px;
+    text-align: center;
+    border-radius: 15px;
+    background: #f9fdf9;
+    cursor: pointer;
+    position: relative;
+}
+
+.file-upload i { font-size: 3rem; color: var(--primary); margin-bottom: 10px; }
+
+.file-upload input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+
+#imagePreview {
+    margin-top: 15px;
+    border: 3px solid #fff;
+    box-shadow: var(--shadow);
+    max-height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================
+   बटनहरू (BUTTONS)
+   ========================================= */
+
+.search-btn, .upload-submit {
   display: inline-block;
   background: var(--primary);
   color: #fff;
-  padding: 12px 25px;
+  padding: 15px 30px;
   text-decoration: none;
-  border-radius: 30px; /* बटन गोलो बनाइयो */
-  margin-top: 15px;
-  font-weight: bold;
-  box-shadow: 0 4px 6px rgba(56, 142, 60, 0.3);
-  transition: background 0.3s ease;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(56, 142, 60, 0.3);
 }
 
-.search-btn:hover {
-    background: #2E7D32; /* होभर गर्दा गाढा रङ */
+.search-btn:hover, .upload-submit:hover {
+    background: #2E7D32;
+    transform: scale(1.02);
 }
+
+/* =========================================
+   मोबाइल कल बटन (MOBILE CALL BUTTON)
+   ========================================= */
+
+.mobile-call-box {
+  display: none;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999;
+}
+
+.mobile-call-btn {
+  background: var(--accent);
+  color: var(--dark);
+  padding: 15px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 2px solid #fff;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 215, 0, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+}
+
+/* =========================================
+   फुटर (FOOTER)
+   ========================================= */
 
 footer {
   background: var(--dark);
   color: #fff;
   text-align: center;
-  padding: 40px 20px;
-  margin-top: 50px;
+  padding: 50px 20px;
+  margin-top: 60px;
 }
 
-.footer-info i {
-    color: var(--secondary);
-}
+footer a { color: var(--secondary); text-decoration: none; margin: 0 10px; }
+
+/* =========================================
+   रेस्पोन्सिभ डिजाइन (MOBILE ADJUSTMENTS)
+   ========================================= */
 
 @media (max-width: 768px) {
-  .text-header h1 { font-size: 2.2rem; } /* मोबाइलमा फन्ट सानो बनाउने */
-  .text-header p { font-size: 1rem; }
-  .nav-links a { padding: 15px 10px; font-size: 14px; } /* मोबाइलमा मेनुको प्याडिङ घटाउने */
-
-  /* This media query is less relevant while gallery is hidden, but kept for future use */
-  .photo-gallery { flex-direction: column; }
-  .photo-gallery img { width: 100%; height: 250px; }
+  .text-header h1 { font-size: 2.2rem; }
+  .text-header p { font-size: 1.1rem; }
+  .nav-links a { padding: 15px 12px; font-size: 13px; }
+  .mobile-call-box { display: block; } /* मोबाइलमा कल बटन देखाउने */
+  .card { padding: 20px; }
 }
