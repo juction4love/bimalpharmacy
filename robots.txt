@@ -1,4 +1,12 @@
+# विमल फार्मेसी - रोबोट्स फाइल २०२६
+# Bimal Pharmacy - robots.txt
+
 User-agent: *
 Allow: /
 
+# सर्च इन्जिनहरूलाई साइटम्याप फेला पार्न मद्दत गर्दछ
 Sitemap: https://www.bimalpharmacy.com.np/sitemap.xml
+
+# केही अनावश्यक कुराहरू इन्डेक्स हुनबाट रोक्न (यदि भविष्यमा थपिएमा)
+Disallow: /private/
+Disallow: /tmp/
