@@ -4,61 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>औषधी खोज्नुहोस् | विमल फार्मेसी</title>
-
-  <meta name="description" content="विमल फार्मेसीको ७,०००+ औषधीहरूको सूचीबाट खोज्नुहोस्। क्यान्सर अस्पताल रोड, भरतपुर-७।">
   
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
-
+  
   <style>
-    :root {
-      --primary: #2c7a7b; 
-      --dark: #2d3748;
+    /* Search Specific Layout */
+    .search-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 0 15px;
     }
-    .search-input-container {
-      margin-top: 25px; 
-      max-width: 600px; 
-      margin-left: auto; 
-      margin-right: auto;
-      position: relative;
+    .search-wrapper {
+        position: relative;
+        margin-bottom: 30px;
     }
-    .medicine-input {
-      width: 100%; 
-      padding: 18px 25px; 
-      border-radius: 50px; 
-      border: 2px solid #e1e8ed; 
-      font-size: 18px; 
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
-      outline: none;
-      transition: border-color 0.3s;
+    #medInput {
+        width: 100%;
+        padding: 15px 20px 15px 45px;
+        font-size: 1.1rem;
+        border: 2px solid var(--primary);
+        border-radius: 50px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
-    .medicine-input:focus {
-      border-color: var(--primary);
+    .search-icon {
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--primary);
     }
-    #loadMoreBtn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 12px 35px;
-      border-radius: 50px;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 16px;
-      margin: 30px auto;
-      display: none; 
+    .results-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-bottom: 50px;
     }
-    .card h3 {
-      color: var(--dark);
-      margin-bottom: 10px;
-      font-size: 1.15rem;
+    .med-card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        border-left: 5px solid var(--primary);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
-    .price-tag {
-      color: var(--primary);
-      font-weight: 800;
-      font-size: 1.2rem;
+    .med-card h3 { color: var(--dark); margin-bottom: 10px; font-size: 1.2rem; }
+    .med-card .tag {
+        font-size: 0.8rem;
+        background: #e8f5e9;
+        color: #2e7d32;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-weight: bold;
     }
+    .med-card .price {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+        color: var(--primary);
+        font-size: 1.1rem;
+    }
+    #loader { text-align: center; padding: 20px; font-weight: bold; color: #666; }
+    .no-results { text-align: center; grid-column: 1/-1; padding: 40px; color: #999; }
   </style>
 </head>
 <body>
@@ -80,28 +86,21 @@
     </ul>
   </nav>
 
-  <div class="hero" style="text-align: center; padding: 40px 20px; background: #fff; border-bottom: 1px solid #eee;">
-    <h2 style="color: var(--primary); font-size: 2rem;"><i class="fas fa-search"></i> औषधी खोज्नुहोस्</h2>
-    <p>हाम्रो ७,०००+ औषधी र सर्जिकल सामग्रीहरूको सूचीबाट नाम टाइप गरी खोज्नुहोस्।</p>
-    
-    <div class="search-input-container">
-      <input type="text" id="medicineSearch" placeholder="औषधीको नाम यहाँ टाइप गर्नुहोस्..." class="medicine-input">
-      <div id="resultsCount" style="margin-top: 15px; font-weight: bold; color: var(--primary);"></div>
+  <main class="search-container">
+    <div style="text-align: center; margin-top: 30px;">
+        <h2 style="color: var(--primary);">औषधीको विवरण खोज्नुहोस्</h2>
+        <p>७,००० भन्दा बढी औषधी र सर्जिकल सामानहरू उपलब्ध छन्।</p>
     </div>
-  </div>
 
-  <main class="main-content" id="resultsList" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; padding: 20px;">
-    </main>
+    <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="medInput" placeholder="औषधीको नाम वा श्रेणी लेख्नुहोस्..." onkeyup="performSearch()">
+    </div>
 
-  <div style="text-align: center; width: 100%;">
-    <button id="loadMoreBtn" onclick="loadMore()">थप औषधीहरू हेर्नुहोस् (+)</button>
-  </div>
-
-  <div class="mobile-call-box">
-    <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्
-    </a>
-  </div>
+    <div id="loader">डाटा लोड हुँदैछ, कृपया केही क्षण पर्खनुहोस्...</div>
+    <div id="resultsCount" style="margin-bottom: 15px; font-weight: bold;"></div>
+    <div id="resultsGrid" class="results-grid"></div>
+  </main>
 
   <footer>
     <div class="footer-info">
@@ -112,89 +111,57 @@
     <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
   </footer>
 
-  <script src="medicines.js"></script>
-
   <script>
-    const resultsContainer = document.getElementById('resultsList');
-    const searchInput = document.getElementById('medicineSearch');
-    const countDisplay = document.getElementById('resultsCount');
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    let medicines = [];
 
-    let currentLimit = 10;
-    let filteredItems = [];
-
-    function renderMedicines() {
-      const toRender = filteredItems.slice(0, currentLimit);
-      if (currentLimit === 10) resultsContainer.innerHTML = '';
-
-      toRender.forEach((item, index) => {
-        if (index >= currentLimit - 10 || currentLimit === 10) {
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.style = "border-top: 6px solid var(--primary); display: flex; flex-direction: column; justify-content: space-between; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);";
-          
-          // Fallback logic for column names
-          const name = item.product_name || item.Product || "Unknown Medicine";
-          const price = item.sales_price || item.S_price || "0";
-          const category = item.category || item.Category || "General";
-          const usage = item.use_for || item.Usage || "डाक्टरको सल्लाह अनुसार";
-
-          card.innerHTML = `
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                <span style="font-size: 11px; background: #e8f5f5; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: bold; text-transform: uppercase;">
-                  श्रेणी: ${category}
-                </span>
-                <span class="price-tag">रु. ${price}</span>
-              </div>
-              <h3>${name}</h3>
-              <p style="font-size: 14px; color: #555;"><strong>उपयोग:</strong> ${usage}</p>
-            </div>
-            <a href="https://wa.me/9779855065327?text=नमस्ते विमल फार्मेसी, मलाई यो अर्डर गर्नु छ: ${name}" 
-               target="_blank" style="margin-top: 18px; background: #25D366; color: white; text-align: center; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; display: block;">
-               <i class="fab fa-whatsapp"></i> अर्डर गर्नुहोस्
-            </a>
-          `;
-          resultsContainer.appendChild(card);
+    // Fetch from GitHub Root
+    async function loadData() {
+        try {
+            const response = await fetch('./medicines.json');
+            medicines = await response.json();
+            document.getElementById('loader').style.display = 'none';
+        } catch (error) {
+            document.getElementById('loader').innerText = "डाटा लोड गर्न सकिएन। कृपया रिफ्रेस गर्नुहोस्।";
         }
-      });
-      loadMoreBtn.style.display = (filteredItems.length > currentLimit) ? 'inline-block' : 'none';
     }
 
-    function initiateSearch() {
-      // If medicineData isn't loaded yet, show a message and wait
-      if (typeof medicineData === 'undefined') {
-        resultsContainer.innerHTML = `<p style="grid-column:1/-1; text-align:center;">डाटा लोड हुँदैछ... कृपया प्रतिक्षा गर्नुहोस्।</p>`;
-        setTimeout(initiateSearch, 1000); // Retry every 1 second
-        return;
-      }
+    function performSearch() {
+        const query = document.getElementById('medInput').value.toLowerCase();
+        const grid = document.getElementById('resultsGrid');
+        const count = document.getElementById('resultsCount');
+        
+        if (query.length < 2) {
+            grid.innerHTML = "";
+            count.innerText = "";
+            return;
+        }
 
-      const query = searchInput.value.toLowerCase().trim();
-      
-      filteredItems = medicineData.filter(item => {
-        const name = (item.product_name || item.Product || "").toLowerCase();
-        const cat = (item.category || item.Category || "").toLowerCase();
-        return name.includes(query) || cat.includes(query);
-      });
+        // Search logic
+        const filtered = medicines.filter(m => 
+            m["Product Name"].toLowerCase().includes(query) || 
+            m["category"].toLowerCase().includes(query)
+        ).slice(0, 50); // Show top 50 for performance
 
-      countDisplay.innerText = query ? `${filteredItems.length} वटा औषधी भेटिए` : `कूल ${medicineData.length} औषधीहरू उपलब्ध छन्`;
-      currentLimit = 10;
-      renderMedicines();
+        count.innerText = `${filtered.length} वटा नतिजाहरू भेटिए।`;
+
+        if (filtered.length === 0) {
+            grid.innerHTML = `<div class="no-results">तपाईंले खोज्नुभएको औषधी भेटिएन। कृपया अर्को नाम प्रयास गर्नुहोस्।</div>`;
+            return;
+        }
+
+        grid.innerHTML = filtered.map(m => `
+            <div class="med-card">
+                <span class="tag">${m["category"]}</span>
+                <h3>${m["Product Name"]}</h3>
+                <p><strong>उपयोग:</strong> ${m["Medicine use for"]}</p>
+                <p style="font-size: 0.9rem; color: #666;"><strong>साइड इफेक्ट:</strong> ${m["side effect"]}</p>
+                <span class="price">NPR ${m["Sales price"]}</span>
+            </div>
+        `).join('');
     }
 
-    function loadMore() {
-      currentLimit += 10;
-      renderMedicines();
-    }
-
-    let searchTimer;
-    searchInput.addEventListener('input', () => {
-      clearTimeout(searchTimer);
-      searchTimer = setTimeout(initiateSearch, 300);
-    });
-
-    // Run on load
-    window.onload = initiateSearch;
+    // Initial Load
+    loadData();
   </script>
 </body>
 </html>
