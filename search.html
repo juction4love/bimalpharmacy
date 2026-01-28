@@ -11,6 +11,35 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --primary: #2c7a7b; /* Adjust this to match your brand color in style.css */
+      --dark: #2d3748;
+    }
+    .card {
+      transition: transform 0.2s;
+      border: 1px solid #eee;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+    #loadMoreBtn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    #loadMoreBtn:hover {
+      opacity: 0.9;
+    }
+  </style>
 </head>
 <body>
 
@@ -36,14 +65,19 @@
     <p>हाम्रो ७,०००+ औषधी र सर्जिकल सामग्रीहरूको सूचीबाट नाम टाइप गरी खोज्नुहोस्।</p>
     
     <div style="margin-top: 25px; max-width: 600px; margin-left: auto; margin-right: auto;">
-      <input type="text" id="medicineSearch" placeholder="........................." 
+      <input type="text" id="medicineSearch" placeholder="औषधीको नाम यहाँ टाइप गर्नुहोस्..." 
              style="width: 100%; padding: 18px 25px; border-radius: 50px; border: 2px solid #e1e8ed; font-size: 18px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); outline: none;">
       <div id="resultsCount" style="margin-top: 10px; font-weight: bold; color: var(--primary);"></div>
     </div>
   </div>
 
-  <main class="main-content" id="resultsList" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; padding: 20px;">
-    </main>
+  <main class="main-content">
+    <div id="resultsList" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 20px;">
+      </div>
+    <div style="text-align: center; margin-bottom: 50px;">
+        <button id="loadMoreBtn" style="display: none;" onclick="loadMore()">थप औषधीहरू हेर्नुहोस् (+)</button>
+    </div>
+  </main>
 
   <div class="mobile-call-box">
     <a href="tel:056593288" class="mobile-call-btn">
@@ -60,102 +94,103 @@
     <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
   </footer>
 
-  <script src="medicines.js"></script>
+  <script src="medicine.js"></script>
 
   <script>
     const resultsContainer = document.getElementById('resultsList');
     const searchInput = document.getElementById('medicineSearch');
     const countDisplay = document.getElementById('resultsCount');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
 
-    function displayResults(query = '') {
-        resultsContainer.innerHTML = '';
-        const filter = query.toLowerCase().trim();
+    let displayLimit = 10;
+    let filteredItems = [];
 
-        // Check if medicineData loaded from medicines.js
-        if (typeof medicineData === 'undefined') {
-            resultsContainer.innerHTML = `
-                <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: red;">
-                    <i class="fas fa-exclamation-triangle fa-2x"></i><br>
-                    डाटा लोड हुन सकेन। कृपया medicines.js फाइल अपलोड भएको सुनिश्चित गर्नुहोस्।
-                </div>`;
-            return;
-        }
+    function renderCards() {
+        const itemsToShow = filteredItems.slice(0, displayLimit);
+        
+        // Clear container if it's a fresh search
+        if (displayLimit === 10) resultsContainer.innerHTML = '';
 
-        const filtered = medicineData.filter(item => 
-            item.Product.toLowerCase().includes(filter) || 
-            item.Category.toLowerCase().includes(filter)
-        );
-
-        // Update count text
-        countDisplay.innerText = filter ? `${filtered.length} वटा औषधी भेटिए` : `कूल ${medicineData.length} औषधीहरू उपलब्ध छन्`;
-
-        // Limit rendering to 100 items for performance
-        const itemsToRender = filtered.slice(0, 100);
-
-        // If NO results found
-        if (itemsToRender.length === 0) {
-            resultsContainer.innerHTML = `
-                <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: #fff; border-radius: 15px; border: 2px dashed var(--primary); margin-top: 20px;">
-                    <i class="fas fa-prescription-bottle-alt fa-3x" style="color: #888; margin-bottom: 15px;"></i>
-                    <h3 style="color: var(--dark); margin-bottom: 10px;">माफ गर्नुहोला, तपाईंले खोज्नुभएको औषधी सूचीमा भेटिएन।</h3>
-                    <p style="margin-bottom: 25px; color: #666;">हाम्रो स्टकमा ७,००० भन्दा बढी औषधीहरू उपलब्ध छन्। कृपया तलका माध्यमबाट सिधै हामीलाई सोध्नुहोस्:</p>
-                    
-                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                        <a href="https://wa.me/9779855065327?text=नमस्ते विमल फार्मेसी, मलाई यो औषधीको बारेमा सोध्नु थियो जुन वेबसाइटमा भेटिएन: ${query}" 
-                           target="_blank" 
-                           style="background: #25D366; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 8px;">
-                            <i class="fab fa-whatsapp"></i> WhatsApp मा सोध्नुहोस्
-                        </a>
-                        <a href="tel:056593288" 
-                           style="background: var(--primary); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 8px;">
-                            <i class="fas fa-phone-alt"></i> फोन गरेर सोध्नुहोस्
-                        </a>
-                    </div>
-                </div>`;
-            return;
-        }
-
-        // Render Cards
-        itemsToRender.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.style = "border-top: 6px solid var(--primary); display: flex; flex-direction: column; justify-content: space-between;";
-            
-            card.innerHTML = `
-                <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <span style="font-size: 11px; background: #e8f5e9; color: var(--primary); padding: 4px 10px; border-radius: 20px; font-weight: bold; text-transform: uppercase;">
-                            ${item.Category}
-                        </span>
-                        <span style="color: var(--primary); font-weight: 800; font-size: 1.1rem;">Rs. ${item.S_price}</span>
-                    </div>
-                    <h3 style="color: var(--dark); margin-bottom: 10px; font-size: 1.1rem;">${item.Product}</h3>
-                    <p style="font-size: 14px; color: #444; margin-bottom: 8px;"><strong>विवरण:</strong> डाक्टरको सल्लाह अनुसार प्रयोग गर्नुहोस्।</p>
-                </div>
+        itemsToShow.forEach((item, index) => {
+            // Only append items that aren't already on screen
+            if (index >= displayLimit - 10 || displayLimit === 10) {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style = "border-top: 6px solid var(--primary); display: flex; flex-direction: column; justify-content: space-between; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);";
                 
-                <a href="https://wa.me/9779855065327?text=नमस्ते विमल फार्मेसी, मलाई यो अर्डर गर्नु छ: ${item.Product}" 
-                   target="_blank" style="margin-top: 15px; background: #25D366; color: white; text-align: center; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; display: block;">
-                    <i class="fab fa-whatsapp"></i> अर्डर गर्नुहोस्
-                </a>
-            `;
-            resultsContainer.appendChild(card);
+                card.innerHTML = `
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <span style="font-size: 11px; background: #e2f2f2; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: bold; text-transform: uppercase;">
+                                श्रेणी: ${item.category}
+                            </span>
+                            <span style="color: var(--primary); font-weight: 800; font-size: 1.2rem;">रु. ${item.sales_price}</span>
+                        </div>
+                        <h3 style="color: var(--dark); margin-bottom: 10px; font-size: 1.15rem;">${item.product_name}</h3>
+                        <p style="font-size: 14px; color: #555; line-height: 1.4;">
+                            <strong>प्रयोग:</strong> ${item.use_for || 'चिकित्सकको परामर्श अनुसार'}
+                        </p>
+                    </div>
+                    
+                    <a href="https://wa.me/9779855065327?text=नमस्ते विमल फार्मेसी, मलाई यो अर्डर गर्नु छ: ${item.product_name}" 
+                       target="_blank" style="margin-top: 18px; background: #25D366; color: white; text-align: center; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fab fa-whatsapp"></i> अर्डर गर्नुहोस्
+                    </a>
+                `;
+                resultsContainer.appendChild(card);
+            }
         });
+
+        // Show/Hide Load More button
+        loadMoreBtn.style.display = filteredItems.length > displayLimit ? 'inline-block' : 'none';
     }
 
-    // Initial load handling
-    window.onload = () => {
-        if (typeof medicineData !== 'undefined') {
-            displayResults('');
-        } else {
-            // Wait 1 second if data isn't ready immediately
-            setTimeout(() => displayResults(''), 1000);
+    function filterData() {
+        const query = searchInput.value.toLowerCase().trim();
+        
+        if (typeof medicineData === 'undefined') {
+            resultsContainer.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: red;">डाटा लोड भइरहेको छ वा फाइल भेटिएन।</p>`;
+            return;
         }
-    };
 
-    // Real-time Search Input
-    searchInput.addEventListener('input', (e) => {
-        displayResults(e.target.value);
+        filteredItems = medicineData.filter(item => 
+            item.product_name.toLowerCase().includes(query) || 
+            item.category.toLowerCase().includes(query)
+        );
+
+        countDisplay.innerText = query ? `${filteredItems.length} वटा भेटिए` : `कूल ${medicineData.length} औषधीहरू`;
+        
+        displayLimit = 10; // Reset limit for new search
+        resultsContainer.innerHTML = '';
+        
+        if (filteredItems.length === 0) {
+            resultsContainer.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 50px; background: #f9f9f9; border-radius: 15px; border: 2px dashed #ddd;">
+                    <i class="fas fa-search-minus fa-3x" style="color: #ccc; margin-bottom: 15px;"></i>
+                    <h3>माफ गर्नुहोला, तपाईंले खोज्नुभएको औषधी भेटिएन।</h3>
+                    <p>कृपया हामीलाई सिधै सम्पर्क गर्नुहोला।</p>
+                </div>`;
+        } else {
+            renderCards();
+        }
+    }
+
+    function loadMore() {
+        displayLimit += 10;
+        renderCards();
+    }
+
+    // Debounce to keep the 7000+ items search smooth
+    let searchTimeout;
+    searchInput.addEventListener('input', () => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(filterData, 300);
     });
+
+    // Initial load
+    window.onload = () => {
+        if (typeof medicineData !== 'undefined') filterData();
+    };
   </script>
 
 </body>
