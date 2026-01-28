@@ -1,246 +1,72 @@
 /* =========================================
-   विमल फार्मेसी - पूर्ण आधुनिक स्टाइल २०२६ (FINAL FIXED)
+   खोज नतिजा ग्रिड (Search Results Grid)
    ========================================= */
 
-:root {
-  --primary: #388E3C; /* व्यावसायिक फरेस्ट ग्रीन */
-  --secondary: #81C784; /* हल्का हरियो */
-  --accent: #FFD700; /* सुनौलो (Highlight) */
-  --dark: #1a252f;
-  --bg: #e8f5e9; 
-  --header-overlay: rgba(0, 0, 0, 0.6);
-  --shadow: 0 4px 15px rgba(0,0,0,0.1);
-  --white: #ffffff;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--bg);
-  color: #333;
-  line-height: 1.6;
-  min-height: 100vh;
-}
-
-/* =========================================
-   ब्रान्ड हेडर
-   ========================================= */
-
-.text-header {
-  background-image: linear-gradient(var(--header-overlay), var(--header-overlay)), 
-                    url('heading.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #fff;
-  padding: 80px 20px;
-  text-align: center;
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: inset 0 -10px 20px -10px rgba(0,0,0,0.5);
-}
-
-.text-header h1 {
-  font-size: 3rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
-}
-
-.text-header h1::after {
-  content: '';
-  display: block;
-  width: 80px; height: 4px;
-  background: var(--accent);
-  margin: 12px auto 0;
-  border-radius: 2px;
-}
-
-/* =========================================
-   नेभिगेसन बार
-   ========================================= */
-
-.navbar {
-  background: #2E7D32;
-  position: sticky; top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.nav-links {
-  display: flex; justify-content: center;
-  list-style: none; flex-wrap: wrap;
-}
-
-.nav-links a {
-  color: #fff; text-decoration: none;
-  font-weight: 600; font-size: 14px;
-  padding: 18px 22px; display: block;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-}
-
-.nav-links a:hover, .nav-links a.active {
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--accent);
-}
-
-/* =========================================
-   सर्च र इनपुट फिल्डहरू
-   ========================================= */
-
-.search-input-wrapper {
-  max-width: 600px; margin: 0 auto; padding: 10px;
-}
-
-#medicineSearch, .form-group input, .form-group textarea {
-  width: 100%;
-  padding: 14px 20px;
-  border-radius: 10px;
-  border: 2px solid #e1e8ed;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  outline: none;
-}
-
-#medicineSearch { border-radius: 50px; }
-
-#medicineSearch:focus, .form-group input:focus, .form-group textarea:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 10px rgba(56, 142, 60, 0.2);
-}
-
-/* =========================================
-   मुख्य सामग्री र कार्डहरू
-   ========================================= */
-
-.main-content {
-  max-width: 1100px;
-  margin: 30px auto;
-  padding: 0 15px;
+/* यो ग्रिडले ७,००० औषधीहरूलाई सफासँग मिलाएर देखाउँछ */
+.results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
 }
 
-.card {
+/* औषधी कार्डको डिजाइन */
+.med-card {
   background: var(--white);
-  padding: 25px;
+  padding: 20px;
   border-radius: 12px;
   box-shadow: var(--shadow);
-  border-top: 5px solid var(--primary);
+  border-left: 6px solid var(--primary); /* बायाँतिर हरियो लाइन */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   transition: transform 0.3s ease;
 }
 
-.card:hover { transform: translateY(-5px); }
-
-.card h2 { color: var(--primary); margin-bottom: 15px; }
-
-/* =========================================
-   अर्डर फारम र फाइल अपलोड
-   ========================================= */
-
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
-
-.file-upload {
-  border: 2px dashed var(--primary);
-  padding: 30px;
-  text-align: center;
-  border-radius: 10px;
-  background: #f9fdf9;
-  cursor: pointer;
-  position: relative;
-  transition: background 0.3s;
+.med-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-.file-upload:hover { background: #f0f7f0; }
-.file-upload i { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
-
-/* =========================================
-   सर्च रिजल्ट्स (Medicine Cards)
-   ========================================= */
-
-.medicine-result-card {
-  border-left: 5px solid var(--primary);
-  display: flex; flex-direction: column;
-  justify-content: space-between;
+.med-card h3 {
+  color: var(--dark);
+  font-size: 1.2rem;
+  margin: 10px 0;
+  text-transform: uppercase;
 }
 
-.category-tag {
-  font-size: 11px; background: #e8f5e9; color: var(--primary);
-  padding: 4px 10px; border-radius: 20px; font-weight: 700;
-  text-transform: uppercase; display: inline-block;
+.med-card .usage-text {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+  line-height: 1.4;
 }
 
-.price-tag { color: var(--primary); font-size: 1.1rem; font-weight: 800; }
-
-.side-effects-text {
-  font-size: 13px; color: #666; background: #f1f1f1;
-  padding: 8px; border-radius: 5px; margin: 10px 0;
+.med-card .side-effect-box {
+  font-size: 12px;
+  background: #f8f9fa;
+  color: #d32f2f; /* साइड इफेक्ट अलि फरक रङमा */
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 5px;
+  border: 1px solid #eee;
 }
 
-/* =========================================
-   बटनहरू
-   ========================================= */
-
-.search-btn, .upload-submit, .order-btn-whatsapp {
-  display: block; width: 100%;
-  padding: 14px; border-radius: 8px;
-  text-align: center; text-decoration: none;
-  font-weight: 700; cursor: pointer;
-  transition: all 0.3s ease; border: none;
+.med-card .price-tag {
+  font-size: 1.3rem;
+  color: var(--primary);
+  font-weight: 800;
+  margin: 15px 0;
 }
 
-.search-btn { background: var(--primary); color: white; }
-.order-btn-whatsapp { background: #25D366; color: white; margin-top: 15px; }
-.order-btn-whatsapp:hover { background: #128C7E; }
-
-/* =========================================
-   मोबाइल कल बटन
-   ========================================= */
-
-.mobile-call-box {
-  display: none;
-  position: fixed; bottom: 20px; right: 20px; z-index: 1001;
+/* ह्वाट्सएप र कल बटनहरू एउटै लाइनमा */
+.card-actions {
+  display: flex;
+  gap: 10px;
 }
 
-.mobile-call-btn {
-  background: var(--accent); color: var(--dark);
-  padding: 12px 20px; border-radius: 50px;
-  text-decoration: none; font-weight: 800;
-  display: flex; align-items: center; gap: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-/* =========================================
-   फुटर र रिस्पोन्सिभ
-   ========================================= */
-
-footer {
-  background: var(--dark); color: #fff;
-  text-align: center; padding: 40px 20px;
-  margin-top: 40px; font-size: 14px;
-}
-
-footer a { color: var(--accent); text-decoration: none; }
-
-@media (max-width: 768px) {
-  .text-header h1 { font-size: 2rem; }
-  .text-header { min-height: 250px; padding: 50px 15px; }
-  .nav-links a { padding: 15px 12px; font-size: 12px; }
-  .mobile-call-box { display: block; }
-  .main-content { grid-template-columns: 1fr; margin: 20px auto; }
+.card-actions .btn {
+  flex: 1;
+  font-size: 13px;
+  padding: 10px;
 }
