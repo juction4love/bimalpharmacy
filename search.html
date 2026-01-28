@@ -10,7 +10,7 @@
   
   <style>
     :root {
-        --primary: #2e7d32; /* Pharmacy Green from your design */
+        --primary: #2e7d32; 
         --accent: #fbc02d;
     }
     .search-container { max-width: 1000px; margin: 20px auto; padding: 0 15px; min-height: 70vh; }
@@ -121,7 +121,7 @@
 
     <div class="search-box-wrapper">
         <i class="fas fa-search search-icon-inside"></i>
-        <input type="text" id="medInput" placeholder="                        " oninput="debounceSearch()">
+        <input type="text" id="medInput" placeholder="औषधीको नाम यहाँ लेख्नुहोस्..." oninput="debounceSearch()">
     </div>
 
     <div id="status-msg">डाटा लोड हुँदैछ...</div>
@@ -141,22 +141,23 @@
     let medicineDatabase = [];
     let searchTimeout = null;
 
-    // Load data from your GitHub root
     async function init() {
         const status = document.getElementById('status-msg');
         try {
+            // Ensure medicines.json is in the same folder as this HTML
             const response = await fetch('./medicines.json');
             if (!response.ok) throw new Error('File not found');
             medicineDatabase = await response.json();
-            status.innerText = ;
+            status.innerText = "औषधी खोज्न सुरु गर्नुहोस्।";
         } catch (e) {
             status.innerHTML = "<span style='color:red;'>त्रुटि: medicines.json फाइल भेटिएन।</span>";
+            console.error(e);
         }
     }
 
     function debounceSearch() {
         clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(executeSearch, 300); // Wait 300ms
+        searchTimeout = setTimeout(executeSearch, 300);
     }
 
     function executeSearch() {
@@ -166,17 +167,15 @@
 
         if (query.length < 2) {
             grid.innerHTML = "";
-            status.innerText = "            ";
+            status.innerText = "खोज्नका लागि कम्तिमा २ अक्षर टाइप गर्नुहोस्।";
             return;
         }
 
         const filtered = medicineDatabase.filter(m => 
-            m["Product Name"].toLowerCase().includes(query) || 
-            m["category"].toLowerCase().includes(query) ||
-            m["Medicine use for"].toLowerCase().includes(query)
-        ).slice(0, 40); // Performance limit
-
-        status.innerText = `${filtered.length} नतिजाहरू देखाइएको छ।`;
+            (m["Product Name"] && m["Product Name"].toLowerCase().includes(query)) || 
+            (m["category"] && m["category"].toLowerCase().includes(query)) ||
+            (m["Medicine use for"] && m["Medicine use for"].toLowerCase().includes(query))
+        ).slice(0, 40);
 
         if (filtered.length === 0) {
             grid.innerHTML = "";
@@ -184,25 +183,33 @@
             return;
         }
 
-        grid.innerHTML = filtered.map(m => `
+        status.innerText = `${filtered.length} नतिजाहरू देखाइएको छ।`;
+
+        grid.innerHTML = filtered.map(m => {
+            // Encode the message for WhatsApp to handle special characters safely
+            const waMessage = encodeURIComponent(`नमस्ते, मलाई ${m["Product Name"]} को बारेमा जानकारी चाहिएको थियो।`);
+            
+            return `
             <div class="med-card">
                 <div>
                     <div class="tag-row">
-                        <span class="category-badge">${m["category"]}</span>
-                        <small>${m["Small Unit"]} Unit</small>
+                        <span class="category-badge">${m["category"] || 'General'}</span>
+                        <small>${m["Small Unit"] || ''} Unit</small>
                     </div>
                     <h3>${m["Product Name"]}</h3>
-                    <p style="font-size:0.9rem;"><strong>प्रयोग:</strong> ${m["Medicine use for"]}</p>
+                    <p style="font-size:0.9rem;"><strong>प्रयोग:</strong> ${m["Medicine use for"] || 'जानकारी उपलब्ध छैन'}</p>
                 </div>
                 <div>
-                    <div class="price-tag">रू ${m["Sales price"]}</div>
+                    <div class="price-tag">रू ${m["Sales price"] || '--'}</div>
                     <div class="btn-group">
                         <a href="tel:056593288" class="card-btn call-btn"><i class="fas fa-phone"></i> सोधपुछ</a>
-                        <a href="https://wa.me/9779855065327text=नमस्ते, मलाई ${m["Product Name"]} को बारेमा जानकारी चाहिएको थियो।" target="_blank" class="card-btn wa-btn"><i class="fab fa-whatsapp"></i> अर्डर</a>
+                        <a href="https://wa.me/9779855065327?text=${waMessage}" target="_blank" class="card-btn wa-btn">
+                            <i class="fab fa-whatsapp"></i> अर्डर
+                        </a>
                     </div>
                 </div>
             </div>
-        `).join('');
+        `}).join('');
     }
 
     init();
