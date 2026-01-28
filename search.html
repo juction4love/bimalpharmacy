@@ -13,7 +13,6 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
 
   <style>
-    /* Ensuring consistency with your index.html theme */
     :root {
       --primary: #2c7a7b; 
       --dark: #2d3748;
@@ -48,7 +47,7 @@
       cursor: pointer;
       font-size: 16px;
       margin: 30px auto;
-      display: none; /* Hidden by default */
+      display: none; 
     }
     .card h3 {
       color: var(--dark);
@@ -114,6 +113,7 @@
   </footer>
 
   <script src="medicines.js"></script>
+
   <script>
     const resultsContainer = document.getElementById('resultsList');
     const searchInput = document.getElementById('medicineSearch');
@@ -125,29 +125,32 @@
 
     function renderMedicines() {
       const toRender = filteredItems.slice(0, currentLimit);
-      
-      // Clear container only on initial search
       if (currentLimit === 10) resultsContainer.innerHTML = '';
 
       toRender.forEach((item, index) => {
-        // Optimization: Only append the NEW 10 items if loading more
         if (index >= currentLimit - 10 || currentLimit === 10) {
           const card = document.createElement('div');
           card.className = 'card';
           card.style = "border-top: 6px solid var(--primary); display: flex; flex-direction: column; justify-content: space-between; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);";
           
+          // Fallback logic for column names
+          const name = item.product_name || item.Product || "Unknown Medicine";
+          const price = item.sales_price || item.S_price || "0";
+          const category = item.category || item.Category || "General";
+          const usage = item.use_for || item.Usage || "डाक्टरको सल्लाह अनुसार";
+
           card.innerHTML = `
             <div>
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
                 <span style="font-size: 11px; background: #e8f5f5; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: bold; text-transform: uppercase;">
-                  श्रेणी: ${item.category}
+                  श्रेणी: ${category}
                 </span>
-                <span class="price-tag">रु. ${item.sales_price}</span>
+                <span class="price-tag">रु. ${price}</span>
               </div>
-              <h3>${item.product_name}</h3>
-              <p style="font-size: 14px; color: #555;"><strong>उपयोग:</strong> ${item.use_for || 'डाक्टरको सल्लाह अनुसार'}</p>
+              <h3>${name}</h3>
+              <p style="font-size: 14px; color: #555;"><strong>उपयोग:</strong> ${usage}</p>
             </div>
-            <a href="https://wa.me/9779855065327?text=नमस्ते विमल फार्मेसी, मलाई यो अर्डर गर्नु छ: ${item.product_name}" 
+            <a href="https://wa.me/9779855065327?text=नमस्ते विमल फार्मेसी, मलाई यो अर्डर गर्नु छ: ${name}" 
                target="_blank" style="margin-top: 18px; background: #25D366; color: white; text-align: center; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; display: block;">
                <i class="fab fa-whatsapp"></i> अर्डर गर्नुहोस्
             </a>
@@ -155,26 +158,26 @@
           resultsContainer.appendChild(card);
         }
       });
-
-      // Show/Hide Load More button
       loadMoreBtn.style.display = (filteredItems.length > currentLimit) ? 'inline-block' : 'none';
     }
 
     function initiateSearch() {
-      const query = searchInput.value.toLowerCase().trim();
-      
+      // If medicineData isn't loaded yet, show a message and wait
       if (typeof medicineData === 'undefined') {
-        resultsContainer.innerHTML = `<p style="grid-column:1/-1; text-align:center; color:red;">डाटा लोड हुन सकेन।</p>`;
+        resultsContainer.innerHTML = `<p style="grid-column:1/-1; text-align:center;">डाटा लोड हुँदैछ... कृपया प्रतिक्षा गर्नुहोस्।</p>`;
+        setTimeout(initiateSearch, 1000); // Retry every 1 second
         return;
       }
 
-      filteredItems = medicineData.filter(item => 
-        item.product_name.toLowerCase().includes(query) || 
-        item.category.toLowerCase().includes(query)
-      );
+      const query = searchInput.value.toLowerCase().trim();
+      
+      filteredItems = medicineData.filter(item => {
+        const name = (item.product_name || item.Product || "").toLowerCase();
+        const cat = (item.category || item.Category || "").toLowerCase();
+        return name.includes(query) || cat.includes(query);
+      });
 
       countDisplay.innerText = query ? `${filteredItems.length} वटा औषधी भेटिए` : `कूल ${medicineData.length} औषधीहरू उपलब्ध छन्`;
-      
       currentLimit = 10;
       renderMedicines();
     }
@@ -184,16 +187,14 @@
       renderMedicines();
     }
 
-    // Debounce to prevent lag during fast typing
     let searchTimer;
     searchInput.addEventListener('input', () => {
       clearTimeout(searchTimer);
       searchTimer = setTimeout(initiateSearch, 300);
     });
 
-    window.onload = () => {
-      if (typeof medicineData !== 'undefined') initiateSearch();
-    };
+    // Run on load
+    window.onload = initiateSearch;
   </script>
 </body>
 </html>
