@@ -3,85 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>महत्त्वपूर्ण सूचना - विमल फार्मेसी</title>
-  <meta name="description" content="विमल फार्मेसीका ग्राहकहरूका लागि महत्त्वपूर्ण सूचना र भुक्तानी सम्बन्धी जानकारी।">
+  <title>महत्त्वपूर्ण सूचना | विमल फार्मेसी</title>
   
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
-
   <style>
-    /* यस पेजको लागि मात्र विशेष स्टाइल */
-    .notice-card { border-top: 8px solid #d32f2f !important; }
-    .important-box { background: #fff3e0; border-left: 6px solid #ff9800; padding: 25px; margin: 25px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    .qr-container { text-align: center; background: #fdfdfd; padding: 30px; border-radius: 15px; border: 2px dashed var(--primary); margin-top: 35px; }
-    .qr-image { max-width: 280px; height: auto; border: 5px solid #fff; box-shadow: var(--shadow); margin-top: 20px; transition: transform 0.3s; }
-    .qr-image:hover { transform: scale(1.05); }
-    
-    @keyframes warning-pulse {
-      0% { transform: scale(1); color: #d32f2f; }
-      50% { transform: scale(1.1); color: #b71c1c; }
-      100% { transform: scale(1); color: #d32f2f; }
+    /* 1. Global Styles (Same as Index/Order) */
+    :root {
+      --primary: #2e7d32;
+      --secondary: #1b5e20;
+      --accent: #fbc02d;
+      --danger: #d32f2f;
+      --light-bg: #f4f7f6;
+      --white: #ffffff;
+      --text-dark: #333;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .pulse-icon { animation: warning-pulse 2s infinite; }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, sans-serif; 
+      background-color: var(--light-bg); 
+      line-height: 1.6;
+      color: var(--text-dark);
+      padding-bottom: 80px;
+    }
+
+    header.text-header {
+      background: var(--white);
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid var(--primary);
+    }
+    header h1 { color: var(--primary); font-size: 1.8rem; }
+
+    .navbar {
+      background: var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+    .nav-links { display: flex; justify-content: center; list-style: none; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 18px; display: block; font-weight: 500; }
+    .nav-links a.active { background: var(--secondary); }
+
+    /* 2. Notice Page Specifics */
+    .main-content { max-width: 850px; margin: 0 auto; padding: 30px 15px; }
+
+    .card {
+      background: var(--white);
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border-top: 8px solid var(--danger); /* Urgent Red Border */
+      margin-bottom: 25px;
+    }
+
+    .important-box { 
+      background: #fff3e0; 
+      border-left: 6px solid #ff9800; 
+      padding: 20px; 
+      margin: 25px 0; 
+      border-radius: 8px;
+    }
+
+    .qr-container { 
+      text-align: center; 
+      background: #fdfdfd; 
+      padding: 30px; 
+      border-radius: 15px; 
+      border: 2px dashed var(--primary); 
+      margin-top: 35px; 
+    }
+    .qr-image { 
+      max-width: 250px; 
+      height: auto; 
+      border: 5px solid #fff; 
+      box-shadow: var(--shadow); 
+      margin-top: 20px; 
+      transition: transform 0.3s; 
+    }
+    .qr-image:hover { transform: scale(1.05); }
+
+    /* Animations */
+    @keyframes warning-pulse {
+      0% { transform: scale(1); color: var(--danger); }
+      50% { transform: scale(1.1); color: #b71c1c; }
+      100% { transform: scale(1); color: var(--danger); }
+    }
+    .pulse-icon { animation: warning-pulse 2s infinite; display: inline-block; }
+
+    .highlight-msg {
+      color: var(--secondary); 
+      font-weight: 800; 
+      font-size: 1.1rem; 
+      text-align: center; 
+      background: #e8f5e9; 
+      padding: 20px; 
+      border-radius: 8px; 
+      border: 1px solid #c8e6c9;
+      margin-top: 20px;
+    }
+
+    /* Mobile Call Button */
+    .mobile-call-box {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: var(--primary);
+      text-align: center;
+      padding: 15px;
+      z-index: 999;
+    }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.1rem; font-weight: bold; }
+
+    footer { background: #222; color: #bbb; padding: 40px 20px; text-align: center; margin-top: 50px; }
+
+    @media (max-width: 600px) {
+      .nav-links a { padding: 12px 10px; font-size: 0.85rem; }
+      .card { padding: 20px; }
+      header h1 { font-size: 1.5rem; }
+    }
   </style>
 </head>
 <body>
 
   <header class="text-header">
     <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन | <i class="fas fa-phone"></i> ०५६-५९३२८८</p>
+    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</p>
   </header>
 
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="search.html">खोज्नुहोस्</a></li>
-      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
+      <li><a href="order.html">अर्डर</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
       <li><a href="notice.html" class="active">सूचना</a></li>
-      <li><a href="about.html">जानकारी</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
   <main class="main-content">
     
-    <div class="card notice-card" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto;">
+    <div class="card">
       <div style="text-align: center; margin-bottom: 30px;">
-        <i class="fas fa-exclamation-triangle fa-4x pulse-icon"></i>
-        <h2 style="margin-top:20px; color: #d32f2f;">विनम्र अनुरोध</h2>
+        <i class="fas fa-exclamation-triangle fa-3x pulse-icon"></i>
+        <h2 style="margin-top:15px; color: var(--danger); font-size: 1.8rem;">आदरणीय ग्राहकहरूमा विनम्र अनुरोध</h2>
       </div>
 
-      <div class="notice-body" style="font-size: 1.1rem; line-height: 1.8; color: #333;">
+      <div class="notice-body">
         <p><strong>नमस्ते एवं हार्दिक अभिवादन,</strong></p>
         <p>विमल फार्मेसीको तर्फबाट समस्त आदरणीय ग्राहक तथा बिरामी महानुभावहरूमा सुस्वास्थ्यको कामना गर्दछौं।</p>
         
         <p>बिरामीको कठिन समयमा औषधीको अभाव नहोस् भन्ने उद्देश्यले हामीले मानवीय नाताले <strong>उधारो (Credit)</strong> मा औषधीहरू उपलब्ध गराउँदै आएका थियौं।</p>
 
         <div class="important-box">
-          <p><i class="fas fa-info-circle"></i> बिरामी निको भएर घर फर्किसक्नुभएपछि पनि धेरैजसो महानुभावहरूले लामो समयसम्म बाँकी बक्यौता रकम भुक्तानी गर्नुभएको छैन। औषधीको नयाँ स्टक राख्न र सेवालाई निरन्तरता दिन हामीलाई अहिले अत्यन्तै कठिनाइ भइरहेको छ।</p>
+          <p><i class="fas fa-info-circle" style="color: #ef6c00;"></i> बिरामी निको भएर घर फर्किसक्नुभएपछि पनि धेरैजसो महानुभावहरूले लामो समयसम्म बाँकी बक्यौता रकम भुक्तानी गर्नुभएको छैन। औषधीको नयाँ स्टक राख्न र सेवालाई निरन्तरता दिन हामीलाई अहिले अत्यन्तै कठिनाइ भइरहेको छ।</p>
         </div>
 
-        <p style="color: #2e7d32; font-weight: 800; font-size: 1.2rem; text-align: center; background: #e8f5e9; padding: 20px; border-radius: 8px; border: 1px solid #c8e6c9;">
+        <div class="highlight-msg">
           आफ्नो नैतिकतालाई आत्मसात गर्दै, तपाईंको नाममा रहेको बाँकी बक्यौता रकम यथाशिघ्र चुक्ता गरिदिनुहुन हामी विनम्र हार्दिक अनुरोध गर्दछौं।
-        </p>
+        </div>
       </div>
 
       <div class="qr-container">
-        <h3 style="color: var(--primary);"><i class="fas fa-qrcode"></i> QR Code स्क्यान गरी भुक्तानी गर्नुहोस्</h3>
-        <p style="font-size: 1rem; color: #666; margin-top: 5px;">ईसेवा (eSewa) / फोनपे (Fonepay) / बैंक ट्रान्सफर</p>
+        <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-qrcode"></i> QR Code स्क्यान गरी भुक्तानी गर्नुहोस्</h3>
+        <p style="font-size: 0.9rem; color: #666;">ईसेवा (eSewa) / फोनपे (Fonepay) / मोबाइल बैंकिङ</p>
         
         <img src="qr.jpg" alt="विमल फार्मेसी भुक्तानी QR" class="qr-image">
         
-        <div style="margin-top: 15px; background: #f1f1f1; padding: 10px; border-radius: 5px; display: inline-block;">
-            <p style="font-weight: bold; color: var(--dark); margin: 0;">विमल फार्मेसी (BIMAL PHARMACY)</p>
+        <div style="margin-top: 20px; background: #f1f1f1; padding: 12px; border-radius: 8px; display: inline-block;">
+            <p style="font-weight: bold; color: var(--text-dark); margin: 0;">विमल फार्मेसी (BIMAL PHARMACY)</p>
         </div>
       </div>
 
-      <div style="margin-top: 40px; border-top: 2px solid #eee; padding-top: 25px; text-align: center; color: #555;">
-        <p><i class="fas fa-phone-alt"></i> सम्पर्क: <strong>०५६-५९३२८८ / ९८५५०६५३२७</strong></p>
+      <div style="margin-top: 40px; border-top: 2px solid #eee; padding-top: 25px; text-align: center; color: #555; font-size: 0.95rem;">
+        <p style="margin-bottom: 5px;"><i class="fas fa-phone-alt"></i> सम्पर्क: <strong>०५६-५९३२८८ / ९८५५०६५३२७</strong></p>
         <p><i class="fas fa-envelope"></i> इमेल: <strong>admin@bimalpharmacy.com.np</strong></p>
       </div>
     </div>
@@ -90,17 +189,13 @@
 
   <div class="mobile-call-box">
     <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्
+      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्: ०५६-५९३२८८
     </a>
   </div>
 
   <footer>
-    <div class="footer-info">
-      <strong>विमल फार्मेसी</strong><br>
-      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन, नेपाल<br>
-      <i class="fas fa-phone"></i> ०५६-५९३२८८
-    </div>
-    <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <p><strong>विमल फार्मेसी</strong> | भरतपुर-७, चितवन</p>
+    <p>&copy; २०२६ सर्वाधिकार सुरक्षित।</p>
   </footer>
 
 </body>
