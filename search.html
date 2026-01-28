@@ -5,108 +5,153 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>औषधी खोज्नुहोस् | विमल फार्मेसी</title>
   
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <style>
+    /* 1. Global Styles (Matching Index) */
     :root {
-        --primary: #2e7d32; 
-        --accent: #fbc02d;
-    }
-    .search-container { max-width: 1000px; margin: 20px auto; padding: 0 15px; min-height: 70vh; }
-    
-    .search-box-wrapper {
-        position: sticky;
-        top: 10px;
-        z-index: 100;
-        background: white;
-        padding: 15px 0;
+      --primary: #2e7d32;
+      --secondary: #1b5e20;
+      --accent: #fbc02d;
+      --light-bg: #f4f7f6;
+      --white: #ffffff;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, sans-serif; 
+      background-color: var(--light-bg); 
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+
+    header.text-header {
+      background: var(--white);
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid var(--primary);
+    }
+    header h1 { color: var(--primary); font-size: 1.8rem; }
+
+    .navbar {
+      background: var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+    .nav-links { display: flex; justify-content: center; list-style: none; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 18px; display: block; font-weight: 500; }
+    .nav-links a.active { background: var(--secondary); }
+
+    /* 2. Search Specific Styles */
+    .search-container { max-width: 1100px; margin: 0 auto; padding: 20px; min-height: 70vh; }
+    
+    .search-box-wrapper {
+      position: sticky;
+      top: 60px; /* Sits right below the navbar */
+      z-index: 999;
+      background: var(--light-bg);
+      padding: 15px 0;
+    }
+
+    .input-group { position: relative; max-width: 600px; margin: 0 auto; }
+
     #medInput {
-        width: 100%;
-        padding: 15px 20px 15px 50px;
-        font-size: 1.1rem;
-        border: 2px solid var(--primary);
-        border-radius: 50px;
-        outline: none;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      padding: 15px 20px 15px 50px;
+      font-size: 1.1rem;
+      border: 2px solid var(--primary);
+      border-radius: 50px;
+      outline: none;
+      box-shadow: var(--shadow);
     }
 
     .search-icon-inside {
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--primary);
-        font-size: 1.2rem;
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary);
+      font-size: 1.2rem;
     }
 
     .results-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-        margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
     }
 
     .med-card {
-        background: #fff;
-        padding: 20px;
-        border-radius: 12px;
-        border-top: 4px solid var(--primary);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+      background: var(--white);
+      padding: 20px;
+      border-radius: 12px;
+      border-top: 5px solid var(--primary);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: 0.3s;
     }
+    .med-card:hover { transform: translateY(-5px); }
 
-    .med-card h3 { color: #333; margin: 10px 0; font-size: 1.1rem; text-transform: uppercase; }
+    .med-card h3 { color: var(--secondary); margin: 10px 0; font-size: 1.1rem; text-transform: uppercase; }
     
     .tag-row { display: flex; justify-content: space-between; align-items: center; }
     
     .category-badge {
-        font-size: 0.75rem;
-        background: #e8f5e9;
-        color: var(--primary);
-        padding: 4px 10px;
-        border-radius: 20px;
-        font-weight: bold;
+      font-size: 0.7rem;
+      background: #e8f5e9;
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: bold;
     }
 
-    .price-tag { font-size: 1.2rem; font-weight: bold; color: #d32f2f; margin: 10px 0; }
+    .price-tag { font-size: 1.3rem; font-weight: bold; color: #d32f2f; margin: 10px 0; }
     
     .btn-group { display: flex; gap: 10px; margin-top: 15px; }
     
     .card-btn {
-        flex: 1;
-        padding: 10px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        text-decoration: none;
-        font-size: 0.9rem;
-        text-align: center;
-        font-weight: bold;
+      flex: 1;
+      padding: 12px 5px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.85rem;
+      text-align: center;
+      font-weight: bold;
+      transition: 0.2s;
     }
     
-    .call-btn { background: var(--primary); color: white; }
+    .call-btn { background: #eee; color: var(--text-dark); border: 1px solid #ddd; }
     .wa-btn { background: #25D366; color: white; }
+    .wa-btn:hover { background: #128C7E; }
 
     #status-msg { text-align: center; padding: 20px; color: #666; font-style: italic; }
+
+    footer { background: #222; color: #bbb; padding: 40px 20px; text-align: center; margin-top: 50px; }
+
+    @media (max-width: 600px) {
+      .nav-links a { padding: 10px; font-size: 0.85rem; }
+    }
   </style>
 </head>
 <body>
 
   <header class="text-header">
     <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन | <i class="fas fa-phone"></i> ०५६-५९३२८८</p>
+    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७</p>
   </header>
 
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="search.html" class="active">खोज्नुहोस्</a></li>
-      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
+      <li><a href="order.html">अर्डर</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
       <li><a href="notice.html">सूचना</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
@@ -114,14 +159,16 @@
   </nav>
 
   <main class="search-container">
-    <div style="text-align:center; padding: 20px 0;">
-        <h2 style="color: var(--primary);">डिजिटल औषधी सूची</h2>
+    <div style="text-align:center; padding: 30px 0;">
+        <h2 style="color: var(--primary); font-size: 2rem;">डिजिटल औषधी सूची</h2>
         <p>नाम, श्रेणी (Oncology, Vitamin) वा प्रयोग अनुसार खोज्नुहोस्।</p>
     </div>
 
     <div class="search-box-wrapper">
-        <i class="fas fa-search search-icon-inside"></i>
-        <input type="text" id="medInput" placeholder="औषधीको नाम यहाँ लेख्नुहोस्..." oninput="debounceSearch()">
+        <div class="input-group">
+            <i class="fas fa-search search-icon-inside"></i>
+            <input type="text" id="medInput" placeholder="औषधीको नाम यहाँ टाइप गर्नुहोस्..." oninput="debounceSearch()">
+        </div>
     </div>
 
     <div id="status-msg">डाटा लोड हुँदैछ...</div>
@@ -129,28 +176,25 @@
   </main>
 
   <footer>
-    <div class="footer-info">
-      <strong>विमल फार्मेसी</strong><br>
-      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन<br>
-      <i class="fas fa-phone"></i> ०५६-५९३२८८
-    </div>
-    <p>&copy; २०२६ विमल फार्मेसी।</p>
+    <p><strong>विमल फार्मेसी</strong> | भरतपुर-७, चितवन</p>
+    <p>&copy; २०२६ सर्वाधिकार सुरक्षित।</p>
   </footer>
 
   <script>
     let medicineDatabase = [];
     let searchTimeout = null;
 
+    // Load the JSON data
     async function init() {
         const status = document.getElementById('status-msg');
         try {
-            // Ensure medicines.json is in the same folder as this HTML
+            // Note: Make sure medicines.json is uploaded to your hosting
             const response = await fetch('./medicines.json');
-            if (!response.ok) throw new Error('File not found');
+            if (!response.ok) throw new Error('Medicines file not found');
             medicineDatabase = await response.json();
-            status.innerText = "औषधी खोज्न सुरु गर्नुहोस्।";
+            status.innerText = "खोज्न सुरु गर्न औषधीको नाम टाइप गर्नुहोस्।";
         } catch (e) {
-            status.innerHTML = "<span style='color:red;'>त्रुटि: medicines.json फाइल भेटिएन।</span>";
+            status.innerHTML = "<span style='color:red;'><i class='fas fa-exclamation-triangle'></i> त्रुटि: डाटा लोड हुन सकेन।</span>";
             console.error(e);
         }
     }
@@ -175,36 +219,37 @@
             (m["Product Name"] && m["Product Name"].toLowerCase().includes(query)) || 
             (m["category"] && m["category"].toLowerCase().includes(query)) ||
             (m["Medicine use for"] && m["Medicine use for"].toLowerCase().includes(query))
-        ).slice(0, 40);
+        ).slice(0, 30); // Limit to 30 for performance
 
         if (filtered.length === 0) {
             grid.innerHTML = "";
-            status.innerText = "माफ गर्नुहोस्, तपाईंले खोज्नुभएको औषधी भेटिएन।";
+            status.innerHTML = "<i class='fas fa-frown'></i> माफ गर्नुहोस्, भेटिएन। अर्को शब्द प्रयास गर्नुहोस्।";
             return;
         }
 
-        status.innerText = `${filtered.length} नतिजाहरू देखाइएको छ।`;
+        status.innerHTML = `<strong>${filtered.length}</strong> नतिजाहरू भेटिए।`;
 
         grid.innerHTML = filtered.map(m => {
-            // Encode the message for WhatsApp to handle special characters safely
-            const waMessage = encodeURIComponent(`नमस्ते, मलाई ${m["Product Name"]} को बारेमा जानकारी चाहिएको थियो।`);
+            const productName = m["Product Name"] || "Unknown Medicine";
+            const price = m["Sales price"] || "--";
+            const waMessage = encodeURIComponent(`नमस्ते विमल फार्मेसी, मलाई यो औषधी उपलब्ध छ कि छैन जानकारी चाहिएको थियो: ${productName}`);
             
             return `
             <div class="med-card">
                 <div>
                     <div class="tag-row">
                         <span class="category-badge">${m["category"] || 'General'}</span>
-                        <small>${m["Small Unit"] || ''} Unit</small>
+                        <small style="color:#888;">${m["Small Unit"] || ''}</small>
                     </div>
-                    <h3>${m["Product Name"]}</h3>
-                    <p style="font-size:0.9rem;"><strong>प्रयोग:</strong> ${m["Medicine use for"] || 'जानकारी उपलब्ध छैन'}</p>
+                    <h3>${productName}</h3>
+                    <p style="font-size:0.85rem; color:#555;"><strong>प्रयोग:</strong> ${m["Medicine use for"] || 'उपलब्ध छैन'}</p>
                 </div>
                 <div>
-                    <div class="price-tag">रू ${m["Sales price"] || '--'}</div>
+                    <div class="price-tag">रू ${price}</div>
                     <div class="btn-group">
                         <a href="tel:056593288" class="card-btn call-btn"><i class="fas fa-phone"></i> सोधपुछ</a>
                         <a href="https://wa.me/9779855065327?text=${waMessage}" target="_blank" class="card-btn wa-btn">
-                            <i class="fab fa-whatsapp"></i> अर्डर
+                            <i class="fab fa-whatsapp"></i> अर्डर गर्नुहोस्
                         </a>
                     </div>
                 </div>
