@@ -2,104 +2,70 @@
 <html lang="ne">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>हाम्रा सेवाहरू | विमल फार्मेसी - भरतपुर-७</title>
-  <meta name="description" content="विमल फार्मेसीका सेवाहरू: प्रेस्क्रिप्सन अनुसार औषधी वितरण, अंकोलोजी सपोर्ट, होम डेलिभरी र स्वास्थ्य निगरानी, भरतपुर-७।">
-  
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>सेवाहरू | विमल फार्मेसी</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
+
+  <style>
+    /* PASTE THE ENTIRE <style> BLOCK FROM index.html HERE */
+    :root {
+      --primary: #2e7d32; --secondary: #1b5e20; --accent: #fbc02d; 
+      --danger: #d32f2f; --light-bg: #f4f7f6; --white: #ffffff;
+      --text-dark: #333; --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background-color: var(--light-bg); padding-bottom: 70px; }
+    header.text-header { background: var(--white); padding: 25px 15px; text-align: center; border-bottom: 3px solid var(--primary); }
+    header h1 { color: var(--primary); }
+    .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; }
+    .nav-links { display: flex; justify-content: center; list-style: none; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 20px; display: block; }
+    .nav-links a.active { background: var(--secondary); }
+    .main-content { max-width: 1100px; margin: 40px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 0 20px; }
+    .card { background: var(--white); padding: 30px; border-radius: 12px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+    footer { background: #222; color: #bbb; padding: 40px 20px; text-align: center; margin-top: 50px; }
+    .mobile-call-box { position: fixed; bottom: 0; width: 100%; background: var(--primary); text-align: center; padding: 15px; }
+    .mobile-call-btn { color: white; text-decoration: none; font-weight: bold; }
+    .btn-outline { display: inline-block; padding: 10px 20px; color: var(--primary); border: 2px solid var(--primary); border-radius: 50px; text-decoration: none; margin-top: 15px; }
+  </style>
 </head>
 <body>
 
   <header class="text-header">
     <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन | <i class="fas fa-phone"></i> ०५६-५९३२८८</p>
+    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</p>
   </header>
 
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="search.html">खोज्नुहोस्</a></li>
-      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
-      <li><a href="service.html" class="active">सेवाहरू</a></li>
-      <li><a href="notice.html">सूचना</a></li>
-      <li><a href="about.html">जानकारी</a></li>
+      <li><a href="order.html">अर्डर</a></li>
+      <li><a href="service.html" class="active">सेवाहरू</a></li> <li><a href="notice.html">सूचना</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
   <main class="main-content">
-    
-    <div class="card">
-      <h2 style="color: var(--primary);"><i class="fas fa-pills"></i> फार्मेसी सेवाहरू</h2>
-      <p>हामी औषधीको शुद्धता र बिरामीको सुरक्षालाई प्राथमिकता दिँदै व्यावसायिक औषधि सेवा प्रदान गर्दछौं।</p>
-      <ul style="margin-left: 20px; margin-top: 15px; line-height: 2;">
-        <li><i class="fas fa-check-circle" style="color: var(--primary);"></i> <strong>औषधी वितरण:</strong> विशेषज्ञको प्रेस्क्रिप्सन अनुसार सही औषधी।</li>
-        <li><i class="fas fa-check-circle" style="color: var(--primary);"></i> <strong>बिरामी परामर्श:</strong> औषधी प्रयोग र सुरक्षित भण्डारण बारे जानकारी।</li>
-        <li><i class="fas fa-check-circle" style="color: var(--primary);"></i> <strong>अंकोलोजी सपोर्ट:</strong> क्यान्सर उपचारका लागि विशिष्ट र जीवनरक्षक औषधीहरू।</li>
+    <div class="card" style="grid-column: 1 / -1;">
+      <h2>हाम्रा सेवाहरू (Our Services)</h2>
+      <p>हामी बिरामीहरूको सुविधाका लागि निम्न सेवाहरू प्रदान गर्दछौं:</p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>२४ सै घण्टा औषधी उपलब्ध</li>
+        <li>अंकोलोजी (क्यान्सर) सम्बन्धी विशेष औषधीहरू</li>
+        <li>घरमै औषधी पुर्‍याउने सुविधा (Home Delivery)</li>
+        <li>निःशुल्क स्वास्थ्य परामर्श</li>
       </ul>
     </div>
-
-    <div class="card" style="border-top-color: var(--accent);">
-      <h2 style="color: var(--primary);"><i class="fas fa-truck"></i> होम डेलिभरी</h2>
-      <p>हामी भरतपुर-७ र आसपासका क्षेत्रमा सुरक्षित रूपमा घरमै औषधी पुर्‍याउँछौं।</p>
-      <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
-        <p><strong>अर्डरका लागि:</strong></p>
-        <a href="order.html" class="search-btn" style="text-align: center;">
-            <i class="fas fa-file-medical"></i> पुर्जी अपलोड गर्नुहोस्
-        </a>
-        <a href="tel:056593288" class="search-btn" style="background: var(--dark); text-align: center;">
-            <i class="fas fa-phone"></i> कल गरेर अर्डर गर्नुहोस्
-        </a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2 style="color: var(--primary);"><i class="fas fa-heartbeat"></i> स्वास्थ्य निगरानी</h2>
-      <p>नियमित स्वास्थ्य परीक्षणका लागि हाम्रो दक्ष टोली सधैँ तत्पर छ:</p>
-      <ul style="margin-left: 20px; margin-top: 15px; line-height: 2;">
-        <li><i class="fas fa-stethoscope" style="color: var(--primary);"></i> रक्तचाप (Blood Pressure) मापन</li>
-        <li><i class="fas fa-tint" style="color: var(--primary);"></i> ब्लड सुगर (मधुमेह) परीक्षण</li>
-        <li><i class="fas fa-weight" style="color: var(--primary);"></i> तौल र शारीरिक बनावट (BMI) जाँच</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2 style="color: var(--primary);"><i class="fas fa-first-aid"></i> विशिष्ट सामग्रीहरू</h2>
-      <p>हामीसँग उच्च गुणस्तरका सर्जिकल र प्राथमिक उपचार सामग्रीहरू उपलब्ध छन्:</p>
-      <div style="margin-top: 15px; background: #f0f7f0; padding: 15px; border-radius: 8px; border-left: 5px solid var(--primary);">
-        <p style="font-size: 0.95rem; line-height: 1.8;">
-          • घाउ सफा गर्ने सामान (Bandages/Gauze)<br>
-          • सर्जिकल मास्क र पन्जा (Masks/Gloves)<br>
-          • स्यानिटाइजर र एन्टिसेप्टिक (Sanitizers)<br>
-          • अर्थोपेडिक सपोर्ट (Knee/Ankle Supports)
-        </p>
-      </div>
-    </div>
-
   </main>
 
   <div class="mobile-call-box">
-    <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्
-    </a>
+    <a href="tel:056593288" class="mobile-call-btn">अहिले फोन गर्नुहोस्: ०५६-५९३२८८</a>
   </div>
 
   <footer>
-    <div class="footer-info">
-      <strong>विमल फार्मेसी</strong><br>
-      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन, नेपाल<br>
-      <i class="fas fa-phone"></i> ०५६-५९३२८८ | <i class="fas fa-envelope"></i> admin@bimalpharmacy.com.np
-    </div>
     <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-    <p>
-      <a href="privacy-policy.html">गोपनीयता नीति</a> | 
-      <a href="sitemap.xml">साइटम्याप</a>
-    </p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
