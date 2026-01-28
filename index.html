@@ -3,78 +3,221 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>विमल फार्मेसी | भरतपुर-७, चितवनको उत्कृष्ट फार्मेसी</title>
+  <title>विमल फार्मेसी | भरतपुर-७, चितवन</title>
 
   <meta name="description" content="विमल फार्मेसी, क्यान्सर अस्पताल रोड, भरतपुर-७। यहाँ औषधीहरू, अंकोलोजी सपोर्ट, स्वास्थ्य परामर्श र चितवनमा होम डेलिभरीको सुविधा उपलब्ध छ।">
-  <meta name="keywords" content="भरतपुरको फार्मेसी, विमल फार्मेसी, क्यान्सर अस्पताल रोड, औषधी होम डेलिभरी चितवन, भरतपुर-७ फार्मेसी">
-  <meta name="robots" content="index, follow">
-
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
-    crossorigin="anonymous"></script>
+  <style>
+    /* 1. Design Variables */
+    :root {
+      --primary: #2e7d32;    /* Deep Medical Green */
+      --secondary: #1b5e20;  /* Darker Green */
+      --accent: #fbc02d;     /* Gold/Yellow for CTA */
+      --danger: #d32f2f;     /* Red for warnings */
+      --light-bg: #f4f7f6;
+      --white: #ffffff;
+      --text-dark: #333;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* 2. Reset & Base Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      line-height: 1.6; 
+      background-color: var(--light-bg); 
+      color: var(--text-dark);
+      padding-bottom: 70px; /* Space for mobile call button */
+    }
+
+    /* 3. Header & Branding */
+    header.text-header {
+      background: var(--white);
+      padding: 25px 15px;
+      text-align: center;
+      border-bottom: 3px solid var(--primary);
+    }
+    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
+    header p { font-size: 0.9rem; color: #666; }
+    header i { color: var(--primary); margin-right: 5px; }
+
+    /* 4. Navigation */
+    .navbar {
+      background: var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      padding: 15px 20px;
+      display: block;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
+
+    /* 5. Hero Section */
+    .hero {
+      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/cubes.png');
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    .hero h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
+    .hero p { font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto 25px; }
+
+    /* 6. Main Layout & Cards */
+    .main-content {
+      max-width: 1100px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+      border-top: 5px solid var(--primary);
+    }
+    .card:hover { transform: translateY(-5px); }
+    .card h2 { margin-bottom: 15px; font-size: 1.4rem; color: var(--primary); }
+    .card i { margin-right: 10px; }
+
+    /* 7. Credit Notice Styling (Important) */
+    .notice-card {
+      grid-column: 1 / -1;
+      background-color: #fff9c4;
+      border-top-color: var(--danger);
+    }
+    .notice-highlight {
+      background: #fff176;
+      padding: 15px;
+      border-left: 5px solid var(--danger);
+      margin: 15px 0;
+      border-radius: 4px;
+      font-style: italic;
+    }
+
+    /* 8. Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      margin-top: 15px;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-order { background: var(--accent); color: #000; }
+    .btn-order:hover { background: #f9a825; }
+    .btn-outline { color: var(--primary); border: 2px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: #fff; }
+
+    /* 9. Footer */
+    footer {
+      background: #222;
+      color: #bbb;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .footer-info { color: var(--white); margin-bottom: 20px; }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
+    
+    /* Mobile Call Button */
+    .mobile-call-box {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: var(--primary);
+      text-align: center;
+      padding: 15px;
+      z-index: 999;
+    }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h2 { font-size: 1.8rem; }
+      .nav-links a { padding: 10px 15px; font-size: 0.9rem; }
+    }
+  </style>
 </head>
 <body>
 
   <header class="text-header">
     <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन | <i class="fas fa-phone"></i> ०५६-५९३२८८</p>
+    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</p>
+    <p><i class="fas fa-phone"></i> ०५६-५९३२८८</p>
   </header>
 
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html" class="active">गृहपृष्ठ</a></li>
       <li><a href="search.html">खोज्नुहोस्</a></li>
-      <li><a href="order.html">अर्डर गर्नुहोस्</a></li> <li><a href="service.html">सेवाहरू</a></li>
+      <li><a href="order.html">अर्डर</a></li>
+      <li><a href="service.html">सेवाहरू</a></li>
       <li><a href="notice.html">सूचना</a></li>
-      <li><a href="about.html">जानकारी</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
-  <div class="hero" style="text-align: center; padding: 40px 20px; background: #fff; border-bottom: 1px solid #eee;">
-    <h2 style="color: var(--primary); font-size: 2rem;">विमल फार्मेसीमा स्वागत छ</h2>
+  <section class="hero">
+    <h2>विमल फार्मेसीमा स्वागत छ</h2>
     <p>बिपी कोइराला मेमोरियल क्यान्सर अस्पताल नजिकै तपाईंको भरपर्दो स्वास्थ्य साझेदार।</p>
-    <div style="margin-top: 20px;">
-        <a href="order.html" class="search-btn" style="background: var(--accent); color: var(--dark);">
-            <i class="fas fa-file-medical"></i> अनलाइन अर्डर गर्नुहोस्
-        </a>
-    </div>
-  </div>
+    <a href="order.html" class="btn btn-order">
+      <i class="fas fa-file-medical"></i> अनलाइन अर्डर गर्नुहोस्
+    </a>
+  </section>
 
   <main class="main-content">
     
-    <div class="card" style="grid-column: 1 / -1; background-color: #fff9c4; border-top-color: #fbc02d;">
-      <h2 style="color: #d32f2f;"><i class="fas fa-exclamation-circle"></i> आदरणीय ग्राहकहरूमा विनम्र अनुरोध</h2>
+    <div class="card notice-card">
+      <h2 style="color: var(--danger);"><i class="fas fa-exclamation-triangle"></i> आदरणीय ग्राहकहरूमा विनम्र अनुरोध</h2>
       <p><strong>नमस्ते एवं हार्दिक अभिवादन,</strong></p>
-      <p>विमल फार्मेसीको तर्फबाट समस्त आदरणीय ग्राहक तथा बिरामी महानुभावहरूमा सुस्वास्थ्यको कामना गर्दछौं।</p>
       <p>बिरामीको कठिन समयमा औषधीको अभाव नहोस् भन्ने उद्देश्यले हामीले मानवीय नाताले उधारो (Credit) मा औषधीहरू उपलब्ध गराउँदै आएका थियौं।</p>
-      <div style="background: #ffecb3; padding: 15px; border-radius: 8px; margin: 15px 0;">
-        <p>तर, बिरामी निको भएर घर फर्किसक्नुभएपछि पनि धेरैजसो महानुभावहरूले लामो समयसम्म बाँकी बक्यौता रकम भुक्तानी गर्नुभएको छैन।</p>
+      
+      <div class="notice-highlight">
+        तपाईंको नाममा रहेको बाँकी बक्यौता रकम यथाशिघ्र चुक्ता गरिदिनुहुन हामी विनम्र अनुरोध गर्दछौं।
       </div>
-      <p style="font-weight: bold; color: #2e7d32;">अतः, आफ्नो नैतिकतालाई आत्मसात गर्दै, तपाईंको नाममा रहेको बाँकी बक्यौता रकम यथाशिघ्र चुक्ता गरिदिनुहुन हामी विनम्र अनुरोध गर्दछौं।</p>
-      <a href="notice.html" class="search-btn">भुक्तानी विवरण हेर्नुहोस्</a>
+      
+      <a href="notice.html" class="btn btn-outline">भुक्तानी विवरण हेर्नुहोस्</a>
     </div>
 
     <div class="card">
       <h2><i class="fas fa-search"></i> औषधी खोज्नुहोस्</h2>
       <p>के तपाईं कुनै विशेष औषधी वा स्वास्थ्य सेवा खोज्दै हुनुहुन्छ? हाम्रो डाटाबेस प्रयोग गर्नुहोस्।</p>
-      <a href="search.html" style="color: var(--primary); font-weight: bold; text-decoration: none;">अहिले खोज्नुहोस् →</a>
+      <a href="search.html" class="btn btn-outline">अहिले खोज्नुहोस् →</a>
     </div>
 
     <div class="card">
       <h2><i class="fas fa-hand-holding-medical"></i> हाम्रा सेवाहरू</h2>
       <p>विशेष अंकोलोजी केयर, प्रेस्क्रिप्सन अनुसार औषधी वितरण र भरतपुर क्षेत्रभरि होम डेलिभरी।</p>
-      <a href="service.html" style="color: var(--primary); font-weight: bold; text-decoration: none;">थप जान्नुहोस् →</a>
+      <a href="service.html" class="btn btn-outline">थप जान्नुहोस् →</a>
     </div>
 
   </main>
 
   <div class="mobile-call-box">
     <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्
+      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्: ०५६-५९३२८८
     </a>
   </div>
 
@@ -82,15 +225,14 @@
     <div class="footer-info">
       <strong>विमल फार्मेसी</strong><br>
       क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन, नेपाल<br>
-      <i class="fas fa-phone"></i> ०५६-५९३२८८ | <i class="fas fa-envelope"></i> admin@bimalpharmacy.com.np
+      admin@bimalpharmacy.com.np
     </div>
     <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-    <p>
+    <p style="margin-top:15px;">
       <a href="privacy-policy.html">गोपनीयता नीति</a> | 
       <a href="sitemap.xml">साइटम्याप</a>
     </p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
