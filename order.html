@@ -5,104 +5,217 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>औषधी अर्डर गर्नुहोस् | विमल फार्मेसी</title>
   
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    /* 1. Global Styles (Matching your Index/Search Design) */
+    :root {
+      --primary: #2e7d32;
+      --secondary: #1b5e20;
+      --accent: #fbc02d;
+      --light-bg: #f4f7f6;
+      --white: #ffffff;
+      --text-dark: #333;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, sans-serif; 
+      background-color: var(--light-bg); 
+      line-height: 1.6;
+      color: var(--text-dark);
+      padding-bottom: 50px;
+    }
+
+    header.text-header {
+      background: var(--white);
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid var(--primary);
+    }
+    header h1 { color: var(--primary); font-size: 1.8rem; }
+
+    .navbar {
+      background: var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+    .nav-links { display: flex; justify-content: center; list-style: none; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 18px; display: block; font-weight: 500; }
+    .nav-links a.active { background: var(--secondary); }
+
+    /* 2. Order Page Specifics */
+    .main-content { max-width: 800px; margin: 0 auto; padding: 30px 15px; }
+
+    .card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border-top: 5px solid var(--primary);
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: var(--secondary);
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="tel"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .form-group input:focus { border-color: var(--primary); box-shadow: 0 0 5px rgba(46, 125, 50, 0.2); }
+
+    /* Upload Box Design */
+    #uploadBox {
+      border: 2px dashed var(--primary);
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 12px;
+      background: #f9fdf9;
+      cursor: pointer;
+      position: relative;
+      transition: 0.3s;
+    }
+    #uploadBox:hover { background: #f0f7f0; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .wa-btn { background: #25D366; color: white; margin-bottom: 12px; }
+    .wa-btn:hover { background: #128C7E; }
+    .form-submit-btn { background: var(--primary); color: white; }
+    .form-submit-btn:hover { background: var(--secondary); }
+
+    .info-card {
+      background-color: #fff9c4;
+      border-top: 5px solid var(--accent);
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    footer { background: #222; color: #bbb; padding: 40px 20px; text-align: center; margin-top: 50px; }
+    
+    @media (max-width: 600px) {
+      .nav-links a { padding: 12px 10px; font-size: 0.85rem; }
+      .card { padding: 20px; }
+    }
+  </style>
 </head>
 <body>
 
   <header class="text-header">
     <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन | <i class="fas fa-phone"></i> ०५६-५९३२८८</p>
+    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</p>
   </header>
 
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="search.html">खोज्नुहोस्</a></li>
-      <li><a href="order.html" class="active">अर्डर गर्नुहोस्</a></li>
+      <li><a href="order.html" class="active">अर्डर</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
       <li><a href="notice.html">सूचना</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
-  <main class="main-content" style="padding: 20px 15px;">
-    <div class="med-card" style="max-width: 700px; margin: 0 auto; border-top: 5px solid var(--primary);">
+  <main class="main-content">
+    <div class="card">
       <div style="text-align: center; margin-bottom: 25px;">
-        <i class="fas fa-truck-loading fa-3x" style="color: var(--primary);"></i>
-        <h2 style="margin-top: 15px; color: var(--dark);">नेपालभर होम डेलिभरी</h2>
-        <p>कृपया तलको विवरण भर्नुहोस् र पुर्जी अपलोड गर्नुहोस्।</p>
+        <i class="fas fa-truck-moving fa-3x" style="color: var(--primary); margin-bottom: 15px;"></i>
+        <h2 style="color: var(--secondary);">अनलाइन अर्डर फारम</h2>
+        <p>विवरण भर्नुहोस् र आफ्नो प्रेस्क्रिप्सन (पुर्जी) अपलोड गर्नुहोस्।</p>
       </div>
 
       <form id="orderForm" action="https://formspree.io/f/your-id" method="POST" enctype="multipart/form-data">
         
         <div class="form-group" style="margin-bottom: 15px;">
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">ग्राहकको नाम:</label>
-            <input type="text" id="name" name="name" placeholder="पुरा नाम" required>
+            <label>ग्राहकको पूरा नाम:</label>
+            <input type="text" id="name" name="name" placeholder="उदा: राम बहादुर श्रेष्ठ" required>
         </div>
 
         <div class="form-group" style="margin-bottom: 15px;">
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">मोबाइल नम्बर:</label>
+            <label>मोबाइल नम्बर:</label>
             <input type="tel" id="phone" name="phone" placeholder="९८XXXXXXXX" required>
         </div>
 
         <div class="form-group" style="margin-bottom: 15px;">
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">डेलिभरी ठेगाना:</label>
-            <input type="text" id="address" name="address" placeholder="शहर, टोल वा चोकको नाम" required>
+            <label>डेलिभरी ठेगाना:</label>
+            <input type="text" id="address" name="address" placeholder="टोल, चोक वा नजिकैको स्थान" required>
         </div>
 
         <div class="form-group" style="margin-bottom: 20px;">
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">पुर्जीको फोटो (Prescription):</label>
-            <div id="uploadBox" style="border: 2px dashed var(--primary); padding: 30px; text-align: center; border-radius: 12px; background: #f9fdf9; cursor: pointer; position: relative;">
+            <label>पुर्जीको फोटो (Prescription Image):</label>
+            <div id="uploadBox">
                 <input type="file" id="prescriptionFile" name="attachment" accept="image/*" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer;" required>
                 <div id="uploadPlaceholder">
-                    <i class="fas fa-camera-retro fa-2x" style="color: var(--primary);"></i>
-                    <p>फोटो खिच्नुहोस् वा ग्यालरीबाट छान्नुहोस्</p>
+                    <i class="fas fa-cloud-upload-alt fa-2x" style="color: var(--primary); margin-bottom: 10px;"></i>
+                    <p>फोटो खिच्नुहोस् वा छान्नुहोस्</p>
                 </div>
                 <img id="imagePreview" src="" alt="Preview" style="display: none; width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid #ddd;">
             </div>
         </div>
 
-        <div style="margin-bottom: 20px; font-size: 0.85rem; display: flex; gap: 10px; align-items: flex-start;">
-            <input type="checkbox" id="terms" required style="width: auto; margin-top: 4px;">
-            <label for="terms">म प्रमाणित गर्दछु कि मसँग यो औषधीको लागि चिकित्सकको वैध पुर्जी छ र म विमल फार्मेसीको नियमहरूसँग सहमत छु।</label>
+        <div style="margin-bottom: 25px; font-size: 0.85rem; display: flex; gap: 10px;">
+            <input type="checkbox" id="terms" required style="width: auto; scale: 1.2;">
+            <label for="terms">म प्रमाणित गर्दछु कि मसँग यो औषधीको लागि वैध पुर्जी छ।</label>
         </div>
 
-        <div class="card-actions" style="flex-direction: column;">
-            <button type="button" onclick="sendToWhatsApp()" class="btn wa-btn" style="width: 100%; margin-bottom: 10px;">
+        <div class="btn-group">
+            <button type="button" onclick="sendToWhatsApp()" class="btn wa-btn">
                 <i class="fab fa-whatsapp"></i> ह्वाट्सएपबाट अर्डर गर्नुहोस
             </button>
-            <button type="submit" class="btn call-btn" style="width: 100%;">
+            <button type="submit" class="btn form-submit-btn">
                 <i class="fas fa-paper-plane"></i> अनलाइन अर्डर पठाउनुहोस्
             </button>
         </div>
       </form>
     </div>
 
-    
-    <div class="med-card" style="max-width: 700px; margin: 30px auto; background-color: #fff9c4; border-top: 5px solid var(--accent);">
-        <h3 style="color: #333;"><i class="fas fa-shield-alt"></i> महत्त्वपूर्ण जानकारी:</h3>
-        <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8; font-size: 0.9rem;">
-            <li><b>पुर्जी अनिवार्य:</b> औषधी व्यवस्था विभागको नियमानुसार पुर्जी बिना एन्टिबायोटिक्स वा कडा औषधीहरू दिइने छैन।</li>
-            <li><b>फोन भेरिफिकेसन:</b> अर्डर प्राप्त भएपछि मूल्य र डेलिभरी समय निश्चित गर्न हामी तपाईंलाई फोन गर्नेछौं।</li>
-            <li><b>नेपालभर डेलिभरी:</b> चितवन बाहिर कुरियर मार्फत औषधी पठाइनेछ (२-४ दिन लाग्न सक्छ)।</li>
-            <li><b>पेमेन्ट:</b> तपाईंले खल्ती, ई-सेवा वा बैंक ट्रान्सफर मार्फत भुक्तानी गर्न सक्नुहुन्छ।</li>
+    <div class="info-card">
+        <h3 style="color: #333; margin-bottom: 10px;"><i class="fas fa-info-circle"></i> डेलिभरी जानकारी:</h3>
+        <ul style="margin-left: 20px; font-size: 0.9rem;">
+            <li>चितवन भित्र २४ घण्टा भित्र डेलिभरी हुनेछ।</li>
+            <li>पुर्जी बिना कडा औषधीहरू वितरण गरिने छैन।</li>
+            <li>अर्डर पठाएपछि हाम्रो कर्मचारीले तपाईंलाई फोन गर्नेछन्।</li>
         </ul>
     </div>
   </main>
 
   <footer>
-    <div class="footer-info">
-      <strong>विमल फार्मेसी</strong><br>
-      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन<br>
-      <i class="fas fa-phone"></i> ०५६-५९३२८८ | <i class="fas fa-envelope"></i> admin@bimalpharmacy.com.np
-    </div>
-    <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <p><strong>विमल फार्मेसी</strong> | भरतपुर-७, चितवन</p>
+    <p>&copy; २०२६ सर्वाधिकार सुरक्षित।</p>
   </footer>
 
-  <script src="script.js"></script>
   <script>
-    // Image Preview Logic
+    // Image Preview
     const fileInput = document.getElementById('prescriptionFile');
     const previewImage = document.getElementById('imagePreview');
     const placeholder = document.getElementById('uploadPlaceholder');
@@ -116,7 +229,7 @@
       }
     }
 
-    // WhatsApp Order Logic
+    // WhatsApp Order Link Generation
     function sendToWhatsApp() {
       const name = document.getElementById('name').value;
       const phone = document.getElementById('phone').value;
@@ -128,7 +241,7 @@
         return;
       }
       if(!terms) {
-        alert("कृपया नियम तथा सर्तहरू स्वीकार गर्नुहोस्।");
+        alert("कृपया नियमहरू स्वीकार गर्नुहोस्।");
         return;
       }
 
@@ -137,7 +250,7 @@
                         `*नाम:* ${name}%0A` +
                         `*फोन:* ${phone}%0A` +
                         `*ठेगाना:* ${address}%0A%0A` +
-                        `_मैले यसपछि आफ्नो पुर्जीको फोटो पठाउनेछु। कृपया चेक गरिदिनुहोला।_`;
+                        `_मैले यसपछि पुर्जीको फोटो पठाउनेछु।_`;
       
       const waURL = `https://wa.me/9779855065327?text=${waMessage}`;
       window.open(waURL, '_blank');
