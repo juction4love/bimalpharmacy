@@ -121,7 +121,7 @@
 
     <div class="search-box-wrapper">
         <i class="fas fa-search search-icon-inside"></i>
-        <input type="text" id="medInput" placeholder="औषधीको नाम यहाँ टाइप गर्नुहोस्..." oninput="debounceSearch()">
+        <input type="text" id="medInput" placeholder="                        " oninput="debounceSearch()">
     </div>
 
     <div id="status-msg">डाटा लोड हुँदैछ...</div>
@@ -148,7 +148,7 @@
             const response = await fetch('./medicines.json');
             if (!response.ok) throw new Error('File not found');
             medicineDatabase = await response.json();
-            status.innerText = `७,०००+ औषधीहरू मध्येबाट खोज्नुहोस्।`;
+            status.innerText = ;
         } catch (e) {
             status.innerHTML = "<span style='color:red;'>त्रुटि: medicines.json फाइल भेटिएन।</span>";
         }
@@ -166,7 +166,7 @@
 
         if (query.length < 2) {
             grid.innerHTML = "";
-            status.innerText = "कृपया कम्तिमा २ अक्षर टाइप गर्नुहोस्।";
+            status.innerText = "            ";
             return;
         }
 
@@ -198,7 +198,7 @@
                     <div class="price-tag">रू ${m["Sales price"]}</div>
                     <div class="btn-group">
                         <a href="tel:056593288" class="card-btn call-btn"><i class="fas fa-phone"></i> सोधपुछ</a>
-                        <a href="https://wa.me/97798XXXXXXXX?text=नमस्ते, मलाई ${m["Product Name"]} को बारेमा जानकारी चाहिएको थियो।" target="_blank" class="card-btn wa-btn"><i class="fab fa-whatsapp"></i> अर्डर</a>
+                        <a href="https://wa.me/9779855065327text=नमस्ते, मलाई ${m["Product Name"]} को बारेमा जानकारी चाहिएको थियो।" target="_blank" class="card-btn wa-btn"><i class="fab fa-whatsapp"></i> अर्डर</a>
                     </div>
                 </div>
             </div>
