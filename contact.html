@@ -3,26 +3,145 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>हामीलाई सम्पर्क गर्नुहोस् | विमल फार्मेसी - भरतपुर-७</title>
-  <meta name="description" content="भरतपुर-७, चितवनमा रहेको विमल फार्मेसीलाई सम्पर्क गर्नुहोस्। औषधी अर्डर र जानकारीका लागि ९८५५०६५३२७ मा ह्वाट्सएप गर्नुहोस्।">
+  <title>हामीलाई सम्पर्क गर्नुहोस् | विमल फार्मेसी</title>
   
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
+  <style>
+    /* 1. Global Styles (Consistent with Index/Search/Order) */
+    :root {
+      --primary: #2e7d32;
+      --secondary: #1b5e20;
+      --accent: #fbc02d;
+      --light-bg: #f4f7f6;
+      --white: #ffffff;
+      --text-dark: #333;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, sans-serif; 
+      background-color: var(--light-bg); 
+      line-height: 1.6;
+      color: var(--text-dark);
+      padding-bottom: 80px;
+    }
+
+    header.text-header {
+      background: var(--white);
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid var(--primary);
+    }
+    header h1 { color: var(--primary); font-size: 1.8rem; }
+
+    .navbar {
+      background: var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+    .nav-links { display: flex; justify-content: center; list-style: none; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 18px; display: block; font-weight: 500; }
+    .nav-links a.active { background: var(--secondary); }
+
+    /* 2. Page Specific Styles */
+    .main-content { max-width: 900px; margin: 30px auto; padding: 0 15px; }
+
+    .card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border-top: 5px solid var(--primary);
+      margin-bottom: 25px;
+    }
+
+    .contact-info-box {
+      background: #f9fdf9;
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid #e8f5e9;
+      margin: 20px auto;
+      max-width: 500px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+    }
+    .contact-item i { width: 30px; text-align: center; font-size: 1.2rem; }
+
+    /* Button Styling */
+    .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 25px; }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    .btn-call { background: var(--primary); }
+    .btn-wa { background: #25D366; }
+    .btn-mail { background: #333; }
+    .btn:hover { transform: translateY(-3px); opacity: 0.9; }
+
+    /* Map Container */
+    .map-wrapper {
+      width: 100%;
+      height: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid #ddd;
+      margin-top: 15px;
+    }
+
+    /* Mobile Call Button */
+    .mobile-call-box {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: var(--primary);
+      text-align: center;
+      padding: 15px;
+      z-index: 999;
+    }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.1rem; font-weight: bold; }
+
+    footer { background: #222; color: #bbb; padding: 40px 20px; text-align: center; margin-top: 50px; }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
+
+    @media (max-width: 600px) {
+      .nav-links a { padding: 12px 8px; font-size: 0.8rem; }
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
 </head>
 <body>
 
   <header class="text-header">
     <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन | <i class="fas fa-phone"></i> ०५६-५९३२८८</p>
+    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</p>
   </header>
 
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="search.html">खोज्नुहोस्</a></li>
-      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
+      <li><a href="order.html">अर्डर</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
       <li><a href="notice.html">सूचना</a></li>
       <li><a href="about.html">जानकारी</a></li>
@@ -31,71 +150,79 @@
   </nav>
 
   <main class="main-content">
-    <div class="card" style="text-align: center; border-top-color: var(--primary);">
-      <h2><i class="fas fa-address-book"></i> सम्पर्कमा रहनुहोस्</h2>
-      <p style="margin-bottom: 20px;">हामी तपाईंको सेवाका लागि तत्पर छौँ।</p>
+    
+    <div class="card" style="text-align: center;">
+      <h2 style="color: var(--primary);"><i class="fas fa-address-book"></i> सम्पर्कमा रहनुहोस्</h2>
+      <p>हामी तपाईंको सेवा र स्वास्थ्य परामर्शका लागि सधैं तत्पर छौँ।</p>
       
-      <div style="margin-top: 10px; line-height: 2.2; text-align: left; display: inline-block; background: #f9fdf9; padding: 25px; border-radius: 15px; border: 1px solid #e8f5e9; width: 100%; max-width: 450px; box-shadow: inset 0 0 10px rgba(0,0,0,0.02);">
-        <p><i class="fas fa-phone-alt" style="color: var(--primary); width: 25px;"></i> <strong>फोन:</strong> ०५६-५९३२८८</p>
-        <p><i class="fab fa-whatsapp" style="color: #25D366; width: 25px;"></i> <strong>ह्वाट्सएप:</strong> ९८५५०६५३२७</p>
-        <p><i class="fas fa-envelope" style="color: #2196F3; width: 25px;"></i> <strong>इमेल:</strong> admin@bimalpharmacy.com.np</p>
-        <p><i class="fas fa-map-marker-alt" style="color: #FF5722; width: 25px;"></i> <strong>ठेगाना:</strong> भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन</p>
+      <div class="contact-info-box">
+        <div class="contact-item">
+          <i class="fas fa-phone-alt" style="color: var(--primary);"></i>
+          <span><strong>फोन:</strong> ०५६-५९३२८८</span>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+          <span><strong>ह्वाट्सएप:</strong> ९८५५०६५३२७</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope" style="color: #2196F3;"></i>
+          <span><strong>इमेल:</strong> admin@bimalpharmacy.com.np</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt" style="color: #FF5722;"></i>
+          <span><strong>ठेगाना:</strong> भरतपुर-७, क्यान्सर अस्पताल रोड</span>
+        </div>
       </div>
 
-      <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a href="tel:056593288" class="search-btn">
+      <div class="btn-group">
+        <a href="tel:056593288" class="btn btn-call">
           <i class="fas fa-phone"></i> फोन गर्नुहोस्
         </a>
-        
-        <a href="https://wa.me/9779855065327?text=नमस्ते%20विमल%20फार्मेसी,%20मलाई%20एउटा%20औषधीको%20बारेमा%20सोध्नु%20थियो..." 
-           target="_blank" 
-           class="search-btn" 
-           style="background-color: #25D366;">
+        <a href="https://wa.me/9779855065327?text=नमस्ते%20विमल%20फार्मेसी..." target="_blank" class="btn btn-wa">
           <i class="fab fa-whatsapp"></i> ह्वाट्सएप च्याट
         </a>
-
-        <a href="mailto:admin@bimalpharmacy.com.np" class="search-btn" style="background-color: var(--dark);">
+        <a href="mailto:admin@bimalpharmacy.com.np" class="btn btn-mail">
           <i class="fas fa-envelope"></i> इमेल लेख्नुहोस्
         </a>
       </div>
     </div>
 
-    <div class="card" style="grid-column: 1 / -1; padding: 15px;">
-        <h2 style="padding: 15px 15px 5px;"><i class="fas fa-map-marked-alt"></i> हाम्रो लोकेसन (नक्सा)</h2>
-        <div style="width: 100%; height: 450px; margin-top: 10px; border-radius: 12px; overflow: hidden; border: 2px solid #ddd;">
-             <iframe 
-               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.111817757342!2d84.42512137546643!3d27.682976476196426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994e9086874837d%3A0xe444a7702f7f989!2sB.P.%20Koirala%20Memorial%20Cancer%20Hospital!5e0!3m2!1sen!2snp!4v1706387000000!5m2!1sen!2snp" 
-               width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-             </iframe>
-        </div>
-        <div style="padding: 15px; background: #fff;">
-          <p style="font-size: 0.95rem; color: #555;">
-            <i class="fas fa-info-circle" style="color: var(--primary);"></i> 
-            बी.पी. कोइराला मेमोरियल क्यान्सर अस्पतालको गेटबाट दक्षिणतर्फ क्यान्सर अस्पताल रोडमा आउँदा बायाँ तर्फ हाम्रो फार्मेसी देख्न सक्नुहुन्छ।
-          </p>
-        </div>
+    <div class="card">
+      <h2 style="color: var(--primary);"><i class="fas fa-map-marked-alt"></i> हाम्रो स्थान (Google Map)</h2>
+      <div class="map-wrapper">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.109852267675!2d84.42588737510103!3d27.68222397619623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994e96378e90e75%3A0xc480572e9d290886!2sB.P.%20Koirala%20Memorial%20Cancer%20Hospital!5e0!3m2!1sen!2snp!4v1700000000000!5m2!1sen!2snp" 
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+      <div style="margin-top: 15px; background: #e8f5e9; padding: 15px; border-radius: 8px;">
+        <p style="font-size: 0.95rem; color: #2e7d32;">
+          <i class="fas fa-info-circle"></i> 
+          बिपी कोइराला मेमोरियल क्यान्सर अस्पतालको गेटबाट दक्षिणतर्फ क्यान्सर अस्पताल रोडमा १०० मिटर भित्र आउँदा बायाँ तर्फ हाम्रो फार्मेसी देख्न सक्नुहुन्छ।
+        </p>
+      </div>
     </div>
+
   </main>
 
   <div class="mobile-call-box">
     <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्
+      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्: ०५६-५९३२८८
     </a>
   </div>
 
   <footer>
     <div class="footer-info">
       <strong>विमल फार्मेसी</strong><br>
-      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन, नेपाल<br>
+      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन<br>
       ९८५५०६५३२७ | admin@bimalpharmacy.com.np
     </div>
     <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
     <div style="margin-top: 10px;">
-      <a href="privacy-policy.html" style="color: var(--secondary); text-decoration: none; font-size: 0.9rem;">गोपनीयता नीति</a> | 
-      <a href="sitemap.xml" style="color: var(--secondary); text-decoration: none; font-size: 0.9rem;">साइटम्याप</a>
+      <a href="privacy-policy.html">गोपनीयता नीति</a> | 
+      <a href="sitemap.xml">साइटम्याप</a>
     </div>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
