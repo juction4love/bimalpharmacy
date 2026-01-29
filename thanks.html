@@ -1,98 +1,236 @@
 <!DOCTYPE html>
 <html lang="ne">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>धन्यवाद | विमल फार्मेसी</title>
-    
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>धन्यवाद | विमल फार्मेसी</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    /* 1. Global Variables (Matched to Index) */
+    :root {
+      --primary: #2e7d32;    /* Deep Medical Green */
+      --secondary: #1b5e20;  /* Darker Green */
+      --accent: #fbc02d;     /* Gold/Yellow */
+      --light-bg: #f4f7f6;
+      --white: #ffffff;
+      --text-dark: #333;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
 
-    <style>
-        .thanks-container {
-            text-align: center;
-            padding: 40px 20px;
-            max-width: 750px;
-            margin: 0 auto;
-        }
-        .success-icon {
-            font-size: 5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
-            display: block;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-20px);}
-            60% {transform: translateY(-10px);}
-        }
-        .order-status-card {
-            background: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            border-top: 6px solid var(--primary);
-        }
-        @media (max-width: 600px) {
-            .order-status-card { padding: 25px; }
-            .success-icon { font-size: 3.5rem; }
-        }
-    </style>
+    /* 2. Reset & Base Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      line-height: 1.6; 
+      background-color: var(--light-bg); 
+      color: var(--text-dark);
+      padding-bottom: 70px; /* Space for mobile call button */
+    }
+
+    /* 3. Header & Branding */
+    header.text-header {
+      background: var(--white);
+      padding: 25px 15px;
+      text-align: center;
+      border-bottom: 3px solid var(--primary);
+    }
+    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
+    header p { font-size: 0.9rem; color: #666; }
+    header i { color: var(--primary); margin-right: 5px; }
+
+    /* 4. Navigation (Consistent) */
+    .navbar {
+      background: var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      padding: 15px 20px;
+      display: block;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
+
+    /* 5. Thank You Content */
+    .main-content {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .status-card {
+      background: var(--white);
+      padding: 50px 30px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      border-top: 6px solid var(--primary);
+    }
+
+    .success-icon {
+      font-size: 5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+      display: inline-block;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+      40% {transform: translateY(-20px);}
+      60% {transform: translateY(-10px);}
+    }
+
+    .status-card h2 { color: var(--secondary); margin-bottom: 15px; font-size: 2rem; }
+    .status-card p { color: #555; font-size: 1.1rem; margin-bottom: 20px; }
+
+    .info-box {
+      background: #e8f5e9;
+      border-left: 5px solid var(--primary);
+      padding: 20px;
+      margin: 30px auto;
+      text-align: left;
+      max-width: 600px;
+      border-radius: 8px;
+    }
+    .info-box strong { color: var(--secondary); }
+
+    /* Buttons */
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--secondary); transform: translateY(-3px); }
+
+    .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: white; transform: translateY(-3px); }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #bbb;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .footer-info { color: var(--white); margin-bottom: 20px; }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
+
+    /* Mobile Call Button */
+    .mobile-call-box {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: var(--primary);
+      text-align: center;
+      padding: 15px;
+      z-index: 999;
+    }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+
+    @media (max-width: 600px) {
+      .nav-links a { padding: 10px 12px; font-size: 0.85rem; }
+      .success-icon { font-size: 4rem; }
+      .status-card h2 { font-size: 1.6rem; }
+    }
+  </style>
 </head>
 <body>
 
-    <header class="text-header">
-        <h1>विमल फार्मेसी</h1>
-        <p><i class="fas fa-check-circle"></i> अर्डर सफल भयो</p>
-    </header>
+  <header class="text-header">
+    <h1>विमल फार्मेसी</h1>
+    <p><i class="fas fa-check-circle"></i> अर्डर सफल भयो</p>
+  </header>
 
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="index.html">गृहपृष्ठ</a></li>
-            <li><a href="search.html">खोज्नुहोस्</a></li>
-            <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
-            <li><a href="service.html">सेवाहरू</a></li>
-            <li><a href="notice.html">सूचना</a></li>
-            <li><a href="about.html">जानकारी</a></li>
-            <li><a href="contact.html">सम्पर्क</a></li>
-        </ul>
-    </nav>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">गृहपृष्ठ</a></li>
+      <li><a href="search.html">खोज्नुहोस्</a></li>
+      <li><a href="order.html">अर्डर</a></li>
+      <li><a href="service.html">सेवाहरू</a></li>
+      <li><a href="notice.html">सूचना</a></li>
+      <li><a href="about.html">जानकारी</a></li>
+      <li><a href="contact.html">सम्पर्क</a></li>
+    </ul>
+  </nav>
 
-    <main class="thanks-container">
-        <div class="order-status-card">
-            <i class="fas fa-check-circle success-icon"></i>
-            <h2 style="color: var(--primary); font-size: 2rem; margin-bottom: 15px;">तपाईंको अर्डर प्राप्त भयो!</h2>
-            
-            <p style="margin: 20px 0; font-size: 1.15rem; color: #444; line-height: 1.8; text-align: center;">
-                नमस्ते! विमल फार्मेसीमा तपाईंको अर्डर सुरक्षित रूपमा प्राप्त भएको छ। <br><br>
-                हाम्रो फर्मासिस्टले तपाईंको पुर्जी (Prescription) जाँच गरेर औषधीको उपलब्धता, मूल्य र डेलिभरी समयबारे जानकारी दिन <strong>तपाईँलाई छिट्टै फोन गर्नुहुनेछ।</strong>
-            </p>
+  <main class="main-content">
+    
+    <div class="status-card">
+      <i class="fas fa-check-circle success-icon"></i>
+      <h2>अर्डर प्राप्त भयो!</h2>
+      
+      <p>
+        धन्यवाद! विमल फार्मेसीमा तपाईंको अर्डर सुरक्षित रूपमा प्राप्त भएको छ।<br>
+        हामी तपाईंको अर्डर प्रक्रिया अगाडि बढाउँदै छौं।
+      </p>
 
-            <div style="background: #f1f8f1; padding: 20px; border-radius: 10px; margin: 25px 0; border-left: 5px solid var(--secondary); text-align: left;">
-                <p style="margin: 0;"><i class="fas fa-clock"></i> <strong>अपेक्षित समय:</strong> साधारणतया १५ - ३० मिनेट भित्र हाम्रो फोन आउनेछ।</p>
-            </div>
-            
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
-                <a href="index.html" class="search-btn" style="text-decoration: none; padding: 15px 25px;">
-                    <i class="fas fa-home"></i> गृहपृष्ठमा फर्कनुहोस्
-                </a>
-                <a href="tel:056593288" class="search-btn" style="background: var(--dark); text-decoration: none; padding: 15px 25px;">
-                    <i class="fas fa-phone-alt"></i> केही सोध्नु छ?
-                </a>
-            </div>
-        </div>
-    </main>
+      <div class="info-box">
+        <p><i class="fas fa-info-circle"></i> <strong>अब के हुन्छ?</strong></p>
+        <p style="margin-top: 10px; font-size: 0.95rem;">
+          हाम्रो फर्मासिस्टले औषधीको उपलब्धता र मूल्य जाँच गरेर <strong>१५ देखि ३० मिनेट भित्र</strong> तपाईंलाई फोन गर्नुहुनेछ।
+        </p>
+      </div>
 
-    <footer style="margin-top: 60px;">
-        <div class="footer-info" style="margin-bottom: 20px;">
-            <strong>विमल फार्मेसी - तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता।</strong><br>
-            क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन, नेपाल
-        </div>
-        <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-    </footer>
+      <div class="btn-group">
+        <a href="index.html" class="btn btn-outline">
+          <i class="fas fa-home"></i> गृहपृष्ठ
+        </a>
+        <a href="tel:056593288" class="btn btn-primary">
+          <i class="fas fa-phone-alt"></i> केही सोध्नु छ?
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="mobile-call-box">
+    <a href="tel:056593288" class="mobile-call-btn">
+      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्: ०५६-५९३२८८
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-info">
+      <strong>विमल फार्मेसी</strong><br>
+      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन<br>
+      admin@bimalpharmacy.com.np
+    </div>
+    <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <p style="margin-top:15px;">
+      <a href="privacy-policy.html">गोपनीयता नीति</a> | 
+      <a href="sitemap.xml">साइटम्याप</a>
+    </p>
+  </footer>
 
 </body>
 </html>
