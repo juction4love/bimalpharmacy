@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>औषधी गाइड तथा जानकारी | विमल फार्मेसी</title>
   
-  <meta name="description" content="विभिन्न औषधीहरूको प्रयोग र स्वास्थ्य सम्बन्धी जानकारीमूलक तथ्यहरू।">
+  <meta name="description" content="विमल फार्मेसी: विभिन्न औषधीहरूको प्रयोग र स्वास्थ्य सम्बन्धी जानकारीमूलक तथ्यहरू।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <style>
-    /* 1. Global Variables (Matched to Index) */
+    /* 1. Global Variables (Same as Index) */
     :root {
       --primary: #2e7d32;    /* Deep Medical Green */
       --secondary: #1b5e20;  /* Darker Green */
@@ -27,10 +27,10 @@
       line-height: 1.6; 
       background-color: var(--light-bg); 
       color: var(--text-dark);
-      padding-bottom: 70px; /* Space for mobile call button */
+      padding-bottom: 70px; /* Mobile button space */
     }
 
-    /* 3. Header & Branding */
+    /* 3. Header */
     header.text-header {
       background: var(--white);
       padding: 25px 15px;
@@ -75,10 +75,10 @@
     .hero h2 { font-size: 2.2rem; color: var(--secondary); margin-bottom: 10px; }
     .hero p { color: #555; max-width: 600px; margin: 0 auto; }
 
-    /* 6. Search Section */
+    /* 6. Search Box (Styled) */
     .search-wrapper {
       max-width: 600px;
-      margin: -25px auto 30px; /* Overlap hero slightly */
+      margin: -25px auto 30px; /* Overlap effect */
       padding: 0 20px;
       position: relative;
       z-index: 10;
@@ -92,37 +92,46 @@
       outline: none;
       box-shadow: var(--shadow);
       background: var(--white);
+      transition: 0.3s;
     }
+    .search-box:focus { border-color: var(--accent); }
     .search-icon {
       position: absolute;
       left: 40px;
       top: 50%;
       transform: translateY(-50%);
       color: var(--primary);
+      font-size: 1.2rem;
     }
 
-    /* 7. Content Layout */
+    /* 7. Main Content & Cards */
     .container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    .info-card {
+    /* Standard Card (Same as Index) */
+    .card {
       background: var(--white);
       border-radius: 12px;
       box-shadow: var(--shadow);
       padding: 30px;
       margin-bottom: 40px;
       border-top: 5px solid var(--primary);
+      transition: transform 0.3s;
     }
+    .card:hover { transform: translateY(-3px); }
 
-    .info-card h2 { 
+    .card h2 { 
       color: var(--secondary); 
       border-bottom: 2px solid #eee; 
       padding-bottom: 15px; 
       margin-bottom: 20px; 
       font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     /* Table Styles */
@@ -155,7 +164,7 @@
       margin-bottom: 20px;
       font-size: 0.9rem;
       border-left: 5px solid var(--accent);
-      color: #7f6000;
+      color: #856404;
     }
 
     /* Footer */
@@ -209,8 +218,8 @@
   </nav>
 
   <section class="hero">
-    <h2>स्वास्थ्य जानकारी पोर्टल</h2>
-    <p>विभिन्न औषधीहरूको प्रयोग र स्वास्थ्य सम्बन्धी रोचक तथ्यहरू खोज्नुहोस्।</p>
+    <h2>औषधी गाइड तथा जानकारी</h2>
+    <p>विभिन्न औषधीहरूको प्रयोग र स्वास्थ्य सम्बन्धी जानकारीमूलक तथ्यहरू यहाँ खोज्नुहोस्।</p>
   </section>
 
   <div class="search-wrapper">
@@ -220,8 +229,8 @@
 
   <main class="container">
     
-    <div class="info-card">
-      <h2><i class="fas fa-pills" style="color: var(--primary);"></i> औषधि र तिनको सामान्य प्रयोग</h2>
+    <div class="card">
+      <h2><i class="fas fa-pills"></i> औषधि र तिनको सामान्य प्रयोग</h2>
       
       <div class="disclaimer">
         <i class="fas fa-exclamation-triangle"></i> <strong>सावधानी:</strong> यो सूची जानकारीका लागि मात्र हो। डाक्टरको सल्लाह र प्रेस्क्रिप्सन बिना कुनै पनि औषधी सेवन नगर्नुहोस्।
@@ -243,17 +252,17 @@
             <tr><td>४</td><td>Loratadine / Cetirizine</td><td>एलर्जी, रुघा र चिलाउने समस्या</td></tr>
             <tr><td>५</td><td>Amlodipine</td><td>उच्च रक्तचाप (High Blood Pressure)</td></tr>
             <tr><td>६</td><td>Metformin</td><td>चिनी रोग (Diabetes) नियन्त्रण</td></tr>
-            <tr><td>७</td><td>Albuterol / Salbutamol</td><td>दम (Asthma) र श्वासप्रश्वास समस्या</td></tr>
+            <tr><td>७</td><td>Salbutamol (Asthalin)</td><td>दम (Asthma) र श्वासप्रश्वास समस्या</td></tr>
             <tr><td>८</td><td>Insulin</td><td>मधुमेह (Diabetes) को इन्जेक्सन उपचार</td></tr>
             <tr><td>९</td><td>Aspirin / Ecosprin</td><td>रगत पातलो बनाउन र मुटुको सुरक्षा</td></tr>
-            <tr><td>१०</td><td>Ibuprofen</td><td>मांसपेशीको दुखाइ र सुन्निएको कम गर्न</td></tr>
+            <tr><td>१०</td><td>Ibuprofen / Brufen</td><td>मांसपेशीको दुखाइ र सुन्निएको कम गर्न</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="info-card">
-      <h2><i class="fas fa-brain" style="color: var(--primary);"></i> विभिन्न प्रकारका डर (Medical Phobias)</h2>
+    <div class="card">
+      <h2><i class="fas fa-brain"></i> विभिन्न प्रकारका डर (Medical Phobias)</h2>
       
       <div class="table-responsive">
         <table id="phobiaTable">
@@ -264,9 +273,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td><strong>Hydrophobia</strong></td><td>पानी देखि लाग्ने डर</td></tr>
+            <tr><td><strong>Hydrophobia</strong></td><td>पानी देखि लाग्ने डर (Rabies सँग सम्बन्धित)</td></tr>
             <tr><td><strong>Trypanophobia</strong></td><td>सुई (Injection) देखि लाग्ने डर</td></tr>
-            <tr><td><strong>Hemophobia</strong></td><td>रगत देख्दा लाग्ने डर</td></tr>
+            <tr><td><strong>Hemophobia</strong></td><td>रगत (Blood) देख्दा लाग्ने डर</td></tr>
             <tr><td><strong>Iatrophobia</strong></td><td>डाक्टर वा अस्पताल जाने डर</td></tr>
             <tr><td><strong>Pharmacophobia</strong></td><td>औषधी खान डर लाग्ने</td></tr>
             <tr><td><strong>Pyrophobia</strong></td><td>आगोको डर</td></tr>
@@ -304,29 +313,25 @@
       input = document.getElementById("myInput");
       filter = input.value.toUpperCase();
       
-      // List of table IDs to search through
       var tables = ["medicineTable", "phobiaTable"];
       
       tables.forEach(function(tableId) {
         table = document.getElementById(tableId);
         tr = table.getElementsByTagName("tr");
         
-        // Loop through all table rows (skipping the header)
         for (i = 1; i < tr.length; i++) {
           td = tr[i].getElementsByTagName("td");
           found = false;
           
-          // Check all columns in the row
           for (j = 0; j < td.length; j++) {
             if (td[j]) {
               if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
                 found = true;
-                break; // Stop checking columns if match found
+                break;
               }
             }
           }
           
-          // Toggle row visibility
           if (found) {
             tr[i].style.display = "";
           } else {
