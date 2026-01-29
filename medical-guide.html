@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>स्वास्थ्य ज्ञान र ग्यालरी | विमल फार्मेसी</title>
+  <title>औषधी गाइड तथा जानकारी | विमल फार्मेसी</title>
   
-  <meta name="description" content="विमल फार्मेसीको स्वास्थ्य ब्लग, औषधी सम्बन्धी जानकारी र फोटो ग्यालरी।">
+  <meta name="description" content="विभिन्न औषधीहरूको प्रयोग र स्वास्थ्य सम्बन्धी जानकारीमूलक तथ्यहरू।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <style>
@@ -65,7 +65,7 @@
     }
     .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
 
-    /* 5. Hero Section (Matched to Index) */
+    /* 5. Hero Section */
     .hero {
       background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/cubes.png');
       text-align: center;
@@ -75,109 +75,90 @@
     .hero h2 { font-size: 2.2rem; color: var(--secondary); margin-bottom: 10px; }
     .hero p { color: #555; max-width: 600px; margin: 0 auto; }
 
-    /* 6. Main Content Layout */
+    /* 6. Search Section */
+    .search-wrapper {
+      max-width: 600px;
+      margin: -25px auto 30px; /* Overlap hero slightly */
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+    .search-box {
+      width: 100%;
+      padding: 15px 20px 15px 50px;
+      border: 2px solid var(--primary);
+      border-radius: 50px;
+      font-size: 1.1rem;
+      outline: none;
+      box-shadow: var(--shadow);
+      background: var(--white);
+    }
+    .search-icon {
+      position: absolute;
+      left: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary);
+    }
+
+    /* 7. Content Layout */
     .container {
       max-width: 1100px;
-      margin: 40px auto;
+      margin: 0 auto;
       padding: 0 20px;
     }
 
-    .section-head {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .section-head h2 { color: var(--primary); display: inline-block; border-bottom: 3px solid var(--accent); padding-bottom: 5px; font-size: 1.8rem; }
-
-    /* Blog Grid */
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-bottom: 60px;
-    }
-
-    /* Standard Card Style (Matched to Index) */
     .card {
       background: var(--white);
       border-radius: 12px;
-      overflow: hidden;
       box-shadow: var(--shadow);
-      transition: transform 0.3s;
-      border-top: 5px solid var(--primary); /* Signature Green Top Border */
-      display: flex;
-      flex-direction: column;
+      padding: 30px;
+      margin-bottom: 40px;
+      border-top: 5px solid var(--primary);
     }
-    .card:hover { transform: translateY(-5px); }
-    
-    .blog-icon {
-      height: 140px;
+
+    .card h2 { 
+      color: var(--secondary); 
+      border-bottom: 2px solid #eee; 
+      padding-bottom: 15px; 
+      margin-bottom: 20px; 
+      font-size: 1.5rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 3.5rem;
+      gap: 10px;
     }
-    .blog-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-    .blog-date { font-size: 0.8rem; color: #888; display: block; margin-bottom: 8px; }
-    .blog-content h3 { color: var(--secondary); margin-bottom: 10px; font-size: 1.25rem; }
-    .blog-content p { font-size: 0.95rem; color: #555; margin-bottom: 15px; flex-grow: 1; }
-    .read-btn { 
-      color: var(--primary); 
-      font-weight: bold; 
-      text-decoration: none; 
-      align-self: flex-start;
-      margin-top: auto;
-    }
-    .read-btn:hover { text-decoration: underline; color: var(--accent); }
 
-    /* Fact Box (Styled as a Card) */
-    .fact-box {
-      background: var(--white);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      margin-bottom: 60px;
-      border-top: 5px solid var(--accent); /* Gold Top Border for distinction */
-    }
-    .fact-box h3 { color: var(--secondary); margin-bottom: 20px; }
+    /* Table Styles */
+    .table-responsive { overflow-x: auto; }
     
-    .fact-table {
-      width: 100%;
-      border-collapse: collapse;
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; min-width: 500px; }
+    
+    table th { 
+      background: var(--primary); 
+      color: white; 
+      padding: 15px; 
+      text-align: left; 
+      font-weight: 600;
     }
-    .fact-table th { background: #e8f5e9; padding: 12px; text-align: left; color: var(--secondary); border-bottom: 2px solid var(--primary); }
-    .fact-table td { padding: 12px; border-bottom: 1px solid #eee; color: #444; }
+    
+    table td { 
+      padding: 12px 15px; 
+      border-bottom: 1px solid #eee; 
+      color: #555; 
+    }
+    
+    table tr:nth-child(even) { background-color: #f8fcf8; }
+    table tr:hover { background-color: #e8f5e9; }
 
-    /* Gallery Grid */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .gallery-item {
-      height: 220px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      position: relative;
-      border: 1px solid #eee;
-    }
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .gallery-item:hover img { transform: scale(1.1); }
-    .gallery-caption {
-      position: absolute;
-      bottom: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.8));
-      color: white;
-      width: 100%;
-      padding: 15px 10px 10px;
-      text-align: center;
+    /* Disclaimer Box */
+    .disclaimer {
+      background: #fff8e1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
       font-size: 0.9rem;
+      border-left: 5px solid var(--accent);
+      color: #7f6000;
     }
 
     /* Footer */
@@ -206,7 +187,7 @@
     @media (max-width: 600px) {
       .hero h2 { font-size: 1.8rem; }
       .nav-links a { padding: 10px 12px; font-size: 0.85rem; }
-      .gallery-grid { grid-template-columns: 1fr; }
+      table th, table td { padding: 10px; font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -221,111 +202,81 @@
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="search.html">खोज्नुहोस्</a></li>
+      <li><a href="medical-guide.html" class="active">औषधी गाइड</a></li>
       <li><a href="order.html">अर्डर</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
       <li><a href="notice.html">सूचना</a></li>
-      <li><a href="knowledge.html" class="active">ज्ञान/ग्यालरी</a></li>
+      <li><a href="knowledge.html">ज्ञान/ग्यालरी</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
   <section class="hero">
-    <h2>स्वास्थ्य ज्ञान र ग्यालरी</h2>
-    <p>हाम्रो फार्मेसीका झलकहरू र तपाईंको स्वास्थ्यका लागि उपयोगी जानकारीमूलक लेखहरू।</p>
+    <h2>स्वास्थ्य जानकारी पोर्टल</h2>
+    <p>विभिन्न औषधीहरूको प्रयोग र स्वास्थ्य सम्बन्धी रोचक तथ्यहरू खोज्नुहोस्।</p>
   </section>
 
+  <div class="search-wrapper">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" id="myInput" onkeyup="searchTable()" placeholder="यहाँ औषधी वा रोगको नाम टाइप गर्नुहोस्..." class="search-box">
+  </div>
+
   <main class="container">
-
-    <div class="section-head">
-      <h2><i class="fas fa-blog"></i> स्वास्थ्य जानकारी (Health Blog)</h2>
-    </div>
-
-    <div class="blog-grid">
+    
+    <div class="card">
+      <h2><i class="fas fa-pills" style="color: var(--primary);"></i> औषधि र तिनको सामान्य प्रयोग</h2>
       
-      <div class="card">
-        <div class="blog-icon" style="background: #a5d6a7;">
-          <i class="fas fa-pills"></i>
-        </div>
-        <div class="blog-content">
-          <span class="blog-date"><i class="far fa-calendar-alt"></i> २९ माघ, २०८२</span>
-          <h3>एन्टिबायोटिकको सही प्रयोग</h3>
-          <p>डाक्टरको सल्लाह बिना एन्टिबायोटिक बीचमै छोड्दा वा आफैं किनेर खाँदा 'Antibiotic Resistance' को जोखिम हुन्छ।</p>
-          <a href="#" class="read-btn">पुरा पढ्नुहोस् →</a>
-        </div>
+      <div class="disclaimer">
+        <i class="fas fa-exclamation-triangle"></i> <strong>सावधानी:</strong> यो सूची जानकारीका लागि मात्र हो। डाक्टरको सल्लाह र प्रेस्क्रिप्सन बिना कुनै पनि औषधी सेवन नगर्नुहोस्।
       </div>
 
-      <div class="card">
-        <div class="blog-icon" style="background: #ffcc80;">
-          <i class="fas fa-heartbeat"></i>
-        </div>
-        <div class="blog-content">
-          <span class="blog-date"><i class="far fa-calendar-alt"></i> १५ माघ, २०८२</span>
-          <h3>रक्तचाप (BP) नियन्त्रण</h3>
-          <p>जाडो मौसममा रक्तचाप बढ्ने सम्भावना हुन्छ। नियमित व्यायाम र नुनको कम प्रयोगले यसलाई नियन्त्रण गर्न सकिन्छ।</p>
-          <a href="#" class="read-btn">पुरा पढ्नुहोस् →</a>
-        </div>
+      <div class="table-responsive">
+        <table id="medicineTable">
+          <thead>
+            <tr>
+              <th width="10%">क्र.सं.</th>
+              <th width="40%">औषधीको नाम (Medicine)</th>
+              <th width="50%">प्रयोग (Uses)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>१</td><td>Paracetamol</td><td>ज्वरो (Fever) र सामान्य दुखाइ कम गर्न</td></tr>
+            <tr><td>२</td><td>Amoxicillin</td><td>ब्याक्टेरियल संक्रमण (Infection) को उपचार</td></tr>
+            <tr><td>३</td><td>Omeprazole / Pantoprazole</td><td>ग्यास्ट्रिक, पेट पोल्ने र अल्सर</td></tr>
+            <tr><td>४</td><td>Loratadine / Cetirizine</td><td>एलर्जी, रुघा र चिलाउने समस्या</td></tr>
+            <tr><td>५</td><td>Amlodipine</td><td>उच्च रक्तचाप (High Blood Pressure)</td></tr>
+            <tr><td>६</td><td>Metformin</td><td>चिनी रोग (Diabetes) नियन्त्रण</td></tr>
+            <tr><td>७</td><td>Salbutamol (Asthalin)</td><td>दम (Asthma) र श्वासप्रश्वास समस्या</td></tr>
+            <tr><td>८</td><td>Insulin</td><td>मधुमेह (Diabetes) को इन्जेक्सन उपचार</td></tr>
+            <tr><td>९</td><td>Aspirin / Ecosprin</td><td>रगत पातलो बनाउन र मुटुको सुरक्षा</td></tr>
+            <tr><td>१०</td><td>Ibuprofen / Brufen</td><td>मांसपेशीको दुखाइ र सुन्निएको कम गर्न</td></tr>
+          </tbody>
+        </table>
       </div>
-
-      <div class="card">
-        <div class="blog-icon" style="background: #90caf9;">
-          <i class="fas fa-thermometer-half"></i>
-        </div>
-        <div class="blog-content">
-          <span class="blog-date"><i class="far fa-calendar-alt"></i> १० माघ, २०८२</span>
-          <h3>औषधिको भण्डारण</h3>
-          <p>केही औषधीहरू (जस्तै इन्सुलिन) लाई फ्रिजमा राख्नुपर्छ। घाम र ओसिलो ठाउँमा औषधी राख्दा यसको असर कम हुन्छ।</p>
-          <a href="#" class="read-btn">पुरा पढ्नुहोस् →</a>
-        </div>
-      </div>
-
     </div>
 
-    <div class="fact-box">
-      <h3><i class="fas fa-lightbulb" style="color: var(--accent);"></i> के तपाईंलाई थाहा छ? (Medical Facts)</h3>
-      <table class="fact-table">
-        <tr>
-          <th>डर (Phobia)</th>
-          <th>अर्थ (Meaning)</th>
-        </tr>
-        <tr>
-          <td><strong>Iatrophobia</strong></td>
-          <td>डाक्टर वा अस्पताल जाने डर</td>
-        </tr>
-        <tr>
-          <td><strong>Trypanophobia</strong></td>
-          <td>सुई (Injection) देखि लाग्ने डर</td>
-        </tr>
-        <tr>
-          <td><strong>Pharmacophobia</strong></td>
-          <td>औषधी खान वा प्रयोग गर्न लाग्ने डर</td>
-        </tr>
-        <tr>
-          <td><strong>Hemophobia</strong></td>
-          <td>रगत देख्दा लाग्ने डर</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="section-head">
-      <h2><i class="fas fa-images"></i> हाम्रो ग्यालरी</h2>
-    </div>
-
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=600&q=80" alt="Pharmacy Front">
-        <div class="gallery-caption">विमल फार्मेसी (बाहिरी दृश्य)</div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?auto=format&fit=crop&w=600&q=80" alt="Pharmacist">
-        <div class="gallery-caption">काउन्सेलिङ सेवा</div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&w=600&q=80" alt="Medicine Shelf">
-        <div class="gallery-caption">औषधी भण्डारण</div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=600&q=80" alt="Delivery">
-        <div class="gallery-caption">डेलिभरी सेवा</div>
+    <div class="card">
+      <h2><i class="fas fa-brain" style="color: var(--primary);"></i> विभिन्न प्रकारका डर (Medical Phobias)</h2>
+      
+      <div class="table-responsive">
+        <table id="phobiaTable">
+          <thead>
+            <tr>
+              <th width="40%">फोबियाको नाम (Phobia)</th>
+              <th width="60%">डरको विषय (Fear of...)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Hydrophobia</strong></td><td>पानी देखि लाग्ने डर (Rabies सँग सम्बन्धित)</td></tr>
+            <tr><td><strong>Trypanophobia</strong></td><td>सुई (Injection) देखि लाग्ने डर</td></tr>
+            <tr><td><strong>Hemophobia</strong></td><td>रगत (Blood) देख्दा लाग्ने डर</td></tr>
+            <tr><td><strong>Iatrophobia</strong></td><td>डाक्टर वा अस्पताल जाने डर</td></tr>
+            <tr><td><strong>Pharmacophobia</strong></td><td>औषधी खान डर लाग्ने</td></tr>
+            <tr><td><strong>Pyrophobia</strong></td><td>आगोको डर</td></tr>
+            <tr><td><strong>Claustrophobia</strong></td><td>साँघुरो ठाउँको डर (जस्तै: MRI मेसिन)</td></tr>
+            <tr><td><strong>Thanatophobia</strong></td><td>मृत्युको डर</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -349,6 +300,41 @@
       <a href="sitemap.xml">साइटम्याप</a>
     </p>
   </footer>
+
+  <script>
+    function searchTable() {
+      var input, filter, found, table, tr, td, i, j;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      
+      var tables = ["medicineTable", "phobiaTable"];
+      
+      tables.forEach(function(tableId) {
+        table = document.getElementById(tableId);
+        tr = table.getElementsByTagName("tr");
+        
+        for (i = 1; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td");
+          found = false;
+          
+          for (j = 0; j < td.length; j++) {
+            if (td[j]) {
+              if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                found = true;
+                break;
+              }
+            }
+          }
+          
+          if (found) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
