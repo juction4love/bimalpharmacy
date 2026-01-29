@@ -3,41 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>अन्तिम ताकेता | विमल फार्मेसी</title>
+  <title>अन्तिम ताकेता तथा सूचना | विमल फार्मेसी</title>
   
+  <meta name="description" content="विमल फार्मेसीको महत्त्वपूर्ण सूचना र अन्तिम ताकेता। बाँकी बक्यौता भुक्तानी सम्बन्धी जानकारी।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <style>
+    /* 1. Global Variables (Matched to Index) */
     :root {
-      --primary: #2e7d32;
-      --secondary: #1b5e20;
-      --accent: #fbc02d;
-      --danger: #d32f2f;
-      --dark-red: #b71c1c;
+      --primary: #2e7d32;    /* Deep Medical Green */
+      --secondary: #1b5e20;  /* Darker Green */
+      --accent: #fbc02d;     /* Gold/Yellow */
       --light-bg: #f4f7f6;
       --white: #ffffff;
       --text-dark: #333;
+      --danger: #d32f2f;     /* Red for warnings */
+      --dark-red: #b71c1c;   /* Intense Red */
       --shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
+    /* 2. Reset & Base Styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
-      font-family: 'Segoe UI', Tahoma, sans-serif; 
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      line-height: 1.6; 
       background-color: var(--light-bg); 
-      line-height: 1.6;
       color: var(--text-dark);
-      padding-bottom: 80px;
+      padding-bottom: 70px; /* Space for mobile call button */
     }
 
-    /* Header & Navigation */
+    /* 3. Header & Branding */
     header.text-header {
       background: var(--white);
-      padding: 20px;
+      padding: 25px 15px;
       text-align: center;
       border-bottom: 3px solid var(--primary);
     }
-    header h1 { color: var(--primary); font-size: 1.8rem; }
+    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
+    header p { font-size: 0.9rem; color: #666; }
+    header i { color: var(--primary); margin-right: 5px; }
 
+    /* 4. Navigation */
     .navbar {
       background: var(--primary);
       position: sticky;
@@ -45,23 +51,61 @@
       z-index: 1000;
       box-shadow: var(--shadow);
     }
-    .nav-links { display: flex; justify-content: center; list-style: none; overflow-x: auto; }
-    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 18px; display: block; font-weight: 500; white-space: nowrap; }
-    .nav-links a.active { background: var(--secondary); }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      padding: 15px 20px;
+      display: block;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
 
-    /* Main Content */
-    .main-content { max-width: 900px; margin: 0 auto; padding: 30px 15px; }
+    /* 5. Hero Section (Urgent Variant) */
+    .hero {
+      background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('https://www.transparenttextures.com/patterns/cubes.png');
+      text-align: center;
+      padding: 50px 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    .hero h2 { font-size: 2.2rem; color: var(--danger); margin-bottom: 10px; font-weight: bold; }
+    .hero p { color: #555; max-width: 600px; margin: 0 auto; }
 
-    .card {
-      background: var(--white);
-      padding: 35px;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      border-top: 8px solid var(--danger);
-      margin-bottom: 25px;
+    /* 6. Main Content Layout */
+    .main-content {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
-    /* Strict Warning Box Styles */
+    /* Warning Card Style */
+    .card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border-top: 8px solid var(--danger); /* Red Top Border for Urgency */
+      margin-bottom: 30px;
+    }
+
+    .pulse-icon {
+      animation: warning-pulse 1.5s infinite;
+      display: inline-block;
+      color: var(--danger);
+      margin-bottom: 15px;
+    }
+    @keyframes warning-pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
     .strict-warning-box {
       background: #fff5f5;
       border: 2px solid var(--danger);
@@ -79,82 +123,70 @@
       font-weight: 600;
     }
 
-    /* QR Codes Grid (Side by Side) */
+    /* QR Code Section */
     .qr-section {
       text-align: center;
       background: #fafafa;
-      padding: 30px 15px;
-      border-radius: 15px;
+      padding: 30px;
+      border-radius: 12px;
       border: 2px dashed #ccc;
       margin-top: 35px;
     }
     
     .qr-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 30px;
-      margin-top: 20px;
+      margin-top: 25px;
     }
-
+    
     .qr-item {
-      flex: 1;
-      min-width: 250px;
-      max-width: 300px;
       background: white;
       padding: 15px;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .qr-image { 
-      width: 100%;
-      height: auto; 
       border: 1px solid #eee;
-      border-radius: 5px;
-      transition: transform 0.3s; 
     }
-    .qr-image:hover { transform: scale(1.03); }
-
+    .qr-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      transition: transform 0.3s;
+    }
+    .qr-item:hover img { transform: scale(1.03); }
     .qr-label {
       margin-top: 10px;
       font-weight: bold;
       color: var(--secondary);
-      font-size: 0.9rem;
     }
 
-    /* Animation */
-    .pulse-icon { 
-      animation: warning-pulse 1.5s infinite; 
-      display: inline-block; 
-      color: var(--danger);
+    /* Footer */
+    footer {
+      background: #222;
+      color: #bbb;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 50px;
     }
+    .footer-info { color: var(--white); margin-bottom: 20px; }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
 
-    @keyframes warning-pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.1); opacity: 0.8; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    /* Mobile Call Button */
+    /* Mobile Call Button (Red for Urgency) */
     .mobile-call-box {
       position: fixed;
       bottom: 0;
       width: 100%;
-      background: var(--danger); /* Red for urgency */
+      background: var(--danger);
       text-align: center;
       padding: 15px;
       z-index: 999;
     }
-    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.1rem; font-weight: bold; }
-
-    footer { background: #222; color: #bbb; padding: 40px 20px; text-align: center; margin-top: 50px; }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
 
     @media (max-width: 600px) {
-      .nav-links a { padding: 12px 10px; font-size: 0.85rem; }
-      .card { padding: 20px; }
-      .qr-grid { gap: 15px; }
-      header h1 { font-size: 1.5rem; }
+      .hero h2 { font-size: 1.8rem; }
+      .nav-links a { padding: 10px 12px; font-size: 0.85rem; }
+      .card { padding: 25px; }
     }
   </style>
 </head>
@@ -172,24 +204,32 @@
       <li><a href="order.html">अर्डर</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
       <li><a href="notice.html" class="active">सूचना</a></li>
+      <li><a href="about.html">जानकारी</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
+  <section class="hero">
+    <h2><i class="fas fa-exclamation-circle"></i> अन्तिम ताकेता</h2>
+    <p>बाँकी बक्यौता रकम भुक्तानी सम्बन्धी अत्यन्त जरुरी सूचना।</p>
+  </section>
+
   <main class="main-content">
     
     <div class="card">
-      <div style="text-align: center; margin-bottom: 20px;">
-        <i class="fas fa-gavel fa-3x pulse-icon"></i>
-        <h2 style="margin-top:15px; color: var(--danger); font-size: 1.8rem; text-decoration: underline;">अन्तिम ताकेता तथा चेतावनी</h2>
+      <div style="text-align: center;">
+        <i class="fas fa-gavel fa-4x pulse-icon"></i>
+        <h2 style="color: var(--danger); font-size: 1.8rem; margin-bottom: 20px;">अन्तिम चेतावनी (Final Notice)</h2>
       </div>
 
       <div class="notice-body">
         <p><strong>आदरणीय ग्राहक महानुभावहरू,</strong></p>
-        <p>विगतमा यहाँहरूको समस्यालाई मध्यनजर गर्दै हामीले विश्वासको आधारमा <strong>उधारो (Credit)</strong> सुविधा उपलब्ध गराएका थियौं। तर बारम्बार ताकेता गर्दा पनि बेवास्ता गरिएको हुनाले हामी कडा कदम चाल्न बाध्य भएका छौं।</p>
+        <p style="text-align: justify;">विगतमा यहाँहरूको समस्यालाई मध्यनजर गर्दै हामीले मानवीय नाताले विश्वासको आधारमा <strong>उधारो (Credit)</strong> सुविधा उपलब्ध गराएका थियौं। तर बारम्बार फोन र म्यासेज मार्फत ताकेता गर्दा पनि बेवास्ता गरिएको हुनाले हामी कडा कदम चाल्न बाध्य भएका छौं।</p>
 
         <div class="strict-warning-box">
-          <h3 style="margin-bottom: 10px;"><i class="fas fa-exclamation-triangle"></i> विशेष ध्यानाकर्षण</h3>
+          <h3 style="margin-bottom: 15px; border-bottom: 1px solid #ffcccc; padding-bottom: 10px;">
+            <i class="fas fa-bullhorn"></i> विशेष ध्यानाकर्षण
+          </h3>
           <p>भुक्तानी नभएको खण्डमा हामी निम्न कारबाही प्रक्रिया अगाडि बढाउन बाध्य हुनेछौं:</p>
           
           <div class="legal-action">
@@ -200,13 +240,13 @@
              २. कानुनी प्रक्रिया सुरु हुनुका साथै, सम्बन्धित व्यक्तिको <strong>फोटो र बक्यौता विवरण सहित फेसबुक तथा सामाजिक सञ्जालमा सार्वजनिक गरिनेछ।</strong>
           </div>
 
-          <p style="margin-top: 15px; font-weight: bold; text-align: center;">
-            यसबाट हुन जाने मानहानी र प्रतिष्ठाको क्षतिको जिम्मेवार तपाईं स्वयं हुनुहुनेछ।
+          <p style="margin-top: 15px; font-weight: bold; text-align: center; color: var(--dark-red);">
+            <i class="fas fa-hand-point-right"></i> यसबाट हुन जाने मानहानी र प्रतिष्ठाको क्षतिको जिम्मेवार तपाईं स्वयं हुनुहुनेछ।
           </p>
         </div>
 
-        <div style="text-align: center; color: var(--text-dark); background: #e3f2fd; padding: 15px; border-radius: 8px;">
-          आफ्नो इज्जत र प्रतिष्ठा जोगाउन आजै तल दिइएको QR स्क्यान गरी भुक्तानी गर्नुहोस्।
+        <div style="text-align: center; background: #e3f2fd; padding: 20px; border-radius: 8px; border: 1px solid #bbdefb; color: #0d47a1;">
+          <strong><i class="fas fa-shield-alt"></i> आफ्नो इज्जत र प्रतिष्ठा जोगाउन आजै तल दिइएको QR स्क्यान गरी भुक्तानी गर्नुहोस्।</strong>
         </div>
       </div>
 
@@ -216,12 +256,12 @@
         
         <div class="qr-grid">
           <div class="qr-item">
-            <img src="qr.jpg" alt="Fonepay QR" class="qr-image">
-            <div class="qr-label">Fonepay / eSewa QR</div>
+            <img src="qr.jpg" alt="Fonepay QR">
+            <div class="qr-label">Fonepay / eSewa</div>
           </div>
 
           <div class="qr-item">
-            <img src="nepalpay.jpeg" alt="NepalPay QR" class="qr-image">
+            <img src="nepalpay.jpeg" alt="NepalPay QR">
             <div class="qr-label">NepalPay QR</div>
           </div>
         </div>
@@ -232,7 +272,7 @@
       </div>
 
       <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 25px; text-align: center; color: #555;">
-        <p><i class="fas fa-phone-alt"></i> सम्पर्क: <strong>०५६-५९३२८८ / ९८५५०६५३२७</strong></p>
+        <p><i class="fas fa-phone-alt"></i> भुक्तानी पछि जानकारी गराउनुहोला: <br><strong>०५६-५९३२८८ / ९८५५०६५३२७</strong></p>
       </div>
     </div>
 
@@ -245,8 +285,16 @@
   </div>
 
   <footer>
-    <p><strong>विमल फार्मेसी</strong> | भरतपुर-७, चितवन</p>
-    <p>&copy; २०२६ सर्वाधिकार सुरक्षित।</p>
+    <div class="footer-info">
+      <strong>विमल फार्मेसी</strong><br>
+      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन<br>
+      admin@bimalpharmacy.com.np
+    </div>
+    <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <p style="margin-top:15px;">
+      <a href="privacy-policy.html">गोपनीयता नीति</a> | 
+      <a href="sitemap.xml">साइटम्याप</a>
+    </p>
   </footer>
 
 </body>
