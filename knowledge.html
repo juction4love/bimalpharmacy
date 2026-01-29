@@ -2,58 +2,109 @@
 <html lang="ne">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>स्वास्थ्य जानकारी | विमल फार्मेसी</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>औषधी गाइड तथा जानकारी | विमल फार्मेसी</title>
+  
+  <meta name="description" content="विभिन्न औषधीहरूको प्रयोग र स्वास्थ्य सम्बन्धी जानकारीमूलक तथ्यहरू।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+  
   <style>
+    /* 1. Global Variables (Matched to Index) */
     :root {
-      --primary: #2e7d32;
-      --secondary: #1b5e20;
-      --accent: #fbc02d;
+      --primary: #2e7d32;    /* Deep Medical Green */
+      --secondary: #1b5e20;  /* Darker Green */
+      --accent: #fbc02d;     /* Gold/Yellow */
       --light-bg: #f4f7f6;
       --white: #ffffff;
+      --text-dark: #333;
       --shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
+    /* 2. Reset & Base Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
-      font-family: 'Segoe UI', Arial, sans-serif; 
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
       line-height: 1.6; 
       background-color: var(--light-bg); 
-      margin: 0;
-      padding-bottom: 80px;
+      color: var(--text-dark);
+      padding-bottom: 70px; /* Space for mobile call button */
     }
 
-    /* Header & Nav (Same as Index) */
-    header { background: var(--white); padding: 20px; text-align: center; border-bottom: 3px solid var(--primary); }
-    header h1 { color: var(--primary); margin: 0; }
-    
-    .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; }
-    .nav-links { display: flex; justify-content: center; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
-    .nav-links a { color: white; text-decoration: none; padding: 15px 20px; display: block; font-weight: 500; }
-    .nav-links a:hover { background: var(--secondary); }
-
-    /* Search & Filter Section */
-    .search-section {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
+    /* 3. Header & Branding */
+    header.text-header {
+      background: var(--white);
+      padding: 25px 15px;
       text-align: center;
+      border-bottom: 3px solid var(--primary);
+    }
+    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
+    header p { font-size: 0.9rem; color: #666; }
+    header i { color: var(--primary); margin-right: 5px; }
+
+    /* 4. Navigation */
+    .navbar {
+      background: var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      padding: 15px 20px;
+      display: block;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
+
+    /* 5. Hero Section */
+    .hero {
+      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/cubes.png');
+      text-align: center;
+      padding: 50px 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    .hero h2 { font-size: 2.2rem; color: var(--secondary); margin-bottom: 10px; }
+    .hero p { color: #555; max-width: 600px; margin: 0 auto; }
+
+    /* 6. Search Section */
+    .search-wrapper {
+      max-width: 600px;
+      margin: -25px auto 30px; /* Overlap hero slightly */
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
     }
     .search-box {
       width: 100%;
-      max-width: 500px;
-      padding: 12px 20px;
+      padding: 15px 20px 15px 50px;
       border: 2px solid var(--primary);
-      border-radius: 25px;
-      font-size: 1rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
       outline: none;
+      box-shadow: var(--shadow);
+      background: var(--white);
+    }
+    .search-icon {
+      position: absolute;
+      left: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary);
     }
 
-    /* Content Layout */
-    .content-wrapper {
+    /* 7. Content Layout */
+    .container {
       max-width: 1100px;
-      margin: 20px auto;
+      margin: 0 auto;
       padding: 0 20px;
     }
 
@@ -61,120 +112,191 @@
       background: var(--white);
       border-radius: 12px;
       box-shadow: var(--shadow);
-      padding: 25px;
+      padding: 30px;
       margin-bottom: 40px;
       border-top: 5px solid var(--primary);
     }
 
-    h2 { color: var(--primary); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+    .info-card h2 { 
+      color: var(--secondary); 
+      border-bottom: 2px solid #eee; 
+      padding-bottom: 15px; 
+      margin-bottom: 20px; 
+      font-size: 1.5rem;
+    }
 
-    /* Table Styling */
-    .table-container { overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    table th, table td { padding: 12px; border: 1px solid #eee; text-align: left; }
-    table th { background: var(--primary); color: white; }
-    table tr:nth-child(even) { background-color: #f9f9f9; }
+    /* Table Styles */
+    .table-responsive { overflow-x: auto; }
+    
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; min-width: 500px; }
+    
+    table th { 
+      background: var(--primary); 
+      color: white; 
+      padding: 15px; 
+      text-align: left; 
+      font-weight: 600;
+    }
+    
+    table td { 
+      padding: 12px 15px; 
+      border-bottom: 1px solid #eee; 
+      color: #555; 
+    }
+    
+    table tr:nth-child(even) { background-color: #f8fcf8; }
+    table tr:hover { background-color: #e8f5e9; }
 
+    /* Disclaimer Box */
     .disclaimer {
-      background: #fff3cd;
+      background: #fff8e1;
       padding: 15px;
       border-radius: 8px;
       margin-bottom: 20px;
       font-size: 0.9rem;
       border-left: 5px solid var(--accent);
+      color: #7f6000;
     }
 
+    /* Footer */
+    footer {
+      background: #222;
+      color: #bbb;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .footer-info { color: var(--white); margin-bottom: 20px; }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
+
     /* Mobile Call Button */
-    .mobile-call-box { position: fixed; bottom: 0; width: 100%; background: var(--primary); text-align: center; padding: 15px; }
-    .mobile-call-btn { color: white; text-decoration: none; font-weight: bold; }
+    .mobile-call-box {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: var(--primary);
+      text-align: center;
+      padding: 15px;
+      z-index: 999;
+    }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
 
     @media (max-width: 600px) {
-        .nav-links a { padding: 10px; font-size: 0.8rem; }
+      .hero h2 { font-size: 1.8rem; }
+      .nav-links a { padding: 10px 12px; font-size: 0.85rem; }
+      table th, table td { padding: 10px; font-size: 0.9rem; }
     }
   </style>
 </head>
 <body>
 
-  <header>
+  <header class="text-header">
     <h1>विमल फार्मेसी</h1>
-    <p>स्वास्थ्य र जनचेतना पोर्टल</p>
+    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</p>
   </header>
 
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="search.html">खोज्नुहोस्</a></li>
-      <li><a href="#" style="background: var(--secondary);">जानकारी</a></li>
+      <li><a href="medical-guide.html" class="active">औषधी गाइड</a></li>
       <li><a href="order.html">अर्डर</a></li>
+      <li><a href="service.html">सेवाहरू</a></li>
+      <li><a href="notice.html">सूचना</a></li>
+      <li><a href="knowledge.html">ज्ञान/ग्यालरी</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
-  <div class="search-section">
-    <h2><i class="fas fa-book-medical"></i> स्वास्थ्य जानकारी खोज्नुहोस्</h2>
-    <input type="text" id="myInput" onkeyup="searchTable()" placeholder="औषधी वा फोबियाको नाम लेख्नुहोस्..." class="search-box">
+  <section class="hero">
+    <h2>स्वास्थ्य जानकारी पोर्टल</h2>
+    <p>विभिन्न औषधीहरूको प्रयोग र स्वास्थ्य सम्बन्धी रोचक तथ्यहरू खोज्नुहोस्।</p>
+  </section>
+
+  <div class="search-wrapper">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" id="myInput" onkeyup="searchTable()" placeholder="यहाँ औषधी वा रोगको नाम टाइप गर्नुहोस्..." class="search-box">
   </div>
 
-  <div class="content-wrapper">
+  <main class="container">
     
     <div class="info-card">
-      <h2>💊 औषधि र तिनको सामान्य प्रयोग</h2>
+      <h2><i class="fas fa-pills" style="color: var(--primary);"></i> औषधि र तिनको सामान्य प्रयोग</h2>
+      
       <div class="disclaimer">
-        <strong>नोट:</strong> यो सूची जानकारीका लागि मात्र हो। डाक्टरको प्रेस्क्रिप्सन बिना कुनै पनि औषधी सेवन नगर्नुहोस्।
+        <i class="fas fa-exclamation-triangle"></i> <strong>सावधानी:</strong> यो सूची जानकारीका लागि मात्र हो। डाक्टरको सल्लाह र प्रेस्क्रिप्सन बिना कुनै पनि औषधी सेवन नगर्नुहोस्।
       </div>
-      <div class="table-container">
+
+      <div class="table-responsive">
         <table id="medicineTable">
           <thead>
             <tr>
-              <th>क्र.सं.</th>
-              <th>औषधीको नाम</th>
-              <th>प्रयोग</th>
+              <th width="10%">क्र.सं.</th>
+              <th width="40%">औषधीको नाम (Medicine)</th>
+              <th width="50%">प्रयोग (Uses)</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>१</td><td>Paracetamol</td><td>दुखाइ र ज्वरो</td></tr>
-            <tr><td>२</td><td>Amoxicillin</td><td>ब्याक्टेरियल संक्रमण</td></tr>
-            <tr><td>३</td><td>Omeprazole</td><td>ग्यास्ट्रिक, अल्सर</td></tr>
-            <tr><td>४</td><td>Loratadine</td><td>एलर्जी</td></tr>
-            <tr><td>५</td><td>Amlodipine</td><td>उच्च रक्तचाप</td></tr>
-            <tr><td>६</td><td>Metformin</td><td>मधुमेह (Diabetes)</td></tr>
-            <tr><td>१४</td><td>Albuterol</td><td>दम (Asthma)</td></tr>
-            <tr><td>१८</td><td>Insulin</td><td>मधुमेह नियन्त्रण</td></tr>
-            <tr><td>५०</td><td>Aspirin</td><td>दुखाइ र रगत पातलो बनाउन</td></tr>
-            </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="info-card">
-      <h2>🧠 विभिन्न प्रकारका डर (Phobias)</h2>
-      <div class="table-container">
-        <table id="phobiaTable">
-          <thead>
-            <tr>
-              <th>फोबियाको नाम</th>
-              <th>डरको विषय</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Hydrophobia</td><td>पानीको डर</td></tr>
-            <tr><td>Melissophobia</td><td>मौरीको डर</td></tr>
-            <tr><td>Pyrophobia</td><td>आगोको डर</td></tr>
-            <tr><td>Phasmophobia</td><td>भूतको डर</td></tr>
-            <tr><td>Thanatophobia</td><td>मृत्युको डर</td></tr>
-            <tr><td>Philophobia</td><td>प्रेममा पर्ने डर</td></tr>
+            <tr><td>१</td><td>Paracetamol</td><td>ज्वरो (Fever) र सामान्य दुखाइ कम गर्न</td></tr>
+            <tr><td>२</td><td>Amoxicillin</td><td>ब्याक्टेरियल संक्रमण (Infection) को उपचार</td></tr>
+            <tr><td>३</td><td>Omeprazole / Pantoprazole</td><td>ग्यास्ट्रिक, पेट पोल्ने र अल्सर</td></tr>
+            <tr><td>४</td><td>Loratadine / Cetirizine</td><td>एलर्जी, रुघा र चिलाउने समस्या</td></tr>
+            <tr><td>५</td><td>Amlodipine</td><td>उच्च रक्तचाप (High Blood Pressure)</td></tr>
+            <tr><td>६</td><td>Metformin</td><td>चिनी रोग (Diabetes) नियन्त्रण</td></tr>
+            <tr><td>७</td><td>Albuterol / Salbutamol</td><td>दम (Asthma) र श्वासप्रश्वास समस्या</td></tr>
+            <tr><td>८</td><td>Insulin</td><td>मधुमेह (Diabetes) को इन्जेक्सन उपचार</td></tr>
+            <tr><td>९</td><td>Aspirin / Ecosprin</td><td>रगत पातलो बनाउन र मुटुको सुरक्षा</td></tr>
+            <tr><td>१०</td><td>Ibuprofen</td><td>मांसपेशीको दुखाइ र सुन्निएको कम गर्न</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-  </div>
+    <div class="info-card">
+      <h2><i class="fas fa-brain" style="color: var(--primary);"></i> विभिन्न प्रकारका डर (Medical Phobias)</h2>
+      
+      <div class="table-responsive">
+        <table id="phobiaTable">
+          <thead>
+            <tr>
+              <th width="40%">फोबियाको नाम (Phobia)</th>
+              <th width="60%">डरको विषय (Fear of...)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Hydrophobia</strong></td><td>पानी देखि लाग्ने डर</td></tr>
+            <tr><td><strong>Trypanophobia</strong></td><td>सुई (Injection) देखि लाग्ने डर</td></tr>
+            <tr><td><strong>Hemophobia</strong></td><td>रगत देख्दा लाग्ने डर</td></tr>
+            <tr><td><strong>Iatrophobia</strong></td><td>डाक्टर वा अस्पताल जाने डर</td></tr>
+            <tr><td><strong>Pharmacophobia</strong></td><td>औषधी खान डर लाग्ने</td></tr>
+            <tr><td><strong>Pyrophobia</strong></td><td>आगोको डर</td></tr>
+            <tr><td><strong>Claustrophobia</strong></td><td>साँघुरो ठाउँको डर (जस्तै: MRI मेसिन)</td></tr>
+            <tr><td><strong>Thanatophobia</strong></td><td>मृत्युको डर</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
 
   <div class="mobile-call-box">
     <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> सहयोगका लागि: ०५६-५९३२८८
+      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्: ०५६-५९३२८८
     </a>
   </div>
+
+  <footer>
+    <div class="footer-info">
+      <strong>विमल फार्मेसी</strong><br>
+      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन<br>
+      admin@bimalpharmacy.com.np
+    </div>
+    <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <p style="margin-top:15px;">
+      <a href="privacy-policy.html">गोपनीयता नीति</a> | 
+      <a href="sitemap.xml">साइटम्याप</a>
+    </p>
+  </footer>
 
   <script>
     function searchTable() {
@@ -182,22 +304,31 @@
       input = document.getElementById("myInput");
       filter = input.value.toUpperCase();
       
-      // दुवै तालिकामा खोज्ने
+      // List of table IDs to search through
       var tables = ["medicineTable", "phobiaTable"];
       
       tables.forEach(function(tableId) {
         table = document.getElementById(tableId);
         tr = table.getElementsByTagName("tr");
+        
+        // Loop through all table rows (skipping the header)
         for (i = 1; i < tr.length; i++) {
           td = tr[i].getElementsByTagName("td");
+          found = false;
+          
+          // Check all columns in the row
           for (j = 0; j < td.length; j++) {
-            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-              found = true;
+            if (td[j]) {
+              if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                found = true;
+                break; // Stop checking columns if match found
+              }
             }
           }
+          
+          // Toggle row visibility
           if (found) {
             tr[i].style.display = "";
-            found = false;
           } else {
             tr[i].style.display = "none";
           }
