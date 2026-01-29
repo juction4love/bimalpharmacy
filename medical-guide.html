@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>औषधी गाइड तथा जानकारी | विमल फार्मेसी</title>
+  <title>स्वास्थ्य ज्ञान र ग्यालरी | विमल फार्मेसी</title>
   
-  <meta name="description" content="विभिन्न औषधीहरूको प्रयोग र स्वास्थ्य सम्बन्धी जानकारीमूलक तथ्यहरू।">
+  <meta name="description" content="विमल फार्मेसी: ५०+ औषधीहरूको जानकारी, फोबियाका प्रकारहरू र फोटो ग्यालरी।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <style>
-    /* 1. Global Variables (Matched to Index) */
+    /* 1. Global Variables (Same as Index) */
     :root {
       --primary: #2e7d32;    /* Deep Medical Green */
       --secondary: #1b5e20;  /* Darker Green */
@@ -27,10 +27,10 @@
       line-height: 1.6; 
       background-color: var(--light-bg); 
       color: var(--text-dark);
-      padding-bottom: 70px; /* Space for mobile call button */
+      padding-bottom: 70px; 
     }
 
-    /* 3. Header & Branding */
+    /* 3. Header */
     header.text-header {
       background: var(--white);
       padding: 25px 15px;
@@ -75,10 +75,10 @@
     .hero h2 { font-size: 2.2rem; color: var(--secondary); margin-bottom: 10px; }
     .hero p { color: #555; max-width: 600px; margin: 0 auto; }
 
-    /* 6. Search Section */
+    /* 6. Search Box */
     .search-wrapper {
       max-width: 600px;
-      margin: -25px auto 30px; /* Overlap hero slightly */
+      margin: -25px auto 30px;
       padding: 0 20px;
       position: relative;
       z-index: 10;
@@ -92,22 +92,26 @@
       outline: none;
       box-shadow: var(--shadow);
       background: var(--white);
+      transition: 0.3s;
     }
+    .search-box:focus { border-color: var(--accent); }
     .search-icon {
       position: absolute;
       left: 40px;
       top: 50%;
       transform: translateY(-50%);
       color: var(--primary);
+      font-size: 1.2rem;
     }
 
-    /* 7. Content Layout */
+    /* 7. Main Content */
     .container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
+    /* Card Style */
     .card {
       background: var(--white);
       border-radius: 12px;
@@ -115,7 +119,9 @@
       padding: 30px;
       margin-bottom: 40px;
       border-top: 5px solid var(--primary);
+      transition: transform 0.3s;
     }
+    .card:hover { transform: translateY(-3px); }
 
     .card h2 { 
       color: var(--secondary); 
@@ -129,7 +135,7 @@
     }
 
     /* Table Styles */
-    .table-responsive { overflow-x: auto; }
+    .table-responsive { overflow-x: auto; max-height: 600px; overflow-y: auto; }
     
     table { width: 100%; border-collapse: collapse; margin-top: 10px; min-width: 500px; }
     
@@ -139,6 +145,9 @@
       padding: 15px; 
       text-align: left; 
       font-weight: 600;
+      position: sticky;
+      top: 0;
+      z-index: 5;
     }
     
     table td { 
@@ -150,7 +159,7 @@
     table tr:nth-child(even) { background-color: #f8fcf8; }
     table tr:hover { background-color: #e8f5e9; }
 
-    /* Disclaimer Box */
+    /* Disclaimer */
     .disclaimer {
       background: #fff8e1;
       padding: 15px;
@@ -158,7 +167,39 @@
       margin-bottom: 20px;
       font-size: 0.9rem;
       border-left: 5px solid var(--accent);
-      color: #7f6000;
+      color: #856404;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+      border: 1px solid #eee;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      width: 100%;
+      padding: 15px 10px 10px;
+      text-align: center;
+      font-size: 0.9rem;
     }
 
     /* Footer */
@@ -172,7 +213,7 @@
     .footer-info { color: var(--white); margin-bottom: 20px; }
     footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
 
-    /* Mobile Call Button */
+    /* Mobile Button */
     .mobile-call-box {
       position: fixed;
       bottom: 0;
@@ -202,32 +243,32 @@
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="search.html">खोज्नुहोस्</a></li>
-      <li><a href="medical-guide.html" class="active">औषधी गाइड</a></li>
+      <li><a href="medical-guide.html">औषधी गाइड</a></li>
       <li><a href="order.html">अर्डर</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
       <li><a href="notice.html">सूचना</a></li>
-      <li><a href="knowledge.html">ज्ञान/ग्यालरी</a></li>
+      <li><a href="knowledge.html" class="active">ज्ञान/ग्यालरी</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
   <section class="hero">
-    <h2>स्वास्थ्य जानकारी पोर्टल</h2>
-    <p>विभिन्न औषधीहरूको प्रयोग र स्वास्थ्य सम्बन्धी रोचक तथ्यहरू खोज्नुहोस्।</p>
+    <h2>स्वास्थ्य ज्ञान र ग्यालरी</h2>
+    <p>५०+ औषधीहरूको विस्तृत जानकारी र विभिन्न फोबियाहरू बारे जान्नुहोस्।</p>
   </section>
 
   <div class="search-wrapper">
     <i class="fas fa-search search-icon"></i>
-    <input type="text" id="myInput" onkeyup="searchTable()" placeholder="यहाँ औषधी वा रोगको नाम टाइप गर्नुहोस्..." class="search-box">
+    <input type="text" id="myInput" onkeyup="searchTable()" placeholder="औषधी वा फोबियाको नाम खोज्नुहोस्..." class="search-box">
   </div>
 
   <main class="container">
     
     <div class="card">
-      <h2><i class="fas fa-pills" style="color: var(--primary);"></i> औषधि र तिनको सामान्य प्रयोग</h2>
+      <h2><i class="fas fa-pills"></i> ५० प्रमुख औषधि र तिनको प्रयोग (Medicines)</h2>
       
       <div class="disclaimer">
-        <i class="fas fa-exclamation-triangle"></i> <strong>सावधानी:</strong> यो सूची जानकारीका लागि मात्र हो। डाक्टरको सल्लाह र प्रेस्क्रिप्सन बिना कुनै पनि औषधी सेवन नगर्नुहोस्।
+        <i class="fas fa-exclamation-triangle"></i> <strong>अस्वीकरण (Disclaimer):</strong> यहाँ दिइएको जानकारी सचेतनाका लागि मात्र हो। डाक्टरको सल्लाह बिना कुनै पनि औषधी सेवन नगर्नुहोस्।
       </div>
 
       <div class="table-responsive">
@@ -240,23 +281,63 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>१</td><td>Paracetamol</td><td>ज्वरो (Fever) र सामान्य दुखाइ कम गर्न</td></tr>
-            <tr><td>२</td><td>Amoxicillin</td><td>ब्याक्टेरियल संक्रमण (Infection) को उपचार</td></tr>
-            <tr><td>३</td><td>Omeprazole / Pantoprazole</td><td>ग्यास्ट्रिक, पेट पोल्ने र अल्सर</td></tr>
-            <tr><td>४</td><td>Loratadine / Cetirizine</td><td>एलर्जी, रुघा र चिलाउने समस्या</td></tr>
-            <tr><td>५</td><td>Amlodipine</td><td>उच्च रक्तचाप (High Blood Pressure)</td></tr>
-            <tr><td>६</td><td>Metformin</td><td>चिनी रोग (Diabetes) नियन्त्रण</td></tr>
-            <tr><td>७</td><td>Salbutamol (Asthalin)</td><td>दम (Asthma) र श्वासप्रश्वास समस्या</td></tr>
-            <tr><td>८</td><td>Insulin</td><td>मधुमेह (Diabetes) को इन्जेक्सन उपचार</td></tr>
-            <tr><td>९</td><td>Aspirin / Ecosprin</td><td>रगत पातलो बनाउन र मुटुको सुरक्षा</td></tr>
-            <tr><td>१०</td><td>Ibuprofen / Brufen</td><td>मांसपेशीको दुखाइ र सुन्निएको कम गर्न</td></tr>
+            <tr><td>1</td><td>Paracetamol</td><td>दुखाइ र ज्वरो (Pain, Fever)</td></tr>
+            <tr><td>2</td><td>Amoxicillin</td><td>ब्याक्टेरियल संक्रमण (Bacterial Infections)</td></tr>
+            <tr><td>3</td><td>Omeprazole</td><td>ग्यास्ट्रिक, अल्सर (Acid Reflux, Ulcers)</td></tr>
+            <tr><td>4</td><td>Loratadine</td><td>एलर्जी (Allergies)</td></tr>
+            <tr><td>5</td><td>Amlodipine</td><td>उच्च रक्तचाप (Hypertension)</td></tr>
+            <tr><td>6</td><td>Metformin</td><td>टाइप २ मधुमेह (Type 2 Diabetes)</td></tr>
+            <tr><td>7</td><td>Diazepam</td><td>चिन्ता, अनिद्रा (Anxiety, Insomnia)</td></tr>
+            <tr><td>8</td><td>Atorvastatin</td><td>उच्च कोलेस्ट्रोल (High Cholesterol)</td></tr>
+            <tr><td>9</td><td>Ciprofloxacin</td><td>पिसाबको संक्रमण (Urinary Infections)</td></tr>
+            <tr><td>10</td><td>Ranitidine</td><td>ग्यास्ट्रिक अल्सर (Gastric Ulcers)</td></tr>
+            <tr><td>11</td><td>Ibuprofen</td><td>दुखाइ र सुन्निएको कम गर्न (Pain, Inflammation)</td></tr>
+            <tr><td>12</td><td>Levothyroxine</td><td>थाइराइडको समस्या (Hypothyroidism)</td></tr>
+            <tr><td>13</td><td>Clopidogrel</td><td>रगत पातलो बनाउन (Blood Thinner)</td></tr>
+            <tr><td>14</td><td>Albuterol</td><td>दम, श्वासप्रश्वास (Asthma, COPD)</td></tr>
+            <tr><td>15</td><td>Fluoxetine</td><td>डिप्रेसन (Depression)</td></tr>
+            <tr><td>16</td><td>Losartan</td><td>उच्च रक्तचाप (Hypertension)</td></tr>
+            <tr><td>17</td><td>Doxycycline</td><td>ब्याक्टेरियल संक्रमण (Bacterial Infections)</td></tr>
+            <tr><td>18</td><td>Insulin</td><td>मधुमेह / सुगर (Diabetes Mellitus)</td></tr>
+            <tr><td>19</td><td>Tramadol</td><td>मध्यम देखि कडा दुखाइ (Moderate/Severe Pain)</td></tr>
+            <tr><td>20</td><td>Pantoprazole</td><td>ग्यास्ट्रिक, एसिड रिफ्लक्स (GERD)</td></tr>
+            <tr><td>21</td><td>Cetirizine</td><td>एलर्जी, रुघा (Allergic Rhinitis)</td></tr>
+            <tr><td>22</td><td>Warfarin</td><td>रगत जम्न नदिन (Anticoagulant)</td></tr>
+            <tr><td>23</td><td>Morphine</td><td>अत्यधिक दुखाइ (Severe Pain)</td></tr>
+            <tr><td>24</td><td>Escitalopram</td><td>डिप्रेसन, चिन्ता (Depression, Anxiety)</td></tr>
+            <tr><td>25</td><td>Furosemide</td><td>सुन्निएको घटाउन, रक्तचाप (Edema, BP)</td></tr>
+            <tr><td>26</td><td>Azithromycin</td><td>श्वासप्रश्वासको संक्रमण (Respiratory Infections)</td></tr>
+            <tr><td>27</td><td>Prednisolone</td><td>सुन्निएको कम गर्न (Anti-inflammatory)</td></tr>
+            <tr><td>28</td><td>Gabapentin</td><td>नशाको दुखाइ (Neuropathic Pain)</td></tr>
+            <tr><td>29</td><td>Domperidone</td><td>वाकवाकी, उल्टी (Nausea, Vomiting)</td></tr>
+            <tr><td>30</td><td>Bisoprolol</td><td>मुटुको समस्या (Heart Failure)</td></tr>
+            <tr><td>31</td><td>Montelukast</td><td>दम, एलर्जी (Asthma, Allergies)</td></tr>
+            <tr><td>32</td><td>Digoxin</td><td>मुटुको धड्कन अनियमित हुँदा (Arrhythmias)</td></tr>
+            <tr><td>33</td><td>Sertraline</td><td>डिप्रेसन (Depression)</td></tr>
+            <tr><td>34</td><td>Metronidazole</td><td>पेटको संक्रमण (Protozoal Infections)</td></tr>
+            <tr><td>35</td><td>Enalapril</td><td>उच्च रक्तचाप (Hypertension)</td></tr>
+            <tr><td>36</td><td>Lorazepam</td><td>चिन्ता, निद्रा लगाउन (Anxiety, Sedation)</td></tr>
+            <tr><td>37</td><td>Rosuvastatin</td><td>कोलेस्ट्रोल नियन्त्रण (Cholesterol Control)</td></tr>
+            <tr><td>38</td><td>Salbutamol</td><td>श्वास फेर्न गाह्रो हुँदा (Bronchospasm)</td></tr>
+            <tr><td>39</td><td>Allopurinol</td><td>युरिक एसिड / गाउट (Gout)</td></tr>
+            <tr><td>40</td><td>Clonazepam</td><td>छारे रोग / दौरा (Seizure Disorders)</td></tr>
+            <tr><td>41</td><td>Tamsulosin</td><td>प्रोस्टेट समस्या (Prostate Hyperplasia)</td></tr>
+            <tr><td>42</td><td>Famotidine</td><td>एसिड रिफ्लक्स (Acid Reflux)</td></tr>
+            <tr><td>43</td><td>Methotrexate</td><td>बाथ रोग (Rheumatoid Arthritis)</td></tr>
+            <tr><td>44</td><td>Hydrochlorothiazide</td><td>पिसाब लगाउने औषधी (Diuretic)</td></tr>
+            <tr><td>45</td><td>Sildenafil</td><td>यौन दुर्बलता (Erectile Dysfunction)</td></tr>
+            <tr><td>46</td><td>Levetiracetam</td><td>मिर्गी / छारे रोग (Epilepsy)</td></tr>
+            <tr><td>47</td><td>Betamethasone</td><td>छालाको इन्फ्लामेसन (Skin Inflammation)</td></tr>
+            <tr><td>48</td><td>Ramipril</td><td>उच्च रक्तचाप (Hypertension)</td></tr>
+            <tr><td>49</td><td>Mirtazapine</td><td>डिप्रेसन (Depression)</td></tr>
+            <tr><td>50</td><td>Aspirin</td><td>दुखाइ, रगत जम्न नदिन (Pain, Blood Clot)</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="card">
-      <h2><i class="fas fa-brain" style="color: var(--primary);"></i> विभिन्न प्रकारका डर (Medical Phobias)</h2>
+    <div class="card" style="border-top-color: var(--accent);">
+      <h2><i class="fas fa-brain"></i> विभिन्न प्रकारका डर (Types of Phobias)</h2>
       
       <div class="table-responsive">
         <table id="phobiaTable">
@@ -267,16 +348,52 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td><strong>Hydrophobia</strong></td><td>पानी देखि लाग्ने डर (Rabies सँग सम्बन्धित)</td></tr>
-            <tr><td><strong>Trypanophobia</strong></td><td>सुई (Injection) देखि लाग्ने डर</td></tr>
-            <tr><td><strong>Hemophobia</strong></td><td>रगत (Blood) देख्दा लाग्ने डर</td></tr>
-            <tr><td><strong>Iatrophobia</strong></td><td>डाक्टर वा अस्पताल जाने डर</td></tr>
-            <tr><td><strong>Pharmacophobia</strong></td><td>औषधी खान डर लाग्ने</td></tr>
-            <tr><td><strong>Pyrophobia</strong></td><td>आगोको डर</td></tr>
-            <tr><td><strong>Claustrophobia</strong></td><td>साँघुरो ठाउँको डर (जस्तै: MRI मेसिन)</td></tr>
-            <tr><td><strong>Thanatophobia</strong></td><td>मृत्युको डर</td></tr>
+            <tr><td>1. Hydrophobia</td><td>पानी देखि लाग्ने डर (Fear of water)</td></tr>
+            <tr><td>2. Melissophobia</td><td>मौरी देखि लाग्ने डर (Fear of bees)</td></tr>
+            <tr><td>3. Basiphobia</td><td>लड्ने डर (Fear of falling)</td></tr>
+            <tr><td>4. Pediophobia</td><td>पुतली वा गुडियाको डर (Fear of dolls)</td></tr>
+            <tr><td>5. Pyrophobia</td><td>आगोको डर (Fear of fire)</td></tr>
+            <tr><td>6. Algophobia</td><td>दुखाइको डर (Fear of pain)</td></tr>
+            <tr><td>7. Stygiophobia</td><td>नर्कको डर (Fear of hell)</td></tr>
+            <tr><td>8. Dendrophobia</td><td>रूखहरूको डर (Fear of trees)</td></tr>
+            <tr><td>9. Ornithophobia</td><td>चराहरूको डर (Fear of birds)</td></tr>
+            <tr><td>10. Selachophobia</td><td>शार्कको डर (Fear of sharks)</td></tr>
+            <tr><td>11. Chiroptophobia</td><td>चमेरोको डर (Fear of bats)</td></tr>
+            <tr><td>12. Macrophobia</td><td>लामो समय कुर्नुपर्ने डर (Fear of long waits)</td></tr>
+            <tr><td>13. Erythrophobia</td><td>लाजाउने वा रातो हुने डर (Fear of blushing)</td></tr>
+            <tr><td>14. Myrmecophobia</td><td>कमिलाको डर (Fear of ants)</td></tr>
+            <tr><td>15. Gephyrophobia</td><td>पुल तर्ने डर (Fear of bridges)</td></tr>
+            <tr><td>16. Kinemortophobia</td><td>जोम्बीहरूको डर (Fear of zombies)</td></tr>
+            <tr><td>17. Phasmophobia</td><td>भूतको डर (Fear of ghosts)</td></tr>
+            <tr><td>18. Herpetophobia</td><td>घस्रने जनावरको डर (Fear of reptiles)</td></tr>
+            <tr><td>19. Necrophobia</td><td>लास वा शवको डर (Fear of corpses)</td></tr>
+            <tr><td>20. Thanatophobia</td><td>मृत्युको डर (Fear of death)</td></tr>
+            <tr><td>21. Taphophobia</td><td>जिउँदै गाडिने डर (Fear of being buried alive)</td></tr>
+            <tr><td>22. Philophobia</td><td>प्रेम वा मायामा पर्ने डर (Fear of falling in love)</td></tr>
           </tbody>
         </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-images"></i> हाम्रो ग्यालरी</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=600&q=80" alt="Pharmacy Front">
+          <div class="gallery-caption">विमल फार्मेसी (बाहिरी दृश्य)</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?auto=format&fit=crop&w=600&q=80" alt="Pharmacist">
+          <div class="gallery-caption">काउन्सेलिङ सेवा</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&w=600&q=80" alt="Medicine Shelf">
+          <div class="gallery-caption">औषधी भण्डारण</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=600&q=80" alt="Delivery">
+          <div class="gallery-caption">डेलिभरी सेवा</div>
+        </div>
       </div>
     </div>
 
