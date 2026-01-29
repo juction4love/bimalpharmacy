@@ -3,43 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>सेवाहरू | विमल फार्मेसी</title>
+  <title>हाम्रा सेवाहरू | विमल फार्मेसी</title>
   
+  <meta name="description" content="विमल फार्मेसीका सेवाहरू: २४ घण्टा सेवा, अंकोलोजी (क्यान्सर) औषधी, होम डेलिभरी र स्वास्थ्य परामर्श।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+  
   <style>
-    /* 1. Global Styles */
+    /* 1. Global Variables (Matched to Index) */
     :root {
-      --primary: #2e7d32;      /* Green */
-      --secondary: #1b5e20;    /* Dark Green */
-      --accent: #fbc02d;       /* Yellow/Gold */
+      --primary: #2e7d32;    /* Deep Medical Green */
+      --secondary: #1b5e20;  /* Darker Green */
+      --accent: #fbc02d;     /* Gold/Yellow */
       --light-bg: #f4f7f6;
       --white: #ffffff;
       --text-dark: #333;
-      --text-light: #666;
       --shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
+    /* 2. Reset & Base Styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
     body { 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      line-height: 1.6; 
       background-color: var(--light-bg); 
-      padding-bottom: 80px; /* Space for mobile button */
       color: var(--text-dark);
-      line-height: 1.6;
+      padding-bottom: 70px; /* Space for mobile call button */
     }
 
-    /* 2. Header & Navigation */
+    /* 3. Header & Branding */
     header.text-header {
       background: var(--white);
-      padding: 20px 15px;
+      padding: 25px 15px;
       text-align: center;
       border-bottom: 3px solid var(--primary);
     }
-    header h1 { color: var(--primary); font-size: 1.8rem; margin-bottom: 5px; }
-    header p { color: var(--text-light); font-size: 0.95rem; }
+    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
+    header p { font-size: 0.9rem; color: #666; }
+    header i { color: var(--primary); margin-right: 5px; }
 
+    /* 4. Navigation */
     .navbar {
       background: var(--primary);
       position: sticky;
@@ -47,82 +49,77 @@
       z-index: 1000;
       box-shadow: var(--shadow);
     }
-    .nav-links { 
-      display: flex; 
-      justify-content: center; 
-      list-style: none; 
-      overflow-x: auto; /* Scroll horizontally on small screens */
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      flex-wrap: wrap;
     }
-    .nav-links a { 
-      color: var(--white); 
-      text-decoration: none; 
-      padding: 15px 18px; 
-      display: block; 
-      font-weight: 500; 
-      white-space: nowrap; 
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      padding: 15px 20px;
+      display: block;
+      font-weight: 500;
+      transition: 0.3s;
     }
-    .nav-links a.active { background: var(--secondary); }
-    .nav-links a:hover { background: rgba(255,255,255,0.1); }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
 
-    /* 3. Main Content Layout */
-    .container { 
-      max-width: 1000px; 
-      margin: 30px auto; 
-      padding: 0 15px; 
-    }
-
-    .page-title {
+    /* 5. Hero Section */
+    .hero {
+      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/cubes.png');
       text-align: center;
-      margin-bottom: 30px;
+      padding: 60px 20px;
+      border-bottom: 1px solid #ddd;
     }
-    .page-title h2 { font-size: 2rem; color: var(--secondary); margin-bottom: 10px; }
-    .page-title p { color: var(--text-light); }
+    .hero h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
+    .hero p { font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto; }
 
-    /* 4. Special Oncology Section (Highlight) */
-    .special-service {
-      background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
-      border-left: 6px solid var(--primary);
+    /* 6. Service Layout */
+    .main-content {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* Common Card Style */
+    .card {
+      background: var(--white);
       padding: 30px;
       border-radius: 12px;
       box-shadow: var(--shadow);
-      margin-bottom: 40px;
+      border-top: 5px solid var(--primary);
+      transition: transform 0.3s;
+      margin-bottom: 30px;
+    }
+    .card:hover { transform: translateY(-5px); }
+
+    /* Featured Service (Oncology) */
+    .featured-service {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 20px;
+      gap: 30px;
     }
-    .special-content { flex: 2; min-width: 300px; }
-    .special-icon { 
+    .featured-text { flex: 2; min-width: 300px; }
+    .featured-icon { 
       flex: 1; 
       text-align: center; 
-      color: var(--primary);
-      font-size: 4rem;
-      min-width: 100px;
+      font-size: 5rem; 
+      color: var(--primary); 
+      opacity: 0.2;
     }
-    .special-content h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 10px; }
     
-    /* 5. Service Grid Cards */
+    /* Service Grid */
     .service-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 25px;
     }
-
-    .service-card {
-      background: var(--white);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      text-align: center;
-      transition: transform 0.3s ease;
-      border-top: 4px solid transparent;
-    }
     
-    .service-card:hover {
-      transform: translateY(-5px);
-      border-top: 4px solid var(--accent);
+    .service-item {
+      text-align: center;
     }
-
     .icon-box {
       width: 70px;
       height: 70px;
@@ -131,35 +128,42 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 20px auto;
+      margin: 0 auto 20px;
       color: var(--primary);
       font-size: 1.8rem;
+      transition: 0.3s;
     }
+    .card:hover .icon-box { background: var(--primary); color: var(--white); }
 
-    .service-card h3 { margin-bottom: 10px; color: var(--text-dark); }
-    .service-card p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 15px; }
-
-    /* Lists inside cards */
     .service-list {
       text-align: left;
       list-style: none;
-      padding-top: 10px;
+      margin-top: 15px;
+      padding-top: 15px;
       border-top: 1px solid #eee;
     }
     .service-list li {
-      margin-bottom: 8px;
-      font-size: 0.9rem;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
       color: #555;
       display: flex;
       align-items: flex-start;
+      gap: 10px;
     }
-    .service-list li i {
-      color: var(--primary);
-      margin-right: 10px;
-      margin-top: 4px;
-    }
+    .service-list i { color: var(--secondary); margin-top: 4px; }
 
-    /* 6. Mobile Call Button */
+    /* Footer */
+    footer {
+      background: #222;
+      color: #bbb;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .footer-info { color: var(--white); margin-bottom: 20px; }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
+
+    /* Mobile Call Button */
     .mobile-call-box {
       position: fixed;
       bottom: 0;
@@ -168,30 +172,14 @@
       text-align: center;
       padding: 15px;
       z-index: 999;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
     }
-    .mobile-call-btn { 
-      color: white; 
-      text-decoration: none; 
-      font-weight: bold; 
-      font-size: 1.1rem;
-    }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
 
-    /* 7. Footer */
-    footer { 
-      background: #222; 
-      color: #bbb; 
-      padding: 40px 20px; 
-      text-align: center; 
-      margin-top: 50px; 
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      .special-service { flex-direction: column-reverse; text-align: center; }
-      .service-list { display: inline-block; text-align: left; }
-      .nav-links a { padding: 12px 15px; font-size: 0.9rem; }
-      header h1 { font-size: 1.5rem; }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h2 { font-size: 1.8rem; }
+      .nav-links a { padding: 10px 12px; font-size: 0.85rem; }
+      .featured-icon { display: none; }
     }
   </style>
 </head>
@@ -200,80 +188,85 @@
   <header class="text-header">
     <h1>विमल फार्मेसी</h1>
     <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</p>
+    <p><i class="fas fa-phone"></i> ०५६-५९३२८८</p>
   </header>
 
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
-      <li><a href="search.html">खोज्नुहोस्</a></li>
+      <li><a href="medical-guide.html">औषधी गाइड</a></li>
+      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
       <li><a href="order.html">अर्डर</a></li>
       <li><a href="service.html" class="active">सेवाहरू</a></li>
       <li><a href="notice.html">सूचना</a></li>
+      <li><a href="about.html">जानकारी</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
-  <main class="container">
-    
-    <div class="page-title">
-      <h2>हाम्रा सेवाहरू (Our Services)</h2>
-      <p>हामी बिरामीहरूको सुविधाका लागि निम्न गुणस्तरीय सेवाहरू प्रदान गर्दछौं:</p>
-    </div>
+  <section class="hero">
+    <h2>हाम्रा सेवाहरू</h2>
+    <p>गुणस्तरीय औषधी र बिरामीको सेवामा समर्पित हाम्रो प्रयास।</p>
+  </section>
 
-    <div class="special-service">
-      <div class="special-content">
-        <h3><i class="fas fa-ribbon"></i> अंकोलोजी (क्यान्सर) सम्बन्धी विशेष सेवा</h3>
-        <p>हामी बी.पी. कोइराला मेमोरियल क्यान्सर अस्पताल नजिकै रहेको हुनाले क्यान्सर उपचारका लागि आवश्यक पर्ने सम्पूर्ण औषधीहरू सुपथ मूल्यमा उपलब्ध गराउँछौं।</p>
-        <ul class="service-list" style="border-top: none;">
-            <li><i class="fas fa-check-circle"></i> किमोथेरापी (Chemotherapy) का सम्पूर्ण औषधीहरू</li>
-            <li><i class="fas fa-check-circle"></i> इम्युनोथेरापी र हर्मोनल थेरापीका औषधी</li>
-            <li><i class="fas fa-temperature-low"></i> कोल्ड चेन (Cold Chain) मेन्टेन गर्नुपर्ने सेन्सेटिभ औषधीहरू</li>
+  <main class="main-content">
+    
+    <div class="card featured-service">
+      <div class="featured-text">
+        <h2 style="color: var(--primary); margin-bottom: 10px;">
+          <i class="fas fa-ribbon"></i> अंकोलोजी (क्यान्सर) केयर
+        </h2>
+        <p>बी.पी. कोइराला मेमोरियल क्यान्सर अस्पताल नजिकै रहेको हुनाले हामी क्यान्सर उपचारका लागि आवश्यक पर्ने सम्पूर्ण विशिष्ट औषधीहरू उपलब्ध गराउँछौं।</p>
+        <ul class="service-list" style="border-top: 1px solid #ddd;">
+           <li><i class="fas fa-check-circle"></i> किमोथेरापी (Chemotherapy) का सम्पूर्ण औषधीहरू</li>
+           <li><i class="fas fa-check-circle"></i> इम्युनोथेरापी र हर्मोनल थेरापीका औषधी</li>
+           <li><i class="fas fa-snowflake"></i> कोल्ड चेन (Cold Chain) मेन्टेन गर्नुपर्ने सेन्सेटिभ औषधीहरू</li>
         </ul>
       </div>
-      <div class="special-icon">
-        <i class="fas fa-clinic-medical"></i>
+      <div class="featured-icon">
+        <i class="fas fa-hand-holding-medical"></i>
       </div>
     </div>
 
     <div class="service-grid">
       
-      <div class="service-card">
+      <div class="card service-item">
         <div class="icon-box"><i class="fas fa-clock"></i></div>
         <h3>२४ सै घण्टा सेवा</h3>
-        <p>बिरामीको समस्याको कुनै समय हुँदैन। त्यसैले हामी तपाईंको सेवामा २४ सै घण्टा तत्पर छौं।</p>
+        <p>बिरामीको समस्याको कुनै समय हुँदैन, त्यसैले हामी सधैं तयार छौं।</p>
         <ul class="service-list">
           <li><i class="fas fa-moon"></i> रातीको समयमा पनि इमर्जेन्सी सेवा</li>
-          <li><i class="fas fa-phone-alt"></i> फोन गरेर औषधी तयार राख्न सकिने</li>
+          <li><i class="fas fa-phone-alt"></i> फोन बुकिङ सुविधा</li>
         </ul>
       </div>
 
-      <div class="service-card">
+      <div class="card service-item">
         <div class="icon-box"><i class="fas fa-motorcycle"></i></div>
-        <h3>होम डेलिभरी (Home Delivery)</h3>
-        <p>अशक्त बिरामी वा अस्पताल कुरुवाहरूको सहजताका लागि हामी अर्डर अनुसार औषधी पुर्‍याउँछौं।</p>
+        <h3>होम डेलिभरी</h3>
+        <p>अशक्त बिरामीहरूको सहजताका लागि घरमै औषधी पुर्‍याउने व्यवस्था।</p>
         <ul class="service-list">
-          <li><i class="fas fa-map-marker-alt"></i> भरतपुर क्षेत्र भित्र डेलिभरी सुविधा</li>
-          <li><i class="fab fa-whatsapp"></i> व्हाट्सएप मार्फत अर्डर गर्न सकिने</li>
+          <li><i class="fas fa-map-marker-alt"></i> भरतपुर क्षेत्र भित्र डेलिभरी</li>
+          <li><i class="fab fa-whatsapp"></i> व्हाट्सएप मार्फत अर्डर</li>
         </ul>
       </div>
 
-      <div class="service-card">
+      <div class="card service-item">
         <div class="icon-box"><i class="fas fa-user-md"></i></div>
-        <h3>निःशुल्क स्वास्थ्य परामर्श</h3>
-        <p>दक्ष तथा अनुभवी फार्मासिस्टहरू द्वारा औषधी सेवन विधि र स्वास्थ्य सम्बन्धी सल्लाह दिइन्छ।</p>
+        <h3>स्वास्थ्य परामर्श</h3>
+        <p>दक्ष तथा अनुभवी फार्मासिस्टहरू द्वारा सही सल्लाह र सुझाव।</p>
         <ul class="service-list">
-          <li><i class="fas fa-pills"></i> औषधी खाने तरिका र मात्राको जानकारी</li>
-          <li><i class="fas fa-exclamation-circle"></i> साइड इफेक्ट (Side Effects) बारे सचेतना</li>
+          <li><i class="fas fa-pills"></i> औषधी खाने तरिका र मात्रा</li>
+          <li><i class="fas fa-exclamation-triangle"></i> साइड इफेक्ट बारे सचेतना</li>
         </ul>
       </div>
 
-      <div class="service-card">
+      <div class="card service-item">
         <div class="icon-box"><i class="fas fa-crutch"></i></div>
-        <h3>सर्जिकल सामग्रीहरू</h3>
-        <p>अस्पताल र बिरामी स्याहारका लागि आवश्यक पर्ने सर्जिकल सामानहरू पनि हामी कहाँ पाइन्छ।</p>
+        <h3>सर्जिकल सामग्री</h3>
+        <p>अस्पताल र बिरामी स्याहारका लागि आवश्यक उपकरणहरू।</p>
         <ul class="service-list">
-          <li><i class="fas fa-check"></i> ह्विलचेयर, कमोड कुर्सी, वाकर</li>
-          <li><i class="fas fa-check"></i> अक्सिजन मास्क, क्यानुला, क्याथेटर</li>
+          <li><i class="fas fa-wheelchair"></i> ह्विलचेयर, कमोड कुर्सी, वाकर</li>
+          <li><i class="fas fa-procedures"></i> अक्सिजन मास्क, क्यानुला</li>
         </ul>
       </div>
 
@@ -287,8 +280,16 @@
   </div>
 
   <footer>
-    <p><strong>विमल फार्मेसी</strong> | भरतपुर-७, चितवन</p>
-    <p>&copy; २०२६ सर्वाधिकार सुरक्षित।</p>
+    <div class="footer-info">
+      <strong>विमल फार्मेसी</strong><br>
+      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन<br>
+      admin@bimalpharmacy.com.np
+    </div>
+    <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <p style="margin-top:15px;">
+      <a href="privacy-policy.html">गोपनीयता नीति</a> | 
+      <a href="sitemap.xml">साइटम्याप</a>
+    </p>
   </footer>
 
 </body>
