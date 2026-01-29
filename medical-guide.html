@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ग्यालरी र स्वास्थ्य ब्लग | विमल फार्मेसी</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #1b5e20;
+      --accent: #fbc02d;
+      --light-bg: #f4f7f6;
+      --white: #ffffff;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    body { 
+      font-family: 'Segoe UI', Arial, sans-serif; 
+      margin: 0; background-color: var(--light-bg); 
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar { background: var(--primary); padding: 10px 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow); }
+    .nav-links { display: flex; justify-content: center; list-style: none; padding: 0; margin: 0; }
+    .nav-links a { color: white; text-decoration: none; padding: 10px 15px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .section-title { text-align: center; margin: 40px 0 20px; color: var(--primary); }
+    .section-title h2 { font-size: 2rem; }
+    .section-title .underline { width: 60px; height: 4px; background: var(--accent); margin: 10px auto; }
+
+    /* 1. Photo Gallery Styles */
+    .gallery-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      padding: 0 20px;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      height: 200px;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .gallery-item:hover img { transform: scale(1.1); }
+
+    /* 2. Health Blog Styles */
+    .blog-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+    .blog-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: 0.3s;
+    }
+    .blog-card:hover { transform: translateY(-5px); }
+    .blog-img { width: 100%; height: 180px; background: #ddd; display: flex; align-items: center; justify-content: center; }
+    .blog-content { padding: 20px; }
+    .blog-content span { font-size: 0.8rem; color: var(--primary); font-weight: bold; }
+    .blog-content h3 { margin: 10px 0; font-size: 1.25rem; }
+    .blog-content p { font-size: 0.95rem; color: #666; margin-bottom: 15px; }
+    .read-more { color: var(--primary); text-decoration: none; font-weight: bold; }
+
+    /* Footer Call Button */
+    .call-btn { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 100; }
+
+    @media (max-width: 600px) {
+      .gallery-container { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">गृहपृष्ठ</a></li>
+      <li><a href="gallery.html" style="color: var(--accent);">ग्यालरी/ब्लग</a></li>
+      <li><a href="order.html">अर्डर</a></li>
+      <li><a href="contact.html">सम्पर्क</a></li>
+    </ul>
+  </nav>
+
+  <section class="section-title">
+    <h2><i class="fas fa-images"></i> फोटो ग्यालरी</h2>
+    <div class="underline"></div>
+    <p>विमल फार्मेसीका केही झलकहरू</p>
+  </section>
+
+  <div class="gallery-container">
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&w=500&q=60" alt="Pharmacy Shelf"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1576602976047-174e57a47881?auto=format&fit=crop&w=500&q=60" alt="Medicines"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?auto=format&fit=crop&w=500&q=60" alt="Pharmacist"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=500&q=60" alt="Store Front"></div>
+  </div>
+
+  <section class="section-title">
+    <h2><i class="fas fa-file-medical-alt"></i> स्वास्थ्य ब्लग</h2>
+    <div class="underline"></div>
+    <p>तपाईंको स्वास्थ्यको लागि उपयोगी टिप्स</p>
+  </section>
+
+  <div class="blog-container">
+    
+    <div class="blog-card">
+      <div class="blog-img" style="background: #e8f5e9;"><i class="fas fa-virus-slash fa-4x" style="color: #4caf50;"></i></div>
+      <div class="blog-content">
+        <span>जनवरी २०२६</span>
+        <h3>एन्टिबायोटिकको सही प्रयोग</h3>
+        <p>डाक्टरको सल्लाह बिना एन्टिबायोटिक खानु खतरनाक हुन सक्छ। यस लेखमा जान्नुहोस् एन्टिबायोटिक प्रतिरोध बारे...</p>
+        <a href="#" class="read-more">थप पढ्नुहोस् →</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-img" style="background: #fff3e0;"><i class="fas fa-heartbeat fa-4x" style="color: #ff9800;"></i></div>
+      <div class="blog-content">
+        <span>जनवरी २०२६</span>
+        <h3>रक्तचाप नियन्त्रण गर्ने तरिका</h3>
+        <p>उच्च रक्तचापलाई कसरी प्राकृतिक रूपमा र औषधिको माध्यमबाट व्यवस्थापन गर्ने? केही उपयोगी टिप्सहरू यहाँ छन्।</p>
+        <a href="#" class="read-more">थप पढ्नुहोस् →</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-img" style="background: #e1f5fe;"><i class="fas fa-pills fa-4x" style="color: #03a9f4;"></i></div>
+      <div class="blog-content">
+        <span>जनवरी २०२६</span>
+        <h3>औषधिको भण्डारण कसरी गर्ने?</h3>
+        <p>के तपाईंलाई थाहा छ? घाम र ओसिलो ठाउँमा औषधि राख्दा यसको प्रभावकारिता कम हुन्छ। सही तरिका जान्नुहोस्।</p>
+        <a href="#" class="read-more">थप पढ्नुहोस् →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="https://wa.me/97798XXXXXXXX" class="call-btn">
+    <i class="fab fa-whatsapp"></i> अर्डरका लागि च्याट गर्नुहोस्
+  </a>
+
+  <footer style="text-align: center; padding: 40px; background: #222; color: #fff; margin-top: 50px;">
+    <p>&copy; २०२६ विमल फार्मेसी। भरतपुर-७, चितवन।</p>
+  </footer>
+
+</body>
+</html>
