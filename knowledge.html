@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>स्वास्थ्य जानकारी | विमल फार्मेसी</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #1b5e20;
+      --accent: #fbc02d;
+      --light-bg: #f4f7f6;
+      --white: #ffffff;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    body { 
+      font-family: 'Segoe UI', Arial, sans-serif; 
+      line-height: 1.6; 
+      background-color: var(--light-bg); 
+      margin: 0;
+      padding-bottom: 80px;
+    }
+
+    /* Header & Nav (Same as Index) */
+    header { background: var(--white); padding: 20px; text-align: center; border-bottom: 3px solid var(--primary); }
+    header h1 { color: var(--primary); margin: 0; }
+    
+    .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; }
+    .nav-links { display: flex; justify-content: center; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
+    .nav-links a { color: white; text-decoration: none; padding: 15px 20px; display: block; font-weight: 500; }
+    .nav-links a:hover { background: var(--secondary); }
+
+    /* Search & Filter Section */
+    .search-section {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .search-box {
+      width: 100%;
+      max-width: 500px;
+      padding: 12px 20px;
+      border: 2px solid var(--primary);
+      border-radius: 25px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    /* Content Layout */
+    .content-wrapper {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .info-card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 25px;
+      margin-bottom: 40px;
+      border-top: 5px solid var(--primary);
+    }
+
+    h2 { color: var(--primary); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+
+    /* Table Styling */
+    .table-container { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    table th, table td { padding: 12px; border: 1px solid #eee; text-align: left; }
+    table th { background: var(--primary); color: white; }
+    table tr:nth-child(even) { background-color: #f9f9f9; }
+
+    .disclaimer {
+      background: #fff3cd;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      border-left: 5px solid var(--accent);
+    }
+
+    /* Mobile Call Button */
+    .mobile-call-box { position: fixed; bottom: 0; width: 100%; background: var(--primary); text-align: center; padding: 15px; }
+    .mobile-call-btn { color: white; text-decoration: none; font-weight: bold; }
+
+    @media (max-width: 600px) {
+        .nav-links a { padding: 10px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>विमल फार्मेसी</h1>
+    <p>स्वास्थ्य र जनचेतना पोर्टल</p>
+  </header>
+
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">गृहपृष्ठ</a></li>
+      <li><a href="search.html">खोज्नुहोस्</a></li>
+      <li><a href="#" style="background: var(--secondary);">जानकारी</a></li>
+      <li><a href="order.html">अर्डर</a></li>
+      <li><a href="contact.html">सम्पर्क</a></li>
+    </ul>
+  </nav>
+
+  <div class="search-section">
+    <h2><i class="fas fa-book-medical"></i> स्वास्थ्य जानकारी खोज्नुहोस्</h2>
+    <input type="text" id="myInput" onkeyup="searchTable()" placeholder="औषधी वा फोबियाको नाम लेख्नुहोस्..." class="search-box">
+  </div>
+
+  <div class="content-wrapper">
+    
+    <div class="info-card">
+      <h2>💊 औषधि र तिनको सामान्य प्रयोग</h2>
+      <div class="disclaimer">
+        <strong>नोट:</strong> यो सूची जानकारीका लागि मात्र हो। डाक्टरको प्रेस्क्रिप्सन बिना कुनै पनि औषधी सेवन नगर्नुहोस्।
+      </div>
+      <div class="table-container">
+        <table id="medicineTable">
+          <thead>
+            <tr>
+              <th>क्र.सं.</th>
+              <th>औषधीको नाम</th>
+              <th>प्रयोग</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>१</td><td>Paracetamol</td><td>दुखाइ र ज्वरो</td></tr>
+            <tr><td>२</td><td>Amoxicillin</td><td>ब्याक्टेरियल संक्रमण</td></tr>
+            <tr><td>३</td><td>Omeprazole</td><td>ग्यास्ट्रिक, अल्सर</td></tr>
+            <tr><td>४</td><td>Loratadine</td><td>एलर्जी</td></tr>
+            <tr><td>५</td><td>Amlodipine</td><td>उच्च रक्तचाप</td></tr>
+            <tr><td>६</td><td>Metformin</td><td>मधुमेह (Diabetes)</td></tr>
+            <tr><td>१४</td><td>Albuterol</td><td>दम (Asthma)</td></tr>
+            <tr><td>१८</td><td>Insulin</td><td>मधुमेह नियन्त्रण</td></tr>
+            <tr><td>५०</td><td>Aspirin</td><td>दुखाइ र रगत पातलो बनाउन</td></tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h2>🧠 विभिन्न प्रकारका डर (Phobias)</h2>
+      <div class="table-container">
+        <table id="phobiaTable">
+          <thead>
+            <tr>
+              <th>फोबियाको नाम</th>
+              <th>डरको विषय</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Hydrophobia</td><td>पानीको डर</td></tr>
+            <tr><td>Melissophobia</td><td>मौरीको डर</td></tr>
+            <tr><td>Pyrophobia</td><td>आगोको डर</td></tr>
+            <tr><td>Phasmophobia</td><td>भूतको डर</td></tr>
+            <tr><td>Thanatophobia</td><td>मृत्युको डर</td></tr>
+            <tr><td>Philophobia</td><td>प्रेममा पर्ने डर</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mobile-call-box">
+    <a href="tel:056593288" class="mobile-call-btn">
+      <i class="fas fa-phone-alt"></i> सहयोगका लागि: ०५६-५९३२८८
+    </a>
+  </div>
+
+  <script>
+    function searchTable() {
+      var input, filter, found, table, tr, td, i, j;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      
+      // दुवै तालिकामा खोज्ने
+      var tables = ["medicineTable", "phobiaTable"];
+      
+      tables.forEach(function(tableId) {
+        table = document.getElementById(tableId);
+        tr = table.getElementsByTagName("tr");
+        for (i = 1; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td");
+          for (j = 0; j < td.length; j++) {
+            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+              found = true;
+            }
+          }
+          if (found) {
+            tr[i].style.display = "";
+            found = false;
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
