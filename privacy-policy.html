@@ -8,31 +8,26 @@
   <meta name="description" content="विमल फार्मेसीको गोपनीयता नीति। हामी प्रयोगकर्ताको डाटा कसरी सुरक्षित राख्छौं भन्ने जानकारी।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735" crossorigin="anonymous"></script>
-
   <style>
-    /* 1. Global Variables (Matched to Index) */
     :root {
-      --primary: #2e7d32;    /* Deep Medical Green */
-      --secondary: #1b5e20;  /* Darker Green */
-      --accent: #fbc02d;     /* Gold/Yellow */
+      --primary: #2e7d32;
+      --secondary: #1b5e20;
+      --accent: #fbc02d;
       --light-bg: #f4f7f6;
       --white: #ffffff;
       --text-dark: #333;
       --shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* 2. Reset & Base Styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
       font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
       line-height: 1.7; 
       background-color: var(--light-bg); 
       color: var(--text-dark);
-      padding-bottom: 70px; /* Space for mobile call button */
+      padding-bottom: 70px;
     }
 
-    /* 3. Header & Branding */
     header.text-header {
       background: var(--white);
       padding: 25px 15px;
@@ -41,9 +36,7 @@
     }
     header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
     header p { font-size: 0.9rem; color: #666; }
-    header i { color: var(--primary); margin-right: 5px; }
 
-    /* 4. Navigation */
     .navbar {
       background: var(--primary);
       position: sticky;
@@ -65,19 +58,7 @@
       font-weight: 500;
       transition: 0.3s;
     }
-    .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
 
-    /* 5. Hero Section */
-    .hero {
-      background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('https://www.transparenttextures.com/patterns/cubes.png');
-      text-align: center;
-      padding: 40px 20px;
-      border-bottom: 1px solid #ddd;
-    }
-    .hero h2 { font-size: 2rem; color: var(--secondary); margin-bottom: 5px; }
-    .hero p { color: #666; max-width: 600px; margin: 0 auto; }
-
-    /* 6. Policy Content Layout */
     .main-content {
       max-width: 900px;
       margin: 40px auto;
@@ -112,17 +93,17 @@
       gap: 10px;
     }
     
-    .policy-content p { margin-bottom: 15px; text-align: justify; }
+    .policy-content p, .policy-content ul { margin-bottom: 15px; text-align: justify; }
+    .policy-content ul { padding-left: 20px; }
 
-    .consent-box {
-      background: #e8f5e9;
+    .warning-box {
+      background: #fff3e0;
       padding: 20px;
       border-radius: 8px;
-      border-left: 5px solid var(--secondary);
+      border-left: 5px solid #ff9800;
       margin-top: 30px;
     }
 
-    /* Footer */
     footer {
       background: #222;
       color: #bbb;
@@ -132,23 +113,6 @@
     }
     .footer-info { color: var(--white); margin-bottom: 20px; }
     footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
-
-    /* Mobile Call Button */
-    .mobile-call-box {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: var(--primary);
-      text-align: center;
-      padding: 15px;
-      z-index: 999;
-    }
-    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
-
-    @media (max-width: 600px) {
-      .nav-links a { padding: 10px 12px; font-size: 0.85rem; }
-      .card { padding: 25px; }
-    }
   </style>
 </head>
 <body>
@@ -161,66 +125,56 @@
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
-      <li><a href="search.html">खोज्नुहोस्</a></li>
       <li><a href="order.html">अर्डर</a></li>
-      <li><a href="service.html">सेवाहरू</a></li>
-      <li><a href="notice.html">सूचना</a></li>
-      <li><a href="about.html">जानकारी</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
-
-  <section class="hero">
-    <h2>गोपनीयता नीति</h2>
-    <p>तपाईंको डाटा सुरक्षा र गोपनीयता हाम्रो प्राथमिकता हो।</p>
-  </section>
 
   <main class="main-content">
     <div class="card policy-content">
       
       <span class="last-updated">
-        <i class="fas fa-calendar-alt"></i> अन्तिम अपडेट: जनवरी २९, २०२६
+        <i class="fas fa-calendar-alt"></i> अन्तिम अपडेट: जनवरी ३०, २०२६
       </span>
 
       <p>
-        <strong>विमल फार्मेसी</strong> (https://www.bimalpharmacy.com.np) मा हामी हाम्रा आगन्तुकहरूको गोपनीयतालाई उच्च प्राथमिकता दिन्छौं। यस गोपनीयता नीतिले विमल फार्मेसीद्वारा संकलन गरिने जानकारीका प्रकारहरू र हामीले त्यसलाई कसरी प्रयोग गर्छौं भन्ने बारे जानकारी दिन्छ।
+        <strong>विमल फार्मेसी</strong> मा हामी तपाईको गोपनीयताको सम्मान गर्छौं। यो नीतिले हाम्रो मोबाइल एप र वेबसाइटले संकलन गर्ने जानकारी र त्यसको सुरक्षाको बारेमा जानकारी दिन्छ।
       </p>
 
-      <h2><i class="fas fa-shield-alt"></i> १. हामीले संकलन गर्ने जानकारी</h2>
-      <p>
-        हाम्रो फार्मेसी सेवाहरू हेर्नका लागि प्रयोगकर्ताहरूले अनिवार्य रूपमा खाता खोल्नु पर्दैन। यद्यपि, विश्लेषण (Analytics), सुरक्षा, र विज्ञापनका उद्देश्यका लागि हामीले आईपी ठेगाना (IP address), ब्राउजरको प्रकार, र हेरिएका पेजहरू जस्ता प्राविधिक जानकारीहरू संकलन गर्न सक्छौं।
-      </p>
+      <h2><i class="fas fa-user-shield"></i> १. हामीले संकलन गर्ने व्यक्तिगत जानकारी</h2>
+      <p>हामी एप मार्फत निम्न जानकारी संकलन गर्छौं:</p>
+      <ul>
+        <li><strong>व्यक्तिगत विवरण:</strong> नाम, इमेल ठेगाना, र फोन नम्बर।</li>
+        <li><strong>स्थान (Location):</strong> औषधि डेलिभरी गर्नका लागि तपाईको अनुमतिमा 'Approximate Location' संकलन गरिन्छ।</li>
+        <li><strong>फोटो/मिडिया:</strong> तपाईले अपलोड गर्नुभएको औषधिको प्रेस्क्रिप्सन (Prescription) फोटोहरू।</li>
+      </ul>
 
-      <h2><i class="fab fa-google"></i> २. गुगल डबलक्लिक डार्ट कुकी</h2>
-      <p>
-        गुगल हाम्रो साइटमा प्रयोग हुने तेस्रो-पक्ष विक्रेताहरू मध्ये एक हो। यसले 'डार्ट कुकी' (DART cookies) को प्रयोग गरेर हाम्रा आगन्तुकहरूलाई उनीहरूको इन्टरनेट भ्रमणको आधारमा विज्ञापनहरू देखाउँछ। आगन्तुकहरूले गुगलको विज्ञापन र सामग्री नेटवर्क गोपनीयता नीतिमा गएर डार्ट कुकीको प्रयोगलाई अस्वीकार गर्न सक्छन्।
-      </p>
+      <h2><i class="fas fa-file-medical"></i> २. स्वास्थ्य डाटा (Health Data) को प्रयोग</h2>
+      <p>तपाईले अपलोड गर्नुभएको प्रेस्क्रिप्सन फोटोहरू केवल औषधिको प्रमाणीकरण र अर्डर प्रक्रियाका लागि प्रयोग गरिन्छ।</p>
+      <ul>
+        <li>हामी तपाईको स्वास्थ्य सम्बन्धी जानकारी कुनै पनि तेस्रो पक्ष वा विज्ञापन एजेन्सीलाई बिक्री वा सेयर गर्दैनौं।</li>
+        <li>यो डाटा सुरक्षित सर्भरमा इन्क्रिप्टेड (Encrypted) रूपमा राखिन्छ।</li>
+      </ul>
 
-      <h2><i class="fas fa-ad"></i> ३. विज्ञापन साझेदारहरू</h2>
-      <p>
-        तेस्रो-पक्ष विज्ञापन नेटवर्कहरूले कुकीज, जाभास्क्रिप्ट, वा वेब बिकन जस्ता प्रविधिहरू प्रयोग गर्न सक्छन्। उनीहरूले स्वतः तपाईंको आईपी ठेगाना प्राप्त गर्छन्। यी प्रविधिहरू उनीहरूको विज्ञापन अभियानको प्रभावकारिता मापन गर्न प्रयोग गरिन्छ।
-      </p>
+      <h2><i class="fas fa-trash-alt"></i> ३. डाटा मेटाउने अधिकार (Data Deletion)</h2>
+      <p>प्रयोगकर्ताहरूलाई आफ्नो डाटामाथि पूर्ण नियन्त्रण छ। यदि तपाई आफ्नो खाता वा संकलित डाटा मेटाउन चाहनुहुन्छ भने:</p>
+      <ul>
+        <li>एपको सेटिङमा गएर 'Delete Account' मा क्लिक गर्न सक्नुहुन्छ।</li>
+        <li>अथवा <strong>admin@bimalpharmacy.com.np</strong> मा इमेल पठाएर अनुरोध गर्न सक्नुहुन्छ। हामी ७ कार्यदिन भित्र तपाईको डाटा स्थायी रूपमा हटाउनेछौं।</li>
+      </ul>
 
-      <h2><i class="fas fa-child"></i> ४. बालबालिकाको सुरक्षा</h2>
-      <p>
-        हामी १३ वर्ष मुनिका बालबालिकाहरूबाट कुनै पनि व्यक्तिगत पहिचान योग्य जानकारी संकलन गर्दैनौं। यदि तपाईंलाई आफ्नो बच्चाले हाम्रो वेबसाइटमा यस्तो जानकारी उपलब्ध गराएको जस्तो लाग्छ भने, कृपया हामीलाई तुरुन्त सम्पर्क गर्नुहोस्।
-      </p>
+      <h2><i class="fas fa-lock"></i> ४. सुरक्षा उपायहरू</h2>
+      <p>हामी 'Industry Standard' इन्क्रिप्सन प्रयोग गरेर तपाईको डाटा सुरक्षित राख्छौं। औषधिको अर्डर गर्दा वा प्रेस्क्रिप्सन पठाउँदा तपाईको डाटा सुरक्षित प्रोटोकल (HTTPS) मार्फत पठाइन्छ।</p>
 
-      <div class="consent-box">
-        <h3 style="margin-bottom: 10px; color: var(--secondary);">५. सहमति (Consent)</h3>
+      <div class="warning-box">
+        <h3 style="margin-bottom: 10px;"><i class="fas fa-exclamation-triangle"></i> ५. महत्त्वपूर्ण अस्वीकरण (Disclaimer)</h3>
         <p style="margin-bottom: 0;">
-          हाम्रो वेबसाइट प्रयोग गरेर, तपाईं हाम्रो गोपनीयता नीति र यसका नियम र सर्तहरूमा सहमत हुनुहुन्छ।
+          यो एपले कुनै पनि मेडिकल सल्लाह वा निदान (Diagnosis) प्रदान गर्दैन। कुनै पनि औषधि प्रयोग गर्नु अघि सधैं दर्ता प्राप्त चिकित्सकको सल्लाह लिनुहोस्।
         </p>
       </div>
 
     </div>
   </main>
-
-  <div class="mobile-call-box">
-    <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्: ०५६-५९३२८८
-    </a>
-  </div>
 
   <footer>
     <div class="footer-info">
@@ -229,10 +183,6 @@
       admin@bimalpharmacy.com.np
     </div>
     <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-    <p style="margin-top:15px;">
-      <a href="privacy-policy.html">गोपनीयता नीति</a> | 
-      <a href="sitemap.xml">साइटम्याप</a>
-    </p>
   </footer>
 
 </body>
