@@ -29,14 +29,14 @@
       padding-bottom: 80px; 
     }
 
-    /* Header & Navbar */
+    /* Header & Navbar (Updated to match index.html) */
     header.text-header {
       background: var(--white);
-      padding: 20px 15px;
+      padding: 25px 15px;
       text-align: center;
       border-bottom: 3px solid var(--primary);
     }
-    header h1 { color: var(--primary); font-size: 2rem; }
+    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
     
     .navbar {
       background: var(--primary);
@@ -49,17 +49,18 @@
       display: flex;
       justify-content: center;
       list-style: none;
-      flex-wrap: wrap;
+      flex-wrap: wrap; /* Allows 7 items to wrap on small screens */
     }
     .nav-links a {
       color: var(--white);
       text-decoration: none;
-      padding: 15px 18px;
+      padding: 12px 15px;
       display: block;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      transition: 0.3s;
     }
-    .nav-links a.active { background: var(--secondary); font-weight: bold; }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
 
     /* Main Content */
     .main-content {
@@ -78,7 +79,7 @@
       border-top: 5px solid var(--primary);
     }
 
-    /* WhatsApp Card Styling */
+    /* WhatsApp Card */
     .wa-order-box {
       border-top: 5px solid var(--whatsapp);
       background: #f0fdf4;
@@ -95,9 +96,7 @@
       border-radius: 50px;
       font-weight: bold;
       margin-top: 12px;
-      transition: transform 0.2s;
     }
-    .wa-btn-large:active { transform: scale(0.95); }
 
     /* Form Styling */
     .form-group { margin-bottom: 20px; }
@@ -108,11 +107,8 @@
       border: 1px solid #ccc;
       border-radius: 10px;
       font-size: 16px;
-      background: #fafafa;
     }
-    .form-control:focus { border-color: var(--primary); outline: none; background: #fff; }
 
-    /* Modern Upload Box */
     #uploadBox {
       border: 2px dashed #999;
       padding: 25px;
@@ -120,11 +116,8 @@
       border-radius: 12px;
       background: #fcfcfc;
       position: relative;
-      transition: 0.3s;
     }
-    #uploadBox:active { background: #f0f0f0; border-color: var(--primary); }
 
-    /* Agreement Box */
     .agreement-container {
       background: #e8f5e9;
       padding: 15px;
@@ -138,10 +131,8 @@
       gap: 12px;
       cursor: pointer;
       font-size: 0.9rem;
-      color: #2e4a2e;
     }
 
-    /* Submit Button */
     .btn-submit {
       width: 100%;
       padding: 16px;
@@ -156,7 +147,6 @@
       justify-content: center;
       gap: 10px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
     }
 
     /* Footer */
@@ -167,9 +157,7 @@
       text-align: center;
       margin-top: 40px;
     }
-    .footer-info { color: white; margin-bottom: 15px; font-size: 0.9rem; }
 
-    /* Call Box */
     .mobile-call-box {
       position: fixed;
       bottom: 0;
@@ -180,6 +168,11 @@
       z-index: 1000;
     }
     .mobile-call-btn { color: white; text-decoration: none; font-size: 1.1rem; font-weight: bold; }
+
+    @media (max-width: 600px) {
+      .nav-links a { padding: 10px 10px; font-size: 0.8rem; }
+      header h1 { font-size: 1.8rem; }
+    }
   </style>
 </head>
 <body>
@@ -192,14 +185,16 @@
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
+      <li><a href="medical-guide.html">औषधी गाइड</a></li>
+      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
       <li><a href="order.html" class="active">अर्डर</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
+      <li><a href="notice.html">सूचना</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
   <main class="main-content">
-
     <div class="card wa-order-box">
       <h3 style="color: #075e54;"><i class="fab fa-whatsapp"></i> व्हाट्सएपबाट अर्डर</h3>
       <p style="font-size: 0.9rem; color: #555;">पुर्जीको फोटो खिचेर पठाउन यहाँ थिच्नुहोस्:</p>
@@ -209,7 +204,7 @@
     </div>
 
     <div class="card">
-      <h2 style="color: var(--primary); margin-bottom: 20px; font-size: 1.3rem; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+      <h2 style="color: var(--primary); margin-bottom: 20px; font-size: 1.3rem;">
         <i class="fas fa-file-prescription"></i> अनलाइन अर्डर फारम
       </h2>
       
@@ -263,10 +258,9 @@
   </main>
 
   <footer>
-    <div class="footer-info">
+    <div style="color: white; margin-bottom: 15px;">
       <strong>विमल फार्मेसी</strong><br>
-      भरतपुर-७, चितवन, नेपाल<br>
-      admin@bimalpharmacy.com.np
+      भरतपुर-७, चितवन, नेपाल
     </div>
     <p style="font-size: 0.8rem;">&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
   </footer>
