@@ -6,10 +6,8 @@
   <title>विमल फार्मेसी | भरतपुर-७, चितवन</title>
 
   <meta name="description" content="विमल फार्मेसी, क्यान्सर अस्पताल रोड, भरतपुर-७। यहाँ औषधीहरू, अंकोलोजी सपोर्ट, स्वास्थ्य परामर्श र चितवनमा होम डेलिभरीको सुविधा उपलब्ध छ।">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <header>
-    <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/heading.png" alt="Bimal Pharmacy Heading" style="width:100%; height:auto;">
-</header>
 
   <style>
     /* 1. Design Variables */
@@ -34,18 +32,23 @@
       padding-bottom: 70px; /* Space for mobile call button */
     }
 
-    /* 3. Header & Branding */
-    header.text-header {
-      background: var(--white);
-      padding: 25px 15px;
-      text-align: center;
-      border-bottom: 3px solid var(--primary);
+    /* 3. Header Banner */
+    .site-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
-    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
-    header p { font-size: 0.9rem; color: #666; }
-    header i { color: var(--primary); margin-right: 5px; }
 
-    /* 4. Navigation */
+    /* 4. Marquee Style */
+    .news-ticker {
+      background: var(--danger);
+      color: white;
+      padding: 10px 0;
+      font-weight: bold;
+      border-bottom: 2px solid #b71c1c;
+    }
+
+    /* 5. Navigation */
     .navbar {
       background: var(--primary);
       position: sticky;
@@ -67,9 +70,12 @@
       font-weight: 500;
       transition: 0.3s;
     }
-    .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
+    .nav-links a:hover, .nav-links a.active { 
+      background: var(--secondary); 
+      color: var(--accent) !important;
+    }
 
-    /* 5. Hero Section */
+    /* 6. Hero Section */
     .hero {
       background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/cubes.png');
       text-align: center;
@@ -79,7 +85,7 @@
     .hero h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
     .hero p { font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto 25px; }
 
-    /* 6. Main Layout & Cards */
+    /* 7. Main Layout & Cards */
     .main-content {
       max-width: 1100px;
       margin: 40px auto;
@@ -101,7 +107,7 @@
     .card h2 { margin-bottom: 15px; font-size: 1.4rem; color: var(--primary); }
     .card i { margin-right: 10px; }
 
-    /* 7. Credit Notice Styling */
+    /* 8. Credit Notice Styling */
     .notice-card {
       grid-column: 1 / -1;
       background-color: #fff9c4;
@@ -111,12 +117,11 @@
       background: #fff176;
       padding: 15px;
       border-left: 5px solid var(--danger);
-      margin: 15px 0;
-      border-radius: 4px;
+      margin: 15px 0;      border-radius: 4px;
       font-style: italic;
     }
 
-    /* 8. Buttons */
+    /* 9. Buttons */
     .btn {
       display: inline-block;
       padding: 12px 25px;
@@ -133,7 +138,7 @@
     .btn-outline { color: var(--primary); border: 2px solid var(--primary); }
     .btn-outline:hover { background: var(--primary); color: #fff; }
 
-    /* 9. Footer */
+    /* 10. Footer & Mobile CTA */
     footer {
       background: #222;
       color: #bbb;
@@ -144,7 +149,6 @@
     .footer-info { color: var(--white); margin-bottom: 20px; }
     footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
     
-    /* Mobile Call Button */
     .mobile-call-box {
       position: fixed;
       bottom: 0;
@@ -165,11 +169,15 @@
 </head>
 <body>
 
-  <header class="text-header">
-    <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</p>
-    <p><i class="fas fa-phone"></i> ०५६-५९३२८८</p>
+  <header class="site-banner">
+    <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/heading.png" alt="विमल फार्मेसी">
   </header>
+
+  <div class="news-ticker">
+    <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+      सूचना: विमल फार्मेसीमा अंकोलोजी (क्यान्सर) का सम्पूर्ण औषधीहरू सुलभ दरमा उपलब्ध छन्। साथै भरतपुर क्षेत्रभित्र होम डेलिभरीको लागि हामीलाई सम्पर्क गर्नुहोस्: ०५६-५९३२८८ | बाँकी बक्यौता रकम यथाशिघ्र चुक्ता गरिदिनुहुन विनम्र अनुरोध गर्दछौं।
+    </marquee>
+  </div>
 
   <nav class="navbar">
     <ul class="nav-links">
