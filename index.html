@@ -5,56 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>विमल फार्मेसी | भरतपुर-७, चितवन</title>
 
-  <meta name="description" content="विमल फार्मेसी, क्यान्सर अस्पताल रोड, भरतपुर-७। यहाँ औषधीहरू, अंकोलोजी सपोर्ट, स्वास्थ्य परामर्श र चितवनमा होम डेलिभरीको सुविधा उपलब्ध छ।">
+  <meta name="description" content="विमल फार्मेसी, क्यान्सर अस्पताल रोड, भरतपुर-७। औषधी, अंकोलोजी सपोर्ट, र चितवनमा होम डेलिभरी।">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <style>
-    /* 1. Design Variables */
     :root {
-      --primary: #2e7d32;    /* Deep Medical Green */
-      --secondary: #1b5e20;  /* Darker Green */
-      --accent: #fbc02d;     /* Gold/Yellow for CTA */
-      --danger: #d32f2f;     /* Red for warnings */
-      --light-bg: #f4f7f6;
+      --primary: #2e7d32;
+      --secondary: #1b5e20;
+      --accent: #fbc02d;
+      --danger: #d32f2f;
+      --light-bg: #f8faf9;
       --white: #ffffff;
-      --text-dark: #333;
-      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --text-dark: #2c3e50;
+      --shadow: 0 10px 25px rgba(0,0,0,0.05);
+      --whatsapp: #25d366;
     }
 
-    /* 2. Reset & Base Styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body { 
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       line-height: 1.6; 
       background-color: var(--light-bg); 
       color: var(--text-dark);
-      padding-bottom: 70px; /* Space for mobile call button */
+      padding-bottom: 80px; 
     }
 
-    /* 3. Header Banner */
+    /* 1. Site Banner Image */
     .site-banner img {
       width: 100%;
       height: auto;
       display: block;
+      border-bottom: 5px solid var(--primary);
     }
 
-    /* 4. Marquee Style */
+    /* 2. Modern Ticker */
     .news-ticker {
       background: var(--danger);
       color: white;
-      padding: 10px 0;
-      font-weight: bold;
-      border-bottom: 2px solid #b71c1c;
+      padding: 12px 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: inset 0 -2px 5px rgba(0,0,0,0.1);
     }
 
-    /* 5. Navigation */
+    /* 3. Navigation */
     .navbar {
       background: var(--primary);
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: var(--shadow);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .nav-links {
       display: flex;
@@ -65,9 +67,10 @@
     .nav-links a {
       color: var(--white);
       text-decoration: none;
-      padding: 15px 20px;
+      padding: 18px 22px;
       display: block;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 0.95rem;
       transition: 0.3s;
     }
     .nav-links a:hover, .nav-links a.active { 
@@ -75,95 +78,118 @@
       color: var(--accent) !important;
     }
 
-    /* 6. Hero Section */
+    /* 4. Hero Section */
     .hero {
-      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/cubes.png');
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,247,241,0.9)), url('https://www.transparenttextures.com/patterns/white-diamond.png');
       text-align: center;
-      padding: 60px 20px;
-      border-bottom: 1px solid #ddd;
+      padding: 60px 20px 80px;
     }
-    .hero h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
-    .hero p { font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto 25px; }
+    .hero h2 { font-size: 2.8rem; color: var(--secondary); margin-bottom: 15px; }
+    .hero p { font-size: 1.2rem; color: #444; max-width: 700px; margin: 0 auto 30px; }
 
-    /* 7. Main Layout & Cards */
+    /* 5. Main Layout & Cards */
     .main-content {
-      max-width: 1100px;
-      margin: 40px auto;
+      max-width: 1200px;
+      margin: -40px auto 40px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
       padding: 0 20px;
     }
 
     .card {
       background: var(--white);
-      padding: 30px;
-      border-radius: 12px;
+      padding: 35px;
+      border-radius: 16px;
       box-shadow: var(--shadow);
-      transition: transform 0.3s;
-      border-top: 5px solid var(--primary);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid #edf2f0;
+      position: relative;
     }
-    .card:hover { transform: translateY(-5px); }
-    .card h2 { margin-bottom: 15px; font-size: 1.4rem; color: var(--primary); }
-    .card i { margin-right: 10px; }
+    .card::after {
+      content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%;
+      background: var(--primary);
+    }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+    .card h2 { margin-bottom: 15px; font-size: 1.5rem; color: var(--primary); display: flex; align-items: center; }
+    .card i { margin-right: 15px; font-size: 1.8rem; }
 
-    /* 8. Credit Notice Styling */
-    .notice-card {
-      grid-column: 1 / -1;
-      background-color: #fff9c4;
-      border-top-color: var(--danger);
+    /* 6. FIRM NOTICE STYLING */
+    .notice-card { 
+      grid-column: 1 / -1; 
+      background: #fff9f9; 
+      border: 1px solid #ffcdd2; 
     }
+    .notice-card::after { background: var(--danger); }
     .notice-highlight {
-      background: #fff176;
-      padding: 15px;
-      border-left: 5px solid var(--danger);
-      margin: 15px 0;      border-radius: 4px;
-      font-style: italic;
+      background: #ffebee;
+      padding: 25px;
+      border-radius: 10px;
+      border-left: 6px solid var(--danger);
+      margin: 20px 0;
+      color: #b71c1c;
+      font-weight: 500;
     }
 
-    /* 9. Buttons */
+    /* 7. Buttons */
     .btn {
-      display: inline-block;
-      padding: 12px 25px;
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 28px;
       border-radius: 50px;
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
-      margin-top: 15px;
-      cursor: pointer;
-      border: none;
+      margin-top: 10px;
+      gap: 10px;
     }
-    .btn-order { background: var(--accent); color: #000; }
-    .btn-order:hover { background: #f9a825; }
+    .btn-order { background: var(--accent); color: #000; box-shadow: 0 4px 15px rgba(251, 192, 45, 0.4); }
     .btn-outline { color: var(--primary); border: 2px solid var(--primary); }
-    .btn-outline:hover { background: var(--primary); color: #fff; }
+    .btn-danger-outline { color: var(--danger); border: 2px solid var(--danger); }
+    .btn-danger-outline:hover { background: var(--danger); color: white; }
 
-    /* 10. Footer & Mobile CTA */
-    footer {
-      background: #222;
-      color: #bbb;
-      padding: 40px 20px;
-      text-align: center;
-      margin-top: 50px;
+    /* 8. WhatsApp & Floating Action */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 90px; right: 25px;
+      background: var(--whatsapp);
+      color: #fff;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; z-index: 1001;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+      transition: 0.3s;
     }
-    .footer-info { color: var(--white); margin-bottom: 20px; }
-    footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
-    
+    .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); color: #fff; }
+    .whatsapp-float::before {
+      content: ''; position: absolute; width: 100%; height: 100%;
+      background: var(--whatsapp); border-radius: 50%;
+      animation: pulse 2s infinite; z-index: -1;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
     .mobile-call-box {
       position: fixed;
-      bottom: 0;
-      width: 100%;
+      bottom: 0; width: 100%;
       background: var(--primary);
-      text-align: center;
-      padding: 15px;
-      z-index: 999;
+      padding: 18px; text-align: center; z-index: 1000;
     }
-    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.3rem; font-weight: 800; }
 
-    /* Responsive */
+    footer {
+      background: #1a1a1a;
+      color: #999;
+      padding: 60px 20px 100px;
+      text-align: center;
+    }
+
     @media (max-width: 600px) {
-      .hero h2 { font-size: 1.8rem; }
-      .nav-links a { padding: 10px 12px; font-size: 0.85rem; }
+      .hero h2 { font-size: 2rem; }
+      .nav-links a { padding: 12px 10px; font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -175,7 +201,7 @@
 
   <div class="news-ticker">
     <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
-      सूचना: विमल फार्मेसीमा अंकोलोजी (क्यान्सर) का सम्पूर्ण औषधीहरू सुलभ दरमा उपलब्ध छन्। साथै भरतपुर क्षेत्रभित्र होम डेलिभरीको लागि हामीलाई सम्पर्क गर्नुहोस्: ०५६-५९३२८८ | बाँकी बक्यौता रकम यथाशिघ्र चुक्ता गरिदिनुहुन विनम्र अनुरोध गर्दछौं।
+      सूचना: विमल फार्मेसीमा क्यान्सरका सम्पूर्ण औषधीहरू सुलभ दरमा उपलब्ध छन्। होम डेलिभरीको लागि: ०५६-५९३२८८। कृपया आफ्नो बाँकी बक्यौता रकम यथाशिघ्र चुक्ता गरिदिनुहोला।
     </marquee>
   </div>
 
@@ -192,68 +218,66 @@
   </nav>
 
   <section class="hero">
-    <h2>विमल फार्मेसीमा स्वागत छ</h2>
+    <h2>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</h2>
     <p>बिपी कोइराला मेमोरियल क्यान्सर अस्पताल नजिकै तपाईंको भरपर्दो स्वास्थ्य साझेदार।</p>
     <a href="order.html" class="btn btn-order">
-      <i class="fas fa-file-medical"></i> अनलाइन अर्डर गर्नुहोस्
+      <i class="fas fa-shopping-cart"></i> औषधी अर्डर गर्नुहोस्
     </a>
   </section>
 
   <main class="main-content">
     
     <div class="card notice-card">
-      <h2 style="color: var(--danger);"><i class="fas fa-exclamation-triangle"></i> आदरणीय ग्राहकहरूमा विनम्र अनुरोध</h2>
-      <p><strong>नमस्ते एवं हार्दिक अभिवादन,</strong></p>
-      <p>बिरामीको कठिन समयमा औषधीको अभाव नहोस् भन्ने उद्देश्यले हामीले मानवीय नाताले उधारो (Credit) मा औषधीहरू उपलब्ध गराउँदै आएका थियौं।</p>
+      <h2 style="color: var(--danger);"><i class="fas fa-exclamation-triangle"></i> आदरणीय ग्राहक महानुभावहरू,</h2>
+      <p>विगतमा यहाँहरूको समस्यालाई मध्यनजर गर्दै हामीले मानवीय नाताले विश्वासको आधारमा <strong>उधारो (Credit)</strong> सुविधा उपलब्ध गराएका थियौं।</p>
+      
       <div class="notice-highlight">
-        तपाईंको नाममा रहेको बाँकी बक्यौता रकम यथाशिघ्र चुक्ता गरिदिनुहुन हामी विनम्र अनुरोध गर्दछौं।
+        तर बारम्बार फोन र म्यासेज मार्फत ताकेता गर्दा पनि बेवास्ता गरिएको हुनाले हामी कडा कदम चाल्न बाध्य भएका छौं। संस्था सञ्चालनमा बाधा पुगेकाले यथाशिघ्र सम्पर्क गरी बाँकी बक्यौता रकम भुक्तानी गरिदिनुहुन सूचित गरिन्छ।
       </div>
-      <a href="notice.html" class="btn btn-outline">भुक्तानी विवरण हेर्नुहोस्</a>
+      
+      <a href="notice.html" class="btn btn-danger-outline">
+        <i class="fas fa-list-ol"></i> बक्यौता नामावली र विवरण हेर्नुहोस्
+      </a>
     </div>
 
     <div class="card">
       <h2><i class="fas fa-pills"></i> औषधी गाइड</h2>
-      <p>मुख्य औषधीहरू र तिनको प्रयोगबारे सही जानकारी लिनुहोस्। हाम्रो नयाँ औषधी गाइड पोर्टल हेर्नुहोस्।</p>
-      <a href="medical-guide.html" class="btn btn-outline">जानकारी लिनुहोस् →</a>
+      <p>क्यान्सर तथा अन्य कडा रोगका औषधीहरूको प्रयोग र सावधानीबारे विस्तृत जानकारी।</p>
+      <a href="medical-guide.html" class="btn btn-outline">थप जान्नुहोस्</a>
     </div>
 
     <div class="card">
-      <h2><i class="fas fa-book-medical"></i> स्वास्थ्य ज्ञान र ग्यालरी</h2>
-      <p>विभिन्न फोबियाका प्रकार, स्वास्थ्य ब्लग र हाम्रो फार्मेसीको ग्यालरीका झलकहरू।</p>
-      <a href="knowledge.html" class="btn btn-outline">थप जान्नुहोस् →</a>
+      <h2><i class="fas fa-heartbeat"></i> स्वास्थ्य ज्ञान</h2>
+      <p>फोबिया, मानसिक स्वास्थ्य र दैनिक जीवनमा अपनाउनुपर्ने स्वास्थ्य टिप्सहरू।</p>
+      <a href="knowledge.html" class="btn btn-outline">ब्लग पढ्नुहोस्</a>
     </div>
 
     <div class="card">
-      <h2><i class="fas fa-search"></i> औषधी खोज्नुहोस्</h2>
-      <p>के तपाईं कुनै विशेष औषधी वा स्वास्थ्य सेवा खोज्दै हुनुहुन्छ? हाम्रो डाटाबेस प्रयोग गर्नुहोस्।</p>
-      <a href="search.html" class="btn btn-outline">अहिले खोज्नुहोस् →</a>
-    </div>
-
-    <div class="card">
-      <h2><i class="fas fa-hand-holding-medical"></i> हाम्रा सेवाहरू</h2>
-      <p>विशेष अंकोलोजी केयर, प्रेस्क्रिप्सन अनुसार औषधी वितरण र भरतपुर क्षेत्रभरि होम डेलिभरी।</p>
-      <a href="service.html" class="btn btn-outline">थप जान्नुहोस् →</a>
+      <h2><i class="fas fa-truck-medical"></i> हाम्रा सेवाहरू</h2>
+      <p>भरतपुर क्षेत्रभरि होम डेलिभरी र २४सै घण्टा स्वास्थ्य परामर्शको व्यवस्था।</p>
+      <a href="service.html" class="btn btn-outline">सेवाहरू हेर्नुहोस्</a>
     </div>
 
   </main>
 
+  <a href="https://wa.me/97798XXXXXXXX?text=नमस्ते%20विमल%20फार्मेसी,%0A%0Aमलाई%20निम्न%20औषधीको%20बारेमा%20जानकारी%20चाहिएको%20छ:%0A-%20औषधीको%20नाम:%20%0A-%20परिमाण%20(Quantity):%20%0A%0A(नोट:%20म%20तल%20प्रेस्क्रिप्सनको%20फोटो%20पनि%20पठाउँदैछु।)%0A%0Aठेगाना:%20" 
+     class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   <div class="mobile-call-box">
     <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्: ०५६-५९३२८८
+      <i class="fas fa-phone-alt"></i> कल गर्नुहोस्: ०५६-५९३२८८
     </a>
   </div>
 
   <footer>
     <div class="footer-info">
-      <strong>विमल फार्मेसी</strong><br>
-      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन, नेपाल<br>
-      admin@bimalpharmacy.com.np
+      <strong style="color:white">विमल फार्मेसी</strong><br>
+      भरतपुर-७, चितवन, नेपाल | ०५६-५९३२८८<br>
+      <small>बीपी कोइराला मेमोरियल क्यान्सर अस्पताल रोड</small>
     </div>
-    <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-    <p style="margin-top:15px;">
-      <a href="privacy-policy.html">गोपनीयता नीति</a> | 
-      <a href="sitemap.xml">साइटम्याप</a>
-    </p>
+    <p style="margin-top: 20px;">&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
   </footer>
 
 </body>
