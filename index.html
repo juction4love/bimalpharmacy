@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>विमल फार्मेसी | भरतपुर-७, चितवन</title>
 
-  <meta name="description" content="विमल फार्मेसी, क्यान्सर अस्पताल रोड, भरतपुर-७। औषधी, अंकोलोजी सपोर्ट, र चितवनमा होम डेलिभरी।">
+  <meta name="description" content="विमल फार्मेसी: क्यान्सर अस्पताल रोड, भरतपुर। नेपालभर होम डेलिभरी र २४सै घण्टा अनलाइन परामर्श।">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -32,15 +32,27 @@
       padding-bottom: 80px; 
     }
 
-    /* 1. Site Banner Image */
-    .site-banner img {
-      width: 100%;
-      height: auto;
-      display: block;
+    /* 1. Branding Header */
+    .branding-header {
+      background: var(--white);
+      padding: 40px 20px;
+      text-align: center;
       border-bottom: 5px solid var(--primary);
     }
+    .branding-header h1 { 
+      color: var(--primary); 
+      font-size: 2.8rem; 
+      margin-bottom: 5px;
+      letter-spacing: -1px;
+    }
+    .branding-header p { 
+      font-size: 1.1rem; 
+      color: #555; 
+      font-weight: 500;
+    }
+    .branding-header i { color: var(--primary); margin-right: 5px; }
 
-    /* 2. Modern Ticker */
+    /* 2. News Ticker */
     .news-ticker {
       background: var(--danger);
       color: white;
@@ -84,10 +96,10 @@
       text-align: center;
       padding: 60px 20px 80px;
     }
-    .hero h2 { font-size: 2.8rem; color: var(--secondary); margin-bottom: 15px; }
+    .hero h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px; }
     .hero p { font-size: 1.2rem; color: #444; max-width: 700px; margin: 0 auto 30px; }
 
-    /* 5. Main Layout & Cards */
+    /* 5. Main Content Grid */
     .main-content {
       max-width: 1200px;
       margin: -40px auto 40px;
@@ -114,7 +126,7 @@
     .card h2 { margin-bottom: 15px; font-size: 1.5rem; color: var(--primary); display: flex; align-items: center; }
     .card i { margin-right: 15px; font-size: 1.8rem; }
 
-    /* 6. FIRM NOTICE STYLING */
+    /* 6. CREDIT NOTICE CARD */
     .notice-card { 
       grid-column: 1 / -1; 
       background: #fff9f9; 
@@ -128,7 +140,7 @@
       border-left: 6px solid var(--danger);
       margin: 20px 0;
       color: #b71c1c;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* 7. Buttons */
@@ -148,7 +160,7 @@
     .btn-danger-outline { color: var(--danger); border: 2px solid var(--danger); }
     .btn-danger-outline:hover { background: var(--danger); color: white; }
 
-    /* 8. WhatsApp & Floating Action */
+    /* 8. WhatsApp Float */
     .whatsapp-float {
       position: fixed;
       bottom: 90px; right: 25px;
@@ -161,7 +173,6 @@
       box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
       transition: 0.3s;
     }
-    .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); color: #fff; }
     .whatsapp-float::before {
       content: ''; position: absolute; width: 100%; height: 100%;
       background: var(--whatsapp); border-radius: 50%;
@@ -188,15 +199,24 @@
     }
 
     @media (max-width: 600px) {
-      .hero h2 { font-size: 2rem; }
-      .nav-links a { padding: 12px 10px; font-size: 0.85rem; }
+      .branding-header h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
- <div class="news-ticker">
+
+  <header class="branding-header">
+    <h1>विमल फार्मेसी</h1>
+    <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र</p>
+    <div style="margin-top:10px; color:#777;">
+      <span><i class="fas fa-map-marker-alt"></i> भरतपुर-७, चितवन</span> | 
+      <span><i class="fas fa-truck"></i> नेपालभर डेलिभरी</span>
+    </div>
+  </header>
+
+  <div class="news-ticker">
     <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
-      सूचना: विमल फार्मेसीमा क्यान्सरका सम्पूर्ण औषधीहरू सुलभ दरमा उपलब्ध छन्। होम डेलिभरीको लागि: ०५६-५९३२८८। कृपया आफ्नो बाँकी बक्यौता रकम यथाशिघ्र चुक्ता गरिदिनुहोला।
+      विशेष सूचना: विमल फार्मेसीमा क्यान्सरका सम्पूर्ण औषधीहरू उपलब्ध छन्। हामी **नेपालभर होम डेलिभरी** गर्दछौं। अर्डरको लागि: ०५६-५९३२८८। कृपया आफ्नो बाँकी बक्यौता रकम यथाशिघ्र चुक्ता गरिदिनुहोला।
     </marquee>
   </div>
 
@@ -214,7 +234,7 @@
 
   <section class="hero">
     <h2>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</h2>
-    <p>बिपी कोइराला मेमोरियल क्यान्सर अस्पताल नजिकै तपाईंको भरपर्दो स्वास्थ्य साझेदार।</p>
+    <p>अब घरमै बसी औषधी मगाउनुहोस्। हामी चितवन मात्र नभई <strong>नेपालभर</strong> औषधी पुर्‍याउँछौं।</p>
     <a href="order.html" class="btn btn-order">
       <i class="fas fa-shopping-cart"></i> औषधी अर्डर गर्नुहोस्
     </a>
@@ -225,38 +245,35 @@
     <div class="card notice-card">
       <h2 style="color: var(--danger);"><i class="fas fa-exclamation-triangle"></i> आदरणीय ग्राहक महानुभावहरू,</h2>
       <p>विगतमा यहाँहरूको समस्यालाई मध्यनजर गर्दै हामीले मानवीय नाताले विश्वासको आधारमा <strong>उधारो (Credit)</strong> सुविधा उपलब्ध गराएका थियौं।</p>
-      
       <div class="notice-highlight">
         तर बारम्बार फोन र म्यासेज मार्फत ताकेता गर्दा पनि बेवास्ता गरिएको हुनाले हामी कडा कदम चाल्न बाध्य भएका छौं। संस्था सञ्चालनमा बाधा पुगेकाले यथाशिघ्र सम्पर्क गरी बाँकी बक्यौता रकम भुक्तानी गरिदिनुहुन सूचित गरिन्छ।
       </div>
-      
       <a href="notice.html" class="btn btn-danger-outline">
-        <i class="fas fa-list-ol"></i> बक्यौता नामावली र विवरण हेर्नुहोस्
+        <i class="fas fa-list-ol"></i> बक्यौता नामावली हेर्नुहोस्
       </a>
     </div>
 
     <div class="card">
+      <h2><i class="fas fa-shipping-fast"></i> हाम्रा सेवाहरू</h2>
+      <p>नेपालभर होम डेलिभरी, २४सै घण्टा अनलाइन परामर्श र क्यान्सर औषधीमा विशेष सहुलियत।</p>
+      <a href="service.html" class="btn btn-outline">सेवाहरू हेर्नुहोस्</a>
+    </div>
+
+    <div class="card">
       <h2><i class="fas fa-pills"></i> औषधी गाइड</h2>
-      <p>क्यान्सर तथा अन्य कडा रोगका औषधीहरूको प्रयोग र सावधानीबारे विस्तृत जानकारी।</p>
+      <p>औषधीको सही प्रयोग र सावधानीबारे जानकारी लिनुहोस्।</p>
       <a href="medical-guide.html" class="btn btn-outline">थप जान्नुहोस्</a>
     </div>
 
     <div class="card">
       <h2><i class="fas fa-heartbeat"></i> स्वास्थ्य ज्ञान</h2>
-      <p>फोबिया, मानसिक स्वास्थ्य र दैनिक जीवनमा अपनाउनुपर्ने स्वास्थ्य टिप्सहरू।</p>
+      <p>दैनिक जीवनमा स्वस्थ रहने टिप्स र मानसिक स्वास्थ्य ब्लगहरू।</p>
       <a href="knowledge.html" class="btn btn-outline">ब्लग पढ्नुहोस्</a>
-    </div>
-
-    <div class="card">
-      <h2><i class="fas fa-truck-medical"></i> हाम्रा सेवाहरू</h2>
-      <p>भरतपुर क्षेत्रभरि होम डेलिभरी र २४सै घण्टा स्वास्थ्य परामर्शको व्यवस्था।</p>
-      <a href="service.html" class="btn btn-outline">सेवाहरू हेर्नुहोस्</a>
     </div>
 
   </main>
 
-  <a href="https://wa.me/97798XXXXXXXX?text=नमस्ते%20विमल%20फार्मेसी,%0A%0Aमलाई%20निम्न%20औषधीको%20बारेमा%20जानकारी%20चाहिएको%20छ:%0A-%20औषधीको%20नाम:%20%0A-%20परिमाण%20(Quantity):%20%0A%0A(नोट:%20म%20तल%20प्रेस्क्रिप्सनको%20फोटो%20पनि%20पठाउँदैछु।)%0A%0Aठेगाना:%20" 
-     class="whatsapp-float" target="_blank">
+  <a href="https://wa.me/977056593288" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -270,7 +287,7 @@
     <div class="footer-info">
       <strong style="color:white">विमल फार्मेसी</strong><br>
       भरतपुर-७, चितवन, नेपाल | ०५६-५९३२८८<br>
-      <small>बीपी कोइराला मेमोरियल क्यान्सर अस्पताल रोड</small>
+      <small>नेपालभर औषधी डेलिभरीको सेवा उपलब्ध छ</small>
     </div>
     <p style="margin-top: 20px;">&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
   </footer>
