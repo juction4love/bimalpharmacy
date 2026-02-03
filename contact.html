@@ -3,51 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>सम्पर्क गर्नुहोस् | विमल फार्मेसी</title>
+  <title>सम्पर्क गर्नुहोस् | बिमल फार्मेसी</title>
   
-  <meta name="description" content="विमल फार्मेसी सम्पर्क विवरण। फोन, इमेल र लोकेसन म्याप। भरतपुर-७, चितवन।">
+  <meta name="description" content="बिमल फार्मेसी सम्पर्क विवरण। फोन, इमेल र लोकेसन म्याप। भरतपुर-७, चितवन।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <style>
-    /* 1. Global Variables (Matched to Index) */
+    /* --- Global Variables (Model Match) --- */
     :root {
-      --primary: #2e7d32;    /* Deep Medical Green */
-      --secondary: #1b5e20;  /* Darker Green */
-      --accent: #fbc02d;     /* Gold/Yellow */
-      --light-bg: #f4f7f6;
+      --primary: #2e7d32;
+      --secondary: #1b5e20;
+      --accent: #fbc02d;
+      --danger: #d32f2f;
+      --light-bg: #f8faf9;
       --white: #ffffff;
-      --text-dark: #333;
-      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --text-dark: #2c3e50;
+      --shadow: 0 10px 30px rgba(0,0,0,0.1);
+      --whatsapp: #25d366;
     }
 
-    /* 2. Reset & Base Styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body { 
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-      line-height: 1.6; 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.8; 
       background-color: var(--light-bg); 
       color: var(--text-dark);
-      padding-bottom: 70px; /* Space for mobile call button */
+      padding-bottom: 80px; 
     }
 
-    /* 3. Header & Branding */
-    header.text-header {
+    /* --- 1. Branding Header (Model Logo Fix) --- */
+    .branding-header {
       background: var(--white);
-      padding: 25px 15px;
-      text-align: center;
-      border-bottom: 3px solid var(--primary);
+      padding: 20px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+      border-bottom: 5px solid var(--primary);
     }
-    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
-    header p { font-size: 0.9rem; color: #666; }
-    header i { color: var(--primary); margin-right: 5px; }
 
-    /* 4. Navigation */
+    .logo-container img {
+      height: 85px;
+      width: 85px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+      padding: 4px;
+      background: white;
+    }
+
+    .brand-text h1 { 
+      color: var(--primary); 
+      font-size: 2.2rem; 
+      margin: 0;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .brand-text p { 
+      font-size: 1rem; 
+      color: #555; 
+      font-weight: 500;
+    }
+
+    /* --- 2. Navigation (Sticky Model) --- */
     .navbar {
       background: var(--primary);
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: var(--shadow);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .nav-links {
       display: flex;
@@ -58,71 +84,77 @@
     .nav-links a {
       color: var(--white);
       text-decoration: none;
-      padding: 15px 20px;
+      padding: 18px 22px;
       display: block;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 0.95rem;
       transition: 0.3s;
     }
-    .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
+    .nav-links a:hover, .nav-links a.active { 
+      background: var(--secondary); 
+      color: var(--accent) !important;
+      box-shadow: inset 0 -4px 0 var(--accent);
+    }
 
-    /* 5. Hero Section */
+    /* --- 3. Hero Section --- */
     .hero {
-      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/cubes.png');
+      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/white-diamond.png');
       text-align: center;
-      padding: 50px 20px;
-      border-bottom: 1px solid #ddd;
+      padding: 60px 20px;
+      border-bottom: 1px solid #eee;
     }
-    .hero h2 { font-size: 2.2rem; color: var(--secondary); margin-bottom: 10px; }
-    .hero p { color: #555; max-width: 600px; margin: 0 auto; }
+    .hero h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
+    .hero p { color: #555; max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
 
-    /* 6. Main Content Layout */
+    /* --- 4. Content Layout --- */
     .main-content {
-      max-width: 1000px;
-      margin: 40px auto;
+      max-width: 1100px;
+      margin: -30px auto 40px;
       padding: 0 20px;
+      position: relative;
+      z-index: 10;
     }
 
-    /* Standard Card Style */
     .card {
       background: var(--white);
-      padding: 30px;
-      border-radius: 12px;
+      padding: 40px;
+      border-radius: 20px;
       box-shadow: var(--shadow);
-      border-top: 5px solid var(--primary); /* Signature Green Top Border */
+      border-top: 6px solid var(--primary);
       margin-bottom: 30px;
     }
 
     .card h2 {
       text-align: center;
       color: var(--primary);
-      margin-bottom: 25px;
-      font-size: 1.6rem;
+      margin-bottom: 30px;
+      font-size: 1.8rem;
     }
 
-    /* Contact Grid */
+    /* Contact Info Grid */
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
     }
     .contact-box {
-      background: #f9fdf9;
-      padding: 25px 15px;
-      border-radius: 10px;
+      background: #fdfdfd;
+      padding: 30px 20px;
+      border-radius: 15px;
       text-align: center;
-      border: 1px solid #e0e0e0;
-      transition: transform 0.3s;
+      border: 1px solid #f0f0f0;
+      transition: 0.3s;
     }
     .contact-box:hover { transform: translateY(-5px); border-color: var(--primary); }
-    .contact-box i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
-    .contact-box h3 { margin-bottom: 10px; font-size: 1.1rem; color: var(--secondary); }
-    .contact-box p { font-size: 0.95rem; color: #555; margin-bottom: 5px; }
+    .contact-box i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+    .contact-box h3 { margin-bottom: 12px; font-size: 1.2rem; color: var(--secondary); }
+    .contact-box p { font-size: 1rem; color: #555; }
     .contact-box a { color: var(--primary); text-decoration: none; font-weight: bold; }
 
-    /* Action Buttons */
+    /* Buttons */
     .action-buttons {
       display: flex;
-      gap: 15px;
+      gap: 20px;
       justify-content: center;
       flex-wrap: wrap;
       margin-top: 30px;
@@ -130,8 +162,8 @@
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 30px;
+      gap: 10px;
+      padding: 15px 35px;
       border-radius: 50px;
       text-decoration: none;
       font-weight: bold;
@@ -139,87 +171,85 @@
       transition: 0.3s;
     }
     .btn-call { background: var(--primary); }
-    .btn-wa { background: #25D366; }
-    .btn:hover { opacity: 0.9; transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .btn-wa { background: var(--whatsapp); }
+    .btn:hover { opacity: 0.9; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 
-    /* Map Section */
+    /* Map Styling */
     .map-info {
       background: #e8f5e9;
-      padding: 15px;
-      border-radius: 8px;
+      padding: 20px;
+      border-radius: 12px;
       color: var(--secondary);
-      margin-bottom: 20px;
-      border-left: 5px solid var(--primary);
+      margin-bottom: 25px;
+      border-left: 6px solid var(--primary);
+      font-weight: 500;
     }
 
     .map-wrapper {
       width: 100%;
-      height: 400px;
-      border-radius: 12px;
+      height: 450px;
+      border-radius: 15px;
       overflow: hidden;
-      border: 1px solid #ddd;
+      border: 1px solid #eee;
+      box-shadow: var(--shadow);
     }
 
-    /* Footer */
-    footer {
-      background: #222;
-      color: #bbb;
-      padding: 40px 20px;
-      text-align: center;
-      margin-top: 50px;
-    }
-    .footer-info { color: var(--white); margin-bottom: 20px; }
-    footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
+    /* Footer Model */
+    footer { background: #1a1a1a; color: #999; padding: 60px 20px 110px; text-align: center; }
+    footer strong { color: white; font-size: 1.4rem; }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
 
-    /* Mobile Call Button */
+    /* Mobile Fixed Button */
     .mobile-call-box {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: var(--primary);
-      text-align: center;
-      padding: 15px;
-      z-index: 999;
+      position: fixed; bottom: 0; width: 100%;
+      background: var(--primary); padding: 18px; text-align: center; z-index: 1000;
     }
-    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.3rem; font-weight: 800; }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      .hero h2 { font-size: 1.8rem; }
-      .nav-links a { padding: 10px 12px; font-size: 0.85rem; }
-      .card { padding: 20px; }
+    @media (max-width: 768px) {
+      .branding-header { flex-direction: row; padding: 15px; }
+      .logo-container img { height: 60px; width: 60px; }
+      .brand-text h1 { font-size: 1.5rem; }
+      .hero h2 { font-size: 2rem; }
+      .nav-links a { padding: 12px 10px; font-size: 0.85rem; }
+      .card { padding: 25px; }
     }
   </style>
 </head>
 <body>
 
-  <header class="text-header">
-    <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</p>
+  <header class="branding-header">
+    <div class="logo-container">
+      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy Logo">
+    </div>
+    <div class="brand-text">
+      <h1>बिमल फार्मेसी</h1>
+      <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र</p>
+    </div>
   </header>
 
   <nav class="navbar">
-  <ul class="nav-links">
-    <li><a href="index.html">गृहपृष्ठ</a></li>
-    <li><a href="medical-guide.html">औषधी गाइड</a></li>
-    <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-    <li><a href="order.html">अर्डर</a></li>
-    <li><a href="service.html">सेवाहरू</a></li>
-    <li><a href="notice.html">सूचना</a></li>
-    <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
-    <li><a href="contact.html">सम्पर्क</a></li>
-  </ul>
-</nav>
+    <ul class="nav-links">
+      <li><a href="index.html">गृहपृष्ठ</a></li>
+      <li><a href="medical-guide.html">औषधी गाइड</a></li>
+      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
+      <li><a href="order.html">अर्डर</a></li>
+      <li><a href="service.html">सेवाहरू</a></li>
+      <li><a href="notice.html">सूचना</a></li>
+      <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
+      <li><a href="contact.html" class="active">सम्पर्क</a></li>
+    </ul>
+  </nav>
 
   <section class="hero">
-    <h2>सम्पर्क गर्नुहोस्</h2>
-    <p>तपाईंको स्वास्थ्य सम्बन्धी कुनै पनि जिज्ञासा वा औषधी अर्डरको लागि हामीलाई सम्झनुहोस्।</p>
+    <h2>हामीलाई सम्पर्क गर्नुहोस्</h2>
+    <p>कुनै पनि औषधीको अर्डर वा स्वास्थ्य सम्बन्धी परामर्शको लागि हामी सधैँ उपलब्ध छौँ।</p>
   </section>
 
   <main class="main-content">
     
     <div class="card">
-      <h2><i class="fas fa-headset"></i> हामीसँग जोडिनुहोस्</h2>
+      <h2><i class="fas fa-headset"></i> सम्पर्क विवरण</h2>
       
       <div class="contact-grid">
         <div class="contact-box">
@@ -237,7 +267,7 @@
         
         <div class="contact-box">
           <i class="fas fa-map-marker-alt"></i>
-          <h3>ठेगाना</h3>
+          <h3>हाम्रो ठेगाना</h3>
           <p>क्यान्सर अस्पताल रोड, भरतपुर-७</p>
           <p>चितवन, नेपाल</p>
         </div>
@@ -254,18 +284,16 @@
     </div>
 
     <div class="card">
-      <h2 style="margin-bottom: 15px;">
-        <i class="fas fa-map-marked-alt"></i> हाम्रो लोकेसन
-      </h2>
+      <h2><i class="fas fa-map-marked-alt"></i> लोकेसन म्याप</h2>
       
       <div class="map-info">
         <i class="fas fa-info-circle"></i> 
-        <strong>लोकेसन जानकारी:</strong> बिपी कोइराला मेमोरियल क्यान्सर अस्पतालको गेटबाट दक्षिणतर्फ क्यान्सर अस्पताल रोडमा १०० मिटर भित्र आउँदा बायाँ तर्फ।
+        <strong>पत्ता लगाउन सजिलो:</strong> बिपी कोइराला मेमोरियल क्यान्सर अस्पतालको मुख्य गेटबाट दक्षिणतर्फ १०० मिटर अगाडि आउँदा बायाँ तर्फ।
       </div>
       
       <div class="map-wrapper">
         <iframe 
-          src="https://maps.google.com/maps?q=Bharatpur+7+Chitwan&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3535.152865764024!2d84.425!3d27.67!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDQwJzEyLjAiTiA4NMKwMjUnMzAuMCJF!5e0!3m2!1sen!2snp!4v1620000000000!5m2!1sen!2snp" 
           width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
         </iframe>
       </div>
@@ -281,15 +309,15 @@
 
   <footer>
     <div class="footer-info">
-      <strong>विमल फार्मेसी</strong><br>
+      <strong>बिमल फार्मेसी</strong><br>
       क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन, नेपाल<br>
       admin@bimalpharmacy.com.np
     </div>
-    <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-    <p style="margin-top:15px;">
-      <a href="privacy-policy.html">गोपनीयता नीति</a> | 
-      <a href="sitemap.xml">साइटम्याप</a>
-    </p>
+    <p style="margin-top:20px;">© २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <div style="margin-top:15px;">
+      <a href="privacy-policy.html">Privacy Policy</a> | 
+      <a href="sitemap.xml">Sitemap</a>
+    </div>
   </footer>
 
 </body>
