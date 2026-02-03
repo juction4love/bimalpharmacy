@@ -3,46 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>विस्तृत स्वास्थ्य ज्ञान केन्द्र | विमल फार्मेसी</title>
+  <title>स्वास्थ्य ज्ञान केन्द्र | बिमल फार्मेसी</title>
   
-  <meta name="description" content="विमल फार्मेसीको आधिकारिक स्वास्थ्य पोर्टल: क्यान्सर, मधुमेह, रक्तचाप र मानसिक स्वास्थ्य सम्बन्धी पूर्ण गाइड।">
+  <meta name="description" content="बिमल फार्मेसीको आधिकारिक स्वास्थ्य पोर्टल: क्यान्सर, मधुमेह, रक्तचाप र मानसिक स्वास्थ्य सम्बन्धी पूर्ण गाइड।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <style>
+    /* --- Model Global Variables --- */
     :root {
       --primary: #2e7d32;
       --secondary: #1b5e20;
       --accent: #fbc02d;
+      --danger: #d32f2f;
       --light-bg: #f8faf9;
       --white: #ffffff;
       --text-dark: #2c3e50;
-      --shadow: 0 10px 25px rgba(0,0,0,0.05);
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --whatsapp: #25d366;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body { 
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       line-height: 1.8; 
       background-color: var(--light-bg); 
       color: var(--text-dark);
-      padding-bottom: 80px;
+      padding-bottom: 80px; 
     }
 
-    /* Navigation & Header */
-    header.text-header {
+    /* --- 1. Branding Header (Round Corner Logo) --- */
+    .branding-header {
       background: var(--white);
-      padding: 30px 15px;
-      text-align: center;
-      border-bottom: 4px solid var(--primary);
+      padding: 20px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+      border-bottom: 5px solid var(--primary);
     }
-    header h1 { color: var(--primary); font-size: 2.5rem; margin-bottom: 5px; letter-spacing: -1px; }
 
+    .logo-container img {
+      height: 85px;
+      width: 85px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+      padding: 4px;
+      background: white;
+    }
+
+    .brand-text h1 { 
+      color: var(--primary); 
+      font-size: 2.2rem; 
+      margin: 0;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .brand-text p { 
+      font-size: 1rem; 
+      color: #555; 
+      font-weight: 500;
+    }
+
+    /* --- 2. Navigation (Sticky Model) --- */
     .navbar {
       background: var(--primary);
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: var(--shadow);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .nav-links {
       display: flex;
@@ -53,48 +84,51 @@
     .nav-links a {
       color: var(--white);
       text-decoration: none;
-      padding: 15px 20px;
+      padding: 18px 22px;
       display: block;
       font-weight: 600;
+      font-size: 0.95rem;
       transition: 0.3s;
     }
-    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent); }
+    .nav-links a:hover, .nav-links a.active { 
+      background: var(--secondary); 
+      color: var(--accent) !important;
+      box-shadow: inset 0 -4px 0 var(--accent);
+    }
 
-    /* Hero */
+    /* --- 3. Hero Section --- */
     .hero {
       background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%);
       text-align: center;
       padding: 80px 20px;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #eee;
     }
     .hero h2 { font-size: 2.8rem; color: var(--secondary); margin-bottom: 15px; }
+    .hero p { font-size: 1.2rem; color: #555; max-width: 800px; margin: 0 auto; }
 
-    /* Layout Containers */
-    .container {
-      max-width: 1200px;
-      margin: 50px auto;
-      padding: 0 20px;
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-    /* Sections */
+    /* --- 4. Knowledge Articles --- */
     .article-section {
       background: var(--white);
       padding: 40px;
       border-radius: 20px;
       box-shadow: var(--shadow);
+      margin-top: -40px;
       margin-bottom: 50px;
       border-left: 10px solid var(--primary);
+      position: relative;
+      z-index: 10;
     }
-    .article-section h2 { color: var(--primary); margin-bottom: 20px; font-size: 2rem; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+    .article-section h2 { color: var(--primary); margin-bottom: 20px; font-size: 2rem; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
     .article-section h3 { color: var(--secondary); margin-top: 25px; margin-bottom: 10px; }
-    .article-section p { margin-bottom: 15px; text-align: justify; }
 
-    /* Info Grid */
+    /* --- 5. Info Cards Grid --- */
     .info-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
     .info-card {
       background: var(--white);
@@ -105,19 +139,21 @@
       border-top: 5px solid var(--accent);
     }
     .info-card:hover { transform: translateY(-10px); }
+    .info-card h3 { color: var(--primary); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
 
-    /* Fact Table */
-    .table-container { overflow-x: auto; margin: 30px 0; }
-    .fact-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; }
-    .fact-table th { background: var(--primary); color: white; padding: 15px; text-align: left; }
-    .fact-table td { padding: 15px; border-bottom: 1px solid #eee; }
-    .fact-table tr:nth-child(even) { background: #f9f9f9; }
+    /* --- 6. Fact Table --- */
+    .table-container { overflow-x: auto; margin: 40px 0; border-radius: 15px; box-shadow: var(--shadow); }
+    .fact-table { width: 100%; border-collapse: collapse; background: white; }
+    .fact-table th { background: var(--primary); color: white; padding: 18px; text-align: left; }
+    .fact-table td { padding: 15px; border-bottom: 1px solid #f0f0f0; }
+    .fact-table tr:hover { background: #f1f8f1; }
 
-    /* Gallery */
+    /* --- 7. Gallery --- */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
+      margin-bottom: 60px;
     }
     .gallery-item {
       height: 250px;
@@ -128,9 +164,15 @@
     }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
     .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-overlay {
+      position: absolute; bottom: 0; width: 100%; padding: 15px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white; font-weight: bold;
+    }
 
-    /* Footer */
-    footer { background: #1a1a1a; color: #aaa; padding: 60px 20px; text-align: center; }
+    /* --- 8. Footer & Mobile Call --- */
+    footer { background: #1a1a1a; color: #999; padding: 60px 20px 110px; text-align: center; }
+    footer strong { color: white; font-size: 1.4rem; }
 
     .mobile-call-box {
       position: fixed; bottom: 0; width: 100%; background: var(--primary);
@@ -139,108 +181,86 @@
     .mobile-call-btn { color: white; text-decoration: none; font-size: 1.3rem; font-weight: 800; }
 
     @media (max-width: 768px) {
-      header h1 { font-size: 2rem; }
-      .article-section { padding: 25px; }
+      .branding-header { padding: 15px; }
+      .logo-container img { height: 60px; width: 60px; }
+      .brand-text h1 { font-size: 1.5rem; }
       .hero h2 { font-size: 2rem; }
+      .nav-links a { padding: 12px 10px; font-size: 0.85rem; }
+      .article-section { padding: 25px; margin-top: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <header class="text-header">
-    <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-heartbeat"></i> स्वास्थ्य र सचेतनाको डिजिटल केन्द्र</p>
+  <header class="branding-header">
+    <div class="logo-container">
+      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy Logo">
+    </div>
+    <div class="brand-text">
+      <h1>बिमल फार्मेसी</h1>
+      <p>स्वास्थ्य र सचेतनाको डिजिटल केन्द्र</p>
+    </div>
   </header>
 
- <nav class="navbar">
-  <ul class="nav-links">
-    <li><a href="index.html">गृहपृष्ठ</a></li>
-    <li><a href="medical-guide.html">औषधी गाइड</a></li>
-    <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-    <li><a href="order.html">अर्डर</a></li>
-    <li><a href="service.html">सेवाहरू</a></li>
-    <li><a href="notice.html">सूचना</a></li>
-    <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
-    <li><a href="contact.html">सम्पर्क</a></li>
-  </ul>
-</nav>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">गृहपृष्ठ</a></li>
+      <li><a href="medical-guide.html">औषधी गाइड</a></li>
+      <li><a href="knowledge.html" class="active">स्वास्थ्य ज्ञान</a></li>
+      <li><a href="order.html">अर्डर</a></li>
+      <li><a href="service.html">सेवाहरू</a></li>
+      <li><a href="notice.html">सूचना</a></li>
+      <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
+      <li><a href="contact.html">सम्पर्क</a></li>
+    </ul>
+  </nav>
 
   <section class="hero">
-    <h2>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</h2>
-    <p>सही जानकारीले नै सही उपचार सम्भव बनाउँछ। यहाँ हामीले विभिन्न रोग र स्वस्थ जीवनशैलीका बारेमा महत्वपूर्ण जानकारीहरू प्रस्तुत गरेका छौं।</p>
+    <div class="container">
+      <h2>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</h2>
+      <p>सही जानकारीले नै सही उपचार सम्भव बनाउँछ। यहाँ हामीले विभिन्न रोग र स्वस्थ जीवनशैलीका बारेमा महत्वपूर्ण जानकारीहरू प्रस्तुत गरेका छौं।</p>
+    </div>
   </section>
 
   <main class="container">
 
     <article class="article-section">
-      <h2><i class="fas fa-ribbon"></i> क्यान्सर (Oncology) सचेतना: एक पूर्ण गाइड</h2>
-      <p>हाम्रो फार्मेसी बि.पि. कोइराला मेमोरियल क्यान्सर अस्पतालको नजिकै रहेको हुनाले हामीले क्यान्सरका बिरामीहरूको पीडा र आवश्यकतालाई नजिकबाट देखेका छौं। क्यान्सर कुनै मृत्युदण्ड होइन, समयमै पहिचान भएमा यो निको हुन्छ।</p>
+      <h2><i class="fas fa-ribbon"></i> क्यान्सर (Oncology) सचेतना</h2>
+      <p>बी.पी. कोइराला मेमोरियल क्यान्सर अस्पतालको नजिकै रहेको हुनाले हामीले क्यान्सरका बिरामीहरूको पीडा र आवश्यकतालाई नजिकबाट देखेका छौं। समयमै पहिचान भएमा क्यान्सर निको हुन सक्छ।</p>
       
-      <h3>क्यान्सरका सुरुवाती लक्षणहरू:</h3>
-      <ul>
-        <li>शरीरमा कुनै पनि ठाउँमा नदुख्ने गाँठागुँठी देखिनु।</li>
+      <h3>सुरुवाती लक्षणहरू:</h3>
+      <ul style="margin-left: 20px;">
+        <li>शरीरमा नदुख्ने गाँठागुँठी देखिनु।</li>
         <li>लामो समयसम्म निको नहुने घाउ वा खोकी।</li>
-        <li>दिसा वा पिसाबमा रगत देखिनु वा बानीमा परिवर्तन आउनु।</li>
         <li>अस्वभाविक रूपमा तौल घट्नु।</li>
       </ul>
 
-      <h3>केही भ्रम र यथार्थ:</h3>
+      <h3 style="color: var(--danger);">भ्रम र यथार्थ:</h3>
       <p><strong>भ्रम:</strong> क्यान्सर छुवाछूतको रोग हो। <br>
-      <strong>यथार्थ:</strong> क्यान्सर एक व्यक्तिबाट अर्कोमा सर्दैन। बिरामीलाई माया र सहयोगको खाँचो हुन्छ।</p>
-      
-      <p><strong>भ्रम:</strong> बायोप्सी (Biopsy) गर्दा क्यान्सर फैलन्छ। <br>
-      <strong>यथार्थ:</strong> बायोप्सी नै क्यान्सर पत्ता लगाउने सबैभन्दा भरपर्दो माध्यम हो, यसले रोग फैलाउँदैन।</p>
+      <strong>यथार्थ:</strong> क्यान्सर सर्दैन। बिरामीलाई माया र सहयोगको खाँचो हुन्छ।</p>
     </article>
 
     <div class="info-grid">
       <div class="info-card">
         <h3><i class="fas fa-tint" style="color:#d32f2f"></i> मधुमेह (Diabetes)</h3>
-        <p>नेपालमा मधुमेहका बिरामीहरूको संख्या बढ्दो छ। स्वस्थ खानपान र नियमित व्यायामले यसलाई नियन्त्रणमा राख्न सकिन्छ।</p>
-        <ul style="margin-left: 20px; font-size: 0.9rem;">
+        <p>स्वस्थ खानपान र नियमित व्यायामले यसलाई नियन्त्रणमा राख्न सकिन्छ।</p>
+        <ul style="margin-left: 20px; font-size: 0.9rem; margin-top: 10px;">
           <li>नियमित रगत जाँच (HbA1c) गर्नुहोस्।</li>
           <li>चिनी र मैदाजन्य पदार्थ कम खानुहोस्।</li>
-          <li>तनाव व्यवस्थापन गर्नुहोस्।</li>
         </ul>
       </div>
 
       <div class="info-card">
-        <h3><i class="fas fa-heart" style="color:#d32f2f"></i> उच्च रक्तचाप (Hypertension)</h3>
-        <p>यसलाई 'साइलेन्ट किलर' भनिन्छ किनकि यसका लक्षणहरू सुरुमा देखिँदैनन्।</p>
-        <ul style="margin-left: 20px; font-size: 0.9rem;">
-          <li>नुनको प्रयोग घटाउनुहोस्।</li>
-          <li>धुम्रपान र मद्यपानबाट टाढा रहनुहोस्।</li>
+        <h3><i class="fas fa-heart" style="color:#d32f2f"></i> उच्च रक्तचाप</h3>
+        <p>यसलाई 'साइलेन्ट किलर' भनिन्छ। नुनको प्रयोग घटाउनुहोस् र तनाव व्यवस्थापन गर्नुहोस्।</p>
+        <ul style="margin-left: 20px; font-size: 0.9rem; margin-top: 10px;">
           <li>दैनिक ३० मिनेट हिँड्ने बानी बसाल्नुहोस्।</li>
+          <li>धुम्रपानबाट टाढा रहनुहोस्।</li>
         </ul>
       </div>
     </div>
 
-    <article class="article-section" style="border-left-color: var(--accent);">
-      <h2><i class="fas fa-first-aid"></i> प्राथमिक उपचार (First Aid) को आधारभूत ज्ञान</h2>
-      <p>घर वा कार्यालयमा हुने सानातिना दुर्घटनाहरूमा प्राथमिक उपचारले ठूलो क्षति हुनबाट बचाउँछ।</p>
-      
-      <h3>१. पोलेको खण्डमा:</h3>
-      <p>पोलेको ठाउँमा तुरुन्तै सफा चिसो पानी (बरफ होइन) १५-२० मिनेटसम्म बगाउनुहोस्। कोलगेट वा तेल नलगाउनुहोस्। गम्भीर भएमा अस्पताल लैजानुहोस्।</p>
-
-      <h3>२. रगत बगेमा:</h3>
-      <p>सफा कपडाले घाउलाई थिचेर राख्नुहोस्। रगत बग्न रोकिएन भने घाउलाई मुटुको तहभन्दा माथि उठाउनुहोस्।</p>
-
-      <h3>३. बेहोस भएमा:</h3>
-      <p>बिरामीलाई समतल ठाउँमा सुताउनुहोस् र खुट्टालाई अलिकति माथि उठाउनुहोस् ताकि मस्तिष्कमा रगतको प्रवाह बढोस्। वरपर भीड नगर्नुहोस्।</p>
-    </article>
-
-    <article class="article-section">
-      <h2><i class="fas fa-user-friends"></i> ज्येष्ठ नागरिकको हेरचाह</h2>
-      <p>बढ्दो उमेरसँगै शरीरको रोग प्रतिरोधात्मक क्षमता कम हुँदै जान्छ। वृद्धवृद्धाको स्याहारमा विशेष ध्यान दिनुपर्छ:</p>
-      <ol style="margin-left: 25px;">
-        <li><strong>औषधीको व्यवस्थापन:</strong> उमेर पुगेका व्यक्तिले धेरै प्रकारका औषधी खानुपर्ने हुनसक्छ। पिल-बक्स (Pill Box) प्रयोग गरेर समय मिलाइदिनुहोस्।</li>
-        <li><strong>आहार:</strong> सजिलै पच्ने र पोषणयुक्त खाना दिनुहोस्।</li>
-        <li><strong>मानसिक सहयोग:</strong> उनीहरूसँग कुराकानी गर्नुहोस् र एक्लोपन महसुस हुन नदिनुहोस्।</li>
-      </ol>
-    </article>
-
-    <div class="section-head" style="text-align:center; margin-bottom:30px;">
-      <h2 style="color:var(--primary)">रोचक स्वास्थ्य तथ्यहरू</h2>
-    </div>
+    <h2 style="text-align:center; color:var(--primary); margin-bottom: 20px;">रोचक स्वास्थ्य तथ्यहरू</h2>
     <div class="table-container">
       <table class="fact-table">
         <thead>
@@ -252,47 +272,33 @@
         <tbody>
           <tr>
             <td><strong>पानी</strong></td>
-            <td>मानव शरीरको करिब ६०% भाग पानीले बनेको हुन्छ। मस्तिष्कको त ८०% भाग पानी नै हो।</td>
+            <td>मानव शरीरको करिब ६०% भाग पानीले बनेको हुन्छ।</td>
           </tr>
           <tr>
             <td><strong>निद्रा</strong></td>
-            <td>एउटा वयस्कलाई स्वस्थ रहन दैनिक ७ देखि ८ घण्टाको गहिरो निद्रा अनिवार्य छ।</td>
-          </tr>
-          <tr>
-            <td><strong>पेट</strong></td>
-            <td>हाम्रो पेटमा हुने एसिडले फलामको ब्लेडलाई समेत पगाल्ने क्षमता राख्छ (तर हाम्रो पेटको तहले हामीलाई बचाउँछ)।</td>
+            <td>वयस्कलाई स्वस्थ रहन दैनिक ७ देखि ८ घण्टाको निद्रा अनिवार्य छ।</td>
           </tr>
           <tr>
             <td><strong>मुटु</strong></td>
             <td>मुटुले जीवनभरमा करिब १५ लाख ब्यारेल रगत पम्प गर्छ।</td>
           </tr>
-          <tr>
-            <td><strong>फोक्सो</strong></td>
-            <td>हाम्रो दाहिने फोक्सो बायाँ फोक्सो भन्दा अलि ठूलो हुन्छ (किनकि बायाँतिर मुटुको लागि ठाउँ चाहिन्छ)।</td>
-          </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="section-head" style="text-align:center; margin: 60px 0 30px;">
-      <h2 style="color:var(--primary)"><i class="fas fa-camera"></i> हाम्रो फार्मेसी झलक</h2>
-    </div>
+    <h2 style="text-align:center; color:var(--primary); margin: 60px 0 30px;">हाम्रो फार्मेसी झलक</h2>
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&w=600&q=80" alt="Pharmacy Shelf">
-        <div style="position:absolute; bottom:10px; left:10px; color:white; font-weight:bold; text-shadow:1px 1px 5px black;">आधुनिक भण्डारण</div>
+        <img src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&w=600&q=80" alt="Shelf">
+        <div class="gallery-overlay">आधुनिक भण्डारण</div>
       </div>
       <div class="gallery-item">
         <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80" alt="Pharmacist">
-        <div style="position:absolute; bottom:10px; left:10px; color:white; font-weight:bold; text-shadow:1px 1px 5px black;">दक्ष परामर्श</div>
+        <div class="gallery-overlay">दक्ष परामर्श</div>
       </div>
       <div class="gallery-item">
         <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=600&q=80" alt="Medicine">
-        <div style="position:absolute; bottom:10px; left:10px; color:white; font-weight:bold; text-shadow:1px 1px 5px black;">गुणस्तरीय औषधी</div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?auto=format&fit=crop&w=600&q=80" alt="Laboratory">
-        <div style="position:absolute; bottom:10px; left:10px; color:white; font-weight:bold; text-shadow:1px 1px 5px black;">सुरक्षित सेवा</div>
+        <div class="gallery-overlay">गुणस्तरीय औषधी</div>
       </div>
     </div>
 
@@ -305,14 +311,10 @@
   </div>
 
   <footer>
-    <div style="max-width: 800px; margin: 0 auto;">
-      <h3 style="color:white; margin-bottom: 20px;">विमल फार्मेसी (Bimal Pharmacy)</h3>
-      <p>हामी केवल औषधी मात्र बिक्री गर्दैनौं, हामी समुदायको स्वास्थ्य सचेतनाका लागि पनि उत्तिकै जिम्मेवार छौं। आउनुहोस्, स्वस्थ समाज निर्माणमा हात मिलाऔं।</p>
-      <div style="margin-top: 30px; font-size: 0.85rem; color: #888;">
-        भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन | ०५६-५९३२८८ <br>
-        admin@bimalpharmacy.com.np
-      </div>
-      <p style="margin-top: 20px; font-size: 0.75rem;">&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <div class="container">
+      <strong>बिमल फार्मेसी</strong><br>
+      भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन | ०५६-५९३२८८ <br>
+      <p style="margin-top: 20px; font-size: 0.85rem;">&copy; २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
     </div>
   </footer>
 
