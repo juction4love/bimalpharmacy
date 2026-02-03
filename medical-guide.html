@@ -3,45 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>औषधी गाइड तथा जानकारी | विमल फार्मेसी</title>
+  <title>विस्तृत मेडिकल गाइड | विमल फार्मेसी</title>
   
-  <meta name="description" content="विमल फार्मेसी: ५०+ औषधीहरूको प्रयोग र विभिन्न फोबियाहरूको विस्तृत जानकारी।">
+  <meta name="description" content="विमल फार्मेसी मेडिकल गाइड: औषधीको प्रयोग, डाक्टरको पुर्जी बुझ्ने तरिका, भिटामिन र खोप तालिका।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <style>
-    /* 1. Global Variables (Matched to Index) */
     :root {
-      --primary: #2e7d32;    /* Deep Medical Green */
-      --secondary: #1b5e20;  /* Darker Green */
-      --accent: #fbc02d;     /* Gold/Yellow */
-      --light-bg: #f4f7f6;
+      --primary: #2e7d32;
+      --secondary: #1b5e20;
+      --accent: #fbc02d;
+      --light-bg: #f8faf9;
       --white: #ffffff;
-      --text-dark: #333;
-      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --text-dark: #2c3e50;
+      --shadow: 0 10px 25px rgba(0,0,0,0.05);
     }
 
-    /* 2. Reset & Base Styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
       line-height: 1.6; 
       background-color: var(--light-bg); 
       color: var(--text-dark);
-      padding-bottom: 70px; /* Space for mobile button */
+      padding-bottom: 80px;
     }
 
-    /* 3. Header & Branding */
+    /* Navigation & Header */
     header.text-header {
       background: var(--white);
-      padding: 25px 15px;
+      padding: 30px 15px;
       text-align: center;
-      border-bottom: 3px solid var(--primary);
+      border-bottom: 4px solid var(--primary);
     }
-    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
-    header p { font-size: 0.9rem; color: #666; }
-    header i { color: var(--primary); margin-right: 5px; }
+    header h1 { color: var(--primary); font-size: 2.5rem; letter-spacing: -1px; }
 
-    /* 4. Navigation */
     .navbar {
       background: var(--primary);
       position: sticky;
@@ -49,153 +44,84 @@
       z-index: 1000;
       box-shadow: var(--shadow);
     }
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      flex-wrap: wrap;
-    }
+    .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
     .nav-links a {
       color: var(--white);
       text-decoration: none;
       padding: 15px 20px;
       display: block;
-      font-weight: 500;
+      font-weight: 600;
       transition: 0.3s;
     }
-    .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent); }
 
-    /* 5. Hero Section */
-    .hero {
-      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/cubes.png');
+    /* Search Section */
+    .search-container {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 60px 20px;
       text-align: center;
-      padding: 50px 20px;
-      border-bottom: 1px solid #ddd;
+      color: white;
     }
-    .hero h2 { font-size: 2.2rem; color: var(--secondary); margin-bottom: 10px; }
-    .hero p { color: #555; max-width: 600px; margin: 0 auto; }
-
-    /* 6. Search Box */
     .search-wrapper {
-      max-width: 600px;
-      margin: -25px auto 30px; /* Overlap hero */
-      padding: 0 20px;
+      max-width: 700px;
+      margin: 20px auto 0;
       position: relative;
-      z-index: 10;
     }
     .search-box {
       width: 100%;
-      padding: 15px 20px 15px 50px;
-      border: 2px solid var(--primary);
+      padding: 18px 25px 18px 60px;
       border-radius: 50px;
+      border: none;
       font-size: 1.1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       outline: none;
-      box-shadow: var(--shadow);
-      background: var(--white);
-      transition: 0.3s;
     }
-    .search-box:focus { border-color: var(--accent); }
     .search-icon {
       position: absolute;
-      left: 40px;
+      left: 25px;
       top: 50%;
       transform: translateY(-50%);
       color: var(--primary);
-      font-size: 1.2rem;
+      font-size: 1.4rem;
     }
 
-    /* 7. Content Layout */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+    .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
 
+    /* Card & Tables */
     .card {
       background: var(--white);
-      border-radius: 12px;
+      border-radius: 20px;
+      padding: 35px;
       box-shadow: var(--shadow);
-      padding: 30px;
       margin-bottom: 40px;
-      border-top: 5px solid var(--primary);
-      transition: transform 0.3s;
+      border-top: 6px solid var(--primary);
     }
-    .card:hover { transform: translateY(-3px); }
+    .card h2 { color: var(--secondary); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
 
-    .card h2 { 
-      color: var(--secondary); 
-      border-bottom: 2px solid #eee; 
-      padding-bottom: 15px; 
-      margin-bottom: 20px; 
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .table-responsive { overflow-x: auto; margin-top: 20px; border-radius: 10px; border: 1px solid #eee; }
+    table { width: 100%; border-collapse: collapse; min-width: 600px; }
+    table th { background: #f1f8f1; padding: 15px; text-align: left; color: var(--secondary); font-weight: 700; border-bottom: 2px solid var(--primary); }
+    table td { padding: 15px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
+    table tr:hover { background: #f9fdf9; }
 
-    /* Table Styles */
-    .table-responsive { overflow-x: auto; max-height: 600px; overflow-y: auto; }
-    
-    table { width: 100%; border-collapse: collapse; margin-top: 10px; min-width: 500px; }
-    
-    table th { 
-      background: var(--primary); 
-      color: white; 
-      padding: 15px; 
-      text-align: left; 
-      font-weight: 600;
-      position: sticky;
-      top: 0;
-      z-index: 5;
-    }
-    
-    table td { 
-      padding: 12px 15px; 
-      border-bottom: 1px solid #eee; 
-      color: #555; 
-    }
-    
-    table tr:nth-child(even) { background-color: #f8fcf8; }
-    table tr:hover { background-color: #e8f5e9; }
-
-    /* Disclaimer */
-    .disclaimer {
-      background: #fff8e1;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      font-size: 0.9rem;
-      border-left: 5px solid var(--accent);
-      color: #856404;
+    /* Special Highlight Box */
+    .highlight-box {
+      background: #fff9e6;
+      border-left: 6px solid var(--accent);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
     }
 
     /* Footer */
-    footer {
-      background: #222;
-      color: #bbb;
-      padding: 40px 20px;
-      text-align: center;
-      margin-top: 50px;
-    }
-    .footer-info { color: var(--white); margin-bottom: 20px; }
-    footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
+    footer { background: #1a1a1a; color: #aaa; padding: 60px 20px 100px; text-align: center; }
+    .mobile-call-box { position: fixed; bottom: 0; width: 100%; background: var(--primary); padding: 18px; text-align: center; z-index: 1000; }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: 800; }
 
-    /* Mobile Call Button */
-    .mobile-call-box {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: var(--primary);
-      text-align: center;
-      padding: 15px;
-      z-index: 999;
-    }
-    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
-
-    @media (max-width: 600px) {
-      .hero h2 { font-size: 1.8rem; }
-      .nav-links a { padding: 10px 12px; font-size: 0.85rem; }
-      table th, table td { padding: 10px; font-size: 0.9rem; }
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.8rem; }
+      .search-container { padding: 40px 15px; }
+      .card { padding: 20px; }
     }
   </style>
 </head>
@@ -203,140 +129,135 @@
 
   <header class="text-header">
     <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</p>
+    <p>तपाईंको डिजिटल मेडिकल जानकारी केन्द्र</p>
   </header>
 
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="search.html">खोज्नुहोस्</a></li>
-      <li><a href="medical-guide.html" class="active">औषधी गाइड</a></li>
+      <li><a href="medical-guide.html" class="active">मेडिकल गाइड</a></li>
       <li><a href="order.html">अर्डर</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
-      <li><a href="notice.html">सूचना</a></li>
-      <li><a href="knowledge.html">ज्ञान/ग्यालरी</a></li>
+      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
-  <section class="hero">
-    <h2>औषधी गाइड तथा जानकारी</h2>
-    <p>५०+ औषधीहरू र विभिन्न फोबियाहरूको विस्तृत जानकारी यहाँ खोज्नुहोस्।</p>
+  <section class="search-container">
+    <h2><i class="fas fa-book-medical"></i> मेडिकल गाइड एण्ड इन्फो</h2>
+    <p>औषधीको प्रयोग, पुर्जी बुझ्ने तरिका र स्वास्थ्य चार्टहरू यहाँ खोज्नुहोस्।</p>
+    <div class="search-wrapper">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" id="guideSearch" onkeyup="filterTables()" placeholder="औषधी, भिटामिन वा शब्द खोज्नुहोस्..." class="search-box">
+    </div>
   </section>
 
-  <div class="search-wrapper">
-    <i class="fas fa-search search-icon"></i>
-    <input type="text" id="myInput" onkeyup="searchTable()" placeholder="यहाँ औषधी वा फोबियाको नाम खोज्नुहोस्..." class="search-box">
-  </div>
-
   <main class="container">
-    
-    <div class="card">
-      <h2><i class="fas fa-pills"></i> ५० प्रमुख औषधि र तिनको प्रयोग (Medicines)</h2>
-      
-      <div class="disclaimer">
-        <i class="fas fa-exclamation-triangle"></i> <strong>अस्वीकरण:</strong> यो जानकारी केवल सचेतनाका लागि हो। डाक्टरको सल्लाह बिना कुनै पनि औषधी सेवन नगर्नुहोस्।
-      </div>
 
+    <div class="card" style="border-top-color: var(--accent);">
+      <h2><i class="fas fa-file-medical"></i> पुर्जी बुझ्ने तरिका (Medical Abbreviations)</h2>
+      <p>डाक्टरले पुर्जीमा लेख्ने छोटो शब्दहरूको अर्थ यहाँ हेर्नुहोस्:</p>
       <div class="table-responsive">
-        <table id="medicineTable">
+        <table class="searchableTable">
           <thead>
             <tr>
-              <th width="10%">क्र.सं.</th>
-              <th width="40%">औषधीको नाम (Medicine)</th>
-              <th width="50%">प्रयोग (Uses)</th>
+              <th>कोड (Code)</th>
+              <th>अर्थ (Meaning)</th>
+              <th>कसरी खाने?</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>1</td><td>Paracetamol</td><td>ज्वरो र दुखाइ (Pain, Fever)</td></tr>
-            <tr><td>2</td><td>Amoxicillin</td><td>ब्याक्टेरियल संक्रमण (Bacterial Infections)</td></tr>
-            <tr><td>3</td><td>Omeprazole</td><td>ग्यास्ट्रिक, अल्सर (Acid Reflux, Ulcers)</td></tr>
-            <tr><td>4</td><td>Loratadine</td><td>एलर्जी (Allergies)</td></tr>
-            <tr><td>5</td><td>Amlodipine</td><td>उच्च रक्तचाप (Hypertension)</td></tr>
-            <tr><td>6</td><td>Metformin</td><td>टाइप २ मधुमेह (Type 2 Diabetes)</td></tr>
-            <tr><td>7</td><td>Diazepam</td><td>चिन्ता, अनिद्रा (Anxiety, Insomnia)</td></tr>
-            <tr><td>8</td><td>Atorvastatin</td><td>उच्च कोलेस्ट्रोल (High Cholesterol)</td></tr>
-            <tr><td>9</td><td>Ciprofloxacin</td><td>पिसाबको संक्रमण (Urinary Infections)</td></tr>
-            <tr><td>10</td><td>Ranitidine</td><td>ग्यास्ट्रिक अल्सर (Gastric Ulcers)</td></tr>
-            <tr><td>11</td><td>Ibuprofen</td><td>दुखाइ र सुन्निएको कम गर्न (Pain, Inflammation)</td></tr>
-            <tr><td>12</td><td>Levothyroxine</td><td>थाइराइडको समस्या (Hypothyroidism)</td></tr>
-            <tr><td>13</td><td>Clopidogrel</td><td>रगत पातलो बनाउन (Blood Thinner)</td></tr>
-            <tr><td>14</td><td>Albuterol</td><td>दम, श्वासप्रश्वास (Asthma, COPD)</td></tr>
-            <tr><td>15</td><td>Fluoxetine</td><td>डिप्रेसन (Depression)</td></tr>
-            <tr><td>16</td><td>Losartan</td><td>उच्च रक्तचाप (Hypertension)</td></tr>
-            <tr><td>17</td><td>Doxycycline</td><td>ब्याक्टेरियल संक्रमण (Bacterial Infections)</td></tr>
-            <tr><td>18</td><td>Insulin</td><td>मधुमेह (Diabetes Mellitus)</td></tr>
-            <tr><td>19</td><td>Tramadol</td><td>मध्यम देखि कडा दुखाइ (Moderate/Severe Pain)</td></tr>
-            <tr><td>20</td><td>Pantoprazole</td><td>ग्यास्ट्रिक, एसिड रिफ्लक्स (GERD)</td></tr>
-            <tr><td>21</td><td>Cetirizine</td><td>एलर्जी, रुघा (Allergic Rhinitis)</td></tr>
-            <tr><td>22</td><td>Warfarin</td><td>रगत जम्न नदिन (Anticoagulant)</td></tr>
-            <tr><td>23</td><td>Morphine</td><td>अत्यधिक दुखाइ (Severe Pain)</td></tr>
-            <tr><td>24</td><td>Escitalopram</td><td>डिप्रेसन, चिन्ता (Depression, Anxiety)</td></tr>
-            <tr><td>25</td><td>Furosemide</td><td>सुन्निएको घटाउन, रक्तचाप (Edema, Hypertension)</td></tr>
-            <tr><td>26</td><td>Azithromycin</td><td>श्वासप्रश्वासको संक्रमण (Respiratory Infections)</td></tr>
-            <tr><td>27</td><td>Prednisolone</td><td>सुन्निएको कम गर्न (Anti-inflammatory)</td></tr>
-            <tr><td>28</td><td>Gabapentin</td><td>नशाको दुखाइ (Neuropathic Pain)</td></tr>
-            <tr><td>29</td><td>Domperidone</td><td>वाकवाकी, उल्टी (Nausea, Vomiting)</td></tr>
-            <tr><td>30</td><td>Bisoprolol</td><td>मुटुको समस्या (Heart Failure)</td></tr>
-            <tr><td>31</td><td>Montelukast</td><td>दम, एलर्जी (Asthma, Allergies)</td></tr>
-            <tr><td>32</td><td>Digoxin</td><td>मुटुको धड्कन अनियमित हुँदा (Arrhythmias)</td></tr>
-            <tr><td>33</td><td>Sertraline</td><td>डिप्रेसन (Depression)</td></tr>
-            <tr><td>34</td><td>Metronidazole</td><td>पेटको संक्रमण (Protozoal Infections)</td></tr>
-            <tr><td>35</td><td>Enalapril</td><td>उच्च रक्तचाप (Hypertension)</td></tr>
-            <tr><td>36</td><td>Lorazepam</td><td>चिन्ता, निद्रा लगाउन (Anxiety, Sedation)</td></tr>
-            <tr><td>37</td><td>Rosuvastatin</td><td>कोलेस्ट्रोल नियन्त्रण (Cholesterol Control)</td></tr>
-            <tr><td>38</td><td>Salbutamol</td><td>श्वास फेर्न गाह्रो हुँदा (Bronchospasm)</td></tr>
-            <tr><td>39</td><td>Allopurinol</td><td>युरिक एसिड / गाउट (Gout)</td></tr>
-            <tr><td>40</td><td>Clonazepam</td><td>छारे रोग (Seizure Disorders)</td></tr>
-            <tr><td>41</td><td>Tamsulosin</td><td>प्रोस्टेट समस्या (Prostate Hyperplasia)</td></tr>
-            <tr><td>42</td><td>Famotidine</td><td>एसिड रिफ्लक्स (Acid Reflux)</td></tr>
-            <tr><td>43</td><td>Methotrexate</td><td>बाथ रोग (Rheumatoid Arthritis)</td></tr>
-            <tr><td>44</td><td>Hydrochlorothiazide</td><td>पिसाब लगाउने औषधी (Diuretic)</td></tr>
-            <tr><td>45</td><td>Sildenafil</td><td>यौन दुर्बलता (Erectile Dysfunction)</td></tr>
-            <tr><td>46</td><td>Levetiracetam</td><td>मिर्गी / छारे रोग (Epilepsy)</td></tr>
-            <tr><td>47</td><td>Betamethasone</td><td>छालाको इन्फ्लामेसन (Skin Inflammation)</td></tr>
-            <tr><td>48</td><td>Ramipril</td><td>उच्च रक्तचाप (Hypertension)</td></tr>
-            <tr><td>49</td><td>Mirtazapine</td><td>डिप्रेसन (Depression)</td></tr>
-            <tr><td>50</td><td>Aspirin</td><td>दुखाइ, रगत जम्न नदिन (Pain, Blood Clot)</td></tr>
+            <tr><td>OD</td><td>Once a Day</td><td>दिनको एक पटक</td></tr>
+            <tr><td>BD / BID</td><td>Twice a Day</td><td>दिनको दुई पटक (बिहान/बेलुका)</td></tr>
+            <tr><td>TDS / TID</td><td>Three times a Day</td><td>दिनको तीन पटक</td></tr>
+            <tr><td>QDS / QID</td><td>Four times a Day</td><td>दिनको चार पटक</td></tr>
+            <tr><td>AC</td><td>Before Meals</td><td>खाना खानु अघि</td></tr>
+            <tr><td>PC</td><td>After Meals</td><td>खाना खाएपछि</td></tr>
+            <tr><td>HS / SOS</td><td>At Bedtime / If Needed</td><td>सुत्ने बेला / आवश्यक परेमा मात्र</td></tr>
+            <tr><td>PO</td><td>By Mouth</td><td>मुखबाट सेवन गर्ने</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="card" style="border-top-color: var(--accent);">
-      <h2><i class="fas fa-brain"></i> विभिन्न प्रकारका डर (Types of Phobias)</h2>
-      
+    <div class="card">
+      <h2><i class="fas fa-pills"></i> १०० प्रमुख औषधी र तिनको प्रयोग</h2>
+      <div class="highlight-box">
+        <strong>सूचना:</strong> यो तालिकामा क्यान्सर, मुटु, र सामान्य रोगका औषधीहरू समावेश छन्। सधैं डाक्टरको सल्लाहमा मात्र औषधी खानुहोस्।
+      </div>
       <div class="table-responsive">
-        <table id="phobiaTable">
+        <table id="medicineTable" class="searchableTable">
           <thead>
             <tr>
-              <th width="40%">फोबियाको नाम (Phobia)</th>
-              <th width="60%">डरको विषय (Fear of...)</th>
+              <th>औषधीको नाम</th>
+              <th>प्रयोग (Primary Uses)</th>
+              <th>श्रेणी (Category)</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>1. Hydrophobia</td><td>पानीको डर (Fear of water)</td></tr>
-            <tr><td>2. Melissophobia</td><td>मौरीको डर (Fear of bees)</td></tr>
-            <tr><td>3. Basiphobia</td><td>लड्ने डर (Fear of falling)</td></tr>
-            <tr><td>4. Pediophobia</td><td>गुडिया वा पुतलीको डर (Fear of dolls)</td></tr>
-            <tr><td>5. Pyrophobia</td><td>आगोको डर (Fear of fire)</td></tr>
-            <tr><td>6. Algophobia</td><td>दुखाइको डर (Fear of pain)</td></tr>
-            <tr><td>7. Stygiophobia</td><td>नर्कको डर (Fear of hell)</td></tr>
-            <tr><td>8. Dendrophobia</td><td>रूखहरूको डर (Fear of trees)</td></tr>
-            <tr><td>9. Ornithophobia</td><td>चराहरूको डर (Fear of birds)</td></tr>
-            <tr><td>10. Selachophobia</td><td>शार्कको डर (Fear of sharks)</td></tr>
-            <tr><td>11. Chiroptophobia</td><td>चमेरोको डर (Fear of bats)</td></tr>
-            <tr><td>12. Macrophobia</td><td>लामो समय कुर्नुपर्ने डर (Fear of long waits)</td></tr>
-            <tr><td>13. Erythrophobia</td><td>रातो हुने वा लाजाउने डर (Fear of blushing)</td></tr>
-            <tr><td>14. Myrmecophobia</td><td>कमिलाको डर (Fear of ants)</td></tr>
-            <tr><td>15. Gephyrophobia</td><td>पुल तर्ने डर (Fear of bridges)</td></tr>
-            <tr><td>16. Kinemortophobia</td><td>जोम्बीहरूको डर (Fear of zombies)</td></tr>
-            <tr><td>17. Phasmophobia</td><td>भूतको डर (Fear of ghosts)</td></tr>
-            <tr><td>18. Herpetophobia</td><td>घस्रने जनावरको डर (Fear of reptiles)</td></tr>
-            <tr><td>19. Necrophobia</td><td>लास वा शवको डर (Fear of corpses)</td></tr>
-            <tr><td>20. Thanatophobia</td><td>मृत्युको डर (Fear of death)</td></tr>
-            <tr><td>21. Taphophobia</td><td>जिउँदै गाडिने डर (Fear of being buried alive)</td></tr>
-            <tr><td>22. Philophobia</td><td>माया वा प्रेममा पर्ने डर (Fear of falling in love)</td></tr>
+            <tr><td>Paracetamol</td><td>ज्वरो र सामान्य दुखाइ</td><td>Antipyretic</td></tr>
+            <tr><td>Metformin</td><td>मधुमेह (Diabetes)</td><td>Antidiabetic</td></tr>
+            <tr><td>Amlodipine</td><td>उच्च रक्तचाप (High BP)</td><td>Antihypertensive</td></tr>
+            <tr><td>Pantoprazole</td><td>ग्यास्ट्रिक, एसिडिटी</td><td>Antacid</td></tr>
+            <tr><td>Azithromycin</td><td>ब्याक्टेरियल संक्रमण</td><td>Antibiotic</td></tr>
+            <tr><td>Tamoxifen</td><td>स्तन क्यान्सर</td><td>Oncology</td></tr>
+            <tr><td>Imatinib</td><td>रक्त क्यान्सर (Leukemia)</td><td>Oncology</td></tr>
+            <tr><td>Salbutamol</td><td>दम, श्वासप्रश्वास</td><td>Respiratory</td></tr>
+            <tr><td>Atorvastatin</td><td>कोलेस्ट्रोल नियन्त्रण</td><td>Statins</td></tr>
+            <tr><td>Albendazole</td><td>जुकाको औषधी</td><td>Anthelmintic</td></tr>
+            <tr><td>Metronidazole</td><td>पखाला, पेटको इन्फेक्सन</td><td>Antiprotozoal</td></tr>
+            <tr><td>Cetirizine</td><td>एलर्जी, रुघाखोकी</td><td>Antihistamine</td></tr>
+            <tr><td>Thyroxine</td><td>थाइराइड समस्या</td><td>Hormone</td></tr>
+            <tr><td>Digoxin</td><td>मुटुको धड्कन अनियमित हुँदा</td><td>Cardiac</td></tr>
+            <tr><td>Aspirin</td><td>रगत पातलो बनाउन / दुखाइ</td><td>Antiplatelet</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" style="border-top-color: #2196f3;">
+      <h2><i class="fas fa-apple-alt"></i> भिटामिन गाइड (Vitamin & Minerals)</h2>
+      <div class="table-responsive">
+        <table class="searchableTable">
+          <thead>
+            <tr>
+              <th>भिटामिन</th>
+              <th>फाइदा</th>
+              <th>कमी भएमा के हुन्छ?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>भिटामिन A</td><td>आँखाको ज्योति र छाला</td><td>रतन्धो (Night Blindness)</td></tr>
+            <tr><td>भिटामिन B12</td><td>नशा र रगत निर्माण</td><td>थकान, नशाको कमजोरी</td></tr>
+            <tr><td>भिटामिन C</td><td>रोग प्रतिरोधात्मक क्षमता</td><td>स्कर्भी, गिजा सुन्निने</td></tr>
+            <tr><td>भिटामिन D</td><td>हड्डी र दाँतको मजबुती</td><td>रिकेट्स, हड्डी कमजोर हुने</td></tr>
+            <tr><td>भिटामिन E</td><td>छाला र कपाल</td><td>प्रजनन क्षमतामा असर</td></tr>
+            <tr><td>आइरन (Iron)</td><td>रगतमा हेमोग्लोबिन बढाउन</td><td>रगतको कमी (Anemia)</td></tr>
+            <tr><td>क्याल्सियम</td><td>हड्डीको विकास</td><td>हड्डी खिइने समस्या</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" style="border-top-color: #9c27b0;">
+      <h2><i class="fas fa-syringe"></i> खोप तालिका (Essential Vaccinations)</h2>
+      <div class="table-responsive">
+        <table class="searchableTable">
+          <thead>
+            <tr>
+              <th>खोपको नाम</th>
+              <th>कहिले लगाउने?</th>
+              <th>कुन रोगबाट बचाउँछ?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>BCG</td><td>जन्मने बित्तिकै</td><td>क्षयरोग (TB)</td></tr>
+            <tr><td>DPT</td><td>६, १०, १४ हप्तामा</td><td>लहरे खोकी, धनुष्टंकार</td></tr>
+            <tr><td>PCV</td><td>६, १० हप्ता र ९ महिना</td><td>निमोनिया</td></tr>
+            <tr><td>MR</td><td>९ महिना र १५ महिना</td><td>दादुरा, रुबेला</td></tr>
+            <tr><td>JE</td><td>१२ महिना</td><td>जापानी इन्सेफलाइटिस</td></tr>
+            <tr><td>HPV</td><td>किशोरी अवस्थामा</td><td>पाठेघरको मुखको क्यान्सर</td></tr>
           </tbody>
         </table>
       </div>
@@ -346,53 +267,34 @@
 
   <div class="mobile-call-box">
     <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्: ०५६-५९३२८८
+      <i class="fas fa-phone-alt"></i> केही बुझ्नु परे फोन गर्नुहोस्: ०५६-५९३२८८
     </a>
   </div>
 
   <footer>
-    <div class="footer-info">
+    <div style="max-width: 800px; margin: 0 auto;">
       <strong>विमल फार्मेसी</strong><br>
-      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन<br>
-      admin@bimalpharmacy.com.np
+      भरतपुर-७, चितवन | IRD & DDA प्रमाणित <br>
+      <p style="margin-top: 15px; font-size: 0.8rem; color: #777;">&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
     </div>
-    <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-    <p style="margin-top:15px;">
-      <a href="privacy-policy.html">गोपनीयता नीति</a> | 
-      <a href="sitemap.xml">साइटम्याप</a>
-    </p>
   </footer>
 
   <script>
-    function searchTable() {
-      var input, filter, found, table, tr, td, i, j;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
+    function filterTables() {
+      let input = document.getElementById("guideSearch").value.toUpperCase();
+      let tables = document.querySelectorAll(".searchableTable");
       
-      var tables = ["medicineTable", "phobiaTable"];
-      
-      tables.forEach(function(tableId) {
-        table = document.getElementById(tableId);
-        tr = table.getElementsByTagName("tr");
-        
-        for (i = 1; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td");
-          found = false;
-          
-          for (j = 0; j < td.length; j++) {
-            if (td[j]) {
-              if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                found = true;
-                break;
-              }
+      tables.forEach(table => {
+        let tr = table.getElementsByTagName("tr");
+        for (let i = 1; i < tr.length; i++) {
+          let found = false;
+          let td = tr[i].getElementsByTagName("td");
+          for (let j = 0; j < td.length; j++) {
+            if (td[j].innerHTML.toUpperCase().indexOf(input) > -1) {
+              found = true;
             }
           }
-          
-          if (found) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
+          tr[i].style.display = found ? "" : "none";
         }
       });
     }
