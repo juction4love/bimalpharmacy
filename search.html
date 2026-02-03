@@ -3,52 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>औषधी खोज्नुहोस् | विमल फार्मेसी</title>
+  <title>औषधी खोज्नुहोस् | बिमल फार्मेसी</title>
   
-  <meta name="description" content="विमल फार्मेसीको डिजिटल औषधी सूची। नाम, श्रेणी वा प्रयोग अनुसार औषधी खोज्नुहोस् र तुरुन्त अर्डर गर्नुहोस्।">
+  <meta name="description" content="बिमल फार्मेसीको डिजिटल औषधी सूची। नाम, श्रेणी वा प्रयोग अनुसार औषधी खोज्नुहोस् र तुरुन्त अर्डर गर्नुहोस्।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <style>
-    /* 1. Global Variables (Matched to Index) */
+    /* --- Model Global Variables --- */
     :root {
       --primary: #2e7d32;    /* Deep Medical Green */
       --secondary: #1b5e20;  /* Darker Green */
       --accent: #fbc02d;     /* Gold/Yellow */
-      --light-bg: #f4f7f6;
-      --white: #ffffff;
-      --text-dark: #333;
-      --shadow: 0 4px 12px rgba(0,0,0,0.1);
       --danger: #d32f2f;
+      --light-bg: #f8faf9;
+      --white: #ffffff;
+      --text-dark: #2c3e50;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --whatsapp: #25d366;
     }
 
-    /* 2. Reset & Base Styles */
+    /* --- Base Styles --- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       line-height: 1.6; 
       background-color: var(--light-bg); 
       color: var(--text-dark);
-      padding-bottom: 70px; /* Space for mobile call button */
+      padding-bottom: 80px; 
     }
 
-    /* 3. Header & Branding */
-    header.text-header {
+    /* --- 1. Branding Header (Round Corner Logo Model) --- */
+    .branding-header {
       background: var(--white);
-      padding: 25px 15px;
-      text-align: center;
-      border-bottom: 3px solid var(--primary);
+      padding: 20px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+      border-bottom: 5px solid var(--primary);
     }
-    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
-    header p { font-size: 0.9rem; color: #666; }
-    header i { color: var(--primary); margin-right: 5px; }
 
-    /* 4. Navigation (Consistent) */
+    .logo-container img {
+      height: 85px;
+      width: 85px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+      padding: 4px;
+      background: white;
+    }
+
+    .brand-text h1 { 
+      color: var(--primary); 
+      font-size: 2.2rem; 
+      margin: 0;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .brand-text p { 
+      font-size: 1rem; 
+      color: #555; 
+      font-weight: 500;
+    }
+
+    /* --- 2. Navigation (Sticky Model) --- */
     .navbar {
       background: var(--primary);
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: var(--shadow);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .nav-links {
       display: flex;
@@ -59,50 +84,56 @@
     .nav-links a {
       color: var(--white);
       text-decoration: none;
-      padding: 15px 20px;
+      padding: 18px 22px;
       display: block;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 0.95rem;
       transition: 0.3s;
     }
-    .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
+    .nav-links a:hover, .nav-links a.active { 
+      background: var(--secondary); 
+      color: var(--accent) !important;
+      box-shadow: inset 0 -4px 0 var(--accent);
+    }
 
-    /* 5. Hero Section */
+    /* --- 3. Hero Section --- */
     .hero {
-      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/cubes.png');
+      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/white-diamond.png');
       text-align: center;
       padding: 40px 20px;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #eee;
     }
     .hero h2 { font-size: 2rem; color: var(--secondary); margin-bottom: 10px; }
     .hero p { color: #555; max-width: 600px; margin: 0 auto; }
 
-    /* 6. Search Interface */
+    /* --- 4. Sticky Search Interface --- */
     .search-wrapper {
       position: sticky;
-      top: 54px; /* Height of Navbar approx */
+      top: 58px; /* Offset for sticky navbar */
       z-index: 990;
       background: var(--light-bg);
       padding: 20px;
-      box-shadow: 0 10px 10px -10px rgba(0,0,0,0.05);
+      border-bottom: 1px solid #eee;
     }
 
     .input-group {
       position: relative;
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
     #medInput {
       width: 100%;
-      padding: 16px 20px 16px 55px;
+      padding: 16px 20px 16px 60px;
       font-size: 1.1rem;
       border: 2px solid var(--primary);
       border-radius: 50px;
       outline: none;
       box-shadow: var(--shadow);
       transition: 0.3s;
+      background: white;
     }
-    #medInput:focus { border-color: var(--accent); }
+    #medInput:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.1); }
 
     .search-icon-inside {
       position: absolute;
@@ -113,163 +144,151 @@
       font-size: 1.3rem;
     }
 
-    /* 7. Results Grid */
+    /* --- 5. Main Results Grid --- */
     .main-content {
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 20px auto;
       padding: 20px;
       min-height: 50vh;
     }
 
     .results-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 25px;
     }
 
-    /* Medicine Card Style */
+    /* Medicine Card Model */
     .med-card {
       background: var(--white);
       padding: 25px;
-      border-radius: 12px;
-      border-top: 5px solid var(--primary);
+      border-radius: 20px;
+      border-top: 6px solid var(--primary);
       box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.3s;
+      transition: 0.3s;
     }
-    .med-card:hover { transform: translateY(-5px); }
+    .med-card:hover { transform: translateY(-8px); }
 
     .med-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .category-badge {
       font-size: 0.75rem;
       background: #e8f5e9;
       color: var(--primary);
-      padding: 5px 10px;
-      border-radius: 20px;
+      padding: 6px 12px;
+      border-radius: 50px;
       font-weight: bold;
-      text-transform: uppercase;
     }
     
     .med-card h3 { 
       color: var(--secondary); 
-      font-size: 1.2rem; 
-      margin-bottom: 5px; 
-      line-height: 1.3;
+      font-size: 1.3rem; 
+      margin-bottom: 8px; 
     }
     
     .med-details {
-      font-size: 0.9rem;
-      color: #666;
-      margin-bottom: 15px;
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 20px;
       flex-grow: 1;
     }
-    .med-details strong { color: var(--text-dark); }
+    .med-details i { color: var(--primary); margin-right: 8px; width: 20px; text-align: center; }
 
     .price-tag { 
-      font-size: 1.4rem; 
+      font-size: 1.5rem; 
       font-weight: bold; 
       color: var(--danger); 
       margin-bottom: 15px; 
     }
 
     /* Card Buttons */
-    .btn-group { display: flex; gap: 10px; }
+    .btn-group { display: flex; gap: 12px; }
     
     .card-btn {
       flex: 1;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      padding: 12px;
+      border-radius: 10px;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       text-align: center;
       font-weight: 600;
       transition: 0.2s;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 8px;
     }
     
-    .call-btn { background: #f5f5f5; color: var(--text-dark); border: 1px solid #ddd; }
-    .call-btn:hover { background: #e0e0e0; }
-    
-    .wa-btn { background: #25D366; color: white; }
-    .wa-btn:hover { background: #128C7E; }
+    .call-btn { background: #f0f0f0; color: var(--text-dark); border: 1px solid #ddd; }
+    .wa-btn { background: var(--whatsapp); color: white; }
+    .wa-btn:hover { background: #128c7e; transform: scale(1.02); }
 
-    /* Status Messages */
-    #status-msg { text-align: center; color: #777; font-style: italic; margin-bottom: 20px; }
+    #status-msg { text-align: center; color: #666; font-weight: 500; margin-bottom: 25px; }
 
-    /* Footer */
-    footer {
-      background: #222;
-      color: #bbb;
-      padding: 40px 20px;
-      text-align: center;
-      margin-top: 50px;
-    }
-    .footer-info { color: var(--white); margin-bottom: 20px; }
-    footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
+    /* --- 6. Footer Model --- */
+    footer { background: #1a1a1a; color: #999; padding: 60px 20px 110px; text-align: center; }
+    footer strong { color: white; font-size: 1.4rem; }
 
-    /* Mobile Call Button */
     .mobile-call-box {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: var(--primary);
-      text-align: center;
-      padding: 15px;
-      z-index: 999;
+      position: fixed; bottom: 0; width: 100%;
+      background: var(--primary); padding: 18px; text-align: center; z-index: 1000;
     }
-    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.3rem; font-weight: 800; }
 
-    /* Responsive */
+    /* Responsive Adjustments */
     @media (max-width: 600px) {
-      .hero h2 { font-size: 1.6rem; }
-      .nav-links a { padding: 10px 12px; font-size: 0.85rem; }
-      .search-wrapper { padding: 15px; top: 45px; }
-      #medInput { font-size: 1rem; padding: 12px 15px 12px 45px; }
-      .search-icon-inside { left: 15px; font-size: 1.1rem; }
+      .branding-header { padding: 15px; }
+      .logo-container img { height: 60px; width: 60px; }
+      .brand-text h1 { font-size: 1.5rem; }
+      .hero h2 { font-size: 1.7rem; }
+      .nav-links a { padding: 12px 10px; font-size: 0.85rem; }
+      .search-wrapper { top: 48px; padding: 15px; }
+      #medInput { font-size: 1rem; padding-left: 50px; }
+      .search-icon-inside { left: 18px; }
     }
   </style>
 </head>
 <body>
 
-  <header class="text-header">
-    <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</p>
+  <header class="branding-header">
+    <div class="logo-container">
+      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Logo">
+    </div>
+    <div class="brand-text">
+      <h1>बिमल फार्मेसी</h1>
+      <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र</p>
+    </div>
   </header>
 
   <nav class="navbar">
-  <ul class="nav-links">
-    <li><a href="index.html">गृहपृष्ठ</a></li>
-    <li><a href="medical-guide.html">औषधी गाइड</a></li>
-    <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-    <li><a href="order.html">अर्डर</a></li>
-    <li><a href="service.html">सेवाहरू</a></li>
-    <li><a href="notice.html">सूचना</a></li>
-    <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
-    <li><a href="contact.html">सम्पर्क</a></li>
-  </ul>
-</nav>
+    <ul class="nav-links">
+      <li><a href="index.html">गृहपृष्ठ</a></li>
+      <li><a href="medical-guide.html">औषधी गाइड</a></li>
+      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
+      <li><a href="order.html">अर्डर</a></li>
+      <li><a href="service.html">सेवाहरू</a></li>
+      <li><a href="notice.html">सूचना</a></li>
+      <li><a href="search.html" class="active"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
+      <li><a href="contact.html">सम्पर्क</a></li>
+    </ul>
+  </nav>
 
   <section class="hero">
     <h2>डिजिटल औषधी सूची</h2>
-    <p>हामीसँग उपलब्ध औषधीहरू खोज्नुहोस् र सिधै व्हाट्सएपमा अर्डर गर्नुहोस्।</p>
+    <p>हामीसँग उपलब्ध औषधीहरू खोज्नुहोस् र सिधै ह्वाट्सएपमा अर्डर गर्नुहोस्।</p>
   </section>
 
   <div class="search-wrapper">
     <div class="input-group">
       <i class="fas fa-search search-icon-inside"></i>
-      <input type="text" id="medInput" placeholder="औषधीको नाम, ब्रान्ड वा रोगको नाम टाइप गर्नुहोस्..." oninput="debounceSearch()">
+      <input type="text" id="medInput" placeholder="औषधी, ब्रान्ड वा रोगको नाम टाइप गर्नुहोस्..." oninput="debounceSearch()">
     </div>
   </div>
 
@@ -285,16 +304,16 @@
   </div>
 
   <footer>
-    <div class="footer-info">
-      <strong>विमल फार्मेसी</strong><br>
-      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन<br>
+    <div class="container">
+      <strong>बिमल फार्मेसी</strong><br>
+      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन, नेपाल<br>
       admin@bimalpharmacy.com.np
+      <p style="margin-top:20px;">© २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+      <div style="margin-top:15px;">
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="sitemap.xml">Sitemap</a>
+      </div>
     </div>
-    <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-    <p style="margin-top:15px;">
-      <a href="privacy-policy.html">गोपनीयता नीति</a> | 
-      <a href="sitemap.xml">साइटम्याप</a>
-    </p>
   </footer>
 
   <script>
@@ -305,7 +324,6 @@
     async function init() {
         const status = document.getElementById('status-msg');
         try {
-            // Ensure 'medicines.json' exists in your root folder
             const response = await fetch('./medicines.json');
             if (!response.ok) throw new Error('Network response was not ok');
             
@@ -333,31 +351,29 @@
             return;
         }
 
-        // Filter Logic
         const filtered = medicineDatabase.filter(m => 
             (m["Product Name"] && m["Product Name"].toLowerCase().includes(query)) || 
             (m["category"] && m["category"].toLowerCase().includes(query)) ||
             (m["Medicine use for"] && m["Medicine use for"].toLowerCase().includes(query))
-        ).slice(0, 40); // Increased limit slightly
+        ).slice(0, 50);
 
         if (filtered.length === 0) {
             grid.innerHTML = "";
-            status.innerHTML = "<i class='fas fa-search-minus'></i> माफ गर्नुहोस्, कुनै नतिजा भेटिएन। हिज्जे (Spelling) चेक गर्नुहोस्।";
+            status.innerHTML = "<i class='fas fa-search-minus'></i> माफ गर्नुहोस्, कुनै नतिजा भेटिएन।";
             return;
         }
 
         status.innerHTML = `<strong>${filtered.length}</strong> नतिजाहरू भेटिए:`;
 
-        // Render Cards
+        // Render Cards with the New Model Design
         grid.innerHTML = filtered.map(m => {
             const productName = m["Product Name"] || "Unknown Medicine";
             const price = m["Sales price"] ? `रू ${m["Sales price"]}` : "सम्पर्क गर्नुहोस्";
             const category = m["category"] || "General";
-            const uses = m["Medicine use for"] || "Consult Pharmacist";
+            const uses = m["Medicine use for"] || "फर्मासिस्टसँग सल्लाह लिनुहोस्";
             const unit = m["Small Unit"] || "";
             
-            // WhatsApp Message Generator
-            const waMessage = encodeURIComponent(`नमस्ते, मलाई यो औषधीको बारेमा जानकारी चाहिएको थियो: \n\n*${productName}*\n(Category: ${category})\n\nके यो उपलब्ध छ?`);
+            const waMessage = encodeURIComponent(`नमस्ते बिमल फार्मेसी, मलाई यो औषधीको बारेमा जानकारी चाहिएको थियो: \n\n*${productName}*\n(Category: ${category})\n\nके यो उपलब्ध छ?`);
             
             return `
             <div class="med-card">
@@ -368,7 +384,7 @@
                     </div>
                     <h3>${productName}</h3>
                     <div class="med-details">
-                        <p><i class="fas fa-notes-medical" style="color:var(--primary);"></i> <strong>प्रयोग:</strong> ${uses}</p>
+                        <p><i class="fas fa-notes-medical"></i> <strong>प्रयोग:</strong> ${uses}</p>
                     </div>
                 </div>
                 <div>
@@ -386,7 +402,6 @@
         `}).join('');
     }
 
-    // Start
     init();
   </script>
 
