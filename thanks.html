@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>धन्यवाद | विमल फार्मेसी</title>
+  <title>धन्यवाद | बिमल फार्मेसी</title>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
@@ -111,22 +111,21 @@
       border-radius: 8px;
     }
 
-    /* QR Code Section */
+    /* NepalPay QR Section */
     .payment-qr {
       margin-top: 30px;
       padding: 20px;
-      border: 2px dashed #ccc;
+      border: 2px dashed var(--primary);
       border-radius: 15px;
+      background: #fafafa;
     }
-    .qr-placeholder {
-      width: 180px;
-      height: 180px;
-      background: #eee;
-      margin: 10px auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #ddd;
+    .qr-image {
+      width: 220px;
+      height: auto;
+      margin: 15px auto;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     .btn-group {
@@ -157,13 +156,14 @@
     @media (max-width: 600px) {
       .status-card h2 { font-size: 1.5rem; }
       .wish-text { font-size: 1.1rem; }
+      .qr-image { width: 180px; }
     }
   </style>
 </head>
 <body>
 
   <header class="text-header">
-    <h1>विमल फार्मेसी</h1>
+    <h1>बिमल फार्मेसी</h1>
     <p>तपाईंको स्वास्थ्य, हाम्रो जिम्मेवारी</p>
   </header>
 
@@ -182,7 +182,7 @@
       <h2 style="color: var(--primary);">अर्डर प्राप्त भयो, धन्यवाद!</h2>
       
       <p style="margin-top:10px;">
-        विमल फार्मेसीसँग जोडिनुभएकोमा हामी हृदयदेखि नै कृतज्ञ छौं। <br>
+        बिमल फार्मेसीसँग जोडिनुभएकोमा हामी हृदयदेखि नै कृतज्ञ छौं। <br>
         तपाईंको विश्वास नै हाम्रो सफलता हो।
       </p>
 
@@ -202,12 +202,12 @@
       </div>
 
       <div class="payment-qr">
-        <h4 style="color: var(--secondary); margin-bottom: 10px;">अनलाइन भुक्तानी (eSewa / QR)</h4>
-        <p style="font-size: 0.85rem; color: #666;">अर्डर कन्फर्म भएपछि भुक्तानीका लागि यो QR प्रयोग गर्न सक्नुहुन्छ:</p>
-        <div class="qr-placeholder">
-           <i class="fas fa-qrcode fa-4x" style="color:#ccc;"></i>
-        </div>
-        <small>९८५५०६५३२७ (विमल फार्मेसी)</small>
+        <h4 style="color: var(--secondary); margin-bottom: 5px;">सुरक्षित डिजिटल भुक्तानी</h4>
+        <p style="font-size: 0.85rem; color: #666;">हामी <strong>NepalPay QR</strong> स्वीकार गर्दछौं:</p>
+        
+        <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/nepalpay.jpeg" alt="Bimal Pharmacy NepalPay QR" class="qr-image">
+        
+        <p style="font-size: 0.9rem; font-weight: bold; color: var(--primary);">बिमल फार्मेसी (९८५५०६५३२७)</p>
       </div>
 
       <div class="btn-group">
@@ -215,7 +215,7 @@
           <i class="fas fa-arrow-left"></i> गृहपृष्ठमा जानुहोस्
         </a>
         <a href="https://wa.me/9779855065327" class="btn btn-primary" style="background:#25D366; border:none;">
-          <i class="fab fa-whatsapp"></i> व्हाट्सएपमा सोध्नुहोस्
+          <i class="fab fa-whatsapp"></i> व्हाट्सएपमा सम्पर्क गर्नुहोस्
         </a>
       </div>
     </div>
@@ -229,7 +229,7 @@
   </div>
 
   <footer>
-    <p>&copy; २०२६ विमल फार्मेसी | भरतपुर-७, चितवन</p>
+    <p>&copy; २०२६ बिमल फार्मेसी | भरतपुर-७, चितवन</p>
     <p style="font-size: 0.8rem; margin-top: 10px;">तपाईंको छिटो निको हुने कामना गर्दछौं।</p>
   </footer>
 
