@@ -3,45 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>हाम्रा सेवाहरू | विमल फार्मेसी</title>
+  <title>विस्तृत सेवाहरू | विमल फार्मेसी - भरतपुर-७, चितवन</title>
   
-  <meta name="description" content="विमल फार्मेसीका सेवाहरू: २४ घण्टा सेवा, अंकोलोजी (क्यान्सर) औषधी, होम डेलिभरी र स्वास्थ्य परामर्श।">
+  <meta name="description" content="विमल फार्मेसीका आधिकारिक सेवाहरू: २४ घण्टा क्यान्सर औषधी आपूर्ति, सुरक्षित होम डेलिभरी र दक्ष फार्मासिस्ट परामर्श।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <style>
-    /* 1. Global Variables (Matched to Index) */
     :root {
-      --primary: #2e7d32;    /* Deep Medical Green */
-      --secondary: #1b5e20;  /* Darker Green */
-      --accent: #fbc02d;     /* Gold/Yellow */
-      --light-bg: #f4f7f6;
+      --primary: #2e7d32;
+      --secondary: #1b5e20;
+      --accent: #fbc02d;
+      --light-bg: #f8faf9;
       --white: #ffffff;
-      --text-dark: #333;
-      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --text-dark: #2c3e50;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --danger: #d32f2f;
+      --soft-yellow: #fffde7;
     }
 
-    /* 2. Reset & Base Styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-      line-height: 1.6; 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+      line-height: 1.7; 
       background-color: var(--light-bg); 
       color: var(--text-dark);
-      padding-bottom: 70px; /* Space for mobile call button */
+      padding-bottom: 80px;
     }
 
-    /* 3. Header & Branding */
     header.text-header {
       background: var(--white);
-      padding: 25px 15px;
+      padding: 30px 15px;
       text-align: center;
-      border-bottom: 3px solid var(--primary);
+      border-bottom: 4px solid var(--primary);
     }
-    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
-    header p { font-size: 0.9rem; color: #666; }
-    header i { color: var(--primary); margin-right: 5px; }
+    header h1 { color: var(--primary); font-size: 2.5rem; letter-spacing: -1px; }
 
-    /* 4. Navigation */
     .navbar {
       background: var(--primary);
       position: sticky;
@@ -49,137 +45,131 @@
       z-index: 1000;
       box-shadow: var(--shadow);
     }
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      flex-wrap: wrap;
-    }
+    .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
     .nav-links a {
       color: var(--white);
       text-decoration: none;
-      padding: 15px 20px;
+      padding: 18px 22px;
       display: block;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 0.95rem;
       transition: 0.3s;
     }
-    .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent); }
 
-    /* 5. Hero Section */
     .hero {
-      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/cubes.png');
+      background: linear-gradient(135deg, #ffffff 0%, #f0f7f1 100%);
       text-align: center;
-      padding: 60px 20px;
-      border-bottom: 1px solid #ddd;
+      padding: 80px 20px;
+      border-bottom: 1px solid #e0e0e0;
     }
-    .hero h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
-    .hero p { font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto; }
+    .hero h2 { font-size: 2.8rem; color: var(--secondary); margin-bottom: 15px; }
+    .hero p { font-size: 1.2rem; color: #555; max-width: 800px; margin: 0 auto; }
 
-    /* 6. Service Layout */
-    .main-content {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .trust-container {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .trust-tag {
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-weight: 700;
+      color: var(--primary);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    /* Common Card Style */
+    .main-content { max-width: 1200px; margin: 50px auto; padding: 0 25px; }
+
+    .service-section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .service-section-title::after {
+      content: ''; width: 60px; height: 4px; background: var(--accent);
+      position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+    }
+
     .card {
       background: var(--white);
-      padding: 30px;
-      border-radius: 12px;
+      padding: 40px;
+      border-radius: 20px;
       box-shadow: var(--shadow);
-      border-top: 5px solid var(--primary);
-      transition: transform 0.3s;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      border-left: 8px solid var(--primary);
     }
-    .card:hover { transform: translateY(-5px); }
 
-    /* Featured Service (Oncology) */
-    .featured-service {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 30px;
+    /* Combined Certification Styles */
+    .cert-card {
+      border-left: 8px solid var(--accent) !important;
+      background: var(--soft-yellow);
     }
-    .featured-text { flex: 2; min-width: 300px; }
-    .featured-icon { 
-      flex: 1; 
-      text-align: center; 
-      font-size: 5rem; 
-      color: var(--primary); 
-      opacity: 0.2;
-    }
-    
-    /* Service Grid */
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-    
-    .service-item {
-      text-align: center;
-    }
-    .icon-box {
-      width: 70px;
-      height: 70px;
-      background: #e8f5e9;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      color: var(--primary);
-      font-size: 1.8rem;
-      transition: 0.3s;
-    }
-    .card:hover .icon-box { background: var(--primary); color: var(--white); }
+    .cert-card h3 { color: #856404; margin-bottom: 15px; }
 
     .service-list {
-      text-align: left;
       list-style: none;
       margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px solid #eee;
     }
     .service-list li {
-      margin-bottom: 10px;
-      font-size: 0.95rem;
-      color: #555;
+      margin-bottom: 12px;
       display: flex;
       align-items: flex-start;
-      gap: 10px;
+      gap: 12px;
     }
-    .service-list i { color: var(--secondary); margin-top: 4px; }
+    .service-list i { color: var(--primary); margin-top: 5px; }
 
-    /* Footer */
-    footer {
-      background: #222;
-      color: #bbb;
-      padding: 40px 20px;
-      text-align: center;
-      margin-top: 50px;
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
     }
-    .footer-info { color: var(--white); margin-bottom: 20px; }
-    footer a { color: var(--accent); text-decoration: none; margin: 0 10px; }
-
-    /* Mobile Call Button */
-    .mobile-call-box {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: var(--primary);
-      text-align: center;
-      padding: 15px;
-      z-index: 999;
+    .step-item {
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 12px;
+      position: relative;
     }
-    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+    .step-number {
+      position: absolute; top: -15px; left: 20px;
+      background: var(--accent); color: #000;
+      width: 35px; height: 35px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-weight: 800;
+    }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      .hero h2 { font-size: 1.8rem; }
-      .nav-links a { padding: 10px 12px; font-size: 0.85rem; }
-      .featured-icon { display: none; }
+    .faq-wrapper { margin-top: 60px; }
+    .faq-card {
+      background: var(--white);
+      border: 1px solid #eee;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+    .faq-header {
+      padding: 20px; cursor: pointer; display: flex;
+      justify-content: space-between; font-weight: 700;
+    }
+    .faq-body {
+      padding: 0 20px; max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease; color: #666;
+    }
+    .faq-card.open .faq-body { max-height: 500px; padding-bottom: 20px; }
+
+    footer { background: #1a1a1a; color: #aaa; padding: 60px 20px 120px; text-align: center; }
+    .mobile-call-box { position: fixed; bottom: 0; width: 100%; background: var(--primary); padding: 20px; z-index: 1000; }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.4rem; font-weight: 800; }
+
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 2rem; }
+      .card { padding: 25px; }
     }
   </style>
 </head>
@@ -187,110 +177,159 @@
 
   <header class="text-header">
     <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-map-marker-alt"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</p>
-    <p><i class="fas fa-phone"></i> ०५६-५९३२८८</p>
+    <p><i class="fas fa-hospital-symbol"></i> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन</p>
   </header>
 
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
-      <li><a href="medical-guide.html">औषधी गाइड</a></li>
-      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
+      <li><a href="search.html">औषधी खोज्नुहोस्</a></li>
       <li><a href="order.html">अर्डर</a></li>
       <li><a href="service.html" class="active">सेवाहरू</a></li>
       <li><a href="notice.html">सूचना</a></li>
-      <li><a href="about.html">जानकारी</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
   <section class="hero">
-    <h2>हाम्रा सेवाहरू</h2>
-    <p>गुणस्तरीय औषधी र बिरामीको सेवामा समर्पित हाम्रो प्रयास।</p>
+    <h2>हाम्रा विशिष्ट सेवाहरू</h2>
+    <p>विगत लामो समयदेखि भरतपुरको मुटुमा रहेर हामीले बिरामीहरूको सेवा गर्दै आएका छौं। हामी केवल औषधी मात्र बेच्दैनौं, स्वास्थ्यप्रतिको जिम्मेवारी पनि वहन गर्छौं।</p>
+    
+    <div class="trust-container">
+      <div class="trust-tag"><i class="fas fa-file-medical"></i> DDA दर्ता नं: २०७९/८०</div>
+      <div class="trust-tag"><i class="fas fa-certificate"></i> DFTQC प्रमाणित</div>
+      <div class="trust-tag"><i class="fas fa-truck-moving"></i> नेपालभर डेलिभरी</div>
+    </div>
   </section>
 
   <main class="main-content">
     
-    <div class="card featured-service">
-      <div class="featured-text">
-        <h2 style="color: var(--primary); margin-bottom: 10px;">
-          <i class="fas fa-ribbon"></i> अंकोलोजी (क्यान्सर) केयर
-        </h2>
-        <p>बी.पी. कोइराला मेमोरियल क्यान्सर अस्पताल नजिकै रहेको हुनाले हामी क्यान्सर उपचारका लागि आवश्यक पर्ने सम्पूर्ण विशिष्ट औषधीहरू उपलब्ध गराउँछौं।</p>
-        <ul class="service-list" style="border-top: 1px solid #ddd;">
-           <li><i class="fas fa-check-circle"></i> किमोथेरापी (Chemotherapy) का सम्पूर्ण औषधीहरू</li>
-           <li><i class="fas fa-check-circle"></i> इम्युनोथेरापी र हर्मोनल थेरापीका औषधी</li>
-           <li><i class="fas fa-snowflake"></i> कोल्ड चेन (Cold Chain) मेन्टेन गर्नुपर्ने सेन्सेटिभ औषधीहरू</li>
-        </ul>
-      </div>
-      <div class="featured-icon">
-        <i class="fas fa-hand-holding-medical"></i>
-      </div>
-    </div>
-
-    <div class="service-grid">
+    <div class="card cert-card">
+      <h3><i class="fas fa-user-shield"></i> पूर्ण सुरक्षित र प्रमाणित</h3>
+      <p>विमल फार्मेसी नेपाल सरकारको नियम अनुसार संचालित छ। हामीकहाँ उपलब्ध सामग्रीहरू निम्न निकायबाट प्रमाणित छन्:</p>
       
-      <div class="card service-item">
-        <div class="icon-box"><i class="fas fa-clock"></i></div>
-        <h3>२४ सै घण्टा सेवा</h3>
-        <p>बिरामीको समस्याको कुनै समय हुँदैन, त्यसैले हामी सधैं तयार छौं।</p>
-        <ul class="service-list">
-          <li><i class="fas fa-moon"></i> रातीको समयमा पनि इमर्जेन्सी सेवा</li>
-          <li><i class="fas fa-phone-alt"></i> फोन बुकिङ सुविधा</li>
-        </ul>
-      </div>
-
-      <div class="card service-item">
-        <div class="icon-box"><i class="fas fa-motorcycle"></i></div>
-        <h3>होम डेलिभरी</h3>
-        <p>अशक्त बिरामीहरूको सहजताका लागि घरमै औषधी पुर्‍याउने व्यवस्था।</p>
-        <ul class="service-list">
-          <li><i class="fas fa-map-marker-alt"></i> भरतपुर क्षेत्र भित्र डेलिभरी</li>
-          <li><i class="fab fa-whatsapp"></i> व्हाट्सएप मार्फत अर्डर</li>
-        </ul>
-      </div>
-
-      <div class="card service-item">
-        <div class="icon-box"><i class="fas fa-user-md"></i></div>
-        <h3>स्वास्थ्य परामर्श</h3>
-        <p>दक्ष तथा अनुभवी फार्मासिस्टहरू द्वारा सही सल्लाह र सुझाव।</p>
-        <ul class="service-list">
-          <li><i class="fas fa-pills"></i> औषधी खाने तरिका र मात्रा</li>
-          <li><i class="fas fa-exclamation-triangle"></i> साइड इफेक्ट बारे सचेतना</li>
-        </ul>
-      </div>
-
-      <div class="card service-item">
-        <div class="icon-box"><i class="fas fa-crutch"></i></div>
-        <h3>सर्जिकल सामग्री</h3>
-        <p>अस्पताल र बिरामी स्याहारका लागि आवश्यक उपकरणहरू।</p>
-        <ul class="service-list">
-          <li><i class="fas fa-wheelchair"></i> ह्विलचेयर, कमोड कुर्सी, वाकर</li>
-          <li><i class="fas fa-procedures"></i> अक्सिजन मास्क, क्यानुला</li>
-        </ul>
-      </div>
-
+      <ul class="service-list">
+        <li>
+          <i class="fas fa-check-square"></i> 
+          <strong>DDA (औषधि व्यवस्था विभाग):</strong> सम्पूर्ण औषधी र सर्जिकल सामग्रीहरू सरकारी मापदण्ड अनुसार भण्डारण र वितरण गरिन्छ।
+        </li>
+        <li>
+          <i class="fas fa-check-square"></i> 
+          <strong>DFTQC (खाद्य विभाग):</strong> हामीकहाँ उपलब्ध बेबी फुड, प्रोटिन सप्लिमेन्ट र पोषणयुक्त सामग्रीहरू खाद्य विभागबाट स्वीकृत छन्।
+        </li>
+        <li>
+          <i class="fas fa-check-square"></i> 
+          <strong>WHO-GMP:</strong> हामीले उपलब्ध गराउने अधिकांश उत्पादक कम्पनीहरू WHO-GMP प्रमाणित छन्, जसले औषधिको उच्च गुणस्तर सुनिश्चित गर्दछ।
+        </li>
+      </ul>
     </div>
+
+    <div class="service-section-title">
+      <h2>हामी कसरी सेवा प्रदान गर्छौं?</h2>
+    </div>
+
+    <div class="card">
+      <h3><i class="fas fa-clipboard-list"></i> औषधी अर्डर तथा प्राप्ति प्रक्रिया</h3>
+      <p>हाम्रो सेवालाई सरल, छिटो र पारदर्शी बनाउन हामीले निम्न ४ चरणको प्रक्रिया पालना गर्छौं:</p>
+      
+      <div class="step-grid">
+        <div class="step-item">
+          <div class="step-number">१</div>
+          <strong>खोज वा परामर्श:</strong>
+          <p>डिजिटल सर्च मेनु प्रयोग गर्नुहोस् वा उपलब्धताबारे बुझ्न सिधै ०५६-५९३२८८ मा फोन गर्नुहोस्।</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">२</div>
+          <strong>प्रमाणीकरण:</strong>
+          <p>एन्टिबायोटिक र कडा औषधीका लागि डाक्टरको आधिकारिक पुर्जाको फोटो व्हाट्सएपमा अनिवार्य पठाउनुपर्नेछ।</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">३</div>
+          <strong>भुक्तानी:</strong>
+          <p>भरतपुर बाहिरको डेलिभरीका लागि eSewa, Khalti वा बैंक मार्फत सुरक्षित भुक्तानी गर्न सकिन्छ।</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">४</div>
+          <strong>प्याकेजिङ र डेलिभरी:</strong>
+          <p>कोल्ड चेन मेन्टेन गर्नुपर्ने औषधीलाई विशेष इन्सुलेटेड बक्समा राखेर सुरक्षित घरदैलोमा पुर्‍याइन्छ।</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="color: var(--danger);"><i class="fas fa-biohazard"></i> क्यान्सर (Oncology) औषधी विशेष सेवा</h3>
+      <p>चितवन क्यान्सर अस्पतालको नजिकै रहेको कारण हामीसँग क्यान्सरका दुर्लभ र विशिष्ट औषधीहरूको स्टक सधैं उपलब्ध रहन्छ।</p>
+      <ul class="service-list" style="margin-left: 20px;">
+        <li><i class="fas fa-vial"></i> सबै प्रकारका किमोथेरापी ड्रग्स (Targeted & Immunotherapy)</li>
+        <li><i class="fas fa-snowflake"></i> २°C देखि ८°C तापक्रम चाहिने औषधीहरूको उचित भण्डारण</li>
+        <li><i class="fas fa-user-nurse"></i> अस्पतालमा भर्ना भएका बिरामीहरूका लागि बेडमै सेवा</li>
+      </ul>
+    </div>
+
+    <div class="faq-wrapper">
+      <h2 style="text-align: center; margin-bottom: 30px;">धेरै सोधिने प्रश्नहरू (FAQ)</h2>
+      
+      <div class="faq-card">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          चितवन बाहिर डेलिभरी कति समयमा हुन्छ? <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-body">
+          काठमाडौं, पोखरा, बुटवल जस्ता प्रमुख सहरहरूमा १-२ दिनमा र अन्य ग्रामीण भेगमा ३ दिनसम्ममा औषधी पुग्छ।
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          के सबै औषधीको होम डेलिभरी सम्भव छ? <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-body">
+          नेपाल सरकारको कानुनले अनुमति दिएका र डाक्टरको प्रेस्क्रिप्सन भएका सबै औषधीहरू हामी घरमै पुर्‍याउँछौं।
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          के मलाई औषधीको आधिकारिक बिल प्राप्त हुन्छ? <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-body">
+          हजुर, विमल फार्मेसीबाट खरिद गरिएका प्रत्येक सामग्रीको भ्याट/प्यान बिल अनिवार्य रूपमा प्रदान गरिन्छ।
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <div class="mobile-call-box">
     <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> अहिले फोन गर्नुहोस्: ०५६-५९३२८८
+      <i class="fas fa-phone-alt"></i> २४सै घण्टा सेवा: ०५६-५९३२८८
     </a>
   </div>
 
   <footer>
-    <div class="footer-info">
-      <strong>विमल फार्मेसी</strong><br>
-      क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन<br>
-      admin@bimalpharmacy.com.np
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h3 style="color:white; margin-bottom: 20px;">विमल फार्मेसी (Vimal Pharmacy)</h3>
+      <p>हामी औषधि व्यवस्था विभाग (DDA) र खाद्य प्रविधि तथा गुण नियन्त्रण विभाग (DFTQC) नेपालको मापदण्ड अनुसार सञ्चालित आधिकारिक संस्था हौं।</p>
+      <div style="margin-top: 30px; font-size: 0.85rem; color: #ccc;">
+        ठेगाना: भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन <br>
+        सम्पर्क: ०५६-५९३२८८ | ९८५५०६५३२७ <br>
+        इमेल: admin@bimalpharmacy.com.np
+      </div>
+      <p style="margin-top: 25px; font-size: 0.75rem;">&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
     </div>
-    <p>&copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-    <p style="margin-top:15px;">
-      <a href="privacy-policy.html">गोपनीयता नीति</a> | 
-      <a href="sitemap.xml">साइटम्याप</a>
-    </p>
   </footer>
+
+  <script>
+    function toggleFaq(element) {
+      const card = element.parentElement;
+      card.classList.toggle('open');
+      const icon = element.querySelector('i');
+      if (card.classList.contains('open')) {
+        icon.classList.replace('fa-plus', 'fa-minus');
+      } else {
+        icon.classList.replace('fa-minus', 'fa-plus');
+      }
+    }
+  </script>
 
 </body>
 </html>
