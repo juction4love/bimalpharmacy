@@ -18,6 +18,7 @@
       --shadow: 0 4px 15px rgba(0,0,0,0.08);
       --whatsapp: #25D366;
       --danger: #d32f2f;
+      --soft-gold: #fff9e6;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -35,9 +36,9 @@
       background: var(--white);
       padding: 25px 15px;
       text-align: center;
-      border-bottom: 3px solid var(--primary);
+      border-bottom: 4px solid var(--primary);
     }
-    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
+    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; letter-spacing: -1px; }
     
     .navbar {
       background: var(--primary);
@@ -57,14 +58,14 @@
       text-decoration: none;
       padding: 12px 15px;
       display: block;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.9rem;
       transition: 0.3s;
     }
-    .nav-links a:hover, .nav-links a.active { background: var(--secondary); }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent); }
 
     .main-content {
-      max-width: 800px;
+      max-width: 850px;
       margin: 25px auto;
       padding: 0 15px;
       display: grid;
@@ -73,7 +74,7 @@
 
     .card {
       background: var(--white);
-      padding: 25px;
+      padding: 30px;
       border-radius: 15px;
       box-shadow: var(--shadow);
       border-top: 5px solid var(--primary);
@@ -92,82 +93,100 @@
       background: var(--whatsapp);
       color: white;
       text-decoration: none;
-      padding: 12px 25px;
+      padding: 14px 30px;
       border-radius: 50px;
       font-weight: bold;
       margin-top: 12px;
+      transition: 0.3s;
     }
+    .wa-btn-large:hover { transform: scale(1.05); background: #128c7e; }
 
-    /* Instructions Grid */
+    /* Instructions Section */
+    .instruction-card { border-left: 8px solid var(--accent); }
     .info-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
       margin-top: 20px;
     }
-    .info-item h4 { margin-bottom: 5px; font-size: 1rem; }
+    .info-item h4 { color: var(--primary); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
 
     /* Form Elements */
-    .form-group { margin-bottom: 18px; }
-    .form-label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--secondary); font-size: 0.9rem; }
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--secondary); font-size: 0.95rem; }
     .form-control {
       width: 100%;
-      padding: 12px 15px;
+      padding: 14px 15px;
       border: 1px solid #ccc;
       border-radius: 10px;
       font-size: 16px;
       background: #fff;
+      outline: none;
     }
+    .form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1); }
 
+    /* Prescription Upload Box */
     #uploadBox {
       border: 2px dashed #999;
-      padding: 25px;
+      padding: 30px;
       text-align: center;
       border-radius: 12px;
-      background: #fcfcfc;
+      background: #fafafa;
       position: relative;
+      cursor: pointer;
     }
+    #uploadBox:hover { background: #f0f7f1; border-color: var(--primary); }
 
+    /* Legal Agreement Box */
     .agreement-container {
-      background: #e8f5e9;
-      padding: 15px;
-      border-radius: 10px;
-      border-left: 5px solid var(--primary);
-      margin-bottom: 20px;
+      background: var(--soft-gold);
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 6px solid var(--accent);
+      margin-bottom: 25px;
+    }
+    .agreement-label {
+      display: flex;
+      gap: 15px;
+      cursor: pointer;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
 
+    /* Submit Button */
     .btn-submit {
       width: 100%;
-      padding: 16px;
+      padding: 18px;
       background: var(--primary);
       color: white;
       border: none;
-      border-radius: 10px;
-      font-size: 1.1rem;
+      border-radius: 12px;
+      font-size: 1.2rem;
       font-weight: bold;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
+      transition: 0.3s;
     }
+    .btn-submit:hover { background: var(--secondary); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
-    footer { background: #222; color: #bbb; padding: 40px 15px; text-align: center; }
+    footer { background: #1a1a1a; color: #bbb; padding: 50px 15px; text-align: center; }
 
     .mobile-call-box {
       position: fixed;
-      bottom: 0;
-      width: 100%;
+      bottom: 0; width: 100%;
       background: var(--primary);
-      text-align: center;
-      padding: 15px;
-      z-index: 1000;
+      padding: 18px; text-align: center; z-index: 1000;
     }
-    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.1rem; font-weight: bold; }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: 800; }
 
     @media (max-width: 600px) {
       header h1 { font-size: 1.8rem; }
-      .nav-links a { padding: 10px 8px; font-size: 0.8rem; }
+      .nav-links a { padding: 10px 10px; font-size: 0.8rem; }
+      .card { padding: 20px; }
     }
   </style>
 </head>
@@ -175,7 +194,7 @@
 
   <header class="text-header">
     <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-receipt"></i> IRD प्रमाणित कम्प्युटर बिल सुविधा</p>
+    <p><i class="fas fa-receipt"></i> IRD प्रमाणित कम्प्युटर बिल र DDA दर्ता प्राप्त</p>
   </header>
 
   <nav class="navbar">
@@ -192,131 +211,141 @@
   <main class="main-content">
     
     <div class="card wa-order-box">
-      <h3 style="color: #075e54;"><i class="fab fa-whatsapp"></i> व्हाट्सएप अर्डर</h3>
-      <p style="font-size: 0.9rem; margin-bottom: 10px;">पुर्जीको फोटो पठाउन यहाँ थिच्नुहोस्:</p>
+      <h3 style="color: #075e54;"><i class="fab fa-whatsapp"></i> ह्वाट्सएपबाट तुरुन्त अर्डर</h3>
+      <p style="font-size: 0.95rem; color: #555; margin-top: 5px;">पुर्जीको फोटो खिचेर पठाउन यहाँ थिच्नुहोस्:</p>
       <a href="https://wa.me/9779855065327?text=नमस्ते, म औषधी अर्डर गर्न चाहन्छु।" target="_blank" class="wa-btn-large">
         <i class="fas fa-camera"></i> फोटो पठाउनुहोस्
       </a>
     </div>
 
-    <section class="card" style="border-left: 8px solid var(--accent);">
-      <h2 style="color: var(--secondary); margin-bottom: 15px;">
-          <i class="fas fa-info-circle"></i> अर्डर गर्ने प्रक्रिया र नियमहरू
-      </h2>
-      <p>नमस्ते! <strong>विमल फार्मेसी</strong>मा तपाईंलाई स्वागत छ। कृपया फारम भर्नु अघि निम्न कुराहरू ध्यान दिएर पढ्नुहोला:</p>
+    <section class="card instruction-card">
+        <h2 style="color: var(--secondary); margin-bottom: 15px;">
+            <i class="fas fa-info-circle"></i> अर्डर गर्ने प्रक्रिया र नियमहरू
+        </h2>
+        <p>नमस्ते! विमल फार्मेसीमा तपाईंलाई स्वागत छ। कृपया फारम भर्नु अघि निम्न कुराहरू ध्यान दिएर पढ्नुहोला:</p>
 
-      <div class="info-grid">
-          <div class="info-item">
-              <h4 style="color: var(--primary);"><i class="fas fa-file-prescription"></i> १. अनिवार्य पुर्जी</h4>
-              <p style="font-size: 0.85rem;">DDA को नियम अनुसार क्यान्सर (Oncology) र एन्टिबायोटिक औषधीका लागि डाक्टरको पुर्जी अनिवार्य छ।</p>
-          </div>
-          <div class="info-item">
-              <h4 style="color: var(--primary);"><i class="fas fa-truck"></i> २. डेलिभरी समय</h4>
-              <p style="font-size: 0.85rem;">चितवन भित्र १-३ घण्टा र बाहिर प्रमुख सहरहरूमा १-२ दिन भित्र पुर्याइन्छ।</p>
-          </div>
-          <div class="info-item">
-              <h4 style="color: var(--primary);"><i class="fas fa-file-invoice-dollar"></i> ३. बिलिङ</h4>
-              <p style="font-size: 0.85rem;">हामी **IRD प्रमाणित कम्प्युटर बिल** प्रदान गर्दछौं। भुक्तानी eSewa वा नगद गर्न सकिन्छ।</p>
-          </div>
-      </div>
+        <div class="info-grid">
+            <div class="info-item">
+                <h4><i class="fas fa-file-prescription"></i> १. अनिवार्य पुर्जी</h4>
+                <p style="font-size: 0.85rem;">DDA को नियम अनुसार क्यान्सर (Oncology) र एन्टिबायोटिक औषधीका लागि डाक्टरको आधिकारिक पुर्जी अनिवार्य छ।</p>
+            </div>
+            <div class="info-item">
+                <h4><i class="fas fa-truck"></i> २. डेलिभरी समय</h4>
+                <p style="font-size: 0.85rem;">चितवन भित्र १-३ घण्टा र बाहिर प्रमुख सहरहरूमा १-२ दिन भित्र सुरक्षित डेलिभरी गरिनेछ।</p>
+            </div>
+            <div class="info-item">
+                <h4><i class="fas fa-file-invoice-dollar"></i> ३. बिलिङ र पेमेन्ट</h4>
+                <p style="font-size: 0.85rem;">हामी <strong>IRD प्रमाणित कम्प्युटर बिल</strong> प्रदान गर्दछौं। भुक्तानी eSewa, Khalti वा नगद (COD) मार्फत गर्न सकिन्छ।</p>
+            </div>
+        </div>
 
-      <div style="margin-top: 20px; padding: 12px; background: #fffde7; border-radius: 8px; font-size: 0.85rem; border: 1px solid #ffe082;">
-          <strong><i class="fas fa-star"></i> विशेष सेवा:</strong> हामी क्यान्सरका औषधीहरू कोल्ड-चेन (२-८°C) व्यवस्थापनका साथ नेपालभर पुर्याउँछौं।
-      </div>
+        <div style="margin-top: 20px; padding: 15px; background: #e8f5e9; border-radius: 10px; font-size: 0.9rem; border: 1px solid #c8e6c9;">
+            <strong><i class="fas fa-snowflake"></i> विशेष सेवा:</strong> हामी क्यान्सरका दुर्लभ औषधीहरू र चिसोमा राख्नुपर्ने औषधीहरू कोल्ड-चेन व्यवस्थापनका साथ नेपालभर पुर्‍याउँछौं।
+        </div>
     </section>
 
     <div class="card">
-      <h2 style="color: var(--primary); margin-bottom: 20px; font-size: 1.3rem;">
-        <i class="fas fa-truck"></i> डेलिभरी विवरण भर्नुहोस्
+      <h2 style="color: var(--primary); margin-bottom: 25px; font-size: 1.4rem; text-align: center;">
+        <i class="fas fa-pen-fancy"></i> अनलाइन अर्डर फारम
       </h2>
       
       <form action="thankyou.html" method="GET">
         <div class="form-group">
-          <label class="form-label">पुरा नाम *</label>
-          <input type="text" class="form-control" name="fullname" placeholder="तपाईंको नाम" required>
+          <label class="form-label">ग्राहकको पुरा नाम *</label>
+          <input type="text" class="form-control" name="fullname" placeholder="तपाईंको शुभ नाम लेख्नुहोस्" required>
         </div>
 
         <div class="form-group">
-          <label class="form-label">मोबाइल नम्बर *</label>
-          <input type="tel" class="form-control" name="phone" placeholder="98XXXXXXXX" required>
+          <label class="form-label">सम्पर्क मोबाइल नम्बर *</label>
+          <input type="tel" class="form-control" name="phone" placeholder="९८XXXXXXXX" required>
         </div>
 
         <div class="form-group">
           <label class="form-label">जिल्ला छान्नुहोस् *</label>
           <select class="form-control" name="district" required>
-            <option value="" disabled selected>-- आफ्नो जिल्ला छान्नुहोस् --</option>
+            <option value="" disabled selected>-- जिल्ला छान्नुहोस् --</option>
             <optgroup label="बागमती प्रदेश">
               <option value="Chitwan">चितवन (Bharatpur)</option>
               <option value="Kathmandu">काठमाडौं</option>
               <option value="Lalitpur">ललितपुर</option>
               <option value="Bhaktapur">भक्तपुर</option>
-              <option value="Makwanpur">मकवानपुर</option>
+              <option value="Makwanpur">मकवानpur (Hetauda)</option>
               <option value="Dhading">धादिङ</option>
               <option value="Nuwakot">नुवाकोट</option>
-              <option value="Sindhuli">सिन्धुली</option>
             </optgroup>
             <optgroup label="मधेश प्रदेश">
               <option value="Parsa">पर्सा (Birgunj)</option>
               <option value="Bara">बारा</option>
-              <option value="Dhanusha">धनुषा</option>
+              <option value="Dhanusha">धनुषा (Janakpur)</option>
             </optgroup>
             <optgroup label="गण्डकी प्रदेश">
               <option value="Kaski">कास्की (Pokhara)</option>
               <option value="Tanahu">तनहुँ</option>
-              <option value="Nawalpur">नवलपुर</option>
+              <option value="Nawalpur">नवलपुर (Kawasoti)</option>
             </optgroup>
             <optgroup label="लुम्बिनी प्रदेश">
               <option value="Rupandehi">रुपन्देही (Butwal)</option>
               <option value="Banke">बाँके (Nepalgunj)</option>
               <option value="Dang">दाङ</option>
             </optgroup>
-            <option value="Other">अन्य (77 वटै जिल्ला उपलब्ध छन्)</option>
+            <option value="AllNepal">अन्य (नेपालका ७७ वटै जिल्लामा उपलब्ध छ)</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label class="form-label">ठेगाना (टोल, चोक वा घर नम्बर) *</label>
-          <input type="text" class="form-control" name="address" placeholder="उदाहरण: चौबिसकोठी, भरतपुर" required>
+          <label class="form-label">विस्तृत ठेगाना (टोल वा चोक) *</label>
+          <input type="text" class="form-control" name="address" placeholder="उदाहरण: विकास चोक, भरतपुर-७" required>
         </div>
 
         <div class="form-group">
-          <label class="form-label">पुर्जी अपलोड (Prescription) *</label>
+          <label class="form-label">डाक्टरको पुर्जी (Prescription) अपलोड *</label>
           <div id="uploadBox">
             <input type="file" name="attachment" id="prescriptionFile" accept="image/*" required style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer;">
             <div id="uploadPlaceholder">
-                <i class="fas fa-camera fa-2x" style="color: var(--primary); margin-bottom: 5px;"></i>
-                <p style="font-size: 0.9rem;">फोटो खिच्नुहोस् वा फाइल छान्नुहोस्</p>
+                <i class="fas fa-camera-retro fa-3x" style="color: var(--primary); margin-bottom: 10px;"></i>
+                <p style="font-weight: bold;">पुर्जीको फोटो खिच्नुहोस् वा फाइल छान्नुहोस्</p>
+                <small>(पुर्जी बिना कतिपय औषधी उपलब्ध गराउन सकिँदैन)</small>
             </div>
-            <img id="imagePreview" src="" alt="Preview" style="display: none; width: 100%; max-height: 250px; object-fit: contain; margin-top: 10px; border-radius: 10px;">
+            <img id="imagePreview" src="" alt="Preview" style="display: none; width: 100%; max-height: 300px; object-fit: contain; margin-top: 15px; border-radius: 10px; border: 1px solid #ddd;">
           </div>
         </div>
 
         <div class="agreement-container">
-          <label style="display: flex; gap: 10px; cursor: pointer;">
-            <input type="checkbox" required style="width: 20px; height: 20px;">
-            <span style="font-size: 0.85rem;">म विमल फार्मेसीको नियम अनुसार आधिकारिक बिल प्राप्त गरी औषधी खरिद गर्न सहमत छु।</span>
+          <label class="agreement-label">
+            <input type="checkbox" name="terms_agreement" required style="width: 24px; height: 24px; cursor: pointer; border: 2px solid var(--primary);">
+            <span>
+              <strong>नियम तथा सर्तहरूको स्वीकृति:</strong> <br>
+              म विमल फार्मेसीका सबै नियमहरू, नेपाल सरकारको <strong>DDA</strong> (औषधि कानुन) र <strong>IRD</strong> (कर नियम) पालना गर्न पूर्ण रूपमा सहमत छु। मैले उपलब्ध गराएको पुर्जी सही छ र आवश्यक परेको खण्डमा थप कानुनी प्रक्रियाका लागि म जिम्मेवार रहनेछु।
+            </span>
           </label>
         </div>
 
         <button type="submit" class="btn-submit">
-          <i class="fas fa-check-circle"></i> अर्डर कन्फर्म गर्नुहोस्
+          <i class="fas fa-paper-plane"></i> अर्डर कन्फर्म गर्नुहोस्
         </button>
       </form>
     </div>
   </main>
 
   <footer>
-    <p>&copy; २०२६ विमल फार्मेसी | भरतपुर, चितवन</p>
-    <p style="font-size: 0.8rem; margin-top: 10px; color: #888;">IRD र DDA द्वारा प्रमाणित आधिकारिक स्वास्थ्य सेवा।</p>
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h3 style="color:white; margin-bottom: 15px;">विमल फार्मेसी (Vimal Pharmacy)</h3>
+      <p style="font-size: 0.9rem;">भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन | ०५६-५९३२८८</p>
+      <div style="margin-top: 20px; color: #888; font-size: 0.8rem;">
+        DDA दर्ता नं: २०७९/८० | IRD प्रमाणित प्यान पसल <br>
+        &copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।
+      </div>
+    </div>
   </footer>
 
   <div class="mobile-call-box">
     <a href="tel:056593288" class="mobile-call-btn">
-        <i class="fas fa-phone-alt"></i> फोन अर्डर: ०५६-५९३२८८
+        <i class="fas fa-phone-alt"></i> फोनबाट अर्डर गर्न: ०५६-५९३२८८
     </a>
   </div>
 
   <script>
+    // Prescription Image Preview Script
     const fileInput = document.getElementById('prescriptionFile');
     const previewImage = document.getElementById('imagePreview');
     const placeholder = document.getElementById('uploadPlaceholder');
