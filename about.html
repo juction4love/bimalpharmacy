@@ -31,16 +31,42 @@
       padding-bottom: 80px; 
     }
 
-    /* 1. Header Branding */
-    header.branding-header {
+    /* --- 1. Branding Header (Corner Round Logo) --- */
+    .branding-header {
       background: var(--white);
-      padding: 30px 20px;
-      text-align: center;
+      padding: 20px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
       border-bottom: 5px solid var(--primary);
     }
-    header h1 { color: var(--primary); font-size: 2.8rem; letter-spacing: -1px; }
 
-    /* 2. Navigation */
+    .logo-container img {
+      height: 85px;
+      width: 85px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+      padding: 4px;
+      background: white;
+    }
+
+    .brand-text h1 { 
+      color: var(--primary); 
+      font-size: 2.2rem; 
+      margin: 0;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .brand-text p { 
+      font-size: 1rem; 
+      color: #555; 
+      font-weight: 500;
+    }
+
+    /* --- 2. Navigation (Sticky) --- */
     .navbar {
       background: var(--primary);
       position: sticky;
@@ -48,49 +74,58 @@
       z-index: 1000;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      flex-wrap: wrap;
+    }
     .nav-links a {
       color: var(--white);
       text-decoration: none;
-      padding: 16px 20px;
+      padding: 18px 22px;
       display: block;
       font-weight: 600;
+      font-size: 0.95rem;
       transition: 0.3s;
     }
-    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent); }
+    .nav-links a:hover, .nav-links a.active { 
+      background: var(--secondary); 
+      color: var(--accent) !important;
+      box-shadow: inset 0 -4px 0 var(--accent);
+    }
 
-    /* 3. Hero Section */
+    /* --- 3. Hero Section --- */
     .about-hero {
       background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(27, 94, 32, 0.9)), url('https://www.transparenttextures.com/patterns/white-diamond.png');
       color: white;
       text-align: center;
-      padding: 100px 20px;
+      padding: 80px 20px;
     }
-    .about-hero h2 { font-size: 3rem; margin-bottom: 10px; }
+    .about-hero h2 { font-size: 2.8rem; margin-bottom: 10px; }
     .about-hero p { font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 0 auto; }
 
-    /* 4. Content Container */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-    /* 5. Section: Intro & Story */
+    /* --- 4. Content Grid --- */
     .intro-section {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 40px;
-      margin: -60px auto 60px;
+      gap: 30px;
+      margin: -40px auto 60px;
       position: relative;
       z-index: 10;
     }
     .card {
       background: var(--white);
-      padding: 40px;
+      padding: 35px;
       border-radius: 20px;
       box-shadow: var(--shadow);
       border-top: 6px solid var(--primary);
     }
-    .card h3 { color: var(--primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-size: 1.8rem; }
+    .card h3 { color: var(--primary); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; font-size: 1.6rem; }
 
-    /* 6. Mission/Vision Grid */
+    /* --- 5. Mission Cards --- */
     .mission-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -103,36 +138,32 @@
       background: var(--white);
       border-radius: 15px;
       box-shadow: var(--shadow);
-      transition: transform 0.3s ease;
+      transition: 0.3s;
     }
     .mission-card:hover { transform: translateY(-10px); }
-    .mission-card i { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
-    .mission-card h4 { color: var(--secondary); margin-bottom: 15px; font-size: 1.4rem; }
+    .mission-card i { font-size: 2.8rem; color: var(--accent); margin-bottom: 15px; }
+    .mission-card h4 { color: var(--secondary); margin-bottom: 10px; font-size: 1.3rem; }
 
-    /* 7. Stats / Trust Bar */
+    /* --- 6. Trust Bar (Stats) --- */
     .trust-bar {
       background: var(--secondary);
       color: white;
-      padding: 50px 20px;
+      padding: 40px 20px;
       border-radius: 20px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 30px;
       text-align: center;
       margin-bottom: 60px;
     }
-    .stat-item h2 { font-size: 2.5rem; color: var(--accent); }
-    .stat-item p { font-size: 1rem; opacity: 0.8; }
+    .stat-item h2 { font-size: 2.2rem; color: var(--accent); }
 
-    /* 8. Certification Logos Section */
-    .cert-section {
-      text-align: center;
-      margin-bottom: 60px;
-    }
+    /* --- 7. Certifications --- */
+    .cert-section { text-align: center; margin-bottom: 60px; }
     .cert-grid {
       display: flex;
       justify-content: center;
-      gap: 40px;
+      gap: 30px;
       flex-wrap: wrap;
       margin-top: 30px;
     }
@@ -140,12 +171,13 @@
       background: white;
       padding: 20px;
       border-radius: 10px;
-      border: 1px solid #ddd;
-      min-width: 150px;
+      border: 1px solid #eee;
+      min-width: 140px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
     }
     .cert-item strong { color: var(--primary); display: block; margin-top: 10px; }
 
-    /* 9. Floating Buttons */
+    /* --- 8. Floating Buttons --- */
     .whatsapp-float {
       position: fixed; bottom: 90px; right: 25px;
       background: var(--whatsapp); color: #fff;
@@ -160,25 +192,32 @@
     }
     .mobile-call-btn { color: white; text-decoration: none; font-size: 1.3rem; font-weight: 800; }
 
-    footer { background: #1a1a1a; color: #999; padding: 80px 20px 120px; text-align: center; }
+    footer { background: #1a1a1a; color: #999; padding: 60px 20px 100px; text-align: center; }
 
     @media (max-width: 768px) {
-      .about-hero h2 { font-size: 2.2rem; }
-      header h1 { font-size: 2rem; }
-      .intro-section { margin-top: 20px; }
+      .branding-header { flex-direction: row; padding: 15px; }
+      .logo-container img { height: 60px; width: 60px; }
+      .brand-text h1 { font-size: 1.5rem; }
+      .about-hero h2 { font-size: 2rem; }
+      .nav-links a { padding: 12px 10px; font-size: 0.85rem; }
     }
   </style>
 </head>
 <body>
 
   <header class="branding-header">
-    <h1>बिमल फार्मेसी</h1>
-    <p>गुणस्तरमा विश्वास, सेवामा पूर्ण प्रतिवद्धता</p>
+    <div class="logo-container">
+      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy Logo">
+    </div>
+    <div class="brand-text">
+      <h1>बिमल फार्मेसी</h1>
+      <p>गुणस्तरमा विश्वास, सेवामा पूर्ण प्रतिवद्धता</p>
+    </div>
   </header>
 
-   <nav class="navbar">
+  <nav class="navbar">
     <ul class="nav-links">
-      <li><a href="index.html" class="active">गृहपृष्ठ</a></li>
+      <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="medical-guide.html">औषधी गाइड</a></li>
       <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
       <li><a href="order.html">अर्डर</a></li>
@@ -187,7 +226,6 @@
       <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
-  </nav>
   </nav>
 
   <section class="about-hero">
@@ -201,30 +239,30 @@
     
     <div class="intro-section">
       <div class="card">
-        <h3><i class="fas fa-history"></i> हाम्रो स्थापना र इतिहास</h3>
-        <p>बी.पी. कोइराला मेमोरियल क्यान्सर अस्पतालको ठीक नजिकै **भरतपुर-७, चितवन** मा स्थापित **बिमल फार्मेसी** विगत लामो समयदेखि बिरामीहरूको सेवामा समर्पित छ। सुलभ मूल्यमा उच्च गुणस्तरीय र जीवनरक्षक औषधीहरू उपलब्ध गराउने उद्देश्यका साथ सुरु भएको यो यात्रा आज नेपालभर डेलिभरी सेवासम्म विस्तार भएको छ।</p>
+        <h3><i class="fas fa-history"></i> हाम्रो इतिहास</h3>
+        <p>बी.पी. कोइराला मेमोरियल क्यान्सर अस्पतालको ठीक नजिकै **भरतपुर-७, चितवन** मा स्थापित बिमल फार्मेसी विगत लामो समयदेखि बिरामीहरूको सेवामा समर्पित छ। सुलभ मूल्यमा उच्च गुणस्तरीय औषधीहरू उपलब्ध गराउने हाम्रो उद्देश्य हो।</p>
       </div>
       <div class="card">
         <h3><i class="fas fa-heart"></i> हामी किन फरक छौँ?</h3>
-        <p>हामी केवल एक औषधि पसल मात्र होइनौँ। हामी बिरामीको पीडा बुझ्ने सहयात्री हौँ। विशेष गरी क्यान्सर जस्ता जटिल रोगको उपचारमा आवश्यक पर्ने विशेष औषधीहरू (Oncology Medicines) हामी सधैँ स्टकमा राख्छौँ। हाम्रा दक्ष फर्मासिस्टहरूले औषधी मात्र दिँदैनन्, त्यसको सही प्रयोग र सावधानीबारे निःशुल्क परामर्श पनि दिन्छन्।</p>
+        <p>हामी बिरामीको पीडा बुझ्ने सहयात्री हौँ। विशेष गरी क्यान्सरका औषधीहरू (Oncology Medicines) हामी सधैँ स्टकमा राख्छौँ र नेपालभर सुरक्षित डेलिभरीको व्यवस्था गर्दछौँ।</p>
       </div>
     </div>
 
     <div class="mission-grid">
       <div class="mission-card">
         <i class="fas fa-eye"></i>
-        <h4>हाम्रो दृष्टि (Vision)</h4>
-        <p>नेपालको जुनसुकै दुर्गम कुनामा रहेका बिरामीले पनि समयमै र उचित मूल्यमा गुणस्तरीय औषधी प्राप्त गर्न सक्ने वातावरण निर्माण गर्ने।</p>
+        <h4>हाम्रो दृष्टि</h4>
+        <p>नेपालको जुनसुकै कुनामा रहेका बिरामीले पनि समयमै र उचित मूल्यमा गुणस्तरीय औषधी प्राप्त गर्न सक्ने बनाउने।</p>
       </div>
       <div class="mission-card">
         <i class="fas fa-bullseye"></i>
-        <h4>हाम्रो लक्ष्य (Mission)</h4>
-        <p>डिजिटल प्रविधिको प्रयोग गरी औषधी अर्डर र डेलिभरीलाई सरल बनाउने र स्वास्थ्य सचेतना फैलाएर एक स्वस्थ समाजको निर्माण गर्ने।</p>
+        <h4>हाम्रो लक्ष्य</h4>
+        <p>डिजिटल प्रविधिको प्रयोग गरी औषधी अर्डर र डेलिभरीलाई सरल बनाउने र स्वास्थ्य सचेतना फैलाउने।</p>
       </div>
       <div class="mission-card">
         <i class="fas fa-star"></i>
-        <h4>हाम्रो मूल्य (Values)</h4>
-        <p>पूर्ण पारदर्शिता, नैतिकता, कानुनी पालना र बिरामीको गोपनीयता नै हाम्रो सफलताका आधारस्तम्भहरू हुन्।</p>
+        <h4>हाम्रो मूल्य</h4>
+        <p>पूर्ण पारदर्शिता, नैतिकता र बिरामीको गोपनीयता नै हाम्रो सफलताका मुख्य आधारस्तम्भहरू हुन्।</p>
       </div>
     </div>
 
@@ -235,7 +273,7 @@
       </div>
       <div class="stat-item">
         <h2>१००%</h2>
-        <p>वास्तविक औषधीहरू</p>
+        <p>वास्तविक औषधी</p>
       </div>
       <div class="stat-item">
         <h2>२४/७</h2>
@@ -243,26 +281,25 @@
       </div>
       <div class="stat-item">
         <h2>IRD</h2>
-        <p>प्रमाणित कम्प्युटर बिल</p>
+        <p>प्रमाणित बिल</p>
       </div>
     </div>
 
     <div class="cert-section">
-      <h3 style="color: var(--primary); font-size: 2rem;">कानुनी आधिकारिकता</h3>
-      <p>हामी नेपाल सरकारका निम्न निकायहरूमा विधिवत दर्ता र प्रमाणित छौँ:</p>
+      <h3 style="color: var(--primary); font-size: 1.8rem;">कानुनी आधिकारिकता</h3>
       <div class="cert-grid">
         <div class="cert-item">
-          <i class="fas fa-file-contract fa-3x" style="color: var(--primary);"></i>
+          <i class="fas fa-file-contract fa-2x" style="color: var(--primary);"></i>
           <strong>DDA</strong>
           <small>औषधि व्यवस्था विभाग</small>
         </div>
         <div class="cert-item">
-          <i class="fas fa-receipt fa-3x" style="color: var(--accent);"></i>
+          <i class="fas fa-receipt fa-2x" style="color: var(--accent);"></i>
           <strong>IRD</strong>
-          <small>आन्तरिक राजस्व विभाग</small>
+          <small>राजस्व विभाग</small>
         </div>
         <div class="cert-item">
-          <i class="fas fa-check-circle fa-3x" style="color: #2196f3;"></i>
+          <i class="fas fa-check-circle fa-2x" style="color: #2196f3;"></i>
           <strong>DFTQC</strong>
           <small>खाद्य तथा गुण नियन्त्रण</small>
         </div>
@@ -277,13 +314,13 @@
 
   <div class="mobile-call-box">
     <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> हामीलाई कल गर्नुहोस्: ०५६-५९३२८८
+      <i class="fas fa-phone-alt"></i> कल गर्नुहोस्: ०५६-५९३२८८
     </a>
   </div>
 
   <footer>
     <div class="container">
-      <strong style="color:white; font-size: 1.5rem;">बिमल फार्मेसी</strong><br>
+      <strong style="color:white; font-size: 1.3rem;">बिमल फार्मेसी</strong><br>
       भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन <br>
       ०५६-५९३२८८ | admin@bimalpharmacy.com.np
       <div style="margin-top: 30px; border-top: 1px solid #333; padding-top: 20px;">
