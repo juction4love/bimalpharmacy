@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>बिमल फार्मेसीी | भरतपुर-७, चितवन</title>
-a
-  <meta name="description" content="बिमल फार्मेसीी: क्यान्सर अस्पताल रोड, भरतपुर। नेपालभर होम डेलिभरी र २४सै घण्टा अनलाइन परामर्श।">
+  <title>बिमल फार्मेसी | भरतपुर-७, चितवन</title>
+  
+  <meta name="description" content="बिमल फार्मेसी: क्यान्सर अस्पताल रोड, भरतपुर। नेपालभर होम डेलिभरी र २४सै घण्टा अनलाइन परामर्श।">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -114,7 +114,7 @@ a
       padding: 35px;
       border-radius: 16px;
       box-shadow: var(--shadow);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.4s ease;
       border: 1px solid #edf2f0;
       position: relative;
     }
@@ -160,7 +160,7 @@ a
     .btn-danger-outline { color: var(--danger); border: 2px solid var(--danger); }
     .btn-danger-outline:hover { background: var(--danger); color: white; }
 
-    /* 8. WhatsApp Float */
+    /* 8. Floating Action Buttons */
     .whatsapp-float {
       position: fixed;
       bottom: 90px; right: 25px;
@@ -172,15 +172,6 @@ a
       font-size: 32px; z-index: 1001;
       box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
       transition: 0.3s;
-    }
-    .whatsapp-float::before {
-      content: ''; position: absolute; width: 100%; height: 100%;
-      background: var(--whatsapp); border-radius: 50%;
-      animation: pulse 2s infinite; z-index: -1;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 0.5; }
-      100% { transform: scale(1.6); opacity: 0; }
     }
 
     .mobile-call-box {
@@ -206,7 +197,7 @@ a
 <body>
 
   <header class="branding-header">
-    <h1>विमल फार्मेसी</h1>
+    <h1>बिमल फार्मेसी</h1>
     <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र</p>
     <div style="margin-top:10px; color:#777;">
       <span><i class="fas fa-map-marker-alt"></i> भरतपुर-७, चितवन</span> | 
@@ -220,18 +211,19 @@ a
     </marquee>
   </div>
 
- <nav class="navbar">
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">गृहपृष्ठ</a></li>
-    <li><a href="medical-guide.html">औषधी गाइड</a></li>
-    <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-    <li><a href="order.html">अर्डर</a></li>
-    <li><a href="service.html">सेवाहरू</a></li>
-    <li><a href="notice.html">सूचना</a></li>
-    <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
-    <li><a href="contact.html">सम्पर्क</a></li>
-  </ul>
-</nav>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">गृहपृष्ठ</a></li>
+      <li><a href="medical-guide.html">औषधी गाइड</a></li>
+      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
+      <li><a href="order.html">अर्डर</a></li>
+      <li><a href="service.html">सेवाहरू</a></li>
+      <li><a href="notice.html">सूचना</a></li>
+      <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
+      <li><a href="contact.html">सम्पर्क</a></li>
+    </ul>
+  </nav>
+
   <section class="hero">
     <h2>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</h2>
     <p>अब घरमै बसी औषधी मगाउनुहोस्। हामी चितवन मात्र नभई <strong>नेपालभर</strong> औषधी पुर्‍याउँछौं।</p>
