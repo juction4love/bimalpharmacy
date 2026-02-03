@@ -3,49 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>अर्डर गर्नुहोस् | विमल फार्मेसी - नेपालभर डेलिभरी</title>
+  <title>अर्डर गर्नुहोस् | बिमल फार्मेसी - नेपालभर डेलिभरी</title>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <style>
+    /* --- Model Global Variables --- */
     :root {
       --primary: #2e7d32;
       --secondary: #1b5e20;
       --accent: #fbc02d;
-      --light-bg: #f4f7f6;
-      --white: #ffffff;
-      --text-dark: #333;
-      --shadow: 0 4px 15px rgba(0,0,0,0.08);
-      --whatsapp: #25D366;
       --danger: #d32f2f;
+      --light-bg: #f8faf9;
+      --white: #ffffff;
+      --text-dark: #2c3e50;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --whatsapp: #25d366;
       --soft-gold: #fff9e6;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     
     body { 
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       line-height: 1.6; 
       background-color: var(--light-bg); 
       color: var(--text-dark);
       padding-bottom: 80px; 
     }
 
-    /* Header & Navbar */
-    header.text-header {
+    /* --- 1. Branding Header (Round Corner Logo Model) --- */
+    .branding-header {
       background: var(--white);
-      padding: 25px 15px;
-      text-align: center;
-      border-bottom: 4px solid var(--primary);
+      padding: 20px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+      border-bottom: 5px solid var(--primary);
     }
-    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; letter-spacing: -1px; }
-    
+
+    .logo-container img {
+      height: 85px;
+      width: 85px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+      padding: 4px;
+      background: white;
+    }
+
+    .brand-text h1 { 
+      color: var(--primary); 
+      font-size: 2.2rem; 
+      margin: 0;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .brand-text p { 
+      font-size: 1rem; 
+      color: #555; 
+      font-weight: 500;
+    }
+
+    /* --- 2. Navigation (Sticky Model) --- */
     .navbar {
       background: var(--primary);
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: var(--shadow);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .nav-links {
       display: flex;
@@ -56,113 +84,130 @@
     .nav-links a {
       color: var(--white);
       text-decoration: none;
-      padding: 12px 15px;
+      padding: 18px 22px;
       display: block;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       transition: 0.3s;
     }
-    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent); }
+    .nav-links a:hover, .nav-links a.active { 
+      background: var(--secondary); 
+      color: var(--accent) !important;
+      box-shadow: inset 0 -4px 0 var(--accent);
+    }
 
+    /* --- 3. Hero Section --- */
+    .hero {
+      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/white-diamond.png');
+      text-align: center;
+      padding: 50px 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .hero h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
+    .hero p { color: #555; max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
+
+    /* --- 4. Main Content Layout --- */
     .main-content {
-      max-width: 850px;
-      margin: 25px auto;
-      padding: 0 15px;
+      max-width: 900px;
+      margin: -30px auto 40px;
+      padding: 0 20px;
       display: grid;
-      gap: 25px;
+      gap: 30px;
+      position: relative;
+      z-index: 10;
     }
 
     .card {
       background: var(--white);
-      padding: 30px;
-      border-radius: 15px;
+      padding: 35px;
+      border-radius: 20px;
       box-shadow: var(--shadow);
-      border-top: 5px solid var(--primary);
+      border-top: 6px solid var(--primary);
     }
 
     /* WhatsApp Quick Order */
     .wa-order-box {
-      border-top: 5px solid var(--whatsapp);
+      border-top-color: var(--whatsapp);
       background: #f0fdf4;
       text-align: center;
     }
     .wa-btn-large {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       background: var(--whatsapp);
       color: white;
       text-decoration: none;
-      padding: 14px 30px;
+      padding: 15px 35px;
       border-radius: 50px;
       font-weight: bold;
-      margin-top: 12px;
+      margin-top: 15px;
       transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
     }
-    .wa-btn-large:hover { transform: scale(1.05); background: #128c7e; }
+    .wa-btn-large:hover { transform: translateY(-3px); background: #128c7e; }
 
-    /* Instructions Section */
+    /* Instruction Grid */
     .instruction-card { border-left: 8px solid var(--accent); }
     .info-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
-      margin-top: 20px;
+      margin-top: 25px;
     }
-    .info-item h4 { color: var(--primary); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+    .info-item h4 { color: var(--primary); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
 
-    /* Form Elements */
-    .form-group { margin-bottom: 20px; }
-    .form-label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--secondary); font-size: 0.95rem; }
+    /* Form Styles */
+    .form-group { margin-bottom: 25px; }
+    .form-label { display: block; margin-bottom: 10px; font-weight: 600; color: var(--secondary); }
     .form-control {
       width: 100%;
-      padding: 14px 15px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-      background: #fff;
-      outline: none;
-    }
-    .form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1); }
-
-    /* Prescription Upload Box */
-    #uploadBox {
-      border: 2px dashed #999;
-      padding: 30px;
-      text-align: center;
+      padding: 15px;
+      border: 1px solid #ddd;
       border-radius: 12px;
+      font-size: 1rem;
       background: #fafafa;
+      outline: none;
+      transition: 0.3s;
+    }
+    .form-control:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.1); }
+
+    /* Prescription Upload */
+    #uploadBox {
+      border: 2px dashed #bbb;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 15px;
+      background: #fdfdfd;
       position: relative;
       cursor: pointer;
+      transition: 0.3s;
     }
-    #uploadBox:hover { background: #f0f7f1; border-color: var(--primary); }
+    #uploadBox:hover { border-color: var(--primary); background: #f1f8f1; }
 
-    /* Legal Agreement Box */
     .agreement-container {
       background: var(--soft-gold);
-      padding: 20px;
-      border-radius: 12px;
+      padding: 25px;
+      border-radius: 15px;
       border-left: 6px solid var(--accent);
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
     .agreement-label {
       display: flex;
       gap: 15px;
       cursor: pointer;
-      align-items: flex-start;
-      font-size: 0.9rem;
-      line-height: 1.5;
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
-    /* Submit Button */
     .btn-submit {
       width: 100%;
-      padding: 18px;
+      padding: 20px;
       background: var(--primary);
       color: white;
       border: none;
-      border-radius: 12px;
-      font-size: 1.2rem;
+      border-radius: 15px;
+      font-size: 1.25rem;
       font-weight: bold;
       cursor: pointer;
       display: flex;
@@ -171,48 +216,63 @@
       gap: 12px;
       transition: 0.3s;
     }
-    .btn-submit:hover { background: var(--secondary); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    .btn-submit:hover { background: var(--secondary); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
 
-    footer { background: #1a1a1a; color: #bbb; padding: 50px 15px; text-align: center; }
+    /* --- Footer Model --- */
+    footer { background: #1a1a1a; color: #999; padding: 60px 20px 110px; text-align: center; }
+    footer strong { color: white; font-size: 1.4rem; }
 
     .mobile-call-box {
-      position: fixed;
-      bottom: 0; width: 100%;
-      background: var(--primary);
-      padding: 18px; text-align: center; z-index: 1000;
+      position: fixed; bottom: 0; width: 100%;
+      background: var(--primary); padding: 18px; text-align: center; z-index: 1000;
     }
-    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.2rem; font-weight: 800; }
+    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.3rem; font-weight: 800; }
 
     @media (max-width: 600px) {
-      header h1 { font-size: 1.8rem; }
-      .nav-links a { padding: 10px 10px; font-size: 0.8rem; }
-      .card { padding: 20px; }
+      .branding-header { padding: 15px; gap: 15px; }
+      .logo-container img { height: 60px; width: 60px; }
+      .brand-text h1 { font-size: 1.5rem; }
+      .hero h2 { font-size: 2rem; }
+      .nav-links a { padding: 12px 10px; font-size: 0.85rem; }
+      .card { padding: 25px; }
     }
   </style>
 </head>
 <body>
 
-  <header class="text-header">
-    <h1>विमल फार्मेसी</h1>
-    <p><i class="fas fa-receipt"></i> IRD प्रमाणित कम्प्युटर बिल र DDA दर्ता प्राप्त</p>
+  <header class="branding-header">
+    <div class="logo-container">
+      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy Logo">
+    </div>
+    <div class="brand-text">
+      <h1>बिमल फार्मेसी</h1>
+      <p>गुणस्तरमा विश्वास, सेवामा पूर्ण प्रतिवद्धता</p>
+    </div>
   </header>
 
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
-      <li><a href="search.html">खोज्नुहोस्</a></li>
+      <li><a href="medical-guide.html">औषधी गाइड</a></li>
+      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
       <li><a href="order.html" class="active">अर्डर</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
       <li><a href="notice.html">सूचना</a></li>
+      <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
+
+  <section class="hero">
+    <h2>अर्डर गर्नुहोस्</h2>
+    <p>नेपालभर सुरक्षित डेलिभरी र भरपर्दो सेवा।</p>
+  </section>
 
   <main class="main-content">
     
     <div class="card wa-order-box">
       <h3 style="color: #075e54;"><i class="fab fa-whatsapp"></i> ह्वाट्सएपबाट तुरुन्त अर्डर</h3>
-      <p style="font-size: 0.95rem; color: #555; margin-top: 5px;">पुर्जीको फोटो खिचेर पठाउन यहाँ थिच्नुहोस्:</p>
+      <p style="margin-top: 5px;">पुर्जीको फोटो खिचेर पठाउन यहाँ थिच्नुहोस्:</p>
       <a href="https://wa.me/9779855065327?text=नमस्ते, म औषधी अर्डर गर्न चाहन्छु।" target="_blank" class="wa-btn-large">
         <i class="fas fa-camera"></i> फोटो पठाउनुहोस्
       </a>
@@ -222,30 +282,29 @@
         <h2 style="color: var(--secondary); margin-bottom: 15px;">
             <i class="fas fa-info-circle"></i> अर्डर गर्ने प्रक्रिया र नियमहरू
         </h2>
-        <p>नमस्ते! विमल फार्मेसीमा तपाईंलाई स्वागत छ। कृपया फारम भर्नु अघि निम्न कुराहरू ध्यान दिएर पढ्नुहोला:</p>
+        <p>नमस्ते! विमल फार्मेसीमा तपाईंलाई स्वागत छ। फारम भर्नु अघि निम्न कुराहरू ध्यान दिनुहोला:</p>
 
         <div class="info-grid">
             <div class="info-item">
-                <h4><i class="fas fa-file-prescription"></i> १. अनिवार्य पुर्जी</h4>
-                <p style="font-size: 0.85rem;">DDA को नियम अनुसार क्यान्सर (Oncology) र एन्टिबायोटिक औषधीका लागि डाक्टरको आधिकारिक पुर्जी अनिवार्य छ।</p>
+                <h4><i class="fas fa-file-prescription"></i> अनिवार्य पुर्जी</h4>
+                <p style="font-size: 0.9rem;">DDA को नियम अनुसार क्यान्सर (Oncology) र एन्टिबायोटिक औषधीका लागि डाक्टरको आधिकारिक पुर्जी अनिवार्य छ।</p>
             </div>
             <div class="info-item">
-                <h4><i class="fas fa-truck"></i> २. डेलिभरी समय</h4>
-                <p style="font-size: 0.85rem;">चितवन भित्र १-३ घण्टा र बाहिर प्रमुख सहरहरूमा १-२ दिन भित्र सुरक्षित डेलिभरी गरिनेछ।</p>
+                <h4><i class="fas fa-truck"></i> डेलिभरी समय</h4>
+                <p style="font-size: 0.9rem;">चितवन भित्र १-३ घण्टा र बाहिर प्रमुख सहरहरूमा १-२ दिन भित्र सुरक्षित डेलिभरी गरिनेछ।</p>
             </div>
             <div class="info-item">
-                <h4><i class="fas fa-file-invoice-dollar"></i> ३. बिलिङ र पेमेन्ट</h4>
-                <p style="font-size: 0.85rem;">हामी <strong>IRD प्रमाणित कम्प्युटर बिल</strong> प्रदान गर्दछौं। भुक्तानी NepalPay,FonePay वा नगद (COD) मार्फत गर्न सकिन्छ।</p>
+                <h4><i class="fas fa-file-invoice-dollar"></i> बिलिङ र पेमेन्ट</h4>
+                <p style="font-size: 0.9rem;">हामी <strong>IRD प्रमाणित कम्प्युटर बिल</strong> प्रदान गर्दछौं। भुक्तानी अनलाइन वा COD मार्फत गर्न सकिन्छ।</p>
             </div>
         </div>
-
-        <div style="margin-top: 20px; padding: 15px; background: #e8f5e9; border-radius: 10px; font-size: 0.9rem; border: 1px solid #c8e6c9;">
-            <strong><i class="fas fa-snowflake"></i> विशेष सेवा:</strong> हामी क्यान्सरका दुर्लभ औषधीहरू र चिसोमा राख्नुपर्ने औषधीहरू कोल्ड-चेन व्यवस्थापनका साथ नेपालभर पुर्‍याउँछौं।
+        <div style="margin-top: 25px; padding: 20px; background: #e8f5e9; border-radius: 12px; font-size: 0.95rem; border: 1px solid #c8e6c9;">
+            <strong><i class="fas fa-snowflake"></i> विशेष सेवा:</strong> हामी क्यान्सरका दुर्लभ औषधीहरू कोल्ड-चेन व्यवस्थापनका साथ नेपालभर पुर्‍याउँछौं।
         </div>
     </section>
 
     <div class="card">
-      <h2 style="color: var(--primary); margin-bottom: 25px; font-size: 1.4rem; text-align: center;">
+      <h2 style="color: var(--primary); margin-bottom: 30px; text-align: center;">
         <i class="fas fa-pen-fancy"></i> अनलाइन अर्डर फारम
       </h2>
       
@@ -269,24 +328,12 @@
               <option value="Kathmandu">काठमाडौं</option>
               <option value="Lalitpur">ललितपुर</option>
               <option value="Bhaktapur">भक्तपुर</option>
-              <option value="Makwanpur">मकवानpur (Hetauda)</option>
-              <option value="Dhading">धादिङ</option>
-              <option value="Nuwakot">नुवाकोट</option>
-            </optgroup>
-            <optgroup label="मधेश प्रदेश">
-              <option value="Parsa">पर्सा (Birgunj)</option>
-              <option value="Bara">बारा</option>
-              <option value="Dhanusha">धनुषा (Janakpur)</option>
+              <option value="Makwanpur">मकवानपुर (Hetauda)</option>
             </optgroup>
             <optgroup label="गण्डकी प्रदेश">
               <option value="Kaski">कास्की (Pokhara)</option>
               <option value="Tanahu">तनहुँ</option>
               <option value="Nawalpur">नवलपुर (Kawasoti)</option>
-            </optgroup>
-            <optgroup label="लुम्बिनी प्रदेश">
-              <option value="Rupandehi">रुपन्देही (Butwal)</option>
-              <option value="Banke">बाँके (Nepalgunj)</option>
-              <option value="Dang">दाङ</option>
             </optgroup>
             <option value="AllNepal">अन्य (नेपालका ७७ वटै जिल्लामा उपलब्ध छ)</option>
           </select>
@@ -302,20 +349,20 @@
           <div id="uploadBox">
             <input type="file" name="attachment" id="prescriptionFile" accept="image/*" required style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer;">
             <div id="uploadPlaceholder">
-                <i class="fas fa-camera-retro fa-3x" style="color: var(--primary); margin-bottom: 10px;"></i>
+                <i class="fas fa-camera-retro fa-3x" style="color: var(--primary); margin-bottom: 15px;"></i>
                 <p style="font-weight: bold;">पुर्जीको फोटो खिच्नुहोस् वा फाइल छान्नुहोस्</p>
                 <small>(पुर्जी बिना कतिपय औषधी उपलब्ध गराउन सकिँदैन)</small>
             </div>
-            <img id="imagePreview" src="" alt="Preview" style="display: none; width: 100%; max-height: 300px; object-fit: contain; margin-top: 15px; border-radius: 10px; border: 1px solid #ddd;">
+            <img id="imagePreview" src="" alt="Preview" style="display: none; width: 100%; max-height: 300px; object-fit: contain; margin-top: 20px; border-radius: 12px; border: 1px solid #ddd;">
           </div>
         </div>
 
         <div class="agreement-container">
           <label class="agreement-label">
-            <input type="checkbox" name="terms_agreement" required style="width: 24px; height: 24px; cursor: pointer; border: 2px solid var(--primary);">
+            <input type="checkbox" name="terms_agreement" required style="width: 22px; height: 22px; cursor: pointer;">
             <span>
               <strong>नियम तथा सर्तहरूको स्वीकृति:</strong> <br>
-              म विमल फार्मेसीका सबै नियमहरू, नेपाल सरकारको <strong>DDA</strong> (औषधि कानुन) र <strong>IRD</strong> (कर नियम) पालना गर्न पूर्ण रूपमा सहमत छु। मैले उपलब्ध गराएको पुर्जी सही छ र आवश्यक परेको खण्डमा थप कानुनी प्रक्रियाका लागि म जिम्मेवार रहनेछु।
+              म विमल फार्मेसीका सबै नियमहरू, नेपाल सरकारको <strong>DDA</strong> र <strong>IRD</strong> नियम पालना गर्न सहमत छु। मैले उपलब्ध गराएको पुर्जी सही छ।
             </span>
           </label>
         </div>
@@ -327,22 +374,21 @@
     </div>
   </main>
 
-  <footer>
-    <div style="max-width: 800px; margin: 0 auto;">
-      <h3 style="color:white; margin-bottom: 15px;">बिमल फार्मेसी (Bimal Pharmacy)</h3>
-      <p style="font-size: 0.9rem;">भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन | ०५६-५९३२८८</p>
-      <div style="margin-top: 20px; color: #888; font-size: 0.8rem;">
-        DDA दर्ता नं: २०७९/८० | IRD प्रमाणित प्यान पसल <br>
-        &copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।
-      </div>
-    </div>
-  </footer>
-
   <div class="mobile-call-box">
     <a href="tel:056593288" class="mobile-call-btn">
         <i class="fas fa-phone-alt"></i> फोनबाट अर्डर गर्न: ०५६-५९३२८८
     </a>
   </div>
+
+  <footer>
+    <div class="container">
+      <strong>बिमल फार्मेसी (Bimal Pharmacy)</strong><br>
+      भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन | ०५६-५९३२८८<br>
+      <div style="margin-top: 20px; color: #888; font-size: 0.85rem;">
+        &copy; २०२६ विमल फार्मेसी। सर्वाधिकार सुरक्षित।
+      </div>
+    </div>
+  </footer>
 
   <script>
     // Prescription Image Preview Script
