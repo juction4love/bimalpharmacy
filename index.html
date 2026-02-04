@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>बिमल फार्मेसी | भरतपुर-७, चितवन</title>
+  <title>बिमल फार्मेसी | Bimal Pharmacy - Health & Medical Guide Nepal</title>
   
-  <meta name="description" content="बिमल फार्मेसी: क्यान्सर अस्पताल रोड, भरतपुर। नेपालभर होम डेलिभरी र २४सै घण्टा अनलाइन परामर्श।">
+  <meta name="description" content="बिमल फार्मेसी: क्यान्सर अस्पताल रोड, भरतपुर। नेपालभर होम डेलिभरी, २४सै घण्टा अनलाइन परामर्श र भरपर्दो स्वास्थ्य जानकारी।">
+  <meta name="keywords" content="Pharmacy in Bharatpur, Cancer Medicine Nepal, Bimal Pharmacy, Online Medicine Nepal">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -32,214 +33,62 @@
       padding-bottom: 80px; 
     }
 
-    /* --- 1. Branding Header (Corner Round Logo Fix) --- */
+    /* --- Branding Header --- */
     .branding-header {
       background: var(--white);
       padding: 20px 5%;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
       gap: 20px;
       border-bottom: 5px solid var(--primary);
     }
+    .logo-container img { height: 85px; width: 85px; border-radius: 50%; border: 3px solid var(--primary); padding: 4px; object-fit: cover; }
+    .brand-text h1 { color: var(--primary); font-size: 2.2rem; margin: 0; }
+    .brand-text p { font-size: 1rem; color: #555; }
 
-    .logo-container img {
-      height: 85px;         /* Equal width and height for a circle */
-      width: 85px;
-      border-radius: 50%;   /* Makes it round */
-      object-fit: cover;
-      border: 3px solid var(--primary);
-      padding: 4px;
-      background: white;
-    }
+    /* --- Navigation (Keeping your original links) --- */
+    .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 18px 20px; display: block; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
 
-    .brand-text h1 { 
-      color: var(--primary); 
-      font-size: 2.2rem; 
-      margin: 0;
-      letter-spacing: -1px;
-      line-height: 1.1;
-    }
+    /* --- News Ticker --- */
+    .news-ticker { background: var(--danger); color: white; padding: 12px 0; font-size: 0.95rem; font-weight: 600; }
 
-    .brand-text p { 
-      font-size: 1rem; 
-      color: #555; 
-      font-weight: 500;
-    }
-
-    .header-info-mini {
-      margin-top: 5px;
-      font-size: 0.85rem;
-      color: #777;
-    }
-
-    /* --- 2. News Ticker --- */
-    .news-ticker {
-      background: var(--danger);
-      color: white;
-      padding: 12px 0;
-      font-size: 0.95rem;
-      font-weight: 600;
-      box-shadow: inset 0 -2px 5px rgba(0,0,0,0.1);
-    }
-
-    /* --- 3. Navigation (Sticky) --- */
-    .navbar {
-      background: var(--primary);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      color: var(--white);
-      text-decoration: none;
-      padding: 18px 22px;
-      display: block;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: 0.3s;
-    }
-    .nav-links a:hover, .nav-links a.active { 
-      background: var(--secondary); 
-      color: var(--accent) !important;
-      box-shadow: inset 0 -4px 0 var(--accent); /* Bottom highlight */
-    }
-
-    /* --- 4. Hero Section --- */
-    .hero {
-      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,247,241,0.9)), url('https://www.transparenttextures.com/patterns/white-diamond.png');
-      text-align: center;
-      padding: 60px 20px 80px;
-    }
+    /* --- Hero --- */
+    .hero { background: var(--white); text-align: center; padding: 80px 20px; border-bottom: 1px solid #eee; }
     .hero h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px; }
-    .hero p { font-size: 1.2rem; color: #444; max-width: 700px; margin: 0 auto 30px; }
 
-    /* --- 5. Main Content Grid --- */
-    .main-content {
-      max-width: 1200px;
-      margin: -40px auto 40px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      padding: 0 20px;
-    }
+    /* --- Content Grid --- */
+    .main-content { max-width: 1200px; margin: 40px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 0 20px; }
+    .card { background: var(--white); padding: 30px; border-radius: 12px; box-shadow: var(--shadow); border-left: 5px solid var(--primary); }
 
-    .card {
-      background: var(--white);
-      padding: 35px;
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      transition: all 0.4s ease;
-      border: 1px solid #edf2f0;
-      position: relative;
-    }
-    .card::after {
-      content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%;
-      background: var(--primary);
-    }
-    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-    .card h2 { margin-bottom: 15px; font-size: 1.5rem; color: var(--primary); display: flex; align-items: center; }
-    .card i { margin-right: 15px; font-size: 1.8rem; }
+    /* --- New Sections for Google Value --- */
+    .info-box { max-width: 1200px; margin: 40px auto; padding: 40px 20px; background: #fff; border-radius: 15px; }
+    .faq-item { margin-bottom: 15px; padding: 15px; background: #f1f8f1; border-radius: 8px; }
 
-    /* --- 6. CREDIT NOTICE CARD --- */
-    .notice-card { 
-      grid-column: 1 / -1; 
-      background: #fff9f9; 
-      border: 1px solid #ffcdd2; 
-    }
-    .notice-card::after { background: var(--danger); }
-    .notice-highlight {
-      background: #ffebee;
-      padding: 25px;
-      border-radius: 10px;
-      border-left: 6px solid var(--danger);
-      margin: 20px 0;
-      color: #b71c1c;
-      font-weight: 600;
-    }
+    /* --- Footer --- */
+    footer { background: #1a1a1a; color: #999; padding: 60px 20px 100px; text-align: center; }
+    .footer-links { margin: 20px 0; }
+    .footer-links a { color: #ccc; text-decoration: none; margin: 0 10px; }
 
-    /* --- 7. Buttons --- */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      padding: 14px 28px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-      margin-top: 10px;
-      gap: 10px;
-    }
-    .btn-order { background: var(--accent); color: #000; box-shadow: 0 4px 15px rgba(251, 192, 45, 0.4); }
-    .btn-outline { color: var(--primary); border: 2px solid var(--primary); }
-    .btn-danger-outline { color: var(--danger); border: 2px solid var(--danger); }
-    .btn-danger-outline:hover { background: var(--danger); color: white; }
-
-    /* --- 8. Floating Action Buttons --- */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 90px; right: 25px;
-      background: var(--whatsapp);
-      color: #fff;
-      width: 60px; height: 60px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 32px; z-index: 1001;
-      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-      transition: 0.3s;
-    }
-
-    .mobile-call-box {
-      position: fixed;
-      bottom: 0; width: 100%;
-      background: var(--primary);
-      padding: 18px; text-align: center; z-index: 1000;
-    }
-    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.3rem; font-weight: 800; }
-
-    footer {
-      background: #1a1a1a;
-      color: #999;
-      padding: 60px 20px 100px;
-      text-align: center;
-    }
-
-    @media (max-width: 600px) {
-      .branding-header { flex-direction: row; gap: 15px; padding: 15px; }
-      .logo-container img { height: 60px; width: 60px; }
-      .brand-text h1 { font-size: 1.5rem; }
-      .brand-text p { font-size: 0.85rem; }
-      .nav-links a { padding: 12px 10px; font-size: 0.85rem; }
-    }
+    .whatsapp-float { position: fixed; bottom: 90px; right: 25px; background: var(--whatsapp); color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
   </style>
 </head>
 <body>
 
   <header class="branding-header">
     <div class="logo-container">
-      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy Logo">
+      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy">
     </div>
     <div class="brand-text">
       <h1>बिमल फार्मेसी</h1>
-      <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र</p>
-      <div class="header-info-mini">
-        <span><i class="fas fa-map-marker-alt"></i> भरतपुर-७, चितवन</span> | 
-        <span><i class="fas fa-truck"></i> नेपालभर डेलिभरी</span>
-      </div>
+      <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र | भरतपुर-७, चितवन</p>
     </div>
   </header>
 
   <div class="news-ticker">
-    <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
-      विशेष सूचना: बिमल फार्मेसीमा क्यान्सरका सम्पूर्ण औषधीहरू उपलब्ध छन्। हामी **नेपालभर होम डेलिभरी** गर्दछौं। अर्डरको लागि: ०५६-५९३२८८। कृपया आफ्नो बाँकी बक्यौता रकम यथाशिघ्र चुक्ता गरिदिनुहोला।
-    </marquee>
+    <marquee>बिमल फार्मेसीमा क्यान्सरका सम्पूर्ण औषधीहरू उपलब्ध छन्। हामी नेपालभर होम डेलिभरी गर्दछौं। सम्पर्क: ०५६-५९३२८८</marquee>
   </div>
 
   <nav class="navbar">
@@ -256,64 +105,67 @@
   </nav>
 
   <section class="hero">
-    <h2>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</h2>
-    <p>अब घरमै बसी औषधी मगाउनुहोस्। हामी चितवन मात्र नभई <strong>नेपालभर</strong> औषधी पुर्‍याउँछौं।</p>
-    <a href="order.html" class="btn btn-order">
-      <i class="fas fa-shopping-cart"></i> औषधी अर्डर गर्नुहोस्
-    </a>
+    <h2>भरपर्दो औषधी, सुलभ सेवा</h2>
+    <p>विगत लामो समयदेखि भरतपुर-७, क्यान्सर अस्पताल रोडमा सेवा प्रदान गर्दै आएको बिमल फार्मेसी अब अनलाइन मार्फत पनि तपाईँको घरदैलोमा।</p>
+    <br>
+    <a href="order.html" style="background: var(--accent); color: #000; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold;">औषधी अर्डर गर्नुहोस्</a>
   </section>
 
   <main class="main-content">
-    
-    <div class="card notice-card">
-      <h2 style="color: var(--danger);"><i class="fas fa-exclamation-triangle"></i> आदरणीय ग्राहक महानुभावहरू,</h2>
-      <p>विगतमा यहाँहरूको समस्यालाई मध्यनजर गर्दै हामीले मानवीय नाताले विश्वासको आधारमा <strong>उधारो (Credit)</strong> सुविधा उपलब्ध गराएका थियौं।</p>
-      <div class="notice-highlight">
-        तर बारम्बार फोन र म्यासेज मार्फत ताकेता गर्दा पनि बेवास्ता गरिएको हुनाले हामी कडा कदम चाल्न बाध्य भएका छौं। संस्था सञ्चालनमा बाधा पुगेकाले यथाशिघ्र सम्पर्क गरी बाँकी बक्यौता रकम भुक्तानी गरिदिनुहुन सूचित गरिन्छ।
-      </div>
-      <a href="notice.html" class="btn btn-danger-outline">
-        <i class="fas fa-list-ol"></i> बक्यौता नामावली हेर्नुहोस्
-      </a>
-    </div>
-
     <div class="card">
-      <h2><i class="fas fa-shipping-fast"></i> हाम्रा सेवाहरू</h2>
-      <p>नेपालभर होम डेलिभरी, २४सै घण्टा अनलाइन परामर्श र क्यान्सर औषधीमा विशेष सहुलियत।</p>
-      <a href="service.html" class="btn btn-outline">सेवाहरू हेर्नुहोस्</a>
+      <h3><i class="fas fa-pills"></i> गुणस्तरीय औषधी</h3>
+      <p>हामीकहाँ WHO-GMP प्रमाणित कम्पनीका वास्तविक औषधीहरू मात्र पाइन्छ।</p>
     </div>
-
     <div class="card">
-      <h2><i class="fas fa-pills"></i> औषधी गाइड</h2>
-      <p>औषधीको सही प्रयोग र सावधानीबारे जानकारी लिनुहोस्।</p>
-      <a href="medical-guide.html" class="btn btn-outline">थप जान्नुहोस्</a>
+      <h3><i class="fas fa-truck"></i> द्रुत डेलिभरी</h3>
+      <p>चितवन भित्र, नेपालका अन्य शहरमाा डेलिभरी।</p>
     </div>
-
     <div class="card">
-      <h2><i class="fas fa-heartbeat"></i> स्वास्थ्य ज्ञान</h2>
-      <p>दैनिक जीवनमा स्वस्थ रहने टिप्स र मानसिक स्वास्थ्य ब्लगहरू।</p>
-      <a href="knowledge.html" class="btn btn-outline">ब्लग पढ्नुहोस्</a>
+      <h3><i class="fas fa-user-nurse"></i> दक्ष जनशक्ति</h3>
+      <p>हामीकहाँ औषधी वितरण र परामर्श दिइन्छ।</p>
     </div>
-
   </main>
 
-  <a href="https://wa.me/+9779855065327" class="whatsapp-float" target="_blank">
+  <section class="info-box">
+    <h2 style="color: var(--primary); margin-bottom: 20px;">किन बिमल फार्मेसी रोज्ने?</h2>
+    <p>बिमल फार्मेसी केवल एक औषधी पसल मात्र होइन। हामी बिरामीको स्वास्थ्यलाई केन्द्रमा राखेर काम गर्छौं। विशेषगरी क्यान्सरका औषधीहरू (Oncology Drugs) को लागि हामी नेपालकै भरपर्दो नाम हौं।</p>
+    <br>
+    <div class="faq-item">
+      <strong>१. के तपाईँहरू नेपालभर औषधी पठाउनुहुन्छ?</strong>
+      <p>हो, हामी कुरियर सेवा मार्फत नेपालको जुनसुकै कुनामा पनि सुरक्षित साथ औषधी पुर्‍याउँछौं।</p>
+    </div>
+    <div class="faq-item">
+      <strong>२. के अनलाइनबाटै परामर्श लिन सकिन्छ?</strong>
+      <p>हो, तपाईँले ह्वाट्सएप मार्फत औषधीको प्रयोगबारे बुझ्न सक्नुहुन्छ।</p>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <strong style="color:white; font-size: 1.2rem;">बिमल फार्मेसी</strong><br>
+      भरतपुर-७, चितवन (क्यान्सर अस्पताल रोड) | फोन: ०५६-५९३२८८<br>
+      दर्ता नं: 17223
+    </div>
+
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a> | 
+      <a href="terms.html">Terms and Conditions</a> | 
+      <a href="disclaimer.html">Disclaimer</a> | 
+      <a href="contact.html">Contact Us</a>
+    </div>
+
+    <p style="font-size: 0.8rem; color: #666;">&copy; २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+  </footer>
+
+  <a href="https://wa.me/+9779855065327" class="whatsapp-float">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <div class="mobile-call-box">
-    <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> कल गर्नुहोस्: ०५६-५९३२८८
+  <div style="position: fixed; bottom: 0; width: 100%; background: var(--primary); padding: 15px; text-align: center;">
+    <a href="tel:056593288" style="color: white; text-decoration: none; font-weight: bold; font-size: 1.2rem;">
+      <i class="fas fa-phone"></i> कल गर्नुहोस्: ०५६-५९३२८८
     </a>
   </div>
-
-  <footer>
-    <div class="footer-info">
-      <strong style="color:white">बिमल फार्मेसी</strong><br>
-      भरतपुर-७, चितवन, नेपाल | ०५६-५९३२८८<br>
-      <small>नेपालभर औषधी डेलिभरीको सेवा उपलब्ध छ</small>
-    </div>
-    <p style="margin-top: 20px;">&copy; २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-  </footer>
 
 </body>
 </html>
