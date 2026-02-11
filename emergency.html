@@ -4,66 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergency Contacts & Blood Donor | Bimal Pharmacy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { 
             --primary-color: #2c3e50; 
             --emergency-red: #e74c3c; 
             --accent-blue: #3498db; 
             --success-green: #27ae60;
+            --nav-bg: #1a252f;
             --light-bg: #f4f7f6;
         }
+        
         body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: var(--light-bg); color: #333; }
-        .header { background: var(--primary-color); color: white; padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--emergency-red); }
+
+        /* Navigation Bar Styles */
+        .navbar { background: var(--nav-bg); padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .nav-links { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; margin: 0; padding: 0; }
+        .nav-links li { margin: 5px 15px; }
+        .nav-links a { color: white; text-decoration: none; font-size: 15px; transition: 0.3s; font-weight: 500; }
+        .nav-links a:hover { color: var(--emergency-red); }
+        .nav-links a.active { color: var(--emergency-red); border-bottom: 2px solid var(--emergency-red); padding-bottom: 5px; }
+
+        /* Content Container */
         .container { max-width: 1100px; margin: 20px auto; padding: 25px; background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         
+        .header-section { background: var(--primary-color); color: white; padding: 40px 20px; text-align: center; border-radius: 8px; margin-bottom: 30px; border-bottom: 5px solid var(--emergency-red); }
         h1 { margin: 0; font-size: 32px; letter-spacing: 1px; }
         h2 { color: var(--emergency-red); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 40px; display: flex; align-items: center; }
         h3 { color: var(--primary-color); background: #f8f9fa; padding: 12px; border-left: 5px solid var(--accent-blue); margin-top: 25px; }
 
-        /* Grid System */
+        /* Grid & Cards */
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 15px; }
-        .card { background: #fff; border: 1px solid #e1e1e1; padding: 20px; border-radius: 8px; transition: all 0.3s ease; border-top: 3px solid #ddd; }
+        .card { background: #fff; border: 1px solid #e1e1e1; padding: 20px; border-radius: 8px; border-top: 3px solid #ddd; transition: 0.3s; }
         .card:hover { transform: translateY(-5px); border-top-color: var(--emergency-red); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .card strong { display: block; font-size: 18px; color: #2c3e50; margin-bottom: 8px; }
         
-        /* Buttons */
         .btn-call { display: inline-block; margin-top: 12px; padding: 10px 20px; background: var(--emergency-red); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px; transition: 0.3s; }
         .btn-call:hover { background: #c0392b; }
 
         /* Tables */
         .table-container { overflow-x: auto; margin-top: 15px; }
-        table { width: 100%; border-collapse: collapse; background: white; min-width: 500px; }
+        table { width: 100%; border-collapse: collapse; min-width: 500px; background: white; }
         th, td { text-align: left; padding: 15px; border-bottom: 1px solid #eee; }
-        th { background: #f8f9fa; color: #666; font-weight: bold; text-transform: uppercase; font-size: 13px; }
+        th { background: #f8f9fa; color: #666; font-size: 13px; font-weight: bold; text-transform: uppercase; }
         tr:hover { background-color: #fdfdfd; }
 
-        /* Form Styling */
+        /* Donor Form */
         .donor-form { background: #fff; border: 2px solid var(--success-green); padding: 35px; border-radius: 12px; margin-top: 60px; box-shadow: 0 5px 20px rgba(39, 174, 96, 0.1); }
         .form-header { text-align: center; margin-bottom: 30px; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-weight: bold; margin-bottom: 8px; color: #444; }
-        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box; }
         .btn-submit { background: var(--success-green); color: white; border: none; padding: 15px 30px; border-radius: 6px; cursor: pointer; font-size: 18px; font-weight: bold; width: 100%; transition: 0.3s; }
         .btn-submit:hover { background: #219150; box-shadow: 0 4px 12px rgba(33, 145, 80, 0.3); }
 
         footer { text-align: center; margin-top: 60px; padding: 30px; border-top: 1px solid #eee; color: #777; font-size: 14px; }
 
         @media (max-width: 768px) {
-            .header h1 { font-size: 24px; }
+            .nav-links li { margin: 5px 8px; }
+            .header-section h1 { font-size: 24px; }
             .container { margin: 10px; padding: 15px; }
-            .card { padding: 15px; }
+            .contact-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>Bimal Pharmacy - सेवा र सुरक्षा पोर्टल</h1>
-    <p>भरतपुर-७, चितवन | नेपालभरिका आपतकालीन सम्पर्कहरू</p>
-</div>
+<nav class="navbar">
+    <ul class="nav-links">
+        <li><a href="index.html">गृहपृष्ठ</a></li>
+        <li><a href="medical-guide.html">औषधी गाइड</a></li>
+        <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
+        <li><a href="order.html">अर्डर</a></li>
+        <li><a href="service.html">सेवाहरू</a></li>
+        <li><a href="notice.html">सूचना</a></li>
+        <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
+        <li><a href="contact.html">सम्पर्क</a></li>
+        <li><a href="emergency.html" class="active">आपतकालीन नम्बरहरू</a></li>
+    </ul>
+</nav>
 
 <div class="container">
-    
+    <div class="header-section">
+        <h1>Bimal Pharmacy - सेवा र सुरक्षा पोर्टल</h1>
+        <p>भरतपुर-७, चितवन | नेपालभरिका आपतकालीन सम्पर्कहरू</p>
+    </div>
+
     <h2>१. चौबीसै घण्टा आपतकालीन हटलाइन</h2>
     <div class="contact-grid">
         <div class="card"><strong>नेपाल प्रहरी</strong> आपतकालीन नम्बर: १०० <br><a href="tel:100" class="btn-call">कल गर्नुहोस्</a></div>
@@ -84,7 +110,7 @@
             <tr><td>भरतपुर अस्पताल</td><td><a href="tel:056597003">०५६-५९७००३</a></td><td>सरकारी/Emergency</td></tr>
             <tr><td>चितवन मेडिकल कलेज (CMC)</td><td><a href="tel:056532933">०५६-५३२९३३</a></td><td>Private/Teaching</td></tr>
             <tr><td>क्यान्सर अस्पताल (BPKMCH)</td><td><a href="tel:056524501">०५६-५२४५०१</a></td><td>Cancer Care</td></tr>
-            <tr><td>कलेज अफ मेडिकल साइन्सेस</td><td><a href="tel:9807108466">९८०७१०८४६६</a></td><td>Old Medical College</td></tr>
+            <tr><td>कलेज अफ मेडिकल साइन्सेस</td><td><a href="tel:9807108466">९८०७१०८४६६</a></td><td>भरतपुर</td></tr>
         </table>
     </div>
 
@@ -165,9 +191,8 @@
     </div>
 
     <footer>
-        <p><strong>Bimal Pharmacy - सेवामा समर्पित</strong></p>
-        <p>भरतपुर-७, चितवन | फोन: ०५६-XXXXXX</p>
-        <p>© 2026 Bimal Pharmacy | <a href="index.html" style="color: var(--accent-blue); text-decoration: none;">मुख्य पृष्ठमा फर्कनुहोस्</a></p>
+        <p><strong>Bimal Pharmacy, Bharatpur-7, Chitwan</strong></p>
+        <p>© 2026 Bimal Pharmacy | सबै अधिकार सुरक्षित</p>
     </footer>
 </div>
 
