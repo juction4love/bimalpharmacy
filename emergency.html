@@ -3,58 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emergency Contacts | Bimal Pharmacy</title>
+    <title>Emergency Contacts & Blood Donor | Bimal Pharmacy</title>
     <style>
-        :root { --primary-color: #2c3e50; --emergency-red: #e74c3c; --text-light: #ecf0f1; }
-        body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f4; }
-        .header { background: var(--primary-color); color: white; padding: 20px; text-align: center; }
-        .container { max-width: 1000px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h1 { margin: 0; font-size: 24px; }
-        h2 { color: var(--emergency-red); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 30px; }
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .card { background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 5px; transition: 0.3s; }
-        .card:hover { border-color: var(--emergency-red); background: #fffafa; }
-        .card strong { display: block; font-size: 17px; color: #333; }
-        .btn-call { display: inline-block; margin-top: 10px; padding: 8px 15px; background: var(--emergency-red); color: white; text-decoration: none; border-radius: 4px; font-weight: bold; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #ddd; }
-        th { background: #f8f8f8; }
-        @media (max-width: 600px) { .header h1 { font-size: 20px; } }
+        :root { 
+            --primary-color: #2c3e50; 
+            --emergency-red: #e74c3c; 
+            --accent-blue: #3498db; 
+            --success-green: #27ae60;
+            --light-bg: #f4f7f6;
+        }
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: var(--light-bg); color: #333; }
+        .header { background: var(--primary-color); color: white; padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--emergency-red); }
+        .container { max-width: 1100px; margin: 20px auto; padding: 25px; background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        h1 { margin: 0; font-size: 32px; letter-spacing: 1px; }
+        h2 { color: var(--emergency-red); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 40px; display: flex; align-items: center; }
+        h3 { color: var(--primary-color); background: #f8f9fa; padding: 12px; border-left: 5px solid var(--accent-blue); margin-top: 25px; }
+
+        /* Grid System */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 15px; }
+        .card { background: #fff; border: 1px solid #e1e1e1; padding: 20px; border-radius: 8px; transition: all 0.3s ease; border-top: 3px solid #ddd; }
+        .card:hover { transform: translateY(-5px); border-top-color: var(--emergency-red); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .card strong { display: block; font-size: 18px; color: #2c3e50; margin-bottom: 8px; }
+        
+        /* Buttons */
+        .btn-call { display: inline-block; margin-top: 12px; padding: 10px 20px; background: var(--emergency-red); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px; transition: 0.3s; }
+        .btn-call:hover { background: #c0392b; }
+
+        /* Tables */
+        .table-container { overflow-x: auto; margin-top: 15px; }
+        table { width: 100%; border-collapse: collapse; background: white; min-width: 500px; }
+        th, td { text-align: left; padding: 15px; border-bottom: 1px solid #eee; }
+        th { background: #f8f9fa; color: #666; font-weight: bold; text-transform: uppercase; font-size: 13px; }
+        tr:hover { background-color: #fdfdfd; }
+
+        /* Form Styling */
+        .donor-form { background: #fff; border: 2px solid var(--success-green); padding: 35px; border-radius: 12px; margin-top: 60px; box-shadow: 0 5px 20px rgba(39, 174, 96, 0.1); }
+        .form-header { text-align: center; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 8px; color: #444; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; }
+        .btn-submit { background: var(--success-green); color: white; border: none; padding: 15px 30px; border-radius: 6px; cursor: pointer; font-size: 18px; font-weight: bold; width: 100%; transition: 0.3s; }
+        .btn-submit:hover { background: #219150; box-shadow: 0 4px 12px rgba(33, 145, 80, 0.3); }
+
+        footer { text-align: center; margin-top: 60px; padding: 30px; border-top: 1px solid #eee; color: #777; font-size: 14px; }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 24px; }
+            .container { margin: 10px; padding: 15px; }
+            .card { padding: 15px; }
+        }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>Bimal Pharmacy - आपतकालीन सम्पर्क</h1>
-    <p>भरतपुर-७, चितवन | तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</p>
+    <h1>Bimal Pharmacy - सेवा र सुरक्षा पोर्टल</h1>
+    <p>भरतपुर-७, चितवन | नेपालभरिका आपतकालीन सम्पर्कहरू</p>
 </div>
 
 <div class="container">
-    <h2>१. तत्काल सेवा (२४ घण्टा)</h2>
+    
+    <h2>१. चौबीसै घण्टा आपतकालीन हटलाइन</h2>
     <div class="contact-grid">
-        <div class="card"><strong>प्रहरी (Police)</strong> डायल: १०० <br> <a href="tel:100" class="btn-call">कल गर्नुहोस्</a></div>
-        <div class="card"><strong>एम्बुलेन्स (Ambulance)</strong> डायल: १०२ <br> <a href="tel:102" class="btn-call">कल गर्नुहोस्</a></div>
-        <div class="card"><strong>दमकल (Fire Brigade)</strong> डायल: १०१ <br> <a href="tel:101" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>नेपाल प्रहरी</strong> आपतकालीन नम्बर: १०० <br><a href="tel:100" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>एम्बुलेन्स सेवा (NAS)</strong> नेपालभर: १०२ <br><a href="tel:102" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>दमकल (Fire Brigade)</strong> नेपालभर: १०१ <br><a href="tel:101" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>ट्राफिक प्रहरी</strong> हटलाइन: १०३ <br><a href="tel:103" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>बाल हेल्पलाइन</strong> CWIN Nepal: १०९८ <br><a href="tel:1098" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>महिला हेल्पलाइन</strong> राष्ट्रिय महिला आयोग: ११४५ <br><a href="tel:1145" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>सशस्त्र प्रहरी (APF)</strong> सुरक्षा हटलाइन: १११४ <br><a href="tel:1114" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>अख्तियार</strong> भ्रष्टाचार विरुद्ध: १०७ <br><a href="tel:107" class="btn-call">कल गर्नुहोस्</a></div>
     </div>
 
-    <h2>२. चितवनका मुख्य अस्पतालहरू</h2>
-    <table>
-        <tr><th>अस्पताल</th><th>सम्पर्क नम्बर</th></tr>
-        <tr><td>भरतपुर अस्पताल</td><td><a href="tel:056597003">०५६-५९७००३</a></td></tr>
-        <tr><td>चितवन मेडिकल कलेज (CMC)</td><td><a href="tel:056532933">०५६-५३२९३३</a></td></tr>
-        <tr><td>पुरानो मेडिकल कलेज</td><td><a href="tel:9807108466">९८०७१०८४६६</a></td></tr>
-    </table>
-
-    <h2>३. नेपालभरका प्रमुख हेल्पलाइन</h2>
-    <ul>
-        <li><strong>बाल हेल्पलाइन:</strong> १०९८</li>
-        <li><strong>महिला हेल्पलाइन:</strong> ११४५</li>
-        <li><strong>मानव सेवा आश्रम:</strong> ९८५५०६०९०९</li>
-    </ul>
-
-    <div style="text-align: center; margin-top: 50px; color: #777; font-size: 14px;">
-        <p>© 2026 Bimal Pharmacy | <a href="index.html">होमपेजमा जानुहोस्</a></p>
+    <h2>२. अस्पताल तथा स्वास्थ्य केन्द्रहरू</h2>
+    <h3>चितवन (हाम्रो क्षेत्र)</h3>
+    <div class="table-container">
+        <table>
+            <tr><th>अस्पतालको नाम</th><th>सम्पर्क नम्बर</th><th>विशेषता</th></tr>
+            <tr><td>भरतपुर अस्पताल</td><td><a href="tel:056597003">०५६-५९७००३</a></td><td>सरकारी/Emergency</td></tr>
+            <tr><td>चितवन मेडिकल कलेज (CMC)</td><td><a href="tel:056532933">०५६-५३२९३३</a></td><td>Private/Teaching</td></tr>
+            <tr><td>क्यान्सर अस्पताल (BPKMCH)</td><td><a href="tel:056524501">०५६-५२४५०१</a></td><td>Cancer Care</td></tr>
+            <tr><td>कलेज अफ मेडिकल साइन्सेस</td><td><a href="tel:9807108466">९८०७१०८४६६</a></td><td>Old Medical College</td></tr>
+        </table>
     </div>
+
+    <h3>काठमाडौँ उपत्यका र मोफसल</h3>
+    <div class="table-container">
+        <table>
+            <tr><th>अस्पताल</th><th>सम्पर्क नम्बर</th><th>स्थान</th></tr>
+            <tr><td>वीर अस्पताल</td><td><a href="tel:014221988">०१-४२२१९८८</a></td><td>काठमाडौँ</td></tr>
+            <tr><td>शिक्षण अस्पताल (TUTH)</td><td><a href="tel:014412303">०१-४४१२३०३</a></td><td>महाराजगंज</td></tr>
+            <tr><td>पाटन अस्पताल</td><td><a href="tel:015522278">०१-५५२२२७८</a></td><td>ललितपुर</td></tr>
+            <tr><td>BPKIHS (घोपा क्याम्प)</td><td><a href="tel:025525555">०२५-५२५५५५</a></td><td>धरान</td></tr>
+            <tr><td>लुम्बिनी प्रादेशिक अस्पताल</td><td><a href="tel:071540200">०७१-५४०२००</a></td><td>बुटवल</td></tr>
+            <tr><td>भेरी अस्पताल</td><td><a href="tel:081520153">०८१-५२०१५३</a></td><td>नेपालगंज</td></tr>
+            <tr><td>मणिपाल शिक्षण अस्पताल</td><td><a href="tel:061526416">०६१-५२६४१६</a></td><td>पोखरा</td></tr>
+        </table>
+    </div>
+
+    <h2>३. नेपालका प्रमुख ब्लड बैंकहरू</h2>
+    <div class="contact-grid">
+        <div class="card"><strong>केन्द्रीय रक्तसञ्चार (काठमाडौँ)</strong> ०१-४२७२७३० <br><a href="tel:014272730" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>क्षेत्रीय रक्तसञ्चार (चितवन)</strong> ०५६-५२०१३७ <br><a href="tel:056520137" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>क्षेत्रीय रक्तसञ्चार (पोखरा)</strong> ०६१-५२१०९१ <br><a href="tel:061521091" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>क्षेत्रीय रक्तसञ्चार (विराटनगर)</strong> ०२१-५२३२३० <br><a href="tel:021523230" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>क्षेत्रीय रक्तसञ्चार (नेपालगंज)</strong> ०८१-५२२२७७ <br><a href="tel:081522277" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>ब्लड बैंक (बुटवल)</strong> ०७१-५४०६०७ <br><a href="tel:071540607" class="btn-call">कल गर्नुहोस्</a></div>
+    </div>
+
+    <h2>४. शव वाहन सेवा (Hearse Service)</h2>
+    <div class="table-container">
+        <table>
+            <tr><th>संस्था / क्षेत्र</th><th>सम्पर्क नम्बर</th></tr>
+            <tr><td>चितवन रेडक्रस (शव वाहन)</td><td><a href="tel:056520133">०५६-५२०१३३</a></td></tr>
+            <tr><td>भरतपुर महानगरपालिका सेवा</td><td><a href="tel:056520706">०५६-५२०७०६</a></td></tr>
+            <tr><td>पशुपति विकास कोष (काठमाडौँ)</td><td><a href="tel:014470153">०१-४४७०१५३</a></td></tr>
+            <tr><td>नेपाल रेडक्रस (केन्द्रीय)</td><td><a href="tel:014270650">०१-४२७०६५०</a></td></tr>
+            <tr><td>नेपाल परोपकार केन्द्र</td><td><a href="tel:9851020994">९८५१०२०९९४</a></td></tr>
+            <tr><td>विराटनगर (एम्बुलेन्स/शव वाहन)</td><td><a href="tel:9852020101">९८५२०२०१०१</a></td></tr>
+        </table>
+    </div>
+
+    <div class="donor-form">
+        <div class="form-header">
+            <h2 style="color: var(--success-green); border:none; display:block; margin:0;">रक्तदाता दर्ता फारम</h2>
+            <p>तपाईंको सानो सहयोगले कसैको जीवन बच्न सक्छ। आजै दर्ता हुनुहोस्।</p>
+        </div>
+        
+        <form action="https://formspree.io/f/your-id" method="POST">
+            <div class="contact-grid" style="grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));">
+                <div class="form-group">
+                    <label>पूरा नाम (Full Name):</label>
+                    <input type="text" name="name" placeholder="नाम र थर" required>
+                </div>
+                <div class="form-group">
+                    <label>रगत समूह (Blood Group):</label>
+                    <select name="blood_group" required>
+                        <option value="">छान्नुहोस्</option>
+                        <option value="A+">A+</option><option value="A-">A-</option>
+                        <option value="B+">B+</option><option value="B-">B-</option>
+                        <option value="AB+">AB+</option><option value="AB-">AB-</option>
+                        <option value="O+">O+</option><option value="O-">O-</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>मोबाइल नम्बर:</label>
+                    <input type="tel" name="phone" placeholder="९८XXXXXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label>ठेगाना:</label>
+                    <input type="text" name="address" placeholder="उदाहरण: भरतपुर-७, चितवन" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>अन्तिम पटक रक्तदान गरेको मिति (यदि छ भने):</label>
+                <input type="date" name="last_donation">
+            </div>
+            <button type="submit" class="btn-submit">स्वयम्सेवी रक्तदाता बन्नुहोस्</button>
+        </form>
+    </div>
+
+    <footer>
+        <p><strong>Bimal Pharmacy - सेवामा समर्पित</strong></p>
+        <p>भरतपुर-७, चितवन | फोन: ०५६-XXXXXX</p>
+        <p>© 2026 Bimal Pharmacy | <a href="index.html" style="color: var(--accent-blue); text-decoration: none;">मुख्य पृष्ठमा फर्कनुहोस्</a></p>
+    </footer>
 </div>
 
 </body>
