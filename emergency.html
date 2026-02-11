@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Contacts | Bimal Pharmacy</title>
+    <style>
+        :root { --primary-color: #2c3e50; --emergency-red: #e74c3c; --text-light: #ecf0f1; }
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f4; }
+        .header { background: var(--primary-color); color: white; padding: 20px; text-align: center; }
+        .container { max-width: 1000px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1 { margin: 0; font-size: 24px; }
+        h2 { color: var(--emergency-red); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 30px; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .card { background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 5px; transition: 0.3s; }
+        .card:hover { border-color: var(--emergency-red); background: #fffafa; }
+        .card strong { display: block; font-size: 17px; color: #333; }
+        .btn-call { display: inline-block; margin-top: 10px; padding: 8px 15px; background: var(--emergency-red); color: white; text-decoration: none; border-radius: 4px; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #ddd; }
+        th { background: #f8f8f8; }
+        @media (max-width: 600px) { .header h1 { font-size: 20px; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Bimal Pharmacy - आपतकालीन सम्पर्क</h1>
+    <p>भरतपुर-७, चितवन | तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</p>
+</div>
+
+<div class="container">
+    <h2>१. तत्काल सेवा (२४ घण्टा)</h2>
+    <div class="contact-grid">
+        <div class="card"><strong>प्रहरी (Police)</strong> डायल: १०० <br> <a href="tel:100" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>एम्बुलेन्स (Ambulance)</strong> डायल: १०२ <br> <a href="tel:102" class="btn-call">कल गर्नुहोस्</a></div>
+        <div class="card"><strong>दमकल (Fire Brigade)</strong> डायल: १०१ <br> <a href="tel:101" class="btn-call">कल गर्नुहोस्</a></div>
+    </div>
+
+    <h2>२. चितवनका मुख्य अस्पतालहरू</h2>
+    <table>
+        <tr><th>अस्पताल</th><th>सम्पर्क नम्बर</th></tr>
+        <tr><td>भरतपुर अस्पताल</td><td><a href="tel:056597003">०५६-५९७००३</a></td></tr>
+        <tr><td>चितवन मेडिकल कलेज (CMC)</td><td><a href="tel:056532933">०५६-५३२९३३</a></td></tr>
+        <tr><td>पुरानो मेडिकल कलेज</td><td><a href="tel:9807108466">९८०७१०८४६६</a></td></tr>
+    </table>
+
+    <h2>३. नेपालभरका प्रमुख हेल्पलाइन</h2>
+    <ul>
+        <li><strong>बाल हेल्पलाइन:</strong> १०९८</li>
+        <li><strong>महिला हेल्पलाइन:</strong> ११४५</li>
+        <li><strong>मानव सेवा आश्रम:</strong> ९८५५०६०९०९</li>
+    </ul>
+
+    <div style="text-align: center; margin-top: 50px; color: #777; font-size: 14px;">
+        <p>© 2026 Bimal Pharmacy | <a href="index.html">होमपेजमा जानुहोस्</a></p>
+    </div>
+</div>
+
+</body>
+</html>
