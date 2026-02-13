@@ -17,9 +17,14 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; -webkit-tap-highlight-color: transparent; }
-    body { background-color: var(--light-bg); color: #333; padding-bottom: 80px; }
+    
+    body { 
+      background-color: var(--light-bg); 
+      color: #333; 
+      padding-bottom: 80px; /* Space for mobile nav */
+    }
 
-    /* --- 1. Header (Sticky Top) --- */
+    /* --- 1. Header (Desktop View) --- */
     .app-header {
       background: var(--white);
       padding: 15px 5%;
@@ -31,20 +36,21 @@
     .brand img { height: 40px; width: 40px; border-radius: 50%; }
 
     .desktop-nav { display: none; }
-    .desktop-nav a { text-decoration: none; color: #555; font-weight: 600; margin-left: 20px; font-size: 0.95rem; }
+    .desktop-nav a { text-decoration: none; color: #555; font-weight: 600; margin-left: 20px; font-size: 0.95rem; transition: 0.3s; }
     .desktop-nav a.active { color: var(--primary); }
+    .desktop-nav a:hover { color: var(--secondary); }
 
     /* --- 2. Search Section --- */
     .search-hero {
       text-align: center;
-      padding: 30px 20px;
+      padding: 25px 20px;
       background: var(--white);
       border-bottom: 1px solid #eee;
     }
     
     .search-input-wrapper {
       max-width: 600px;
-      margin: 15px auto 0;
+      margin: 10px auto 0;
       position: relative;
     }
     
@@ -75,14 +81,14 @@
 
     /* --- 4. RESULTS SECTION --- */
     
-    /* A. Local Stock Card */
+    /* A. Local Stock Card (Only appears if matches JSON) */
     .stock-card {
       background: white;
       padding: 15px 20px;
       border-radius: 12px;
       border-left: 5px solid var(--primary);
       box-shadow: var(--shadow);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       display: flex; justify-content: space-between; align-items: center;
       animation: fadeIn 0.3s;
     }
@@ -90,12 +96,12 @@
     .stock-badge { background: #e8f5e9; color: var(--primary); font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
     .btn-stock-order { background: var(--primary); color: white; text-decoration: none; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; }
 
-    /* B. GEMINI BOX (The AI Interface) */
+    /* B. GEMINI BOX (Appears while typing) */
     .gemini-box {
-      display: none; /* Hidden by default */
+      display: none; /* Hidden initially */
       background: #fff;
       border-radius: 20px;
-      padding: 2px; /* For gradient border effect */
+      padding: 2px; /* Gradient Border Width */
       background-image: var(--gemini-gradient);
       margin-top: 20px;
       animation: slideUp 0.4s ease;
@@ -103,25 +109,25 @@
 
     .gemini-inner {
       background: #fff;
-      border-radius: 18px; /* Slightly less than parent */
-      padding: 20px;
+      border-radius: 18px;
+      padding: 25px;
       text-align: center;
     }
 
     .gemini-header {
       display: flex; align-items: center; justify-content: center; gap: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
-    .gemini-header i { font-size: 1.5rem; background: var(--gemini-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .gemini-header h3 { font-size: 1.1rem; color: #444; }
+    .gemini-header i { font-size: 1.8rem; background: var(--gemini-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .gemini-header h3 { font-size: 1.2rem; color: #444; margin: 0; }
 
-    .gemini-text { color: #666; font-size: 0.95rem; margin-bottom: 15px; line-height: 1.5; }
+    .gemini-text { color: #666; font-size: 1rem; margin-bottom: 20px; line-height: 1.5; }
     
     .btn-ask-ai {
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex; align-items: center; gap: 10px;
       background: var(--gemini-gradient);
       color: white; text-decoration: none;
-      padding: 12px 25px; border-radius: 50px;
+      padding: 14px 30px; border-radius: 50px;
       font-weight: bold; font-size: 1rem;
       transition: transform 0.2s;
       box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
@@ -132,11 +138,11 @@
     .mobile-nav {
       position: fixed; bottom: 0; left: 0; width: 100%;
       background: white; display: grid; grid-template-columns: repeat(5, 1fr);
-      padding: 10px 0; border-top: 1px solid #eee; z-index: 1001;
+      padding: 12px 0; border-top: 1px solid #eee; z-index: 1001;
       box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
     }
     .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.7rem; }
-    .nav-item i { display: block; font-size: 1.2rem; margin-bottom: 4px; }
+    .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 4px; }
     .nav-item.active { color: var(--primary); }
 
     /* Animations & Media Queries */
@@ -183,7 +189,7 @@
         </div>
         
         <p class="gemini-text">
-          तपाईंले खोज्नुभएको <strong id="queryText" style="color:#4285f4;">...</strong> को बारेमा जानकारी, प्रयोग र साइड इफेक्ट थाहा पाउन तल थिच्नुहोस्।
+          तपाईंले खोज्नुभएको <strong id="queryText" style="color:#4285f4;">...</strong> को प्रयोग, फाइदा र साइड इफेक्टको बारेमा विस्तृत जानकारी लिनुहोस्।
         </p>
 
         <a href="#" id="geminiBtn" target="_blank" class="btn-ask-ai">
@@ -205,11 +211,11 @@
   <script>
     let medicines = [];
 
-    // Load Data silently
+    // 1. Fetch JSON silently (Privacy: Data is loaded but not displayed)
     fetch('medicines.json')
       .then(r => r.json())
       .then(d => medicines = d)
-      .catch(e => console.log("DB Error"));
+      .catch(e => console.log("DB Error or File not found"));
 
     const searchInput = document.getElementById('searchInput');
     const stockResults = document.getElementById('stockResults');
@@ -217,28 +223,28 @@
     const queryText = document.getElementById('queryText');
     const geminiBtn = document.getElementById('geminiBtn');
 
-    // Listener for Typing
+    // 2. Event Listener: Triggers instantly while typing
     searchInput.addEventListener('input', function() {
       const query = this.value.trim();
       
-      // Clear previous local results
+      // Clear previous stock results
       stockResults.innerHTML = "";
 
-      // If empty, hide everything
+      // If input is too short, hide everything
       if (query.length < 2) {
         geminiContainer.style.display = "none";
         return;
       }
 
-      // 1. Show Gemini Box IMMEDIATELY (Same Page)
+      // --- A. SHOW GEMINI BOX IMMEDIATELY ---
       geminiContainer.style.display = "block";
       queryText.innerText = `"${query}"`;
       
-      // Update the Gemini Link dynamically
-      // This creates a specific query URL for Gemini/Google AI Overview
-      geminiBtn.href = `https://www.google.com/search?q=medicine+${encodeURIComponent(query)}+uses+and+side+effects+nepal`;
+      // Dynamic AI Link: "Medicine Name + uses + nepal" for relevant context
+      geminiBtn.href = `https://www.google.com/search?q=medicine+${encodeURIComponent(query)}+uses+side+effects+price+nepal`;
 
-      // 2. Search Local Data (Privacy Mode: Only exact/partial matches shown)
+      // --- B. CHECK LOCAL STOCK (Privacy Mode) ---
+      // Only show if there is a match in your JSON
       const found = medicines.filter(m => 
         (m["Product Name"] && m["Product Name"].toLowerCase().includes(query.toLowerCase()))
       );
@@ -252,9 +258,9 @@
             <div class="stock-card">
               <div class="stock-info">
                 <h3>${name}</h3>
-                <span class="stock-badge"><i class="fas fa-check"></i> Available</span>
+                <span class="stock-badge"><i class="fas fa-check"></i> Available in Stock</span>
               </div>
-              <a href="https://wa.me/9779855065327?text=Order: ${name}" class="btn-stock-order">
+              <a href="https://wa.me/9779855065327?text=I want to order: ${name}" class="btn-stock-order">
                 <i class="fab fa-whatsapp"></i> Order
               </a>
             </div>
