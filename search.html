@@ -182,6 +182,7 @@
 
   <script>
     // --- API CONFIGURATION ---
+    // बिमल सर, यहाँ तपाईंको *नयाँ* API Key राख्नुहोला (जुनमा Website Restrictions छ)
     const API_KEY = "AIzaSyDuLk1V5MNnpEWeJBwIzwc5fFtel72abAo"; 
     // -------------------------
 
@@ -239,13 +240,19 @@
           textBox.innerHTML = formattedText;
           resultBox.style.display = "block";
         } else {
-          alert("माफ गर्नुहोस्, नेटवर्क समस्या भयो। फेरि प्रयास गर्नुहोस्।");
+          // Error handling specific to Key issues
+          if (data.error) {
+             console.error("Gemini Error:", data.error);
+             alert("Google API Error: " + data.error.message);
+          } else {
+             alert("AI ले जवाफ दिन सकेन।");
+          }
         }
 
       } catch (error) {
         console.error(error);
         loader.style.display = "none";
-        alert("Server Error. Please check your internet.");
+        alert("Server Error. Please check your internet connection.");
       }
     }
   </script>
