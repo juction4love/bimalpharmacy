@@ -182,8 +182,8 @@
 
   <script>
     // --- API CONFIGURATION ---
-    // बिमल सर, यहाँ तपाईंको *नयाँ* API Key राख्नुहोला (जुनमा Website Restrictions छ)
-    const API_KEY = "AIzaSyDuLk1V5MNnpEWeJBwIzwc5fFtel72abAo"; 
+    // बिमल सरको नयाँ Key यहाँ छ:
+    const API_KEY = "AIzaSyBly_wvcUIeFdcfpvNKgo1co98EHcQTwdE"; 
     // -------------------------
 
     function handleEnter(e) {
@@ -228,6 +228,13 @@
         // 3. Hide Loader
         loader.style.display = "none";
 
+        if (data.error) {
+            // गुगलको एरर आएमा यहाँ देखिन्छ
+            console.error("API Error:", data.error);
+            alert("Google API Error: " + data.error.message);
+            return;
+        }
+
         if (data.candidates && data.candidates[0].content) {
           const rawText = data.candidates[0].content.parts[0].text;
           
@@ -240,19 +247,13 @@
           textBox.innerHTML = formattedText;
           resultBox.style.display = "block";
         } else {
-          // Error handling specific to Key issues
-          if (data.error) {
-             console.error("Gemini Error:", data.error);
-             alert("Google API Error: " + data.error.message);
-          } else {
-             alert("AI ले जवाफ दिन सकेन।");
-          }
+          alert("माफ गर्नुहोस्, नेटवर्क समस्या भयो। फेरि प्रयास गर्नुहोस्।");
         }
 
       } catch (error) {
         console.error(error);
         loader.style.display = "none";
-        alert("Server Error. Please check your internet connection.");
+        alert("Server Error. Please check your internet.");
       }
     }
   </script>
