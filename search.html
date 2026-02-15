@@ -19,7 +19,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
     body { background-color: var(--light-bg); padding-bottom: 80px; color: #333; }
 
-    /* --- 1. Top Navigation (Full Menu) --- */
+    /* Header */
     .app-header {
       background: var(--white); padding: 10px 3%;
       position: sticky; top: 0; z-index: 1000;
@@ -29,7 +29,7 @@
     .brand { font-size: 1.4rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 10px; }
     .brand img { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--primary); }
 
-    /* Desktop Nav Styles */
+    /* Desktop Nav */
     .desktop-nav { display: none; }
     .desktop-nav ul { 
       display: flex; list-style: none; gap: 10px; margin: 0; padding: 0; 
@@ -43,7 +43,7 @@
     .desktop-nav a.active { background-color: var(--ime-red); color: white; }
     .desktop-nav a.emergency-btn { background-color: #ffebee; color: #d32f2f; }
 
-    /* --- 2. Insurance Search Section --- */
+    /* Search Section */
     .search-section {
       text-align: center; padding: 50px 20px;
       background: white; border-bottom: 1px solid #ddd;
@@ -60,7 +60,6 @@
       width: 100%; padding: 18px 25px; border-radius: 50px;
       border: 2px solid #ddd; font-size: 1.1rem; outline: none; transition: 0.3s;
     }
-    .search-input:focus { border-color: var(--ime-red); box-shadow: 0 0 15px rgba(237, 28, 36, 0.1); }
     
     .btn-search {
       background: var(--gemini-gradient); color: white; border: none;
@@ -68,7 +67,7 @@
       display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
     }
 
-    /* --- 3. Result Box --- */
+    /* Result Box */
     .ai-container { max-width: 800px; margin: 30px auto; padding: 0 20px; }
     .ai-card {
       background: white; border-radius: 20px; padding: 30px;
@@ -86,7 +85,7 @@
       animation: spin 1s linear infinite; margin: 0 auto;
     }
 
-    /* --- 4. Mobile Nav --- */
+    /* Mobile Nav */
     .mobile-nav {
       position: fixed; bottom: 0; left: 0; width: 100%;
       background: white; display: grid; grid-template-columns: repeat(5, 1fr);
@@ -162,9 +161,9 @@
   </nav>
 
   <script>
-    // --- API KEY CONFIGURATION ---
+    // --- API CONFIGURATION ---
     const API_KEY = "AIzaSyBly_wvcUIeFdcfpvNKgo1co98EHcQTwdE"; 
-    // -----------------------------
+    // -------------------------
 
     function handleEnter(e) {
       if (e.key === 'Enter') fetchGeminiAnswer();
@@ -183,20 +182,20 @@
       
       const prompt = `
         Act as an expert insurance agent for "IME Life Insurance Nepal".
-        Explain the query "${input}" in simple Nepali language to a potential customer.
+        Explain the query "${input}" in simple Nepali language.
         
-        If the user asks about a specific policy, explain:
+        If asked about policy, include:
         1. **योजनाको नाम (Plan Name):**
-        2. **मुख्य फाइदा (Benefits):** (Bonus, Safety)
-        3. **आवश्यकता (Requirements):** (Age, Term)
-        4. **किन यो राम्रो छ?** (Selling point)
+        2. **मुख्य फाइदा (Benefits):**
+        3. **आवश्यकता (Requirements):**
+        4. **किन यो राम्रो छ?**
 
-        If the user asks general questions, answer politely and encourage them to buy insurance for safety.
-        Keep it professional, persuasive, and clear.
+        Keep it polite and professional.
       `;
 
       try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`, {
+        // --- FIXED MODEL NAME: gemini-1.5-flash ---
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
@@ -206,7 +205,8 @@
         loader.style.display = "none";
 
         if (data.error) {
-            alert("Error: " + data.error.message);
+            console.error("API Error:", data.error);
+            alert("Google API Error: " + data.error.message);
             return;
         }
 
@@ -220,11 +220,11 @@
           textBox.innerHTML = formattedText;
           resultBox.style.display = "block";
         } else {
-          alert("माफ गर्नुहोस्, जानकारी भेटिएन।");
+          alert("No answer found.");
         }
       } catch (error) {
         loader.style.display = "none";
-        alert("इन्टरनेट समस्या भयो।");
+        alert("Connection Error. Please refresh.");
       }
     }
   </script>
