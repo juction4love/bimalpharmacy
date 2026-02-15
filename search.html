@@ -134,7 +134,7 @@
     <p style="color: #666; font-size: 1.1rem;">तपाईंको भविष्यको सुरक्षा, हाम्रो जिम्मेवारी।</p>
     
     <div class="search-wrapper">
-      <input type="text" id="aiInput" class="search-input" placeholder="प्रश्न सोध्नुहोस् (जस्तै: बाल शिक्षा योजना के हो?)" onkeypress="handleEnter(event)">
+      <input type="text" id="aiInput" class="search-input" placeholder="प्रश्न सोध्नुहोस् " onkeypress="handleEnter(event)">
       <button onclick="fetchGeminiAnswer()" class="btn-search">
         <i class="fas fa-paper-plane"></i>
       </button>
@@ -200,7 +200,7 @@
         Act as a professional insurance agent for "IME Life Insurance Nepal".
         Answer the following query in simple Nepali language: "${input}"
         
-        If the user asks about a specific policy (like Child Plan, Money Back, Endowment), structure the answer as:
+        If the user asks about a specific policy , structure the answer as:
         1. **योजनाको नाम (Plan Name):**
         2. **मुख्य फाइदा (Benefits):** (Bonus, Risk Cover)
         3. **आवश्यकता (Requirements):** (Age, Term)
