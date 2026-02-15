@@ -1,238 +1,198 @@
 <!DOCTYPE html>
 <html lang="ne">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emergency Contacts & Blood Donor | Bimal Pharmacy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root { 
-            --primary-color: #2c3e50; 
-            --emergency-red: #e74c3c; 
-            --accent-blue: #3498db; 
-            --success-green: #27ae60;
-            --nav-bg: #1a252f;
-            --light-bg: #f8f9fa;
-        }
-        
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: var(--light-bg); color: #333; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>IME Life AI Agent | Bimal Pharmacy</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* --- DESIGN SETTINGS --- */
+    :root {
+      --primary: #2e7d32;
+      --ime-red: #ed1c24;
+      --light-bg: #f8fafc;
+      --white: #ffffff;
+      --gemini-gradient: linear-gradient(135deg, #ed1c24, #fbc02d);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { background-color: var(--light-bg); padding-bottom: 80px; color: #333; }
 
-        /* Navigation Bar */
-        .navbar { background: var(--nav-bg); padding: 10px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .nav-links { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; margin: 0; padding: 0; }
-        .nav-links li { margin: 5px 12px; }
-        .nav-links a { color: #ecf0f1; text-decoration: none; font-size: 14px; transition: 0.3s; font-weight: 500; text-transform: uppercase; }
-        .nav-links a:hover, .nav-links a.active { color: var(--emergency-red); }
+    /* Header */
+    .app-header {
+      background: var(--white); padding: 10px 3%; position: sticky; top: 0; z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand { font-size: 1.4rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+    .brand img { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--primary); }
+    
+    /* Navigation */
+    .desktop-nav { display: none; }
+    .desktop-nav ul { display: flex; list-style: none; gap: 10px; margin: 0; padding: 0; align-items: center; }
+    .desktop-nav a { text-decoration: none; color: #555; font-weight: 600; padding: 8px 12px; font-size: 0.9rem; border-radius: 5px; transition: 0.3s; white-space: nowrap; }
+    .desktop-nav a:hover { background-color: #e8f5e9; color: var(--primary); }
+    .desktop-nav a.active { background-color: var(--ime-red); color: white; }
 
-        /* Header */
-        .container { max-width: 1200px; margin: auto; padding: 20px; }
-        .header-section { background: linear-gradient(135deg, var(--primary-color), #34495e); color: white; padding: 50px 20px; text-align: center; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .header-section h1 { margin: 0; font-size: 2.2rem; }
-        .header-section p { opacity: 0.9; font-size: 1.1rem; margin-top: 10px; }
+    /* Search Section */
+    .search-section { text-align: center; padding: 50px 20px; background: white; border-bottom: 1px solid #ddd; }
+    .ime-logo-text { color: var(--ime-red); font-weight: 800; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 1px; }
+    .search-wrapper { max-width: 650px; margin: 25px auto 0; position: relative; display: flex; gap: 10px; }
+    .search-input { width: 100%; padding: 18px 25px; border-radius: 50px; border: 2px solid #ddd; font-size: 1.1rem; outline: none; transition: 0.3s; }
+    .btn-search { background: var(--gemini-gradient); color: white; border: none; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
 
-        /* Quick Search */
-        .search-box { margin-bottom: 30px; position: relative; }
-        #contactSearch { width: 100%; padding: 15px 45px; border-radius: 30px; border: 2px solid #ddd; font-size: 16px; box-sizing: border-box; outline: none; transition: 0.3s; }
-        #contactSearch:focus { border-color: var(--accent-blue); box-shadow: 0 0 10px rgba(52, 152, 219, 0.2); }
-        .search-icon { position: absolute; left: 20px; top: 18px; color: #777; }
-
-        /* Cards & Grid */
-        h2 { color: var(--primary-color); border-left: 6px solid var(--emergency-red); padding-left: 15px; margin: 40px 0 20px; font-size: 1.5rem; }
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        
-        .card { background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; transition: 0.3s; position: relative; overflow: hidden; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        .card i { font-size: 2rem; color: var(--emergency-red); margin-bottom: 15px; opacity: 0.8; }
-        .card strong { display: block; font-size: 1.2rem; margin-bottom: 5px; color: var(--primary-color); }
-        
-        /* Mobile Calling Button */
-        .btn-call { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; padding: 12px; background: var(--emergency-red); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.3s; width: 100%; }
-        .btn-call:hover { background: #c0392b; }
-
-        /* Table Design */
-        .table-container { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 30px; }
-        table { width: 100%; border-collapse: collapse; }
-        th { background: #f1f2f6; color: #444; padding: 15px; text-align: left; font-size: 14px; }
-        td { padding: 15px; border-bottom: 1px solid #f1f1f1; font-size: 15px; }
-        tr:last-child td { border: none; }
-        .location-tag { font-size: 12px; background: #eee; padding: 2px 8px; border-radius: 10px; color: #666; }
-
-        /* Donor Section */
-        .donor-box { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; background: #fff; padding: 40px; border-radius: 15px; border-top: 5px solid var(--success-green); margin-top: 50px; }
-        .donor-info h3 { color: var(--success-green); font-size: 1.8rem; margin-top: 0; }
-        .donor-form input, .donor-form select { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
-        .btn-submit { background: var(--success-green); color: white; border: none; padding: 15px; border-radius: 8px; width: 100%; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .btn-submit:hover { background: #219150; transform: scale(1.02); }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .donor-box { grid-template-columns: 1fr; padding: 20px; }
-            .header-section h1 { font-size: 1.6rem; }
-            .nav-links li { margin: 5px 8px; }
-            th:nth-child(3), td:nth-child(3) { display: none; } /* Hide specialty on mobile to save space */
-        }
-
-        /* Blood Availability Badge */
-        .status-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 10px; }
-        .status-urgent { background: #ffebee; color: #c62828; }
-    </style>
+    /* Result Box */
+    .ai-container { max-width: 800px; margin: 30px auto; padding: 0 20px; }
+    .ai-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 5px solid var(--ime-red); display: none; }
+    .loader { display: none; text-align: center; margin-top: 20px; }
+    .spinner { width: 45px; height: 45px; border: 4px solid #f3f3f3; border-top: 4px solid var(--ime-red); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto; }
+    
+    /* Mobile Nav */
+    .mobile-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 10px 0; border-top: 1px solid #eee; z-index: 1001; }
+    .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.7rem; }
+    .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 4px; }
+    .nav-item.active { color: var(--ime-red); }
+    
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @media (min-width: 900px) { .mobile-nav { display: none; } .desktop-nav { display: block; } }
+  </style>
 </head>
 <body>
 
-<nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">गृहपृष्ठ</a></li>
-      <li><a href="medical-guide.html">औषधी गाइड</a></li>
-      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-      <li><a href="order.html">अर्डर</a></li>
-      <li><a href="service.html">सेवाहरू</a></li>
-      <li><a href="notice.html">सूचना</a></li>
-      <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
-      <li><a href="contact.html">सम्पर्क</a></li>
-      <li><a href="emergency.html">आपतकालीन नम्बरहरू</a></li>
-    </ul>
+  <header class="app-header">
+    <div class="brand">
+      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Logo">
+      <span>Bimal Pharmacy</span>
+    </div>
+    <nav class="desktop-nav">
+      <ul>
+        <li><a href="index.html">गृहपृष्ठ</a></li>
+        <li><a href="medical-guide.html">औषधी गाइड</a></li>
+        <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
+        <li><a href="order.html">अर्डर</a></li>
+        <li><a href="service.html">सेवाहरू</a></li>
+        <li><a href="notice.html">सूचना</a></li>
+        <li><a href="search.html" class="active"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
+        <li><a href="contact.html">सम्पर्क</a></li>
+        <li><a href="emergency.html">आपतकालीन</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="search-section">
+    <h2 class="ime-logo-text">IME Life Insurance</h2>
+    <p style="color: #666; margin-top: 5px; font-size: 1.1rem;">तपाईंको सुरक्षा, हाम्रो जिम्मेवारी। AI लाई सोध्नुहोस्।</p>
+    <div class="search-wrapper">
+      <input type="text" id="aiInput" class="search-input" placeholder="प्रश्न सोध्नुहोस् (e.g. 10 लाखको पोलिसी...)" onkeypress="handleEnter(event)">
+      <button onclick="fetchGeminiAnswer()" class="btn-search"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </section>
+
+  <div class="ai-container">
+    <div id="loadingBox" class="loader">
+      <div class="spinner"></div>
+      <p style="margin-top: 10px; color: #666;">AI ले सोच्दैछ...</p>
+    </div>
+    <div id="aiResultBox" class="ai-card">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">
+        <i class="fas fa-shield-alt" style="font-size:1.5rem; color:var(--ime-red);"></i>
+        <h3 style="color:#333;">IME Life जानकारी</h3>
+      </div>
+      <div id="aiText" style="font-size: 1.05rem; line-height: 1.7; color: #444;"></div>
+      <div style="margin-top: 20px; font-size: 0.85rem; color: #888; text-align: center; background:#fff5f5; padding:10px; border-radius:10px;">
+        *यो जानकारी AI ले दिएको हो। आधिकारिक जानकारीको लागि <strong>बिमल लामिछाने (अभिकर्ता)</strong> सँग सम्पर्क गर्नुहोस्।
+      </div>
+    </div>
+  </div>
+
+  <nav class="mobile-nav">
+    <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
+    <a href="search.html" class="nav-item active"><i class="fas fa-robot"></i> AI Agent</a>
+    <a href="order.html" class="nav-item"><i class="fas fa-file-prescription"></i> अर्डर</a>
+    <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i> आपतकालीन</a>
+    <a href="contact.html" class="nav-item"><i class="fas fa-user"></i> सम्पर्क</a>
   </nav>
 
-<div class="container">
-    <div class="header-section">
-        <h1>Bimal Pharmacy - आपतकालीन सेवा</h1>
-        <p><i class="fas fa-map-marker-alt"></i> भरतपुर-७, चितवन | <i class="fas fa-phone-alt"></i> २४ घण्टा सेवामा समर्पित</p>
-    </div>
+  <script>
+    const API_KEY = "AIzaSyBly_wvcUIeFdcfpvNKgo1co98EHcQTwdE"; 
+    
+    // List of models to try (Priority Order)
+    const MODEL_LIST = [
+        "gemini-1.5-flash",
+        "gemini-1.5-flash-001",
+        "gemini-1.5-pro",
+        "gemini-1.0-pro"
+    ];
 
-    <div class="search-box">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" id="contactSearch" placeholder="अस्पताल, एम्बुलेन्स वा ब्लड बैंकको नाम खोज्नुहोस्...">
-    </div>
+    function handleEnter(e) { if (e.key === 'Enter') fetchGeminiAnswer(); }
 
-    <h2><i class="fas fa-phone-volume"></i> मुख्य आपतकालीन हटलाइनहरू</h2>
-    <div class="contact-grid">
-        <div class="card">
-            <i class="fas fa-shield-alt"></i>
-            <strong>नेपाल प्रहरी</strong>
-            <span>तत्काल सुरक्षाको लागि</span>
-            <a href="tel:100" class="btn-call"><i class="fas fa-phone"></i> १०० डायल गर्नुहोस्</a>
-        </div>
-        <div class="card">
-            <i class="fas fa-ambulance"></i>
-            <strong>एम्बुलेन्स सेवा (NAS)</strong>
-            <span>नेपाल अधिराज्यभर</span>
-            <a href="tel:102" class="btn-call"><i class="fas fa-phone"></i> १०२ डायल गर्नुहोस्</a>
-        </div>
-        <div class="card">
-            <i class="fas fa-fire-extinguisher"></i>
-            <strong>दमकल सेवा</strong>
-            <span>आगलागी भएमा</span>
-            <a href="tel:101" class="btn-call"><i class="fas fa-phone"></i> १०१ डायल गर्नुहोस्</a>
-        </div>
-        <div class="card">
-            <i class="fas fa-traffic-light"></i>
-            <strong>ट्राफिक प्रहरी</strong>
-            <span>दुर्घटना वा ट्राफिक समस्या</span>
-            <a href="tel:103" class="btn-call"><i class="fas fa-phone"></i> १०३ डायल गर्नुहोस्</a>
-        </div>
-    </div>
+    async function fetchGeminiAnswer() {
+      const input = document.getElementById('aiInput').value.trim();
+      const loader = document.getElementById('loadingBox');
+      const resultBox = document.getElementById('aiResultBox');
+      const textBox = document.getElementById('aiText');
 
-    <h2><i class="fas fa-hospital"></i> चितवनका प्रमुख अस्पतालहरू</h2>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>अस्पताल</th>
-                    <th>सम्पर्क नम्बर</th>
-                    <th>विशेषता</th>
-                </tr>
-            </thead>
-            <tbody id="hospitalTable">
-               <tr>
-                    <td>बि.पी. कोइराला क्यान्सर अस्पताल</td>
-                    <td><a href="tel:056524501">०५६-५२४५०१</a></td>
-                    <td><span class="location-tag">Cancer Care</span></td>
-                </tr>
-                <tr>
-                    <td>भरतपुर अस्पताल</td>
-                    <td><a href="tel:056597003">०५६-५९७००३</a></td>
-                    <td><span class="location-tag">सरकारी / Emergency</span></td>
-                </tr>
-                <tr>
-                            <td>नेसनल सिटी हस्पिटल (National City Hospital)</td>
-                            <td><a href="tel:056493511">०५६-४९३५११</a></td>
-                            <td><span class="location-tag">भरतपुर</span></td>
-                    </tr>
-                     <tr>
-                     <td>चितवन मेडिकल कलेज (CMC)</td>
-                    <td><a href="tel:056532933">०५६-५३२९३३</a></td>
-                    <td><span class="location-tag">Private / Teaching</span></td>
-                </tr>
-                <tr>
-                    <td>कलेज अफ मेडिकल साइन्सेस (Old Medical College)</td>
-                    <td><a href="tel:9807108466">९८०७१०८४६६</a></td>
-                    <td><span class="location-tag">भरतपुर</span></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+      if (!input) return;
 
-    <div class="donor-box">
-        <div class="donor-info">
-            <span class="status-badge status-urgent">तत्काल आवश्यकता</span>
-            <h3>रक्तदाता बन्नुहोस्</h3>
-            <p>तपाईंको रगतको एक थोपाले कसैको अमूल्य जीवन बचाउन सक्छ। बीमल फार्मेसीले चितवन क्षेत्रमा रगतको आवश्यकता परेका बिरामी र रक्तदाताहरू बीच पुलको काम गर्दछ।</p>
-            <ul style="padding-left: 20px; color: #555;">
-                <li>Safe & Easy Registration</li>
-                <li>Emergency Request Notifications</li>
-                <li>Community Support</li>
-            </ul>
-            <div style="margin-top:20px; padding:15px; background:#e8f5e9; border-radius:10px;">
-                <strong>चितवन ब्लड बैंक:</strong> <a href="tel:056520137">०५६-५२०१३७</a>
-            </div>
-        </div>
-        <div class="donor-form">
-            <form action="#" method="POST">
-                <input type="text" placeholder="पूरा नाम" required>
-                <select required>
-                    <option value="">रगत समूह छान्नुहोस्</option>
-                    <option>A +ve</option><option>A -ve</option>
-                    <option>B +ve</option><option>B -ve</option>
-                    <option>O +ve</option><option>O -ve</option>
-                    <option>AB +ve</option><option>AB -ve</option>
-                </select>
-                <input type="tel" placeholder="मोबाइल नम्बर (९८XXXXXXXX)" required>
-                <input type="text" placeholder="ठेगाना (उदाहरण: भरतपुर-७)">
-                <label style="font-size:12px; color:#666;">अन्तिम पटक रक्तदान गरेको मिति:</label>
-                <input type="date">
-                <button type="submit" class="btn-submit">पन्जीकरण गर्नुहोस्</button>
-            </form>
-        </div>
-    </div>
+      resultBox.style.display = "none";
+      loader.style.display = "block";
+      
+      const prompt = `
+        Act as an expert insurance agent for "IME Life Insurance Nepal".
+        Explain the query "${input}" in simple Nepali language.
+        If asked about a policy, structure the answer with:
+        1. **योजनाको नाम (Plan Name):**
+        2. **मुख्य फाइदा (Benefits):**
+        3. **आवश्यकता (Requirements):**
+        4. **किन यो राम्रो छ?**
+        If the query is general, explain the importance of insurance politely.
+        Always end with: "सम्पर्क: बिमल लामिछाने (IME Life अभिकर्ता)"
+      `;
 
-    <footer style="text-align: center; padding: 40px 0; color: #777;">
-        <p><strong>Bimal Pharmacy</strong> - स्वास्थ्य नै धन हो।</p>
-        <p>भरतपुर-७, कृष्णपुर, चितवन | ०५६-५९३२८८</p>
-        <div style="margin-top: 15px;">
-            <a href="#" style="color:#2c3e50; margin:0 10px; font-size:20px;"><i class="fab fa-facebook"></i></a>
-            <a href="#" style="color:#2c3e50; margin:0 10px; font-size:20px;"><i class="fab fa-whatsapp"></i></a>
-        </div>
-    </footer>
-</div>
+      let success = false;
 
-<script>
-    // Search Functionality
-    document.getElementById('contactSearch').addEventListener('keyup', function() {
-        let filter = this.value.toUpperCase();
-        let cards = document.querySelectorAll('.card');
-        let rows = document.querySelectorAll('#hospitalTable tr');
+      // --- SMART LOOP: Try models one by one ---
+      for (const modelName of MODEL_LIST) {
+          try {
+              console.log("Trying model:", modelName); // Debugging
+              const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${API_KEY}`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+              });
 
-        cards.forEach(card => {
-            let text = card.innerText;
-            card.style.display = text.toUpperCase().includes(filter) ? "" : "none";
-        });
+              const data = await response.json();
 
-        rows.forEach(row => {
-            let text = row.innerText;
-            row.style.display = text.toUpperCase().includes(filter) ? "" : "none";
-        });
-    });
-</script>
+              // If Error, Continue to next model
+              if (data.error) {
+                  console.warn(`Model ${modelName} failed:`, data.error.message);
+                  continue; 
+              }
 
+              // If Success, Show Result and Break Loop
+              if (data.candidates && data.candidates[0].content) {
+                  const rawText = data.candidates[0].content.parts[0].text;
+                  const formattedText = rawText
+                      .replace(/\*\*(.*?)\*\*/g, '<strong style="color:#ed1c24;">$1</strong>')
+                      .replace(/\*/g, '•') 
+                      .replace(/\n/g, '<br>');
+
+                  textBox.innerHTML = formattedText;
+                  resultBox.style.display = "block";
+                  success = true;
+                  break; // Stop loop, we found a working model!
+              }
+          } catch (e) {
+              console.error("Network error with", modelName);
+          }
+      }
+      // ----------------------------------------
+
+      loader.style.display = "none";
+
+      if (!success) {
+          alert("माफ गर्नुहोस्, अहिले सिस्टम व्यस्त छ। कृपया केही समयपछि प्रयास गर्नुहोस्।");
+      }
+    }
+  </script>
 </body>
 </html>
