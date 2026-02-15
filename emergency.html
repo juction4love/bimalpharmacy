@@ -2,144 +2,208 @@
 <html lang="ne">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emergency Directory | Bimal Pharmacy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Emergency Directory | Bimal Pharmacy Bharatpur</title>
+  
+  <meta name="description" content="आपतकालीन सम्पर्क नम्बरहरू र रक्तदाता खोज्ने ठाउँ - बिमल फार्मेसी, भरतपुर।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     :root {
       --primary: #2e7d32;
-      --emergency-red: #d32f2f;
+      --secondary: #1b5e20;
+      --accent: #fbc02d;
+      --danger: #d32f2f;
+      --light-bg: #f8faf9;
+      --white: #ffffff;
+      --text-dark: #2c3e50;
+      --shadow: 0 10px 25px rgba(0,0,0,0.05);
       --army-green: #4b5320;
       --gov-blue: #0d47a1;
-      --bg: #f4f7f6;
-      --white: #ffffff;
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-    body { background-color: var(--bg); padding-bottom: 100px; }
+    
+    body { background-color: var(--light-bg); color: var(--text-dark); padding-bottom: 100px; }
 
-    /* Header & Banner */
-    .app-header { background: var(--white); padding: 10px 3%; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; }
-    .brand { font-size: 1.4rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-    .brand img { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--primary); }
-    .emergency-banner { background: var(--emergency-red); color: white; text-align: center; padding: 35px 20px; }
+    /* --- 1. Top Marquee --- */
+    .top-notice-bar {
+      background: var(--danger); color: white; overflow: hidden;
+      border-bottom: 2px solid #b71c1c; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .top-notice-bar marquee { display: block; padding: 10px 0; font-weight: 800; font-size: 15px; }
 
+    /* --- 2. Branding Header & Nav --- */
+    .app-header {
+      background: var(--white); padding: 15px 5%; display: flex; flex-direction: column;
+      align-items: center; border-bottom: 5px solid var(--primary); box-shadow: var(--shadow);
+    }
+    .brand-section { display: flex; align-items: center; gap: 20px; width: 100%; margin-bottom: 15px; }
+    .logo-container img { height: 75px; width: 75px; border-radius: 50%; border: 3px solid var(--primary); padding: 2px; object-fit: cover; }
+    .brand-text h1 { color: var(--primary); font-size: 1.8rem; margin: 0; }
+    .brand-text p { font-size: 0.9rem; color: #666; font-weight: 600; }
+
+    .navbar { width: 100%; margin-top: 10px; }
+    .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; gap: 5px; }
+    .nav-links a { 
+      color: #333; text-decoration: none; padding: 10px 15px; display: block; 
+      font-weight: 700; font-size: 0.85rem; border-radius: 5px; border: 1px solid #eee; transition: 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { background: var(--primary); color: var(--white) !important; }
+
+    /* --- 3. Emergency Specific Styles --- */
+    .emergency-banner { background: var(--danger); color: white; text-align: center; padding: 30px 20px; }
     .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
 
-    .category-title { background: #e0e0e0; padding: 12px 15px; border-radius: 8px; margin: 25px 0 12px; font-weight: 800; color: #333; display: flex; align-items: center; gap: 10px; }
+    .category-title { 
+      background: #e0e0e0; padding: 12px 15px; border-radius: 8px; 
+      margin: 25px 0 12px; font-weight: 800; display: flex; align-items: center; gap: 10px;
+    }
 
     .contact-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
     @media (min-width: 600px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
 
-    .contact-card { background: white; padding: 18px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: center; border-left: 6px solid var(--emergency-red); }
-    .army-card { border-left-color: var(--army-green); }
-    .pharmacy-card { border-left-color: var(--primary); }
-    .gov-card { border-left-color: var(--gov-blue); }
-
-    .call-btn { background: var(--emergency-red); color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.3rem; transition: 0.3s; }
-    .army-btn { background: var(--army-green); }
-    .pharmacy-btn { background: var(--primary); }
-    .gov-btn { background: var(--gov-blue); }
-
-    /* --- BLOOD DONATION FORM STYLE --- */
-    .donation-form {
-      background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      margin-top: 40px; border: 2px solid #ffcdd2;
+    .contact-card { 
+      background: white; padding: 18px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); 
+      display: flex; justify-content: space-between; align-items: center; border-left: 6px solid var(--danger);
     }
-    .donation-form h2 { color: var(--emergency-red); margin-bottom: 15px; text-align: center; }
-    .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #444; }
-    .form-group input, .form-group select {
-      width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;
+    .info h4 { font-size: 1rem; margin-bottom: 2px; }
+    .info p { font-size: 0.8rem; color: #666; }
+    .call-btn { 
+      background: var(--danger); color: white; width: 45px; height: 45px; 
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;
     }
-    .submit-btn {
-      width: 100%; padding: 15px; background: var(--emergency-red); color: white; border: none;
-      border-radius: 8px; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: 0.3s;
-    }
-    .submit-btn:hover { background: #b71c1c; }
 
-    /* Mobile Nav */
+    /* --- 4. Blood Section --- */
+    .blood-section { background: white; padding: 25px; border-radius: 15px; margin-top: 30px; border-top: 5px solid var(--danger); }
+    .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
+    .search-input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #ddd; }
+    .btn-red { background: var(--danger); color: white; padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; }
+
+    .donor-list-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
+    .donor-list-table th, .donor-list-table td { padding: 10px; border: 1px solid #eee; text-align: left; }
+
+    .donation-form { margin-top: 30px; padding-top: 20px; border-top: 1px dashed #ddd; }
+    .form-group { margin-bottom: 12px; }
+    .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+
+    /* Mobile Bottom Nav */
     .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 10px 0; border-top: 1px solid #eee; z-index: 1001; }
-    .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.75rem; }
-    .nav-item.active { color: var(--emergency-red); }
-    .nav-item i { display: block; font-size: 1.4rem; margin-bottom: 4px; }
+    .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.7rem; }
+    .nav-item.active { color: var(--danger); }
+    .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 4px; }
+
+    @media (min-width: 900px) { .mobile-nav { display: none; } }
   </style>
 </head>
 <body>
 
+  <div class="top-notice-bar">
+    <marquee behavior="scroll" direction="left" scrollamount="6">
+      सूचना: कृपया बिमल फार्मेसीमा रहेको आफ्नो बाँकी बक्यौता (Due) रकम भुक्तानी गरिदिनुहोला। थप विस्तृत जानकारीको लागि 'सूचना' (Notice) पेज हेर्नुहोस्।
+    </marquee>
+  </div>
+
   <header class="app-header">
-    <div class="brand"><img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Logo"><span>Bimal Pharmacy</span></div>
+    <div class="brand-section">
+      <div class="logo-container">
+        <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy">
+      </div>
+      <div class="brand-text">
+        <h1>बिमल फार्मेसी</h1>
+        <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र | भरतपुर-७, चितवन</p>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html">गृहपृष्ठ</a></li>
+        <li><a href="medical-guide.html">औषधी गाइड</a></li>
+        <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
+        <li><a href="order.html">अर्डर</a></li>
+        <li><a href="service.html">सेवाहरू</a></li>
+        <li><a href="notice.html">सूचना</a></li>
+        <li><a href="search.html"><i class="fas fa-robot"></i> AI Chat</a></li> 
+        <li><a href="contact.html">सम्पर्क</a></li>
+        <li><a href="emergency.html" class="active" style="color:var(--danger); border-color:var(--danger);"><i class="fas fa-ambulance"></i> आपतकालीन</a></li>
+      </ul>
+    </nav>
   </header>
 
   <section class="emergency-banner">
     <h1><i class="fas fa-phone-alt"></i> Emergency Directory</h1>
-    <p>तपाईँको एक कलले ज्यान जोगाउन सक्छ। सिधै सम्पर्क गर्नुहोस्।</p>
+    <p>चौबीसै घण्टा आपतकालीन सेवाका लागि सिधै कल गर्नुहोस्</p>
   </section>
 
   <div class="container">
     
-    <div class="category-title" style="background: #fff3e0; color: #e65100;"><i class="fas fa-helicopter"></i> हेलिकप्टर उद्धार (Helicopter Rescue)</div>
+    <div class="category-title" style="background: #fff3e0; color: #e65100;"><i class="fas fa-helicopter"></i> हेलिकप्टर उद्धार सेवा</div>
     <div class="contact-grid">
-      <div class="contact-card army-card"><div class="info"><h4>नेपाली सेना (Army Air)</h4><p>इमर्जेन्सी उद्धार सेवा</p></div><a href="tel:014271351" class="call-btn army-btn"><i class="fas fa-phone"></i></a></div>
-      <div class="contact-card"><div class="info"><h4>सिम्रिक एयर (Simrik Air)</h4><p>Rescue Specialist</p></div><a href="tel:9851010630" class="call-btn"><i class="fas fa-phone"></i></a></div>
-      <div class="contact-card"><div class="info"><h4>मनाङ एयर (Manang Air)</h4><p>२४ घण्टा हेलि-रेस्क्यु</p></div><a href="tel:9801191024" class="call-btn"><i class="fas fa-phone"></i></a></div>
+      <div class="contact-card" style="border-left-color: var(--army-green);"><div class="info"><h4>नेपाली सेना (Army Air)</h4><p>Emergency Air Service</p></div><a href="tel:014271351" class="call-btn" style="background:var(--army-green);"><i class="fas fa-phone"></i></a></div>
+      <div class="contact-card"><div class="info"><h4>सिम्रिक एयर (Simrik Air)</h4><p>Rescue: 9851010630</p></div><a href="tel:9851010630" class="call-btn"><i class="fas fa-phone"></i></a></div>
     </div>
 
-    <div class="category-title" style="background: #e3f2fd; color: #0d47a1;"><i class="fas fa-exclamation-circle"></i> औषधि उजुरी र सरकारी सहायता</div>
-    <div class="contact-grid">
-      <div class="contact-card gov-card"><div class="info"><h4>औषधि व्यवस्था विभाग (DDA)</h4><p>औषधि अभाव/गुणस्तर उजुरी</p></div><a href="tel:014262918" class="call-btn gov-btn"><i class="fas fa-phone"></i></a></div>
-      <div class="contact-card gov-card"><div class="info"><h4>हेलो स्वास्थ्य (Health Desk)</h4><p>मन्त्री सहायता कक्ष (1133)</p></div><a href="tel:1133" class="call-btn gov-btn"><i class="fas fa-phone"></i></a></div>
-    </div>
+    <div class="blood-section">
+      <h2 style="color:var(--danger);"><i class="fas fa-tint"></i> रक्तदाता खोज्नुहोस् (Search Donors)</h2>
+      <div class="search-box">
+        <input type="text" id="donorSearch" class="search-input" placeholder="रगत समूह खोज्नुहोस् (e.g. A+)...">
+        <button onclick="filterDonors()" class="btn-red"><i class="fas fa-search"></i></button>
+      </div>
 
-    <div class="category-title" style="background: #e8f5e9; color: var(--primary);"><i class="fas fa-pills"></i> बिमल फार्मेसी र मेडिकल सपोर्ट</div>
-    <div class="contact-grid">
-      <div class="contact-card pharmacy-card"><div class="info"><h4>बिमल फार्मेसी (Bimal)</h4><p>भरतपुर, चितवन</p></div><a href="tel:9855065327" class="call-btn pharmacy-btn"><i class="fas fa-phone"></i></a></div>
-      <div class="contact-card"><div class="info"><h4>विषाक्त सूचना केन्द्र</h4><p>Poisoning Helpline</p></div><a href="tel:014411439" class="call-btn pharmacy-btn"><i class="fas fa-phone"></i></a></div>
-    </div>
+      <table class="donor-list-table" id="donorTable">
+        <thead>
+          <tr><th>नाम</th><th>ठेगाना</th><th>ग्रुप</th><th>सम्पर्क</th></tr>
+        </thead>
+        <tbody id="donorBody">
+          <tr>
+            <td>बिमल लामिछाने</td>
+            <td>भरतपुर-७</td>
+            <td>O+</td>
+            <td><a href="tel:9855065327" style="color:var(--primary); text-decoration:none;"><i class="fas fa-phone"></i> कल</a></td>
+          </tr>
+        </tbody>
+      </table>
 
-    <div class="donation-form" id="bloodForm">
-      <h2><i class="fas fa-tint"></i> रक्तदाता बन्नुहोस् (Be a Donor)</h2>
-      <p style="text-align: center; color: #666; margin-bottom: 20px;">यदि तपाईँ रगत दान गर्न इच्छुक हुनुहुन्छ भने यो फर्म भर्नुहोस्।</p>
-      
-      <form action="https://formspree.io/f/xblddqwd" method="POST">
-        <div class="form-group">
-          <label>पूरा नाम (Full Name)</label>
-          <input type="text" name="name" placeholder="तपाईँको नाम" required>
-        </div>
-        <div class="form-group">
-          <label>ठेगाना (Address)</label>
-          <input type="text" name="address" placeholder="जस्तै: भरतपुर-७, चितवन" required>
-        </div>
-        <div class="form-group">
-          <label>रगत समूह (Blood Group)</label>
-          <select name="blood_group" required>
-            <option value="">छान्नुहोस्</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>मोबाइल नम्बर (Mobile No.)</label>
-          <input type="tel" name="phone" placeholder="९८XXXXXXXX" required>
-        </div>
-        <button type="submit" class="submit-btn">रक्तदाताको रूपमा दर्ता हुनुहोस्</button>
-      </form>
+      <div class="donation-form">
+        <h3 style="margin-bottom:10px;">रक्तदाता दर्ता फर्म</h3>
+        <form action="https://formspree.io/f/xblddqwd" method="POST">
+          <div class="form-group"><input type="text" name="name" placeholder="पुरा नाम" required></div>
+          <div class="form-group"><input type="text" name="address" placeholder="ठेगाना"></div>
+          <div class="form-group">
+            <select name="blood_group" required>
+              <option value="">रगत समूह</option>
+              <option value="A+">A+</option><option value="O+">O+</option><option value="B+">B+</option><option value="AB+">AB+</option>
+              <option value="A-">A-</option><option value="O-">O-</option><option value="B-">B-</option><option value="AB-">AB-</option>
+            </select>
+          </div>
+          <div class="form-group"><input type="tel" name="phone" placeholder="मोबाइल नम्बर" required></div>
+          <button type="submit" class="btn-red" style="width:100%;">दर्ता हुनुहोस्</button>
+        </form>
+      </div>
     </div>
-
   </div>
 
   <nav class="mobile-nav">
     <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
-    <a href="search.html" class="nav-item"><i class="fas fa-robot"></i> AI Chat</a>
+    <a href="search.html" class="nav-item"><i class="fas fa-robot"></i> Chat</a>
     <a href="order.html" class="nav-item"><i class="fas fa-file-prescription"></i> अर्डर</a>
     <a href="emergency.html" class="nav-item active"><i class="fas fa-ambulance"></i> Emergency</a>
     <a href="contact.html" class="nav-item"><i class="fas fa-user"></i> सम्पर्क</a>
   </nav>
 
+  <script>
+    function filterDonors() {
+      let input = document.getElementById('donorSearch').value.toUpperCase();
+      let table = document.getElementById('donorTable');
+      let tr = table.getElementsByTagName('tr');
+      for (let i = 1; i < tr.length; i++) {
+        let td = tr[i].getElementsByTagName('td')[2];
+        if (td) {
+          let txtValue = td.textContent || td.innerText;
+          tr[i].style.display = txtValue.toUpperCase().indexOf(input) > -1 ? "" : "none";
+        }
+      }
+    }
+  </script>
 </body>
 </html>
