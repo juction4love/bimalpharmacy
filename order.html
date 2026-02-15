@@ -12,146 +12,125 @@
     :root {
       --primary: #2e7d32;      /* Medical Green */
       --secondary: #1b5e20;
-      --whatsapp: #25D366;     /* WhatsApp Green */
-      --bg-light: #f4f6f8;
+      --accent: #fbc02d;
+      --danger: #d32f2f;
+      --light-bg: #f8faf9;
       --white: #ffffff;
+      --text-dark: #2c3e50;
+      --shadow: 0 10px 25px rgba(0,0,0,0.05);
+      --whatsapp: #25d366;
       --warning-bg: #fff3cd;   /* Agreement Box Color */
       --warning-text: #856404;
       --border-radius: 12px;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
 
-    body { background-color: var(--bg-light); color: #333; }
+    body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; padding-bottom: 80px; }
 
-    /* --- 1. Header (Desktop & Mobile Unified) --- */
-    .app-header {
-      background: var(--white);
-      padding: 15px 5%;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      display: flex; align-items: center; justify-content: space-between;
+    /* --- Branding Header --- */
+    .branding-header {
+      background: var(--white); padding: 20px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary);
     }
-    .brand { font-size: 1.4rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-    .brand img { height: 40px; width: 40px; border-radius: 50%; }
+    .logo-container img { height: 85px; width: 85px; border-radius: 50%; border: 3px solid var(--primary); padding: 4px; object-fit: cover; }
+    .brand-text h1 { color: var(--primary); font-size: 2.2rem; margin: 0; }
+    .brand-text p { font-size: 1rem; color: #555; }
 
-    /* --- 2. Desktop Navigation (Hidden on Mobile) --- */
-    .desktop-nav { display: none; }
-    .desktop-nav a {
-      text-decoration: none; color: #555; font-weight: 600; margin-left: 25px; font-size: 1rem; transition: 0.3s;
-    }
-    .desktop-nav a:hover, .desktop-nav a.active { color: var(--primary); }
-    .desktop-nav a.btn-emergency {
-      background: #d32f2f; color: white; padding: 8px 15px; border-radius: 20px;
-    }
+    /* --- News Ticker --- */
+    .news-ticker { background: #FF0000; border-bottom: 2px solid #b71c1c; box-shadow: 0 2px 5px rgba(0,0,0,0.3); overflow: hidden; }
+    .news-ticker marquee { color: #FFFFFF; font-weight: 900; display: block; padding: 12px 0; font-size: 16px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
 
-    /* --- 3. Main Form Container --- */
-    .container {
-      max-width: 600px;
-      margin: 30px auto;
-      padding: 0 15px;
-      padding-bottom: 100px; /* Space for mobile nav */
-    }
+    /* --- Navigation --- */
+    .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 18px 20px; display: block; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
+
+    /* --- Form Container --- */
+    .container { max-width: 600px; margin: 40px auto; padding: 0 15px; }
 
     .form-card {
-      background: var(--white);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      border-top: 5px solid var(--primary);
+      background: var(--white); padding: 35px; border-radius: 20px;
+      box-shadow: var(--shadow); border-top: 5px solid var(--primary);
     }
     
     .input-group { margin-bottom: 20px; }
     .input-group label { display: block; font-size: 0.95rem; margin-bottom: 8px; font-weight: 600; color: #444; }
     .input-wrapper { position: relative; }
-    .input-wrapper i {
-      position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #888;
-    }
+    .input-wrapper i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #888; }
     .input-field {
-      width: 100%; padding: 14px 14px 14px 45px; /* Space for icon */
-      border-radius: var(--border-radius); border: 1px solid #ddd;
+      width: 100%; padding: 14px 14px 14px 45px; border-radius: var(--border-radius); border: 1px solid #ddd;
       font-size: 1rem; background: #fafafa; outline: none; transition: 0.3s;
     }
     .input-field:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1); }
 
-    /* --- 4. THE TICK STATION (Agreement Box) --- */
+    /* --- Agreement Box --- */
     .agreement-box {
-      background-color: var(--warning-bg);
-      border: 1px solid #ffeeba;
-      padding: 15px;
-      border-radius: var(--border-radius);
-      margin-bottom: 25px;
-      display: flex;
-      gap: 15px;
-      align-items: flex-start;
+      background-color: var(--warning-bg); border: 1px solid #ffeeba; padding: 15px;
+      border-radius: var(--border-radius); margin-bottom: 25px; display: flex; gap: 15px; align-items: flex-start;
     }
-    
-    /* Big Custom Checkbox */
-    .agreement-box input[type="checkbox"] {
-      min-width: 22px; min-height: 22px; margin-top: 3px; accent-color: var(--primary); cursor: pointer;
-    }
-
+    .agreement-box input[type="checkbox"] { min-width: 22px; min-height: 22px; margin-top: 3px; accent-color: var(--primary); cursor: pointer; }
     .agreement-text { font-size: 0.9rem; color: var(--warning-text); line-height: 1.5; cursor: pointer; }
-    .agreement-text strong { font-weight: 700; color: #533f03; }
 
     /* --- Submit Button --- */
     .btn-submit {
-      width: 100%; padding: 18px;
-      background: var(--whatsapp); color: white;
-      border: none; border-radius: var(--border-radius);
-      font-size: 1.1rem; font-weight: bold;
-      cursor: pointer;
+      width: 100%; padding: 18px; background: var(--whatsapp); color: white; border: none;
+      border-radius: var(--border-radius); font-size: 1.1rem; font-weight: bold; cursor: pointer;
       display: flex; align-items: center; justify-content: center; gap: 10px;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); transition: all 0.3s ease;
     }
     .btn-submit:hover { background: #1ebe57; transform: translateY(-2px); }
-    
-    /* Disabled State */
-    .btn-submit:disabled {
-      background-color: #e0e0e0; color: #999; cursor: not-allowed; box-shadow: none; transform: none;
-    }
+    .btn-submit:disabled { background-color: #e0e0e0; color: #999; cursor: not-allowed; box-shadow: none; transform: none; }
 
-    /* --- 5. Mobile Bottom Nav (Default Visible) --- */
+    /* --- Footer --- */
+    footer { background: #1a1a1a; color: #999; padding: 60px 20px 100px; text-align: center; }
+    .footer-links { margin: 20px 0; }
+    .footer-links a { color: #ccc; text-decoration: none; margin: 0 10px; }
+
+    /* --- Mobile Bottom Nav --- */
     .mobile-nav {
-      position: fixed; bottom: 0; left: 0; width: 100%;
-      background: var(--white); display: grid; grid-template-columns: repeat(4, 1fr);
-      padding: 10px 0; border-top: 1px solid #eee; z-index: 1001;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+      position: fixed; bottom: 0; left: 0; width: 100%; background: var(--white);
+      display: grid; grid-template-columns: repeat(4, 1fr); padding: 10px 0;
+      border-top: 1px solid #eee; z-index: 1001; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
     }
     .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.75rem; }
     .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 4px; }
     .nav-item.active { color: var(--primary); }
 
-    /* --- 6. MEDIA QUERIES (Desktop Logic) --- */
-    @media (min-width: 769px) {
-      .mobile-nav { display: none; } /* Hide bottom nav on desktop */
-      .desktop-nav { display: block; } /* Show top nav on desktop */
-      .container { padding-bottom: 30px; margin-top: 50px; }
-      .app-header { padding: 15px 10%; }
-    }
+    @media (min-width: 769px) { .mobile-nav { display: none; } }
   </style>
 </head>
 <body>
 
-  <header class="app-header">
-    <div class="brand">
-      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Logo">
-      <span>Bimal Pharmacy</span>
+  <header class="branding-header">
+    <div class="logo-container">
+      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy">
     </div>
-    
-    <nav class="desktop-nav">
-      <a href="index.html">गृहपृष्ठ</a>
-      <a href="order.html" class="active">अर्डर</a>
-      <a href="medical-guide.html">औषधी गाइड</a>
-      <a href="contact.html">सम्पर्क</a>
-      <a href="emergency.html" class="btn-emergency">आपतकालीन</a>
-    </nav>
-
-    <a href="tel:056593288" style="color: var(--primary); display: md-none;"><i class="fas fa-phone-alt fa-lg"></i></a>
+    <div class="brand-text">
+      <h1>बिमल फार्मेसी</h1>
+      <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र | भरतपुर-७, चितवन</p>
+    </div>
   </header>
+
+  <div class="news-ticker">
+    <marquee behavior="scroll" direction="left" scrollamount="6">
+      कृपया बिमल फार्मेसीमा रहेको आफ्नो बाँकी बक्यौता (Due) रकम भुक्तानी गरिदिनुहोला। थप विस्तृत जानकारीको लागि 'सूचना' (Notice) पेज हेर्नुहोस्।
+    </marquee>
+  </div>
+
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">गृहपृष्ठ</a></li>
+      <li><a href="medical-guide.html">औषधी गाइड</a></li>
+      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
+      <li><a href="order.html" class="active">अर्डर</a></li>
+      <li><a href="service.html">सेवाहरू</a></li>
+      <li><a href="notice.html">सूचना</a></li>
+      <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
+      <li><a href="contact.html">सम्पर्क</a></li>
+      <li><a href="emergency.html">आपतकालीन</a></li>
+    </ul>
+  </nav>
 
   <div class="container">
     <div class="form-card">
@@ -172,7 +151,7 @@
           <label>डेलिभरी ठेगाना *</label>
           <div class="input-wrapper">
             <i class="fas fa-map-marker-alt"></i>
-            <input type="text" id="cAddress" class="input-field" placeholder="Address ">
+            <input type="text" id="cAddress" class="input-field" placeholder="Address">
           </div>
         </div>
 
@@ -180,7 +159,7 @@
           <label>सम्पर्क नम्बर *</label>
           <div class="input-wrapper">
             <i class="fas fa-phone"></i>
-            <input type="tel" id="cPhone" class="input-field" placeholder="       ">
+            <input type="tel" id="cPhone" class="input-field" placeholder="Mobile Number">
           </div>
         </div>
 
@@ -188,7 +167,7 @@
           <input type="checkbox" id="agreeRules" onchange="toggleButton()">
           <label for="agreeRules" class="agreement-text">
             <strong>नियम तथा सर्तहरू (Terms & Conditions):</strong> <br>
-            म पुष्टि गर्दछु कि मसँग डाक्टरको वैध पुर्जी (Valid Prescription) छ। म नेपाल सरकार (DDA) का औषधी सम्बन्धी सम्पूर्ण नियमहरू पालना गर्न र आवश्यक परेमा सक्कल पुर्जी देखाउन सहमत छु।
+            म पुष्टि गर्दछु कि मसँग डाक्टरको वैध पुर्जी छ। म नेपाल सरकार (DDA) का औषधी सम्बन्धी सम्पूर्ण नियमहरू पालना गर्न सहमत छु।
           </label>
         </div>
         
@@ -197,11 +176,24 @@
         </button>
         
         <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 15px;">
-          (माथिको सर्तमा टिक <i class="fas fa-check-square"></i> लगाएपछि मात्र बटन खुल्नेछ)
+          (माथिको सर्तमा टिक लगाएपछि मात्र बटन खुल्नेछ)
         </p>
       </form>
     </div>
   </div>
+
+  <footer>
+    <div class="brand-text">
+      <h2 style="color: var(--primary);">बिमल फार्मेसी</h2>
+      <p>तपाईंको स्वास्थ्य, हाम्रो जिम्मेवारी।</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">गृहपृष्ठ</a> | 
+      <a href="notice.html">सूचना</a> | 
+      <a href="contact.html">सम्पर्क</a>
+    </div>
+    <p>&copy; 2026 Bimal Pharmacy. All Rights Reserved.</p>
+  </footer>
 
   <nav class="mobile-nav">
     <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
@@ -211,51 +203,34 @@
   </nav>
 
   <script>
-    // 1. Tick Station Logic (Toggle Button)
     function toggleButton() {
       const checkbox = document.getElementById('agreeRules');
       const btn = document.getElementById('submitBtn');
-      
-      if (checkbox.checked) {
-        btn.disabled = false; // Enable if ticked
-        btn.style.opacity = "1";
-      } else {
-        btn.disabled = true;  // Disable if unticked
-        btn.style.opacity = "0.6";
-      }
+      btn.disabled = !checkbox.checked;
+      btn.style.opacity = checkbox.checked ? "1" : "0.6";
     }
 
-    // 2. WhatsApp Sending Logic
     function sendOrder() {
       const name = document.getElementById('cName').value.trim();
       const address = document.getElementById('cAddress').value.trim();
       const phone = document.getElementById('cPhone').value.trim();
-      const agreed = document.getElementById('agreeRules').checked;
 
-      // Validation
       if (!name || !address || !phone) {
-        alert("कृपया आफ्नो नाम, ठेगाना र सम्पर्क नम्बर भर्नुहोस्।");
-        return;
-      }
-      if (!agreed) {
-        alert("कृपया नियम तथा सर्तहरूमा टिक लगाउनुहोस्।");
+        alert("कृपया सबै अनिवार्य विवरणहरू भर्नुहोस्।");
         return;
       }
 
-      // Prepare Message
       const message = 
         "नमस्ते विमल फार्मेसी, 🙏%0A" +
         "म औषधी अर्डर गर्न चाहन्छु।%0A%0A" +
         "👤 *नाम:* " + name + "%0A" +
         "📍 *ठेगाना:* " + address + "%0A" +
         "📞 *सम्पर्क:* " + phone + "%0A%0A" +
-        "✅ *Tick Station:* मैले DDA का नियमहरू र पुर्जी सम्बन्धी सर्तहरू स्वीकार गरेको छु।%0A%0A" +
-        "(अब म औषधीको पुर्जीको फोटो पठाउँदै छु...)";
+        "मैले नियम तथा पुर्जी सम्बन्धी सर्तहरू स्वीकार गरेको छु।%0A" +
+        "(म अब औषधीको पुर्जीको फोटो पठाउँदै छु...)";
 
-      // Open WhatsApp (Works on Mobile App & Desktop Web)
       window.location.href = "https://wa.me/9779855065327?text=" + message;
     }
   </script>
-
 </body>
 </html>
