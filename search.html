@@ -3,74 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>AI Medicine Search | Bimal Pharmacy</title>
+  <title>IME Life AI Agent | Bimal Pharmacy</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
     /* --- CSS Variables --- */
     :root {
-      --primary: #2e7d32;
+      --primary: #2e7d32; /* Pharmacy Green */
+      --ime-red: #ed1c24; /* IME Life Red */
       --light-bg: #f8fafc;
       --white: #ffffff;
-      --gemini-color: #4285f4;
-      --gemini-gradient: linear-gradient(135deg, #4285f4, #d96570);
+      --gemini-gradient: linear-gradient(135deg, #ed1c24, #fbc02d);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
     body { background-color: var(--light-bg); padding-bottom: 80px; color: #333; }
 
-    /* Header */
+    /* --- 1. Top Navigation (Full Menu) --- */
     .app-header {
-      background: var(--white); padding: 15px 5%;
+      background: var(--white); padding: 10px 3%;
       position: sticky; top: 0; z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       display: flex; justify-content: space-between; align-items: center;
     }
     .brand { font-size: 1.4rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-    .brand img { height: 40px; width: 40px; border-radius: 50%; }
+    .brand img { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--primary); }
 
+    /* Desktop Nav Styles */
     .desktop-nav { display: none; }
-    .desktop-nav a { text-decoration: none; color: #555; font-weight: 600; margin-left: 20px; }
-    .desktop-nav a.active { color: var(--primary); }
-
-    /* Search Section */
-    .search-section {
-      text-align: center; padding: 40px 20px;
-      background: var(--white); border-bottom: 1px solid #ddd;
+    .desktop-nav ul { 
+      display: flex; list-style: none; gap: 10px; margin: 0; padding: 0; 
+      align-items: center;
     }
+    .desktop-nav a { 
+      text-decoration: none; color: #555; font-weight: 600; padding: 8px 12px; 
+      font-size: 0.9rem; border-radius: 5px; transition: 0.3s; white-space: nowrap;
+    }
+    .desktop-nav a:hover { background-color: #e8f5e9; color: var(--primary); }
+    .desktop-nav a.active { background-color: var(--ime-red); color: white; }
+    .desktop-nav a.emergency-btn { background-color: #ffebee; color: #d32f2f; }
+
+    /* --- 2. Insurance Search Section --- */
+    .search-section {
+      text-align: center; padding: 50px 20px;
+      background: white; border-bottom: 1px solid #ddd;
+    }
+    .ime-logo-text {
+      color: var(--ime-red); font-weight: 800; font-size: 2.2rem;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    
     .search-wrapper {
-      max-width: 600px; margin: 20px auto 0; position: relative; display: flex; gap: 10px;
+      max-width: 650px; margin: 25px auto 0; position: relative; display: flex; gap: 10px;
     }
     .search-input {
-      width: 100%; padding: 15px 20px; border-radius: 50px;
+      width: 100%; padding: 18px 25px; border-radius: 50px;
       border: 2px solid #ddd; font-size: 1.1rem; outline: none; transition: 0.3s;
     }
+    .search-input:focus { border-color: var(--ime-red); box-shadow: 0 0 15px rgba(237, 28, 36, 0.1); }
     
     .btn-search {
       background: var(--gemini-gradient); color: white; border: none;
-      width: 55px; height: 55px; border-radius: 50%; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+      width: 60px; height: 60px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
     }
 
-    /* Result Box */
+    /* --- 3. Result Box --- */
     .ai-container { max-width: 800px; margin: 30px auto; padding: 0 20px; }
     .ai-card {
       background: white; border-radius: 20px; padding: 30px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      border-top: 5px solid #4285f4;
+      border-top: 5px solid var(--ime-red);
       display: none; 
     }
-    .ai-content { font-size: 1rem; line-height: 1.7; color: #444; }
-
+    .ai-content { font-size: 1.05rem; line-height: 1.7; color: #444; }
+    
     /* Loader */
     .loader { display: none; text-align: center; margin-top: 20px; }
     .spinner {
-      width: 40px; height: 40px; border: 4px solid #f3f3f3;
-      border-top: 4px solid var(--gemini-color); border-radius: 50%;
+      width: 45px; height: 45px; border: 4px solid #f3f3f3;
+      border-top: 4px solid var(--ime-red); border-radius: 50%;
       animation: spin 1s linear infinite; margin: 0 auto;
     }
 
-    /* Mobile Nav */
+    /* --- 4. Mobile Nav --- */
     .mobile-nav {
       position: fixed; bottom: 0; left: 0; width: 100%;
       background: white; display: grid; grid-template-columns: repeat(5, 1fr);
@@ -78,10 +94,10 @@
     }
     .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.7rem; }
     .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 4px; }
-    .nav-item.active { color: var(--primary); }
+    .nav-item.active { color: var(--ime-red); }
 
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    @media (min-width: 769px) { .mobile-nav { display: none; } .desktop-nav { display: block; } }
+    @media (min-width: 900px) { .mobile-nav { display: none; } .desktop-nav { display: block; } }
   </style>
 </head>
 <body>
@@ -91,20 +107,28 @@
       <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Logo">
       <span>Bimal Pharmacy</span>
     </div>
+    
     <nav class="desktop-nav">
-      <a href="index.html">गृहपृष्ठ</a>
-      <a href="search.html" class="active">AI Search</a>
-      <a href="order.html">अर्डर</a>
-      <a href="contact.html">सम्पर्क</a>
+      <ul>
+        <li><a href="index.html">गृहपृष्ठ</a></li>
+        <li><a href="medical-guide.html">औषधी गाइड</a></li>
+        <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
+        <li><a href="order.html">अर्डर</a></li>
+        <li><a href="service.html">सेवाहरू</a></li>
+        <li><a href="notice.html">सूचना</a></li>
+        <li><a href="search.html" class="active"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
+        <li><a href="contact.html">सम्पर्क</a></li>
+        <li><a href="emergency.html" class="emergency-btn">आपतकालीन</a></li>
+      </ul>
     </nav>
   </header>
 
   <section class="search-section">
-    <h2 style="background: var(--gemini-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">AI Pharmacist</h2>
-    <p style="color: #666; margin-top: 5px;">औषधीको नाम लेख्नुहोस् र तुरुन्तै जानकारी पाउनुहोस्</p>
+    <h2 class="ime-logo-text">IME Life Insurance</h2>
+    <p style="color: #666; margin-top: 5px; font-size: 1.1rem;">तपाईंको सुरक्षा, हाम्रो जिम्मेवारी। AI लाई सोध्नुहोस्।</p>
     
     <div class="search-wrapper">
-      <input type="text" id="aiInput" class="search-input" placeholder="e.g. Paracetamol" onkeypress="handleEnter(event)">
+      <input type="text" id="aiInput" class="search-input" placeholder="e.g. बाल शिक्षा योजना, 10 लाखको पोलिसी..." onkeypress="handleEnter(event)">
       <button onclick="fetchGeminiAnswer()" class="btn-search">
         <i class="fas fa-paper-plane"></i>
       </button>
@@ -114,29 +138,33 @@
   <div class="ai-container">
     <div id="loadingBox" class="loader">
       <div class="spinner"></div>
-      <p style="margin-top: 10px; color: #666;">AI ले सोच्दैछ...</p>
+      <p style="margin-top: 10px; color: #666;">बीमा योजना खोज्दै...</p>
     </div>
 
     <div id="aiResultBox" class="ai-card">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">
+        <i class="fas fa-shield-alt" style="font-size:1.5rem; color:var(--ime-red);"></i>
+        <h3 style="color:#333;">IME Life जानकारी</h3>
+      </div>
       <div id="aiText" class="ai-content"></div>
-      <div style="margin-top: 20px; font-size: 0.8rem; color: #888; text-align: center;">
-        *जानकारी मात्र। डाक्टरको सल्लाह लिनुहोस्।
+      <div style="margin-top: 20px; font-size: 0.85rem; color: #888; text-align: center; background:#fff5f5; padding:10px; border-radius:10px;">
+        *यो जानकारी AI ले दिएको हो। आधिकारिक जानकारी र पोलिसी खरिदका लागि <strong>बिमल लामिछाने (अभिकर्ता)</strong> सँग सम्पर्क गर्नुहोस्।
       </div>
     </div>
   </div>
 
   <nav class="mobile-nav">
     <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
-    <a href="search.html" class="nav-item active"><i class="fas fa-robot"></i> AI</a>
+    <a href="search.html" class="nav-item active"><i class="fas fa-robot"></i> AI Agent</a>
     <a href="order.html" class="nav-item"><i class="fas fa-file-prescription"></i> अर्डर</a>
     <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i> आपतकालीन</a>
     <a href="contact.html" class="nav-item"><i class="fas fa-user"></i> सम्पर्क</a>
   </nav>
 
   <script>
-    // --- FINAL CONFIGURATION ---
+    // --- API KEY CONFIGURATION ---
     const API_KEY = "AIzaSyBly_wvcUIeFdcfpvNKgo1co98EHcQTwdE"; 
-    // ---------------------------
+    // -----------------------------
 
     function handleEnter(e) {
       if (e.key === 'Enter') fetchGeminiAnswer();
@@ -153,11 +181,53 @@
       resultBox.style.display = "none";
       loader.style.display = "block";
       
-      const prompt = `Act as a pharmacist. Explain "${input}" in simple Nepali. Include Uses, Dosage, Side Effects, Warning.`;
+      const prompt = `
+        Act as an expert insurance agent for "IME Life Insurance Nepal".
+        Explain the query "${input}" in simple Nepali language to a potential customer.
+        
+        If the user asks about a specific policy, explain:
+        1. **योजनाको नाम (Plan Name):**
+        2. **मुख्य फाइदा (Benefits):** (Bonus, Safety)
+        3. **आवश्यकता (Requirements):** (Age, Term)
+        4. **किन यो राम्रो छ?** (Selling point)
+
+        If the user asks general questions, answer politely and encourage them to buy insurance for safety.
+        Keep it professional, persuasive, and clear.
+      `;
 
       try {
-        // Using 'gemini-pro' model for stability
         const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify
+          body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+        });
+
+        const data = await response.json();
+        loader.style.display = "none";
+
+        if (data.error) {
+            alert("Error: " + data.error.message);
+            return;
+        }
+
+        if (data.candidates && data.candidates[0].content) {
+          const rawText = data.candidates[0].content.parts[0].text;
+          const formattedText = rawText
+            .replace(/\*\*(.*?)\*\*/g, '<strong style="color:#ed1c24;">$1</strong>')
+            .replace(/\*/g, '•') 
+            .replace(/\n/g, '<br>');
+
+          textBox.innerHTML = formattedText;
+          resultBox.style.display = "block";
+        } else {
+          alert("माफ गर्नुहोस्, जानकारी भेटिएन।");
+        }
+      } catch (error) {
+        loader.style.display = "none";
+        alert("इन्टरनेट समस्या भयो।");
+      }
+    }
+  </script>
+
+</body>
+</html>
