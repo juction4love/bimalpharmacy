@@ -3,104 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>IME Life Chatbot | Bimal Pharmacy</title>
+  <title>IME Life AI Agent | Bimal Pharmacy</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
-    /* --- DESIGN SETTINGS --- */
     :root {
       --primary: #2e7d32;
       --ime-red: #ed1c24;
-      --chat-bg: #e5ddd5;
+      --chat-bg: #f0f2f5;
       --user-msg-bg: #dcf8c6;
       --bot-msg-bg: #ffffff;
-      --white: #ffffff;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-    
-    body { 
-      background-color: #f0f2f5; height: 100vh; display: flex; flex-direction: column; 
-    }
+    body { background-color: var(--chat-bg); height: 100vh; display: flex; flex-direction: column; }
 
-    /* HEADER */
+    /* Header */
     .app-header {
-      background: var(--white); padding: 10px 3%;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-      display: flex; justify-content: space-between; align-items: center;
-      z-index: 1000; flex-shrink: 0;
+      background: #fff; padding: 10px 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex; justify-content: space-between; align-items: center; z-index: 1000;
     }
-    .brand { font-size: 1.2rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+    .brand { display: flex; align-items: center; gap: 10px; }
     .brand img { height: 40px; width: 40px; border-radius: 50%; border: 2px solid var(--primary); }
 
-    .desktop-nav { display: none; }
-    .desktop-nav ul { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; align-items: center; }
-    .desktop-nav a { text-decoration: none; color: #555; font-weight: 600; padding: 8px 12px; font-size: 0.9rem; border-radius: 5px; transition: 0.3s; }
-    .desktop-nav a:hover { background-color: #e8f5e9; color: var(--primary); }
-    .desktop-nav a.active { background-color: var(--ime-red); color: white; }
-
-    /* CHAT AREA */
+    /* Chat Area */
     #chat-container {
-      flex: 1; overflow-y: auto; padding: 20px;
-      background-color: #eef1f0;
-      display: flex; flex-direction: column; gap: 15px;
-      padding-bottom: 80px; 
+      flex: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 12px;
+      padding-bottom: 80px;
     }
-
     .message {
-      max-width: 85%; padding: 12px 16px; border-radius: 15px;
-      font-size: 1rem; line-height: 1.5; position: relative;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.1); word-wrap: break-word;
+      max-width: 85%; padding: 12px; border-radius: 12px; font-size: 1rem; line-height: 1.5;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1); position: relative;
     }
-    .user-msg { align-self: flex-end; background-color: var(--user-msg-bg); color: #333; border-bottom-right-radius: 2px; }
-    .bot-msg { align-self: flex-start; background-color: var(--bot-msg-bg); color: #333; border-bottom-left-radius: 2px; border-left: 4px solid var(--ime-red); }
+    .user-msg { align-self: flex-end; background: var(--user-msg-bg); border-bottom-right-radius: 2px; }
+    .bot-msg { align-self: flex-start; background: var(--bot-msg-bg); border-bottom-left-radius: 2px; border-left: 4px solid var(--ime-red); }
 
-    .bot-icon-container { display: flex; align-items: flex-end; gap: 8px; }
-    .bot-avatar {
-      width: 30px; height: 30px; border-radius: 50%;
-      background: var(--ime-red); color: white;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.8rem; margin-bottom: 5px;
-    }
-    .typing { font-style: italic; color: #888; font-size: 0.8rem; margin-left: 10px; display: none; }
+    .bot-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--ime-red); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; margin-bottom: 4px; }
+    .bot-wrapper { display: flex; align-items: flex-end; gap: 8px; }
 
-    /* INPUT AREA */
+    /* Input Area */
     .input-area {
-      position: fixed; bottom: 0; left: 0; width: 100%;
-      background: white; padding: 10px 15px;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-      display: flex; gap: 10px; align-items: center; z-index: 1000;
-      padding-bottom: 15px; 
+      position: fixed; bottom: 0; width: 100%; background: white; padding: 10px;
+      display: flex; gap: 8px; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 1001;
     }
-    @media (max-width: 899px) { .input-area { bottom: 55px; padding-bottom: 10px; } }
+    @media (max-width: 899px) { .input-area { bottom: 55px; } }
+    .chat-input { flex: 1; padding: 12px; border-radius: 25px; border: 1px solid #ddd; outline: none; }
+    .send-btn { background: var(--ime-red); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; }
 
-    .chat-input {
-      flex: 1; padding: 12px 20px; border-radius: 25px;
-      border: 1px solid #ddd; outline: none; font-size: 1rem; background: #f9f9f9;
-    }
-    .chat-input:focus { border-color: var(--ime-red); background: white; }
-
-    .send-btn {
-      background: var(--ime-red); color: white; border: none;
-      width: 45px; height: 45px; border-radius: 50%;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-    }
-
-    /* MOBILE NAV */
-    .mobile-nav {
-      position: fixed; bottom: 0; left: 0; width: 100%;
-      background: white; display: grid; grid-template-columns: repeat(5, 1fr);
-      padding: 8px 0; border-top: 1px solid #eee; z-index: 1001;
-    }
+    /* Mobile Nav */
+    .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 8px 0; border-top: 1px solid #eee; z-index: 1002; }
     .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.7rem; }
-    .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 3px; }
     .nav-item.active { color: var(--ime-red); }
+    .nav-item i { display: block; font-size: 1.2rem; margin-bottom: 3px; }
+
+    .typing { font-size: 0.8rem; color: #888; font-style: italic; margin-left: 40px; display: none; }
 
     @media (min-width: 900px) { 
-        .mobile-nav { display: none; } 
-        .desktop-nav { display: block; } 
-        .input-area { bottom: 0; max-width: 800px; left: 50%; transform: translateX(-50%); }
-        #chat-container { max-width: 800px; margin: 0 auto; width: 100%; }
+        .input-area { max-width: 800px; left: 50%; transform: translateX(-50%); border-radius: 10px 10px 0 0; }
+        #chat-container { max-width: 800px; margin: 0 auto; width: 100%; border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
+        .mobile-nav { display: none; }
     }
   </style>
 </head>
@@ -109,36 +69,26 @@
   <header class="app-header">
     <div class="brand">
       <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Logo">
-      <div style="display:flex; flex-direction:column; line-height:1.2;">
-        <span>Bimal Pharmacy</span>
-        <span style="font-size:0.7rem; color:var(--ime-red); font-weight:600;">IME Life Agent</span>
+      <div>
+        <div style="font-weight:800; color:var(--primary); font-size:1.1rem;">Bimal Pharmacy</div>
+        <div style="font-size:0.7rem; color:var(--ime-red); font-weight:600;">IME Life AI Assistant</div>
       </div>
     </div>
-    <nav class="desktop-nav">
-      <ul>
-        <li><a href="index.html">गृहपृष्ठ</a></li>
-        <li><a href="medical-guide.html">औषधी गाइड</a></li>
-        <li><a href="order.html">अर्डर</a></li>
-        <li><a href="search.html" class="active">AI Chat</a></li> 
-        <li><a href="contact.html">सम्पर्क</a></li>
-      </ul>
-    </nav>
   </header>
 
   <div id="chat-container">
-    <div class="bot-icon-container">
+    <div class="bot-wrapper">
       <div class="bot-avatar"><i class="fas fa-robot"></i></div>
       <div class="message bot-msg">
-        नमस्ते! म <strong>बिमल लामिछाने</strong> (IME Life Agent) को AI सहायक हुँ। 🙏 <br><br>
-        बिमा (Insurance) बारे जे पनि सोध्नुहोस्। <br>
-        (जस्तै: <em>"20 lakh ko policy", "beema kasari garne", "bonus rate kati cha"</em>)
+        नमस्ते! म <strong>बिमल लामिछाने</strong> को स्मार्ट एजेन्ट हुँ। 🙏<br><br>
+        मलाई <strong>Term Insurance, Health, Critical Illness (घातक रोग)</strong> वा <strong>Disability</strong> सुरक्षा बारे केही पनि सोध्नुहोस्।
       </div>
     </div>
-    <div id="typingIndicator" class="typing">AI सोच्दैछ...</div>
+    <div id="typing" class="typing">AI सोच्दैछ...</div>
   </div>
 
   <div class="input-area">
-    <input type="text" id="userInput" class="chat-input" placeholder="सन्देश लेख्नुहोस्..." onkeypress="handleEnter(event)">
+    <input type="text" id="userInput" class="chat-input" placeholder="यहाँ लेख्नुहोस्..." onkeypress="if(event.key==='Enter') sendMessage()">
     <button onclick="sendMessage()" class="send-btn"><i class="fas fa-paper-plane"></i></button>
   </div>
 
@@ -146,97 +96,71 @@
     <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
     <a href="search.html" class="nav-item active"><i class="fas fa-comments"></i> Chat</a>
     <a href="order.html" class="nav-item"><i class="fas fa-file-prescription"></i> अर्डर</a>
-    <a href="emergency.html" class="nav-item"><i class="fas fa-phone"></i> आपतकालीन</a>
+    <a href="emergency.html" class="nav-item"><i class="fas fa-phone"></i> कल</a>
     <a href="contact.html" class="nav-item"><i class="fas fa-user"></i> सम्पर्क</a>
   </nav>
 
   <script>
-    const API_KEY = "AIzaSyBly_wvcUIeFdcfpvNKgo1co98EHcQTwdE"; 
-    
-    // 1. Simple Models List (Reduced for stability)
+    const API_KEY = "AIzaSyBly_wvcUIeFdcfpvNKgo1co98EHcQTwdE";
     const MODEL_LIST = ["gemini-1.5-flash", "gemini-pro"];
 
-    function handleEnter(e) { if (e.key === 'Enter') sendMessage(); }
-
-    function appendMessage(text, sender) {
-        const chatContainer = document.getElementById('chat-container');
-        const typingIndicator = document.getElementById('typingIndicator');
-        const wrapperDiv = document.createElement('div');
-        
-        if (sender === 'bot') {
-            wrapperDiv.className = 'bot-icon-container';
-            wrapperDiv.innerHTML = `<div class="bot-avatar"><i class="fas fa-robot"></i></div><div class="message bot-msg">${text}</div>`;
+    function append(text, side) {
+        const container = document.getElementById('chat-container');
+        const div = document.createElement('div');
+        if(side==='bot') {
+            div.className = 'bot-wrapper';
+            div.innerHTML = `<div class="bot-avatar"><i class="fas fa-robot"></i></div><div class="message bot-msg">${text}</div>`;
         } else {
-            wrapperDiv.style.display = 'flex'; wrapperDiv.style.justifyContent = 'flex-end';
-            wrapperDiv.innerHTML = `<div class="message user-msg">${text}</div>`;
+            div.style.display = 'flex'; div.style.justifyContent = 'flex-end';
+            div.innerHTML = `<div class="message user-msg">${text}</div>`;
         }
-        chatContainer.insertBefore(wrapperDiv, typingIndicator);
-        chatContainer.scrollTop = chatContainer.scrollHeight;
+        container.insertBefore(div, document.getElementById('typing'));
+        container.scrollTop = container.scrollHeight;
     }
 
     async function sendMessage() {
-      const inputField = document.getElementById('userInput');
-      const typingIndicator = document.getElementById('typingIndicator');
-      const question = inputField.value.trim();
+        const input = document.getElementById('userInput');
+        const q = input.value.trim();
+        if(!q) return;
+        append(q, 'user');
+        input.value = '';
+        document.getElementById('typing').style.display = 'block';
 
-      if (!question) return;
+        const prompt = `
+            You are the Expert Insurance Advisor for Bimal Lamichhane (IME Life Agent).
+            
+            KNOWLEDGE BASE:
+            1. Term Insurance: High risk cover, low premium. Best for family security.
+            2. Health Insurance: Covers hospital bills, surgeries.
+            3. Critical Illness (CI): Lump sum payment on diagnosis of major diseases like Cancer, Heart attack.
+            4. PWD/Disability: Waiver of premium + monthly income if disabled by accident.
+            
+            RULES:
+            - Understand Nepali, English, and Roman Nepali.
+            - If user asks non-insurance/casual things, politely bring them back to Insurance.
+            - Structure answers clearly with bullet points.
+            - ALWAYS END WITH: "सम्पर्क: बिमल लामिछाने (9855065327)"
+            
+            USER: "${q}"
+        `;
 
-      appendMessage(question, 'user');
-      inputField.value = ''; 
-      typingIndicator.style.display = 'block';
-      document.getElementById('chat-container').scrollTop = document.getElementById('chat-container').scrollHeight;
-      
-      // 2. ADVANCED PROMPT (The Brain)
-      const prompt = `
-        You are an intelligent AI Assistant for "Bimal Lamichhane" (IME Life Insurance Agent).
-        
-        YOUR INSTRUCTIONS:
-        1. **TOPIC FILTER:** - If the user says casual things like "ke cha", "hi", "hello", "khana khayo", politely say: "नमस्ते! म ठिक छु। मलाई बिमा (Insurance) को बारेमा मात्र जानकारी छ। कृपया बिमा सम्बन्धी कुरा गरौं न।"
-           - If the user asks about Insurance, Policies, Money, Future Safety, explain in detail.
-
-        2. **LANGUAGE:** - Understand Nepali, English, and Roman Nepali (e.g., "beema kasari garne", "kati paisa lagcha").
-           - REPLY IN SIMPLE NEPALI (Mix with English words like 'Bonus', 'Premium' where clear).
-
-        3. **SELLING MODE:**
-           - Be persuasive. Tell them why IME Life is best.
-           - Always mention: "सम्पर्क: बिमल लामिछाने (9855065327)" at the end.
-
-        USER QUESTION: "${question}"
-      `;
-
-      let success = false;
-
-      // 3. Robust Loop
-      for (const modelName of MODEL_LIST) {
-          try {
-              const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${API_KEY}`, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-              });
-
-              const data = await response.json();
-              if (data.error) continue; // Try next model if error
-
-              if (data.candidates && data.candidates[0].content) {
-                  const rawText = data.candidates[0].content.parts[0].text;
-                  const formattedText = rawText
-                      .replace(/\*\*(.*?)\*\*/g, '<strong style="color:#ed1c24;">$1</strong>')
-                      .replace(/\*/g, '•') 
-                      .replace(/\n/g, '<br>');
-
-                  typingIndicator.style.display = 'none';
-                  appendMessage(formattedText, 'bot');
-                  success = true;
-                  break; 
-              }
-          } catch (e) { console.error("Connection failed", e); }
-      }
-
-      if (!success) {
-          typingIndicator.style.display = 'none';
-          appendMessage("माफ गर्नुहोस्, नेटवर्क समस्या भयो। कृपया फेरि प्रयास गर्नुहोस्।", 'bot');
-      }
+        let ok = false;
+        for (let m of MODEL_LIST) {
+            try {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${API_KEY}`, {
+                    method:'POST', headers:{'Content-Type':'application/json'},
+                    body: JSON.stringify({contents:[{parts:[{text:prompt}]}]})
+                });
+                const d = await res.json();
+                if(d.candidates) {
+                    let txt = d.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
+                    document.getElementById('typing').style.display = 'none';
+                    append(txt, 'bot');
+                    ok = true; break;
+                }
+            } catch(e) { console.log(m + " failed"); }
+        }
+        if(!ok) { document.getElementById('typing').style.display = 'none'; append("नेटवर्क समस्या। कृपया फेरि प्रयास गर्नुहोस्।", 'bot'); }
     }
   </script>
 </body>
