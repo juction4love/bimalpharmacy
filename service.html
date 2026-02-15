@@ -6,10 +6,10 @@
   <title>विस्तृत सेवाहरू | बिमल फार्मेसी - भरतपुर-७, चितवन</title>
   
   <meta name="description" content="बिमल फार्मेसीका आधिकारिक सेवाहरू: २४ घण्टा क्यान्सर औषधी आपूर्ति, सुरक्षित होम डेलिभरी र विशेषज्ञ परामर्श।">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
-    /* --- Model Global Variables --- */
+    /* --- Global Variables --- */
     :root {
       --primary: #2e7d32;
       --secondary: #1b5e20;
@@ -23,221 +23,141 @@
       --soft-yellow: #fffde7;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
     
     body { 
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      line-height: 1.7; 
       background-color: var(--light-bg); 
       color: var(--text-dark);
+      line-height: 1.7; 
       padding-bottom: 80px; 
     }
 
-    /* --- 1. Branding Header (Round Corner Logo Model) --- */
+    /* --- 1. Branding Header --- */
     .branding-header {
       background: var(--white);
       padding: 20px 5%;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
       gap: 20px;
       border-bottom: 5px solid var(--primary);
     }
+    .logo-container img { height: 85px; width: 85px; border-radius: 50%; border: 3px solid var(--primary); padding: 4px; object-fit: cover; }
+    .brand-text h1 { color: var(--primary); font-size: 2.2rem; margin: 0; }
+    .brand-text p { font-size: 1rem; color: #555; }
 
-    .logo-container img {
-      height: 85px;
-      width: 85px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--primary);
-      padding: 4px;
-      background: white;
+    /* --- 2. News Ticker --- */
+    .news-ticker { 
+      background: #FF0000; 
+      border-bottom: 2px solid #b71c1c; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3); 
+      overflow: hidden; 
     }
-
-    .brand-text h1 { 
-      color: var(--primary); 
-      font-size: 2.2rem; 
-      margin: 0;
-      letter-spacing: -1px;
-      line-height: 1.1;
-    }
-
-    .brand-text p { 
-      font-size: 1rem; 
-      color: #555; 
-      font-weight: 500;
+    .news-ticker marquee { 
+      color: #FFFFFF; 
+      font-weight: 900; 
+      display: block; 
+      padding: 12px 0; 
+      font-size: 16px; 
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5); 
     }
 
-    /* --- 2. Navigation (Sticky Model) --- */
-    .navbar {
-      background: var(--primary);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    /* --- 3. Navigation --- */
+    .navbar { 
+      background: var(--primary); 
+      position: sticky; 
+      top: 0; 
+      z-index: 1000; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
     }
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      flex-wrap: wrap;
+    .nav-links { 
+      display: flex; 
+      justify-content: center; 
+      list-style: none; 
+      flex-wrap: wrap; 
     }
-    .nav-links a {
-      color: var(--white);
-      text-decoration: none;
-      padding: 18px 22px;
-      display: block;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: 0.3s;
+    .nav-links a { 
+      color: var(--white); 
+      text-decoration: none; 
+      padding: 18px 22px; 
+      display: block; 
+      font-weight: 600; 
+      font-size: 0.95rem; 
+      transition: 0.3s; 
     }
     .nav-links a:hover, .nav-links a.active { 
       background: var(--secondary); 
-      color: var(--accent) !important;
-      box-shadow: inset 0 -4px 0 var(--accent);
+      color: var(--accent) !important; 
     }
 
-    /* --- 3. Hero Section --- */
+    /* --- 4. Hero Section --- */
     .hero {
       background: linear-gradient(135deg, #ffffff 0%, #f0f7f1 100%), url('https://www.transparenttextures.com/patterns/white-diamond.png');
       text-align: center;
-      padding: 80px 20px;
+      padding: 60px 20px;
       border-bottom: 1px solid #e0e0e0;
     }
-    .hero h2 { font-size: 2.8rem; color: var(--secondary); margin-bottom: 15px; }
-    .hero p { font-size: 1.2rem; color: #555; max-width: 800px; margin: 0 auto; }
+    .hero h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px; }
 
     .trust-container {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
+      margin-top: 20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
     }
     .trust-tag {
-      background: #fff;
-      padding: 12px 25px;
-      border-radius: 50px;
-      border: 1px solid #ddd;
-      font-weight: 700;
-      color: var(--primary);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      background: #fff; padding: 10px 20px; border-radius: 50px; border: 1px solid #ddd; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 10px;
     }
 
-    /* --- 4. Main Content Layout --- */
-    .main-content {
-      max-width: 1200px;
-      margin: -40px auto 40px;
-      padding: 0 20px;
-      position: relative;
-      z-index: 10;
-    }
+    /* --- 5. Content Layout --- */
+    .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
 
     .card {
-      background: var(--white);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      margin-bottom: 40px;
-      border-left: 10px solid var(--primary);
-      transition: 0.3s;
+      background: var(--white); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); margin-bottom: 40px; border-left: 10px solid var(--primary);
     }
-    .card:hover { transform: translateY(-5px); }
+    .cert-card { border-left-color: var(--accent) !important; background: var(--soft-yellow); }
+    .card h3 { color: var(--primary); margin-bottom: 20px; font-size: 1.6rem; display: flex; align-items: center; gap: 15px; }
 
-    .cert-card {
-      border-left-color: var(--accent) !important;
-      background: var(--soft-yellow);
-    }
-    .card h3 { color: var(--primary); margin-bottom: 20px; font-size: 1.8rem; display: flex; align-items: center; gap: 15px; }
+    .service-list { list-style: none; }
+    .service-list li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 15px; }
+    .service-list i { color: var(--primary); margin-top: 5px; }
 
-    .service-list { list-style: none; margin-top: 20px; }
-    .service-list li {
-      margin-bottom: 15px;
-      display: flex;
-      align-items: flex-start;
-      gap: 15px;
-      font-size: 1rem;
-    }
-    .service-list i { color: var(--primary); margin-top: 5px; font-size: 1.2rem; }
-
-    /* Step Grid for Ordering Process */
-    .step-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
-    .step-item {
-      padding: 30px 20px;
-      background: #f9f9f9;
-      border-radius: 15px;
-      position: relative;
-      border: 1px solid #eee;
-    }
+    /* Step Grid */
+    .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 30px; }
+    .step-item { padding: 25px; background: #f9f9f9; border-radius: 15px; position: relative; border: 1px solid #eee; }
     .step-number {
-      position: absolute; top: -15px; left: 20px;
-      background: var(--accent); color: #000;
-      width: 40px; height: 40px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; font-weight: 900;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: absolute; top: -15px; left: 20px; background: var(--accent); color: #000; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900;
     }
 
-    /* FAQ Section */
-    .faq-wrapper { margin-top: 60px; }
-    .faq-card {
-      background: var(--white);
-      border: 1px solid #eee;
-      margin-bottom: 12px;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .faq-header {
-      padding: 20px; cursor: pointer; display: flex;
-      justify-content: space-between; font-weight: 700;
-      background: #fff; transition: 0.3s;
-    }
-    .faq-header:hover { background: #f1f8f1; }
-    .faq-body {
-      padding: 0 20px; max-height: 0; overflow: hidden;
-      transition: max-height 0.4s ease; color: #555;
-    }
-    .faq-card.open .faq-body { max-height: 500px; padding-bottom: 20px; }
-    .faq-card.open .faq-header { color: var(--primary); }
+    /* FAQ */
+    .faq-card { background: var(--white); border: 1px solid #eee; margin-bottom: 10px; border-radius: 12px; overflow: hidden; }
+    .faq-header { padding: 15px 20px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 700; background: #fff; transition: 0.3s; }
+    .faq-body { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: #555; }
+    .faq-card.open .faq-body { max-height: 200px; padding-bottom: 15px; }
 
-    /* Footer & Fixed Call */
-    footer { background: #1a1a1a; color: #999; padding: 60px 20px 120px; text-align: center; }
-    footer strong { color: white; font-size: 1.4rem; }
+    /* --- 6. Footer --- */
+    footer { background: #1a1a1a; color: #999; padding: 60px 20px 100px; text-align: center; }
+    .footer-links { margin: 20px 0; }
+    .footer-links a { color: #ccc; text-decoration: none; margin: 0 10px; }
 
-    .mobile-call-box {
-      position: fixed; bottom: 0; width: 100%;
-      background: var(--primary); padding: 18px; text-align: center; z-index: 1000;
-    }
-    .mobile-call-btn { color: white; text-decoration: none; font-size: 1.3rem; font-weight: 800; }
-
-    @media (max-width: 768px) {
-      .branding-header { padding: 15px; }
-      .logo-container img { height: 60px; width: 60px; }
-      .brand-text h1 { font-size: 1.5rem; }
-      .hero h2 { font-size: 2rem; }
-      .card { padding: 25px; }
-      .step-grid { grid-template-columns: 1fr; }
-    }
+    /* Mobile Fixed Button */
+    .mobile-call-box { position: fixed; bottom: 0; width: 100%; background: var(--primary); padding: 18px; text-align: center; z-index: 1000; }
+    @media (min-width: 900px) { .mobile-call-box { display: none; } }
   </style>
 </head>
 <body>
 
   <header class="branding-header">
     <div class="logo-container">
-      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy Logo">
+      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy">
     </div>
     <div class="brand-text">
       <h1>बिमल फार्मेसी</h1>
-      <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र</p>
+      <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र | भरतपुर-७</p>
     </div>
   </header>
+
+  <div class="news-ticker">
+    <marquee behavior="scroll" direction="left" scrollamount="6">
+      सूचना: कृपया बिमल फार्मेसीमा रहेको आफ्नो बाँकी बक्यौता (Due) रकम भुक्तानी गरिदिनुहोला। थप विस्तृत जानकारीको लागि 'सूचना' (Notice) पेज हेर्नुहोस्।
+    </marquee>
+  </div>
 
   <nav class="navbar">
     <ul class="nav-links">
@@ -249,130 +169,78 @@
       <li><a href="notice.html">सूचना</a></li>
       <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
       <li><a href="contact.html">सम्पर्क</a></li>
-      <li><a href="emergency.html">आपतकालीन नम्बरहरू</a></li>
+      <li><a href="emergency.html">आपतकालीन</a></li>
     </ul>
   </nav>
 
   <section class="hero">
-    <div class="container">
-      <h2>हाम्रा विशिष्ट सेवाहरू</h2>
-      <p>विगत लामो समयदेखि हामीले बिरामीहरूको सेवा गर्दै आएका छौं। हामी केवल औषधी मात्र बेच्दैनौं, स्वास्थ्य प्रतिको जिम्मेवारी पनि वहन गर्छौं।</p>
-      <div class="trust-container">
-        <div class="trust-tag"><i class="fas fa-file-medical"></i> DDA दर्ता नं: २०७९/८० </div>
-        <div class="trust-tag"><i class="fas fa-certificate"></i> DFTQC प्रमाणित</div>
-        <div class="trust-tag"><i class="fas fa-truck-moving"></i> नेपालभर सुरक्षित डेलिभरी</div>
-      </div>
+    <h2>हाम्रा विशिष्ट सेवाहरू</h2>
+    <p>विगत लामो समयदेखि हामीले बिरामीहरूको सेवा गर्दै आएका छौं। हामी औषधी मात्र होइन, भरोसा पनि प्रदान गर्छौं।</p>
+    <div class="trust-container">
+      <div class="trust-tag"><i class="fas fa-file-medical"></i> DDA दर्ता नं: २०७९/८० </div>
+      <div class="trust-tag"><i class="fas fa-truck-moving"></i> नेपालभर डेलिभरी</div>
     </div>
   </section>
 
-  <main class="main-content">
+  <main class="container">
     
     <div class="card cert-card">
       <h3><i class="fas fa-user-shield"></i> पूर्ण सुरक्षित र प्रमाणित सेवा</h3>
-      <p>बिमल फार्मेसी नेपाल सरकारको नियम र औषधि व्यवस्था विभागको मापदण्ड अनुसार संचालित छ:</p>
-      
       <ul class="service-list">
-        <li>
-          <i class="fas fa-check-circle"></i> 
-          <div><strong>DDA (औषधि व्यवस्था विभाग):</strong> सम्पूर्ण औषधी र सर्जिकल सामग्रीहरू सरकारी मापदण्ड अनुसार भण्डारण, रेकर्डिङ र वितरण गरिन्छ।</div>
-        </li>
-        <li>
-          <i class="fas fa-check-circle"></i> 
-          <div><strong>DFTQC (खाद्य विभाग):</strong> हामीकहाँ उपलब्ध बेबी फुड, प्रोटिन सप्लिमेन्ट र पोषणयुक्त सामग्रीहरू खाद्य विभागबाट स्वीकृत छन्।</div>
-        </li>
-        <li>
-          <i class="fas fa-check-circle"></i> 
-          <div><strong>WHO-GMP:</strong> हामीले उपलब्ध गराउने औषधीहरू WHO-GMP प्रमाणित कम्पनीका मात्र हुन्छन्, जसले उच्च गुणस्तर सुनिश्चित गर्दछ।</div>
-        </li>
+        <li><i class="fas fa-check-circle"></i> <div><strong>DDA प्रमाणित:</strong> सम्पूर्ण औषधी र सर्जिकल सामग्रीहरू सरकारी मापदण्ड अनुसार वितरण गरिन्छ।</div></li>
+        <li><i class="fas fa-check-circle"></i> <div><strong>WHO-GMP:</strong> हामी उच्च गुणस्तरका WHO-GMP प्रमाणित कम्पनीका औषधीहरू मात्र उपलब्ध गराउँछौं।</div></li>
       </ul>
     </div>
 
     <div class="card">
-      <h3><i class="fas fa-clipboard-list"></i> औषधी अर्डर तथा प्राप्ति प्रक्रिया</h3>
-      <p>हाम्रो सेवालाई सरल र छिटो बनाउन हामीले निम्न ४ चरणको प्रक्रिया पालना गर्छौं:</p>
-      
+      <h3><i class="fas fa-clipboard-list"></i> औषधी प्राप्ति प्रक्रिया</h3>
       <div class="step-grid">
-        <div class="step-item">
-          <div class="step-number">१</div>
-          <strong>खोज वा परामर्श:</strong>
-          <p>सर्च मेनु प्रयोग गर्नुहोस् वा उपलब्धताबारे बुझ्न सिधै ०५६-५९३२८८ मा फोन गर्नुहोस्।</p>
-        </div>
-        <div class="step-item">
-          <div class="step-number">२</div>
-          <strong>प्रमाणीकरण:</strong>
-          <p>एन्टिबायोटिक र कडा औषधीका लागि डाक्टरको पुर्जाको फोटो व्हाट्सएपमा अनिवार्य पठाउनुपर्नेछ।</p>
-        </div>
-        <div class="step-item">
-          <div class="step-number">३</div>
-          <strong>भुक्तानी:</strong>
-          <p>चितवन बाहिरको डेलिभरीका लागि eSewa, FonePay वा बैंक मार्फत सुरक्षित भुक्तानी गर्न सकिन्छ।</p>
-        </div>
-        <div class="step-item">
-          <div class="step-number">४</div>
-          <strong>डेलिभरी:</strong>
-          <p>चिसोमा राख्नुपर्ने औषधीलाई विशेष 'कोल्ड-चेन' बक्समा राखेर घरदैलोमा पुर्‍याइन्छ।</p>
-        </div>
+        <div class="step-item"><div class="step-number">१</div><strong>परामर्श:</strong> ०५६-५९३२८८ मा फोन गर्नुहोस्।</div>
+        <div class="step-item"><div class="step-number">२</div><strong>प्रमाणीकरण:</strong> डाक्टरको पुर्जा व्हाट्सएप गर्नुहोस्।</div>
+        <div class="step-item"><div class="step-number">३</div><strong>भुक्तानी:</strong> eSewa वा बैंक मार्फत भुक्तानी।</div>
+        <div class="step-item"><div class="step-number">४</div><strong>डेलिभरी:</strong> चिसोमा राख्नुपर्ने औषधी 'कोल्ड-चेन' बक्समा घरमै।</div>
       </div>
     </div>
 
     <div class="card" style="border-left-color: var(--danger);">
-      <h3 style="color: var(--danger);"><i class="fas fa-biohazard"></i> क्यान्सर (Oncology) औषधी विशेष सेवा</h3>
-      <p>बी.पी. कोइराला मेमोरियल क्यान्सर अस्पतालको गेटैमा रहेको कारण हामीसँग क्यान्सरका दुर्लभ औषधीहरूको स्टक सधैं उपलब्ध रहन्छ:</p>
+      <h3 style="color: var(--danger);"><i class="fas fa-biohazard"></i> क्यान्सर औषधी विशेष सेवा</h3>
       <ul class="service-list">
-        <li><i class="fas fa-vial"></i> सबै प्रकारका किमोथेरापी ड्रग्स, Targeted र Immunotherapy औषधिहरू।</li>
-        <li><i class="fas fa-snowflake"></i> २°C देखि ८°C तापक्रम चाहिने इन्जेक्सनहरूको लागि चौबिसै घण्टा रेफ्रिजेरेसन।</li>
-        <li><i class="fas fa-ambulance"></i> अस्पतालमा भर्ना भएका बिरामीहरूका लागि बेडमै औषधी पुर्‍याउने सुविधा।</li>
-        <li><i class="fas fa-box-open"></i> सर्जिकल सामग्रीहरू: क्याथेटर, ग्लोब्स, मास्क र अन्य अस्पतालजन्य सामग्री।</li>
+        <li><i class="fas fa-vial"></i> सबै प्रकारका किमोथेरापी र इम्युनोथेरापी औषधिहरू।</li>
+        <li><i class="fas fa-snowflake"></i> २°C देखि ८°C तापक्रम चाहिने इन्जेक्सनहरूको विशेष भण्डारण।</li>
+        <li><i class="fas fa-ambulance"></i> अस्पतालको बेडमै औषधी पुर्‍याउने सुविधा।</li>
       </ul>
     </div>
 
-    <div class="faq-wrapper">
-      <h2 style="text-align: center; margin-bottom: 30px; color: var(--primary);">धेरै सोधिने प्रश्नहरू (FAQ)</h2>
-      
+    <div style="margin-top: 40px;">
+      <h2 style="text-align: center; margin-bottom: 20px; color: var(--primary);">FAQ (प्रायः सोधिने प्रश्नहरू)</h2>
       <div class="faq-card">
-        <div class="faq-header" onclick="toggleFaq(this)">
-          नेपालभर डेलिभरी कति समयमा हुन्छ? <i class="fas fa-plus"></i>
-        </div>
-        <div class="faq-body">
-          प्रमुख सहरहरूमा १-२ दिनमा र अन्य दुर्गम ग्रामीण भेगमा ३-४ दिनसम्ममा औषधी पुग्छ। चितवन भित्र भने केही घण्टामै पुर्‍याइन्छ।
-        </div>
+        <div class="faq-header" onclick="toggleFaq(this)">नेपालभर डेलिभरी कति समयमा हुन्छ? <i class="fas fa-plus"></i></div>
+        <div class="faq-body">प्रमुख सहरहरूमा १-२ दिनमा र चितवन भित्र केही घण्टामै पुर्‍याइन्छ।</div>
       </div>
-
       <div class="faq-card">
-        <div class="faq-header" onclick="toggleFaq(this)">
-          के सबै औषधीको होम डेलिभरी सम्भव छ? <i class="fas fa-plus"></i>
-        </div>
-        <div class="faq-body">
-          नेपाल सरकारको कानुनले अनुमति दिएका र डाक्टरको आधिकारिक प्रेस्क्रिप्सन भएका सबै औषधीहरू हामी घरमै पुर्‍याउँछौं।
-        </div>
-      </div>
-
-      <div class="faq-card">
-        <div class="faq-header" onclick="toggleFaq(this)">
-          कोल्ड-चेन (चिसो) औषधी कसरी पठाउनुहुन्छ? <i class="fas fa-plus"></i>
-        </div>
-        <div class="faq-body">
-          हामी इन्सुलेटेड थर्मो-कोल बक्स र विशेष 'आइस प्याक' को प्रयोग गर्छौं जसले गर्दा ४८ घण्टासम्म औषधीको आवश्यक तापक्रम सुरक्षित रहन्छ।
-        </div>
+        <div class="faq-header" onclick="toggleFaq(this)">के सबै औषधीको होम डेलिभरी सम्भव छ? <i class="fas fa-plus"></i></div>
+        <div class="faq-body">डाक्टरको आधिकारिक प्रेस्क्रिप्सन भएका सबै औषधीहरू हामी घरमै पुर्‍याउँछौं।</div>
       </div>
     </div>
 
   </main>
 
   <div class="mobile-call-box">
-    <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> २४सै घण्टा सेवा: ०५६-५९३२८८
+    <a href="tel:9855065327" style="color:white; text-decoration:none; font-weight:bold;">
+      <i class="fas fa-phone-alt"></i> कल गर्नुहोस्: ९८५५०६५३२७
     </a>
   </div>
 
   <footer>
-    <div class="container">
-      <strong>बिमल फार्मेसी (Bimal Pharmacy)</strong><br>
-      भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन | ०५६-५९३२८८<br>
-      <div style="margin-top: 25px; font-size: 0.85rem; color: #888;">
-        &copy; २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।
-      </div>
+    <div class="footer-info">
+      <strong style="color:white; font-size:1.5rem;">बिमल फार्मेसी</strong><br>
+      भरतपुर-७, चितवन, नेपाल
     </div>
+    <div class="footer-links">
+      <a href="index.html">गृहपृष्ठ</a> | <a href="order.html">अर्डर</a> | <a href="emergency.html">Emergency</a>
+    </div>
+    <p>© २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <p style="font-size:0.8rem; margin-top:10px;">Managed by: @bimal lamichhane</p>
   </footer>
 
   <script>
@@ -380,13 +248,9 @@
       const card = element.parentElement;
       card.classList.toggle('open');
       const icon = element.querySelector('i');
-      if (card.classList.contains('open')) {
-        icon.classList.replace('fa-plus', 'fa-minus');
-      } else {
-        icon.classList.replace('fa-minus', 'fa-plus');
-      }
+      icon.classList.toggle('fa-plus');
+      icon.classList.toggle('fa-minus');
     }
   </script>
-
 </body>
 </html>
