@@ -2,13 +2,13 @@
 <html lang="ne">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>बिमल फार्मेसी | Bimal Pharmacy - Health & Medical Guide Nepal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>बिमल फार्मेसी | Bimal Pharmacy - Best Medical Store in Bharatpur Chitwan</title>
   
-  <meta name="description" content="बिमल फार्मेसी: क्यान्सर अस्पताल रोड, भरतपुर। नेपालभर होम डेलिभरी, २४सै घण्टा अनलाइन परामर्श र भरपर्दो स्वास्थ्य जानकारी।">
-  <meta name="keywords" content="Pharmacy in Bharatpur, Cancer Medicine Nepal, Bimal Pharmacy, Online Medicine Nepal">
+  <meta name="description" content="बिमल फार्मेसी: क्यान्सर अस्पताल रोड, भरतपुर-७ चितवन। नेपालभर होम डेलिभरी, २४सै घण्टा अनलाइन परामर्श र भरपर्दो स्वास्थ्य जानकारी। औषधि व्यवस्था विभाग दर्ता नं: १७२२३/२०६३।">
+  <meta name="keywords" content="Pharmacy in Bharatpur, Cancer Medicine Nepal, Bimal Pharmacy Bharatpur, Online Medicine Delivery Nepal, IME Life Insurance Bharatpur, Bimal Lamichhane, Medicine Home Delivery Chitwan">
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
@@ -23,56 +23,74 @@
       --whatsapp: #25d366;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
     
-    body { 
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      line-height: 1.6; 
-      background-color: var(--light-bg); 
-      color: var(--text-dark);
-      padding-bottom: 80px; 
-    }
+    body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 100px; }
 
     /* --- Branding Header --- */
     .branding-header {
-      background: var(--white);
-      padding: 20px 5%;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      border-bottom: 5px solid var(--primary);
+      background: var(--white); padding: 20px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary);
     }
     .logo-container img { height: 85px; width: 85px; border-radius: 50%; border: 3px solid var(--primary); padding: 4px; object-fit: cover; }
     .brand-text h1 { color: var(--primary); font-size: 2.2rem; margin: 0; }
-    .brand-text p { font-size: 1rem; color: #555; }
+    .brand-text p { font-size: 1rem; color: #555; font-weight: 600; }
 
-    /* --- Navigation (Keeping your original links) --- */
+    /* --- News Ticker --- */
+    .news-ticker { background: #FF0000; border-bottom: 2px solid #b71c1c; box-shadow: 0 2px 5px rgba(0,0,0,0.3); overflow: hidden; }
+    .news-ticker marquee { color: #FFFFFF; font-weight: 900; display: block; padding: 12px 0; font-size: 16px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+
+    /* --- Navigation --- */
     .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
     .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
     .nav-links a { color: var(--white); text-decoration: none; padding: 18px 20px; display: block; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
     .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
 
-    /* --- News Ticker --- */
-    .news-ticker { background: var(--danger); color: white; padding: 12px 0; font-size: 0.95rem; font-weight: 600; }
-
-    /* --- Hero --- */
+    /* --- Hero Section --- */
     .hero { background: var(--white); text-align: center; padding: 80px 20px; border-bottom: 1px solid #eee; }
-    .hero h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px; }
+    .hero h2 { font-size: 2.8rem; color: var(--secondary); margin-bottom: 15px; }
+    .hero p { max-width: 800px; margin: 0 auto 25px; font-size: 1.1rem; color: #555; }
+    .btn-main { background: var(--accent); color: #000; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .btn-main:hover { transform: translateY(-3px); background: #f9a825; }
 
-    /* --- Content Grid --- */
-    .main-content { max-width: 1200px; margin: 40px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 0 20px; }
-    .card { background: var(--white); padding: 30px; border-radius: 12px; box-shadow: var(--shadow); border-left: 5px solid var(--primary); }
+    /* --- Content Sections --- */
+    .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+    
+    .main-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 50px; }
+    .card { background: var(--white); padding: 35px; border-radius: 15px; box-shadow: var(--shadow); border-left: 6px solid var(--primary); transition: 0.3s; }
+    .card:hover { transform: translateY(-5px); }
+    .card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+    .card h3 { margin-bottom: 12px; color: var(--secondary); font-size: 1.5rem; }
 
-    /* --- New Sections for Google Value --- */
-    .info-box { max-width: 1200px; margin: 40px auto; padding: 40px 20px; background: #fff; border-radius: 15px; }
-    .faq-item { margin-bottom: 15px; padding: 15px; background: #f1f8f1; border-radius: 8px; }
+    /* --- Detailed Content Section --- */
+    .info-content { background: white; padding: 50px 40px; border-radius: 20px; box-shadow: var(--shadow); margin-bottom: 50px; }
+    .info-content h2 { color: var(--primary); margin-bottom: 25px; font-size: 2rem; border-left: 8px solid var(--accent); padding-left: 15px; }
+    .info-content h3 { color: var(--secondary); margin: 30px 0 15px; font-size: 1.4rem; }
+    .info-content p { margin-bottom: 20px; text-align: justify; font-size: 1.05rem; }
+    .info-content ul { margin-bottom: 25px; padding-left: 20px; }
+    .info-content li { margin-bottom: 10px; }
+
+    /* --- FAQ & Contact Info --- */
+    .faq-item { margin-bottom: 20px; padding: 20px; background: #f1f8f1; border-radius: 12px; border: 1px solid #e0e0e0; }
+    .faq-item strong { color: var(--secondary); font-size: 1.1rem; display: block; margin-bottom: 8px; }
 
     /* --- Footer --- */
-    footer { background: #1a1a1a; color: #999; padding: 60px 20px 100px; text-align: center; }
-    .footer-links { margin: 20px 0; }
-    .footer-links a { color: #ccc; text-decoration: none; margin: 0 10px; }
+    footer { background: #1a1a1a; color: #999; padding: 60px 20px 110px; text-align: center; }
+    footer strong { color: white; font-size: 1.4rem; }
+    .footer-links { margin: 25px 0; }
+    .footer-links a { color: #ccc; text-decoration: none; margin: 0 15px; transition: 0.3s; }
+    .footer-links a:hover { color: var(--accent); }
 
-    .whatsapp-float { position: fixed; bottom: 90px; right: 25px; background: var(--whatsapp); color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    /* --- Floating & Fixed Elements --- */
+    .whatsapp-float { position: fixed; bottom: 100px; right: 25px; background: var(--whatsapp); color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); z-index: 999; text-decoration: none; }
+    .call-fixed { position: fixed; bottom: 0; width: 100%; background: var(--primary); padding: 18px; text-align: center; z-index: 1000; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); }
+    .call-fixed a { color: white; text-decoration: none; font-weight: bold; font-size: 1.3rem; }
+
+    @media (max-width: 768px) {
+      .brand-text h1 { font-size: 1.6rem; }
+      .hero h2 { font-size: 2rem; }
+      .info-content { padding: 30px 20px; }
+      .nav-links a { padding: 12px 10px; font-size: 0.85rem; }
+    }
   </style>
 </head>
 <body>
@@ -86,11 +104,13 @@
       <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र | भरतपुर-७, चितवन</p>
     </div>
   </header>
-<div class="news-ticker" style="width: 100%; overflow: hidden; background: #FF0000; border-bottom: 2px solid #b71c1c; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
-  <marquee behavior="scroll" direction="left" scrollamount="6" style="color: #FFFFFF; font-weight: 900; font-family: 'Arial', sans-serif; display: block; padding: 12px 0; font-size: 16px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
-    कृपया बिमल फार्मेसीमा रहेको आफ्नो बाँकी बक्यौता (Due) रकम भुक्तानी गरिदिनुहोला। थप विस्तृत जानकारीको लागि 'सूचना' (Notice) पेज हेर्नुहोस्।
-  </marquee>
-</div>
+
+  <div class="news-ticker">
+    <marquee behavior="scroll" direction="left" scrollamount="6">
+      सूचना: कृपया बिमल फार्मेसीमा रहेको आफ्नो बाँकी बक्यौता (Due) रकम भुक्तानी गरिदिनुहोला। थप विस्तृत जानकारीको लागि 'सूचना' (Notice) पेज हेर्नुहोस्।
+    </marquee>
+  </div>
+
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html" class="active">गृहपृष्ठ</a></li>
@@ -101,70 +121,96 @@
       <li><a href="notice.html">सूचना</a></li>
       <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
       <li><a href="contact.html">सम्पर्क</a></li>
-      <li><a href="emergency.html">आपतकालीन नम्बरहरू</a></li>
+      <li><a href="emergency.html">आपतकालीन</a></li>
     </ul>
   </nav>
 
   <section class="hero">
     <h2>भरपर्दो औषधी, सुलभ सेवा</h2>
-    <p>विगत लामो समयदेखि भरतपुर-७, क्यान्सर अस्पताल रोडमा सेवा प्रदान गर्दै आएको बिमल फार्मेसी अब अनलाइन मार्फत पनि तपाईँको घरदैलोमा।</p>
-    <br>
-    <a href="order.html" style="background: var(--accent); color: #000; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold;">औषधी अर्डर गर्नुहोस्</a>
+    <p>विगत दुई दशकदेखि भरतपुर-७, क्यान्सर अस्पताल रोडमा सेवा प्रदान गर्दै आएको बिमल फार्मेसी अब डिजिटल माध्यमबाट पनि तपाईंको घरदैलोमा उपलब्ध छ।</p>
+    <a href="order.html" class="btn-main">औषधी अर्डर गर्नुहोस्</a>
   </section>
 
-  <main class="main-content">
-    <div class="card">
-      <h3><i class="fas fa-pills"></i> गुणस्तरीय औषधी</h3>
-      <p>हामीकहाँ WHO-GMP प्रमाणित कम्पनीका वास्तविक औषधीहरू मात्र पाइन्छ।</p>
+  <div class="container">
+    <div class="main-grid">
+      <div class="card">
+        <i class="fas fa-pills"></i>
+        <h3>गुणस्तरीय औषधी</h3>
+        <p>हामीकहाँ WHO-GMP प्रमाणित कम्पनीका १००% वास्तविक औषधीहरू मात्र उपलब्ध छन्। गुणस्तरमा हामी कहिल्यै सम्झौता गर्दैनौं।</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-truck"></i>
+        <h3>नेपालभर डेलिभरी</h3>
+        <p>चितवन भित्रका बिरामीहरूका लागि द्रुत डेलिभरी र नेपालका अन्य प्रमुख शहरहरूमा सुरक्षित कुरियर मार्फत औषधि पुर्‍याइन्छ।</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-user-shield"></i>
+        <h3>विशेषज्ञ परामर्श</h3>
+        <p>अनुभवी फार्मासिस्ट र बिमल लामिछाने सरको प्रत्यक्ष निगरानीमा औषधि वितरण र परामर्श सेवा उपलब्ध छ।</p>
+      </div>
     </div>
-    <div class="card">
-      <h3><i class="fas fa-truck"></i> द्रुत डेलिभरी</h3>
-      <p>चितवन भित्र, नेपालका अन्य शहरमाा डेलिभरी।</p>
-    </div>
-    <div class="card">
-      <h3><i class="fas fa-user-nurse"></i> दक्ष जनशक्ति</h3>
-      <p>हामीकहाँ औषधी वितरण र परामर्श दिइन्छ।</p>
-    </div>
-  </main>
 
-  <section class="info-box">
-    <h2 style="color: var(--primary); margin-bottom: 20px;">किन बिमल फार्मेसी रोज्ने?</h2>
-    <p>बिमल फार्मेसी केवल एक औषधी पसल मात्र होइन। हामी बिरामीको स्वास्थ्यलाई केन्द्रमा राखेर काम गर्छौं। विशेषगरी क्यान्सरका औषधीहरू (Oncology Drugs) को लागि हामी नेपालकै भरपर्दो नाम हौं।</p>
-    <br>
-    <div class="faq-item">
-      <strong>१. के तपाईँहरू नेपालभर औषधी पठाउनुहुन्छ?</strong>
-      <p>हो, हामी कुरियर सेवा मार्फत नेपालको जुनसुकै कुनामा पनि सुरक्षित साथ औषधी पुर्‍याउँछौं।</p>
-    </div>
-    <div class="faq-item">
-      <strong>२. के अनलाइनबाटै परामर्श लिन सकिन्छ?</strong>
-      <p>हो, तपाईँले ह्वाट्सएप मार्फत औषधीको प्रयोगबारे बुझ्न सक्नुहुन्छ।</p>
-    </div>
-  </section>
+    <article class="info-content">
+      <h2>बिमल फार्मेसीको बारेमा विस्तृत जानकारी</h2>
+      <p>बिमल फार्मेसी केवल एउटा औषधी पसल मात्र होइन, यो चितवनको भरतपुरमा अवस्थित एक स्वास्थ्य सहयात्री हो। बि.पी. कोइराला मेमोरियल क्यान्सर अस्पतालको गेटैमा अवस्थित यो फार्मेसीले विशेषगरी क्यान्सर (Oncology) सँग सम्बन्धित दुर्लभ र अत्यावश्यक औषधीहरूमा विशेषज्ञता हासिल गरेको छ। औषधि व्यवस्था विभाग (DDA) मा दर्ता नं <strong>१७२२३/२०६३/०९/१२</strong> बाट आधिकारिक रूपमा संचालित हामी, स्वास्थ्य सेवामा नैतिकता र पारदर्शिताका लागि प्रतिबद्ध छौं।</p>
+
+      <h3>क्यान्सर औषधी (Oncology Drugs) को भरपर्दो स्रोत</h3>
+      <p>क्यान्सर उपचारमा प्रयोग हुने औषधीहरू अत्यन्तै संवेदनशील हुन्छन्। तिनीहरूको भण्डारणका लागि विशेष तापक्रम (Cold Chain Management) को आवश्यकता पर्दछ। बिमल फार्मेसीले आधुनिक फ्रिज र रेफ्रिजेरेसन प्रविधिको प्रयोग गरी २°C देखि ८°C मा राख्नुपर्ने इन्जेक्सन र औषधीहरूको गुणस्तर सुरक्षित राख्दछ। हामीकहाँ विश्वका उत्कृष्ट फर्मास्यूटिकल कम्पनीका क्यान्सर औषधीहरू सुलभ दरमा उपलब्ध छन्।</p>
+
+      <h3>हाम्रा मुख्य सेवा र विशेषताहरू:</h3>
+      <ul>
+        <li><strong>२४सै घण्टा अनलाइन सेवा:</strong> बिरामीको सजिलोको लागि हामी ह्वाट्सएप र हाम्रो अनलाइन पोर्टल मार्फत अर्डर स्वीकार गर्छौं।</li>
+        <li><strong>औषधी गाइड:</strong> हाम्रो वेबसाइटको मेडिकल गाइडमा गएर तपाईंले औषधिको नाम, प्रयोग र फोबिया सम्बन्धी जानकारी लिन सक्नुहुन्छ।</li>
+        <li><strong>सुरक्षित भण्डारण:</strong> हामी सरकारी मापदण्ड र WHO-GMP को पूर्ण पालना गर्छौं।</li>
+        <li><strong>स्वास्थ्य ज्ञान:</strong> बिरामीलाई रोगको बारेमा सचेत गराउन हामी नियमित रूपमा स्वास्थ्य सम्बन्धी लेख र जानकारीहरू प्रकाशित गर्छौं।</li>
+      </ul>
+
+      <h3>बिमल लामिछाने: एक अनुभवी नेतृत्व</h3>
+      <p>फार्मेसीका प्रोप्राइटर बिमल लामिछाने विगत लामो समयदेखि स्वास्थ्य क्षेत्रमा सक्रिय हुनुहुन्छ। उहाँ केवल एक व्यवसायी मात्र नभई एक समाजसेवी र **IME Life Insurance** का आधिकारिक अभिकर्ता पनि हुनुहुन्छ। औषधि वितरणको साथसाथै उहाँले बिरामीहरूलाई भविष्यमा आउन सक्ने आर्थिक संकटबाट बच्न बिमा सम्बन्धी परामर्श समेत प्रदान गर्नुहुन्छ। भरतपुर-७ मा उहाँको नाम विश्वास र इमानदारीको प्रतिविम्ब हो।</p>
+
+      <h3>किन हामीलाई नै रोज्ने?</h3>
+      <p>बजारमा धेरै फार्मेसीहरू भए तापनि बिमल फार्मेसीले बिरामीको 'प्रिस्क्रिप्सन' को सूक्ष्म अध्ययन गर्दछ। कुनै औषधीको उपलब्धता नभएमा हामी त्यसको उचित विकल्प वा मगाउने व्यवस्था गर्दछौं। हामीकहाँ औषधी किन्दा तपाईंले प्राप्त गर्ने बिल आधिकारिक र पारदर्शी हुन्छ, जसले गर्दा बिमा दाबी (Insurance Claim) गर्न पनि सजिलो हुन्छ।</p>
+
+      <h3>बारम्बार सोधिने प्रश्नहरू (FAQ)</h3>
+      <div class="faq-item">
+        <strong>१. के बिमल फार्मेसीबाट घरमै औषधि मगाउन सकिन्छ?</strong>
+        <p>हो, चितवन भित्र हामी केही घण्टामै र चितवन बाहिर कुरियर मार्फत १-२ दिनमा औषधि पुर्‍याउँछौं। औषधि अर्डर गर्न तपाईंले डाक्टरको पुर्जी (Prescription) अनिवार्य पठाउनुपर्नेछ।</p>
+      </div>
+      <div class="faq-item">
+        <strong>२. औषधि अर्डर गर्दा पैसा कसरी तिर्ने?</strong>
+        <p>तपाईंले ई-सेवा (eSewa), फोन-पे (FonePay), बैंक ट्रान्सफर वा चितवन भित्रको हकमा डेलिभरीको समयमा नगद तिर्न सक्नुहुन्छ।</p>
+      </div>
+      <div class="faq-item">
+        <strong>३. के क्यान्सरका सबै औषधिहरू यहाँ पाइन्छन्?</strong>
+        <p>हामी बी.पी. कोइराला क्यान्सर अस्पताल रोडमै रहेको हुनाले हामीसँग क्यान्सरका प्रायः सबै प्रकारका औषधिहरू स्टकमा रहन्छन्। यदि कुनै औषधि तत्काल नभएमा हामी छोटो समयमै उपलब्ध गराउँछौं।</p>
+      </div>
+    </article>
+  </div>
 
   <footer>
     <div>
-      <strong style="color:white; font-size: 1.2rem;">बिमल फार्मेसी</strong><br>
+      <strong>बिमल फार्मेसी</strong><br>
       भरतपुर-७, चितवन (क्यान्सर अस्पताल रोड) | फोन: ०५६-५९३२८८<br>
-      दर्ता नं: 17223
+      DDA दर्ता नं: १७२२३/२०६३ | IRD नं: ३०२०४८३०७
     </div>
 
     <div class="footer-links">
       <a href="privacy-policy.html">Privacy Policy</a> | 
       <a href="terms.html">Terms and Conditions</a> | 
-      <a href="disclaimer.html">Disclaimer</a> | 
+      <a href="knowledge.html">Knowledge Base</a> | 
       <a href="contact.html">Contact Us</a>
     </div>
 
-    <p style="font-size: 0.8rem; color: #666;">&copy; २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <p style="font-size: 0.8rem; color: #666;">&copy; २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित। | Managed by: @bimal_lamichhane</p>
   </footer>
 
   <a href="https://wa.me/+9779855065327" class="whatsapp-float">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <div style="position: fixed; bottom: 0; width: 100%; background: var(--primary); padding: 15px; text-align: center;">
-    <a href="tel:056593288" style="color: white; text-decoration: none; font-weight: bold; font-size: 1.2rem;">
-      <i class="fas fa-phone"></i> कल गर्नुहोस्: ०५६-५९३२८८
+  <div class="call-fixed">
+    <a href="tel:056593288">
+      <i class="fas fa-phone-alt"></i> कल गर्नुहोस्: ०५६-५९३२८८
     </a>
   </div>
 
