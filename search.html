@@ -2,72 +2,110 @@
 <html lang="ne">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>IME Life AI Agent | Bimal Pharmacy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>IME Life Insurance Guide Nepal | Premium Calculator | Bimal Lamichhane</title>
+  <meta name="description" content="IME Life Insurance को बोनस दर, बिमा किस्ता क्याल्कुलेटर र दाबी प्रक्रिया। भरतपुर चितवनका आधिकारिक अभिकर्ता बिमल लामिछानेबाट निःशुल्क परामर्श लिनुहोस्।">
+  <meta name="keywords" content="IME Life Insurance Nepal, Best Insurance Agent in Bharatpur, Bimal Lamichhane IME Life, Insurance Premium Calculator Nepal, Life Insurance Bonus Rate Nepal 2026, Term Insurance Bharatpur, Critical Illness Insurance Nepal, Health Insurance Nepal, बिमल फार्मेसी">
+  
+  <meta name="geo.region" content="NP-BA" />
+  <meta name="geo.placename" content="Bharatpur" />
+  <meta name="geo.position" content="27.6833;84.4333" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "InsuranceAgency",
+    "name": "IME Life Insurance - Bimal Lamichhane",
+    "description": "Authorized Insurance Agent for IME Life Insurance in Bharatpur, Nepal.",
+    "url": "https://bimalpharmacy.com.np/insurance-guide.html",
+    "telephone": "+977-9855065327",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Cancer Hospital Road, Bharatpur-7",
+      "addressLocality": "Bharatpur",
+      "addressRegion": "Chitwan",
+      "postalCode": "44200",
+      "addressCountry": "NP"
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     :root {
       --primary: #2e7d32;
       --ime-red: #ed1c24;
-      --chat-bg: #f4f7f6;
-      --user-msg-bg: #dcf8c6;
-      --bot-msg-bg: #ffffff;
+      --bg: #f4f7f6;
+      --white: #ffffff;
+      --text-dark: #2c3e50;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-    body { background-color: var(--chat-bg); height: 100vh; display: flex; flex-direction: column; }
+    body { background-color: var(--bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 80px; }
 
-    /* --- ORIGINAL NAVIGATION STYLE --- */
+    /* --- NAVIGATION STYLE (Original) --- */
     .app-header {
-      background: #fff; padding: 10px 3%; position: sticky; top: 0; z-index: 1000;
+      background: var(--white); padding: 10px 3%; position: sticky; top: 0; z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center;
     }
     .brand { font-size: 1.4rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-    .brand img { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--primary); }
+    .brand img { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--primary); padding: 2px; }
+    
     .desktop-nav { display: none; }
     .desktop-nav ul { display: flex; list-style: none; gap: 10px; align-items: center; }
     .desktop-nav a { text-decoration: none; color: #555; font-weight: 600; padding: 8px 12px; font-size: 0.9rem; border-radius: 5px; }
     .desktop-nav a.active { background-color: var(--ime-red); color: white; }
 
-    /* --- CHAT INTERFACE --- */
-    #chat-container {
-      flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px;
-      padding-bottom: 100px;
+    /* Agent Branding Banner */
+    .agent-banner {
+      background: linear-gradient(135deg, var(--ime-red), #b71c1c);
+      color: white; padding: 40px 20px; text-align: center;
     }
-    .message { max-width: 85%; padding: 12px 16px; border-radius: 15px; font-size: 1rem; line-height: 1.5; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-    .user-msg { align-self: flex-end; background-color: var(--user-msg-bg); border-bottom-right-radius: 2px; }
-    .bot-msg { align-self: flex-start; background-color: var(--bot-msg-bg); border-bottom-left-radius: 2px; border-left: 4px solid var(--ime-red); }
-    .bot-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--ime-red); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
-    .bot-wrapper { display: flex; align-items: flex-end; gap: 8px; }
+    .agent-banner h1 { font-size: 2rem; margin-bottom: 5px; }
+    .phone-link { color: #ffeb3b; text-decoration: none; font-size: 1.6rem; font-weight: 900; }
 
-    /* --- INPUT AREA --- */
-    .input-area {
-      position: fixed; bottom: 0; width: 100%; background: white; padding: 12px;
-      display: flex; gap: 10px; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 1001;
+    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+    /* Calculators */
+    .calc-card {
+      background: var(--white); padding: 30px; border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1); margin: -50px 0 30px;
+      position: relative; z-index: 10; border-bottom: 5px solid var(--ime-red);
     }
-    .chat-input { flex: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #ddd; outline: none; font-size: 1rem; }
-    .send-btn { background: var(--ime-red); color: white; border: none; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; }
+    .calc-tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid #eee; }
+    .tab-btn { background: none; border: none; padding: 12px; cursor: pointer; font-weight: 700; color: #777; flex: 1; }
+    .tab-btn.active { color: var(--ime-red); border-bottom: 3px solid var(--ime-red); }
 
-    /* --- MOBILE NAV --- */
-    .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 10px 0; border-top: 1px solid #eee; z-index: 1002; }
+    .input-group { margin-bottom: 15px; }
+    .input-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+    .input-group input, .input-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
+    
+    .btn-action {
+      width: 100%; padding: 15px; background: var(--primary); color: white;
+      border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+    }
+
+    .result-box { margin-top: 20px; padding: 20px; background: #fffde7; border-radius: 10px; display: none; text-align: center; border: 1px solid #fbc02d; }
+
+    /* Article Content */
+    .seo-content { background: white; padding: 40px; border-radius: 15px; margin-top: 30px; }
+    .seo-content h2 { color: var(--primary); margin: 30px 0 15px; border-left: 6px solid var(--ime-red); padding-left: 15px; }
+
+    /* Mobile Nav */
+    .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 10px 0; border-top: 1px solid #eee; z-index: 1001; }
     .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.7rem; }
     .nav-item.active { color: var(--ime-red); }
     .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 4px; }
 
-    .typing { font-size: 0.8rem; color: #888; font-style: italic; margin-left: 40px; display: none; }
-
-    @media (max-width: 899px) { .input-area { bottom: 60px; } }
-    @media (min-width: 900px) { 
-        .desktop-nav { display: block; } .mobile-nav { display: none; }
-        .input-area { max-width: 800px; left: 50%; transform: translateX(-50%); border-radius: 10px 10px 0 0; }
-        #chat-container { max-width: 800px; margin: 0 auto; width: 100%; border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
-    }
+    @media (min-width: 900px) { .desktop-nav { display: block; } .mobile-nav { display: none; } }
   </style>
 </head>
 <body>
 
   <header class="app-header">
     <div class="brand">
-      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Logo">
+      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy">
       <span>Bimal Pharmacy</span>
     </div>
     <nav class="desktop-nav">
@@ -78,102 +116,114 @@
         <li><a href="order.html">अर्डर</a></li>
         <li><a href="service.html">सेवाहरू</a></li>
         <li><a href="notice.html">सूचना</a></li>
-        <li><a href="search.html" class="active"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
+        <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
         <li><a href="contact.html">सम्पर्क</a></li>
         <li><a href="emergency.html">आपतकालीन</a></li>
       </ul>
     </nav>
   </header>
 
-  <div id="chat-container">
-    <div class="bot-wrapper">
-      <div class="bot-avatar"><i class="fas fa-robot"></i></div>
-      <div class="message bot-msg">
-        नमस्ते! म <strong>बिमल लामिछाने</strong> (IME Life Agent) को AI सहायक हुँ। 🙏 <br><br>
-        मलाई बिमा (Insurance) सम्बन्धी केही पनि सोध्नुहोस्। यदि मलाई थाहा भएन भने म तपाईंलाई बिमल सरको नम्बर दिनेछु।
-      </div>
-    </div>
-    <div id="typing" class="typing">AI सोच्दैछ...</div>
+  <div class="agent-banner">
+    <p>IME Life Insurance आधिकारिक अभिकर्ता</p>
+    <h1>बिमल लामिछाने</h1>
+    <a href="tel:9855065327" class="phone-link">9855065327</a>
   </div>
 
-  <div class="input-area">
-    <input type="text" id="userInput" class="chat-input" placeholder="बिमा सम्बन्धी प्रश्न सोध्नुहोस्..." onkeypress="if(event.key==='Enter') sendMessage()">
-    <button onclick="sendMessage()" class="send-btn"><i class="fas fa-paper-plane"></i></button>
+  <div class="container">
+    <div class="calc-card">
+      <div class="calc-tabs">
+        <button class="tab-btn active" onclick="switchCalc('coverage')">बिमांक क्याल्कुलेटर</button>
+        <button class="tab-btn" onclick="switchCalc('premium')">किस्ता अनुमानक</button>
+      </div>
+
+      <div id="coverageCalc">
+        <div class="input-group">
+          <label>तपाईंको मासिक आम्दानी (रु):</label>
+          <input type="number" id="monthlyInc" placeholder="उदा: 50000">
+        </div>
+        <button onclick="calcCover()" class="btn-action">हिसाब गर्नुहोस्</button>
+      </div>
+
+      <div id="premiumCalc" style="display:none;">
+        <div class="input-group">
+          <label>बिमा रकम (Sum Assured):</label>
+          <input type="number" id="totalSA" placeholder="उदा: 1000000">
+        </div>
+        <div class="input-group">
+          <label>अवधि (वर्ष):</label>
+          <select id="termYears">
+            <option value="15">१५ वर्ष</option>
+            <option value="20" selected>२० वर्ष</option>
+          </select>
+        </div>
+        <button onclick="estimatePremium()" class="btn-action">किस्ता हेर्नुहोस्</button>
+      </div>
+
+      <div id="resDisplay" class="result-box">
+        <h4 id="resTitle">नतिजा</h4>
+        <h2 id="resVal" style="color:var(--primary);">रु 0</h2>
+        <p id="resDesc"></p>
+      </div>
+    </div>
+
+    <article class="seo-content">
+      <h2>नेपालमा जीवन बिमाको महत्व</h2>
+      <p>जीवन बिमा केवल भविष्यको सुरक्षा मात्र होइन, यो एक व्यवस्थित बचत पनि हो। <strong>IME Life Insurance</strong> ले तपाईंलाई बुढ्यौलीको सहारा र परिवारको आर्थिक सुरक्षा सुनिश्चित गर्दछ।</p>
+      
+      <h2>IME Life Insurance किन रोज्ने?</h2>
+      <p>चितवनका विश्वासिलो अभिकर्ता <strong>बिमल लामिछाने</strong> का अनुसार IME Life ले बजारमै उत्कृष्ट बोनस दर र सरल दाबी प्रक्रिया प्रदान गर्दछ।</p>
+      
+      <ul>
+        <li>उत्कृष्ट बोनस दर (Bonus Rate)</li>
+        <li>२१ घातक रोगहरूको बिमा (Critical Illness Cover)</li>
+        <li>छिटो र पारदर्शी दाबी भुक्तानी (Fast Claim)</li>
+      </ul>
+    </article>
   </div>
 
   <nav class="mobile-nav">
     <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
-    <a href="search.html" class="nav-item active"><i class="fas fa-robot"></i> AI Chat</a>
+    <a href="search.html" class="nav-item"><i class="fas fa-robot"></i> Chat</a>
     <a href="order.html" class="nav-item"><i class="fas fa-file-prescription"></i> अर्डर</a>
-    <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i> आपतकालीन</a>
+    <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i> Emergency</a>
     <a href="contact.html" class="nav-item"><i class="fas fa-user"></i> सम्पर्क</a>
   </nav>
 
   <script>
-    const API_KEY = "AIzaSyBly_wvcUIeFdcfpvNKgo1co98EHcQTwdE";
-    const MODELS = ["gemini-1.5-flash", "gemini-pro"];
-
-    function append(text, side) {
-        const container = document.getElementById('chat-container');
-        const div = document.createElement('div');
-        if(side==='bot') {
-            div.className = 'bot-wrapper';
-            div.innerHTML = `<div class="bot-avatar"><i class="fas fa-robot"></i></div><div class="message bot-msg">${text}</div>`;
+    function switchCalc(type) {
+        const tabs = document.querySelectorAll('.tab-btn');
+        tabs.forEach(t => t.classList.remove('active'));
+        document.getElementById('coverageCalc').style.display = 'none';
+        document.getElementById('premiumCalc').style.display = 'none';
+        if(type === 'coverage') {
+            document.getElementById('coverageCalc').style.display = 'block';
+            tabs[0].classList.add('active');
         } else {
-            div.style.display = 'flex'; div.style.justifyContent = 'flex-end';
-            div.innerHTML = `<div class="message user-msg">${text}</div>`;
+            document.getElementById('premiumCalc').style.display = 'block';
+            tabs[1].classList.add('active');
         }
-        container.insertBefore(div, document.getElementById('typing'));
-        container.scrollTop = container.scrollHeight;
     }
 
-    async function sendMessage() {
-        const input = document.getElementById('userInput');
-        const q = input.value.trim();
-        if(!q) return;
+    function calcCover() {
+        let inc = document.getElementById('monthlyInc').value;
+        if(!inc) return alert("आम्दानी भर्नुहोस्");
+        let val = inc * 12 * 12;
+        showRes("न्यूनतम आवश्यक बिमांक", val, "यो तपाईंको परिवारको लागि सिफारिस गरिएको सुरक्षा रकम हो।");
+    }
 
-        append(q, 'user');
-        input.value = '';
+    function estimatePremium() {
+        let sa = document.getElementById('totalSA').value;
+        let term = document.getElementById('termYears').value;
+        if(!sa) return alert("रकम भर्नुहोस्");
+        let monthly = (sa / term / 12) * 1.05;
+        showRes("अनुमानित मासिक किस्ता", Math.round(monthly), "*यो एक अनुमान मात्र हो, बोनस र उमेरले फरक पार्न सक्छ।");
+    }
 
-        // --- STICK TO TOPIC FILTER ---
-        const casualWords = ['hi', 'hello', 'नमस्ते', 'के छ', 'khana khayo', 'सञ्चै छ'];
-        if (casualWords.some(word => q.toLowerCase().includes(word)) && q.length < 10) {
-            append("नमस्ते! म बिमल सरको AI सहायक हुँ। म बिमा (Insurance) को बारेमा मात्र कुरा गर्न सक्छु। कृपया बिमा सम्बन्धी प्रश्न सोध्नुहोस् वा बिमल सरलाई **9855065327** मा कल गर्नुहोस्।", 'bot');
-            return;
-        }
-
-        document.getElementById('typing').style.display = 'block';
-
-        const prompt = `
-            You are an AI for Bimal Lamichhane (IME Life Agent). 
-            STRICT RULE: ONLY answer questions about Insurance (Term, Health, CI, PWD, Child Plan, etc.).
-            - If user asks about other topics, say: "माफ गर्नुहोस्, मलाई बिमा बारे मात्र थाहा छ। थप जानकारीको लागि बिमल लामिछानेलाई 9855065327 मा सम्पर्क गर्नुहोस्।"
-            - Understand Nepali, English, and Roman Nepali.
-            - Provide clear benefits of IME Life Insurance.
-            - If you are unsure, provide Bimal Lamichhane's number: 9855065327.
-        `;
-
-        let success = false;
-        for (let m of MODELS) {
-            try {
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${API_KEY}`, {
-                    method: 'POST', headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({contents:[{parts:[{text: prompt + "\nUSER QUESTION: " + q}]}]})
-                });
-                const d = await res.json();
-                if(d.candidates) {
-                    let txt = d.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
-                    document.getElementById('typing').style.display = 'none';
-                    append(txt, 'bot');
-                    success = true; break;
-                }
-            } catch(e) {}
-        }
-
-        if(!success) {
-            document.getElementById('typing').style.display = 'none';
-            append("माफ गर्नुहोस्, अहिले म अलि व्यस्त छु। कृपया बिमल लामिछाने (IME Life Agent) लाई सिधै **9855065327** मा कल गर्नुहोस्।", 'bot');
-        }
+    function showRes(title, val, desc) {
+        document.getElementById('resTitle').innerText = title;
+        document.getElementById('resVal').innerText = "रु " + val.toLocaleString('ne-NP');
+        document.getElementById('resDesc').innerText = desc;
+        document.getElementById('resDisplay').style.display = 'block';
     }
   </script>
 </body>
