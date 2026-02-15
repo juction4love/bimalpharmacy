@@ -3,96 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Emergency Directory | Bimal Pharmacy Bharatpur</title>
+  <title>Emergency Directory Nepal | Ambulance, Sab Bahan & Hospitals | Bimal Pharmacy</title>
   
-  <meta name="description" content="आपतकालीन सम्पर्क नम्बरहरू र रक्तदाता खोज्ने ठाउँ - बिमल फार्मेसी, भरतपुर।">
+  <meta name="description" content="नेपालभरका एम्बुलेन्स, शव वाहन (Sab Bahan), र अस्पतालका नम्बरहरू। बिमल फार्मेसी, भरतपुर।">
+  <meta name="keywords" content="Emergency Nepal, Ambulance Bharatpur, Sab Bahan Nepal, Blood Donor Search, Bimal Pharmacy Emergency">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
       --primary: #2e7d32;
-      --secondary: #1b5e20;
-      --accent: #fbc02d;
       --danger: #d32f2f;
-      --light-bg: #f8faf9;
-      --white: #ffffff;
-      --text-dark: #2c3e50;
-      --shadow: 0 10px 25px rgba(0,0,0,0.05);
       --army-green: #4b5320;
       --gov-blue: #0d47a1;
+      --bg: #f4f7f6;
+      --white: #ffffff;
+      --hearse-color: #333;
+      --shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-    
-    body { background-color: var(--light-bg); color: var(--text-dark); padding-bottom: 100px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body { background-color: var(--bg); color: #333; padding-bottom: 100px; line-height: 1.6; }
 
-    /* --- 1. Top Marquee --- */
-    .top-notice-bar {
-      background: var(--danger); color: white; overflow: hidden;
-      border-bottom: 2px solid #b71c1c; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    .top-notice-bar marquee { display: block; padding: 10px 0; font-weight: 800; font-size: 15px; }
+    /* --- Top Notice --- */
+    .top-notice-bar { background: var(--danger); color: white; border-bottom: 2px solid #b71c1c; }
+    .top-notice-bar marquee { display: block; padding: 10px 0; font-weight: 800; font-size: 14px; }
 
-    /* --- 2. Branding Header & Nav --- */
-    .app-header {
-      background: var(--white); padding: 15px 5%; display: flex; flex-direction: column;
-      align-items: center; border-bottom: 5px solid var(--primary); box-shadow: var(--shadow);
-    }
-    .brand-section { display: flex; align-items: center; gap: 20px; width: 100%; margin-bottom: 15px; }
-    .logo-container img { height: 75px; width: 75px; border-radius: 50%; border: 3px solid var(--primary); padding: 2px; object-fit: cover; }
-    .brand-text h1 { color: var(--primary); font-size: 1.8rem; margin: 0; }
+    /* --- Header & Navigation --- */
+    .app-header { background: #fff; padding: 15px 5%; display: flex; flex-direction: column; align-items: center; border-bottom: 5px solid var(--primary); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+    .brand-section { display: flex; align-items: center; gap: 15px; width: 100%; margin-bottom: 10px; }
+    .logo-container img { height: 65px; width: 65px; border-radius: 50%; border: 2px solid var(--primary); padding: 2px; object-fit: cover; }
+    .brand-text h1 { color: var(--primary); font-size: 1.7rem; margin: 0; }
     .brand-text p { font-size: 0.9rem; color: #666; font-weight: 600; }
-
+    
     .navbar { width: 100%; margin-top: 10px; }
-    .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; gap: 5px; }
-    .nav-links a { 
-      color: #333; text-decoration: none; padding: 10px 15px; display: block; 
-      font-weight: 700; font-size: 0.85rem; border-radius: 5px; border: 1px solid #eee; transition: 0.3s;
-    }
-    .nav-links a:hover, .nav-links a.active { background: var(--primary); color: var(--white) !important; }
+    .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; gap: 8px; }
+    .nav-links a { color: #333; text-decoration: none; padding: 8px 15px; font-size: 0.85rem; font-weight: 700; border: 1px solid #eee; border-radius: 5px; transition: 0.3s; }
+    .nav-links a.active { background: var(--danger); color: white !important; border-color: var(--danger); }
 
-    /* --- 3. Emergency Specific Styles --- */
-    .emergency-banner { background: var(--danger); color: white; text-align: center; padding: 30px 20px; }
-    .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
+    /* --- Search Hero Section --- */
+    .emergency-hero { background: linear-gradient(135deg, #d32f2f, #333); padding: 50px 20px; color: white; text-align: center; }
+    .emergency-hero h2 { font-size: 1.8rem; margin-bottom: 20px; }
+    .search-container { max-width: 700px; margin: 0 auto; display: flex; gap: 10px; }
+    .search-input { flex: 1; padding: 16px 25px; border-radius: 35px; border: none; font-size: 1.1rem; outline: none; box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
-    .category-title { 
-      background: #e0e0e0; padding: 12px 15px; border-radius: 8px; 
-      margin: 25px 0 12px; font-weight: 800; display: flex; align-items: center; gap: 10px;
-    }
+    .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
 
-    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    /* --- Category Styling --- */
+    .category-title { background: #fff; padding: 15px; margin: 30px 0 15px; font-weight: 800; border-left: 6px solid var(--danger); box-shadow: var(--shadow); display: flex; align-items: center; gap: 10px; border-radius: 5px; }
+
+    /* --- Contact Cards --- */
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
     @media (min-width: 600px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1000px) { .contact-grid { grid-template-columns: 1fr 1fr 1fr; } }
 
-    .contact-card { 
-      background: white; padding: 18px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); 
-      display: flex; justify-content: space-between; align-items: center; border-left: 6px solid var(--danger);
-    }
-    .info h4 { font-size: 1rem; margin-bottom: 2px; }
-    .info p { font-size: 0.8rem; color: #666; }
-    .call-btn { 
-      background: var(--danger); color: white; width: 45px; height: 45px; 
-      border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;
-    }
+    .contact-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid transparent; transition: 0.3s; }
+    .contact-card:hover { transform: translateY(-5px); border-bottom-color: var(--danger); }
+    .special-card { border-left: 6px solid var(--primary); background: #f1f8f1; }
+    .hearse-card { border-left: 6px solid var(--hearse-color); }
 
-    /* --- 4. Blood Section --- */
-    .blood-section { background: white; padding: 25px; border-radius: 15px; margin-top: 30px; border-top: 5px solid var(--danger); }
-    .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
-    .search-input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #ddd; }
-    .btn-red { background: var(--danger); color: white; padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; }
+    .info h4 { font-size: 1.05rem; color: #222; margin-bottom: 5px; }
+    .info p { font-size: 0.8rem; color: #666; font-weight: 600; }
 
-    .donor-list-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
-    .donor-list-table th, .donor-list-table td { padding: 10px; border: 1px solid #eee; text-align: left; }
+    .call-btn { background: var(--danger); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.2rem; transition: 0.3s; }
+    .call-btn:hover { background: var(--primary); transform: rotate(15deg); }
+    .primary-btn { background: var(--primary); }
 
-    .donation-form { margin-top: 30px; padding-top: 20px; border-top: 1px dashed #ddd; }
-    .form-group { margin-bottom: 12px; }
-    .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+    /* --- Blood Section --- */
+    .blood-section { background: white; padding: 30px; border-radius: 20px; margin-top: 50px; border: 2px solid #ffcdd2; }
+    .donation-form { margin-top: 30px; padding-top: 25px; border-top: 1px dashed #ddd; }
+    .form-group { margin-bottom: 15px; }
+    .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; outline: none; }
+    .btn-red { background: var(--danger); color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; width: 100%; }
 
-    /* Mobile Bottom Nav */
+    .donor-list-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
+    .donor-list-table th, .donor-list-table td { padding: 12px; border: 1px solid #eee; text-align: left; }
+    .donor-list-table th { background: #f8f8f8; color: var(--danger); }
+
+    /* --- Mobile Navigation --- */
     .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 10px 0; border-top: 1px solid #eee; z-index: 1001; }
-    .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.7rem; }
+    .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.75rem; font-weight: 600; }
     .nav-item.active { color: var(--danger); }
-    .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 4px; }
-
+    .nav-item i { display: block; font-size: 1.4rem; margin-bottom: 4px; }
     @media (min-width: 900px) { .mobile-nav { display: none; } }
   </style>
 </head>
@@ -106,15 +98,12 @@
 
   <header class="app-header">
     <div class="brand-section">
-      <div class="logo-container">
-        <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy">
-      </div>
+      <div class="logo-container"><img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy"></div>
       <div class="brand-text">
         <h1>बिमल फार्मेसी</h1>
         <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र | भरतपुर-७, चितवन</p>
       </div>
     </div>
-
     <nav class="navbar">
       <ul class="nav-links">
         <li><a href="index.html">गृहपृष्ठ</a></li>
@@ -125,29 +114,85 @@
         <li><a href="notice.html">सूचना</a></li>
         <li><a href="search.html"><i class="fas fa-robot"></i> AI Chat</a></li> 
         <li><a href="contact.html">सम्पर्क</a></li>
-        <li><a href="emergency.html" class="active" style="color:var(--danger); border-color:var(--danger);"><i class="fas fa-ambulance"></i> आपतकालीन</a></li>
+        <li><a href="emergency.html" class="active"><i class="fas fa-ambulance"></i> आपतकालीन</a></li>
       </ul>
     </nav>
   </header>
 
-  <section class="emergency-banner">
-    <h1><i class="fas fa-phone-alt"></i> Emergency Directory</h1>
-    <p>चौबीसै घण्टा आपतकालीन सेवाका लागि सिधै कल गर्नुहोस्</p>
+  <section class="emergency-hero">
+    <h2><i class="fas fa-search-plus"></i> Nepal Emergency Directory</h2>
+    <div class="search-container">
+      <input type="text" id="masterSearch" class="search-input" placeholder="एम्बुलेन्स वा शव वाहन खोज्न शहरको नाम लेख्नुहोस् (उदा: चितवन)..." onkeyup="searchEmergency()">
+    </div>
   </section>
 
   <div class="container">
     
-    <div class="category-title" style="background: #fff3e0; color: #e65100;"><i class="fas fa-helicopter"></i> हेलिकप्टर उद्धार सेवा</div>
+    <div class="category-title"><i class="fas fa-phone-alt"></i> राष्ट्रिय आपतकालीन सेवाहरू</div>
     <div class="contact-grid">
-      <div class="contact-card" style="border-left-color: var(--army-green);"><div class="info"><h4>नेपाली सेना (Army Air)</h4><p>Emergency Air Service</p></div><a href="tel:014271351" class="call-btn" style="background:var(--army-green);"><i class="fas fa-phone"></i></a></div>
-      <div class="contact-card"><div class="info"><h4>सिम्रिक एयर (Simrik Air)</h4><p>Rescue: 9851010630</p></div><a href="tel:9851010630" class="call-btn"><i class="fas fa-phone"></i></a></div>
+      <div class="contact-card"><div class="info"><h4>नेपाल प्रहरी</h4><p>Police Emergency</p></div><a href="tel:100" class="call-btn">100</a></div>
+      <div class="contact-card"><div class="info"><h4>दमकल</h4><p>Fire Brigade</p></div><a href="tel:101" class="call-btn">101</a></div>
+      <div class="contact-card"><div class="info"><h4>एम्बुलेन्स (Common)</h4><p>Ambulance Service</p></div><a href="tel:102" class="call-btn">102</a></div>
+      <div class="contact-card"><div class="info"><h4>ट्राफिक प्रहरी</h4><p>Traffic Emergency</p></div><a href="tel:103" class="call-btn">103</a></div>
+      <div class="contact-card"><div class="info"><h4>बाल हेल्पलाइन</h4><p>Child Helpline</p></div><a href="tel:1098" class="call-btn">1098</a></div>
+      <div class="contact-card"><div class="info"><h4>औषधि व्यवस्था विभाग</h4><p>DDA (Complaints)</p></div><a href="tel:014780227" class="call-btn"><i class="fas fa-phone"></i></a></div>
+    </div>
+
+    <div class="category-title" style="background: #e8f5e9; color: var(--primary); border-left-color: var(--primary);">
+      <i class="fas fa-hospital"></i> चितवनका मुख्य अस्पतालहरू (Medical City)
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card special-card">
+        <div class="info"><h4>National City Hospital & Urology Center</h4><p>भरतपुर-१० (विशेषज्ञ सेवा)</p></div>
+        <a href="tel:056526194" class="call-btn primary-btn"><i class="fas fa-phone"></i></a>
+      </div>
+      <div class="contact-card"><div class="info"><h4>भरतपुर अस्पताल</h4><p>सरकारी (Emergency)</p></div><a href="tel:056597003" class="call-btn">Call</a></div>
+      <div class="contact-card"><div class="info"><h4>बी.पी. कोइराला क्यान्सर</h4><p>Cancer Care, भरतपुर</p></div><a href="tel:056524501" class="call-btn">Call</a></div>
+      <div class="contact-card"><div class="info"><h4>चितवन मेडिकल कलेज (CMC)</h4><p>शिक्षण अस्पताल, भरतपुर</p></div><a href="tel:056532933" class="call-btn">Call</a></div>
+      <div class="contact-card"><div class="info"><h4>पुरानो मेडिकल कलेज (COMS)</h4><p>Teaching Hospital</p></div><a href="tel:056521597" class="call-btn">Call</a></div>
+      <div class="contact-card"><div class="info"><h4>नारायणी सामुदायिक अस्पताल</h4><p>NPI Hospital</p></div><a href="tel:056521887" class="call-btn">Call</a></div>
+      <div class="contact-card"><div class="info"><h4>सेन्ट्रल हस्पिटल</h4><p>भरतपुर</p></div><a href="tel:056524024" class="call-btn">Call</a></div>
+      <div class="contact-card"><div class="info"><h4>पुष्पाञ्जली अस्पताल</h4><p>भरतपुर (Belchowk)</p></div><a href="tel:056523315" class="call-btn">Call</a></div>
+      <div class="contact-card"><div class="info"><h4>एलाइभ हस्पिटल</h4><p>ट्रमा केयर</p></div><a href="tel:056527555" class="call-btn">Call</a></div>
+    </div>
+
+    <div class="category-title"><i class="fas fa-ambulance"></i> एम्बुलेन्स र शव वाहन (Ambulance & Hearse)</div>
+    <div class="contact-grid" id="emergencyGrid">
+      <div class="contact-card item-card hearse-card" data-search="chitwan चितवन sab bahan शव वाहन bharatpur भरतपुर">
+        <div class="info"><h4>भरतपुर महानगर शव वाहन</h4><p>चितवन (Sab Bahan Service)</p></div>
+        <a href="tel:056520167" class="call-btn" style="background:#333;">Call</a>
+      </div>
+      <div class="contact-card item-card" data-search="chitwan चितवन एम्बुलेन्स ambulance redcross">
+        <div class="info"><h4>चितवन रेडक्रस</h4><p>एम्बुलेन्स सेवा (Chitwan)</p></div>
+        <a href="tel:056520555" class="call-btn">Call</a>
+      </div>
+      <div class="contact-card item-card hearse-card" data-search="kathmandu काठमाडौं ktm pashupati पशुपति शव वाहन sab bahan">
+        <div class="info"><h4>पशुपति शव वाहन</h4><p>काठमाडौं (Pashupati Area)</p></div>
+        <a href="tel:014471828" class="call-btn" style="background:#333;">Call</a>
+      </div>
+      <div class="contact-card item-card" data-search="kathmandu काठमाडौं ktm ktm ambulance">
+        <div class="info"><h4>नेपाल एम्बुलेन्स सेवा</h4><p>काठमाडौं (Primary)</p></div>
+        <a href="tel:102" class="call-btn">Call</a>
+      </div>
+      <div class="contact-card item-card hearse-card" data-search="pokhara पोखरा sab bahan शव वाहन kaski कास्की">
+        <div class="info"><h4>पोखरा शव वाहन सेवा</h4><p>कास्की (Sab Bahan)</p></div>
+        <a href="tel:061520036" class="call-btn" style="background:#333;">Call</a>
+      </div>
+    </div>
+
+    <div class="category-title" style="background: #fff3e0; color: #e65100; border-left-color: #e65100;">
+      <i class="fas fa-helicopter"></i> हेलिकप्टर उद्धार सेवा (Heli-Rescue)
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card" style="border-left: 5px solid var(--army-green);"><div class="info"><h4>नेपाली सेना (Army Air)</h4><p>Army Rescue</p></div><a href="tel:014271351" class="call-btn" style="background:var(--army-green);">Call</a></div>
+      <div class="contact-card"><div class="info"><h4>सिम्रिक एयर</h4><p>Rescue: 9851010630</p></div><a href="tel:9851010630" class="call-btn">Call</a></div>
     </div>
 
     <div class="blood-section">
-      <h2 style="color:var(--danger);"><i class="fas fa-tint"></i> रक्तदाता खोज्नुहोस् (Search Donors)</h2>
-      <div class="search-box">
-        <input type="text" id="donorSearch" class="search-input" placeholder="रगत समूह खोज्नुहोस् (e.g. A+)...">
-        <button onclick="filterDonors()" class="btn-red"><i class="fas fa-search"></i></button>
+      <h2 style="color:var(--danger);"><i class="fas fa-tint"></i> रक्तदाता खोज्नुहोस् र दर्ता हुनुहोस्</h2>
+      <div class="search-box" style="display: flex; gap: 10px; margin: 15px 0;">
+        <input type="text" id="donorSearch" class="search-input" style="flex:1; padding:12px; border:1px solid #ddd; border-radius:30px;" placeholder="रगत समूह खोज्नुहोस् (A+, O+)...">
+        <button onclick="filterDonors()" class="btn-red" style="width: auto; padding: 0 20px; border-radius:30px;">खोज्नुहोस्</button>
       </div>
 
       <table class="donor-list-table" id="donorTable">
@@ -159,16 +204,15 @@
             <td>बिमल लामिछाने</td>
             <td>भरतपुर-७</td>
             <td>O+</td>
-            <td><a href="tel:9855065327" style="color:var(--primary); text-decoration:none;"><i class="fas fa-phone"></i> कल</a></td>
+            <td><a href="tel:9855065327" style="color:var(--primary); font-weight:bold;">9855065327</a></td>
           </tr>
         </tbody>
       </table>
 
       <div class="donation-form">
-        <h3 style="margin-bottom:10px;">रक्तदाता दर्ता फर्म</h3>
+        <h3>रक्तदाता दर्ता फर्म</h3>
         <form action="https://formspree.io/f/xblddqwd" method="POST">
           <div class="form-group"><input type="text" name="name" placeholder="पुरा नाम" required></div>
-          <div class="form-group"><input type="text" name="address" placeholder="ठेगाना"></div>
           <div class="form-group">
             <select name="blood_group" required>
               <option value="">रगत समूह</option>
@@ -177,7 +221,7 @@
             </select>
           </div>
           <div class="form-group"><input type="tel" name="phone" placeholder="मोबाइल नम्बर" required></div>
-          <button type="submit" class="btn-red" style="width:100%;">दर्ता हुनुहोस्</button>
+          <button type="submit" class="btn-red">दर्ता हुनुहोस्</button>
         </form>
       </div>
     </div>
@@ -186,22 +230,27 @@
   <nav class="mobile-nav">
     <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
     <a href="search.html" class="nav-item"><i class="fas fa-robot"></i> Chat</a>
-    <a href="order.html" class="nav-item"><i class="fas fa-file-prescription"></i> अर्डर</a>
+    <a href="order.html" class="nav-item"><i class="fas fa-prescription"></i> अर्डर</a>
     <a href="emergency.html" class="nav-item active"><i class="fas fa-ambulance"></i> Emergency</a>
     <a href="contact.html" class="nav-item"><i class="fas fa-user"></i> सम्पर्क</a>
   </nav>
 
   <script>
+    function searchEmergency() {
+      let input = document.getElementById('masterSearch').value.toLowerCase();
+      let items = document.getElementsByClassName('item-card');
+      for (let i = 0; i < items.length; i++) {
+        let keywords = items[i].getAttribute('data-search');
+        items[i].style.display = keywords.includes(input) ? "flex" : "none";
+      }
+    }
+
     function filterDonors() {
       let input = document.getElementById('donorSearch').value.toUpperCase();
-      let table = document.getElementById('donorTable');
-      let tr = table.getElementsByTagName('tr');
+      let tr = document.getElementById('donorTable').getElementsByTagName('tr');
       for (let i = 1; i < tr.length; i++) {
         let td = tr[i].getElementsByTagName('td')[2];
-        if (td) {
-          let txtValue = td.textContent || td.innerText;
-          tr[i].style.display = txtValue.toUpperCase().indexOf(input) > -1 ? "" : "none";
-        }
+        if (td) tr[i].style.display = td.innerText.toUpperCase().indexOf(input) > -1 ? "" : "none";
       }
     }
   </script>
