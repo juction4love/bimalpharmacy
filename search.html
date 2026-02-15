@@ -194,8 +194,8 @@
       `;
 
       try {
-        // --- FIXED MODEL NAME: gemini-1.5-flash ---
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+        // --- FIXED MODEL NAME: gemini-1.5-flash-001 (Specific Version) ---
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-001:generateContent?key=${API_KEY}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
@@ -206,6 +206,7 @@
 
         if (data.error) {
             console.error("API Error:", data.error);
+            // विस्तृत एरर देखाउने
             alert("Google API Error: " + data.error.message);
             return;
         }
@@ -220,11 +221,11 @@
           textBox.innerHTML = formattedText;
           resultBox.style.display = "block";
         } else {
-          alert("No answer found.");
+          alert("माफ गर्नुहोस्, जानकारी भेटिएन।");
         }
       } catch (error) {
         loader.style.display = "none";
-        alert("Connection Error. Please refresh.");
+        alert("इन्टरनेट समस्या भयो। कृपया रिफ्रेस गर्नुहोस्।");
       }
     }
   </script>
