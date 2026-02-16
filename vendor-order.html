@@ -1,21 +1,21 @@
 <div style="background: white; padding: 20px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid #2e7d32; border-radius: 20px 20px 0 0; max-width: 650px; margin: 30px auto -30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; z-index: 2;">
-    <div style="height: 70px; width: 70px; border-radius: 50%; border: 3px solid #2e7d32; overflow: hidden; background: white;">
-        <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
+    <div style="height: 75px; width: 75px; border-radius: 50%; border: 3px solid #2e7d32; overflow: hidden; background: white;">
+        <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy Logo" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
     <div style="flex: 1;">
         <h1 style="color: #2e7d32; font-size: 1.8rem; margin: 0; line-height: 1.1;">बिमल फार्मेसी</h1>
-        <p style="font-size: 0.85rem; color: #555; margin: 5px 0 0;">भरतपुर-७, चितवन (क्यान्सर अस्पताल रोड)</p>
+        <p style="font-size: 0.85rem; color: #555; margin: 5px 0 0; font-weight: 600;">भरतपुर-७, चितवन (क्यान्सर अस्पताल रोड)</p>
     </div>
 </div>
 
-<div id="orderApp" class="card" style="border-top: 8px solid #2e7d32; background: #ffffff; padding: 45px 30px 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 650px; margin: 0 auto 30px; font-family: 'Segoe UI', system-ui, sans-serif; transition: 0.3s; position: relative;">
+<div id="orderApp" style="border-top: 8px solid #2e7d32; background: #ffffff; padding: 45px 30px 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 650px; margin: 0 auto 30px; font-family: 'Segoe UI', system-ui, sans-serif; transition: 0.3s; position: relative;">
     
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px;">
         <div style="text-align: left;">
             <h2 style="color: #1b5e20; margin: 0; font-size: 1.5rem;"><i class="fas fa-file-invoice-dollar"></i> Smart Order Slip</h2>
             <p style="font-size: 0.8rem; color: #666;">आधिकारिक डिजिटल खरिद अर्डर</p>
         </div>
-        <button onclick="toggleDarkMode()" id="themeBtn" style="background: #f0f0f0; border: none; padding: 10px; border-radius: 50%; cursor: pointer;"><i class="fas fa-moon"></i></button>
+        <button onclick="toggleDarkMode()" style="background: #f0f0f0; border: none; padding: 10px; border-radius: 50%; cursor: pointer;"><i class="fas fa-moon"></i></button>
     </div>
     
     <div style="display: flex; justify-content: space-between; background: #f1f8f1; padding: 12px; border-radius: 12px; margin-bottom: 20px; font-size: 0.85rem; border: 1px solid #ddd;">
@@ -68,19 +68,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
-    // १. Auto ID र मिति
-    function generateAutoID() {
+    // 1. Auto Generation
+    function setupOrder() {
         const now = new Date();
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('currentDate').innerText = now.toLocaleDateString('ne-NP', options);
-        
-        const dateStr = now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0');
-        const randomNum = Math.floor(1000 + Math.random() * 9000);
-        document.getElementById('orderID').innerText = `BIMAL-${dateStr}-${randomNum}`;
+        document.getElementById('currentDate').innerText = now.toLocaleDateString('ne-NP', { year: 'numeric', month: 'long', day: 'numeric' });
+        const dateID = now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0');
+        document.getElementById('orderID').innerText = `BIMAL-${dateID}-${Math.floor(1000 + Math.random() * 9000)}`;
     }
-    generateAutoID();
+    setupOrder();
 
-    // २. सन्देश निर्माण
+    // 2. Message Logic
     function createMessage() {
         const vName = document.getElementById('vendorName').value.trim() || "जी";
         const items = document.getElementById('itemList').value.trim();
@@ -90,7 +87,7 @@
         if (!items) { alert("कृपया सामानको विवरण भर्नुहोस्।"); return null; }
 
         return "नमस्ते " + vName + ", 🙏%0A" +
-               "म बिमल फार्मेसी (भरतपुर) बाट बिमल लामिछाने। हाम्रो फार्मेसीको लागि आवश्यक केही सामानहरूको *नयाँ खरिद अर्डर (Purchase Order)* यसै सन्देशमार्फत पठाएको छु। कृपया उल्लेखित सामानहरू उपलब्ध गराई सहयोग गरिदिनुहुन हार्दिक अनुरोध गर्दछु:%0A%0A" +
+               "म बिमल फार्मेसी (भरतपुर) बाट बिमल लामिछाने। हाम्रो फार्मेसीको लागि आवश्यक केही सामानहरूको *नयाँ खरिद अर्डर (Purchase Order)* पठाएको छु। कृपया उल्लेखित सामानहरू उपलब्ध गराई सहयोग गरिदिनुहुन हार्दिक अनुरोध गर्दछु:%0A%0A" +
                "━━━━━━━━━━━━━━━━━━%0A" +
                "📌 *ORDER LIST:*%0A" + 
                "━━━━━━━━━━━━━━━━━━%0A" +
@@ -103,48 +100,77 @@
                "📞 ९८५५०६५३२७";
     }
 
-    // ३. Voice Typing
-    function startDictation() {
-        if (window.hasOwnProperty('webkitSpeechRecognition')) {
-            var recognition = new webkitSpeechRecognition();
-            recognition.lang = "ne-NP";
-            recognition.start();
-            recognition.onresult = function(e) {
-                document.getElementById('itemList').value += e.results[0][0].transcript + "\n";
-                recognition.stop();
-            };
-        } else { alert("Browser Not Supported"); }
-    }
-
-    // ४. Print
+    // 3. IMPROVED PRINT FUNCTION (Connected to Default Printer Style)
     function printOrder() {
         const vendor = document.getElementById('vendorName').value || "N/A";
         const items = document.getElementById('itemList').value;
         const id = document.getElementById('orderID').innerText;
         const date = document.getElementById('currentDate').innerText;
 
+        if (!items) return alert("Items list is empty!");
+
         const win = window.open('', '', 'height=700,width=900');
-        win.document.write('<html><head><title>Print Order</title><style>body{padding:40px;font-family:sans-serif;} .hd{text-align:center;border-bottom:2px solid #2e7d32;} .items{background:#f9f9f9;padding:20px;white-space:pre-wrap;border:1px solid #ddd;}</style></head><body>');
-        win.document.write('<div class="hd"><h1>बिमल फार्मेसी</h1><p>भरतपुर-७, चितवन | ९८५५०६५३२७</p><h2>PURCHASE ORDER</h2></div>');
-        win.document.write('<p><strong>विक्रेता:</strong> '+vendor+' <br> <strong>मिति:</strong> '+date+' <br> <strong>ID:</strong> #'+id+'</p>');
-        win.document.write('<h4>सामानको सूची:</h4><div class="items">'+items+'</div>');
-        win.document.write('</body></html>');
+        win.document.write(`
+            <html>
+            <head>
+                <title>Order #${id}</title>
+                <style>
+                    @page { size: auto; margin: 10mm; }
+                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 20px; color: #333; }
+                    .bill-container { border: 2px solid #2e7d32; padding: 30px; border-radius: 15px; }
+                    .hd { text-align: center; border-bottom: 3px solid #2e7d32; padding-bottom: 10px; margin-bottom: 20px; }
+                    .hd h1 { margin: 0; color: #2e7d32; font-size: 28px; }
+                    .meta { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 25px; }
+                    .items-box { background: #fdfdfd; padding: 20px; border: 1px dashed #2e7d32; min-height: 250px; white-space: pre-wrap; font-size: 17px; line-height: 1.8; }
+                    .footer { text-align: center; margin-top: 40px; font-size: 13px; color: #555; border-top: 1px solid #ddd; padding-top: 15px; }
+                </style>
+            </head>
+            <body>
+                <div class="bill-container">
+                    <div class="hd">
+                        <h1>बिमल फार्मेसी</h1>
+                        <p>भरतपुर-७, चितवन | फोन: ९८५५०६५३२७</p>
+                        <h2 style="background:#2e7d32; color:white; display:inline-block; padding:5px 20px; border-radius:8px;">PURCHASE ORDER</h2>
+                    </div>
+                    <div class="meta">
+                        <div><strong>To (विक्रेता):</strong> ${vendor}</div>
+                        <div style="text-align: right;"><strong>मिति:</strong> ${date}<br><strong>Order ID:</strong> #${id}</div>
+                    </div>
+                    <div style="font-weight: bold; margin-bottom: 10px; font-size: 18px;">Items Details:</div>
+                    <div class="items-box">${items}</div>
+                    <div class="footer">
+                        <p>यो बिमल फार्मेसीको आधिकारिक डिजिटल अर्डर कपी हो।</p>
+                        <strong>बिमल लामिछाने (Proprietor)</strong>
+                    </div>
+                </div>
+            </body>
+            </html>
+        `);
         win.document.close();
-        win.print();
+        win.focus();
+        setTimeout(() => { win.print(); win.close(); }, 600);
     }
 
-    // ५. PDF
+    // 4. Other Functions
+    function startDictation() {
+        if (window.hasOwnProperty('webkitSpeechRecognition')) {
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "ne-NP";
+            recognition.onresult = (e) => { document.getElementById('itemList').value += e.results[0][0].transcript + "\n"; recognition.stop(); };
+            recognition.start();
+        } else { alert("Speech not supported"); }
+    }
+
     function generatePDF() {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
-        doc.text("BIMAL PHARMACY - PURCHASE ORDER", 10, 10);
-        doc.text("Order ID: " + document.getElementById('orderID').innerText, 10, 20);
-        doc.text("Vendor: " + document.getElementById('vendorName').value, 10, 30);
-        doc.text("Items:\n" + document.getElementById('itemList').value, 10, 45);
+        doc.text("BIMAL PHARMACY - PURCHASE ORDER", 10, 15);
+        doc.text("ID: " + document.getElementById('orderID').innerText, 10, 25);
+        doc.text("Vendor: " + document.getElementById('vendorName').value, 10, 35);
+        doc.text("Items List:\n" + document.getElementById('itemList').value, 10, 50);
         doc.save(`Bimal_Order_${document.getElementById('orderID').innerText}.pdf`);
     }
 
-    // ६. Utils
     function toggleDarkMode() {
         const app = document.getElementById('orderApp');
         const isDark = app.style.background === 'rgb(34, 34, 34)';
@@ -154,7 +180,6 @@
 
     function sendToMe() { const msg = createMessage(); if(msg) window.open("https://wa.me/9779855065327?text=" + msg, '_blank'); }
     function chooseSupplier() { const msg = createMessage(); if(msg) window.open("https://wa.me/?text=" + msg, '_blank'); }
-    async function nativeShare() { const msg = createMessage(); if(msg) navigator.share({text: decodeURIComponent(msg)}); }
-    
-    function clearForm() { if(confirm("Clear?")) { document.getElementById('vendorName').value=""; document.getElementById('itemList').value=""; generateAutoID(); } }
+    async function nativeShare() { const msg = createMessage(); if(msg) navigator.share({title:'Order Slip', text:decodeURIComponent(msg)}); }
+    function clearForm() { if(confirm("नयाँ अर्डरका लागि फर्म खाली गर्ने?")) { document.getElementById('vendorName').value=""; document.getElementById('itemList').value=""; setupOrder(); } }
 </script>
