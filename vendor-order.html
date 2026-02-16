@@ -1,130 +1,166 @@
-<div id="orderApp" class="card" style="border-top: 8px solid #2e7d32; background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 650px; margin: 30px auto; font-family: 'Segoe UI', system-ui, sans-serif; transition: 0.3s;">
+<div id="orderApp" class="card" style="border-top: 8px solid #2e7d32; background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 650px; margin: 30px auto; font-family: 'Segoe UI', system-ui, sans-serif; transition: 0.3s; position: relative; overflow: hidden;">
     
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px;">
         <div style="text-align: left;">
             <h2 style="color: #1b5e20; margin: 0; font-size: 1.8rem;"><i class="fas fa-file-invoice-dollar"></i> Smart Order Slip</h2>
             <p style="font-size: 0.85rem; color: #666;">बिमल फार्मेसी - गुणस्तरीय खरिद व्यवस्थापन</p>
         </div>
-        <button onclick="toggleDarkMode()" style="background: #eee; border: none; padding: 10px; border-radius: 50%; cursor: pointer;"><i class="fas fa-moon"></i></button>
+        <button onclick="toggleDarkMode()" id="themeBtn" style="background: #eee; border: none; padding: 10px; border-radius: 50%; cursor: pointer; transition: 0.3s;"><i class="fas fa-moon"></i></button>
     </div>
     
     <div style="display: flex; justify-content: space-between; background: #f1f8f1; padding: 12px; border-radius: 12px; margin-bottom: 20px; font-size: 0.85rem; border: 1px solid #ddd;">
       <span><i class="far fa-calendar-check"></i> मिति: <span id="currentDate" style="font-weight: bold;"></span></span>
-      <span style="color: #d32f2f; font-weight: bold;">ID: <span id="orderID"></span></span>
+      <span style="color: #d32f2f; font-weight: bold;">ORDER ID: <span id="orderID"></span></span>
     </div>
 
     <div style="margin-bottom: 15px;">
         <label style="font-weight: 700; display: block; margin-bottom: 5px;">विक्रेता / सप्लायरको नाम:</label>
-        <input type="text" id="vendorName" placeholder="सप्लायर वा कम्पनीको नाम" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #ccc; outline: none; background: #fafafa;">
+        <div style="position: relative;">
+            <i class="fas fa-user-tie" style="position: absolute; left: 15px; top: 15px; color: #888;"></i>
+            <input type="text" id="vendorName" placeholder="सप्लायर वा कम्पनीको नाम" style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1px solid #ccc; outline: none; background: #fafafa; font-size: 1rem;">
+        </div>
     </div>
 
     <div style="margin-bottom: 20px; position: relative;">
         <label style="font-weight: 700; display: block; margin-bottom: 5px;">सामानको विवरण (Items List):</label>
-        <textarea id="itemList" rows="8" placeholder="1. Item Name - Qty" style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ccc; outline: none; background: #fafafa; resize: vertical;"></textarea>
-        <button onclick="startDictation()" title="बोलेर लेख्नुहोस्" style="position: absolute; right: 10px; bottom: 10px; background: var(--danger); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+        <textarea id="itemList" rows="8" placeholder="उदा: &#10;1. Paracetamol 500mg - 10 Boxes" style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ccc; outline: none; background: #fafafa; resize: vertical; font-size: 1rem; font-family: inherit;"></textarea>
+        <button onclick="startDictation()" title="बोलेर लेख्नुहोस्" style="position: absolute; right: 12px; bottom: 12px; background: #d32f2f; color: white; border: none; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s;">
             <i class="fas fa-microphone"></i>
         </button>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
-        <button onclick="sendToMe()" style="background: #075E54; color: white; padding: 16px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+        <button onclick="sendToMe()" style="background: #075E54; color: white; padding: 16px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1rem; transition: 0.3s;">
             <i class="fab fa-whatsapp"></i> My WhatsApp
         </button>
-        <button onclick="chooseSupplier()" style="background: #2e7d32; color: white; padding: 16px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+        <button onclick="chooseSupplier()" style="background: #2e7d32; color: white; padding: 16px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1rem; transition: 0.3s;">
             <i class="fas fa-share-alt"></i> Any Supplier
         </button>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
-        <button onclick="generatePDF()" style="background: #0288d1; color: white; padding: 12px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;">
-            <i class="fas fa-file-pdf"></i> Save as PDF
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+        <button onclick="printOrder()" style="background: #455a64; color: white; padding: 12px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 0.85rem;">
+            <i class="fas fa-print"></i> Print
         </button>
-        <button onclick="nativeShare()" style="background: #607d8b; color: white; padding: 12px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;">
-            <i class="fas fa-external-link-alt"></i> Multi Share
+        <button onclick="generatePDF()" style="background: #0288d1; color: white; padding: 12px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 0.85rem;">
+            <i class="fas fa-file-pdf"></i> PDF
+        </button>
+        <button onclick="nativeShare()" style="background: #607d8b; color: white; padding: 12px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 0.85rem;">
+            <i class="fas fa-share"></i> Share
         </button>
     </div>
 
-    <button onclick="clearForm()" style="background: #f5f5f5; color: #d32f2f; width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 12px; font-weight: bold; cursor: pointer;">
-        <i class="fas fa-eraser"></i> Clear Form
+    <button onclick="clearForm()" style="background: #f5f5f5; color: #d32f2f; width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.2s;">
+        <i class="fas fa-eraser"></i> Clear Form (खाली गर्नुहोस्)
     </button>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
-    // १. सुरुवाती सेटिङ
-    function setupOrder() {
+    // १. Auto ID र मिति सेटिङ
+    function generateAutoID() {
+        const now = new Date();
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('currentDate').innerText = new Date().toLocaleDateString('ne-NP', options);
-        document.getElementById('orderID').innerText = 'BIMAL-' + Math.floor(1000 + Math.random() * 9000);
+        document.getElementById('currentDate').innerText = now.toLocaleDateString('ne-NP', options);
+        
+        // Auto ID Format: BIMAL-YYYYMMDD-Random
+        const dateStr = now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0');
+        const randomNum = Math.floor(1000 + Math.random() * 9000);
+        document.getElementById('orderID').innerText = `BIMAL-${dateStr}-${randomNum}`;
     }
-    setupOrder();
+    generateAutoID();
 
-    // २. मेसेज तयार पार्ने (Professional Tone)
+    // २. सन्देश तयार पार्ने (तपाईँले छान्नुभएको व्यावसायिक भाषा)
     function createMessage() {
-        const vName = document.getElementById('vendorName').value.trim() || "सप्लायर";
+        const vName = document.getElementById('vendorName').value.trim() || "सर";
         const items = document.getElementById('itemList').value.trim();
+        const id = document.getElementById('orderID').innerText;
+        const date = document.getElementById('currentDate').innerText;
+
         if (!items) { alert("कृपया सामानको विवरण भर्नुहोस्।"); return null; }
 
-        return "नमस्ते " + vName + " जी, 🙏%0A" +
-               "म बिमल फार्मेसी (भरतपुर) बाट बिमल लामिछाने। हाम्रो फार्मेसीको लागि आवश्यक केही सामानहरूको *नयाँ खरिद अर्डर (Purchase Order)* पठाएको छु। कृपया यी सामानहरू उपलब्ध गराई सहयोग गरिदिनुहुन हार्दिक अनुरोध गर्दछु:%0A%0A" +
+        return "नमस्ते " + vName + ", 🙏%0A" +
+               "म बिमल फार्मेसी (भरतपुर) बाट बिमल लामिछाने। हाम्रो फार्मेसीको लागि आवश्यक केही सामानहरूको *नयाँ खरिद अर्डर (Purchase Order)* यसै सन्देशमार्फत पठाएको छु। कृपया उल्लेखित सामानहरू उपलब्ध गराई सहयोग गरिदिनुहुन हार्दिक अनुरोध गर्दछु:%0A%0A" +
                "━━━━━━━━━━━━━━━━━━%0A" +
                "📌 *ORDER LIST:*%0A" + 
+               "━━━━━━━━━━━━━━━━━━%0A" +
                encodeURIComponent(items) + "%0A" +
                "━━━━━━━━━━━━━━━━━━%0A%0A" +
-               "📅 मिति: " + document.getElementById('currentDate').innerText + "%0A" +
-               "🔢 ID: #" + document.getElementById('orderID').innerText + "%0A%0A" +
-               "धन्यवाद। - बिमल लामिछाने";
+               "📅 मिति: " + date + "%0A" +
+               "🔢 अर्डर ID: #" + id + "%0A%0A" +
+               "धन्यवाद। - %0A" +
+               "📞 ";
     }
 
-    // ३. Voice Typing (Speech to Text)
+    // ३. Voice Typing
     function startDictation() {
         if (window.hasOwnProperty('webkitSpeechRecognition')) {
             var recognition = new webkitSpeechRecognition();
-            recognition.continuous = false;
-            recognition.interimResults = false;
             recognition.lang = "ne-NP";
             recognition.start();
             recognition.onresult = function(e) {
                 document.getElementById('itemList').value += e.results[0][0].transcript + "\n";
                 recognition.stop();
             };
-        } else { alert("तपाईँको ब्राउजरमा भ्वाइस टाइपिङ सपोर्ट गर्दैन।"); }
+        } else { alert("भ्वाइस टाइपिङ सपोर्ट गरेन।"); }
     }
 
-    // ४. PDF Generation
+    // ४. Print Function
+    function printOrder() {
+        const vendor = document.getElementById('vendorName').value || "सप्लायर";
+        const items = document.getElementById('itemList').value;
+        const id = document.getElementById('orderID').innerText;
+        const date = document.getElementById('currentDate').innerText;
+
+        if (!items) return alert("Items empty!");
+
+        const printWin = window.open('', '', 'height=600,width=800');
+        printWin.document.write('<html><head><title>Bimal Pharmacy Order</title>');
+        printWin.document.write('<style>body{font-family:sans-serif;padding:30px;} .header{text-align:center;border-bottom:3px solid #2e7d32;} .items{background:#f4f4f4;padding:20px;border-radius:10px;white-space:pre-wrap;}</style></head><body>');
+        printWin.document.write('<div class="header"><h1>बिमल फार्मेसी</h1><p>भरतपुर-७, चितवन | फोन: ९८५५०६५३२७</p></div>');
+        printWin.document.write('<h3>Purchase Order (ID: #' + id + ')</h3>');
+        printWin.document.write('<p><strong>विक्रेता:</strong> ' + vendor + '<br><strong>मिति:</strong> ' + date + '</p>');
+        printWin.document.write('<h4>सामानको सूची:</h4><div class="items">' + items + '</div>');
+        printWin.document.write('<p style="text-align:center;margin-top:50px;">© २०२६ बिमल फार्मेसी</p></body></html>');
+        printWin.document.close();
+        printWin.print();
+    }
+
+    // ५. PDF & Share
     function generatePDF() {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
-        doc.text("Purchase Order - Bimal Pharmacy", 20, 20);
-        doc.text("ID: " + document.getElementById('orderID').innerText, 20, 30);
-        doc.text("Vendor: " + (document.getElementById('vendorName').value || "N/A"), 20, 40);
-        doc.text("Items:", 20, 50);
-        doc.text(document.getElementById('itemList').value, 20, 60);
-        doc.save("Bimal_Order.pdf");
+        doc.text("Bimal Pharmacy - Purchase Order", 10, 10);
+        doc.text("Order ID: " + document.getElementById('orderID').innerText, 10, 20);
+        doc.text("Items:\n" + document.getElementById('itemList').value, 10, 40);
+        doc.save(`Order_${document.getElementById('orderID').innerText}.pdf`);
     }
 
-    // ५. Multi Share (Viber, Messenger, etc.)
     async function nativeShare() {
         const msg = createMessage();
         if(msg) {
-            try {
-                await navigator.share({ title: 'Bimal Pharmacy Order', text: decodeURIComponent(msg) });
-            } catch (err) { alert("यो ब्राउजरमा शेयर फिचर उपलब्ध छैन।"); }
+            try { await navigator.share({ title: 'Bimal Order', text: decodeURIComponent(msg) }); } 
+            catch (err) { alert("Share not supported"); }
         }
     }
 
-    // ६. Dark Mode
+    // ६. Utility
     function toggleDarkMode() {
         const app = document.getElementById('orderApp');
-        if (app.style.background === 'rgb(34, 34, 34)') {
-            app.style.background = '#ffffff'; app.style.color = '#2c3e50';
-        } else {
-            app.style.background = '#222222'; app.style.color = '#ffffff';
-        }
+        const isDark = app.style.background === 'rgb(34, 34, 34)';
+        app.style.background = isDark ? '#ffffff' : '#222222';
+        app.style.color = isDark ? '#2c3e50' : '#ffffff';
     }
 
     function sendToMe() { const msg = createMessage(); if(msg) window.open("https://wa.me/9779855065327?text=" + msg, '_blank'); }
     function chooseSupplier() { const msg = createMessage(); if(msg) window.open("https://wa.me/?text=" + msg, '_blank'); }
-    function clearForm() { if(confirm("Clear everything?")) { document.getElementById('vendorName').value = ""; document.getElementById('itemList').value = ""; setupOrder(); } }
+    
+    function clearForm() { 
+        if(confirm("नयाँ अर्डरका लागि फर्म खाली गर्ने?")) { 
+            document.getElementById('vendorName').value=""; 
+            document.getElementById('itemList').value=""; 
+            generateAutoID(); 
+        } 
+    }
 </script>
