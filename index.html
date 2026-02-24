@@ -2,13 +2,14 @@
 <html lang="ne">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>बिमल फार्मेसी | Bimal Pharmacy - Best Medical Store in Bharatpur Chitwan</title>
   
   <meta name="description" content="बिमल फार्मेसी: क्यान्सर अस्पताल रोड, भरतपुर-७ चितवन। नेपालभर होम डेलिभरी, २४सै घण्टा अनलाइन परामर्श र भरपर्दो स्वास्थ्य जानकारी। औषधि व्यवस्था विभाग दर्ता नं: १७२२३/२०६३।">
   <meta name="keywords" content="Pharmacy in Bharatpur, Cancer Medicine Nepal, Bimal Pharmacy Bharatpur, Online Medicine Delivery Nepal, IME Life Insurance Bharatpur, Bimal Lamichhane, Medicine Home Delivery Chitwan">
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+        media="print" onload="this.media='all'">
 
   <style>
     :root {
@@ -85,6 +86,10 @@
     .call-fixed { position: fixed; bottom: 0; width: 100%; background: var(--primary); padding: 18px; text-align: center; z-index: 1000; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); }
     .call-fixed a { color: white; text-decoration: none; font-weight: bold; font-size: 1.3rem; }
 
+    /* Accessibility सुधार: Contact section कन्ट्रास्ट बढाउन स्टाइल थप */
+    .contact-card-v2 { background: var(--primary); color: white; padding: 40px; border-radius: 20px; margin-top: 40px; box-shadow: 0 15px 35px rgba(46, 125, 50, 0.2); border: 2px solid var(--accent); }
+    .contact-card-v2 a { color: var(--accent); text-decoration: none; font-weight: bold; }
+
     @media (max-width: 768px) {
       .brand-text h1 { font-size: 1.6rem; }
       .hero h2 { font-size: 2rem; }
@@ -111,11 +116,12 @@
     </marquee>
   </div>
 
- <nav class="navbar">
+  <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html" class="active">गृहपृष्ठ</a></li>
       <li><a href="about.html">हाम्रो बारेमा</a></li>
-      <li><a href="order.html">अर्डर गर्नुहोस्</a></li> <li><a href="medical-guide.html">औषधी गाइड</a></li>
+      <li><a href="order.html">अर्डर गर्नुहोस्</a></li> 
+      <li><a href="medical-guide.html">औषधी गाइड</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
       <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
       <li><a href="notice.html">सूचना</a></li>
@@ -123,107 +129,110 @@
       <li><a href="contact.html">सम्पर्क</a></li>
       <li><a href="emergency.html" style="background: #d32f2f; color: white; border-radius: 5px; padding: 5px 10px;">आपतकालीन</a></li> 
     </ul>
-</nav>
+  </nav>
 
-  <section class="hero">
-    <h2>भरपर्दो औषधी, सुलभ सेवा</h2>
-    <p>विगत दुई दशकदेखि भरतपुर-७, क्यान्सर अस्पताल रोडमा सेवा प्रदान गर्दै आएको बिमल फार्मेसी अब डिजिटल माध्यमबाट पनि तपाईंको घरदैलोमा उपलब्ध छ।</p>
-    <a href="order.html" class="btn-main">औषधी अर्डर गर्नुहोस्</a>
-  </section>
+  <main>
+    <section class="hero">
+      <h2>भरपर्दो औषधी, सुलभ सेवा</h2>
+      <p>विगत दुई दशकदेखि भरतपुर-७, क्यान्सर अस्पताल रोडमा सेवा प्रदान गर्दै आएको बिमल फार्मेसी अब डिजिटल माध्यमबाट पनि तपाईंको घरदैलोमा उपलब्ध छ।</p>
+      <a href="order.html" class="btn-main">औषधी अर्डर गर्नुहोस्</a>
+    </section>
 
-  <div class="container">
-    <div class="main-grid">
-      <div class="card">
-        <i class="fas fa-pills"></i>
-        <h3>गुणस्तरीय औषधी</h3>
-        <p>हामीकहाँ WHO-GMP प्रमाणित कम्पनीका १००% वास्तविक औषधीहरू मात्र उपलब्ध छन्। गुणस्तरमा हामी कहिल्यै सम्झौता गर्दैनौं।</p>
+    <div class="container">
+      <div class="main-grid">
+        <div class="card">
+          <i class="fas fa-pills"></i>
+          <h3>गुणस्तरीय औषधी</h3>
+          <p>हामीकहाँ WHO-GMP प्रमाणित कम्पनीका १००% वास्तविक औषधीहरू मात्र उपलब्ध छन्। गुणस्तरमा हामी कहिल्यै सम्झौता गर्दैनौं।</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-truck"></i>
+          <h3>नेपालभर डेलिभरी</h3>
+          <p>चितवन भित्रका बिरामीहरूका लागि द्रुत डेलिभरी र नेपालका अन्य प्रमुख शहरहरूमा सुरक्षित कुरियर मार्फत औषधि पुर्‍याइन्छ।</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-user-shield"></i>
+          <h3>विशेषज्ञ परामर्श</h3>
+          <p>अनुभवी फार्मासिस्ट र बिमल लामिछाने सरको प्रत्यक्ष निगरानीमा औषधि वितरण र परामर्श सेवा उपलब्ध छ।</p>
+        </div>
       </div>
-      <div class="card">
-        <i class="fas fa-truck"></i>
-        <h3>नेपालभर डेलिभरी</h3>
-        <p>चितवन भित्रका बिरामीहरूका लागि द्रुत डेलिभरी र नेपालका अन्य प्रमुख शहरहरूमा सुरक्षित कुरियर मार्फत औषधि पुर्‍याइन्छ।</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-user-shield"></i>
-        <h3>विशेषज्ञ परामर्श</h3>
-        <p>अनुभवी फार्मासिस्ट र बिमल लामिछाने सरको प्रत्यक्ष निगरानीमा औषधि वितरण र परामर्श सेवा उपलब्ध छ।</p>
-      </div>
+
+      <article class="info-content">
+        <h2>बिमल फार्मेसीको बारेमा विस्तृत जानकारी</h2>
+        <p>बिमल फार्मेसी केवल एउटा औषधी पसल मात्र होइन, यो चितवनको भरतपुरमा अवस्थित एक स्वास्थ्य सहयात्री हो। बि.पी. कोइराला मेमोरियल क्यान्सर अस्पतालको गेटैमा अवस्थित यो फार्मेसीले विशेषगरी क्यान्सर (Oncology) सँग सम्बन्धित दुर्लभ र अत्यावश्यक औषधीहरूमा विशेषज्ञता हासिल गरेको छ। औषधि व्यवस्था विभाग (DDA) मा दर्ता नं <strong>१७२२३/२०६३/०९/१२</strong> बाट आधिकारिक रूपमा संचालित हामी, स्वास्थ्य सेवामा नैतिकता र पारदर्शिताका लागि प्रतिबद्ध छौं।</p>
+
+        <h3>क्यान्सर औषधी (Oncology Drugs) को भरपर्दो स्रोत</h3>
+        <p>क्यान्सर उपचारमा प्रयोग हुने औषधीहरू अत्यन्तै संवेदनशील हुन्छन्। तिनीहरूको भण्डारणका लागि विशेष तापक्रम (Cold Chain Management) को आवश्यकता पर्दछ। बिमल फार्मेसीले आधुनिक फ्रिज र रेफ्रिजेरेसन प्रविधिको प्रयोग गरी २°C देखि ८°C मा राख्नुपर्ने इन्जेक्सन र औषधीहरूको गुणस्तर सुरक्षित राख्दछ। हामीकहाँ विश्वका उत्कृष्ट फर्मास्यूटिकल कम्पनीका क्यान्सर औषधीहरू सुलभ दरमा उपलब्ध छन्।</p>
+
+        <h3>हाम्रा मुख्य सेवा र विशेषताहरू:</h3>
+        <ul>
+          <li><strong>२४सै घण्टा अनलाइन सेवा:</strong> बिरामीको सजिलोको लागि हामी ह्वाट्सएप र हाम्रो अनलाइन पोर्टल मार्फत अर्डर स्वीकार गर्छौं।</li>
+          <li><strong>औषधी गाइड:</strong> हाम्रो वेबसाइटको मेडिकल गाइडमा गएर तपाईंले औषधिको नाम, प्रयोग र फोबिया सम्बन्धी जानकारी लिन सक्नुहुन्छ।</li>
+          <li><strong>सुरक्षित भण्डारण:</strong> हामी सरकारी मापदण्ड र WHO-GMP को पूर्ण पालना गर्छौं।</li>
+          <li><strong>स्वास्थ्य ज्ञान:</strong> बिरामीलाई रोगको बारेमा सचेत गराउन हामी नियमित रूपमा स्वास्थ्य सम्बन्धी लेख र जानकारीहरू प्रकाशित गर्छौं।</li>
+        </ul>
+
+        <h3>बिमल लामिछाने: एक अनुभवी नेतृत्व</h3>
+        <p>फार्मेसीका प्रोप्राइटर बिमल लामिछाने विगत लामो समयदेखि स्वास्थ्य क्षेत्रमा सक्रिय हुनुहुन्छ। उहाँ केवल एक व्यवसायी मात्र नभई एक समाजसेवी र **IME Life Insurance** का आधिकारिक अभिकर्ता पनि हुनुहुन्छ। औषधि वितरणको साथसाथै उहाँले बिरामीहरूलाई भविष्यमा आउन सक्ने आर्थिक संकटबाट बच्न बिमा सम्बन्धी परामर्श समेत प्रदान गर्नुहुन्छ। भरतपुर-७ मा उहाँको नाम विश्वास र इमानदारीको प्रतिविम्ब हो।</p>
+
+        <h3>किन हामीलाई नै रोज्ने?</h3>
+        <p>बजारमा धेरै फार्मेसीहरू भए तापनि बिमल फार्मेसीले बिरामीको 'प्रिस्क्रिप्सन' को सूक्ष्म अध्ययन गर्दछ। कुनै औषधीको उपलब्धता नभएमा हामी त्यसको उचित विकल्प वा मगाउने व्यवस्था गर्दछौं। हामीकहाँ औषधी किन्दा तपाईंले प्राप्त गर्ने बिल आधिकारिक र पारदर्शी हुन्छ, जसले गर्दा बिमा दाबी (Insurance Claim) गर्न पनि सजिलो हुन्छ।</p>
+
+        <div style="margin-top: 40px;">
+          <h2 style="color: var(--primary); margin-bottom: 25px; font-size: 2rem; border-left: 8px solid var(--accent); padding-left: 15px;">हाम्रा थप विशेष सेवाहरू</h2>
+          
+          <div class="main-grid" style="margin-bottom: 30px;">
+              <div class="card" style="border-left-color: var(--accent);">
+                  <i class="fas fa-file-invoice-dollar" style="color: var(--accent);"></i>
+                  <h3>बिमा दाबीमा सहयोग</h3>
+                  <p>हाम्रो बिल आधिकारिक र पारदर्शी हुने भएकोले तपाईँलाई स्वास्थ्य बिमा (Insurance Claim) गर्न सजिलो हुन्छ। IME Life Insurance सम्बन्धी परामर्श पनि उपलब्ध छ।</p>
+              </div>
+              <div class="card" style="border-left-color: var(--accent);">
+                  <i class="fas fa-snowflake" style="color: var(--accent);"></i>
+                  <h3>Cold Chain Management</h3>
+                  <p>इन्सुलिन र क्यान्सरका इन्जेक्सनहरूका लागि हामी २°C देखि ८°C को विशेष फ्रिज भण्डारण सुनिश्चित गर्दछौं।</p>
+              </div>
+          </div>
+
+          <div class="contact-card-v2">
+              <h3 style="font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px;">
+                  <i class="fas fa-address-book"></i> सम्पर्क जानकारी (Contact Information)
+              </h3>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                  <div>
+                      <p style="font-size: 1.2rem; margin-bottom: 10px;"><i class="fas fa-hospital"></i> <strong>Bimal Pharmacy</strong></p>
+                      <p style="font-size: 1.1rem;"><i class="fas fa-map-marker-alt"></i> Cancer Hospital Road, Bharatpur-7, Chitwan, Nepal</p>
+                  </div>
+                  <div>
+                      <p style="font-size: 1.1rem; margin-bottom: 10px;">
+                          <i class="fas fa-envelope"></i> इमेल: 
+                          <a href="mailto:admin@bimalpharmacy.com.np">admin@bimalpharmacy.com.np</a>
+                      </p>
+                      <p style="font-size: 1.1rem;">
+                          <i class="fas fa-phone-alt"></i> फोन: 
+                          <a href="tel:+977056593288">+977-056-593288</a>
+                      </p>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 40px;">बारम्बार सोधिने प्रश्नहरू (FAQ)</h3>
+        <div class="faq-item">
+          <strong>१. के बिमल फार्मेसीबाट घरमै औषधि मगाउन सकिन्छ?</strong>
+          <p>हो, चितवन भित्र हामी केही घण्टामै र चितवन बाहिर कुरियर मार्फत १-२ दिनमा औषधि पुर्‍याउँछौं। औषधि अर्डर गर्न तपाईंले डाक्टरको पुर्जी (Prescription) अनिवार्य पठाउनुपर्नेछ।</p>
+        </div>
+        <div class="faq-item">
+          <strong>२. औषधि अर्डर गर्दा पैसा कसरी तिर्ने?</strong>
+          <p>तपाईंले ई-सेवा (eSewa), फोन-पे (FonePay), बैंक ट्रान्सफर वा चितवन भित्रको हकमा डेलिभरीको समयमा नगद तिर्न सक्नुहुन्छ।</p>
+        </div>
+        <div class="faq-item">
+          <strong>३. के क्यान्सरका सबै औषधिहरू यहाँ पाइन्छन्?</strong>
+          <p>हामी बी.पी. कोइराला क्यान्सर अस्पताल रोडमै रहेको हुनाले हामीसँग क्यान्सरका प्रायः सबै प्रकारका औषधिहरू स्टकमा रहन्छन्। यदि कुनै औषधि तत्काल नभएमा हामी छोटो समयमै उपलब्ध गराउँछौं।</p>
+        </div>
+      </article>
     </div>
-
-    <article class="info-content">
-      <h2>बिमल फार्मेसीको बारेमा विस्तृत जानकारी</h2>
-      <p>बिमल फार्मेसी केवल एउटा औषधी पसल मात्र होइन, यो चितवनको भरतपुरमा अवस्थित एक स्वास्थ्य सहयात्री हो। बि.पी. कोइराला मेमोरियल क्यान्सर अस्पतालको गेटैमा अवस्थित यो फार्मेसीले विशेषगरी क्यान्सर (Oncology) सँग सम्बन्धित दुर्लभ र अत्यावश्यक औषधीहरूमा विशेषज्ञता हासिल गरेको छ। औषधि व्यवस्था विभाग (DDA) मा दर्ता नं <strong>१७२२३/२०६३/०९/१२</strong> बाट आधिकारिक रूपमा संचालित हामी, स्वास्थ्य सेवामा नैतिकता र पारदर्शिताका लागि प्रतिबद्ध छौं।</p>
-
-      <h3>क्यान्सर औषधी (Oncology Drugs) को भरपर्दो स्रोत</h3>
-      <p>क्यान्सर उपचारमा प्रयोग हुने औषधीहरू अत्यन्तै संवेदनशील हुन्छन्। तिनीहरूको भण्डारणका लागि विशेष तापक्रम (Cold Chain Management) को आवश्यकता पर्दछ। बिमल फार्मेसीले आधुनिक फ्रिज र रेफ्रिजेरेसन प्रविधिको प्रयोग गरी २°C देखि ८°C मा राख्नुपर्ने इन्जेक्सन र औषधीहरूको गुणस्तर सुरक्षित राख्दछ। हामीकहाँ विश्वका उत्कृष्ट फर्मास्यूटिकल कम्पनीका क्यान्सर औषधीहरू सुलभ दरमा उपलब्ध छन्।</p>
-
-      <h3>हाम्रा मुख्य सेवा र विशेषताहरू:</h3>
-      <ul>
-        <li><strong>२४सै घण्टा अनलाइन सेवा:</strong> बिरामीको सजिलोको लागि हामी ह्वाट्सएप र हाम्रो अनलाइन पोर्टल मार्फत अर्डर स्वीकार गर्छौं।</li>
-        <li><strong>औषधी गाइड:</strong> हाम्रो वेबसाइटको मेडिकल गाइडमा गएर तपाईंले औषधिको नाम, प्रयोग र फोबिया सम्बन्धी जानकारी लिन सक्नुहुन्छ।</li>
-        <li><strong>सुरक्षित भण्डारण:</strong> हामी सरकारी मापदण्ड र WHO-GMP को पूर्ण पालना गर्छौं।</li>
-        <li><strong>स्वास्थ्य ज्ञान:</strong> बिरामीलाई रोगको बारेमा सचेत गराउन हामी नियमित रूपमा स्वास्थ्य सम्बन्धी लेख र जानकारीहरू प्रकाशित गर्छौं।</li>
-      </ul>
-
-      <h3>बिमल लामिछाने: एक अनुभवी नेतृत्व</h3>
-      <p>फार्मेसीका प्रोप्राइटर बिमल लामिछाने विगत लामो समयदेखि स्वास्थ्य क्षेत्रमा सक्रिय हुनुहुन्छ। उहाँ केवल एक व्यवसायी मात्र नभई एक समाजसेवी र **IME Life Insurance** का आधिकारिक अभिकर्ता पनि हुनुहुन्छ। औषधि वितरणको साथसाथै उहाँले बिरामीहरूलाई भविष्यमा आउन सक्ने आर्थिक संकटबाट बच्न बिमा सम्बन्धी परामर्श समेत प्रदान गर्नुहुन्छ। भरतपुर-७ मा उहाँको नाम विश्वास र इमानदारीको प्रतिविम्ब हो।</p>
-
-      <h3>किन हामीलाई नै रोज्ने?</h3>
-      <p>बजारमा धेरै फार्मेसीहरू भए तापनि बिमल फार्मेसीले बिरामीको 'प्रिस्क्रिप्सन' को सूक्ष्म अध्ययन गर्दछ। कुनै औषधीको उपलब्धता नभएमा हामी त्यसको उचित विकल्प वा मगाउने व्यवस्था गर्दछौं। हामीकहाँ औषधी किन्दा तपाईंले प्राप्त गर्ने बिल आधिकारिक र पारदर्शी हुन्छ, जसले गर्दा बिमा दाबी (Insurance Claim) गर्न पनि सजिलो हुन्छ।</p>
-
-      <div style="margin-top: 40px;">
-        <h2 style="color: var(--primary); margin-bottom: 25px; font-size: 2rem; border-left: 8px solid var(--accent); padding-left: 15px;">हाम्रा थप विशेष सेवाहरू</h2>
-        
-        <div class="main-grid" style="margin-bottom: 30px;">
-            <div class="card" style="border-left-color: var(--accent);">
-                <i class="fas fa-file-invoice-dollar" style="color: var(--accent);"></i>
-                <h3>बिमा दाबीमा सहयोग</h3>
-                <p>हाम्रो बिल आधिकारिक र पारदर्शी हुने भएकोले तपाईँलाई स्वास्थ्य बिमा (Insurance Claim) गर्न सजिलो हुन्छ। IME Life Insurance सम्बन्धी परामर्श पनि उपलब्ध छ।</p>
-            </div>
-            <div class="card" style="border-left-color: var(--accent);">
-                <i class="fas fa-snowflake" style="color: var(--accent);"></i>
-                <h3>Cold Chain Management</h3>
-                <p>इन्सुलिन र क्यान्सरका इन्जेक्सनहरूका लागि हामी २°C देखि ८°C को विशेष फ्रिज भण्डारण सुनिश्चित गर्दछौं।</p>
-            </div>
-        </div>
-
-        <div style="background: #2e7d32; color: white; padding: 40px; border-radius: 20px; margin-top: 40px; box-shadow: 0 15px 35px rgba(46, 125, 50, 0.2); border: 2px solid var(--accent);">
-            <h3 style="font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px;">
-                <i class="fas fa-address-book"></i> Contact Information
-            </h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                <div>
-                    <p style="font-size: 1.2rem; margin-bottom: 10px;"><i class="fas fa-hospital"></i> <strong>Bimal Pharmacy</strong></p>
-                    <p style="font-size: 1.1rem;"><i class="fas fa-map-marker-alt"></i> Cancer Hospital Road, Bharatpur-7, Chitwan, Nepal</p>
-                </div>
-                <div>
-                    <p style="font-size: 1.1rem; margin-bottom: 10px;">
-                        <i class="fas fa-envelope"></i> Email: 
-                        <a href="mailto:admin@bimalpharmacy.com.np" style="color: #fbc02d; text-decoration: none; font-weight: bold;">admin@bimalpharmacy.com.np</a>
-                    </p>
-                    <p style="font-size: 1.1rem;">
-                        <i class="fas fa-phone-alt"></i> Phone: 
-                        <a href="tel:+977056593288" style="color: #fbc02d; text-decoration: none; font-weight: bold;">+977-056-593288</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-      </div>
-      <h3 style="margin-top: 40px;">बारम्बार सोधिने प्रश्नहरू (FAQ)</h3>
-      <div class="faq-item">
-        <strong>१. के बिमल फार्मेसीबाट घरमै औषधि मगाउन सकिन्छ?</strong>
-        <p>हो, चितवन भित्र हामी केही घण्टामै र चितवन बाहिर कुरियर मार्फत १-२ दिनमा औषधि पुर्‍याउँछौं। औषधि अर्डर गर्न तपाईंले डाक्टरको पुर्जी (Prescription) अनिवार्य पठाउनुपर्नेछ।</p>
-      </div>
-      <div class="faq-item">
-        <strong>२. औषधि अर्डर गर्दा पैसा कसरी तिर्ने?</strong>
-        <p>तपाईंले ई-सेवा (eSewa), फोन-पे (FonePay), बैंक ट्रान्सफर वा चितवन भित्रको हकमा डेलिभरीको समयमा नगद तिर्न सक्नुहुन्छ।</p>
-      </div>
-      <div class="faq-item">
-        <strong>३. के क्यान्सरका सबै औषधिहरू यहाँ पाइन्छन्?</strong>
-        <p>हामी बी.पी. कोइराला क्यान्सर अस्पताल रोडमै रहेको हुनाले हामीसँग क्यान्सरका प्रायः सबै प्रकारका औषधिहरू स्टकमा रहन्छन्। यदि कुनै औषधि तत्काल नभएमा हामी छोटो समयमै उपलब्ध गराउँछौं।</p>
-      </div>
-    </article>
-  </div>
+  </main>
 
   <footer>
     <div>
@@ -242,7 +251,7 @@
     <p style="font-size: 0.8rem; color: #666;">&copy; २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित। | Managed by: @bimal_lamichhane</p>
   </footer>
 
-  <a href="https://wa.me/+9779855065327" class="whatsapp-float">
+  <a href="https://wa.me/+9779855065327" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
 
