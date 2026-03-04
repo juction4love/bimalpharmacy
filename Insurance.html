@@ -20,6 +20,7 @@
     "description": "Authorized Insurance Agent for IME Life Insurance in Bharatpur, Nepal.",
     "url": "https://bimalpharmacy.com.np/insurance-guide.html",
     "telephone": "+977-9855065327",
+    "image": "https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Cancer Hospital Road, Bharatpur-7",
@@ -43,46 +44,51 @@
       --text-dark: #2c3e50;
       --shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif; }
     body { background-color: var(--bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 80px; }
 
-    /* --- NAVIGATION --- */
+    /* --- Navigation Styles --- */
     .app-header {
       background: var(--white); padding: 10px 3%; position: sticky; top: 0; z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center;
     }
     .brand { font-size: 1.4rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 10px; }
     .brand img { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--primary); padding: 2px; }
+    
     .desktop-nav { display: none; }
-    .desktop-nav ul { display: flex; list-style: none; gap: 10px; align-items: center; }
-    .desktop-nav a { text-decoration: none; color: #555; font-weight: 600; padding: 8px 12px; font-size: 0.9rem; border-radius: 5px; }
+    .desktop-nav ul { display: flex; list-style: none; gap: 8px; align-items: center; }
+    .desktop-nav a { text-decoration: none; color: #555; font-weight: 600; padding: 8px 12px; font-size: 0.9rem; border-radius: 5px; transition: 0.3s; }
+    .desktop-nav a:hover { color: var(--ime-red); }
     .desktop-nav a.active { background-color: var(--ime-red); color: white; }
 
-    /* --- AGENT BANNER --- */
+    /* --- Banner --- */
     .agent-banner {
       background: linear-gradient(135deg, var(--ime-red), #b71c1c);
-      color: white; padding: 50px 20px; text-align: center;
-      clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+      color: white; padding: 60px 20px 80px; text-align: center;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
     }
-    .agent-banner h1 { font-size: 2.2rem; margin-bottom: 5px; }
-    .phone-link { color: #ffeb3b; text-decoration: none; font-size: 1.8rem; font-weight: 900; }
+    .agent-banner h1 { font-size: 2.2rem; margin-bottom: 5px; letter-spacing: -0.5px; }
+    .phone-link { color: #ffeb3b; text-decoration: none; font-size: 1.8rem; font-weight: 900; display: inline-block; margin-top: 10px; }
 
     .container { max-width: 950px; margin: 0 auto; padding: 20px; }
 
-    /* --- CALCULATORS --- */
+    /* --- Calculator Card --- */
     .calc-card {
       background: var(--white); padding: 35px; border-radius: 20px;
       box-shadow: var(--shadow); margin: -60px 0 40px;
       position: relative; z-index: 10; border-bottom: 5px solid var(--ime-red);
     }
     .calc-tabs { display: flex; gap: 10px; margin-bottom: 25px; border-bottom: 2px solid #eee; }
-    .tab-btn { background: none; border: none; padding: 15px; cursor: pointer; font-weight: 700; color: #777; flex: 1; transition: 0.3s; }
+    .tab-btn { background: none; border: none; padding: 15px; cursor: pointer; font-weight: 700; color: #777; flex: 1; transition: 0.3s; font-size: 1rem; }
     .tab-btn.active { color: var(--ime-red); border-bottom: 3px solid var(--ime-red); }
 
     .input-group { margin-bottom: 20px; }
     .input-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.95rem; color: #555; }
-    .input-group input, .input-group select, .input-group textarea { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; outline: none; transition: 0.3s; }
-    .input-group input:focus { border-color: var(--ime-red); }
+    .input-group input, .input-group select, .input-group textarea { 
+      width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; outline: none; transition: 0.3s; 
+    }
+    .input-group input:focus { border-color: var(--ime-red); box-shadow: 0 0 8px rgba(237, 28, 36, 0.1); }
     
     .btn-action {
       width: 100%; padding: 15px; background: var(--primary); color: white;
@@ -90,38 +96,46 @@
     }
     .btn-action:hover { background: var(--secondary); transform: translateY(-2px); }
 
-    .result-box { margin-top: 25px; padding: 25px; background: #fffde7; border-radius: 12px; display: none; text-align: center; border: 1px solid #fbc02d; }
+    .result-box { margin-top: 25px; padding: 25px; background: #fffde7; border-radius: 12px; display: none; text-align: center; border: 1px solid #fbc02d; animation: fadeIn 0.5s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* --- CONTENT STYLE --- */
+    /* --- Content Typography --- */
     .guide-content { background: white; padding: 50px 40px; border-radius: 15px; margin-top: 30px; box-shadow: var(--shadow); }
     .guide-content h2 { color: var(--primary); margin: 40px 0 20px; border-left: 6px solid var(--ime-red); padding-left: 15px; font-size: 1.8rem; }
     .guide-content h3 { color: var(--secondary); margin: 30px 0 15px; font-size: 1.4rem; }
-    .guide-content p { margin-bottom: 22px; text-align: justify; font-size: 1.05rem; }
-    .guide-content ul, .guide-content ol { margin-bottom: 25px; padding-left: 25px; }
+    .guide-content p { margin-bottom: 22px; text-align: justify; font-size: 1.05rem; color: #444; }
+    .guide-content ul { margin-bottom: 25px; padding-left: 25px; list-style-type: square; }
     .guide-content li { margin-bottom: 10px; }
 
-    /* FAQ & FORM */
+    /* FAQ */
     .faq-container { margin-top: 60px; background: #fdfdfd; padding: 35px; border-radius: 20px; border: 1px solid #eee; }
     .faq-item { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
     .faq-item h4 { color: var(--ime-red); margin-bottom: 10px; font-size: 1.15rem; }
 
+    /* Form Section */
     .contact-form-section { margin-top: 50px; padding: 40px; background: #e8f5e9; border-radius: 20px; border: 2px solid var(--primary); }
 
-    /* Mobile Nav */
+    /* Mobile Nav Bar */
     .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 10px 0; border-top: 1px solid #eee; z-index: 1001; }
-    .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.75rem; }
+    .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.75rem; transition: 0.3s; }
     .nav-item.active { color: var(--ime-red); }
     .nav-item i { display: block; font-size: 1.4rem; margin-bottom: 4px; }
 
+    /* Responsive Queries */
     @media (min-width: 900px) { .desktop-nav { display: block; } .mobile-nav { display: none; } }
-    @media (max-width: 600px) { .guide-content { padding: 25px; } .agent-banner h1 { font-size: 1.6rem; } }
+    @media (max-width: 600px) { 
+      .guide-content { padding: 25px; } 
+      .agent-banner h1 { font-size: 1.6rem; } 
+      .agent-banner { padding: 40px 15px 60px; }
+      .calc-card { padding: 25px; margin-top: -40px; }
+    }
   </style>
 </head>
 <body>
 
   <header class="app-header">
     <div class="brand">
-      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy">
+      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy Logo">
       <span>Bimal Pharmacy</span>
     </div>
     <nav class="desktop-nav">
@@ -132,9 +146,8 @@
         <li><a href="order.html">अर्डर</a></li>
         <li><a href="service.html">सेवाहरू</a></li>
         <li><a href="notice.html">सूचना</a></li>
-        <li><a href="search.html" class="active"><i class="fas fa-search"></i> बिमाको आधिकारिक अभिकर्ता</a></li> 
+        <li><a href="search.html" class="active"><i class="fas fa-search"></i> बिमा अभिकर्ता</a></li> 
         <li><a href="contact.html">सम्पर्क</a></li>
-        <li><a href="emergency.html">आपतकालीन</a></li>
       </ul>
     </nav>
   </header>
@@ -156,7 +169,7 @@
       <div id="coverageCalc">
         <div class="input-group">
           <label>तपाईंको मासिक आम्दानी (रु):</label>
-          <input type="number" id="monthlyInc" placeholder="उदा: 50000">
+          <input type="number" id="monthlyInc" placeholder="उदा: 50000" min="1000">
         </div>
         <button onclick="calcCover()" class="btn-action">हिसाब गर्नुहोस्</button>
       </div>
@@ -164,14 +177,16 @@
       <div id="premiumCalc" style="display:none;">
         <div class="input-group">
           <label>बिमा रकम (Sum Assured):</label>
-          <input type="number" id="totalSA" placeholder="उदा: 1000000">
+          <input type="number" id="totalSA" placeholder="उदा: 1000000" min="100000">
         </div>
         <div class="input-group">
           <label>बिमा अवधि (वर्ष):</label>
           <select id="termYears">
+            <option value="10">१० वर्ष</option>
             <option value="15">१५ वर्ष</option>
             <option value="20" selected>२० वर्ष</option>
             <option value="25">२५ वर्ष</option>
+            <option value="30">३० वर्ष</option>
           </select>
         </div>
         <button onclick="estimatePremium()" class="btn-action">किस्ता हेर्नुहोस्</button>
@@ -180,85 +195,47 @@
       <div id="resDisplay" class="result-box">
         <h4 id="resTitle">नतिजा</h4>
         <h2 id="resVal" style="color:var(--primary);">रु 0</h2>
-        <p id="resDesc"></p>
+        <p id="resDesc" style="font-size: 0.9rem; color: #666; margin-top: 10px;"></p>
       </div>
     </div>
 
     <article class="guide-content">
       <h1>बिमा (Insurance): एक पूर्ण महाज्ञान मार्गनिर्देशिका</h1>
       
+      
+
       <h2>१. बिमाको परिचय र दार्शनिक आधार</h2>
-      <p>बिमा भनेको केवल एउटा कानुनी सम्झौता वा कागजको खोस्टो होइन; यो त भविष्यमा आउन सक्ने अनिश्चित आर्थिक जोखिमहरूका विरुद्ध ओत लाग्ने एउटा बलियो छाता हो। मानव जीवन आफैंमा अनिश्चित छ। आज हामी जुन अवस्थामा छौं, भोलि त्यही अवस्थामा नरहन सक्छौं। बिमाले यही "अनिश्चितता" (Uncertainty) लाई "निश्चितता" (Certainty) मा बदल्ने काम गर्छ। बिमा एउटा यस्तो संयन्त्र हो जहाँ धेरै मानिसहरूले थोरै-थोरै रकम (Premium) जम्मा गर्छन् र तीमध्ये कसैलाई ठूलो विपत्ति आइपर्दा त्यही कोषबाट आर्थिक राहत प्रदान गरिन्छ।</p>
-      <p>बिमाले व्यक्तिको अनुपस्थितिमा उसको परिवारलाई आर्थिक रूपमा टुहुरो हुन दिँदैन। यसले बच्चाहरूको शिक्षा, छोरीको विवाह, र बुढेसकालको सहारालाई एउटा बलियो ग्यारेन्टी प्रदान गर्छ। त्यसैले, बिमालाई खर्चको रूपमा होइन, एउटा पवित्र र अनिवार्य लगानीको रूपमा बुझ्नुपर्छ।</p>
+      <p>बिमा भनेको केवल एउटा कानुनी सम्झौता वा कागजको खोस्टो होइन; यो त भविष्यमा आउन सक्ने अनिश्चित आर्थिक जोखिमहरूका विरुद्ध ओत लाग्ने एउटा बलियो छाता हो। मानव जीवन आफैंमा अनिश्चित छ। बिमाले यही "अनिश्चितता" (Uncertainty) लाई "निश्चितता" (Certainty) मा बदल्ने काम गर्छ।</p>
 
       <h2>२. बिमाका प्रमुख विधा र शाखाहरू</h2>
       <p>बिमालाई मुख्यतया दुई बृहत् भागमा विभाजन गर्न सकिन्छ:</p>
       
       <h3>क) जीवन बिमा (Life Insurance)</h3>
-      <p>जीवन बिमा व्यक्तिको आयु र जीवनको सुरक्षासँग सम्बन्धित हुन्छ। यसमा बिमितको मृत्यु भएमा वा बिमा अवधि पूरा भएमा (Maturity) एकमुष्ठ रकम बोनससहित पाइन्छ।</p>
-      
       <ul>
-        <li><strong>म्यादी बिमा (Term Insurance):</strong> थोरै प्रिमियममा ठूलो जोखिम सुरक्षा। यसमा अवधिभित्र मृत्यु भएमा मात्र बिमांक रकम पाइन्छ।</li>
-        <li><strong>सक्षम बिमा (Endowment Plan):</strong> यसमा बचत र सुरक्षा दुवै हुन्छ। अवधि सकिएपछि बोनससहित आकर्षक पैसा फिर्ता पाइन्छ।</li>
-        <li><strong>आजीवन बिमा (Whole Life):</strong> बिमितको मृत्यु नहुन्जेलसम्म सुरक्षा कायम रहन्छ।</li>
-        <li><strong>बाल बिमा (Child Plan):</strong> बच्चाहरूको भविष्य, उच्च शिक्षा र विवाहका लागि केन्द्रित योजना।</li>
+        <li><strong>म्यादी बिमा (Term Insurance):</strong> न्यून शुल्कमा ठूलो आर्थिक सुरक्षा।</li>
+        <li><strong>सावधिक बिमा (Endowment Plan):</strong> बचत र सुरक्षाको उत्तम संगम।</li>
+        <li><strong>बाल बिमा (Child Plan):</strong> सन्तानको सुनौलो भविष्यका लागि।</li>
       </ul>
 
       <h3>ख) निर्जीवन बिमा (General Insurance)</h3>
-      <p>सम्पत्ति, सवारी साधन, घर, कलकारखाना वा यात्राको सुरक्षाका लागि गरिने बिमालाई निर्जीवन बिमा भनिन्छ। यसमा क्षति भएको वास्तविक अवस्थामा मात्र क्षतिपूर्ति पाइन्छ।</p>
+      <p>सम्पत्ति, सवारी साधन, र घरको सुरक्षाका लागि गरिने बिमा।</p>
 
-      <h2>३. स्वास्थ्य बिमा र घातक रोग सुरक्षा (Health & Critical Illness)</h2>
-      <p>आधुनिक युगमा बिरामी हुनु भनेको स्वास्थ्य मात्र बिग्रिनु होइन, वर्षौँको बचत र सम्पत्ति एकैपटक सकिनु पनि हो। स्वास्थ्य बिमाले अस्पतालको बेड चार्ज, औषधी, र जटिल शल्यक्रियाको खर्च बेहोर्छ।</p>
-      
-      <p>विशेष गरी **घातक रोग बिमा (Critical Illness)** ले क्यान्सर, मुटुको गम्भीर समस्या, मिर्गौला फेल जस्ता २१ सम्म घातक रोग लागेको प्रमाणित हुने बित्तिकै बिमांक रकम तुरुन्तै भुक्तानी गर्छ। यसले बिरामीलाई उपचार गर्न र परिवारको दैनिक खर्च चलाउन ठूलो मानसिक र आर्थिक बल प्रदान गर्छ।</p>
-
-      <h2>४. बिमा क्षेत्रका प्राविधिक शब्दहरू (Insurance Dictionary)</h2>
+      <h2>३. दाबी प्रक्रिया (Claim Process)</h2>
+      <p>दाबी मुख्यतया दुई प्रकारका हुन्छन्:</p>
       <ul>
-        <li><strong>प्रिमियम (Premium):</strong> बिमा सुविधा कायम राख्नको लागि तपाईंले कम्पनीलाई बुझाउने वार्षिक वा मासिक शुल्क।</li>
-        <li><strong>बिमांक (Sum Assured):</strong> कुनै दुर्घटना वा मृत्युको खण्डमा कम्पनीले दिने ग्यारेन्टी गरिएको न्यूनतम रकम।</li>
-        <li><strong>बोनस (Bonus):</strong> कम्पनीको मुनाफाबाट बिमितले प्राप्त गर्ने थप प्रतिफल (Per Thousand मा गणना गरिन्छ)।</li>
-        <li><strong>ल्याप्स (Lapse):</strong> समयमा किस्ता नतिर्दा बिमा पोलिसी अमान्य वा निष्क्रिय हुनु।</li>
-        <li><strong>राइडर (Rider):</strong> मुख्य बिमामा थप पैसा तिरेर लिइने थप सुविधाहरू (जस्तै दुर्घटना लाभ वा अपाङ्गता राहत)।</li>
+        <li><strong>Maturity Claim:</strong> अवधि सकिएपछि प्राप्त हुने रकम।</li>
+        <li><strong>Death Claim:</strong> बिमितको मृत्यु भएमा हकवालाले पाउने रकम।</li>
       </ul>
-
-      <h2>५. दाबी प्रक्रिया (Claim Process) र आवश्यक कागजात</h2>
-      <p>बिमा कम्पनीको असली परीक्षण "दाबी भुक्तानी" को समयमा हुन्छ। दाबी मुख्यतया दुई प्रकारका हुन्छन्:</p>
-      <ul>
-        <li><strong>Maturity Claim:</strong> बिमा अवधि सफलतापूर्वक सकिएपछि बिमित आफैंले बोनससहित पैसा फिर्ता लिने प्रक्रिया।</li>
-        <li><strong>Death Claim:</strong> बिमितको मृत्यु भएमा हकवालाले गर्ने दाबी। यसको लागि मृत्युदर्ता, नाता प्रमाणित, प्रहरी प्रतिवेदन (दुर्घटना भएमा) र सक्कल पोलिसी आवश्यक पर्छ।</li>
-      </ul>
-
-      <h2>६. बिमा सरेन्डर (Surrender) र यसको आर्थिक प्रभाव</h2>
-      <p>आर्थिक संकट पर्दा बिमा बीचमै बन्द गर्नुलाई सरेन्डर भनिन्छ। नेपालको बिमा ऐन अनुसार ३ वर्ष नपुगी सरेन्डर गर्न पाइँदैन। सरेन्डर गर्दा तपाईंले तिरेको प्रिमियमको केही प्रतिशत मात्र फिर्ता पाउनुहुन्छ, त्यसैले यो सधैं घाटाको सौदा हो। सरेन्डर गर्नुको साटो 'पोलिसी लोन' लिनु उत्तम हुन्छ।</p>
-
-      <h2>७. आई.एम.ई लाइफ इन्स्योरेन्स (IME Life) को विशिष्टता</h2>
-      <ol>
-        <li><strong>विश्वसनीयता:</strong> IME Group नेपालको एक प्रतिष्ठित घराना हो।</li>
-        <li><strong>छिटो दाबी भुक्तानी:</strong> हामी कागजी प्रक्रिया भन्दा मानवीय सेवामा विश्वास गर्छौं।</li>
-        <li><strong>उत्कृष्ट बोनस:</strong> नेपालकै प्रतिस्पर्धात्मक बोनस दर प्रदान गर्दछौं।</li>
-        <li><strong>बिमल लामिछानेको परामर्श:</strong> भरतपुरमा व्यक्तिगत र भरपर्दो सेवाका लागि हामी सधैं तयार छौं।</li>
-      </ol>
-
-      <h2>८. सरकारी बिमा र सामाजिक सुरक्षा योजना</h2>
-      <p>नेपाल सरकारले स्वास्थ्य बिमा बोर्ड र सामाजिक सुरक्षा कोष (SSF) मार्फत केही सुविधाहरू ल्याएको छ। यी योजनाहरूले आधारभूत आवश्यकता पुरा गरे पनि, व्यक्तिगत जीवनको ठूलो जोखिम र सपनाहरू पुरा गर्न निजी जीवन बिमा (Private Life Insurance) अपरिहार्य छ।</p>
 
       <div class="faq-container">
         <h2>प्रायः सोधिने प्रश्नहरू (FAQ)</h2>
         <div class="faq-item">
           <h4>१. बिमा गर्न कति उमेर हुनुपर्छ?</h4>
-          <p>सामान्यतया बच्चादेखि ६५ वर्ष सम्मका व्यक्तिले बिमा गर्न सक्छन्। जति सानो उमेरमा बिमा गर्‍यो, त्यति नै प्रिमियम सस्तो र फाइदा धेरै हुन्छ।</p>
+          <p>सामान्यतया बच्चादेखि ६५ वर्ष सम्मका व्यक्तिले बिमा गर्न सक्छन्। जति सानो उमेरमा बिमा गर्‍यो, त्यति नै प्रिमियम सस्तो हुन्छ।</p>
         </div>
         <div class="faq-item">
-          <h4>२. बिमा गरेको कति पछि लोन लिन मिल्छ?</h4>
-          <p>नियमित ३ वर्षको प्रिमियम तिरिसकेपछि तपाईंले आफ्नो पोलिसीको ९०% सम्म सुलभ ब्याजदरमा ऋण लिन सक्नुहुन्छ।</p>
-        </div>
-        <div class="faq-item">
-          <h4>३. के म बिचमै किस्ता तिर्ने तरिका परिवर्तन गर्न सक्छु?</h4>
-          <p>सकिन्छ, तपाईंले वार्षिक, अर्ध-वार्षिक वा त्रैमासिक रूपमा आफ्नो सुविधा अनुसार किस्ता मोड बदल्न सक्नुहुन्छ।</p>
-        </div>
-        <div class="faq-item">
-          <h4>४. यदि कम्पनी टाट पल्टियो भने मेरो पैसा के हुन्छ?</h4>
-          <p>नेपालमा बिमा प्राधिकरणको कडा नियम र 'पुनर्बिमा' (Re-insurance) को व्यवस्था हुने हुँदा बिमितको लगानी सुरक्षित हुन्छ।</p>
+          <h4>२. के म बिमा पोलिसीबाट ऋण लिन सक्छु?</h4>
+          <p>नियमित ३ वर्षको प्रिमियम तिरिसकेपछि तपाईंले आफ्नो समर्पण मूल्य (Surrender Value) को ९०% सम्म ऋण लिन सक्नुहुन्छ।</p>
         </div>
       </div>
 
@@ -268,50 +245,46 @@
         
         <form action="https://formspree.io/f/xblddqwd" method="POST">
           <div class="input-group">
-            <label>तपाईँको पूरा नाम (Full Name):</label>
-            <input type="text" name="customer_name" placeholder="तपाईँको नाम" required>
+            <label>तपाईँको पूरा नाम:</label>
+            <input type="text" name="customer_name" placeholder="Full Name" required>
           </div>
           <div class="input-group">
-            <label>मोबाइल नम्बर (Mobile):</label>
-            <input type="tel" name="customer_phone" placeholder="९८XXXXXXXX" required>
+            <label>मोबाइल नम्बर:</label>
+            <input type="tel" name="customer_phone" placeholder="98XXXXXXXX" pattern="[9][6-8][0-9]{8}" title="Valid Nepali Mobile Number" required>
           </div>
           <div class="input-group">
-            <label>रुचि भएको बिमा (Insurance Interest):</label>
+            <label>रुचि भएको बिमा:</label>
             <select name="insurance_type">
+              <option value="Endowment">बचत तथा सुरक्षा (Endowment)</option>
               <option value="Term Life">टर्म बिमा (High Protection)</option>
-              <option value="Endowment Plan">बचत तथा सुरक्षा (Endowment)</option>
               <option value="Health/CI">स्वास्थ्य तथा घातक रोग बिमा</option>
               <option value="Child Plan">बाल बिमा (Child Plan)</option>
             </select>
           </div>
-          <div class="input-group">
-            <label>सन्देश (Message - Optional):</label>
-            <textarea name="message" rows="3" placeholder="तपाईँको जिज्ञासा यहाँ लेख्नुहोस्..."></textarea>
-          </div>
-          <button type="submit" class="btn-action" style="background: var(--ime-red);">परामर्शको लागि विवरण पठाउनुहोस्</button>
+          <button type="submit" class="btn-action" style="background: var(--ime-red);">विवरण पठाउनुहोस्</button>
         </form>
-        <p style="font-size: 0.8rem; text-align: center; margin-top: 15px; color: #666;">
-          *तपाईँको विवरण पूर्ण सुरक्षित रहनेछ।
-        </p>
       </div>
-
     </article>
   </div>
 
   <nav class="mobile-nav">
     <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
-    <a href="search.html" class="nav-item"><i class="fas fa-robot"></i> Chat</a>
-    <a href="order.html" class="nav-item"><i class="fas fa-file-prescription"></i> अर्डर</a>
+    <a href="search.html" class="nav-item active"><i class="fas fa-shield-alt"></i> बिमा</a>
+    <a href="order.html" class="nav-item"><i class="fas fa-shopping-cart"></i> अर्डर</a>
     <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i> Emergency</a>
     <a href="contact.html" class="nav-item"><i class="fas fa-user"></i> सम्पर्क</a>
   </nav>
 
   <script>
+    /**
+     * Switch between Coverage and Premium calculators
+     */
     function switchCalc(type) {
         const tabs = document.querySelectorAll('.tab-btn');
         tabs.forEach(t => t.classList.remove('active'));
         document.getElementById('coverageCalc').style.display = 'none';
         document.getElementById('premiumCalc').style.display = 'none';
+        
         if(type === 'coverage') {
             document.getElementById('coverageCalc').style.display = 'block';
             tabs[0].classList.add('active');
@@ -319,23 +292,41 @@
             document.getElementById('premiumCalc').style.display = 'block';
             tabs[1].classList.add('active');
         }
+        document.getElementById('resDisplay').style.display = 'none';
     }
 
+    /**
+     * Calculate Recommended Sum Assured
+     * Formula: Annual Income * 15
+     */
     function calcCover() {
         let inc = document.getElementById('monthlyInc').value;
-        if(!inc) return alert("कृपया आम्दानी भर्नुहोस्।");
+        if(!inc || inc < 1000) {
+            alert("कृपया सही आम्दानी भर्नुहोस्।");
+            return;
+        }
         let val = inc * 12 * 15;
-        showRes("आदर्श बिमांक (Target Coverage)", val, "तपाईंको परिवारको पूर्ण सुरक्षाको लागि यो रकम आवश्यक छ।");
+        showRes("आदर्श बिमांक (Target Coverage)", val, "तपाईंको परिवारको सुरक्षित भविष्यको लागि कम्तिमा यो रकम बराबरको बिमा आवश्यक छ।");
     }
 
+    /**
+     * Estimate Monthly Premium
+     * Linear Estimate: (SA / Term / 12) + Safety Margin
+     */
     function estimatePremium() {
         let sa = document.getElementById('totalSA').value;
         let term = document.getElementById('termYears').value;
-        if(!sa) return alert("कृपया बिमा रकम भर्नुहोस्।");
-        let monthly = (sa / term / 12) * 1.04;
-        showRes("अनुमानित मासिक प्रिमियम", Math.round(monthly), "*यो एक अनुमानित रकम हो। स्वास्थ्य र उमेर अनुसार फरक पर्न सक्छ।");
+        if(!sa || sa < 100000) {
+            alert("कृपया बिमा रकम (न्यूनतम १ लाख) भर्नुहोस्।");
+            return;
+        }
+        let monthly = (sa / term / 12) * 1.05; // 5% margin for riders/fees
+        showRes("अनुमानित मासिक प्रिमियम", Math.round(monthly), "*यो केवल एक सामान्य अनुमान हो। बोनस र वास्तविक प्रिमियम उमेर अनुसार फरक हुनेछ।");
     }
 
+    /**
+     * Display Results with Animation
+     */
     function showRes(title, val, desc) {
         document.getElementById('resTitle').innerText = title;
         document.getElementById('resVal').innerText = "रु " + val.toLocaleString('ne-NP');
