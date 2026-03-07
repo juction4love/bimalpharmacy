@@ -27,16 +27,25 @@
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
     body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 80px; }
 
-    /* Header */
-    .branding-header { background: var(--white); padding: 20px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary); }
-    .logo-container img { height: 80px; width: 80px; border-radius: 50%; border: 3px solid var(--primary); padding: 2px; object-fit: cover; }
-    .brand-text h1 { color: var(--primary); font-size: 2rem; margin: 0; }
+    /* Header & Navbar Setup */
+    .branding-header { background: var(--white); padding: 15px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary); }
+    .logo-container img { height: 60px; width: 60px; border-radius: 50%; border: 2px solid var(--primary); padding: 2px; object-fit: cover; }
+    .brand-text h1 { color: var(--primary); font-size: 1.6rem; margin: 0; }
 
-    /* Navigation */
     .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
     .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
-    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 18px; display: block; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+    .nav-links li { position: relative; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 20px; display: block; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
     .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
+
+    /* Dropdown Styling */
+    .dropdown-content {
+      display: none; position: absolute; background-color: var(--white); min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; border-radius: 0 0 8px 8px;
+    }
+    .dropdown-content a { color: var(--text-dark) !important; padding: 12px 16px; border-bottom: 1px solid #eee; }
+    .dropdown-content a:hover { background-color: #f1f1f1; color: var(--primary) !important; }
+    .dropdown:hover .dropdown-content { display: block; }
 
     /* Search Section */
     .search-section { 
@@ -62,7 +71,10 @@
     footer { background: #1a1a1a; color: #ccc; padding: 50px 20px 100px; text-align: center; }
     .mobile-call-box { position: fixed; bottom: 0; width: 100%; background: var(--primary); padding: 18px; text-align: center; z-index: 1000; }
 
-    @media (max-width: 768px) { .brand-text h1 { font-size: 1.6rem; } }
+    @media (max-width: 768px) { 
+      .nav-links a { padding: 12px 10px; font-size: 0.8rem; }
+      .dropdown-content { position: static; width: 100%; box-shadow: none; background: #f9f9f9; }
+    }
   </style>
 </head>
 <body>
@@ -80,7 +92,16 @@
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="medical-guide.html" class="active">मेडिकल गाइड</a></li>
       <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-      <li><a href="service.html">सेवाहरू</a></li>
+      <li class="dropdown">
+        <a href="#">थप जानकारी <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="about.html">हाम्रो बारेमा</a></li>
+          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
+          <li><a href="insurance.html">बीमा सुविधा</a></li>
+          <li><a href="notice.html">सूचना</a></li>
+        </ul>
+      </li>
+      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
@@ -95,10 +116,10 @@
       <i class="fas fa-exclamation-circle"></i> <strong>महत्वपूर्ण सूचना:</strong> यहाँ उपलब्ध जानकारी केवल शैक्षिक उद्देश्यका लागि हो। औषधीको प्रयोग गर्नु अघि सधैं चिकित्सक वा फर्मासिस्टसँग परामर्श गर्नुहोस्।
     </div>
 
+    
+
     <article class="card">
       <h2><i class="fas fa-pills"></i> सामान्य औषधीहरू र तिनको सही प्रयोग</h2>
-      <p>नेपालमा धेरै प्रयोग हुने औषधीहरूको सही मात्रा र समय थाहा नहुँदा स्वास्थ्यमा नकारात्मक असर पर्न सक्छ। तलको तालिकामा केही प्रमुख औषधीहरूको जानकारी दिइएको छ:</p>
-      
       <div class="table-responsive">
         <table class="searchTable">
           <thead>
@@ -117,10 +138,10 @@
 
     <article class="card" style="border-top-color: var(--danger);">
       <h2><i class="fas fa-hand-holding-medical"></i> क्यान्सरका औषधीहरू र व्यवस्थापन</h2>
-      <p>क्यान्सरको उपचारमा प्रयोग हुने औषधीहरू (Chemotherapy/Targeted Therapy) अत्यन्तै संवेदनशील हुन्छन्। भरतपुर क्यान्सर अस्पतालको नजिकै सेवा दिइरहँदा हामीले निम्न कुराहरूमा ध्यान दिने गरेका छौं:</p>
+      <p>भरतपुर क्यान्सर अस्पताल रोडमा सेवा दिइरहँदा हामीले क्यान्सरका औषधीहरूको भण्डारणमा विशेष ध्यान दिन्छौं:</p>
       <ul>
-        <li><strong>Cold Chain Management:</strong> धेरै क्यान्सर इन्जेक्सनहरू २°C देखि ८°C मा राख्नुपर्छ। तापक्रम बिग्रिएमा औषधीले काम गर्दैन।</li>
-        <li><strong>Side Effects:</strong> क्यान्सरका औषधीले वाकवाकी लाग्ने, कपाल झर्ने र कमजोरी हुने जस्ता असर देखाउन सक्छन्। यसका लागि पर्याप्त प्रोटिन र पोषणको आवश्यकता पर्छ।</li>
+        <li><strong>Cold Chain Management:</strong> धेरै क्यान्सर इन्जेक्सनहरू २°C देखि ८°C मा राख्नुपर्छ।</li>
+        <li><strong>Side Effects:</strong> क्यान्सरका औषधीले वाकवाकी लाग्ने र कमजोरी हुन सक्छ।</li>
       </ul>
       <div class="highlight-box">
         <strong>प्रो टिप:</strong> क्यान्सरका औषधीहरू सधैं आधिकारिक र 'Cold Chain' मेन्टेन गर्ने फार्मेसीबाट मात्र खरिद गर्नुहोस्।
@@ -128,11 +149,15 @@
     </article>
 
     <article class="card" style="border-top-color: var(--blue);">
-      <h2><i class="fas fa-shield-virus"></i> एन्टिबायोटिकको सही प्रयोग: एक चेतावनी</h2>
-      <p>नेपालमा एन्टिबायोटिकको जथाभावी प्रयोग (Misuse) ले गर्दा **Antibiotic Resistance** को समस्या डरलाग्दो बन्दै गएको छ।</p>
+      <h2><i class="fas fa-shield-virus"></i> एन्टिबायोटिकको सही प्रयोग</h2>
+      
+
+[Image of antibiotic resistance mechanism diagram]
+
+      <p>नेपालमा एन्टिबायोटिकको जथाभावी प्रयोगले गर्दा **Antibiotic Resistance** को समस्या डरलाग्दो बन्दै गएको छ।</p>
       <ul>
-        <li>एन्टिबायोटिकले केवल ब्याक्टेरियाबाट हुने संक्रमण निको पार्छ, भाइरस (जस्तै साधारण रुघाखोकी) मा यसले काम गर्दैन।</li>
-        <li>डाक्टरले तोकेको 'कोर्स' पुरा गर्नुहोस्। अलि निको महसुस हुने बित्तिकै औषधी छोड्दा ब्याक्टेरिया अझ बलियो भएर फर्कन सक्छ।</li>
+        <li>एन्टिबायोटिकले भाइरस (रुघाखोकी) मा काम गर्दैन।</li>
+        <li>डाक्टरले तोकेको 'कोर्स' पुरा गर्नुहोस्।</li>
       </ul>
     </article>
 
