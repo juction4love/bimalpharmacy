@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>सम्पर्क | बिमल फार्मेसी - Contact Us</title>
+  <title>सम्पर्क गर्नुहोस् | बिमल फार्मेसी - भरपुर-७, चितवन</title>
   
-  <meta name="description" content="बिमल फार्मेसी सम्पर्क विवरण। फोन, इमेल र लोकेसन म्याप। भरतपुर-७, चितवन।">
+  <meta name="description" content="बिमल फार्मेसीको आधिकारिक सम्पर्क विवरण। फोन: ०५६-५९३२८८, लोकेसन: क्यान्सर अस्पताल रोड, भरतपुर-७ चितवन। स्वास्थ्य सल्लाह र अर्डरका लागि सम्पर्क गर्नुहोस्।">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
-    /* --- Global Variables --- */
     :root {
       --primary: #2e7d32;
       --secondary: #1b5e20;
@@ -23,231 +22,118 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-    
-    body { 
-      background-color: var(--light-bg); 
-      color: var(--text-dark);
-      line-height: 1.8; 
-      padding-bottom: 80px; 
-    }
+    body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 80px; }
 
-    /* --- 1. Branding Header --- */
-    .branding-header {
-      background: var(--white);
-      padding: 20px 5%;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      border-bottom: 5px solid var(--primary);
-    }
-    .logo-container img { height: 85px; width: 85px; border-radius: 50%; border: 3px solid var(--primary); padding: 4px; object-fit: cover; }
-    .brand-text h1 { color: var(--primary); font-size: 2.2rem; margin: 0; }
-    .brand-text p { font-size: 1rem; color: #555; }
+    /* Branding Header */
+    .branding-header { background: var(--white); padding: 20px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary); }
+    .logo-container img { height: 80px; width: 80px; border-radius: 50%; border: 3px solid var(--primary); padding: 4px; object-fit: cover; }
+    .brand-text h1 { color: var(--primary); font-size: 2rem; margin: 0; }
+    .brand-text p { font-size: 0.9rem; color: #555; font-weight: 600; }
 
-    /* --- 2. News Ticker --- */
-    .news-ticker { 
-      background: #FF0000; 
-      border-bottom: 2px solid #b71c1c; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3); 
-      overflow: hidden; 
-    }
-    .news-ticker marquee { 
-      color: #FFFFFF; 
-      font-weight: 900; 
-      display: block; 
-      padding: 12px 0; 
-      font-size: 16px; 
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.5); 
-    }
+    /* Navigation */
+    .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 20px; display: block; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
 
-    /* --- 3. Navigation --- */
-    .navbar { 
-      background: var(--primary); 
-      position: sticky; 
-      top: 0; 
-      z-index: 1000; 
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-    }
-    .nav-links { 
-      display: flex; 
-      justify-content: center; 
-      list-style: none; 
-      flex-wrap: wrap; 
-    }
-    .nav-links a { 
-      color: var(--white); 
-      text-decoration: none; 
-      padding: 18px 20px; 
-      display: block; 
-      font-weight: 600; 
-      font-size: 0.95rem; 
-      transition: 0.3s; 
-    }
-    .nav-links a:hover, .nav-links a.active { 
-      background: var(--secondary); 
-      color: var(--accent) !important; 
-    }
+    /* Main Content */
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    .card { background: var(--white); padding: 35px; border-radius: 15px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); margin-bottom: 30px; }
 
-    /* --- 4. Content Layout --- */
-    .hero {
-      background: var(--white);
-      text-align: center;
-      padding: 60px 20px;
-      border-bottom: 1px solid #eee;
-    }
-    .hero h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    .contact-info-box { padding: 20px; border-radius: 10px; background: #f9fbf9; border: 1px solid #eee; }
+    .contact-info-box h3 { color: var(--primary); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
 
-    .main-content {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
+    /* Working Hours Table */
+    .hours-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .hours-table td { padding: 8px 0; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+    .hours-table td.day { font-weight: bold; color: var(--secondary); }
 
-    .card {
-      background: var(--white);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      border-top: 6px solid var(--primary);
-      margin-bottom: 30px;
-    }
+    /* Form Styles */
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+    .form-control { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; outline: none; }
+    .btn-submit { background: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 30px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
+    .btn-submit:hover { background: var(--secondary); }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-    }
-    .contact-box {
-      background: #fdfdfd;
-      padding: 30px 20px;
-      border-radius: 15px;
-      text-align: center;
-      border: 1px solid #f0f0f0;
-      transition: 0.3s;
-    }
-    .contact-box:hover { transform: translateY(-5px); border-color: var(--primary); }
-    .contact-box i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
-    .contact-box h3 { margin-bottom: 12px; font-size: 1.2rem; color: var(--secondary); }
+    .map-container { height: 400px; width: 100%; border-radius: 12px; overflow: hidden; margin-top: 20px; border: 1px solid #ddd; }
 
-    .action-buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 35px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      color: white;
-      transition: 0.3s;
-    }
-    .btn-call { background: var(--primary); }
-    .btn-wa { background: var(--whatsapp); }
+    /* Footer */
+    footer { background: #1a1a1a; color: #bbb; padding: 50px 20px 100px; text-align: center; }
+    .footer-links a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
+    .mobile-call-box { position: fixed; bottom: 0; width: 100%; background: var(--primary); padding: 18px; text-align: center; z-index: 1000; }
 
-    .map-wrapper {
-      width: 100%;
-      height: 450px;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    /* --- 5. Footer --- */
-    footer { background: #1a1a1a; color: #999; padding: 60px 20px 100px; text-align: center; }
-    .footer-links { margin: 20px 0; }
-    .footer-links a { color: #ccc; text-decoration: none; margin: 0 10px; }
-
-    /* Mobile Fixed Button */
-    .mobile-call-box {
-      position: fixed; bottom: 0; width: 100%;
-      background: var(--primary); padding: 18px; text-align: center; z-index: 1000;
-    }
-    @media (min-width: 769px) { .mobile-call-box { display: none; } }
-
+    @media (max-width: 768px) { .brand-text h1 { font-size: 1.6rem; } .contact-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
   <header class="branding-header">
     <div class="logo-container">
-      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy">
+      <img src="logo.svg" alt="Bimal Pharmacy">
     </div>
     <div class="brand-text">
       <h1>बिमल फार्मेसी</h1>
-      <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र | भरतपुर-७</p>
+      <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र | भरतपुर-७, चितवन</p>
     </div>
   </header>
-
-  <div class="news-ticker">
-    <marquee behavior="scroll" direction="left" scrollamount="6">
-      कृपया बिमल फार्मेसीमा रहेको आफ्नो बाँकी बक्यौता (Due) रकम भुक्तानी गरिदिनुहोला। थप विस्तृत जानकारीको लागि 'सूचना' (Notice) पेज हेर्नुहोस्।
-    </marquee>
-  </div>
 
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="medical-guide.html">औषधी गाइड</a></li>
       <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-      <li><a href="order.html">अर्डर</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
-      <li><a href="notice.html">सूचना</a></li>
-      <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
       <li><a href="contact.html" class="active">सम्पर्क</a></li>
-      <li><a href="emergency.html">आपतकालीन</a></li>
     </ul>
   </nav>
 
-  <section class="hero">
-    <h2>सम्पर्क गर्नुहोस्</h2>
-    <p>हामी तपाईँको सेवाको लागि सधैँ तत्पर छौँ।</p>
-  </section>
-
-  <main class="main-content">
+  <main class="container">
     
-    <div class="card">
-      <div class="contact-grid">
-        <div class="contact-box">
-          <i class="fas fa-phone-alt"></i>
-          <h3>फोन नम्बर</h3>
-          <p><a href="tel:056593288" style="text-decoration:none; color:inherit;">०५६-५९३२८८</a></p>
-          <p><a href="tel:9855065327" style="text-decoration:none; color:inherit;">९८५५०६५३२७</a></p>
+    <div class="contact-grid">
+      <div class="card">
+        <h3><i class="fas fa-id-card"></i> सम्पर्क विवरण</h3>
+        <div class="contact-info-box" style="margin-bottom: 20px;">
+          <p><strong><i class="fas fa-map-marker-alt"></i> ठेगाना:</strong> क्यान्सर अस्पताल रोड, भरतपुर-७, चितवन, नेपाल</p>
+          <p><strong><i class="fas fa-phone-alt"></i> फोन:</strong> ०५६-५९३२८८</p>
+          <p><strong><i class="fas fa-mobile-alt"></i> मोबाइल/ह्वाट्सएप:</strong> ९८५५०६५३२७</p>
+          <p><strong><i class="fas fa-envelope"></i> इमेल:</strong> admin@bimalpharmacy.com.np</p>
         </div>
-        
-        <div class="contact-box">
-          <i class="fas fa-envelope"></i>
-          <h3>इमेल</h3>
-          <p>admin@bimalpharmacy.com.np</p>
-        </div>
-        
-        <div class="contact-box">
-          <i class="fas fa-map-marker-alt"></i>
-          <h3>ठेगाना</h3>
-          <p>क्यान्सर अस्पताल रोड, भरतपुर-७</p>
-          <p>चितवन, नेपाल</p>
-        </div>
+
+        <h3><i class="fas fa-clock"></i> खुल्ने समय (Business Hours)</h3>
+        <table class="hours-table">
+          <tr><td class="day">आइतबार - शुक्रबार</td><td>बिहान ७:०० - बेलुका ८:००</td></tr>
+          <tr><td class="day">शनिबार</td><td>बिहान ९:०० - बेलुका ५:००</td></tr>
+          <tr><td class="day">आपतकालीन सेवा</td><td>२४ घण्टा (फोन मार्फत)</td></tr>
+        </table>
       </div>
 
-      <div class="action-buttons">
-        <a href="tel:9855065327" class="btn btn-call"><i class="fas fa-phone"></i> कल गर्नुहोस्</a>
-        <a href="https://wa.me/9779855065327" class="btn btn-wa"><i class="fab fa-whatsapp"></i> ह्वाट्सएप</a>
+      <div class="card">
+        <h3><i class="fas fa-paper-plane"></i> सन्देश पठाउनुहोस्</h3>
+        <form action="https://formspree.io/f/xblddqwd" method="POST">
+          <div class="form-group">
+            <label>तपाईंको नाम:</label>
+            <input type="text" name="name" class="form-control" required placeholder="Full Name">
+          </div>
+          <div class="form-group">
+            <label>मोबाइल नम्बर:</label>
+            <input type="tel" name="phone" class="form-control" required placeholder="98XXXXXXXX">
+          </div>
+          <div class="form-group">
+            <label>सन्देश/औषधीको नाम:</label>
+            <textarea name="message" class="form-control" rows="4" placeholder="How can we help you?"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">सन्देश पठाउनुहोस्</button>
+        </form>
       </div>
     </div>
 
     <div class="card">
-      <h2 style="text-align:center; color:var(--primary); margin-bottom:20px;">हाम्रो स्थान</h2>
-      <div style="background: #e8f5e9; padding: 15px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid var(--primary);">
-        <strong>लोकेसन गाइड:</strong> क्यान्सर अस्पतालको मुख्य गेटबाट १०० मिटर दक्षिण, बायाँ तर्फ।
-      </div>
-      <div class="map-wrapper">
+      <h3><i class="fas fa-map-marked-alt"></i> हाम्रो लोकेसन (Map)</h3>
+      <p style="margin-bottom: 15px; font-size: 0.9rem; color: #666;">बिमल फार्मेसी भरतपुरको क्यान्सर अस्पताल गेटबाट दक्षिण तर्फ क्यान्सर अस्पताल रोडमा अवस्थित छ।</p>
+      <div class="map-container">
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.003185387813!2d84.4282!3d27.6833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDQxJzAwLjAiTiA4NMKwMjUnNDEuNiJF!5e0!3m2!1sen!2snp!4v1620000000000!5m2!1sen!2snp" 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.9647249219665!2d84.4285854!3d27.6833333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDQxJDAwLjAiTiA4NMKwMjUnNDIuOSJF!5e0!3m2!1sne!2snp!4v1700000000000!5m2!1sne!2snp" 
           width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
         </iframe>
       </div>
@@ -256,24 +142,23 @@
   </main>
 
   <div class="mobile-call-box">
-    <a href="tel:9855065327" style="color:white; text-decoration:none; font-weight:bold; font-size:1.2rem;">
-      <i class="fas fa-phone-alt"></i> कल गर्नुहोस्: ९८५५०६५३२७
+    <a href="tel:9855065327" style="color:white; text-decoration:none; font-weight:bold; font-size:1.1rem;">
+      <i class="fas fa-phone-alt"></i> अहिले कल गर्नुहोस्: ९८५५०६५३२७
     </a>
   </div>
 
   <footer>
-    <div class="footer-info">
+    <div style="margin-bottom: 20px;">
       <strong style="color:white; font-size:1.5rem;">बिमल फार्मेसी</strong><br>
-      भरतपुर-७, चितवन, नेपाल<br>
-      तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता।
+      भरतपुर-७, चितवन, नेपाल | DDA दर्ता नं: १७२२३/२०६३
     </div>
     <div class="footer-links">
-      <a href="index.html">गृहपृष्ठ</a> | 
-      <a href="notice.html">सूचना</a> | 
-      <a href="contact.html">सम्पर्क</a>
+      <a href="privacy-policy.html">Privacy Policy</a> | 
+      <a href="disclaimer.html">Disclaimer</a> | 
+      <a href="about.html">About Us</a>
     </div>
-    <p>© २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-    <p style="font-size:0.8rem; margin-top:10px;">Managed by: @bimal lamichhane</p>
+    <p style="margin-top: 20px;">© २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <p style="font-size:0.75rem; color:#666;">Designed by: Bimal Lamichhane</p>
   </footer>
 
 </body>
