@@ -26,6 +26,7 @@
       --whatsapp: #25d366;
     }
 
+    /* General Reset */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
     body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 100px; }
 
@@ -41,11 +42,34 @@
     .news-ticker { background: var(--danger); border-bottom: 2px solid #b71c1c; overflow: hidden; }
     .news-ticker marquee { color: #FFFFFF; font-weight: 900; display: block; padding: 12px 0; font-size: 16px; }
 
-    /* Navigation */
+    /* Navigation & Dropdown */
     .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
     .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
+    .nav-links li { position: relative; }
     .nav-links a { color: var(--white); text-decoration: none; padding: 18px 20px; display: block; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
     .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
+
+    /* Dropdown Styling */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--white);
+      min-width: 200px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 0 0 8px 8px;
+      overflow: hidden;
+    }
+    .dropdown-content a {
+      color: var(--text-dark) !important;
+      padding: 12px 16px;
+      border-bottom: 1px solid #eee;
+    }
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+      color: var(--primary) !important;
+    }
+    .dropdown:hover .dropdown-content { display: block; }
 
     /* Hero Section */
     .hero { background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://www.transparenttextures.com/patterns/white-diamond.png'); text-align: center; padding: 80px 20px; border-bottom: 1px solid #eee; }
@@ -81,6 +105,8 @@
     @media (max-width: 768px) {
       .brand-text h1 { font-size: 1.8rem; }
       .hero h2 { font-size: 2rem; }
+      .nav-links a { padding: 12px 10px; font-size: 0.85rem; }
+      .dropdown-content { position: static; width: 100%; box-shadow: none; background: #f1f1f1; }
     }
   </style>
 </head>
@@ -108,8 +134,16 @@
       <li><a href="medical-guide.html">औषधी गाइड</a></li>
       <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
+      <li class="dropdown">
+        <a href="#">थप जानकारी <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="about.html">हाम्रो बारेमा</a></li>
+          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
+          <li><a href="insurance.html">बीमा सुविधा</a></li>
+          <li><a href="notice.html">सूचना</a></li>
+        </ul>
+      </li>
       <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
-      <li><a href="notice.html">सूचना</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
@@ -132,7 +166,7 @@
         <div class="card" style="border-top-color: var(--accent);">
           <i class="fas fa-box-open"></i>
           <h3>होम डेलिभरी</h3>
-          <p>भरतपुर क्षेत्रभित्र र नेपालका प्रमुख शहरहरूमा सुरक्षित डेलिभरीको व्यवस्था मिलाइएको छ।</p>
+          <p>भरतपुर क्षेत्रभिकेट र नेपालका प्रमुख शहरहरूमा सुरक्षित डेलिभरीको व्यवस्था मिलाइएको छ।</p>
         </div>
 
         <div class="card" style="border-top-color: var(--danger);">
