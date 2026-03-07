@@ -11,14 +11,19 @@ Allow: /about.html
 Allow: /contact.html
 Allow: /privacy-policy.html
 Allow: /disclaimer.html
+Allow: /Insurance.html
 
-# Prevent indexing of temporary or private files
+# Block old/removed pages to fix Search Console redirect/404 errors
+Disallow: /gallery.html
+Disallow: /vlog.html
+
+# Prevent indexing of temporary, thank you, or private files
 Disallow: /private/
 Disallow: /tmp/
 Disallow: /thanks.html
 Disallow: /vendor-order.html
 
-# AdSense Specific
+# AdSense Specific (Allowing AdSense bot to crawl the entire site)
 User-agent: Mediapartners-Google
 Allow: /
 
