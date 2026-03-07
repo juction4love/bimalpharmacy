@@ -23,10 +23,24 @@
   </url>
 
   <url>
+    <loc>https://www.bimalpharmacy.com.np/Insurance.html</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bimalpharmacy.com.np/emergency.html</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
     <loc>https://www.bimalpharmacy.com.np/order.html</loc>
     <lastmod>2026-03-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
   </url>
 
   <url>
@@ -40,7 +54,7 @@
     <loc>https://www.bimalpharmacy.com.np/notice.html</loc>
     <lastmod>2026-03-07</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.80</priority>
   </url>
 
   <url>
@@ -61,14 +75,21 @@
     <loc>https://www.bimalpharmacy.com.np/privacy-policy.html</loc>
     <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.70</priority>
   </url>
 
   <url>
     <loc>https://www.bimalpharmacy.com.np/disclaimer.html</loc>
     <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bimalpharmacy.com.np/terms.html</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
   </url>
 
 </urlset>
