@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>मेडिकल गाइड | बिमल फार्मेसी - Medical Directory</title>
+  <title>मेडिकल गाइड र स्वास्थ्य जानकारी | बिमल फार्मेसी - भरपुर-७, चितवन</title>
+  <meta name="description" content="बिमल फार्मेसीको आधिकारिक मेडिकल गाइड। यहाँ औषधीहरूको प्रयोग, स्वास्थ्य टिप्स, र विभिन्न स्वास्थ्य समस्याहरूको बारेमा विस्तृत जानकारी पाउनुहोस्।">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
-    /* --- Global Variables --- */
     :root {
       --primary: #2e7d32;
       --secondary: #1b5e20;
@@ -21,16 +21,16 @@
       --shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
     
     body { 
       background-color: var(--light-bg); 
       color: var(--text-dark);
-      line-height: 1.7; 
+      line-height: 1.8; 
       padding-bottom: 80px; 
     }
 
-    /* --- 1. Branding Header --- */
+    /* Branding Header */
     .branding-header {
       background: var(--white);
       padding: 20px 5%;
@@ -39,222 +39,177 @@
       gap: 20px;
       border-bottom: 5px solid var(--primary);
     }
-    .logo-container img { height: 85px; width: 85px; border-radius: 50%; border: 3px solid var(--primary); padding: 4px; object-fit: cover; }
-    .brand-text h1 { color: var(--primary); font-size: 2.2rem; margin: 0; }
-    .brand-text p { font-size: 1rem; color: #555; }
+    .logo-container img { height: 80px; width: 80px; border-radius: 50%; border: 3px solid var(--primary); padding: 2px; object-fit: cover; }
+    .brand-text h1 { color: var(--primary); font-size: 2rem; margin: 0; }
+    .brand-text p { font-size: 0.9rem; color: #666; font-weight: 600; }
 
-    /* --- 2. News Ticker --- */
-    .news-ticker { 
-      background: #FF0000; 
-      border-bottom: 2px solid #b71c1c; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3); 
-      overflow: hidden; 
-    }
-    .news-ticker marquee { 
-      color: #FFFFFF; 
-      font-weight: 900; 
-      display: block; 
-      padding: 12px 0; 
-      font-size: 16px; 
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.5); 
-    }
+    /* News Ticker */
+    .news-ticker { background: #e53935; color: white; overflow: hidden; white-space: nowrap; padding: 10px 0; font-weight: bold; }
+    .news-ticker marquee { font-size: 15px; }
 
-    /* --- 3. Navigation --- */
-    .navbar { 
-      background: var(--primary); 
-      position: sticky; 
-      top: 0; 
-      z-index: 1000; 
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-    }
-    .nav-links { 
-      display: flex; 
-      justify-content: center; 
-      list-style: none; 
-      flex-wrap: wrap; 
-    }
-    .nav-links a { 
-      color: var(--white); 
-      text-decoration: none; 
-      padding: 18px 20px; 
-      display: block; 
-      font-weight: 600; 
-      font-size: 0.95rem; 
-      transition: 0.3s; 
-    }
-    .nav-links a:hover, .nav-links a.active { 
-      background: var(--secondary); 
-      color: var(--accent) !important; 
-    }
+    /* Navigation */
+    .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 18px; display: block; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
 
-    /* --- 4. Search Section --- */
+    /* Search Section */
     .search-section { 
-      background: linear-gradient(rgba(27, 94, 32, 0.9), rgba(27, 94, 32, 0.9)), url('https://www.transparenttextures.com/patterns/white-diamond.png'); 
-      padding: 50px 20px; 
-      text-align: center; 
-      color: white; 
+      background: linear-gradient(rgba(27, 94, 32, 0.85), rgba(27, 94, 32, 0.85)), url('https://www.transparenttextures.com/patterns/white-diamond.png'); 
+      padding: 60px 20px; text-align: center; color: white; 
     }
-    .search-container { position: relative; max-width: 700px; margin: 20px auto 0; }
-    .search-container i { position: absolute; left: 25px; top: 18px; color: var(--primary); font-size: 1.2rem; }
+    .search-container { position: relative; max-width: 600px; margin: 25px auto 0; }
+    .search-container i { position: absolute; left: 20px; top: 18px; color: var(--primary); font-size: 1.2rem; }
     .search-box { 
-      width: 100%; padding: 18px 25px 18px 60px; border-radius: 50px; border: none; font-size: 1.1rem; outline: none; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      width: 100%; padding: 16px 20px 16px 55px; border-radius: 30px; border: none; font-size: 1rem; outline: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
-    /* --- 5. Main Content --- */
-    .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-    .disclaimer { background: #fff8e1; border-left: 6px solid var(--accent); padding: 15px; border-radius: 8px; margin-bottom: 30px; color: #856404; font-weight: 600; }
+    /* Main Content */
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    .disclaimer { background: #fffde7; border-left: 5px solid var(--accent); padding: 15px; border-radius: 5px; margin-bottom: 30px; color: #7f6000; font-size: 0.95rem; }
 
-    .card { background: var(--white); border-radius: 20px; padding: 30px; box-shadow: var(--shadow); margin-bottom: 40px; border-top: 6px solid var(--primary); }
-    .card h2 { color: var(--secondary); margin-bottom: 20px; font-size: 1.6rem; }
-
-    /* Nutraceuticals Grid */
-    .neu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .neu-card { padding: 20px; border-radius: 12px; background: #f1f8ff; border-top: 4px solid var(--blue); transition: 0.3s; }
-    .neu-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-    .neu-card i { font-size: 1.8rem; color: var(--blue); margin-bottom: 10px; }
+    .card { background: var(--white); border-radius: 15px; padding: 35px; box-shadow: var(--shadow); margin-bottom: 35px; border-top: 5px solid var(--primary); text-align: justify; }
+    .card h2 { color: var(--secondary); margin-bottom: 20px; font-size: 1.6rem; display: flex; align-items: center; gap: 10px; }
+    .card p { margin-bottom: 15px; }
 
     /* Tables */
-    .table-responsive { overflow-x: auto; border-radius: 12px; border: 1px solid #eee; margin-top: 15px; }
-    table { width: 100%; border-collapse: collapse; min-width: 600px; }
-    table th { background: #f1f8f1; padding: 15px; text-align: left; color: var(--secondary); border-bottom: 3px solid var(--primary); }
-    table td { padding: 12px 15px; border-bottom: 1px solid #eee; }
+    .table-responsive { overflow-x: auto; border-radius: 10px; margin-top: 20px; border: 1px solid #eee; }
+    table { width: 100%; border-collapse: collapse; min-width: 500px; }
+    table th { background: #f4fbf4; padding: 15px; text-align: left; color: var(--secondary); border-bottom: 2px solid var(--primary); }
+    table td { padding: 12px 15px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
 
-    /* --- 6. Footer --- */
-    footer { background: #1a1a1a; color: #999; padding: 60px 20px 100px; text-align: center; }
-    .footer-links { margin: 20px 0; }
-    .footer-links a { color: #ccc; text-decoration: none; margin: 0 10px; }
-
-    /* Mobile Fixed Call Box */
+    /* Footer */
+    footer { background: #222; color: #bbb; padding: 50px 20px 100px; text-align: center; }
+    .footer-links a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
     .mobile-call-box { position: fixed; bottom: 0; width: 100%; background: var(--primary); padding: 18px; text-align: center; z-index: 1000; }
-    @media (min-width: 769px) { .mobile-call-box { display: none; } }
 
+    @media (max-width: 768px) {
+      .brand-text h1 { font-size: 1.6rem; }
+      .nav-links a { padding: 10px 12px; font-size: 0.85rem; }
+    }
   </style>
 </head>
 <body>
 
   <header class="branding-header">
     <div class="logo-container">
-      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy">
+      <img src="logo.svg" alt="Bimal Pharmacy Logo">
     </div>
     <div class="brand-text">
       <h1>बिमल फार्मेसी</h1>
-      <p>तपाईंको डिजिटल मेडिकल गाइड | भरतपुर-७</p>
+      <p>तपाईंको भरपर्दो डिजिटल मेडिकल गाइड | भरतपुर-७, चितवन</p>
     </div>
   </header>
 
   <div class="news-ticker">
-    <marquee behavior="scroll" direction="left" scrollamount="6">
-      कृपया बिमल फार्मेसीको बाँकी रकम समयमै भुक्तानी गरिदिनुहोला। थप जानकारीको लागि सूचना पेज हेर्नुहोस्।
+    <marquee behavior="scroll" direction="left">
+      सूचना: बिमल फार्मेसीको बाँकी बक्यौता रकम समयमै भुक्तानी गरी सहयोग गरिदिनुहोला। थप जानकारीका लागि 'सूचना' पेज हेर्नुहोस्।
     </marquee>
   </div>
 
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
-      <li><a href="medical-guide.html" class="active">औषधी गाइड</a></li>
+      <li><a href="medical-guide.html" class="active">मेडिकल गाइड</a></li>
       <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-      <li><a href="order.html">अर्डर</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
       <li><a href="notice.html">सूचना</a></li>
-      <li><a href="search.html"><i class="fas fa-search"></i> खोज्नुहोस्</a></li> 
       <li><a href="contact.html">सम्पर्क</a></li>
-      <li><a href="emergency.html">आपतकालीन</a></li>
     </ul>
   </nav>
 
   <section class="search-section">
-    <h2>मेडिकल गाइड खोज्नुहोस्</h2>
+    <h2 style="font-size: 2rem; margin-bottom: 10px;">तपाईंलाई कस्तो जानकारी चाहिन्छ?</h2>
+    <p>औषधी, रोग वा स्वास्थ्य टिप्सहरू यहाँ खोज्नुहोस्</p>
     <div class="search-container">
       <i class="fas fa-search"></i>
-      <input type="text" id="masterSearch" onkeyup="globalSearch()" placeholder="औषधि वा फोबियाको नाम लेख्नुहोस्..." class="search-box">
+      <input type="text" id="masterSearch" onkeyup="globalSearch()" placeholder="औषधी वा फोबियाको नाम लेख्नुहोस्..." class="search-box">
     </div>
   </section>
 
   <main class="container">
     <div class="disclaimer">
-      <i class="fas fa-info-circle"></i> जानकारी: यो गाइड केवल शैक्षिक उद्देश्यका लागि हो। औषधिको प्रयोग अघि डाक्टरको सल्लाह अनिवार्य छ।
+      <i class="fas fa-exclamation-triangle"></i> <strong>अस्विकृति:</strong> यो वेबसाइटमा दिइएका जानकारीहरू केवल शैक्षिक उद्देश्यका लागि हुन्। कुनै पनि औषधी सेवन गर्नु अघि दर्तावाल चिकित्सकको सल्लाह लिनु अनिवार्य छ।
     </div>
 
-    <div class="card" style="border-top-color: var(--blue);">
-      <h2><i class="fas fa-apple-alt"></i> Neutraceuticals: स्वास्थ्य पूरक</h2>
-      <div class="neu-grid">
-        <div class="neu-card">
-          <i class="fas fa-capsules"></i>
-          <h4>Multivitamins</h4>
-          <p>दैनिक ऊर्जा र रोग प्रतिरोधात्मक क्षमता बढाउन।</p>
-        </div>
-        <div class="neu-card">
-          <i class="fas fa-fish"></i>
-          <h4>Omega-3</h4>
-          <p>मुटु र मस्तिष्कको कार्यक्षमता सुधार गर्न।</p>
-        </div>
-        <div class="neu-card">
-          <i class="fas fa-shield-virus"></i>
-          <h4>Probiotics</h4>
-          <p>पाचन प्रणाली स्वस्थ राख्न र ग्यास्ट्रिक कम गर्न।</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2><i class="fas fa-pills"></i> प्रमुख औषधि र प्रयोग</h2>
+    <article class="card">
+      <h2><i class="fas fa-pills"></i> सामान्य औषधीहरू र तिनको सही प्रयोग</h2>
+      <p>नेपालमा धेरैजसो प्रयोग गरिने औषधीहरूको बारेमा सही जानकारी हुनु आवश्यक छ। धेरैले सामान्य टाउको दुखाइ वा ग्यास्ट्रिक हुँदा आफूखुसी औषधी किनेर खाने गर्छन्, जसले दीर्घकालीन रूपमा असर पुर्याउन सक्छ।</p>
+      
       <div class="table-responsive">
         <table class="searchTable">
           <thead>
             <tr>
-              <th>औषधिको नाम</th>
-              <th>मुख्य प्रयोग (Uses)</th>
+              <th>औषधीको नाम</th>
+              <th>मुख्य प्रयोग (Indications)</th>
+              <th>सावधानी</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Paracetamol</td><td>ज्वरो, टाउको र जिउ दुखाइ।</td></tr>
-            <tr><td>Pantoprazole</td><td>ग्यास्ट्रिक र एसिडिटी नियन्त्रण।</td></tr>
-            <tr><td>Amoxicillin</td><td>ब्याक्टेरियल संक्रमणका लागि एन्टीबायोटिक।</td></tr>
-            <tr><td>Cetirizine</td><td>रुघाखोकी, हाच्छिउँ र एलर्जी।</td></tr>
-            <tr><td>Metformin</td><td>मधुमेह (Diabetes) नियन्त्रण गर्न।</td></tr>
-            <tr><td>Amlodipine</td><td>उच्च रक्तचाप (BP) घटाउन।</td></tr>
+            <tr><td>Paracetamol</td><td>ज्वरो, सामान्य दुखाइ।</td><td>खाली पेटमा नखानुहोस्।</td></tr>
+            <tr><td>Pantoprazole</td><td>ग्यास्ट्रिक, एसिडिटी।</td><td>बिहान खाली पेटमा खानु राम्रो।</td></tr>
+            <tr><td>Amoxicillin</td><td>एन्टीबायोटिक (संक्रमण)।</td><td>कोर्स पूरा गर्न अनिवार्य छ।</td></tr>
+            <tr><td>Cetirizine</td><td>एलर्जी, रुघाखोकी।</td><td>सेवनपछि निन्द्रा लाग्न सक्छ।</td></tr>
+            <tr><td>Metformin</td><td>मधुमेह नियन्त्रण।</td><td>नियमित व्यायाम जरुरी छ।</td></tr>
           </tbody>
         </table>
       </div>
-    </div>
+    </article>
 
-    <div class="card" style="border-top-color: var(--danger);">
-      <h2><i class="fas fa-brain"></i> फोबिया (Phobia) का प्रकार</h2>
+    <article class="card" style="border-top-color: var(--blue);">
+      <h2><i class="fas fa-notes-medical"></i> स्वस्थ जीवनका लागि केही महत्वपूर्ण सुझावहरू</h2>
+      <p>स्वस्थ रहनु भनेको केवल रोग नलाग्नु मात्र होइन, बरु शारीरिक, मानसिक र सामाजिक रूपमा तन्दुरुस्त हुनु हो। आजकलको व्यस्त जीवनशैली र खानपानका कारण उच्च रक्तचाप र मधुमेह जस्ता नसर्ने रोगहरू तीव्र रूपमा फैलिरहेका छन्।</p>
+      
+      <h3 style="margin: 20px 0 10px; color: var(--primary);">१. पानीको उचित सेवन</h3>
+      <p>हाम्रो शरीरको करिब ७० प्रतिशत भाग पानीले ओगटेको हुन्छ। दिनमा कम्तिमा ३-४ लिटर पानी पिउनाले मृगौला स्वस्थ रहन्छ र शरीरबाट विषाक्त पदार्थहरू बाहिर जान मद्दत पुग्छ।</p>
+
+      <h3 style="margin: 20px 0 10px; color: var(--primary);">२. खानपानमा सन्तुलन</h3>
+      <p>धेरै नुनिलो, गुलियो र चिल्लो खानेकुराले मुटुको समस्या निम्त्याउँछ। हरियो सागसब्जी र फलफूललाई आफ्नो दैनिक भोजनमा समावेश गर्नुहोस्। नेपाली खाना दाल-भात-तरकारी आफैमा सन्तुलित छ, तर चामलको मात्रा कम र तरकारीको मात्रा बढी हुनुपर्दछ।</p>
+    </article>
+
+    <article class="card" style="border-top-color: var(--danger);">
+      <h2><i class="fas fa-brain"></i> मानसिक स्वास्थ्य: फोबिया (Phobia) का प्रकार</h2>
+      <p>फोबिया भनेको कुनै वस्तु वा परिस्थितिप्रतिको अस्वभाविक र अत्यधिक डर हो। धेरै मानिसहरूमा विभिन्न प्रकारका फोबियाहरू हुन्छन् तर उनीहरूलाई यसको प्राविधिक नाम थाहा हुँदैन।</p>
+      
       <div class="table-responsive">
         <table class="searchTable">
           <thead>
             <tr>
-              <th>फोबिया</th>
+              <th>फोबियाको नाम</th>
               <th>डरको विषय (Fear of...)</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Acrophobia</td><td>उचाईसँग लाग्ने डर।</td></tr>
-            <tr><td>Cynophobia</td><td>कुकुरसँग लाग्ने डर।</td></tr>
-            <tr><td>Hemophobia</td><td>रगत देख्दा लाग्ने डर।</td></tr>
+            <tr><td>Acrophobia</td><td>अग्लो ठाउँ वा उचाई।</td></tr>
+            <tr><td>Cynophobia</td><td>कुकुरहरूसँग लाग्ने डर।</td></tr>
+            <tr><td>Hemophobia</td><td>रगत वा रगत देख्दा लाग्ने डर।</td></tr>
             <tr><td>Hydrophobia</td><td>पानीसँग लाग्ने डर।</td></tr>
+            <tr><td>Aerophobia</td><td>हवाईजहाज वा उडानसँग लाग्ने डर।</td></tr>
           </tbody>
         </table>
       </div>
-    </div>
+    </article>
   </main>
 
   <div class="mobile-call-box">
-    <a href="tel:9855065327" style="color:white; text-decoration:none; font-weight:bold;">
+    <a href="tel:9855065327" style="color:white; text-decoration:none; font-weight:bold; font-size: 1.1rem;">
       <i class="fas fa-phone-alt"></i> कल गर्नुहोस्: ९८५५०६५३२७
     </a>
   </div>
 
   <footer>
-    <div class="footer-info">
+    <div style="margin-bottom: 20px;">
       <strong style="color:white; font-size:1.5rem;">बिमल फार्मेसी</strong><br>
-      भरतपुर-७, चितवन, नेपाल
+      भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन, नेपाल
     </div>
     <div class="footer-links">
-      <a href="index.html">होम</a> | <a href="order.html">अर्डर</a> | <a href="contact.html">सम्पर्क</a>
+      <a href="index.html">होम</a> | 
+      <a href="about.html">हाम्रो बारेमा</a> | 
+      <a href="privacy-policy.html">Privacy Policy</a> | 
+      <a href="disclaimer.html">Disclaimer</a>
     </div>
-    <p>© २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-    <p style="font-size:0.8rem; margin-top:10px;">Managed by: @bimal lamichhane</p>
+    <p style="margin-top: 20px;">© २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <p style="font-size:0.75rem; color:#666;">Design & Managed by: @bimal_lamichhane</p>
   </footer>
 
   <script>
