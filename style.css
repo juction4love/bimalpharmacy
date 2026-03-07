@@ -1,11 +1,14 @@
-/* --- Global Variables (Essential for the colors to work) --- */
+/* --- Global Variables (Optimized for AdSense & UX) --- */
 :root {
     --primary: #2e7d32;    /* Medical Green */
     --secondary: #1b5e20;  /* Dark Green */
     --accent: #ffd700;     /* Gold for Active Links */
     --price-blue: #0d47a1; /* Professional Blue */
+    --danger: #d32f2f;     /* Red for Urgent Notices */
     --white: #ffffff;
     --light-bg: #f8f9fa;
+    --text-dark: #2c3e50;
+    --shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
 * {
@@ -14,9 +17,15 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for internal links */
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background-color: var(--light-bg);
+    color: var(--text-dark);
+    line-height: 1.7;
 }
 
 /* --- Fixed Header with Corner Logo --- */
@@ -25,37 +34,44 @@ header.text-header {
     padding: 15px 5%;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Aligns items to the left corner */
-    border-bottom: 3px solid var(--primary);
+    justify-content: flex-start;
+    border-bottom: 4px solid var(--primary);
     gap: 20px;
+    box-shadow: var(--shadow);
 }
 
 .logo-container img {
-    height: 70px; /* Adjust size as needed */
+    height: 75px;
     width: auto;
     display: block;
+    border-radius: 50%; /* Rounded logo for modern look */
+    border: 2px solid var(--primary);
+    padding: 3px;
+    background: white;
 }
 
 .brand-text h1 {
-    display: block !important; /* Overriding your previous 'none' */
     color: var(--primary);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     margin: 0;
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
 .brand-text p {
-    display: block !important;
     color: #666;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     margin: 0;
+    font-weight: 600;
 }
 
-/* --- Navbar Navigation --- */
+/* --- Sticky Navbar --- */
 .navbar {
     background: var(--primary);
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .nav-links {
@@ -69,10 +85,10 @@ header.text-header {
 
 .nav-links a {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.9);
-    padding: 14px 18px;
+    color: rgba(255, 255, 255, 0.95);
+    padding: 16px 20px;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.3s ease;
     border-bottom: 3px solid transparent;
 }
@@ -80,6 +96,7 @@ header.text-header {
 .nav-links a:hover {
     background: var(--secondary);
     color: #fff;
+    transform: translateY(-1px);
 }
 
 .nav-links a.active {
@@ -88,69 +105,92 @@ header.text-header {
     border-bottom: 3px solid var(--accent);
 }
 
-/* --- Med Card "Contact for Price" --- */
+/* --- Price Tag (Interactive) --- */
 .price-tag span {
     font-size: 0.95rem;
     color: var(--price-blue); 
     font-weight: 700;
     background-color: #e3f2fd;
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 10px 18px;
+    border-radius: 10px;
     display: inline-block;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid #bbdefb;
     cursor: pointer;
+    text-align: center;
 }
 
 .price-tag span:hover {
     background-color: var(--price-blue);
     color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(13, 71, 161, 0.2);
+}
+
+/* --- Generic Card Style (For High Value Content) --- */
+.card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+    border-top: 5px solid var(--primary);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
 }
 
 /* --- Status Message --- */
 #status-msg {
     text-align: center;
-    margin: 20px auto;
-    padding: 12px;
+    margin: 25px auto;
+    padding: 15px;
     font-size: 0.95rem;
     color: #444;
-    font-weight: 500;
-    max-width: 90%;
+    font-weight: 600;
+    max-width: 800px;
     background: #fff;
     border-radius: 50px;
     border: 1px solid #eee;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-/* --- Icon & Text Spacing --- */
-.usage-text i, 
-.side-effect-box i {
-    margin-right: 12px;
-    width: 24px; 
-    text-align: center;
-    color: var(--primary);
+    box-shadow: var(--shadow);
 }
 
 /* --- Responsive Fixes --- */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     header.text-header {
-        flex-direction: row; /* Keeps logo and text side-by-side */
-        padding: 10px;
-        gap: 10px;
+        padding: 12px;
+        gap: 15px;
     }
     
     .logo-container img {
-        height: 50px;
+        height: 55px;
     }
 
     .brand-text h1 {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     .nav-links a {
-        padding: 10px 8px;
-        font-size: 0.8rem;
+        padding: 12px 10px;
+        font-size: 0.85rem;
     }
+
+    .card {
+        padding: 20px;
+    }
+}
+
+/* --- Animation for Urgent Notice --- */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.urgent-notice {
+    color: var(--danger);
+    font-weight: bold;
+    animation: blink 2s infinite;
 }
