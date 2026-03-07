@@ -25,43 +25,67 @@
     body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 80px; }
 
     /* Branding Header */
-    .branding-header { background: var(--white); padding: 20px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary); }
-    .logo-container img { height: 80px; width: 80px; border-radius: 50%; border: 3px solid var(--primary); padding: 4px; object-fit: cover; }
-    .brand-text h1 { color: var(--primary); font-size: 2rem; margin: 0; }
+    .branding-header { background: var(--white); padding: 15px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary); box-shadow: var(--shadow); }
+    .logo-container img { height: 65px; width: 65px; border-radius: 50%; border: 2px solid var(--primary); padding: 2px; object-fit: cover; }
+    .brand-text h1 { color: var(--primary); font-size: 1.8rem; margin: 0; }
+    .brand-text p { font-size: 0.85rem; color: #555; font-weight: 600; }
 
-    /* Navigation */
+    /* News Ticker (Marquee) */
+    .news-ticker { background: var(--danger); border-bottom: 2px solid #b71c1c; overflow: hidden; }
+    .news-ticker marquee { color: #FFFFFF; font-weight: 900; display: block; padding: 10px 0; font-size: 15px; }
+
+    /* Navigation & Dropdown */
     .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
     .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
-    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 20px; display: block; font-weight: 600; font-size: 0.9rem; }
+    .nav-links li { position: relative; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 20px; display: block; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
     .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
+
+    .dropdown-content {
+      display: none; position: absolute; background-color: var(--white); min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; border-radius: 0 0 8px 8px;
+    }
+    .dropdown-content a { color: var(--text-dark) !important; padding: 12px 16px; border-bottom: 1px solid #eee; }
+    .dropdown-content a:hover { background-color: #f1f1f1; color: var(--primary) !important; }
+    .dropdown:hover .dropdown-content { display: block; }
 
     .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
 
     /* Order Guide Section */
     .order-guide { background: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; box-shadow: var(--shadow); border-left: 8px solid var(--accent); }
     .order-guide h2 { color: var(--primary); margin-bottom: 15px; font-size: 1.5rem; }
-    .step-list { margin-left: 20px; margin-bottom: 20px; }
-    .step-list li { margin-bottom: 10px; font-weight: 500; }
+    .step-list { margin-left: 20px; margin-bottom: 20px; list-style: none; }
+    .step-list li { margin-bottom: 10px; font-weight: 500; display: flex; gap: 10px; }
+    .step-list b { color: var(--primary); }
 
     /* Form Card */
     .form-card { background: var(--white); padding: 35px; border-radius: 20px; box-shadow: var(--shadow); border-top: 10px solid var(--primary); }
     .input-group { margin-bottom: 20px; }
     .input-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
-    .input-field { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #ddd; outline: none; background: #fdfdfd; }
+    .input-field { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #ddd; outline: none; background: #fdfdfd; transition: 0.3s; }
     .input-field:focus { border-color: var(--primary); box-shadow: 0 0 5px rgba(46, 125, 50, 0.2); }
 
-    .agreement-box { background: #fff8e1; padding: 15px; border-radius: 10px; margin-bottom: 25px; display: flex; gap: 12px; }
-    .agreement-text { font-size: 0.85rem; color: #856404; }
+    .agreement-box { background: #fff8e1; padding: 15px; border-radius: 10px; margin-bottom: 25px; display: flex; gap: 12px; align-items: flex-start; }
+    .agreement-text { font-size: 0.85rem; color: #856404; cursor: pointer; }
 
     .btn-submit { width: 100%; padding: 18px; background: var(--whatsapp); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
+    .btn-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); }
     .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
 
-    footer { background: #1a1a1a; color: #999; padding: 50px 20px 100px; text-align: center; }
-    .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(4, 1fr); padding: 12px 0; border-top: 1px solid #eee; z-index: 1001; }
-    .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.75rem; }
-    .nav-item.active { color: var(--primary); }
+    footer { background: #1a1a1a; color: #bbb; padding: 50px 20px 100px; text-align: center; }
+    .footer-links a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
 
-    @media (max-width: 600px) { .branding-header { flex-direction: column; text-align: center; } .form-card { padding: 20px; } }
+    .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 12px 0; border-top: 1px solid #eee; z-index: 1001; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); }
+    .nav-item { text-align: center; text-decoration: none; color: #777; font-size: 0.7rem; }
+    .nav-item.active { color: var(--primary); font-weight: bold; }
+    .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 3px; }
+
+    @media (max-width: 768px) {
+      .nav-links a { padding: 12px 10px; font-size: 0.8rem; }
+      .dropdown-content { position: static; width: 100%; box-shadow: none; background: #f9f9f9; }
+      .brand-text h1 { font-size: 1.5rem; } 
+      .form-card { padding: 25px 20px; }
+    }
   </style>
 </head>
 <body>
@@ -74,13 +98,26 @@
     </div>
   </header>
 
+  <div class="news-ticker">
+    <marquee behavior="scroll" direction="left" scrollamount="6">
+      महत्वपूर्ण सूचना: अर्डर पुष्टि गर्न डाक्टरको पुर्जी (Prescription) को फोटो अनिवार्य छ। भरतपुर क्षेत्रभित्र २-४ घण्टामा डेलिभरी सेवा उपलब्ध छ।
+    </marquee>
+  </div>
+
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="medical-guide.html">औषधी गाइड</a></li>
       <li><a href="order.html" class="active">अर्डर</a></li>
-      <li><a href="service.html">सेवाहरू</a></li>
-      <li><a href="notice.html">सूचना</a></li>
+      <li class="dropdown">
+        <a href="#">थप जानकारी <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="about.html">हाम्रो बारेमा</a></li>
+          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
+          <li><a href="insurance.html">बीमा सुविधा</a></li>
+          <li><a href="notice.html">सूचना</a></li>
+        </ul>
+      </li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
@@ -89,41 +126,37 @@
     
     <article class="order-guide">
       <h2><i class="fas fa-info-circle"></i> औषधी अर्डर गर्ने प्रक्रिया</h2>
-      <p>बिमल फार्मेसीले बिरामीको सहजताका लागि डिजिटल माध्यमबाट अर्डर लिने व्यवस्था गरेको छ। अर्डर गर्दा निम्न प्रक्रियाहरू पालना गर्नुहोला:</p>
       
-      
-
       <ul class="step-list">
-        <li>१. तलको फारममा आफ्नो सही नाम, ठेगाना र फोन नम्बर भर्नुहोस्।</li>
-        <li>२. 'अर्डर कन्फर्म गर्नुहोस्' बटनमा थिचेपछि तपाईं हाम्रो ह्वाट्सएपमा पुग्नुहुनेछ।</li>
-        <li>३. ह्वाट्सएपमा पुगेपछि आफ्नो **डाक्टरको पुर्जी (Prescription)** को स्पष्ट फोटो पठाउनुहोस्।</li>
-        <li>४. हाम्रा फर्मासिस्टले पुर्जी रुजु गरेपछि औषधीको मूल्य र डेलिभरी समयबारे जानकारी दिनुहुनेछ।</li>
+        <li><b>१.</b> फारममा आफ्नो सही नाम, ठेगाना र मोबाइल नम्बर भर्नुहोस्।</li>
+        <li><b>२.</b> 'ह्वाट्सएप मार्फत अर्डर' बटन थिचेर हाम्रो च्याटमा पुग्नुहोस्।</li>
+        <li><b>३.</b> ह्वाट्सएपमा पुगेपछि आफ्नो डाक्टरको पुर्जी (Prescription) को फोटो पठाउनुहोस्।</li>
+        <li><b>४.</b> मूल्य र समय निश्चित भएपछि सुरक्षित डेलिभरी प्राप्त गर्नुहोस्।</li>
       </ul>
-      <p><strong>नोट:</strong> नेपाल सरकारको नियम अनुसार, केही संवेदनशील औषधीहरूका लागि सक्कली पुर्जी अनिवार्य छ।</p>
     </article>
 
     <div class="form-card">
-      <h2 style="text-align: center; margin-bottom: 25px;"><i class="fas fa-shopping-basket"></i> अर्डर विवरण भर्नुहोस्</h2>
+      <h2 style="text-align: center; margin-bottom: 25px;"><i class="fas fa-shopping-basket"></i> अर्डर विवरण</h2>
       <form id="deliveryForm">
         <div class="input-group">
           <label>पूरा नाम *</label>
-          <input type="text" id="cName" class="input-field" placeholder="तपाईंको नाम लेख्नुहोस्">
+          <input type="text" id="cName" class="input-field" placeholder="तपाईंको नाम">
         </div>
 
         <div class="input-group">
           <label>डेलिभरी ठेगाना *</label>
-          <input type="text" id="cAddress" class="input-field" placeholder="घर वा अस्पतालको नाम">
+          <input type="text" id="cAddress" class="input-field" placeholder="टोल, चोक वा घर नम्बर">
         </div>
 
         <div class="input-group">
           <label>सम्पर्क नम्बर *</label>
-          <input type="tel" id="cPhone" class="input-field" placeholder="मोबाइल नम्बर">
+          <input type="tel" id="cPhone" class="input-field" placeholder="९८XXXXXXXX">
         </div>
 
         <div class="agreement-box">
-          <input type="checkbox" id="agreeRules" onchange="toggleButton()">
+          <input type="checkbox" id="agreeRules" onchange="toggleButton()" style="margin-top: 5px;">
           <label for="agreeRules" class="agreement-text">
-            म पुष्टि गर्दछु कि मसँग डाक्टरको वैध पुर्जी छ र म बिमल फार्मेसीका डेलिभरी सर्तहरूमा सहमत छु।
+            म पुष्टि गर्दछु कि मसँग वैध पुर्जी छ र म बिमल फार्मेसीका सर्तहरूमा सहमत छु।
           </label>
         </div>
         
@@ -134,26 +167,29 @@
     </div>
 
     <article class="order-guide" style="margin-top: 30px; border-left-color: var(--primary);">
-      <h2><i class="fas fa-truck"></i> डेलिभरी सम्बन्धी जानकारी</h2>
-      <p>हामी भरतपुर क्षेत्रभित्र २-४ घण्टा भित्र र चितवन बाहिर कुरियर सेवा मार्फत १-३ दिन भित्र औषधी डेलिभरी गर्दछौं।</p>
+      <h2><i class="fas fa-truck"></i> डेलिभरी र भुक्तानी</h2>
+      <p>हामी भरतपुर र आसपासका क्षेत्रमा छिटो सेवा प्रदान गर्दछौं।</p>
       <ul>
-        <li><strong>Home Delivery:</strong> सुरक्षित र गोप्य तरिकाले घरमै औषधी पुर्याइन्छ।</li>
-        <li><strong>Cold Chain:</strong> इन्जेक्सनहरू विशेष तापक्रममा (Ice Box) डेलिभरी गरिन्छ।</li>
-        <li><strong>Payment:</strong> अर्डर कन्फर्म भएपछि eSewa वा खल्ती मार्फत भुक्तानी गर्न सकिन्छ।</li>
+        <li><strong>Home Delivery:</strong> सुरक्षित र गोप्य प्याकेजिङ।</li>
+        <li><strong>Cold Chain:</strong> क्यान्सरका औषधीहरू विशेष आइस-बक्समा पठाइन्छ।</li>
+        <li><strong>भुक्तानी:</strong> eSewa, Khalti वा बैंक ट्रान्सफर मार्फत।</li>
       </ul>
     </article>
   </div>
 
   <footer>
     <div class="footer-links">
-      <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms</a> | <a href="contact.html">Contact</a>
+      <a href="privacy-policy.html">Privacy Policy</a> | 
+      <a href="terms.html">Terms</a> | 
+      <a href="contact.html">Contact</a>
     </div>
-    <p>&copy; 2026 Bimal Pharmacy. All Rights Reserved.</p>
+    <p style="margin-top: 15px;">&copy; २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
   </footer>
 
   <nav class="mobile-nav">
     <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
     <a href="order.html" class="nav-item active"><i class="fas fa-shopping-cart"></i> अर्डर</a>
+    <a href="medical-guide.html" class="nav-item"><i class="fas fa-book-medical"></i> गाइड</a>
     <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i> Emergency</a>
     <a href="contact.html" class="nav-item"><i class="fas fa-phone"></i> सम्पर्क</a>
   </nav>
@@ -175,11 +211,11 @@
         return;
       }
 
-      const message = "नमस्ते बिमल फार्मेसी, म औषधी अर्डर गर्न चाहन्छु।%0A" +
+      const message = "नमस्ते बिमल फार्मेसी, म औषधी अर्डर गर्न चाहन्छु।%0A%0A" +
                       "नाम: " + name + "%0A" +
                       "ठेगाना: " + address + "%0A" +
-                      "फोन: " + phone + "%0A" +
-                      "(म अब औषधीको पुर्जी पठाउँदै छु...)";
+                      "फोन: " + phone + "%0A%0A" +
+                      "(म अब औषधीको पुर्जी फोटो खिचेर पठाउँदै छु...)";
 
       window.location.href = "https://wa.me/9779855065327?text=" + message;
     }
