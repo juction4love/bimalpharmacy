@@ -3,124 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>धन्यवाद | बिमल फार्मेसी</title>
+  <title>धन्यवाद | बिमल फार्मेसी - भरतपुर-७, चितवन</title>
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta name="description" content="बिमल फार्मेसीलाई विश्वास गर्नुभएकोमा धन्यवाद। हामी तपाईँको सुस्वास्थ्यको कामना गर्दछौँ।">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
     :root {
       --primary: #2e7d32;
       --secondary: #1b5e20;
       --accent: #fbc02d;
-      --light-bg: #f4f7f6;
+      --light-bg: #f8faf9;
       --white: #ffffff;
-      --text-dark: #333;
-      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --text-dark: #2c3e50;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+    
     body { 
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-      line-height: 1.6; 
       background-color: var(--light-bg); 
       color: var(--text-dark);
-      padding-bottom: 70px;
+      line-height: 1.8; 
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header.text-header {
       background: var(--white);
       padding: 25px 15px;
       text-align: center;
-      border-bottom: 3px solid var(--primary);
-    }
-    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
-
-    .navbar {
-      background: var(--primary);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      border-bottom: 4px solid var(--primary);
       box-shadow: var(--shadow);
     }
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      color: var(--white);
-      text-decoration: none;
-      padding: 15px 20px;
-      display: block;
-      font-weight: 500;
-      transition: 0.3s;
-    }
+    header h1 { color: var(--primary); font-size: 2.2rem; }
 
     .main-content {
       max-width: 800px;
-      margin: 40px auto;
+      margin: 50px auto;
       padding: 0 20px;
       text-align: center;
+      flex: 1;
     }
 
     .status-card {
       background: var(--white);
-      padding: 40px 20px;
+      padding: 50px 30px;
       border-radius: 20px;
       box-shadow: var(--shadow);
       border-top: 8px solid var(--primary);
     }
 
     .success-icon {
-      font-size: 4.5rem;
+      font-size: 5rem;
       color: var(--primary);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       animation: bounce 2s infinite;
-      display: inline-block;
     }
 
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-      40% {transform: translateY(-15px);}
-    }
-
-    .quote-box {
-      font-style: italic;
-      color: #555;
-      font-size: 1.1rem;
-      margin: 20px 0;
-      padding: 15px;
-      border-top: 1px solid #eee;
-      border-bottom: 1px solid #eee;
-    }
-
-    .wish-text {
-      color: var(--secondary);
-      font-weight: 700;
-      font-size: 1.3rem;
-      margin: 20px 0;
+      40% {transform: translateY(-20px);}
     }
 
     .info-box {
-      background: #e8f5e9;
-      border-left: 5px solid var(--primary);
+      background: #f1f8e9;
+      border-left: 6px solid var(--primary);
       padding: 20px;
-      margin: 25px auto;
+      margin: 30px 0;
       text-align: left;
-      border-radius: 8px;
+      border-radius: 10px;
     }
 
-    /* NepalPay QR Section */
     .payment-qr {
-      margin-top: 30px;
-      padding: 20px;
-      border: 2px dashed var(--primary);
+      margin-top: 35px;
+      padding: 25px;
+      border: 2px dashed #ddd;
       border-radius: 15px;
       background: #fafafa;
     }
     .qr-image {
-      width: 220px;
+      width: 200px;
       height: auto;
       margin: 15px auto;
       display: block;
@@ -133,30 +97,32 @@
       gap: 15px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 30px;
+      margin-top: 40px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 25px;
+      gap: 10px;
+      padding: 15px 30px;
       border-radius: 50px;
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
+      font-size: 1rem;
     }
-    .btn-primary { background: var(--primary); color: white; }
-    .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
+    .btn-home { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3); }
+    .btn-home:hover { transform: translateY(-3px); background: var(--secondary); }
+    
+    .btn-wa { background: #25d366; color: white; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+    .btn-wa:hover { transform: translateY(-3px); background: #1ebe57; }
 
-    footer { background: #222; color: #bbb; padding: 40px 20px; text-align: center; margin-top: 50px; }
-    .mobile-call-box { position: fixed; bottom: 0; width: 100%; background: var(--primary); padding: 15px; text-align: center; z-index: 1000; }
-    .mobile-call-btn { color: white; text-decoration: none; font-weight: bold; }
+    footer { background: #1a1a1a; color: #999; padding: 40px 20px; text-align: center; }
 
     @media (max-width: 600px) {
-      .status-card h2 { font-size: 1.5rem; }
-      .wish-text { font-size: 1.1rem; }
-      .qr-image { width: 180px; }
+      .status-card { padding: 30px 15px; }
+      header h1 { font-size: 1.6rem; }
+      .btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -164,73 +130,59 @@
 
   <header class="text-header">
     <h1>बिमल फार्मेसी</h1>
-    <p>तपाईंको स्वास्थ्य, हाम्रो जिम्मेवारी</p>
+    <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र</p>
   </header>
-
-  <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html">गृहपृष्ठ</a></li>
-      <li><a href="order.html">थप अर्डर</a></li>
-      <li><a href="contact.html">सम्पर्क</a></li>
-    </ul>
-  </nav>
 
   <main class="main-content">
     
-    <div class="status-card">
-      <i class="fas fa-heart success-icon"></i>
-      <h2 style="color: var(--primary);">अर्डर प्राप्त भयो, धन्यवाद!</h2>
+    <article class="status-card">
+      <i class="fas fa-check-circle success-icon"></i>
+      <h2 style="color: var(--primary); margin-bottom: 15px;">हामीलाई विश्वास गर्नुभएकोमा धन्यवाद!</h2>
       
-      <p style="margin-top:10px;">
-        बिमल फार्मेसीसँग जोडिनुभएकोमा हामी हृदयदेखि नै कृतज्ञ छौं। <br>
-        तपाईंको विश्वास नै हाम्रो सफलता हो।
-      </p>
-
-      <div class="quote-box">
-        "स्वास्थ्य नै सबैभन्दा ठूलो उपहार हो, सन्तोष नै सबैभन्दा ठूलो धन हो।"
-      </div>
-
-      <p class="wish-text">
-        <i class="fas fa-hand-holding-heart"></i> बिरामीको शीघ्र स्वास्थ्य लाभको कामना गर्दछौं!
+      <p style="font-size: 1.1rem;">
+        तपाईंको अर्डर र विवरण सफलतापूर्वक प्राप्त भएको छ। <br>
+        हाम्रो उद्देश्य तपाईंलाई सधैं गुणस्तरीय औषधी र छिटो सेवा प्रदान गर्नु हो।
       </p>
 
       <div class="info-box">
-        <strong><i class="fas fa-clock"></i> अब के हुन्छ?</strong>
-        <p style="font-size: 0.95rem; margin-top: 8px;">
-          हाम्रो फार्मासिस्टले तपाईंको पुर्जी जाँच गरी १५-३० मिनेट भित्र औषधीको मूल्य र डेलिभरी समयबारे जानकारी दिन फोन गर्नुहुनेछ।
-        </p>
+        <h4 style="color: var(--secondary); margin-bottom: 10px;"><i class="fas fa-shipping-fast"></i> अबको प्रक्रिया के हुन्छ?</h4>
+        <ul style="margin-left: 20px; font-size: 0.95rem;">
+          <li>हाम्रा फर्मासिस्टले तपाईंको पुर्जी (Prescription) चेक गर्नुहुनेछ।</li>
+          <li>१५-३० मिनेट भित्र तपाईंलाई औषधीको मूल्य र उपलब्धता बारे फोन गरिनेछ।</li>
+          <li>भुक्तानी प्रक्रिया पूरा भएपछि औषधी डेलिभरीका लागि निस्कनेछ।</li>
+        </ul>
       </div>
 
       <div class="payment-qr">
-        <h4 style="color: var(--secondary); margin-bottom: 5px;">सुरक्षित डिजिटल भुक्तानी</h4>
-        <p style="font-size: 0.85rem; color: #666;">हामी <strong>NepalPay QR</strong> स्वीकार गर्दछौं:</p>
+        <h4 style="color: var(--secondary);">सुरक्षित डिजिटल भुक्तानी</h4>
+        <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">भुक्तानीका लागि <strong>NepalPay QR</strong> स्क्यान गर्नुहोस्:</p>
         
-        <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/nepalpay.jpeg" alt="Bimal Pharmacy NepalPay QR" class="qr-image">
+        <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/nepalpay.jpeg" alt="Bimal Pharmacy QR" class="qr-image">
         
-        <p style="font-size: 0.9rem; font-weight: bold; color: var(--primary);">बिमल फार्मेसी (९८५५०६५३२७)</p>
+        <p style="font-size: 0.95rem; font-weight: bold; color: var(--primary); margin-top: 10px;">बिमल फार्मेसी | ९८५५०६५३२७</p>
       </div>
 
       <div class="btn-group">
-        <a href="index.html" class="btn btn-outline">
-          <i class="fas fa-arrow-left"></i> गृहपृष्ठमा जानुहोस्
+        <a href="index.html" class="btn btn-home">
+          <i class="fas fa-home"></i> गृहपृष्ठमा फर्कनुहोस्
         </a>
-        <a href="https://wa.me/9779855065327" class="btn btn-primary" style="background:#25D366; border:none;">
-          <i class="fab fa-whatsapp"></i> व्हाट्सएपमा सम्पर्क गर्नुहोस्
+        <a href="https://wa.me/9779855065327" class="btn btn-wa">
+          <i class="fab fa-whatsapp"></i> व्हाट्सएपमा कुरा गर्नुहोस्
         </a>
       </div>
+    </article>
+
+    <div style="margin-top: 40px; color: #666; font-style: italic;">
+      <p>"स्वस्थ रहनुहोस्, खुसी रहनुहोस् - बिमल फार्मेसी परिवार"</p>
     </div>
 
   </main>
 
-  <div class="mobile-call-box">
-    <a href="tel:056593288" class="mobile-call-btn">
-      <i class="fas fa-phone-alt"></i> केही समस्या परे फोन गर्नुहोस्: ०५६-५९३२८८
-    </a>
-  </div>
-
   <footer>
-    <p>&copy; २०२६ बिमल फार्मेसी | भरतपुर-७, चितवन</p>
-    <p style="font-size: 0.8rem; margin-top: 10px;">तपाईंको छिटो निको हुने कामना गर्दछौं।</p>
+    <p>© २०२६ बिमल फार्मेसी | भरतपुर-७, चितवन</p>
+    <div style="margin-top: 10px;">
+      <a href="privacy-policy.html" style="color: #888; text-decoration: none; font-size: 0.8rem;">Privacy Policy</a>
+    </div>
   </footer>
 
 </body>
