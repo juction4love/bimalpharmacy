@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
+  <link rel="canonical" href="https://www.bimalpharmacy.com.np/knowledge.html" />
+
   <title>स्वास्थ्य तथा बिमा ज्ञान केन्द्र | बिमल फार्मेसी - IME Life Insurance Guide</title>
-  <meta name="description" content="स्वास्थ्य सल्लाह, औषधिको सही प्रयोग र IME Life Insurance सम्बन्धी सम्पूर्ण विस्तृत जानकारी। बिमल लामिछाने, भरतपुर-७ चितवन।">
-  <meta name="keywords" content="Health Knowledge Nepal, Insurance Guide Nepal, IME Life Bharatpur, Bimal Pharmacy Knowledge, जीवन बिमा जानकारी">
+  <meta name="description" content="स्वास्थ्य सल्लाह, औषधिको सही प्रयोग र IME Life Insurance सम्बन्धी विस्तृत जानकारी। बिमल लामिछानेबाट निःशुल्क बिमा परामर्श लिनुहोस्।">
+  <meta name="keywords" content="Health Knowledge Nepal, Insurance Guide Nepal, IME Life Bharatpur, Bimal Pharmacy Knowledge, जीवन बिमा जानकारी, बिमल लामिछाने">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -26,92 +28,53 @@
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
     body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 80px; }
 
-    /* --- Branding Header --- */
-    .branding-header {
-      background: var(--white); padding: 20px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary);
-    }
-    .logo-container img { height: 85px; width: 85px; border-radius: 50%; border: 3px solid var(--primary); padding: 4px; object-fit: cover; }
-    .brand-text h1 { color: var(--primary); font-size: 2.2rem; margin: 0; }
-    .brand-text p { font-size: 1rem; color: #555; font-weight: 600; }
+    /* Branding Header */
+    .branding-header { background: var(--white); padding: 20px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary); }
+    .logo-container img { height: 80px; width: 80px; border-radius: 50%; border: 3px solid var(--primary); padding: 4px; object-fit: cover; }
+    .brand-text h1 { color: var(--primary); font-size: 2rem; margin: 0; }
 
-    /* --- News Ticker --- */
-    .news-ticker { background: #FF0000; border-bottom: 2px solid #b71c1c; overflow: hidden; }
-    .news-ticker marquee { color: #FFFFFF; font-weight: 900; display: block; padding: 12px 0; font-size: 16px; }
-
-    /* --- Navigation --- */
+    /* Navigation */
     .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
     .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
-    .nav-links a { color: var(--white); text-decoration: none; padding: 18px 20px; display: block; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 18px; display: block; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
     .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
 
-    /* --- Content Sections --- */
+    /* Content Container */
     .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-    
-    .knowledge-card { 
-      background: var(--white); padding: 40px; border-radius: 15px; 
-      box-shadow: var(--shadow); margin-bottom: 35px; border-top: 6px solid var(--primary);
-      text-align: justify;
-    }
+    .knowledge-card { background: var(--white); padding: 40px; border-radius: 15px; box-shadow: var(--shadow); margin-bottom: 35px; border-top: 6px solid var(--primary); text-align: justify; }
     .insurance-card { border-top-color: var(--ime-red); }
 
-    h2 { color: var(--secondary); margin-bottom: 20px; font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }
-    h3 { margin: 25px 0 10px; color: var(--primary); font-size: 1.4rem; }
+    h2 { color: var(--secondary); margin-bottom: 20px; font-size: 1.7rem; display: flex; align-items: center; gap: 12px; }
+    h3 { margin: 25px 0 10px; color: var(--primary); font-size: 1.3rem; }
     p { margin-bottom: 15px; }
     ul { margin-bottom: 20px; padding-left: 20px; }
     li { margin-bottom: 10px; }
 
-    /* --- Agent Highlights --- */
-    .agent-box {
-      background: #fffafa; padding: 30px; border-radius: 12px; 
-      border: 2px dashed var(--ime-red); margin-top: 30px; text-align: center;
-    }
-    .agent-box h4 { color: var(--ime-red); font-size: 1.3rem; margin-bottom: 10px; }
-    .call-link { 
-      background: var(--ime-red); color: white; padding: 12px 25px; 
-      border-radius: 50px; text-decoration: none; display: inline-block;
-      font-weight: bold; margin-top: 10px; transition: 0.3s;
-    }
-    .call-link:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(237, 28, 36, 0.3); }
+    /* Highlight Box */
+    .highlight-box { background: #fffde7; padding: 20px; border-radius: 10px; border-left: 5px solid var(--accent); margin: 20px 0; }
 
-    /* --- Footer --- */
-    footer { background: #1a1a1a; color: #bbb; padding: 60px 20px 100px; text-align: center; }
-    .footer-links { margin: 25px 0; }
-    .footer-links a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
+    /* Agent Contact */
+    .agent-box { background: #fdf2f2; padding: 30px; border-radius: 15px; border: 2px dashed var(--ime-red); margin-top: 30px; text-align: center; }
+    .call-link { background: var(--ime-red); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 15px; transition: 0.3s; }
+    .call-link:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(237, 28, 36, 0.3); }
 
-    /* --- Mobile Navigation --- */
-    .mobile-nav {
-      position: fixed; bottom: 0; left: 0; width: 100%; background: var(--white);
-      display: grid; grid-template-columns: repeat(5, 1fr); padding: 12px 0;
-      border-top: 1px solid #ddd; z-index: 1001;
-    }
-    .nav-item { text-align: center; text-decoration: none; color: #666; font-size: 0.7rem; font-weight: bold; }
-    .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 5px; }
-    .nav-item.active { color: var(--primary); }
+    footer { background: #1a1a1a; color: #ccc; padding: 50px 20px 100px; text-align: center; }
+    .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 12px 0; border-top: 1px solid #ddd; z-index: 1001; }
+    .nav-item { text-align: center; text-decoration: none; color: #666; font-size: 0.7rem; }
+    .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 3px; }
 
-    @media (max-width: 600px) {
-      .knowledge-card { padding: 25px 20px; }
-      .brand-text h1 { font-size: 1.7rem; }
-    }
-    @media (min-width: 900px) { .mobile-nav { display: none; } }
+    @media (max-width: 600px) { .knowledge-card { padding: 25px; } .brand-text h1 { font-size: 1.5rem; } }
   </style>
 </head>
 <body>
 
   <header class="branding-header">
-    <div class="logo-container">
-      <img src="logo.svg" alt="Bimal Pharmacy">
-    </div>
+    <div class="logo-container"><img src="logo.svg" alt="Bimal Pharmacy"></div>
     <div class="brand-text">
       <h1>बिमल फार्मेसी</h1>
-      <p>स्वास्थ्य र भविष्य सुरक्षाको सारथी | भरतपुर-७</p>
+      <p>स्वास्थ्य र भविष्य सुरक्षाको सारथी | भरतपुर-७, चितवन</p>
     </div>
   </header>
-
-  <div class="news-ticker">
-    <marquee behavior="scroll" direction="left" scrollamount="6">
-      महत्वपूर्ण सूचना: बिमल फार्मेसीको बाँकी बक्यौता रकम भुक्तानी गरी सहयोग गरिदिनुहोला। हामी तपाईँको सुस्वास्थ्यको कामना गर्दछौँ।
-    </marquee>
-  </div>
 
   <nav class="navbar">
     <ul class="nav-links">
@@ -124,71 +87,67 @@
     </ul>
   </nav>
 
-  <div class="container">
+  <main class="container">
     
     <article class="knowledge-card">
-      <h2><i class="fas fa-hand-holding-medical"></i> स्वस्थ जीवनशैली र औषधिको सही प्रयोग</h2>
-      <p>स्वस्थ रहनु भनेको रोग नलाग्नु मात्र होइन, बरु सन्तुलित आहार, नियमित व्यायाम र सही औषधिको प्रयोगको संगम हो। बिमल फार्मेसीले बिरामीहरूलाई सधैँ सचेत रहन आग्रह गर्दछ।</p>
+      <h2><i class="fas fa-microscope"></i> औषधि र स्वास्थ्य: तपाईँले जान्नै पर्ने तथ्यहरू</h2>
+      <p>हामी धेरैजसो बिरामी हुँदा मात्र औषधिको बारेमा सोच्छौँ, तर औषधिको सही व्यवस्थापन र प्रयोगले मात्र पूर्ण स्वास्थ्य लाभ सम्भव छ। बिमल फार्मेसीले आफ्ना सेवाग्राहीहरूलाई निम्न वैज्ञानिक पक्षहरूमा ध्यान दिन अनुरोध गर्दछ:</p>
       
-      <h3>औषधि सेवनका स्वर्ण नियमहरू:</h3>
-      <p>धेरैजसो बिरामीहरूले औषधि सेवनमा गर्ने सामान्य गल्तीले गर्दा रोग निको हुन ढिलाइ हुन्छ। त्यसैले निम्न कुराहरूमा ध्यान दिनुहोस्:</p>
+      <h3>१. औषधि भण्डारण (Safe Storage)</h3>
+      <p>नेपालको मौसम अनुसार औषधिको गुणस्तर कायम राख्न भण्डारणले ठूलो भूमिका खेल्छ।</p>
       <ul>
-        <li><strong>समयको पालना:</strong> यदि डाक्टरले दिनको ३ पटक औषधि खान भन्नुभएको छ भने, हरेक ८ घण्टाको अन्तरालमा औषधि खानुहोस्।</li>
-        <li><strong>एन्टिबायोटिक कोर्स:</strong> सन्चो महसुस भए पनि एन्टिबायोटिकको कोर्स बिचमै नछोड्नुहोस्। यसले 'Antibiotic Resistance' निम्त्याउँछ।</li>
-        <li><strong>भण्डारण:</strong> औषधिलाई कहिल्यै पनि भान्साको नजिक वा ओसिलो ठाउँमा नराख्नुहोस्। यसले औषधिको रासायनिक संरचना बिगार्न सक्छ।</li>
+        <li><strong>प्रकाश र ओसिलोपन:</strong> धेरैजसो ट्याबलेटहरू प्रत्यक्ष घामको प्रकाश र बाथरुम जस्तो ओसिलो ठाउँबाट टाढा राख्नुपर्छ।</li>
+        <li><strong>बालबालिकाको पहुँच:</strong> औषधिलाई सधैँ उचाईमा वा लक गरिएको दराजमा राख्नुहोस्।</li>
+        <li><strong>कोल्ड-चेन:</strong> इन्सुलिन वा क्यान्सरका केही इन्जेक्सनहरू फ्रिजको ढोकामा होइन, भित्रपट्टि (२°C-८°C) मा राख्नुपर्छ।</li>
       </ul>
-      
-      <h3>नेपाली भान्सा र स्वास्थ्य:</h3>
-      <p>हाम्रो भान्सामा उपलब्ध हुने बेसार, अदुवा, र लसुनले प्राकृतिक रूपमा प्रतिरोधात्मक क्षमता बढाउँछन्। तर, गम्भीर समस्या हुँदा घरेलु उपचारमा मात्र भर नपरी तुरुन्त विशेषज्ञको सल्लाह लिनु नै बुद्धिमानी हुन्छ।</p>
+
+      <div class="highlight-box">
+        <strong>तपाईँलाई थाहा छ?</strong> म्याद नाघेको (Expired) औषधि केवल निष्प्रभावी मात्र हुँदैन, कतिपय अवस्थामा यो विषाक्त पनि हुन सक्छ। त्यसैले हरेक ३ महिनामा आफ्नो 'First Aid Box' चेक गर्नुहोस्।
+      </div>
     </article>
 
     <article class="knowledge-card insurance-card">
-      <h2><i class="fas fa-umbrella"></i> बिमा किन आवश्यक छ? (Insurance Literacy)</h2>
-      <p>भविष्य अनिश्चित छ। आजको सानो बचतले भोलिको ठूलो विपत्तिलाई टार्न सक्छ। नेपालमा बिमाको पहुँच बिस्तारै बढ्दै गए पनि धेरै मानिसहरू अझै यसको वास्तविक फाइदाबाट टाढा छन्।</p>
+      <h2><i class="fas fa-shield-alt"></i> IME Life Insurance: सुरक्षित भविष्यको योजना</h2>
+      <p>स्वास्थ्य उपचारको क्रममा आर्थिक अभावले उपचार नै रोकिने अवस्था नआओस् भन्नका लागि बिमा अपरिहार्य छ। बिमल लामिछाने (आधिकारिक अभिकर्ता) को रूपमा म तपाईँलाई **IME Life Insurance** का निम्न फाइदाहरू बुझ्न आग्रह गर्दछु:</p>
       
-      <h3>IME Life Insurance का विशेषताहरू:</h3>
-      <p>IME Life Insurance ले नेपाली नागरिकको आवश्यकता अनुसार विभिन्न बिमा योजनाहरू ल्याएको छ:</p>
-      <ul>
-        <li><strong>बाल शिक्षा योजना:</strong> तपाईँको बच्चाको उच्च शिक्षाका लागि सुरक्षित लगानी।</li>
-        <li><strong>घातक रोग बिमा:</strong> क्यान्सर, हृदयघात जस्ता २१ वटा घातक रोगहरू लागेमा उपचारका लागि एकमुष्ठ ५० लाखसम्मको रकम प्रदान गरिन्छ।</li>
-        <li><strong>आजीवन बिमा:</strong> परिवारको आर्थिक स्थायित्वका लागि सबैभन्दा उत्तम विकल्प।</li>
-      </ul>
-
-      <p>बिमा केवल मृत्यु पछिको लागि मात्र होइन, यो एउटा अनुशासित बचत पनि हो जसले बुढेसकालमा 'पेन्सन' को रूपमा काम गर्दछ।</p>
+      <h3>बिमा किन गर्ने? ५ मुख्य कारणहरू:</h3>
+      <ol style="margin-left: 20px; margin-bottom: 20px;">
+        <li><strong>आकस्मिक कोष:</strong> परिवारको कमाउने व्यक्तिको अनुपस्थितिमा पनि परिवारको जीवनस्तर कायम रहन्छ।</li>
+        <li><strong>घातक रोग सुरक्षा:</strong> क्यान्सर, मिर्गौला फेल वा हृदयघात जस्ता २१ वटा घातक रोग पहिचान हुने बित्तिकै एकमुष्ठ रकम पाइन्छ।</li>
+        <li><strong>बच्चाको भविष्य:</strong> 'IME Bal Shiksha' योजनाले तपाईँको बच्चाको उच्च शिक्षा र विवाहका लागि रकम सुनिश्चित गर्छ।</li>
+        <li><strong>कर छुट:</strong> नेपाल सरकारको नियम अनुसार बिमा शुल्क (Premium) तिर्दा आयकरमा ४०,००० सम्म छुट पाइन्छ।</li>
+        <li><strong>ऋण सुविधा:</strong> पोलिसी सुरु भएको ३ वर्षपछि तपाईँले सोही बिमाबाट सस्तो ब्याजदरमा ऋण लिन सक्नुहुन्छ।</li>
+      </ol>
 
       <div class="agent-box">
-        <h4>ब्यक्तिगत बिमा परामर्श आवश्यक छ?</h4>
-        <p>सही बिमा योजना छनोट गर्न मद्दतका लागि सम्पर्क गर्नुहोस्:</p>
+        <h4><i class="fas fa-user-tie"></i> व्यक्तिगत परामर्श लिनुहोस्</h4>
+        <p>तपाईँको आम्दानी र आवश्यकता अनुसारको बिमा योजना छनोट गर्न मद्दत गर्नेछु।</p>
         <p><strong>बिमल लामिछाने (IME Life Agent)</strong></p>
         <a href="tel:9855065327" class="call-link"><i class="fas fa-phone-alt"></i> ९८५५०६५३२७ मा कल गर्नुहोस्</a>
       </div>
     </article>
 
     <article class="knowledge-card">
-      <h2><i class="fas fa-briefcase-medical"></i> घरमा प्राथमिक उपचार (First Aid)</h2>
-      <p>आकस्मिक दुर्घटना जुनसुकै बेला हुन सक्छ। यस्तो बेला अस्पताल पुग्नु अघि दिइने प्राथमिक उपचारले मानिसको ज्यान जोगाउन सक्छ।</p>
-      <h3>महत्वपूर्ण टिप्स:</h3>
+      <h2><i class="fas fa-cloud-sun"></i> मौसमी रोगबाट बच्ने उपायहरू</h2>
+      <p>चितवन जस्तो तराई क्षेत्रमा लामखुट्टेबाट सर्ने डेंगु र मलेरियाको जोखिम सधैँ रहन्छ।</p>
       <ul>
-        <li><strong>पोलेको घाउमा:</strong> पोलेको ठाउँमा तुरुन्त धाराको चिसो पानी १०-१५ मिनेटसम्म खन्याउनुहोस्। घ्यू वा कोलगेट कहिल्यै नलगाउनुहोस्।</li>
-        <li><strong>रक्तस्राव हुँदा:</strong> घाउ भएको ठाउँलाई सफा कपडाले जोडले थिचेर रगत रोक्ने प्रयास गर्नुहोस् र घाउ भएको भागलाई मुटुको सतहभन्दा माथि राख्नुहोस्।</li>
-        <li><strong>झाडापखाला:</strong> शरीरमा पानीको कमी हुन नदिन जीवनजल (ORS) को निरन्तर सेवन गराउनुहोस्।</li>
+        <li>घर वरिपरि पानी जम्न नदिनुहोस्।</li>
+        <li>झुलको प्रयोग गर्नुहोस् वा लामखुट्टे भगाउने क्रिम लगाउनुहोस्।</li>
+        <li>ज्वरो आएमा जथाभावी 'Antibiotics' नखानुहोस्, तुरुन्त रगत परीक्षण गराउनुहोस्।</li>
       </ul>
     </article>
 
-  </div>
+  </main>
 
   <footer>
-    <div class="brand-text">
-      <h2 style="color: var(--primary);">बिमल फार्मेसी</h2>
-      <p>भरतपुर-७, चितवन, नेपाल</p>
+    <div style="margin-bottom: 20px;">
+      <strong style="color:white; font-size:1.5rem;">बिमल फार्मेसी</strong><br>
+      भरतपुर-७, चितवन, नेपाल | DDA Reg: १७२२३/२०६३
     </div>
     <div class="footer-links">
-      <a href="privacy-policy.html">Privacy Policy</a> | 
-      <a href="terms.html">Terms & Conditions</a> | 
-      <a href="disclaimer.html">Disclaimer</a>
+      <a href="privacy-policy.html">Privacy Policy</a> | <a href="disclaimer.html">Disclaimer</a> | <a href="contact.html">सम्पर्क</a>
     </div>
-    <p>&copy; 2026 Bimal Pharmacy. All Rights Reserved.</p>
-    <p style="font-size: 0.75rem; color: #666;">Site Managed by: Bimal Lamichhane</p>
+    <p style="margin-top: 20px;">© २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
   </footer>
 
   <nav class="mobile-nav">
