@@ -29,15 +29,25 @@
     body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 80px; }
 
     /* Branding Header */
-    .branding-header { background: var(--white); padding: 20px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary); }
-    .logo-container img { height: 80px; width: 80px; border-radius: 50%; border: 3px solid var(--primary); padding: 4px; object-fit: cover; }
-    .brand-text h1 { color: var(--primary); font-size: 2rem; margin: 0; }
+    .branding-header { background: var(--white); padding: 15px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary); box-shadow: var(--shadow); }
+    .logo-container img { height: 65px; width: 65px; border-radius: 50%; border: 2px solid var(--primary); padding: 2px; object-fit: cover; }
+    .brand-text h1 { color: var(--primary); font-size: 1.8rem; margin: 0; }
+    .brand-text p { font-size: 0.85rem; color: #555; font-weight: 600; }
 
-    /* Navigation */
+    /* Navigation & Dropdown */
     .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
     .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
+    .nav-links li { position: relative; }
     .nav-links a { color: var(--white); text-decoration: none; padding: 15px 18px; display: block; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
     .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
+
+    .dropdown-content {
+      display: none; position: absolute; background-color: var(--white); min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; border-radius: 0 0 8px 8px;
+    }
+    .dropdown-content a { color: var(--text-dark) !important; padding: 12px 16px; border-bottom: 1px solid #eee; }
+    .dropdown-content a:hover { background-color: #f1f1f1; color: var(--primary) !important; }
+    .dropdown:hover .dropdown-content { display: block; }
 
     /* Content Container */
     .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
@@ -47,7 +57,7 @@
     h2 { color: var(--secondary); margin-bottom: 20px; font-size: 1.7rem; display: flex; align-items: center; gap: 12px; }
     h3 { margin: 25px 0 10px; color: var(--primary); font-size: 1.3rem; }
     p { margin-bottom: 15px; }
-    ul { margin-bottom: 20px; padding-left: 20px; }
+    ul, ol { margin-bottom: 20px; padding-left: 20px; }
     li { margin-bottom: 10px; }
 
     /* Highlight Box */
@@ -59,11 +69,19 @@
     .call-link:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(237, 28, 36, 0.3); }
 
     footer { background: #1a1a1a; color: #ccc; padding: 50px 20px 100px; text-align: center; }
-    .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 12px 0; border-top: 1px solid #ddd; z-index: 1001; }
+    
+    /* Mobile Navigation Bar */
+    .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 12px 0; border-top: 1px solid #ddd; z-index: 1001; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); }
     .nav-item { text-align: center; text-decoration: none; color: #666; font-size: 0.7rem; }
+    .nav-item.active { color: var(--primary); font-weight: bold; }
     .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 3px; }
 
-    @media (max-width: 600px) { .knowledge-card { padding: 25px; } .brand-text h1 { font-size: 1.5rem; } }
+    @media (max-width: 768px) {
+      .nav-links a { padding: 12px 10px; font-size: 0.8rem; }
+      .dropdown-content { position: static; width: 100%; box-shadow: none; background: #f9f9f9; }
+      .knowledge-card { padding: 25px; }
+      .brand-text h1 { font-size: 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -81,8 +99,16 @@
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="medical-guide.html">औषधी गाइड</a></li>
       <li><a href="knowledge.html" class="active">स्वास्थ्य ज्ञान</a></li>
-      <li><a href="service.html">सेवाहरू</a></li>
-      <li><a href="notice.html">सूचना</a></li>
+      <li class="dropdown">
+        <a href="#">थप जानकारी <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="about.html">हाम्रो बारेमा</a></li>
+          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
+          <li><a href="insurance.html">बीमा सुविधा</a></li>
+          <li><a href="notice.html">सूचना</a></li>
+        </ul>
+      </li>
+      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
@@ -90,38 +116,36 @@
   <main class="container">
     
     <article class="knowledge-card">
-      <h2><i class="fas fa-microscope"></i> औषधि र स्वास्थ्य: तपाईँले जान्नै पर्ने तथ्यहरू</h2>
-      <p>हामी धेरैजसो बिरामी हुँदा मात्र औषधिको बारेमा सोच्छौँ, तर औषधिको सही व्यवस्थापन र प्रयोगले मात्र पूर्ण स्वास्थ्य लाभ सम्भव छ। बिमल फार्मेसीले आफ्ना सेवाग्राहीहरूलाई निम्न वैज्ञानिक पक्षहरूमा ध्यान दिन अनुरोध गर्दछ:</p>
+      <h2><i class="fas fa-microscope"></i> औषधि र स्वास्थ्य: जान्नै पर्ने तथ्यहरू</h2>
+      <p>औषधिको सही व्यवस्थापन र प्रयोगले मात्र पूर्ण स्वास्थ्य लाभ सम्भव छ। बिमल फार्मेसीले आफ्ना सेवाग्राहीहरूलाई निम्न पक्षहरूमा ध्यान दिन अनुरोध गर्दछ:</p>
       
       <h3>१. औषधि भण्डारण (Safe Storage)</h3>
-      <p>नेपालको मौसम अनुसार औषधिको गुणस्तर कायम राख्न भण्डारणले ठूलो भूमिका खेल्छ।</p>
       <ul>
-        <li><strong>प्रकाश र ओसिलोपन:</strong> धेरैजसो ट्याबलेटहरू प्रत्यक्ष घामको प्रकाश र बाथरुम जस्तो ओसिलो ठाउँबाट टाढा राख्नुपर्छ।</li>
+        <li><strong>प्रकाश र ओसिलोपन:</strong> ट्याबलेटहरू प्रत्यक्ष घामको प्रकाश र ओसिलो ठाउँबाट टाढा राख्नुपर्छ।</li>
         <li><strong>बालबालिकाको पहुँच:</strong> औषधिलाई सधैँ उचाईमा वा लक गरिएको दराजमा राख्नुहोस्।</li>
-        <li><strong>कोल्ड-चेन:</strong> इन्सुलिन वा क्यान्सरका केही इन्जेक्सनहरू फ्रिजको ढोकामा होइन, भित्रपट्टि (२°C-८°C) मा राख्नुपर्छ।</li>
+        <li><strong>कोल्ड-चेन:</strong> इन्सुलिन वा क्यान्सरका इन्जेक्सनहरू फ्रिजको भित्रपट्टि (२°C-८°C) मा राख्नुपर्छ।</li>
       </ul>
 
       <div class="highlight-box">
-        <strong>तपाईँलाई थाहा छ?</strong> म्याद नाघेको (Expired) औषधि केवल निष्प्रभावी मात्र हुँदैन, कतिपय अवस्थामा यो विषाक्त पनि हुन सक्छ। त्यसैले हरेक ३ महिनामा आफ्नो 'First Aid Box' चेक गर्नुहोस्।
+        <strong>तपाईँलाई थाहा छ?</strong> म्याद नाघेको (Expired) औषधि विषाक्त हुन सक्छ। हरेक ३ महिनामा आफ्नो 'First Aid Box' चेक गर्नुहोस्।
       </div>
     </article>
 
     <article class="knowledge-card insurance-card">
-      <h2><i class="fas fa-shield-alt"></i> IME Life Insurance: सुरक्षित भविष्यको योजना</h2>
-      <p>स्वास्थ्य उपचारको क्रममा आर्थिक अभावले उपचार नै रोकिने अवस्था नआओस् भन्नका लागि बिमा अपरिहार्य छ। बिमल लामिछाने (आधिकारिक अभिकर्ता) को रूपमा म तपाईँलाई **IME Life Insurance** का निम्न फाइदाहरू बुझ्न आग्रह गर्दछु:</p>
+      <h2><i class="fas fa-shield-alt"></i> IME Life Insurance: सुरक्षित भविष्य</h2>
+      <p>आर्थिक अभावले उपचार नरोकियोस् भन्नका लागि बिमा अपरिहार्य छ। बिमल लामिछाने (आधिकारिक अभिकर्ता) बाट **IME Life Insurance** का फाइदाहरू बुझ्नुहोस्:</p>
       
       <h3>बिमा किन गर्ने? ५ मुख्य कारणहरू:</h3>
-      <ol style="margin-left: 20px; margin-bottom: 20px;">
-        <li><strong>आकस्मिक कोष:</strong> परिवारको कमाउने व्यक्तिको अनुपस्थितिमा पनि परिवारको जीवनस्तर कायम रहन्छ।</li>
-        <li><strong>घातक रोग सुरक्षा:</strong> क्यान्सर, मिर्गौला फेल वा हृदयघात जस्ता २१ वटा घातक रोग पहिचान हुने बित्तिकै एकमुष्ठ रकम पाइन्छ।</li>
-        <li><strong>बच्चाको भविष्य:</strong> 'IME Bal Shiksha' योजनाले तपाईँको बच्चाको उच्च शिक्षा र विवाहका लागि रकम सुनिश्चित गर्छ।</li>
-        <li><strong>कर छुट:</strong> नेपाल सरकारको नियम अनुसार बिमा शुल्क (Premium) तिर्दा आयकरमा ४०,००० सम्म छुट पाइन्छ।</li>
-        <li><strong>ऋण सुविधा:</strong> पोलिसी सुरु भएको ३ वर्षपछि तपाईँले सोही बिमाबाट सस्तो ब्याजदरमा ऋण लिन सक्नुहुन्छ।</li>
+      <ol>
+        <li><strong>आकस्मिक कोष:</strong> परिवारको कमाउने व्यक्तिको अनुपस्थितिमा पनि आर्थिक सुरक्षा।</li>
+        <li><strong>घातक रोग सुरक्षा:</strong> क्यान्सर, मिर्गौला फेल जस्ता २१ घातक रोगमा एकमुष्ठ रकम।</li>
+        <li><strong>बच्चाको भविष्य:</strong> उच्च शिक्षा र विवाहका लागि रकम सुनिश्चित।</li>
+        <li><strong>कर छुट:</strong> आयकरमा ४०,००० सम्मको वार्षिक छुट।</li>
+        <li><strong>ऋण सुविधा:</strong> पोलिसीको आधारमा सस्तो ब्याजदरमा ऋण लिन सकिने।</li>
       </ol>
 
       <div class="agent-box">
         <h4><i class="fas fa-user-tie"></i> व्यक्तिगत परामर्श लिनुहोस्</h4>
-        <p>तपाईँको आम्दानी र आवश्यकता अनुसारको बिमा योजना छनोट गर्न मद्दत गर्नेछु।</p>
         <p><strong>बिमल लामिछाने (IME Life Agent)</strong></p>
         <a href="tel:9855065327" class="call-link"><i class="fas fa-phone-alt"></i> ९८५५०६५३२७ मा कल गर्नुहोस्</a>
       </div>
@@ -129,11 +153,11 @@
 
     <article class="knowledge-card">
       <h2><i class="fas fa-cloud-sun"></i> मौसमी रोगबाट बच्ने उपायहरू</h2>
-      <p>चितवन जस्तो तराई क्षेत्रमा लामखुट्टेबाट सर्ने डेंगु र मलेरियाको जोखिम सधैँ रहन्छ।</p>
+      <p>चितवनमा डेंगु र मलेरियाको जोखिम सधैँ रहन्छ। बच्नका लागि:</p>
       <ul>
         <li>घर वरिपरि पानी जम्न नदिनुहोस्।</li>
-        <li>झुलको प्रयोग गर्नुहोस् वा लामखुट्टे भगाउने क्रिम लगाउनुहोस्।</li>
-        <li>ज्वरो आएमा जथाभावी 'Antibiotics' नखानुहोस्, तुरुन्त रगत परीक्षण गराउनुहोस्।</li>
+        <li>झुल वा लामखुट्टे भगाउने क्रिमको प्रयोग गर्नुहोस्।</li>
+        <li>ज्वरो आएमा जथाभावी औषधि नखाई रगत परीक्षण गराउनुहोस्।</li>
       </ul>
     </article>
 
@@ -142,12 +166,14 @@
   <footer>
     <div style="margin-bottom: 20px;">
       <strong style="color:white; font-size:1.5rem;">बिमल फार्मेसी</strong><br>
-      भरतपुर-७, चितवन, नेपाल | DDA Reg: १७२२३/२०६३
+      भरतपुर-७, चितवन | DDA Reg: १७२२३/२०६३
     </div>
-    <div class="footer-links">
-      <a href="privacy-policy.html">Privacy Policy</a> | <a href="disclaimer.html">Disclaimer</a> | <a href="contact.html">सम्पर्क</a>
+    <div class="footer-links" style="margin-top: 15px;">
+      <a href="privacy-policy.html" style="color: #ccc; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
+      <a href="disclaimer.html" style="color: #ccc; text-decoration: none; margin: 0 10px;">Disclaimer</a> | 
+      <a href="contact.html" style="color: #ccc; text-decoration: none; margin: 0 10px;">सम्पर्क</a>
     </div>
-    <p style="margin-top: 20px;">© २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <p style="margin-top: 20px; font-size: 0.8rem;">© २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
   </footer>
 
   <nav class="mobile-nav">
