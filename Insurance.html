@@ -19,19 +19,33 @@
       --white: #ffffff;
       --text-dark: #2c3e50;
       --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --accent: #fbc02d;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
     body { background-color: var(--bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 80px; }
 
-    /* Navigation */
-    .app-header { background: var(--white); padding: 15px 5%; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; }
-    .brand { font-size: 1.5rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-    .brand img { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--primary); }
+    /* Header & Navbar */
+    .app-header { background: var(--white); padding: 15px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+    .logo-container img { height: 60px; width: 60px; border-radius: 50%; border: 2px solid var(--primary); padding: 2px; object-fit: cover; }
+    .brand-text h1 { color: var(--primary); font-size: 1.6rem; margin: 0; }
+
+    .navbar { background: var(--primary); position: sticky; top: 0; z-index: 999; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
+    .nav-links li { position: relative; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 20px; display: block; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
+
+    .dropdown-content {
+      display: none; position: absolute; background-color: var(--white); min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; border-radius: 0 0 8px 8px;
+    }
+    .dropdown-content a { color: var(--text-dark) !important; padding: 12px 16px; border-bottom: 1px solid #eee; }
+    .dropdown:hover .dropdown-content { display: block; }
 
     /* Banner */
     .agent-banner { background: linear-gradient(135deg, var(--ime-red), #b71c1c); color: white; padding: 60px 20px 80px; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
-    .agent-banner h1 { font-size: 2.2rem; margin-bottom: 10px; }
+    .agent-banner h2 { font-size: 2.2rem; margin-bottom: 10px; }
     .phone-link { color: #ffeb3b; text-decoration: none; font-size: 1.8rem; font-weight: 900; }
 
     .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
@@ -44,7 +58,7 @@
 
     .input-group { margin-bottom: 15px; }
     .input-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #555; }
-    .input-group input, .input-group select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; outline: none; }
+    .input-group input, .input-group select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; }
     
     .btn-action { width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
     .btn-action:hover { background: var(--secondary); transform: translateY(-2px); }
@@ -52,7 +66,6 @@
     /* Content Area */
     .guide-content { background: white; padding: 40px; border-radius: 15px; margin-top: 30px; box-shadow: var(--shadow); text-align: justify; }
     .guide-content h2 { color: var(--primary); margin: 35px 0 15px; border-left: 6px solid var(--ime-red); padding-left: 15px; }
-    .guide-content p { margin-bottom: 15px; }
 
     /* Tables */
     .table-container { overflow-x: auto; margin: 20px 0; border-radius: 10px; border: 1px solid #eee; }
@@ -64,31 +77,55 @@
     .contact-form-section { margin-top: 50px; padding: 35px; background: #e8f5e9; border-radius: 20px; border: 2px solid var(--primary); }
 
     footer { background: #1a1a1a; color: #999; padding: 40px 20px 100px; text-align: center; }
-    .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 10px 0; border-top: 1px solid #eee; z-index: 1001; }
-    .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.7rem; }
-    .nav-item.active { color: var(--ime-red); }
+    
+    /* Mobile Nav */
+    .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 10px 0; border-top: 1px solid #eee; z-index: 1001; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); }
+    .nav-item { text-align: center; text-decoration: none; color: #777; font-size: 0.7rem; }
+    .nav-item.active { color: var(--ime-red); font-weight: bold; }
     .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 3px; }
 
-    @media (max-width: 600px) { .guide-content { padding: 25px; } .agent-banner h1 { font-size: 1.6rem; } }
+    @media (max-width: 768px) {
+      .nav-links a { padding: 12px 10px; font-size: 0.8rem; }
+      .dropdown-content { position: static; width: 100%; box-shadow: none; background: #f9f9f9; }
+      .agent-banner h2 { font-size: 1.6rem; }
+    }
   </style>
 </head>
 <body>
 
   <header class="app-header">
-    <div class="brand">
-      <img src="logo.svg" alt="Bimal Pharmacy">
-      <span>Bimal Pharmacy</span>
+    <div class="logo-container"><img src="logo.svg" alt="Bimal Pharmacy"></div>
+    <div class="brand-text">
+      <h1>बिमल फार्मेसी</h1>
     </div>
   </header>
 
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">गृहपृष्ठ</a></li>
+      <li><a href="medical-guide.html">औषधी गाइड</a></li>
+      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
+      <li class="dropdown">
+        <a href="#" class="active">थप जानकारी <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="about.html">हाम्रो बारेमा</a></li>
+          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
+          <li><a href="insurance.html">बीमा सुविधा</a></li>
+          <li><a href="notice.html">सूचना</a></li>
+        </ul>
+      </li>
+      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
+      <li><a href="contact.html">सम्पर्क</a></li>
+    </ul>
+  </nav>
+
   <div class="agent-banner">
     <p>IME Life Insurance आधिकारिक अभिकर्ता</p>
-    <h1>बिमल लामिछाने</h1>
+    <h2>बिमल लामिछाने</h2>
     <a href="tel:9855065327" class="phone-link"><i class="fas fa-phone-alt"></i> 9855065327</a>
   </div>
 
   <div class="container">
-    
     <div class="calc-card">
       <div class="calc-tabs">
         <button class="tab-btn active" onclick="switchCalc('coverage')">बिमांक क्याल्कुलेटर</button>
@@ -128,23 +165,21 @@
 
     <article class="guide-content">
       <h1>IME Life Insurance: सुरक्षा र समृद्धिको नयाँ ढोका</h1>
-      <p>नेपालको बिमा बजारमा <strong>IME Life Insurance</strong> एक विश्वसनीय नाम हो। बिमा केवल जोखिम बहन गर्ने माध्यम मात्र नभई यो एक अनुशासित बचत पनि हो। भरतपुर-७ चितवनमा अवस्थित बिमल फार्मेसीका संचालक <strong>बिमल लामिछाने</strong> आधिकारिक अभिकर्ताको रूपमा तपाईँलाई सही बिमा योजना छनोट गर्न मद्दत गर्नुहुन्छ।</p>
+      <p>नेपालको बिमा बजारमा <strong>IME Life Insurance</strong> एक विश्वसनीय नाम हो। भरतपुर-७ चितवनमा अवस्थित बिमल फार्मेसीका संचालक <strong>बिमल लामिछाने</strong> आधिकारिक अभिकर्ताको रूपमा तपाईँलाई सही बिमा योजना छनोट गर्न मद्दत गर्नुहुन्छ।</p>
 
-      <h2>१. बिमा किन गर्ने? (The Power of Insurance)</h2>
-      <p>हामीले कमाएको पैसा बैंकमा राख्दा केवल ब्याज आउँछ, तर बिमा गर्दा सुरक्षा र बचत दुवै सुनिश्चित हुन्छ। यदि बिमितलाई केही भवितव्य आइलागेमा बिमा कम्पनीले परिवारलाई आर्थिक क्षतिपूर्ति प्रदान गर्दछ।</p>
+      <h2>१. बिमा किन गर्ने?</h2>
+      <p>बिमा गर्दा सुरक्षा र बचत दुवै सुनिश्चित हुन्छ। यसले परिवारको आर्थिक भविष्य सुरक्षित गर्दछ।</p>
       <ul>
-        <li><strong>आर्थिक सुरक्षा:</strong> परिवारको मूलीको अनुपस्थितिमा पनि सन्तानको शिक्षा र भविष्यमा बाधा पुग्दैन।</li>
-        <li><strong>पेन्सनको व्यवस्था:</strong> बुढेसकालमा नियमित आम्दानीको स्रोत बन्छ।</li>
-        <li><strong>घातक रोग सुरक्षा:</strong> क्यान्सर जस्ता २१ घातक रोगहरू लागेमा उपचारका लागि एकमुष्ठ रकम पाइन्छ।</li>
+        <li><strong>आर्थिक सुरक्षा:</strong> परिवारको मूलीको अनुपस्थितिमा पनि आर्थिक संकट आउँदैन।</li>
+        <li><strong>घातक रोग सुरक्षा:</strong> क्यान्सर जस्ता घातक रोग लागेमा उपचारका लागि एकमुष्ठ रकम।</li>
       </ul>
 
       <h2>२. बोनस दर (Bonus Rates 2026)</h2>
-      <p>IME Life Insurance ले आफ्ना ग्राहकहरूलाई प्रत्येक वर्ष आकर्षक बोनस प्रदान गर्दै आएको छ। हालको अनुमानित बोनस दर तलको तालिकामा देखाइएको छ:</p>
       <div class="table-container">
         <table>
           <thead>
             <tr>
-              <th>बिमा योजना (Plan Type)</th>
+              <th>बिमा योजना</th>
               <th>अवधि (Years)</th>
               <th>बोनस (प्रति हजार)</th>
             </tr>
@@ -156,21 +191,11 @@
           </tbody>
         </table>
       </div>
-
-      <h2>३. दाबी प्रक्रिया र आवश्यक कागजातहरू</h2>
-      <p>बिमा दाबी गर्दा झन्झट नहोस् भन्नका लागि यी कागजातहरू सुरक्षित राख्नुहोस्:</p>
-      <ul>
-        <li>सक्कली बिमालेख (Original Policy Document)</li>
-        <li>बिमा गर्ने व्यक्तिको नागरिकता र फोटो</li>
-        <li>हकवालाको पहिचान पत्र (नागरिकता र नाता प्रमाणित)</li>
-        <li>मृत्यु भएको खण्डमा वडा कार्यालयको मृत्यु दर्ता र मेडिकल रिपोर्ट</li>
-      </ul>
     </article>
 
     <div class="contact-form-section" id="contactForm">
       <h2>निःशुल्क बिमा परामर्श लिनुहोस्</h2>
-      <p>बिमल लामिछाने (आधिकारिक अभिकर्ता) सँग परामर्शका लागि विवरण भर्नुहोस्:</p>
-      <form action="https://formspree.io/f/xblddqwd" method="POST" style="margin-top: 20px;">
+      <form action="https://formspree.io/f/xblddqwd" method="POST">
         <div class="input-group">
           <label>पूरा नाम:</label>
           <input type="text" name="name" required placeholder="Full Name">
@@ -182,7 +207,6 @@
         <button type="submit" class="btn-action" style="background: var(--ime-red);">पठाउनुहोस्</button>
       </form>
     </div>
-
   </div>
 
   <nav class="mobile-nav">
@@ -190,7 +214,7 @@
     <a href="medical-guide.html" class="nav-item"><i class="fas fa-book-medical"></i> गाइड</a>
     <a href="order.html" class="nav-item"><i class="fas fa-shopping-cart"></i> अर्डर</a>
     <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i> Emergency</a>
-    <a href="contact.html" class="nav-item"><i class="fas fa-user"></i> सम्पर्क</a>
+    <a href="insurance.html" class="nav-item active"><i class="fas fa-shield-alt"></i> बीमा</a>
   </nav>
 
   <script>
