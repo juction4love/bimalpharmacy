@@ -13,58 +13,78 @@
   <style>
     :root {
       --primary: #2e7d32;
+      --secondary: #1b5e20;
       --danger: #d32f2f;
       --accent: #fbc02d;
       --bg: #f4f7f6;
       --white: #ffffff;
-      --shadow: 0 4px 15px rgba(0,0,0,0.1);
+      --text-dark: #2c3e50;
+      --shadow: 0 10px 25px rgba(0,0,0,0.05);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-    body { background-color: var(--bg); color: #333; padding-bottom: 100px; line-height: 1.8; }
+    body { background-color: var(--bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 100px; }
 
-    /* Header */
-    .app-header { background: #fff; padding: 15px 5%; border-bottom: 5px solid var(--primary); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
-    .brand-section { display: flex; align-items: center; gap: 15px; }
-    .logo-container img { height: 60px; width: 60px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover; }
-    .brand-text h1 { color: var(--primary); font-size: 1.5rem; }
+    /* Header & Branding */
+    .app-header { background: var(--white); padding: 15px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+    .logo-container img { height: 60px; width: 60px; border-radius: 50%; border: 2px solid var(--primary); padding: 2px; object-fit: cover; }
+    .brand-text h1 { color: var(--primary); font-size: 1.6rem; margin: 0; }
+    .brand-text p { font-size: 0.85rem; color: #555; font-weight: 600; }
 
-    /* Navbar */
-    .navbar { background: var(--primary); padding: 5px 0; }
+    /* Navbar & Dropdown */
+    .navbar { background: var(--primary); position: sticky; top: 0; z-index: 999; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
     .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
-    .nav-links a { color: white; text-decoration: none; padding: 10px 15px; font-size: 0.85rem; font-weight: bold; }
-    .nav-links a.active { color: var(--accent); }
+    .nav-links li { position: relative; }
+    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 20px; display: block; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--white);
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 0 0 8px 8px;
+    }
+    .dropdown-content a { color: var(--text-dark) !important; padding: 12px 16px; border-bottom: 1px solid #eee; }
+    .dropdown-content a:hover { background-color: #f1f1f1; color: var(--primary) !important; }
+    .dropdown:hover .dropdown-content { display: block; }
 
     .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
 
-    /* First Aid Cards */
+    /* Aid Cards */
     .aid-card { background: var(--white); border-radius: 15px; padding: 30px; margin-bottom: 30px; border-left: 8px solid var(--danger); box-shadow: var(--shadow); text-align: justify; }
     .aid-card h2 { color: var(--danger); margin-bottom: 15px; font-size: 1.6rem; display: flex; align-items: center; gap: 10px; }
     .aid-card h3 { color: var(--primary); margin: 20px 0 10px; font-size: 1.2rem; }
     .aid-card ul { margin-left: 20px; margin-bottom: 15px; }
     .aid-card li { margin-bottom: 8px; }
 
-    /* Directory Styling */
+    /* Directory */
     .category-title { background: var(--primary); color: white; padding: 12px 20px; margin: 40px 0 20px; border-radius: 5px; font-weight: bold; }
     .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-    .contact-card { background: white; padding: 15px 20px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    .call-btn { background: var(--danger); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+    .contact-card { background: white; padding: 15px 20px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee; }
+    .call-btn { background: var(--danger); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
+    .call-btn:hover { background: var(--primary); transform: scale(1.1); }
 
-    /* Blood Table */
-    .blood-section { background: white; padding: 30px; border-radius: 15px; margin-top: 40px; border: 1px solid #ddd; }
+    /* Table */
+    .blood-section { background: white; padding: 30px; border-radius: 15px; margin-top: 40px; border: 1px solid #ddd; box-shadow: var(--shadow); }
     .table-responsive { overflow-x: auto; margin-top: 15px; }
     table { width: 100%; border-collapse: collapse; min-width: 500px; }
     table th, table td { padding: 12px; border: 1px solid #eee; text-align: left; }
     table th { background: #fdf2f2; color: var(--danger); }
 
-    /* Footer & Nav */
-    footer { background: #1a1a1a; color: #999; padding: 50px 20px 110px; text-align: center; }
-    .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 10px 0; border-top: 1px solid #eee; z-index: 1001; }
-    .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.75rem; }
-    .nav-item.active { color: var(--danger); }
+    /* Footer & Mobile Nav */
+    footer { background: #1a1a1a; color: #999; padding: 60px 20px 110px; text-align: center; }
+    .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 10px 0; border-top: 1px solid #eee; z-index: 1001; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); }
+    .nav-item { text-align: center; text-decoration: none; color: #777; font-size: 0.75rem; }
+    .nav-item.active { color: var(--danger); font-weight: bold; }
     .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 3px; }
 
-    @media (max-width: 600px) { .aid-card { padding: 20px; } .brand-text h1 { font-size: 1.2rem; } }
+    @media (max-width: 768px) {
+      .nav-links a { padding: 12px 10px; font-size: 0.8rem; }
+      .dropdown-content { position: static; width: 100%; box-shadow: none; background: #f9f9f9; }
+    }
   </style>
 </head>
 <body>
@@ -84,40 +104,43 @@
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="medical-guide.html">औषधी गाइड</a></li>
       <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-      <li><a href="service.html">सेवाहरू</a></li>
-      <li><a href="emergency.html" class="active">Emergency</a></li>
+      <li class="dropdown">
+        <a href="#" class="active">थप जानकारी <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="about.html">हाम्रो बारेमा</a></li>
+          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
+          <li><a href="insurance.html">बीमा सुविधा</a></li>
+          <li><a href="notice.html">सूचना</a></li>
+        </ul>
+      </li>
+      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
   <div class="container">
-
     <article class="aid-card">
       <h2><i class="fas fa-first-aid"></i> प्राथमिक उपचार: जीवन जोगाउने महत्वपूर्ण सुझाव</h2>
-      <p>दुर्घटना वा आकस्मिक बिमारीको समयमा अस्पताल पुग्नु अघि गरिने प्राथमिक उपचारले बिरामीको ज्यान जोगाउन निर्णायक भूमिका खेल्छ। बिमल फार्मेसी तपाईँलाई निम्न ३ महत्वपूर्ण अवस्थामा गरिने उपचारबारे जानकारी दिन्छ:</p>
-
-      
+      <p>दुर्घटना वा आकस्मिक बिमारीको समयमा अस्पताल पुग्नु अघि गरिने प्राथमिक उपचारले बिरामीको ज्यान जोगाउन निर्णायक भूमिका खेल्छ। बिमल फार्मेसी तपाईँलाई निम्न महत्वपूर्ण अवस्थामा गरिने उपचारबारे जानकारी दिन्छ:</p>
 
       <h3>१. सर्पले टोक्दा के गर्ने? (Snake Bite)</h3>
-      <p>नेपालमा गर्मी मौसममा सर्पको टोकाइ एक ठूलो समस्या हो। सर्पले टोकेमा अत्तालिनु हुँदैन।</p>
+      <p>सर्पले टोकेमा अत्तालिनु हुँदैन। धेरैजसो सर्प विषालु हुँदैनन्।</p>
       <ul>
         <li><strong>गर्ने काम:</strong> बिरामीलाई शान्त राख्ने, टोकेको भागलाई नचलाई मुटुको सतहभन्दा तल राख्ने र तुरुन्त नजिकैको सर्पदंश उपचार केन्द्र लैजाने।</li>
         <li><strong>नगर्ने काम:</strong> टोकेको ठाउँमा ब्लेडले नकाट्ने, मुखले विष तान्ने प्रयास नगर्ने र डोरीले धेरै कसिलो गरी नबाँध्ने।</li>
       </ul>
 
-      <h3>२. हृदयघात हुँदा अपनाउनुपर्ने सावधानी (Heart Attack)</h3>
-      <p>यदि कसैलाई छातीको बीच भागमा असह्य दुखाइ भयो, देब्रे हात वा बंगारा दुख्यो र पसिना आयो भने त्यो हृदयघात हुन सक्छ।</p>
+      <h3>२. हृदयघात हुँदा (Heart Attack)</h3>
+      <p>यदि छातीको बीच भागमा असह्य दुखाइ भयो र पसिना आयो भने त्यो हृदयघात हुन सक्छ।</p>
       <ul>
         <li>बिरामीलाई सजिलो गरी बसाउने वा सुताउने।</li>
-        <li>यदि बिरामीले पहिले देखि नै एस्पिरिन (Aspirin) प्रयोग गरिरहेको छ भने ३०० मिलीग्रामको एउटा चक्की चपाउन दिने।</li>
-        <li>तुरुन्त एम्बुलेन्स बोलाउने र अस्पताल लैजाने।</li>
+        <li>तुरुन्त एम्बुलेन्स (१०२) बोलाउने र अस्पताल लैजाने।</li>
       </ul>
 
-      <h3>३. पोलेको घाउको उपचार (Burn Injuries)</h3>
+      <h3>३. पोलेको घाउ (Burn Injuries)</h3>
       <ul>
-        <li>पोलेको भागमा कम्तिमा १५-२० मिनेटसम्म धाराको सफा चिसो पानी खन्याउने।</li>
+        <li>पोलेको भागमा कम्तिमा १५ मिनेटसम्म धाराको सफा चिसो पानी खन्याउने।</li>
         <li>पोलेको ठाउँमा घ्यू, कोलगेट वा चिनी कहिल्यै नलगाउने। यसले संक्रमण बढाउँछ।</li>
-        <li>फोका उठेको छ भने त्यसलाई नफुटाउने र सफा सुती कपडाले हल्का ढाक्ने।</li>
       </ul>
     </article>
 
@@ -144,7 +167,6 @@
         </table>
       </div>
     </div>
-
   </div>
 
   <nav class="mobile-nav">
@@ -158,12 +180,11 @@
   <footer>
     <div style="margin-bottom: 20px;">
       <h3 style="color: white; margin-bottom: 10px;">बिमल फार्मेसी</h3>
-      <p>भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन</p>
-      <p>सम्पर्क: ९८५५०६५३२७</p>
+      <p>भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन | सम्पर्क: ९८५५०६५३२७</p>
     </div>
     <div style="border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem;">
       <p>&copy; २०२६ बिमल फार्मेसी। सबै अधिकार सुरक्षित।</p>
-      <p>Developed & Managed by: <strong>Bimal Lamichhane</strong></p>
+      <p>Managed by: <strong>Bimal Lamichhane</strong></p>
     </div>
   </footer>
 
