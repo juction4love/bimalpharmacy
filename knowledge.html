@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
-  <title>स्वास्थ्य तथा बिमा ज्ञान | बिमल फार्मेसी - IME Life Insurance Guide</title>
-  <meta name="description" content="स्वास्थ्य सल्लाह, औषधि प्रयोग गर्ने तरिका र IME Life Insurance सम्बन्धी सम्पूर्ण जानकारी। बिमल लामिछाने, भरतपुर-७ चितवन।">
-  <meta name="keywords" content="Health Knowledge Nepal, Insurance Guide Nepal, IME Life Bharatpur, Bimal Pharmacy Knowledge, औषधि ज्ञान">
+  <title>स्वास्थ्य तथा बिमा ज्ञान केन्द्र | बिमल फार्मेसी - IME Life Insurance Guide</title>
+  <meta name="description" content="स्वास्थ्य सल्लाह, औषधिको सही प्रयोग र IME Life Insurance सम्बन्धी सम्पूर्ण विस्तृत जानकारी। बिमल लामिछाने, भरतपुर-७ चितवन।">
+  <meta name="keywords" content="Health Knowledge Nepal, Insurance Guide Nepal, IME Life Bharatpur, Bimal Pharmacy Knowledge, जीवन बिमा जानकारी">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -24,7 +24,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-    body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; padding-bottom: 80px; }
+    body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 80px; }
 
     /* --- Branding Header --- */
     .branding-header {
@@ -32,11 +32,11 @@
     }
     .logo-container img { height: 85px; width: 85px; border-radius: 50%; border: 3px solid var(--primary); padding: 4px; object-fit: cover; }
     .brand-text h1 { color: var(--primary); font-size: 2.2rem; margin: 0; }
-    .brand-text p { font-size: 1rem; color: #555; }
+    .brand-text p { font-size: 1rem; color: #555; font-weight: 600; }
 
     /* --- News Ticker --- */
-    .news-ticker { background: #FF0000; border-bottom: 2px solid #b71c1c; box-shadow: 0 2px 5px rgba(0,0,0,0.3); overflow: hidden; }
-    .news-ticker marquee { color: #FFFFFF; font-weight: 900; display: block; padding: 12px 0; font-size: 16px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+    .news-ticker { background: #FF0000; border-bottom: 2px solid #b71c1c; overflow: hidden; }
+    .news-ticker marquee { color: #FFFFFF; font-weight: 900; display: block; padding: 12px 0; font-size: 16px; }
 
     /* --- Navigation --- */
     .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
@@ -49,41 +49,49 @@
     
     .knowledge-card { 
       background: var(--white); padding: 40px; border-radius: 15px; 
-      box-shadow: var(--shadow); margin-bottom: 30px; border-left: 6px solid var(--primary);
+      box-shadow: var(--shadow); margin-bottom: 35px; border-top: 6px solid var(--primary);
+      text-align: justify;
     }
-    .insurance-card { border-left-color: var(--ime-red); }
+    .insurance-card { border-top-color: var(--ime-red); }
 
-    h2 { color: var(--primary); margin-bottom: 20px; font-size: 1.8rem; }
-    .insurance-card h2 { color: var(--ime-red); }
-    
-    h3 { margin: 20px 0 10px; color: #444; }
-    p { margin-bottom: 15px; text-align: justify; }
+    h2 { color: var(--secondary); margin-bottom: 20px; font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }
+    h3 { margin: 25px 0 10px; color: var(--primary); font-size: 1.4rem; }
+    p { margin-bottom: 15px; }
     ul { margin-bottom: 20px; padding-left: 20px; }
-    li { margin-bottom: 8px; }
+    li { margin-bottom: 10px; }
 
     /* --- Agent Highlights --- */
     .agent-box {
-      background: #fff3f3; padding: 25px; border-radius: 12px; 
-      border: 1px dashed var(--ime-red); margin-top: 20px; text-align: center;
+      background: #fffafa; padding: 30px; border-radius: 12px; 
+      border: 2px dashed var(--ime-red); margin-top: 30px; text-align: center;
     }
-    .agent-box h4 { color: var(--ime-red); font-size: 1.2rem; margin-bottom: 10px; }
-    .call-link { color: var(--ime-red); font-weight: 800; font-size: 1.4rem; text-decoration: none; }
+    .agent-box h4 { color: var(--ime-red); font-size: 1.3rem; margin-bottom: 10px; }
+    .call-link { 
+      background: var(--ime-red); color: white; padding: 12px 25px; 
+      border-radius: 50px; text-decoration: none; display: inline-block;
+      font-weight: bold; margin-top: 10px; transition: 0.3s;
+    }
+    .call-link:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(237, 28, 36, 0.3); }
 
     /* --- Footer --- */
-    footer { background: #1a1a1a; color: #999; padding: 60px 20px 100px; text-align: center; }
-    .footer-links { margin: 20px 0; }
-    .footer-links a { color: #ccc; text-decoration: none; margin: 0 10px; }
+    footer { background: #1a1a1a; color: #bbb; padding: 60px 20px 100px; text-align: center; }
+    .footer-links { margin: 25px 0; }
+    .footer-links a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
 
     /* --- Mobile Navigation --- */
     .mobile-nav {
       position: fixed; bottom: 0; left: 0; width: 100%; background: var(--white);
-      display: grid; grid-template-columns: repeat(5, 1fr); padding: 10px 0;
-      border-top: 1px solid #eee; z-index: 1001; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+      display: grid; grid-template-columns: repeat(5, 1fr); padding: 12px 0;
+      border-top: 1px solid #ddd; z-index: 1001;
     }
-    .nav-item { text-align: center; text-decoration: none; color: #999; font-size: 0.75rem; }
-    .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 4px; }
+    .nav-item { text-align: center; text-decoration: none; color: #666; font-size: 0.7rem; font-weight: bold; }
+    .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 5px; }
     .nav-item.active { color: var(--primary); }
 
+    @media (max-width: 600px) {
+      .knowledge-card { padding: 25px 20px; }
+      .brand-text h1 { font-size: 1.7rem; }
+    }
     @media (min-width: 900px) { .mobile-nav { display: none; } }
   </style>
 </head>
@@ -91,17 +99,17 @@
 
   <header class="branding-header">
     <div class="logo-container">
-      <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy">
+      <img src="logo.svg" alt="Bimal Pharmacy">
     </div>
     <div class="brand-text">
       <h1>बिमल फार्मेसी</h1>
-      <p>स्वास्थ्य ज्ञान र सुरक्षाको सहयात्री | भरतपुर-७, चितवन</p>
+      <p>स्वास्थ्य र भविष्य सुरक्षाको सारथी | भरतपुर-७</p>
     </div>
   </header>
 
   <div class="news-ticker">
     <marquee behavior="scroll" direction="left" scrollamount="6">
-      सूचना: कृपया बिमल फार्मेसीमा रहेको आफ्नो बाँकी बक्यौता (Due) रकम भुक्तानी गरिदिनुहोला। थप विस्तृत जानकारीको लागि 'सूचना' (Notice) पेज हेर्नुहोस्।
+      महत्वपूर्ण सूचना: बिमल फार्मेसीको बाँकी बक्यौता रकम भुक्तानी गरी सहयोग गरिदिनुहोला। हामी तपाईँको सुस्वास्थ्यको कामना गर्दछौँ।
     </marquee>
   </div>
 
@@ -110,73 +118,85 @@
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="medical-guide.html">औषधी गाइड</a></li>
       <li><a href="knowledge.html" class="active">स्वास्थ्य ज्ञान</a></li>
-      <li><a href="order.html">अर्डर</a></li>
       <li><a href="service.html">सेवाहरू</a></li>
       <li><a href="notice.html">सूचना</a></li>
-      <li><a href="search.html"><i class="fas fa-robot"></i> AI Chat</a></li> 
       <li><a href="contact.html">सम्पर्क</a></li>
-      <li><a href="emergency.html">आपतकालीन</a></li>
     </ul>
   </nav>
 
   <div class="container">
     
-    <section class="knowledge-card">
-      <h2><i class="fas fa-heartbeat"></i> स्वास्थ्य जानकारी (Health Tips)</h2>
-      <p>तपाईँको स्वास्थ्य नै तपाईँको सबैभन्दा ठूलो सम्पत्ति हो। बिमल फार्मेसी तपाईँलाई निरोगी राख्नका लागि यी केही महत्वपूर्ण सल्लाहहरू प्रदान गर्दछ:</p>
+    <article class="knowledge-card">
+      <h2><i class="fas fa-hand-holding-medical"></i> स्वस्थ जीवनशैली र औषधिको सही प्रयोग</h2>
+      <p>स्वस्थ रहनु भनेको रोग नलाग्नु मात्र होइन, बरु सन्तुलित आहार, नियमित व्यायाम र सही औषधिको प्रयोगको संगम हो। बिमल फार्मेसीले बिरामीहरूलाई सधैँ सचेत रहन आग्रह गर्दछ।</p>
       
-      <h3>औषधि प्रयोग गर्दा ध्यान दिनुपर्ने कुराहरू:</h3>
+      <h3>औषधि सेवनका स्वर्ण नियमहरू:</h3>
+      <p>धेरैजसो बिरामीहरूले औषधि सेवनमा गर्ने सामान्य गल्तीले गर्दा रोग निको हुन ढिलाइ हुन्छ। त्यसैले निम्न कुराहरूमा ध्यान दिनुहोस्:</p>
       <ul>
-        <li>डाक्टरको सल्लाह बिना कुनै पनि एन्टिबायोटिक प्रयोग नगर्नुहोस्।</li>
-        <li>औषधि सधैँ तोकिएको समयमा र पूरा मात्रा (Complete Course) खानुहोस्।</li>
-        <li>औषधिको 'Expiry Date' सधैँ चेक गर्नुहोस्।</li>
-        <li>औषधिलाई प्रत्यक्ष घाम र ओसबाट बचाएर चिसो र सुक्खा ठाउँमा राख्नुहोस्।</li>
+        <li><strong>समयको पालना:</strong> यदि डाक्टरले दिनको ३ पटक औषधि खान भन्नुभएको छ भने, हरेक ८ घण्टाको अन्तरालमा औषधि खानुहोस्।</li>
+        <li><strong>एन्टिबायोटिक कोर्स:</strong> सन्चो महसुस भए पनि एन्टिबायोटिकको कोर्स बिचमै नछोड्नुहोस्। यसले 'Antibiotic Resistance' निम्त्याउँछ।</li>
+        <li><strong>भण्डारण:</strong> औषधिलाई कहिल्यै पनि भान्साको नजिक वा ओसिलो ठाउँमा नराख्नुहोस्। यसले औषधिको रासायनिक संरचना बिगार्न सक्छ।</li>
       </ul>
       
-      <h3>स्वस्थ जीवनका लागि:</h3>
-      <p>दैनिक कम्तीमा ३-४ लिटर पानी पिउने बानी बसाल्नुहोस्। प्रशस्त हरियो सागसब्जी र फलफूल खानुहोस्। तनाव कम गर्न दैनिक योग वा ध्यान गर्नुहोस्।</p>
-    </section>
+      <h3>नेपाली भान्सा र स्वास्थ्य:</h3>
+      <p>हाम्रो भान्सामा उपलब्ध हुने बेसार, अदुवा, र लसुनले प्राकृतिक रूपमा प्रतिरोधात्मक क्षमता बढाउँछन्। तर, गम्भीर समस्या हुँदा घरेलु उपचारमा मात्र भर नपरी तुरुन्त विशेषज्ञको सल्लाह लिनु नै बुद्धिमानी हुन्छ।</p>
+    </article>
 
-    <section class="knowledge-card insurance-card">
-      <h2><i class="fas fa-shield-alt"></i> बिमा सम्बन्धी महाज्ञान</h2>
-      <p>आर्थिक संकटको बेला बिमा नै तपाईँको परिवारको ढाल बन्छ। <strong>IME Life Insurance</strong> मार्फत तपाईँले आफ्नो र आफ्नो सन्तानको भविष्य सुनिश्चित गर्न सक्नुहुन्छ।</p>
+    <article class="knowledge-card insurance-card">
+      <h2><i class="fas fa-umbrella"></i> बिमा किन आवश्यक छ? (Insurance Literacy)</h2>
+      <p>भविष्य अनिश्चित छ। आजको सानो बचतले भोलिको ठूलो विपत्तिलाई टार्न सक्छ। नेपालमा बिमाको पहुँच बिस्तारै बढ्दै गए पनि धेरै मानिसहरू अझै यसको वास्तविक फाइदाबाट टाढा छन्।</p>
       
-      <h3>बिमा किन गर्ने?</h3>
+      <h3>IME Life Insurance का विशेषताहरू:</h3>
+      <p>IME Life Insurance ले नेपाली नागरिकको आवश्यकता अनुसार विभिन्न बिमा योजनाहरू ल्याएको छ:</p>
       <ul>
-        <li><strong>आर्थिक सुरक्षा:</strong> तपाईँको अनुपस्थितिमा परिवारलाई आर्थिक संकट पर्न दिँदैन।</li>
-        <li><strong>बचत र लगानी:</strong> बिमाले बचत गर्ने बानी बसाल्नुका साथै आकर्षक बोनस पनि प्रदान गर्दछ।</li>
-        <li><strong>स्वास्थ्य उपचार:</strong> घातक रोग (Critical Illness) लागेमा उपचारको लागि एकमुष्ठ रकम पाइन्छ।</li>
+        <li><strong>बाल शिक्षा योजना:</strong> तपाईँको बच्चाको उच्च शिक्षाका लागि सुरक्षित लगानी।</li>
+        <li><strong>घातक रोग बिमा:</strong> क्यान्सर, हृदयघात जस्ता २१ वटा घातक रोगहरू लागेमा उपचारका लागि एकमुष्ठ ५० लाखसम्मको रकम प्रदान गरिन्छ।</li>
+        <li><strong>आजीवन बिमा:</strong> परिवारको आर्थिक स्थायित्वका लागि सबैभन्दा उत्तम विकल्प।</li>
       </ul>
+
+      <p>बिमा केवल मृत्यु पछिको लागि मात्र होइन, यो एउटा अनुशासित बचत पनि हो जसले बुढेसकालमा 'पेन्सन' को रूपमा काम गर्दछ।</p>
 
       <div class="agent-box">
-        <h4>निःशुल्क बिमा परामर्शका लागि सम्पर्क</h4>
+        <h4>ब्यक्तिगत बिमा परामर्श आवश्यक छ?</h4>
+        <p>सही बिमा योजना छनोट गर्न मद्दतका लागि सम्पर्क गर्नुहोस्:</p>
         <p><strong>बिमल लामिछाने (IME Life Agent)</strong></p>
-        <a href="tel:9855065327" class="call-link"><i class="fas fa-phone-alt"></i> 9855065327</a>
+        <a href="tel:9855065327" class="call-link"><i class="fas fa-phone-alt"></i> ९८५५०६५३२७ मा कल गर्नुहोस्</a>
       </div>
-    </section>
+    </article>
+
+    <article class="knowledge-card">
+      <h2><i class="fas fa-briefcase-medical"></i> घरमा प्राथमिक उपचार (First Aid)</h2>
+      <p>आकस्मिक दुर्घटना जुनसुकै बेला हुन सक्छ। यस्तो बेला अस्पताल पुग्नु अघि दिइने प्राथमिक उपचारले मानिसको ज्यान जोगाउन सक्छ।</p>
+      <h3>महत्वपूर्ण टिप्स:</h3>
+      <ul>
+        <li><strong>पोलेको घाउमा:</strong> पोलेको ठाउँमा तुरुन्त धाराको चिसो पानी १०-१५ मिनेटसम्म खन्याउनुहोस्। घ्यू वा कोलगेट कहिल्यै नलगाउनुहोस्।</li>
+        <li><strong>रक्तस्राव हुँदा:</strong> घाउ भएको ठाउँलाई सफा कपडाले जोडले थिचेर रगत रोक्ने प्रयास गर्नुहोस् र घाउ भएको भागलाई मुटुको सतहभन्दा माथि राख्नुहोस्।</li>
+        <li><strong>झाडापखाला:</strong> शरीरमा पानीको कमी हुन नदिन जीवनजल (ORS) को निरन्तर सेवन गराउनुहोस्।</li>
+      </ul>
+    </article>
 
   </div>
 
   <footer>
     <div class="brand-text">
       <h2 style="color: var(--primary);">बिमल फार्मेसी</h2>
-      <p>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता।</p>
+      <p>भरतपुर-७, चितवन, नेपाल</p>
     </div>
     <div class="footer-links">
-      <a href="index.html">गृहपृष्ठ</a> | 
-      <a href="order.html">औषधी अर्डर</a> | 
-      <a href="emergency.html">Emergency</a>
+      <a href="privacy-policy.html">Privacy Policy</a> | 
+      <a href="terms.html">Terms & Conditions</a> | 
+      <a href="disclaimer.html">Disclaimer</a>
     </div>
     <p>&copy; 2026 Bimal Pharmacy. All Rights Reserved.</p>
-    <p style="font-size: 0.8rem; margin-top: 10px;">Managed by: @bimal lamichhane</p>
+    <p style="font-size: 0.75rem; color: #666;">Site Managed by: Bimal Lamichhane</p>
   </footer>
 
   <nav class="mobile-nav">
     <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
-    <a href="search.html" class="nav-item"><i class="fas fa-robot"></i> AI Chat</a>
+    <a href="medical-guide.html" class="nav-item"><i class="fas fa-book-medical"></i> गाइड</a>
     <a href="order.html" class="nav-item"><i class="fas fa-shopping-cart"></i> अर्डर</a>
     <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i> Emergency</a>
-    <a href="contact.html" class="nav-item"><i class="fas fa-user"></i> सम्पर्क</a>
+    <a href="contact.html" class="nav-item"><i class="fas fa-phone"></i> सम्पर्क</a>
   </nav>
 
 </body>
