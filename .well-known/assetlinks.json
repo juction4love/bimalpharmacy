@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.bimalpharmacy.app",
+    "sha256_cert_fingerprints":
+    ["26:C6:A5:04:23:CC:14:75:BF:28:A1:1D:E1:34:22:7B:29:85:5D:F4:98:A6:12:E5:AC:53:58:53:EE:5E:E4:30"]
+  }
+}]
