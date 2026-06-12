@@ -4,7 +4,7 @@ This is the official responsive website for **Bimal Pharmacy**, located in Bhara
 
 ## 🌐 Live Website
 You can visit the live site here: 
-**[https://your-github-username.github.io/bimal-pharmacy/](https://your-github-username.github.io/bimal-pharmacy/)**
+**[https://your-github-username.github.io/bimal-pharmacy/](https://juction4love.github.io/bimal-pharmacy/)**
 *(Note: Replace 'your-github-username' with your actual GitHub username)*
 
 ## 🚀 Key Features
