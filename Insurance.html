@@ -1,15 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ne">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
   <title>IME Life Insurance Guide Nepal | Premium Calculator | Bimal Lamichhane</title>
-  <meta name="description" content="IME Life Insurance �•�‹ ब�‹नस दर, बिमा �•िस्ता �•्याल्�•ुल�‡�Ÿर र दाब�€ प्र�•्रिया। भरतपुर �šितवन�•ा �†धि�•ारि�• �…भि�•र्ता बिमल लामि�›ान�‡बा�Ÿ नि�ƒशुल्�• परामर्श लिनुह�‹स्।">
-  <meta name="keywords" content="IME Life Insurance Nepal, Best Insurance Agent in Bharatpur, Bimal Lamichhane IME Life, Insurance Premium Calculator Nepal, Life Insurance Bonus Rate Nepal 2026, बिमल फार्म�‡स�€">
+  <meta name="description" content="IME Life Insurance को बोनस दर, बिमा किस्ता क्याल्कुलेटर र दाबी प्रक्रिया। भरतपुर चितवनका आधिकारिक अभिकर्ता बिमल लामिछानेबाट निःशुल्क परामर्श लिनुहोस्।">
+  <meta name="keywords" content="IME Life Insurance Nepal, Best Insurance Agent in Bharatpur, Bimal Lamichhane IME Life, Insurance Premium Calculator Nepal, Life Insurance Bonus Rate Nepal 2026, बिमल फार्मेसी">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
   
   <link rel="stylesheet" href="style.css">
 </head>
@@ -18,125 +17,125 @@
   <header class="app-header">
     <div class="logo-container"><img src="logo.svg" alt="Bimal Pharmacy"></div>
     <div class="brand-text">
-      <h1>बिमल फार्म�‡स�€</h1>
+      <h1>बिमल फार्मेसी</h1>
     </div>
   </header>
 
   <nav class="navbar">
     <ul class="nav-links">
-      <li><a href="index.html">�—�ƒहप�ƒष्ठ</a></li>
-      <li><a href="medical-guide.html">�”षध�€ �—ा�‡ड</a></li>
-      <li><a href="knowledge.html">स्वास्थ्य �œ्�žान</a></li>
+      <li><a href="index.html">गृहपृष्ठ</a></li>
+      <li><a href="medical-guide.html">औषधी गाइड</a></li>
+      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
       <li class="dropdown">
-        <a href="#" class="active">थप �œान�•ार�€ <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+        <a href="#" class="active">थप जानकारी <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
         <ul class="dropdown-content">
-          <li><a href="about.html">हाम्र�‹ बार�‡मा</a></li>
-          <li><a href="emergency.html">�†�•स्मि�• स�‡वा</a></li>
-          <li><a href="insurance.html">ब�€मा सुविधा</a></li>
-          <li><a href="notice.html">स�‚�šना</a></li>
+          <li><a href="about.html">हाम्रो बारेमा</a></li>
+          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
+          <li><a href="insurance.html">बीमा सुविधा</a></li>
+          <li><a href="notice.html">सूचना</a></li>
         </ul>
       </li>
-      <li><a href="order.html">�…र्डर �—र्नुह�‹स्</a></li>
-      <li><a href="contact.html">सम्पर्�•</a></li>
+      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
+      <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
   <div class="agent-banner">
-    <p>IME Life Insurance �†धि�•ारि�• �…भि�•र्ता</p>
-    <h2>बिमल लामि�›ान�‡</h2>
+    <p>IME Life Insurance आधिकारिक अभिकर्ता</p>
+    <h2>बिमल लामिछाने</h2>
     <a href="tel:9855065327" class="phone-link"><i class="fas fa-phone-alt"></i> 9855065327</a>
   </div>
 
   <div class="container">
     <div class="calc-card">
       <div class="calc-tabs">
-        <button class="tab-btn active" onclick="switchCalc('coverage')">बिमा�‚�• �•्याल्�•ुल�‡�Ÿर</button>
-        <button class="tab-btn" onclick="switchCalc('premium')">�•िस्ता �…नुमान�•</button>
+        <button class="tab-btn active" onclick="switchCalc('coverage')">बिमांक क्याल्कुलेटर</button>
+        <button class="tab-btn" onclick="switchCalc('premium')">किस्ता अनुमानक</button>
       </div>
 
       <div id="coverageCalc">
         <div class="input-group">
-          <label>मासि�• �†म्दान�€ (रु):</label>
-          <input type="number" id="monthlyInc" placeholder="�‰दा: 50000">
+          <label>मासिक आम्दानी (रु):</label>
+          <input type="number" id="monthlyInc" placeholder="उदा: 50000">
         </div>
-        <button onclick="calcCover()" class="btn-action">हिसाब �—र्नुह�‹स्</button>
+        <button onclick="calcCover()" class="btn-action">हिसाब गर्नुहोस्</button>
       </div>
 
       <div id="premiumCalc" style="display:none;">
         <div class="input-group">
-          <label>बिमा र�•म (Sum Assured):</label>
-          <input type="number" id="totalSA" placeholder="�‰दा: 1000000">
+          <label>बिमा रकम (Sum Assured):</label>
+          <input type="number" id="totalSA" placeholder="उदा: 1000000">
         </div>
         <div class="input-group">
-          <label>बिमा �…वधि (वर्ष):</label>
+          <label>बिमा अवधि (वर्ष):</label>
           <select id="termYears">
             <option value="15">१५ वर्ष</option>
             <option value="20" selected>२० वर्ष</option>
             <option value="25">२५ वर्ष</option>
           </select>
         </div>
-        <button onclick="estimatePremium()" class="btn-action">�•िस्ता ह�‡र्नुह�‹स्</button>
+        <button onclick="estimatePremium()" class="btn-action">किस्ता हेर्नुहोस्</button>
       </div>
 
       <div id="resDisplay" style="margin-top: 20px; padding: 15px; background: #fffde7; border-radius: 10px; display: none; text-align: center; border: 1px solid #fbc02d;">
-        <h4 id="resTitle">नति�œा</h4>
+        <h4 id="resTitle">नतिजा</h4>
         <h2 id="resVal" style="color:var(--primary);">रु 0</h2>
         <p id="resDesc" style="font-size: 0.85rem; color: #666;"></p>
       </div>
     </div>
 
     <article class="guide-content">
-      <h1>IME Life Insurance: सुर�•्षा र सम�ƒद्धि�•�‹ नयाँ ढ�‹�•ा</h1>
-      <p>न�‡पाल�•�‹ बिमा ब�œारमा <strong>IME Life Insurance</strong> ए�• विश्वसन�€य नाम ह�‹। भरतपुर-७ �šितवनमा �…वस्थित बिमल फार्म�‡स�€�•ा स�‚�šाल�• <strong>बिमल लामि�›ान�‡</strong> �†धि�•ारि�• �…भि�•र्ता�•�‹ र�‚पमा तपा�ˆँला�ˆ सह�€ बिमा य�‹�œना �›न�‹�Ÿ �—र्न मद्दत �—र्नुहुन्�›।</p>
+      <h1>IME Life Insurance: सुरक्षा र समृद्धिको नयाँ ढोका</h1>
+      <p>नेपालको बिमा बजारमा <strong>IME Life Insurance</strong> एक विश्वसनीय नाम हो। भरतपुर-७ चितवनमा अवस्थित बिमल फार्मेसीका सञ्चालक <strong>बिमल लामिछाने</strong> आधिकारिक अभिकर्ताको रूपमा तपाईंलाई सही बिमा योजना छनोट गर्न मद्दत गर्नुहुन्छ।</p>
 
-      <h2>१. बिमा �•िन �—र्न�‡?</h2>
-      <p>बिमा �—र्दा सुर�•्षा र ब�šत दुव�ˆ सुनिश्�šित हुन्�›। यसल�‡ परिवार�•�‹ �†र्थि�• भविष्य सुर�•्षित �—र्द�›।</p>
+      <h2>१. बिमा किन गर्ने?</h2>
+      <p>बिमा गर्दा सुरक्षा र बचत दुवै सुनिश्चित हुन्छ। यसले परिवारको आर्थिक भविष्य सुरक्षित गर्दछ।</p>
       <ul>
-        <li><strong>�†र्थि�• सुर�•्षा:</strong> परिवार�•�‹ म�‚ल�€�•�‹ �…नुपस्थितिमा पनि �†र्थि�• स�‚�•�Ÿ �†�‰ँद�ˆन।</li>
-        <li><strong>�˜ात�• र�‹�— सुर�•्षा:</strong> �•्यान्सर �œस्ता �˜ात�• र�‹�— ला�—�‡मा �‰प�šार�•ा ला�—ि ए�•मुष्ठ र�•म।</li>
+        <li><strong>आर्थिक सुरक्षा:</strong> परिवारको मूलीको अनुपस्थितिमा पनि आर्थिक संकट आउँदैन।</li>
+        <li><strong>घातक रोग सुरक्षा:</strong> क्यान्सर जस्ता घातक रोग लागेमा उपचारका लागि एकमुष्ठ रकम।</li>
       </ul>
 
-      <h2>२. ब�‹नस दर (Bonus Rates 2026)</h2>
+      <h2>२. बोनस दर (Bonus Rates 2026)</h2>
       <div class="table-container">
         <table>
           <thead>
             <tr>
-              <th>बिमा य�‹�œना</th>
-              <th>�…वधि (Years)</th>
-              <th>ब�‹नस (प्रति ह�œार)</th>
+              <th>बिमा योजना</th>
+              <th>अवधि (Years)</th>
+              <th>बोनस (प्रति हजार)</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>सावधि�• बिमा</td><td>१५ - १९ वर्ष</td><td>रु. ६० - ६५</td></tr>
-            <tr><td>�…�—्रिम भु�•्तान�€</td><td>२० - २४ वर्ष</td><td>रु. ६३ - ७०</td></tr>
-            <tr><td>बाल बिमा य�‹�œना</td><td>२५ वर्ष माथि</td><td>रु. ७५+</td></tr>
+            <tr><td>सावधिक बिमा</td><td>१५ - १९ वर्ष</td><td>रु. ६० - ६५</td></tr>
+            <tr><td>अग्रिम भुक्तानी</td><td>२० - २४ वर्ष</td><td>रु. ६३ - ७०</td></tr>
+            <tr><td>बाल बिमा योजना</td><td>२५ वर्ष माथि</td><td>रु. ७५+</td></tr>
           </tbody>
         </table>
       </div>
     </article>
 
     <div class="contact-form-section" id="contactForm">
-      <h2>नि�ƒशुल्�• बिमा परामर्श लिनुह�‹स्</h2>
+      <h2>निःशुल्क बिमा परामर्श लिनुहोस्</h2>
       <form action="https://formspree.io/f/xblddqwd" method="POST">
         <div class="input-group">
-          <label>प�‚रा नाम:</label>
+          <label>पूरा नाम:</label>
           <input type="text" name="name" required placeholder="Full Name">
         </div>
         <div class="input-group">
-          <label>म�‹बा�‡ल नम्बर:</label>
+          <label>मोबाइल नम्बर:</label>
           <input type="tel" name="phone" required placeholder="98XXXXXXXX">
         </div>
-        <button type="submit" class="btn-action" style="background: var(--ime-red);">पठा�‰नुह�‹स्</button>
+        <button type="submit" class="btn-action" style="background: var(--ime-red);">पठाउनुहोस्</button>
       </form>
     </div>
   </div>
 
   <nav class="mobile-nav">
-    <a href="index.html" class="nav-item"><i class="fas fa-home"></i> ह�‹म</a>
-    <a href="medical-guide.html" class="nav-item"><i class="fas fa-book-medical"></i> �—ा�‡ड</a>
-    <a href="order.html" class="nav-item"><i class="fas fa-shopping-cart"></i> �…र्डर</a>
+    <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
+    <a href="medical-guide.html" class="nav-item"><i class="fas fa-book-medical"></i> गाइड</a>
+    <a href="order.html" class="nav-item"><i class="fas fa-shopping-cart"></i> अर्डर</a>
     <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i> Emergency</a>
-    <a href="insurance.html" class="nav-item active"><i class="fas fa-shield-alt"></i> ब�€मा</a>
+    <a href="insurance.html" class="nav-item active"><i class="fas fa-shield-alt"></i> बीमा</a>
   </nav>
 
   <script>
@@ -151,17 +150,17 @@
 
     function calcCover() {
         let inc = document.getElementById('monthlyInc').value;
-        if(!inc) return alert("�†म्दान�€ भर्नुह�‹स्");
+        if(!inc) return alert("आम्दानी भर्नुहोस्");
         let val = inc * 12 * 15;
-        showRes("�†दर्श बिमा�‚�•", val, "तपा�ˆ�‚�•�‹ सुर�•्षा�•�‹ ला�—ि य�‹ र�•म�•�‹ बिमा �†वश्य�• �›।");
+        showRes("आदर्श बिमांक", val, "तपाईंको सुरक्षाको लागि यो रकमको बिमा आवश्यक छ।");
     }
 
     function estimatePremium() {
         let sa = document.getElementById('totalSA').value;
         let term = document.getElementById('termYears').value;
-        if(!sa) return alert("बिमा र�•म भर्नुह�‹स्");
+        if(!sa) return alert("बिमा रकम भर्नुहोस्");
         let monthly = (sa / term / 12) * 1.05;
-        showRes("मासि�• �•िस्ता (�…नुमानित)", Math.round(monthly), "*वास्तवि�• प्रिमियम �‰म�‡र �…नुसार फर�• हुन्�›।");
+        showRes("मासिक किस्ता (अनुमानित)", Math.round(monthly), "*वास्तविक प्रिमियम उमेर अनुसार फरक हुन्छ।");
     }
 
     function showRes(title, val, desc) {
@@ -174,5 +173,3 @@
   <script src="script.js" defer></script>
 </body>
 </html>
-
-
