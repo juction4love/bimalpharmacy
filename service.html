@@ -1,159 +1,94 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ne">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>हाम्रा सेवाहरू | बिमल फार्मेसी - भरपुर-७, चितवन</title>
+  <title>à¤¹à¤¾à¤®à¥à¤°à¤¾ à¤¸à¥‡à¤µà¤¾à¤¹à¤°à¥‚ | à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€ - à¤­à¤°à¤ªà¥à¤°-à¥­, à¤šà¤¿à¤¤à¤µà¤¨</title>
   
-  <meta name="description" content="बिमल फार्मेसीका आधिकारिक सेवाहरू: २४ घण्टा क्यान्सर औषधी आपूर्ति, सुरक्षित कोल्ड-चेन भण्डारण र नेपालभर होम डेलिभरी।">
+  <meta name="description" content="à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€à¤•à¤¾ à¤†à¤§à¤¿à¤•à¤¾à¤°à¤¿à¤• à¤¸à¥‡à¤µà¤¾à¤¹à¤°à¥‚: à¥¨à¥ª à¤˜à¤£à¥à¤Ÿà¤¾ à¤•à¥à¤¯à¤¾à¤¨à¥à¤¸à¤° à¤”à¤·à¤§à¥€ à¤†à¤ªà¥‚à¤°à¥à¤¤à¤¿, à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤ à¤•à¥‹à¤²à¥à¤¡-à¤šà¥‡à¤¨ à¤­à¤£à¥à¤¡à¤¾à¤°à¤£ à¤° à¤¨à¥‡à¤ªà¤¾à¤²à¤­à¤° à¤¹à¥‹à¤® à¤¡à¥‡à¤²à¤¿à¤­à¤°à¥€à¥¤">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <style>
-    :root {
-      --primary: #2e7d32;
-      --secondary: #1b5e20;
-      --accent: #fbc02d;
-      --danger: #d32f2f;
-      --light-bg: #f8faf9;
-      --white: #ffffff;
-      --text-dark: #2c3e50;
-      --shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-    body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 80px; }
-
-    /* Branding Header */
-    .branding-header { background: var(--white); padding: 15px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary); box-shadow: var(--shadow); }
-    .logo-container img { height: 65px; width: 65px; border-radius: 50%; border: 2px solid var(--primary); padding: 2px; object-fit: cover; }
-    .brand-text h1 { color: var(--primary); font-size: 1.8rem; margin: 0; }
-    .brand-text p { font-size: 0.85rem; color: #555; font-weight: 600; }
-
-    /* Navigation & Dropdown */
-    .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
-    .nav-links li { position: relative; }
-    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 18px; display: block; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
-
-    .dropdown-content {
-      display: none; position: absolute; background-color: var(--white); min-width: 180px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; border-radius: 0 0 8px 8px;
-    }
-    .dropdown-content a { color: var(--text-dark) !important; padding: 12px 16px; border-bottom: 1px solid #eee; }
-    .dropdown-content a:hover { background-color: #f1f1f1; color: var(--primary) !important; }
-    .dropdown:hover .dropdown-content { display: block; }
-
-    /* Hero Section */
-    .hero { background: #fff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #eee; }
-    .hero h2 { font-size: 2.2rem; color: var(--secondary); margin-bottom: 15px; }
-    .trust-tag { display: inline-block; background: #e8f5e9; padding: 8px 15px; border-radius: 50px; color: var(--primary); font-weight: bold; margin-top: 10px; }
-
-    /* Content Layout */
-    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-    .card { background: var(--white); padding: 35px; border-radius: 15px; box-shadow: var(--shadow); margin-bottom: 35px; border-top: 5px solid var(--primary); text-align: justify; }
-    .card h3 { color: var(--secondary); margin-bottom: 20px; font-size: 1.5rem; display: flex; align-items: center; gap: 12px; }
-
-    /* Detailed Service Blocks */
-    .service-detail { margin-top: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 20px; }
-    .service-detail h4 { color: var(--primary); margin-bottom: 10px; font-size: 1.2rem; }
-
-    /* Step Grid */
-    .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 25px; }
-    .step-item { padding: 20px; background: #f1f8e9; border-radius: 10px; text-align: center; border: 1px solid #dcedc8; }
-    .step-number { background: var(--primary); color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-block; margin-bottom: 10px; font-weight: bold; line-height: 30px; }
-
-    /* Footer */
-    footer { background: #1a1a1a; color: #bbb; padding: 50px 20px 100px; text-align: center; }
-    .footer-links a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
-    .mobile-call-box { position: fixed; bottom: 0; width: 100%; background: var(--primary); padding: 18px; text-align: center; z-index: 1000; }
-
-    @media (max-width: 768px) {
-      .nav-links a { padding: 12px 10px; font-size: 0.8rem; }
-      .dropdown-content { position: static; width: 100%; box-shadow: none; background: #f9f9f9; }
-      .brand-text h1 { font-size: 1.5rem; } 
-      .hero h2 { font-size: 1.8rem; }
-    }
-  </style>
+  
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="branding-header">
     <div class="logo-container"><img src="logo.svg" alt="Bimal Pharmacy"></div>
     <div class="brand-text">
-      <h1>बिमल फार्मेसी</h1>
-      <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र | भरतपुर-७, चितवन</p>
+      <h1>à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€</h1>
+      <p>à¤¤à¤ªà¤¾à¤ˆà¤‚à¤•à¥‹ à¤¸à¥à¤µà¤¾à¤¸à¥à¤¥à¥à¤¯ à¤° à¤µà¤¿à¤¶à¥à¤µà¤¾à¤¸à¤•à¥‹ à¤•à¥‡à¤¨à¥à¤¦à¥à¤° | à¤­à¤°à¤¤à¤ªà¥à¤°-à¥­, à¤šà¤¿à¤¤à¤µà¤¨</p>
     </div>
   </header>
 
   <nav class="navbar">
     <ul class="nav-links">
-      <li><a href="index.html">गृहपृष्ठ</a></li>
-      <li><a href="medical-guide.html">औषधी गाइड</a></li>
-      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
+      <li><a href="index.html">à¤—à¥ƒà¤¹à¤ªà¥ƒà¤·à¥à¤ </a></li>
+      <li><a href="medical-guide.html">à¤”à¤·à¤§à¥€ à¤—à¤¾à¤‡à¤¡</a></li>
+      <li><a href="knowledge.html">à¤¸à¥à¤µà¤¾à¤¸à¥à¤¥à¥à¤¯ à¤œà¥à¤žà¤¾à¤¨</a></li>
       <li class="dropdown">
-        <a href="service.html" class="active">सेवाहरू <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+        <a href="service.html" class="active">à¤¸à¥‡à¤µà¤¾à¤¹à¤°à¥‚ <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
         <ul class="dropdown-content">
-          <li><a href="about.html">हाम्रो बारेमा</a></li>
-          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
-          <li><a href="insurance.html">बीमा सुविधा</a></li>
-          <li><a href="notice.html">सूचना</a></li>
+          <li><a href="about.html">à¤¹à¤¾à¤®à¥à¤°à¥‹ à¤¬à¤¾à¤°à¥‡à¤®à¤¾</a></li>
+          <li><a href="emergency.html">à¤†à¤•à¤¸à¥à¤®à¤¿à¤• à¤¸à¥‡à¤µà¤¾</a></li>
+          <li><a href="insurance.html">à¤¬à¥€à¤®à¤¾ à¤¸à¥à¤µà¤¿à¤§à¤¾</a></li>
+          <li><a href="notice.html">à¤¸à¥‚à¤šà¤¨à¤¾</a></li>
         </ul>
       </li>
-      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
-      <li><a href="contact.html">सम्पर्क</a></li>
+      <li><a href="order.html">à¤…à¤°à¥à¤¡à¤° à¤—à¤°à¥à¤¨à¥à¤¹à¥‹à¤¸à¥</a></li>
+      <li><a href="contact.html">à¤¸à¤®à¥à¤ªà¤°à¥à¤•</a></li>
     </ul>
   </nav>
 
   <section class="hero">
-    <h2>हाम्रा विशिष्ट स्वास्थ्य सेवाहरू</h2>
-    <p>विगत दुई दशकदेखि हामी बिरामीको सेवामा समर्पित छौं।</p>
-    <div class="trust-tag"><i class="fas fa-award"></i> DDA दर्ता नं: १७२२३/२०६३</div>
+    <h2>à¤¹à¤¾à¤®à¥à¤°à¤¾ à¤µà¤¿à¤¶à¤¿à¤·à¥à¤Ÿ à¤¸à¥à¤µà¤¾à¤¸à¥à¤¥à¥à¤¯ à¤¸à¥‡à¤µà¤¾à¤¹à¤°à¥‚</h2>
+    <p>à¤µà¤¿à¤—à¤¤ à¤¦à¥à¤ˆ à¤¦à¤¶à¤•à¤¦à¥‡à¤–à¤¿ à¤¹à¤¾à¤®à¥€ à¤¬à¤¿à¤°à¤¾à¤®à¥€à¤•à¥‹ à¤¸à¥‡à¤µà¤¾à¤®à¤¾ à¤¸à¤®à¤°à¥à¤ªà¤¿à¤¤ à¤›à¥Œà¤‚à¥¤</p>
+    <div class="trust-tag"><i class="fas fa-award"></i> DDA à¤¦à¤°à¥à¤¤à¤¾ à¤¨à¤‚: à¥§à¥­à¥¨à¥¨à¥©/à¥¨à¥¦à¥¬à¥©</div>
   </section>
 
   <main class="container">
     
     <article class="card">
-      <h3><i class="fas fa-truck"></i> १. सुरक्षित होम डेलिभरी सेवा</h3>
-      <p>बिमल फार्मेसीले भरतपुर क्षेत्रभित्र द्रुत होम डेलिभरी र चितवन बाहिर नेपालका प्रमुख शहरहरूमा कुरियर मार्फत औषधी पुर्याउने व्यवस्था गरेको छ।</p>
+      <h3><i class="fas fa-truck"></i> à¥§. à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤ à¤¹à¥‹à¤® à¤¡à¥‡à¤²à¤¿à¤­à¤°à¥€ à¤¸à¥‡à¤µà¤¾</h3>
+      <p>à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€à¤²à¥‡ à¤­à¤°à¤¤à¤ªà¥à¤° à¤•à¥à¤·à¥‡à¤¤à¥à¤°à¤­à¤¿à¤¤à¥à¤° à¤¦à¥à¤°à¥à¤¤ à¤¹à¥‹à¤® à¤¡à¥‡à¤²à¤¿à¤­à¤°à¥€ à¤° à¤šà¤¿à¤¤à¤µà¤¨ à¤¬à¤¾à¤¹à¤¿à¤° à¤¨à¥‡à¤ªà¤¾à¤²à¤•à¤¾ à¤ªà¥à¤°à¤®à¥à¤– à¤¶à¤¹à¤°à¤¹à¤°à¥‚à¤®à¤¾ à¤•à¥à¤°à¤¿à¤¯à¤° à¤®à¤¾à¤°à¥à¤«à¤¤ à¤”à¤·à¤§à¥€ à¤ªà¥à¤°à¥à¤¯à¤¾à¤‰à¤¨à¥‡ à¤µà¥à¤¯à¤µà¤¸à¥à¤¥à¤¾ à¤—à¤°à¥‡à¤•à¥‹ à¤›à¥¤</p>
       
       <div class="service-detail">
-        <h4>विशेषताहरू:</h4>
+        <h4>à¤µà¤¿à¤¶à¥‡à¤·à¤¤à¤¾à¤¹à¤°à¥‚:</h4>
         <ul>
-          <li><strong>कोल्ड-चेन डेलिभरी:</strong> क्यान्सरका इन्जेक्सनहरू विशेष आइस-बक्समा सुरक्षित राखिन्छ।</li>
-          <li><strong>सुरक्षित प्याकेजिङ:</strong> औषधीको गोपनीयता र सुरक्षाका लागि वाटरप्रूफ प्याकिङ।</li>
-          <li><strong>ट्र्याकिङ:</strong> अर्डरको अवस्था व्हाट्सएप मार्फत जानकारी दिइन्छ।</li>
+          <li><strong>à¤•à¥‹à¤²à¥à¤¡-à¤šà¥‡à¤¨ à¤¡à¥‡à¤²à¤¿à¤­à¤°à¥€:</strong> à¤•à¥à¤¯à¤¾à¤¨à¥à¤¸à¤°à¤•à¤¾ à¤‡à¤¨à¥à¤œà¥‡à¤•à¥à¤¸à¤¨à¤¹à¤°à¥‚ à¤µà¤¿à¤¶à¥‡à¤· à¤†à¤‡à¤¸-à¤¬à¤•à¥à¤¸à¤®à¤¾ à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤ à¤°à¤¾à¤–à¤¿à¤¨à¥à¤›à¥¤</li>
+          <li><strong>à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤ à¤ªà¥à¤¯à¤¾à¤•à¥‡à¤œà¤¿à¤™:</strong> à¤”à¤·à¤§à¥€à¤•à¥‹ à¤—à¥‹à¤ªà¤¨à¥€à¤¯à¤¤à¤¾ à¤° à¤¸à¥à¤°à¤•à¥à¤·à¤¾à¤•à¤¾ à¤²à¤¾à¤—à¤¿ à¤µà¤¾à¤Ÿà¤°à¤ªà¥à¤°à¥‚à¤« à¤ªà¥à¤¯à¤¾à¤•à¤¿à¤™à¥¤</li>
+          <li><strong>à¤Ÿà¥à¤°à¥à¤¯à¤¾à¤•à¤¿à¤™:</strong> à¤…à¤°à¥à¤¡à¤°à¤•à¥‹ à¤…à¤µà¤¸à¥à¤¥à¤¾ à¤µà¥à¤¹à¤¾à¤Ÿà¥à¤¸à¤à¤ª à¤®à¤¾à¤°à¥à¤«à¤¤ à¤œà¤¾à¤¨à¤•à¤¾à¤°à¥€ à¤¦à¤¿à¤‡à¤¨à¥à¤›à¥¤</li>
         </ul>
       </div>
     </article>
 
     <article class="card" style="border-top-color: var(--danger);">
-      <h3><i class="fas fa-vials"></i> २. क्यान्सर औषधी (Oncology Care)</h3>
-      <p>भरतपुर क्यान्सर अस्पतालको नजिकै अवस्थित हुनाले हामी क्यान्सर उपचारका जटिल औषधीहरूको आपूर्तिमा विशेषज्ञता राख्छौं।</p>
+      <h3><i class="fas fa-vials"></i> à¥¨. à¤•à¥à¤¯à¤¾à¤¨à¥à¤¸à¤° à¤”à¤·à¤§à¥€ (Oncology Care)</h3>
+      <p>à¤­à¤°à¤¤à¤ªà¥à¤° à¤•à¥à¤¯à¤¾à¤¨à¥à¤¸à¤° à¤…à¤¸à¥à¤ªà¤¤à¤¾à¤²à¤•à¥‹ à¤¨à¤œà¤¿à¤•à¥ˆ à¤…à¤µà¤¸à¥à¤¥à¤¿à¤¤ à¤¹à¥à¤¨à¤¾à¤²à¥‡ à¤¹à¤¾à¤®à¥€ à¤•à¥à¤¯à¤¾à¤¨à¥à¤¸à¤° à¤‰à¤ªà¤šà¤¾à¤°à¤•à¤¾ à¤œà¤Ÿà¤¿à¤² à¤”à¤·à¤§à¥€à¤¹à¤°à¥‚à¤•à¥‹ à¤†à¤ªà¥‚à¤°à¥à¤¤à¤¿à¤®à¤¾ à¤µà¤¿à¤¶à¥‡à¤·à¤œà¥à¤žà¤¤à¤¾ à¤°à¤¾à¤–à¥à¤›à¥Œà¤‚à¥¤</p>
       
       <div class="service-detail">
-        <h4>हाम्रो क्षमता:</h4>
-        <p>हामीसँग चौबीसै घण्टा विद्युत ब्याकअप सहितको आधुनिक रेफ्रिजेरेसन सिस्टम छ, जसले २°C देखि ८°C को तापक्रम स्थिर राख्छ। यसले औषधीको प्रभावकारिता १००% सुरक्षित राख्छ।</p>
+        <h4>à¤¹à¤¾à¤®à¥à¤°à¥‹ à¤•à¥à¤·à¤®à¤¤à¤¾:</h4>
+        <p>à¤¹à¤¾à¤®à¥€à¤¸à¤à¤— à¤šà¥Œà¤¬à¥€à¤¸à¥ˆ à¤˜à¤£à¥à¤Ÿà¤¾ à¤µà¤¿à¤¦à¥à¤¯à¥à¤¤ à¤¬à¥à¤¯à¤¾à¤•à¤…à¤ª à¤¸à¤¹à¤¿à¤¤à¤•à¥‹ à¤†à¤§à¥à¤¨à¤¿à¤• à¤°à¥‡à¤«à¥à¤°à¤¿à¤œà¥‡à¤°à¥‡à¤¸à¤¨ à¤¸à¤¿à¤¸à¥à¤Ÿà¤® à¤›, à¤œà¤¸à¤²à¥‡ à¥¨Â°C à¤¦à¥‡à¤–à¤¿ à¥®Â°C à¤•à¥‹ à¤¤à¤¾à¤ªà¤•à¥à¤°à¤® à¤¸à¥à¤¥à¤¿à¤° à¤°à¤¾à¤–à¥à¤›à¥¤ à¤¯à¤¸à¤²à¥‡ à¤”à¤·à¤§à¥€à¤•à¥‹ à¤ªà¥à¤°à¤­à¤¾à¤µà¤•à¤¾à¤°à¤¿à¤¤à¤¾ à¥§à¥¦à¥¦% à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤ à¤°à¤¾à¤–à¥à¤›à¥¤</p>
       </div>
     </article>
 
     <article class="card" style="border-top-color: var(--accent);">
-      <h3><i class="fas fa-user-md"></i> ३. फर्मासिस्ट परामर्श सेवा</h3>
-      <p>हामी बिरामीलाई औषधीसँगै सही मार्गदर्शन पनि प्रदान गर्दछौं:</p>
+      <h3><i class="fas fa-user-md"></i> à¥©. à¤«à¤°à¥à¤®à¤¾à¤¸à¤¿à¤¸à¥à¤Ÿ à¤ªà¤°à¤¾à¤®à¤°à¥à¤¶ à¤¸à¥‡à¤µà¤¾</h3>
+      <p>à¤¹à¤¾à¤®à¥€ à¤¬à¤¿à¤°à¤¾à¤®à¥€à¤²à¤¾à¤ˆ à¤”à¤·à¤§à¥€à¤¸à¤à¤—à¥ˆ à¤¸à¤¹à¥€ à¤®à¤¾à¤°à¥à¤—à¤¦à¤°à¥à¤¶à¤¨ à¤ªà¤¨à¤¿ à¤ªà¥à¤°à¤¦à¤¾à¤¨ à¤—à¤°à¥à¤¦à¤›à¥Œà¤‚:</p>
       <ul>
-        <li>औषधी सेवन गर्ने सही समय र तरिका।</li>
-        <li>औषधीका सम्भावित साइड-इफेक्टहरू र बच्ने उपाय।</li>
-        <li>Drug Interaction (विभिन्न औषधी सँगै खाँदा हुने असर) सम्बन्धी जानकारी।</li>
+        <li>à¤”à¤·à¤§à¥€ à¤¸à¥‡à¤µà¤¨ à¤—à¤°à¥à¤¨à¥‡ à¤¸à¤¹à¥€ à¤¸à¤®à¤¯ à¤° à¤¤à¤°à¤¿à¤•à¤¾à¥¤</li>
+        <li>à¤”à¤·à¤§à¥€à¤•à¤¾ à¤¸à¤®à¥à¤­à¤¾à¤µà¤¿à¤¤ à¤¸à¤¾à¤‡à¤¡-à¤‡à¤«à¥‡à¤•à¥à¤Ÿà¤¹à¤°à¥‚ à¤° à¤¬à¤šà¥à¤¨à¥‡ à¤‰à¤ªà¤¾à¤¯à¥¤</li>
+        <li>Drug Interaction (à¤µà¤¿à¤­à¤¿à¤¨à¥à¤¨ à¤”à¤·à¤§à¥€ à¤¸à¤à¤—à¥ˆ à¤–à¤¾à¤à¤¦à¤¾ à¤¹à¥à¤¨à¥‡ à¤…à¤¸à¤°) à¤¸à¤®à¥à¤¬à¤¨à¥à¤§à¥€ à¤œà¤¾à¤¨à¤•à¤¾à¤°à¥€à¥¤</li>
       </ul>
     </article>
 
     <div class="card">
-      <h3><i class="fas fa-tasks"></i> औषधी अर्डर गर्ने सजिलो तरिका</h3>
+      <h3><i class="fas fa-tasks"></i> à¤”à¤·à¤§à¥€ à¤…à¤°à¥à¤¡à¤° à¤—à¤°à¥à¤¨à¥‡ à¤¸à¤œà¤¿à¤²à¥‹ à¤¤à¤°à¤¿à¤•à¤¾</h3>
       <div class="step-grid">
-        <div class="step-item"><div class="step-number">१</div><p>पुर्जा (Prescription) को फोटो खिच्नुहोस्।</p></div>
-        <div class="step-item"><div class="step-number">२</div><p>९८५५०६५३२७ मा व्हाट्सएप गर्नुहोस्।</p></div>
-        <div class="step-item"><div class="step-number">३</div><p>मूल्य र उपलब्धता पुष्टि गर्नुहोस्।</p></div>
-        <div class="step-item"><div class="step-number">४</div><p>सुरक्षित डेलिभरी प्राप्त गर्नुहोस्।</p></div>
+        <div class="step-item"><div class="step-number">à¥§</div><p>à¤ªà¥à¤°à¥à¤œà¤¾ (Prescription) à¤•à¥‹ à¤«à¥‹à¤Ÿà¥‹ à¤–à¤¿à¤šà¥à¤¨à¥à¤¹à¥‹à¤¸à¥à¥¤</p></div>
+        <div class="step-item"><div class="step-number">à¥¨</div><p>à¥¯à¥®à¥«à¥«à¥¦à¥¬à¥«à¥©à¥¨à¥­ à¤®à¤¾ à¤µà¥à¤¹à¤¾à¤Ÿà¥à¤¸à¤à¤ª à¤—à¤°à¥à¤¨à¥à¤¹à¥‹à¤¸à¥à¥¤</p></div>
+        <div class="step-item"><div class="step-number">à¥©</div><p>à¤®à¥‚à¤²à¥à¤¯ à¤° à¤‰à¤ªà¤²à¤¬à¥à¤§à¤¤à¤¾ à¤ªà¥à¤·à¥à¤Ÿà¤¿ à¤—à¤°à¥à¤¨à¥à¤¹à¥‹à¤¸à¥à¥¤</p></div>
+        <div class="step-item"><div class="step-number">à¥ª</div><p>à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤ à¤¡à¥‡à¤²à¤¿à¤­à¤°à¥€ à¤ªà¥à¤°à¤¾à¤ªà¥à¤¤ à¤—à¤°à¥à¤¨à¥à¤¹à¥‹à¤¸à¥à¥¤</p></div>
       </div>
     </div>
 
@@ -161,22 +96,25 @@
 
   <div class="mobile-call-box">
     <a href="tel:056593288" style="color:white; text-decoration:none; font-weight:bold;">
-      <i class="fas fa-phone-alt"></i> कल गर्नुहोस्: ०५६-५९३२८८
+      <i class="fas fa-phone-alt"></i> à¤•à¤² à¤—à¤°à¥à¤¨à¥à¤¹à¥‹à¤¸à¥: à¥¦à¥«à¥¬-à¥«à¥¯à¥©à¥¨à¥®à¥®
     </a>
   </div>
 
   <footer>
     <div style="margin-bottom: 20px;">
-      <strong style="color:white; font-size:1.5rem;">बिमल फार्मेसी</strong><br>
-      भरतपुर-७, चितवन, नेपाल
+      <strong style="color:white; font-size:1.5rem;">à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€</strong><br>
+      à¤­à¤°à¤¤à¤ªà¥à¤°-à¥­, à¤šà¤¿à¤¤à¤µà¤¨, à¤¨à¥‡à¤ªà¤¾à¤²
     </div>
     <div class="footer-links">
-      <a href="about.html">हाम्रो बारेमा</a> | 
+      <a href="about.html">à¤¹à¤¾à¤®à¥à¤°à¥‹ à¤¬à¤¾à¤°à¥‡à¤®à¤¾</a> | 
       <a href="privacy-policy.html">Privacy Policy</a> | 
       <a href="disclaimer.html">Disclaimer</a>
     </div>
-    <p style="margin-top: 20px; font-size: 0.8rem;">© २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <p style="margin-top: 20px; font-size: 0.8rem;">Â© à¥¨à¥¦à¥¨à¥¬ à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€à¥¤ à¤¸à¤°à¥à¤µà¤¾à¤§à¤¿à¤•à¤¾à¤° à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤à¥¤</p>
   </footer>
 
+  <script src="script.js" defer></script>
 </body>
 </html>
+
+

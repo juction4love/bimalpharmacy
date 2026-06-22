@@ -1,178 +1,101 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ne">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>औषधी अर्डर गर्नुहोस् | बिमल फार्मेसी - भरपुर-७, चितवन</title>
+  <title>à¤”à¤·à¤§à¥€ à¤…à¤°à¥à¤¡à¤° à¤—à¤°à¥à¤¨à¥à¤¹à¥‹à¤¸à¥ | à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€ - à¤­à¤°à¤ªà¥à¤°-à¥­, à¤šà¤¿à¤¤à¤µà¤¨</title>
   
-  <meta name="description" content="बिमल फार्मेसीबाट घरमै औषधी अर्डर गर्ने सजिलो तरिका। डाक्टरको पुर्जी पेस गर्नुहोस् र सुरक्षित डेलिभरी प्राप्त गर्नुहोस्।">
+  <meta name="description" content="à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€à¤¬à¤¾à¤Ÿ à¤˜à¤°à¤®à¥ˆ à¤”à¤·à¤§à¥€ à¤…à¤°à¥à¤¡à¤° à¤—à¤°à¥à¤¨à¥‡ à¤¸à¤œà¤¿à¤²à¥‹ à¤¤à¤°à¤¿à¤•à¤¾à¥¤ à¤¡à¤¾à¤•à¥à¤Ÿà¤°à¤•à¥‹ à¤ªà¥à¤°à¥à¤œà¥€ à¤ªà¥‡à¤¸ à¤—à¤°à¥à¤¨à¥à¤¹à¥‹à¤¸à¥ à¤° à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤ à¤¡à¥‡à¤²à¤¿à¤­à¤°à¥€ à¤ªà¥à¤°à¤¾à¤ªà¥à¤¤ à¤—à¤°à¥à¤¨à¥à¤¹à¥‹à¤¸à¥à¥¤">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <style>
-    :root {
-      --primary: #2e7d32;
-      --secondary: #1b5e20;
-      --accent: #fbc02d;
-      --danger: #d32f2f;
-      --light-bg: #f8faf9;
-      --white: #ffffff;
-      --text-dark: #2c3e50;
-      --shadow: 0 10px 25px rgba(0,0,0,0.05);
-      --whatsapp: #25d366;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-    body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.8; padding-bottom: 80px; }
-
-    /* Branding Header */
-    .branding-header { background: var(--white); padding: 15px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid var(--primary); box-shadow: var(--shadow); }
-    .logo-container img { height: 65px; width: 65px; border-radius: 50%; border: 2px solid var(--primary); padding: 2px; object-fit: cover; }
-    .brand-text h1 { color: var(--primary); font-size: 1.8rem; margin: 0; }
-    .brand-text p { font-size: 0.85rem; color: #555; font-weight: 600; }
-
-    /* News Ticker (Marquee) */
-    .news-ticker { background: var(--danger); border-bottom: 2px solid #b71c1c; overflow: hidden; }
-    .news-ticker marquee { color: #FFFFFF; font-weight: 900; display: block; padding: 10px 0; font-size: 15px; }
-
-    /* Navigation & Dropdown */
-    .navbar { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    .nav-links { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
-    .nav-links li { position: relative; }
-    .nav-links a { color: var(--white); text-decoration: none; padding: 15px 20px; display: block; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-    .nav-links a:hover, .nav-links a.active { background: var(--secondary); color: var(--accent) !important; }
-
-    .dropdown-content {
-      display: none; position: absolute; background-color: var(--white); min-width: 180px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; border-radius: 0 0 8px 8px;
-    }
-    .dropdown-content a { color: var(--text-dark) !important; padding: 12px 16px; border-bottom: 1px solid #eee; }
-    .dropdown-content a:hover { background-color: #f1f1f1; color: var(--primary) !important; }
-    .dropdown:hover .dropdown-content { display: block; }
-
-    .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
-
-    /* Order Guide Section */
-    .order-guide { background: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; box-shadow: var(--shadow); border-left: 8px solid var(--accent); }
-    .order-guide h2 { color: var(--primary); margin-bottom: 15px; font-size: 1.5rem; }
-    .step-list { margin-left: 20px; margin-bottom: 20px; list-style: none; }
-    .step-list li { margin-bottom: 10px; font-weight: 500; display: flex; gap: 10px; }
-    .step-list b { color: var(--primary); }
-
-    /* Form Card */
-    .form-card { background: var(--white); padding: 35px; border-radius: 20px; box-shadow: var(--shadow); border-top: 10px solid var(--primary); }
-    .input-group { margin-bottom: 20px; }
-    .input-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
-    .input-field { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #ddd; outline: none; background: #fdfdfd; transition: 0.3s; }
-    .input-field:focus { border-color: var(--primary); box-shadow: 0 0 5px rgba(46, 125, 50, 0.2); }
-
-    .agreement-box { background: #fff8e1; padding: 15px; border-radius: 10px; margin-bottom: 25px; display: flex; gap: 12px; align-items: flex-start; }
-    .agreement-text { font-size: 0.85rem; color: #856404; cursor: pointer; }
-
-    .btn-submit { width: 100%; padding: 18px; background: var(--whatsapp); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
-    .btn-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); }
-    .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
-
-    footer { background: #1a1a1a; color: #bbb; padding: 50px 20px 100px; text-align: center; }
-    .footer-links a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
-
-    .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: grid; grid-template-columns: repeat(5, 1fr); padding: 12px 0; border-top: 1px solid #eee; z-index: 1001; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); }
-    .nav-item { text-align: center; text-decoration: none; color: #777; font-size: 0.7rem; }
-    .nav-item.active { color: var(--primary); font-weight: bold; }
-    .nav-item i { display: block; font-size: 1.3rem; margin-bottom: 3px; }
-
-    @media (max-width: 768px) {
-      .nav-links a { padding: 12px 10px; font-size: 0.8rem; }
-      .dropdown-content { position: static; width: 100%; box-shadow: none; background: #f9f9f9; }
-      .brand-text h1 { font-size: 1.5rem; } 
-      .form-card { padding: 25px 20px; }
-    }
-  </style>
+  
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="branding-header">
     <div class="logo-container"><img src="logo.svg" alt="Bimal Pharmacy"></div>
     <div class="brand-text">
-      <h1>बिमल फार्मेसी</h1>
-      <p>सुरक्षित अनलाइन अर्डर सेवा | भरतपुर-७, चितवन</p>
+      <h1>à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€</h1>
+      <p>à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤ à¤…à¤¨à¤²à¤¾à¤‡à¤¨ à¤…à¤°à¥à¤¡à¤° à¤¸à¥‡à¤µà¤¾ | à¤­à¤°à¤¤à¤ªà¥à¤°-à¥­, à¤šà¤¿à¤¤à¤µà¤¨</p>
     </div>
   </header>
 
   <div class="news-ticker">
-    <marquee behavior="scroll" direction="left" scrollamount="6">
-      महत्वपूर्ण सूचना: अर्डर पुष्टि गर्न डाक्टरको पुर्जी (Prescription) को फोटो अनिवार्य छ। भरतपुर क्षेत्रभित्र २-४ घण्टामा डेलिभरी सेवा उपलब्ध छ।
-    </marquee>
+    <div class="ticker-content">
+      à¤®à¤¹à¤¤à¥à¤µà¤ªà¥‚à¤°à¥à¤£ à¤¸à¥‚à¤šà¤¨à¤¾: à¤…à¤°à¥à¤¡à¤° à¤ªà¥à¤·à¥à¤Ÿà¤¿ à¤—à¤°à¥à¤¨ à¤¡à¤¾à¤•à¥à¤Ÿà¤°à¤•à¥‹ à¤ªà¥à¤°à¥à¤œà¥€ (Prescription) à¤•à¥‹ à¤«à¥‹à¤Ÿà¥‹ à¤…à¤¨à¤¿à¤µà¤¾à¤°à¥à¤¯ à¤›à¥¤ à¤­à¤°à¤¤à¤ªà¥à¤° à¤•à¥à¤·à¥‡à¤¤à¥à¤°à¤­à¤¿à¤¤à¥à¤° à¥¨-à¥ª à¤˜à¤£à¥à¤Ÿà¤¾à¤®à¤¾ à¤¡à¥‡à¤²à¤¿à¤­à¤°à¥€ à¤¸à¥‡à¤µà¤¾ à¤‰à¤ªà¤²à¤¬à¥à¤§ à¤›à¥¤
+    </div>
   </div>
 
   <nav class="navbar">
     <ul class="nav-links">
-      <li><a href="index.html">गृहपृष्ठ</a></li>
-      <li><a href="medical-guide.html">औषधी गाइड</a></li>
-      <li><a href="order.html" class="active">अर्डर</a></li>
+      <li><a href="index.html">à¤—à¥ƒà¤¹à¤ªà¥ƒà¤·à¥à¤ </a></li>
+      <li><a href="medical-guide.html">à¤”à¤·à¤§à¥€ à¤—à¤¾à¤‡à¤¡</a></li>
+      <li><a href="order.html" class="active">à¤…à¤°à¥à¤¡à¤°</a></li>
       <li class="dropdown">
-        <a href="#">थप जानकारी <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+        <a href="#" aria-haspopup="true" aria-expanded="false">à¤¥à¤ª à¤œà¤¾à¤¨à¤•à¤¾à¤°à¥€ <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
         <ul class="dropdown-content">
-          <li><a href="about.html">हाम्रो बारेमा</a></li>
-          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
-          <li><a href="insurance.html">बीमा सुविधा</a></li>
-          <li><a href="notice.html">सूचना</a></li>
+          <li><a href="about.html">à¤¹à¤¾à¤®à¥à¤°à¥‹ à¤¬à¤¾à¤°à¥‡à¤®à¤¾</a></li>
+          <li><a href="emergency.html">à¤†à¤•à¤¸à¥à¤®à¤¿à¤• à¤¸à¥‡à¤µà¤¾</a></li>
+          <li><a href="insurance.html">à¤¬à¥€à¤®à¤¾ à¤¸à¥à¤µà¤¿à¤§à¤¾</a></li>
+          <li><a href="notice.html">à¤¸à¥‚à¤šà¤¨à¤¾</a></li>
         </ul>
       </li>
-      <li><a href="contact.html">सम्पर्क</a></li>
+      <li><a href="contact.html">à¤¸à¤®à¥à¤ªà¤°à¥à¤•</a></li>
     </ul>
   </nav>
 
   <div class="container">
     
     <article class="order-guide">
-      <h2><i class="fas fa-info-circle"></i> औषधी अर्डर गर्ने प्रक्रिया</h2>
+      <h2><i class="fas fa-info-circle"></i> à¤”à¤·à¤§à¥€ à¤…à¤°à¥à¤¡à¤° à¤—à¤°à¥à¤¨à¥‡ à¤ªà¥à¤°à¤•à¥à¤°à¤¿à¤¯à¤¾</h2>
       
       <ul class="step-list">
-        <li><b>१.</b> फारममा आफ्नो सही नाम, ठेगाना र मोबाइल नम्बर भर्नुहोस्।</li>
-        <li><b>२.</b> 'ह्वाट्सएप मार्फत अर्डर' बटन थिचेर हाम्रो च्याटमा पुग्नुहोस्।</li>
-        <li><b>३.</b> ह्वाट्सएपमा पुगेपछि आफ्नो डाक्टरको पुर्जी (Prescription) को फोटो पठाउनुहोस्।</li>
-        <li><b>४.</b> मूल्य र समय निश्चित भएपछि सुरक्षित डेलिभरी प्राप्त गर्नुहोस्।</li>
+        <li><b>à¥§.</b> à¤«à¤¾à¤°à¤®à¤®à¤¾ à¤†à¤«à¥à¤¨à¥‹ à¤¸à¤¹à¥€ à¤¨à¤¾à¤®, à¤ à¥‡à¤—à¤¾à¤¨à¤¾ à¤° à¤®à¥‹à¤¬à¤¾à¤‡à¤² à¤¨à¤®à¥à¤¬à¤° à¤­à¤°à¥à¤¨à¥à¤¹à¥‹à¤¸à¥à¥¤</li>
+        <li><b>à¥¨.</b> 'à¤¹à¥à¤µà¤¾à¤Ÿà¥à¤¸à¤à¤ª à¤®à¤¾à¤°à¥à¤«à¤¤ à¤…à¤°à¥à¤¡à¤°' à¤¬à¤Ÿà¤¨ à¤¥à¤¿à¤šà¥‡à¤° à¤¹à¤¾à¤®à¥à¤°à¥‹ à¤šà¥à¤¯à¤¾à¤Ÿà¤®à¤¾ à¤ªà¥à¤—à¥à¤¨à¥à¤¹à¥‹à¤¸à¥à¥¤</li>
+        <li><b>à¥©.</b> à¤¹à¥à¤µà¤¾à¤Ÿà¥à¤¸à¤à¤ªà¤®à¤¾ à¤ªà¥à¤—à¥‡à¤ªà¤›à¤¿ à¤†à¤«à¥à¤¨à¥‹ à¤¡à¤¾à¤•à¥à¤Ÿà¤°à¤•à¥‹ à¤ªà¥à¤°à¥à¤œà¥€ (Prescription) à¤•à¥‹ à¤«à¥‹à¤Ÿà¥‹ à¤ªà¤ à¤¾à¤‰à¤¨à¥à¤¹à¥‹à¤¸à¥à¥¤</li>
+        <li><b>à¥ª.</b> à¤®à¥‚à¤²à¥à¤¯ à¤° à¤¸à¤®à¤¯ à¤¨à¤¿à¤¶à¥à¤šà¤¿à¤¤ à¤­à¤à¤ªà¤›à¤¿ à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤ à¤¡à¥‡à¤²à¤¿à¤­à¤°à¥€ à¤ªà¥à¤°à¤¾à¤ªà¥à¤¤ à¤—à¤°à¥à¤¨à¥à¤¹à¥‹à¤¸à¥à¥¤</li>
       </ul>
     </article>
 
     <div class="form-card">
-      <h2 style="text-align: center; margin-bottom: 25px;"><i class="fas fa-shopping-basket"></i> अर्डर विवरण</h2>
+      <h2 style="text-align: center; margin-bottom: 25px;"><i class="fas fa-shopping-basket"></i> à¤…à¤°à¥à¤¡à¤° à¤µà¤¿à¤µà¤°à¤£</h2>
       <form id="deliveryForm">
         <div class="input-group">
-          <label>पूरा नाम *</label>
-          <input type="text" id="cName" class="input-field" placeholder="तपाईंको नाम">
+          <label>à¤ªà¥‚à¤°à¤¾ à¤¨à¤¾à¤® *</label>
+          <input type="text" id="cName" class="input-field" placeholder="à¤¤à¤ªà¤¾à¤ˆà¤‚à¤•à¥‹ à¤¨à¤¾à¤®">
         </div>
 
         <div class="input-group">
-          <label>डेलिभरी ठेगाना *</label>
-          <input type="text" id="cAddress" class="input-field" placeholder="टोल, चोक वा घर नम्बर">
+          <label>à¤¡à¥‡à¤²à¤¿à¤­à¤°à¥€ à¤ à¥‡à¤—à¤¾à¤¨à¤¾ *</label>
+          <input type="text" id="cAddress" class="input-field" placeholder="à¤Ÿà¥‹à¤², à¤šà¥‹à¤• à¤µà¤¾ à¤˜à¤° à¤¨à¤®à¥à¤¬à¤°">
         </div>
 
         <div class="input-group">
-          <label>सम्पर्क नम्बर *</label>
-          <input type="tel" id="cPhone" class="input-field" placeholder="९८XXXXXXXX">
+          <label>à¤¸à¤®à¥à¤ªà¤°à¥à¤• à¤¨à¤®à¥à¤¬à¤° *</label>
+          <input type="tel" id="cPhone" class="input-field" placeholder="à¥¯à¥®XXXXXXXX">
         </div>
 
         <div class="agreement-box">
           <input type="checkbox" id="agreeRules" onchange="toggleButton()" style="margin-top: 5px;">
           <label for="agreeRules" class="agreement-text">
-            म पुष्टि गर्दछु कि मसँग वैध पुर्जी छ र म बिमल फार्मेसीका सर्तहरूमा सहमत छु।
+            à¤® à¤ªà¥à¤·à¥à¤Ÿà¤¿ à¤—à¤°à¥à¤¦à¤›à¥ à¤•à¤¿ à¤®à¤¸à¤à¤— à¤µà¥ˆà¤§ à¤ªà¥à¤°à¥à¤œà¥€ à¤› à¤° à¤® à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€à¤•à¤¾ à¤¸à¤°à¥à¤¤à¤¹à¤°à¥‚à¤®à¤¾ à¤¸à¤¹à¤®à¤¤ à¤›à¥à¥¤
           </label>
         </div>
         
         <button type="button" id="submitBtn" onclick="sendOrder()" class="btn-submit" disabled>
-          <i class="fab fa-whatsapp"></i> ह्वाट्सएप मार्फत अर्डर पठाउनुहोस्
+          <i class="fab fa-whatsapp"></i> à¤¹à¥à¤µà¤¾à¤Ÿà¥à¤¸à¤à¤ª à¤®à¤¾à¤°à¥à¤«à¤¤ à¤…à¤°à¥à¤¡à¤° à¤ªà¤ à¤¾à¤‰à¤¨à¥à¤¹à¥‹à¤¸à¥
         </button>
       </form>
     </div>
 
     <article class="order-guide" style="margin-top: 30px; border-left-color: var(--primary);">
-      <h2><i class="fas fa-truck"></i> डेलिभरी र भुक्तानी</h2>
-      <p>हामी भरतपुर र आसपासका क्षेत्रमा छिटो सेवा प्रदान गर्दछौं।</p>
+      <h2><i class="fas fa-truck"></i> à¤¡à¥‡à¤²à¤¿à¤­à¤°à¥€ à¤° à¤­à¥à¤•à¥à¤¤à¤¾à¤¨à¥€</h2>
+      <p>à¤¹à¤¾à¤®à¥€ à¤­à¤°à¤¤à¤ªà¥à¤° à¤° à¤†à¤¸à¤ªà¤¾à¤¸à¤•à¤¾ à¤•à¥à¤·à¥‡à¤¤à¥à¤°à¤®à¤¾ à¤›à¤¿à¤Ÿà¥‹ à¤¸à¥‡à¤µà¤¾ à¤ªà¥à¤°à¤¦à¤¾à¤¨ à¤—à¤°à¥à¤¦à¤›à¥Œà¤‚à¥¤</p>
       <ul>
-        <li><strong>Home Delivery:</strong> सुरक्षित र गोप्य प्याकेजिङ।</li>
-        <li><strong>Cold Chain:</strong> क्यान्सरका औषधीहरू विशेष आइस-बक्समा पठाइन्छ।</li>
-        <li><strong>भुक्तानी:</strong> eSewa, Khalti वा बैंक ट्रान्सफर मार्फत।</li>
+        <li><strong>Home Delivery:</strong> à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤ à¤° à¤—à¥‹à¤ªà¥à¤¯ à¤ªà¥à¤¯à¤¾à¤•à¥‡à¤œà¤¿à¤™à¥¤</li>
+        <li><strong>Cold Chain:</strong> à¤•à¥à¤¯à¤¾à¤¨à¥à¤¸à¤°à¤•à¤¾ à¤”à¤·à¤§à¥€à¤¹à¤°à¥‚ à¤µà¤¿à¤¶à¥‡à¤· à¤†à¤‡à¤¸-à¤¬à¤•à¥à¤¸à¤®à¤¾ à¤ªà¤ à¤¾à¤‡à¤¨à¥à¤›à¥¤</li>
+        <li><strong>à¤­à¥à¤•à¥à¤¤à¤¾à¤¨à¥€:</strong> eSewa, Khalti à¤µà¤¾ à¤¬à¥ˆà¤‚à¤• à¤Ÿà¥à¤°à¤¾à¤¨à¥à¤¸à¤«à¤° à¤®à¤¾à¤°à¥à¤«à¤¤à¥¤</li>
       </ul>
     </article>
   </div>
@@ -183,15 +106,15 @@
       <a href="terms.html">Terms</a> | 
       <a href="contact.html">Contact</a>
     </div>
-    <p style="margin-top: 15px;">&copy; २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
+    <p style="margin-top: 15px;">&copy; à¥¨à¥¦à¥¨à¥¬ à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€à¥¤ à¤¸à¤°à¥à¤µà¤¾à¤§à¤¿à¤•à¤¾à¤° à¤¸à¥à¤°à¤•à¥à¤·à¤¿à¤¤à¥¤</p>
   </footer>
 
   <nav class="mobile-nav">
-    <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
-    <a href="order.html" class="nav-item active"><i class="fas fa-shopping-cart"></i> अर्डर</a>
-    <a href="medical-guide.html" class="nav-item"><i class="fas fa-book-medical"></i> गाइड</a>
+    <a href="index.html" class="nav-item"><i class="fas fa-home"></i> à¤¹à¥‹à¤®</a>
+    <a href="order.html" class="nav-item active"><i class="fas fa-shopping-cart"></i> à¤…à¤°à¥à¤¡à¤°</a>
+    <a href="medical-guide.html" class="nav-item"><i class="fas fa-book-medical"></i> à¤—à¤¾à¤‡à¤¡</a>
     <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i> Emergency</a>
-    <a href="contact.html" class="nav-item"><i class="fas fa-phone"></i> सम्पर्क</a>
+    <a href="contact.html" class="nav-item"><i class="fas fa-phone"></i> à¤¸à¤®à¥à¤ªà¤°à¥à¤•</a>
   </nav>
 
   <script>
@@ -207,18 +130,21 @@
       const phone = document.getElementById('cPhone').value.trim();
 
       if (!name || !address || !phone) {
-        alert("कृपया सबै अनिवार्य विवरणहरू भर्नुहोस्।");
+        alert("à¤•à¥ƒà¤ªà¤¯à¤¾ à¤¸à¤¬à¥ˆ à¤…à¤¨à¤¿à¤µà¤¾à¤°à¥à¤¯ à¤µà¤¿à¤µà¤°à¤£à¤¹à¤°à¥‚ à¤­à¤°à¥à¤¨à¥à¤¹à¥‹à¤¸à¥à¥¤");
         return;
       }
 
-      const message = "नमस्ते बिमल फार्मेसी, म औषधी अर्डर गर्न चाहन्छु।%0A%0A" +
-                      "नाम: " + name + "%0A" +
-                      "ठेगाना: " + address + "%0A" +
-                      "फोन: " + phone + "%0A%0A" +
-                      "(म अब औषधीको पुर्जी फोटो खिचेर पठाउँदै छु...)";
+      const message = "à¤¨à¤®à¤¸à¥à¤¤à¥‡ à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€, à¤® à¤”à¤·à¤§à¥€ à¤…à¤°à¥à¤¡à¤° à¤—à¤°à¥à¤¨ à¤šà¤¾à¤¹à¤¨à¥à¤›à¥à¥¤%0A%0A" +
+                      "à¤¨à¤¾à¤®: " + name + "%0A" +
+                      "à¤ à¥‡à¤—à¤¾à¤¨à¤¾: " + address + "%0A" +
+                      "à¤«à¥‹à¤¨: " + phone + "%0A%0A" +
+                      "(à¤® à¤…à¤¬ à¤”à¤·à¤§à¥€à¤•à¥‹ à¤ªà¥à¤°à¥à¤œà¥€ à¤«à¥‹à¤Ÿà¥‹ à¤–à¤¿à¤šà¥‡à¤° à¤ªà¤ à¤¾à¤‰à¤à¤¦à¥ˆ à¤›à¥...)";
 
       window.location.href = "https://wa.me/9779855065327?text=" + message;
     }
   </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
+
+
