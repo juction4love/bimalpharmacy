@@ -1,10 +1,10 @@
-﻿<div style="background: white; padding: 20px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid #2e7d32; border-radius: 20px 20px 0 0; max-width: 650px; margin: 30px auto -30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; z-index: 2;">
+<div style="background: white; padding: 20px 5%; display: flex; align-items: center; gap: 20px; border-bottom: 5px solid #2e7d32; border-radius: 20px 20px 0 0; max-width: 650px; margin: 30px auto -30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; z-index: 2;">
     <div style="height: 75px; width: 75px; border-radius: 50%; border: 3px solid #2e7d32; overflow: hidden; background: white;">
         <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy Logo" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
     <div style="flex: 1;">
-        <h1 style="color: #2e7d32; font-size: 1.8rem; margin: 0; line-height: 1.1;">बिमल फार्म�‡स�€</h1>
-        <p style="font-size: 0.85rem; color: #555; margin: 5px 0 0; font-weight: 600;">भरतपुर-७, �šितवन (�•्यान्सर �…स्पताल र�‹ड)</p>
+        <h1 style="color: #2e7d32; font-size: 1.8rem; margin: 0; line-height: 1.1;">बिमल फार्मेसी</h1>
+        <p style="font-size: 0.85rem; color: #555; margin: 5px 0 0; font-weight: 600;">भरतपुर-७, चितवन (क्यान्सर अस्पताल रोड)</p>
     </div>
 </div>
 
@@ -13,7 +13,7 @@
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px;">
         <div style="text-align: left;">
             <h2 style="color: #1b5e20; margin: 0; font-size: 1.5rem;"><i class="fas fa-file-invoice-dollar"></i> Smart Order Slip</h2>
-            <p style="font-size: 0.8rem; color: #666;">�†धि�•ारि�• डि�œि�Ÿल �–रिद �…र्डर</p>
+            <p style="font-size: 0.8rem; color: #666;">आधिकारिक डिजिटल खरिद अर्डर</p>
         </div>
         <button onclick="toggleDarkMode()" style="background: #f0f0f0; border: none; padding: 10px; border-radius: 50%; cursor: pointer;"><i class="fas fa-moon"></i></button>
     </div>
@@ -24,17 +24,17 @@
     </div>
 
     <div style="margin-bottom: 15px;">
-        <label style="font-weight: 700; display: block; margin-bottom: 5px;">वि�•्र�‡ता / सप्लायर�•�‹ नाम:</label>
+        <label style="font-weight: 700; display: block; margin-bottom: 5px;">विक्रेता / सप्लायरको नाम:</label>
         <div style="position: relative;">
             <i class="fas fa-truck-moving" style="position: absolute; left: 15px; top: 15px; color: #888;"></i>
-            <input type="text" id="vendorName" placeholder="सप्लायर वा �•म्पन�€�•�‹ नाम" style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1px solid #ccc; outline: none; background: #fafafa; font-size: 1rem;">
+            <input type="text" id="vendorName" placeholder="सप्लायर वा कम्पनीको नाम" style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1px solid #ccc; outline: none; background: #fafafa; font-size: 1rem;">
         </div>
     </div>
 
     <div style="margin-bottom: 20px; position: relative;">
-        <label style="font-weight: 700; display: block; margin-bottom: 5px;">सामान�•�‹ विवरण (Items List):</label>
-        <textarea id="itemList" rows="8" placeholder="�‰दा: &#10;1. Paracetamol 500mg - 10 Boxes" style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ccc; outline: none; background: #fafafa; resize: vertical; font-size: 1rem; font-family: inherit;"></textarea>
-        <button onclick="startDictation()" title="ब�‹ल�‡र ल�‡�–्नुह�‹स्" style="position: absolute; right: 12px; bottom: 12px; background: #d32f2f; color: white; border: none; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+        <label style="font-weight: 700; display: block; margin-bottom: 5px;">सामानको विवरण (Items List):</label>
+        <textarea id="itemList" rows="8" placeholder="उदा: &#10;1. Paracetamol 500mg - 10 Boxes" style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ccc; outline: none; background: #fafafa; resize: vertical; font-size: 1rem; font-family: inherit;"></textarea>
+        <button onclick="startDictation()" title="बोलेर लेखन्होस्" style="position: absolute; right: 12px; bottom: 12px; background: #d32f2f; color: white; border: none; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
             <i class="fas fa-microphone"></i>
         </button>
     </div>
@@ -61,7 +61,7 @@
     </div>
 
     <button onclick="clearForm()" style="background: #f5f5f5; color: #d32f2f; width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 12px; font-weight: bold; cursor: pointer;">
-        <i class="fas fa-eraser"></i> Clear Form (�–ाल�€ �—र्नुह�‹स्)
+        <i class="fas fa-eraser"></i> Clear Form (खाली गर्नुहोस्)
     </button>
 </div>
 
@@ -79,25 +79,25 @@
 
     // 2. Message Logic
     function createMessage() {
-        const vName = document.getElementById('vendorName').value.trim() || "�œ�€";
+        const vName = document.getElementById('vendorName').value.trim() || "ज्यू";
         const items = document.getElementById('itemList').value.trim();
         const id = document.getElementById('orderID').innerText;
         const date = document.getElementById('currentDate').innerText;
 
-        if (!items) { alert("�•�ƒपया सामान�•�‹ विवरण भर्नुह�‹स्।"); return null; }
+        if (!items) { alert("कृपया सामानको विवरण भर्नुहोस्।"); return null; }
 
-        return "नमस्त�‡ " + vName + ", �Ÿ™�%0A" +
-               "म बिमल फार्म�‡स�€ (भरतपुर) बा�Ÿ बिमल लामि�›ान�‡। हाम्र�‹ फार्म�‡स�€�•�‹ ला�—ि �†वश्य�• �•�‡ह�€ सामानहर�‚�•�‹ *नयाँ �–रिद �…र्डर (Purchase Order)* पठाए�•�‹ �›ु। �•�ƒपया �‰ल्ल�‡�–ित सामानहर�‚ �‰पलब्ध �—रा�ˆ सहय�‹�— �—रिदिनुहुन हार्दि�• �…नुर�‹ध �—र्द�›ु:%0A%0A" +
-               "�”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”�%0A" +
-               "�Ÿ“Œ *ORDER LIST:*%0A" + 
-               "�”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”�%0A" +
+        return "नमस्ते " + vName + ", 🙏%0A" +
+               "म बिमल फार्मेसी (भरतपुर) बाट बिमल लामिछाने। हाम्रो फार्मेसीको लागि आवश्यक केही सामानहरूको *नयाँ खरिद अर्डर (Purchase Order)* पठाएको छु। कृपया उल्लेखित सामानहरू उपलब्ध गराई सहयोग गरिदिनुहुन हार्दिक अनुरोध गर्दछु:%0A%0A" +
+               "━━━━━━━━━━━━━━━━━━%0A" +
+               "📌 *ORDER LIST:*%0A" + 
+               "━━━━━━━━━━━━━━━━━━%0A" +
                encodeURIComponent(items) + "%0A" +
-               "�”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”�%0A%0A" +
-               "�Ÿ“… मिति: " + date + "%0A" +
-               "�Ÿ”� �…र्डर ID: #" + id + "%0A%0A" +
-               "सामान �•न्फर्म भएप�›ि मला�ˆ �œान�•ार�€ दिनुह�‹ला।%0A" +
-               "धन्यवाद। - बिमल लामि�›ान�‡%0A" +
-               "�Ÿ“ž ९८५५०६५३२७";
+               "━━━━━━━━━━━━━━━━━━%0A%0A" +
+               "📅 मिति: " + date + "%0A" +
+               "📋 अर्डर ID: #" + id + "%0A%0A" +
+               "सामान कन्फर्म भएपछि मलाई जानकारी दिनुहोला।%0A" +
+               "धन्यवाद। - बिमल लामिछाने%0A" +
+               "📞 ९८५५०६५३२७";
     }
 
     // 3. IMPROVED PRINT FUNCTION (Connected to Default Printer Style)
@@ -114,29 +114,28 @@
             <html>
             <head>
                 <title>Order #${id}</title>
-                
-              <link rel="stylesheet" href="style.css">
-</head>
+                <link rel="stylesheet" href="style.css">
+            </head>
             <body>
                 <div class="bill-container">
                     <div class="hd">
-                        <h1>बिमल फार्म�‡स�€</h1>
-                        <p>भरतपुर-७, �šितवन | फ�‹न: ९८५५०६५३२७</p>
+                        <h1>बिमल फार्मेसी</h1>
+                        <p>भरतपुर-७, चितवन | फोन: ९८५५०६५३२७</p>
                         <h2 style="background:#2e7d32; color:white; display:inline-block; padding:5px 20px; border-radius:8px;">PURCHASE ORDER</h2>
                     </div>
                     <div class="meta">
-                        <div><strong>To (वि�•्र�‡ता):</strong> ${vendor}</div>
-                        <div style="text-align: right;"><strong>मिति:</strong> ${date}<br><strong>Order ID:</strong> #${id}</div>
+                        <div><strong>To (विक्रेता):</strong> \${vendor}</div>
+                        <div style="text-align: right;"><strong>मिति:</strong> \${date}<br><strong>Order ID:</strong> #\${id}</div>
                     </div>
                     <div style="font-weight: bold; margin-bottom: 10px; font-size: 18px;">Items Details:</div>
-                    <div class="items-box">${items}</div>
+                    <div class="items-box">\${items}</div>
                     <div class="footer">
-                        <p>य�‹ बिमल फार्म�‡स�€�•�‹ �†धि�•ारि�• डि�œि�Ÿल �…र्डर �•प�€ ह�‹।</p>
-                        <strong>बिमल लामि�›ान�‡ (Proprietor)</strong>
+                        <p>यो बिमल फार्मेसीको आधिकारिक डिजिटल अर्डर कपी हो।</p>
+                        <strong>बिमल लामिछाने (Proprietor)</strong>
                     </div>
                 </div>
-              <script src="script.js" defer></script>
-</body>
+                <script src="script.js" defer><\/script>
+            </body>
             </html>
         `);
         win.document.close();
@@ -174,7 +173,5 @@
     function sendToMe() { const msg = createMessage(); if(msg) window.open("https://wa.me/9779855065327?text=" + msg, '_blank'); }
     function chooseSupplier() { const msg = createMessage(); if(msg) window.open("https://wa.me/?text=" + msg, '_blank'); }
     async function nativeShare() { const msg = createMessage(); if(msg) navigator.share({title:'Order Slip', text:decodeURIComponent(msg)}); }
-    function clearForm() { if(confirm("नयाँ �…र्डर�•ा ला�—ि फर्म �–ाल�€ �—र्न�‡?")) { document.getElementById('vendorName').value=""; document.getElementById('itemList').value=""; setupOrder(); } }
+    function clearForm() { if(confirm("नयाँ अर्डरका लागि फर्म खाली गर्ने?")) { document.getElementById('vendorName').value=""; document.getElementById('itemList').value=""; setupOrder(); } }
 </script>
-
-
