@@ -3,8 +3,8 @@
         <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/main/logo.svg" alt="Bimal Pharmacy Logo" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
     <div style="flex: 1;">
-        <h1 style="color: #2e7d32; font-size: 1.8rem; margin: 0; line-height: 1.1;">à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€</h1>
-        <p style="font-size: 0.85rem; color: #555; margin: 5px 0 0; font-weight: 600;">à¤­à¤°à¤¤à¤ªà¥à¤°-à¥­, à¤šà¤¿à¤¤à¤µà¤¨ (à¤•à¥à¤¯à¤¾à¤¨à¥à¤¸à¤° à¤…à¤¸à¥à¤ªà¤¤à¤¾à¤² à¤°à¥‹à¤¡)</p>
+        <h1 style="color: #2e7d32; font-size: 1.8rem; margin: 0; line-height: 1.1;">बिमल फार्म�‡स�€</h1>
+        <p style="font-size: 0.85rem; color: #555; margin: 5px 0 0; font-weight: 600;">भरतपुर-७, �šितवन (�•्यान्सर �…स्पताल र�‹ड)</p>
     </div>
 </div>
 
@@ -13,28 +13,28 @@
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px;">
         <div style="text-align: left;">
             <h2 style="color: #1b5e20; margin: 0; font-size: 1.5rem;"><i class="fas fa-file-invoice-dollar"></i> Smart Order Slip</h2>
-            <p style="font-size: 0.8rem; color: #666;">à¤†à¤§à¤¿à¤•à¤¾à¤°à¤¿à¤• à¤¡à¤¿à¤œà¤¿à¤Ÿà¤² à¤–à¤°à¤¿à¤¦ à¤…à¤°à¥à¤¡à¤°</p>
+            <p style="font-size: 0.8rem; color: #666;">�†धि�•ारि�• डि�œि�Ÿल �–रिद �…र्डर</p>
         </div>
         <button onclick="toggleDarkMode()" style="background: #f0f0f0; border: none; padding: 10px; border-radius: 50%; cursor: pointer;"><i class="fas fa-moon"></i></button>
     </div>
     
     <div style="display: flex; justify-content: space-between; background: #f1f8f1; padding: 12px; border-radius: 12px; margin-bottom: 20px; font-size: 0.85rem; border: 1px solid #ddd;">
-      <span><i class="far fa-calendar-check"></i> à¤®à¤¿à¤¤à¤¿: <span id="currentDate" style="font-weight: bold;"></span></span>
+      <span><i class="far fa-calendar-check"></i> मिति: <span id="currentDate" style="font-weight: bold;"></span></span>
       <span style="color: #d32f2f; font-weight: bold;">ID: <span id="orderID"></span></span>
     </div>
 
     <div style="margin-bottom: 15px;">
-        <label style="font-weight: 700; display: block; margin-bottom: 5px;">à¤µà¤¿à¤•à¥à¤°à¥‡à¤¤à¤¾ / à¤¸à¤ªà¥à¤²à¤¾à¤¯à¤°à¤•à¥‹ à¤¨à¤¾à¤®:</label>
+        <label style="font-weight: 700; display: block; margin-bottom: 5px;">वि�•्र�‡ता / सप्लायर�•�‹ नाम:</label>
         <div style="position: relative;">
             <i class="fas fa-truck-moving" style="position: absolute; left: 15px; top: 15px; color: #888;"></i>
-            <input type="text" id="vendorName" placeholder="à¤¸à¤ªà¥à¤²à¤¾à¤¯à¤° à¤µà¤¾ à¤•à¤®à¥à¤ªà¤¨à¥€à¤•à¥‹ à¤¨à¤¾à¤®" style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1px solid #ccc; outline: none; background: #fafafa; font-size: 1rem;">
+            <input type="text" id="vendorName" placeholder="सप्लायर वा �•म्पन�€�•�‹ नाम" style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1px solid #ccc; outline: none; background: #fafafa; font-size: 1rem;">
         </div>
     </div>
 
     <div style="margin-bottom: 20px; position: relative;">
-        <label style="font-weight: 700; display: block; margin-bottom: 5px;">à¤¸à¤¾à¤®à¤¾à¤¨à¤•à¥‹ à¤µà¤¿à¤µà¤°à¤£ (Items List):</label>
-        <textarea id="itemList" rows="8" placeholder="à¤‰à¤¦à¤¾: &#10;1. Paracetamol 500mg - 10 Boxes" style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ccc; outline: none; background: #fafafa; resize: vertical; font-size: 1rem; font-family: inherit;"></textarea>
-        <button onclick="startDictation()" title="à¤¬à¥‹à¤²à¥‡à¤° à¤²à¥‡à¤–à¥à¤¨à¥à¤¹à¥‹à¤¸à¥" style="position: absolute; right: 12px; bottom: 12px; background: #d32f2f; color: white; border: none; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+        <label style="font-weight: 700; display: block; margin-bottom: 5px;">सामान�•�‹ विवरण (Items List):</label>
+        <textarea id="itemList" rows="8" placeholder="�‰दा: &#10;1. Paracetamol 500mg - 10 Boxes" style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ccc; outline: none; background: #fafafa; resize: vertical; font-size: 1rem; font-family: inherit;"></textarea>
+        <button onclick="startDictation()" title="ब�‹ल�‡र ल�‡�–्नुह�‹स्" style="position: absolute; right: 12px; bottom: 12px; background: #d32f2f; color: white; border: none; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
             <i class="fas fa-microphone"></i>
         </button>
     </div>
@@ -61,7 +61,7 @@
     </div>
 
     <button onclick="clearForm()" style="background: #f5f5f5; color: #d32f2f; width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 12px; font-weight: bold; cursor: pointer;">
-        <i class="fas fa-eraser"></i> Clear Form (à¤–à¤¾à¤²à¥€ à¤—à¤°à¥à¤¨à¥à¤¹à¥‹à¤¸à¥)
+        <i class="fas fa-eraser"></i> Clear Form (�–ाल�€ �—र्नुह�‹स्)
     </button>
 </div>
 
@@ -79,25 +79,25 @@
 
     // 2. Message Logic
     function createMessage() {
-        const vName = document.getElementById('vendorName').value.trim() || "à¤œà¥€";
+        const vName = document.getElementById('vendorName').value.trim() || "�œ�€";
         const items = document.getElementById('itemList').value.trim();
         const id = document.getElementById('orderID').innerText;
         const date = document.getElementById('currentDate').innerText;
 
-        if (!items) { alert("à¤•à¥ƒà¤ªà¤¯à¤¾ à¤¸à¤¾à¤®à¤¾à¤¨à¤•à¥‹ à¤µà¤¿à¤µà¤°à¤£ à¤­à¤°à¥à¤¨à¥à¤¹à¥‹à¤¸à¥à¥¤"); return null; }
+        if (!items) { alert("�•�ƒपया सामान�•�‹ विवरण भर्नुह�‹स्।"); return null; }
 
-        return "à¤¨à¤®à¤¸à¥à¤¤à¥‡ " + vName + ", ðŸ™%0A" +
-               "à¤® à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€ (à¤­à¤°à¤¤à¤ªà¥à¤°) à¤¬à¤¾à¤Ÿ à¤¬à¤¿à¤®à¤² à¤²à¤¾à¤®à¤¿à¤›à¤¾à¤¨à¥‡à¥¤ à¤¹à¤¾à¤®à¥à¤°à¥‹ à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€à¤•à¥‹ à¤²à¤¾à¤—à¤¿ à¤†à¤µà¤¶à¥à¤¯à¤• à¤•à¥‡à¤¹à¥€ à¤¸à¤¾à¤®à¤¾à¤¨à¤¹à¤°à¥‚à¤•à¥‹ *à¤¨à¤¯à¤¾à¤ à¤–à¤°à¤¿à¤¦ à¤…à¤°à¥à¤¡à¤° (Purchase Order)* à¤ªà¤ à¤¾à¤à¤•à¥‹ à¤›à¥à¥¤ à¤•à¥ƒà¤ªà¤¯à¤¾ à¤‰à¤²à¥à¤²à¥‡à¤–à¤¿à¤¤ à¤¸à¤¾à¤®à¤¾à¤¨à¤¹à¤°à¥‚ à¤‰à¤ªà¤²à¤¬à¥à¤§ à¤—à¤°à¤¾à¤ˆ à¤¸à¤¹à¤¯à¥‹à¤— à¤—à¤°à¤¿à¤¦à¤¿à¤¨à¥à¤¹à¥à¤¨ à¤¹à¤¾à¤°à¥à¤¦à¤¿à¤• à¤…à¤¨à¥à¤°à¥‹à¤§ à¤—à¤°à¥à¤¦à¤›à¥:%0A%0A" +
-               "â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”%0A" +
-               "ðŸ“Œ *ORDER LIST:*%0A" + 
-               "â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”%0A" +
+        return "नमस्त�‡ " + vName + ", �Ÿ™�%0A" +
+               "म बिमल फार्म�‡स�€ (भरतपुर) बा�Ÿ बिमल लामि�›ान�‡। हाम्र�‹ फार्म�‡स�€�•�‹ ला�—ि �†वश्य�• �•�‡ह�€ सामानहर�‚�•�‹ *नयाँ �–रिद �…र्डर (Purchase Order)* पठाए�•�‹ �›ु। �•�ƒपया �‰ल्ल�‡�–ित सामानहर�‚ �‰पलब्ध �—रा�ˆ सहय�‹�— �—रिदिनुहुन हार्दि�• �…नुर�‹ध �—र्द�›ु:%0A%0A" +
+               "�”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”�%0A" +
+               "�Ÿ“Œ *ORDER LIST:*%0A" + 
+               "�”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”�%0A" +
                encodeURIComponent(items) + "%0A" +
-               "â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”%0A%0A" +
-               "ðŸ“… à¤®à¤¿à¤¤à¤¿: " + date + "%0A" +
-               "ðŸ”¢ à¤…à¤°à¥à¤¡à¤° ID: #" + id + "%0A%0A" +
-               "à¤¸à¤¾à¤®à¤¾à¤¨ à¤•à¤¨à¥à¤«à¤°à¥à¤® à¤­à¤à¤ªà¤›à¤¿ à¤®à¤²à¤¾à¤ˆ à¤œà¤¾à¤¨à¤•à¤¾à¤°à¥€ à¤¦à¤¿à¤¨à¥à¤¹à¥‹à¤²à¤¾à¥¤%0A" +
-               "à¤§à¤¨à¥à¤¯à¤µà¤¾à¤¦à¥¤ - à¤¬à¤¿à¤®à¤² à¤²à¤¾à¤®à¤¿à¤›à¤¾à¤¨à¥‡%0A" +
-               "ðŸ“ž à¥¯à¥®à¥«à¥«à¥¦à¥¬à¥«à¥©à¥¨à¥­";
+               "�”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”��”�%0A%0A" +
+               "�Ÿ“… मिति: " + date + "%0A" +
+               "�Ÿ”� �…र्डर ID: #" + id + "%0A%0A" +
+               "सामान �•न्फर्म भएप�›ि मला�ˆ �œान�•ार�€ दिनुह�‹ला।%0A" +
+               "धन्यवाद। - बिमल लामि�›ान�‡%0A" +
+               "�Ÿ“ž ९८५५०६५३२७";
     }
 
     // 3. IMPROVED PRINT FUNCTION (Connected to Default Printer Style)
@@ -120,19 +120,19 @@
             <body>
                 <div class="bill-container">
                     <div class="hd">
-                        <h1>à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€</h1>
-                        <p>à¤­à¤°à¤¤à¤ªà¥à¤°-à¥­, à¤šà¤¿à¤¤à¤µà¤¨ | à¤«à¥‹à¤¨: à¥¯à¥®à¥«à¥«à¥¦à¥¬à¥«à¥©à¥¨à¥­</p>
+                        <h1>बिमल फार्म�‡स�€</h1>
+                        <p>भरतपुर-७, �šितवन | फ�‹न: ९८५५०६५३२७</p>
                         <h2 style="background:#2e7d32; color:white; display:inline-block; padding:5px 20px; border-radius:8px;">PURCHASE ORDER</h2>
                     </div>
                     <div class="meta">
-                        <div><strong>To (à¤µà¤¿à¤•à¥à¤°à¥‡à¤¤à¤¾):</strong> ${vendor}</div>
-                        <div style="text-align: right;"><strong>à¤®à¤¿à¤¤à¤¿:</strong> ${date}<br><strong>Order ID:</strong> #${id}</div>
+                        <div><strong>To (वि�•्र�‡ता):</strong> ${vendor}</div>
+                        <div style="text-align: right;"><strong>मिति:</strong> ${date}<br><strong>Order ID:</strong> #${id}</div>
                     </div>
                     <div style="font-weight: bold; margin-bottom: 10px; font-size: 18px;">Items Details:</div>
                     <div class="items-box">${items}</div>
                     <div class="footer">
-                        <p>à¤¯à¥‹ à¤¬à¤¿à¤®à¤² à¤«à¤¾à¤°à¥à¤®à¥‡à¤¸à¥€à¤•à¥‹ à¤†à¤§à¤¿à¤•à¤¾à¤°à¤¿à¤• à¤¡à¤¿à¤œà¤¿à¤Ÿà¤² à¤…à¤°à¥à¤¡à¤° à¤•à¤ªà¥€ à¤¹à¥‹à¥¤</p>
-                        <strong>à¤¬à¤¿à¤®à¤² à¤²à¤¾à¤®à¤¿à¤›à¤¾à¤¨à¥‡ (Proprietor)</strong>
+                        <p>य�‹ बिमल फार्म�‡स�€�•�‹ �†धि�•ारि�• डि�œि�Ÿल �…र्डर �•प�€ ह�‹।</p>
+                        <strong>बिमल लामि�›ान�‡ (Proprietor)</strong>
                     </div>
                 </div>
               <script src="script.js" defer></script>
@@ -174,7 +174,7 @@
     function sendToMe() { const msg = createMessage(); if(msg) window.open("https://wa.me/9779855065327?text=" + msg, '_blank'); }
     function chooseSupplier() { const msg = createMessage(); if(msg) window.open("https://wa.me/?text=" + msg, '_blank'); }
     async function nativeShare() { const msg = createMessage(); if(msg) navigator.share({title:'Order Slip', text:decodeURIComponent(msg)}); }
-    function clearForm() { if(confirm("à¤¨à¤¯à¤¾à¤ à¤…à¤°à¥à¤¡à¤°à¤•à¤¾ à¤²à¤¾à¤—à¤¿ à¤«à¤°à¥à¤® à¤–à¤¾à¤²à¥€ à¤—à¤°à¥à¤¨à¥‡?")) { document.getElementById('vendorName').value=""; document.getElementById('itemList').value=""; setupOrder(); } }
+    function clearForm() { if(confirm("नयाँ �…र्डर�•ा ला�—ि फर्म �–ाल�€ �—र्न�‡?")) { document.getElementById('vendorName').value=""; document.getElementById('itemList').value=""; setupOrder(); } }
 </script>
 
 
