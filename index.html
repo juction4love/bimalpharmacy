@@ -17,13 +17,15 @@
 <body>
 
   <header class="branding-header">
-    <div class="logo-container">
-      <img src="logo.svg" alt="Bimal Pharmacy Logo">
-    </div>
-    <div class="brand-text">
-      <h1>बिमल फार्मेसी</h1>
-      <p>गुणस्तरीय औषधी र भरपर्दो सेवा | भरतपुर-७, चितवन</p>
-    </div>
+    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 20px; width: 100%;">
+      <div class="logo-container">
+        <img src="logo.svg" alt="Bimal Pharmacy Logo">
+      </div>
+      <div class="brand-text">
+        <h1 style="color: var(--primary);">बिमल फार्मेसी</h1>
+        <p style="color: #555;">गुणस्तरीय औषधी र भरपर्दो सेवा | भरतपुर-७, चितवन</p>
+      </div>
+    </a>
   </header>
 
   <div class="news-ticker">
@@ -55,7 +57,7 @@
   <main>
     <section class="hero">
       <h2>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</h2>
-      <p>विगत २० वर्षदेखि बिरामीहरूको सेवामा समर्पित। हामी क्यान्सरका औषधी, जीवनरक्षक इन्जेक्सन र गुणस्तरीय न्युट्रास्युटिकल्सका लागि विश्वसनीय नाम हौं。</p>
+      <p>विगत २० वर्षदेखि बिरामीहरूको सेवामा समर्पित। हामी क्यान्सरका औषधी, जीवनरक्षक इन्जेक्सन र गुणस्तरीय न्युट्रास्युटिकल्सका लागि विश्वसनीय नाम हौं।</p>
       
       <div style="margin: 25px auto; max-width: 600px; position: relative;">
         <input type="text" id="medicineSearch" placeholder="औषधी खोज्नुहोस्..." style="width: 100%; padding: 15px 20px; border-radius: 30px; border: none; font-size: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); outline: none;">
@@ -102,6 +104,7 @@
     <strong>बिमल फार्मेसी</strong><br>
     भरतपुर-७, चितवन | DDA दर्ता नं: १७२२३/२०६३<br>
     <div class="footer-links">
+      <a href="index.html">गृहपृष्ठ</a> | 
       <a href="about.html">About Us</a> | 
       <a href="privacy-policy.html">Privacy Policy</a> | 
       <a href="disclaimer.html">Disclaimer</a> | 
@@ -110,13 +113,17 @@
     <p>© २०२६ बिमल फार्मेसी | Managed by: Bimal Lamichhane</p>
   </footer>
 
+  <nav class="mobile-nav">
+    <a href="index.html" class="nav-item active"><i class="fas fa-home"></i> होम</a>
+    <a href="medical-guide.html" class="nav-item"><i class="fas fa-book-medical"></i> गाइड</a>
+    <a href="order.html" class="nav-item"><i class="fas fa-shopping-cart"></i> अर्डर</a>
+    <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i> Emergency</a>
+    <a href="contact.html" class="nav-item"><i class="fas fa-phone"></i> सम्पर्क</a>
+  </nav>
+
   <a href="https://wa.me/9779855065327" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
-
-  <div class="call-fixed">
-    <a href="tel:056593288"><i class="fas fa-phone-alt"></i> कल गर्नुहोस्: ०५६-५९३२८८</a>
-  </div>
 
   <script src="script.js" defer></script>
 </body>
