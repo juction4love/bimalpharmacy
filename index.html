@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <link rel="canonical" href="https://www.bimalpharmacy.com.np/" />
-
   <title>बिमल फार्मेसी | Bimal Pharmacy - Trusted Medical Store in Bharatpur, Chitwan</title>
-  
   <meta name="description" content="बिमल फार्मेसी (DDA दर्ता नं: १७२२३/२०६३): भरतपुर-७ चितवनमा अवस्थित भरपर्दो औषधि पसल। क्यान्सर विरुद्धका औषधी, न्युट्रास्युटिकल्स र स्वास्थ्य परामर्शका लागि सम्पर्क गर्नुहोस्।">
   <meta name="keywords" content="Pharmacy in Bharatpur, Cancer Medicine Nepal, Bimal Pharmacy, Online Medicine Delivery Chitwan, Bimal Lamichhane, Health Care Nepal">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  
+  <script src="components.js" defer></script>
 </head>
 <body>
 
@@ -24,26 +23,6 @@
     </div>
   </div>
 
-  <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">गृहपृष्ठ</a></li>
-      <li><a href="medical-guide.html">औषधी गाइड</a></li>
-      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-      <li><a href="service.html">सेवाहरू</a></li>
-      <li class="dropdown">
-        <a href="#" aria-haspopup="true" aria-expanded="false">थप जानकारी <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
-        <ul class="dropdown-content">
-          <li><a href="about.html">हाम्रो बारेमा</a></li>
-          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
-          <li><a href="insurance.html">बीमा सुविधा</a></li>
-          <li><a href="notice.html">सूचना</a></li>
-        </ul>
-      </li>
-      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
-      <li><a href="contact.html">सम्पर्क</a></li>
-    </ul>
-  </nav>
-
   <main>
     <section class="hero">
       <h2>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</h2>
@@ -52,7 +31,16 @@
       <div style="margin: 25px auto; max-width: 600px; position: relative;">
         <input type="text" id="medicineSearch" placeholder="औषधी खोज्नुहोस्..." style="width: 100%; padding: 15px 20px; border-radius: 30px; border: none; font-size: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); outline: none;">
         <div id="searchResults" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-height: 400px; overflow-y: auto; z-index: 1000; margin-top: 10px;"></div>
-      <site-header></site-header>औषधि व्यवस्था विभाग (DDA) मा दर्ता भएको र अनुभवी फर्मासिस्टद्वारा सञ्चालित आधिकारिक फार्मेसी।</p>
+      </div>
+      <a href="order.html" class="btn-main"><i class="fab fa-whatsapp"></i> औषधी अर्डर गर्नुहोस्</a>
+    </section>
+
+    <div class="container">
+      <div class="main-grid">
+        <div class="card">
+          <i class="fas fa-certificate"></i>
+          <h3>आधिकारिक सेवा</h3>
+          <p>औषधि व्यवस्था विभाग (DDA) मा दर्ता भएको र अनुभवी फर्मासिस्टद्वारा सञ्चालित आधिकारिक फार्मेसी।</p>
         </div>
 
         <div class="card" style="border-top-color: var(--accent);">
@@ -82,19 +70,6 @@
 
   <site-footer></site-footer>
 
-  <nav class="mobile-nav">
-    <a href="index.html" class="nav-item active"><i class="fas fa-home"></i> होम</a>
-    <a href="medical-guide.html" class="nav-item"><i class="fas fa-book-medical"></i> गाइड</a>
-    <a href="order.html" class="nav-item"><i class="fas fa-shopping-cart"></i> अर्डर</a>
-    <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i> Emergency</a>
-    <a href="contact.html" class="nav-item"><i class="fas fa-phone"></i> सम्पर्क</a>
-  </nav>
-
-  <a href="https://wa.me/9779855065327" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <button id="backToTop" title="Back to top">&#8679;</button>
-<script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
