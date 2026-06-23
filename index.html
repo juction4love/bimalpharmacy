@@ -4,72 +4,152 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://www.bimalpharmacy.com.np/" />
+  
+  <!-- SEO Meta Tags -->
   <title>बिमल फार्मेसी | Bimal Pharmacy - Trusted Medical Store in Bharatpur, Chitwan</title>
-  <meta name="description" content="बिमल फार्मेसी (DDA दर्ता नं: १७२२३/२०६३): भरतपुर-७ चितवनमा अवस्थित भरपर्दो औषधि पसल। क्यान्सर विरुद्धका औषधी, न्युट्रास्युटिकल्स र स्वास्थ्य परामर्शका लागि सम्पर्क गर्नुहोस्।">
+  <meta name="description" content="बिमल फार्मेसी (DDA दर्ता नं: १७२२३/२०६३): भरतपुर-७, चितवनमा अवस्थित भरपर्दो औषधि पसल। क्यान्सर विरुद्धका औषधी, न्युट्रास्युटिकल्स र स्वास्थ्य परामर्शका लागि सम्पर्क गर्नुहोस्।">
   <meta name="keywords" content="Pharmacy in Bharatpur, Cancer Medicine Nepal, Bimal Pharmacy, Online Medicine Delivery Chitwan, Bimal Lamichhane, Health Care Nepal">
   
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="बिमल फार्मेसी | Trusted Medical Store in Bharatpur, Chitwan">
+  <meta property="og:description" content="क्यान्सर औषधी, न्युट्रास्युटिकल्स र स्वास्थ्य परामर्शका लागि विश्वसनीय फार्मेसी। भरतपुर-७, चितवन।">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.bimalpharmacy.com.np/">
+  <meta property="og:image" content="https://www.bimalpharmacy.com.np/images/og-image.jpg">
+  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   
+  <!-- Scripts -->
   <script src="components.js" defer></script>
 </head>
 <body>
 
+  <!-- ========== HEADER / NAVIGATION ========== -->
   <site-header></site-header>
 
-  <div class="news-ticker">
+  <!-- ========== NEWS TICKER ========== -->
+  <div class="news-ticker" role="alert" aria-live="polite">
     <div class="ticker-content">
-      सूचना: बिमल फार्मेसीमा रहेको आफ्नो बाँकी बक्यौता रकम समयमै भुक्तानी गरी सहयोग गरिदिनुहोला। थप जानकारीका लागि 'सूचना' पेज हेर्नुहोस्।
+      <i class="fas fa-info-circle"></i> 
+      सूचना: बिमल फार्मेसीमा रहेको आफ्नो बाँकी बक्यौता रकम समयमै भुक्तानी गरी सहयोग गरिदिनुहोला। थप जानकारीका लागि 
+      <a href="notice.html" style="color: yellow; text-decoration: underline;">'सूचना' पेज</a> हेर्नुहोस्।
     </div>
   </div>
 
+  <!-- ========== MAIN CONTENT ========== -->
   <main>
-    <section class="hero">
-      <h2>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</h2>
-      <p>विगत २० वर्षदेखि बिरामीहरूको सेवामा समर्पित। हामी क्यान्सरका औषधी, जीवनरक्षक इन्जेक्सन र गुणस्तरीय न्युट्रास्युटिकल्सका लागि विश्वसनीय नाम हौं।</p>
-      
-      <div style="margin: 25px auto; max-width: 600px; position: relative;">
-        <input type="text" id="medicineSearch" placeholder="औषधी खोज्नुहोस्..." style="width: 100%; padding: 15px 20px; border-radius: 30px; border: none; font-size: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); outline: none;">
-        <div id="searchResults" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-height: 400px; overflow-y: auto; z-index: 1000; margin-top: 10px;"></div>
+
+    <!-- ---------- HERO SECTION ---------- -->
+    <section class="hero" style="text-align: center;">
+      <div class="hero-content" style="max-width: 800px; margin: 0 auto;">
+        <h2>तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता</h2>
+        <p class="hero-subtitle" style="text-align: center;">
+          विगत <strong>२० वर्ष</strong> देखि बिरामीहरूको सेवामा समर्पित। हामी क्यान्सरका औषधी, जीवनरक्षक इन्जेक्सन र गुणस्तरीय न्युट्रास्युटिकल्सका लागि <strong>विश्वसनीय नाम</strong> हौं।
+        </p>
+        
+        <!-- Medicine Search -->
+        <div class="search-wrapper" style="max-width: 600px; margin: 25px auto;">
+          <div class="search-box" style="position: relative;">
+            <i class="fas fa-search search-icon" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #999;"></i>
+            <input 
+              type="text" 
+              id="medicineSearch" 
+              placeholder="औषधीको नाम लेख्नुहोस्..." 
+              aria-label="Search medicines"
+              autocomplete="off"
+              style="width: 100%; padding: 15px 20px 15px 50px; border-radius: 30px; border: none; font-size: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); outline: none;"
+            >
+          </div>
+          <div id="searchResults" class="search-results" role="listbox" aria-label="Search results" style="background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-height: 400px; overflow-y: auto; text-align: left; margin-top: 10px;"></div>
+        </div>
+        
+        <!-- CTA Button -->
+        <a href="order.html" class="btn-main" style="display: inline-block;">
+          <i class="fab fa-whatsapp"></i> औषधी अर्डर गर्नुहोस्
+        </a>
       </div>
-      <a href="order.html" class="btn-main"><i class="fab fa-whatsapp"></i> औषधी अर्डर गर्नुहोस्</a>
     </section>
 
-    <div class="container">
-      <div class="main-grid">
-        <div class="card">
-          <i class="fas fa-certificate"></i>
+    <!-- ---------- FEATURES SECTION ---------- -->
+    <section class="container" style="text-align: center;">
+      <div class="features-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 50px;">
+        
+        <article class="feature-card" style="flex: 1 1 280px; max-width: 350px; text-align: center; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid #2d6a4f;">
+          <div class="feature-icon" style="font-size: 40px; margin-bottom: 15px;">
+            <i class="fas fa-certificate" style="color: #2d6a4f;"></i>
+          </div>
           <h3>आधिकारिक सेवा</h3>
           <p>औषधि व्यवस्था विभाग (DDA) मा दर्ता भएको र अनुभवी फर्मासिस्टद्वारा सञ्चालित आधिकारिक फार्मेसी।</p>
-        </div>
+        </article>
 
-        <div class="card" style="border-top-color: var(--accent);">
-          <i class="fas fa-box-open"></i>
+        <article class="feature-card" style="flex: 1 1 280px; max-width: 350px; text-align: center; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid #e67e22;">
+          <div class="feature-icon" style="font-size: 40px; margin-bottom: 15px;">
+            <i class="fas fa-box-open" style="color: #e67e22;"></i>
+          </div>
           <h3>होम डेलिभरी</h3>
-          <p>भरतपुर क्षेत्रभित्र र नेपालका प्रमुख शहरहरूमा सुरक्षित डेलिभरीको व्यवस्था मिलाइएको छ।</p>
-        </div>
+          <p>भरतपुर क्षेत्रभित्र र नेपालका प्रमुख शहरहरूमा सुरक्षित डेलिभरीको व्यवस्था उपलब्ध छ।</p>
+        </article>
 
-        <div class="card" style="border-top-color: var(--danger);">
-          <i class="fas fa-snowflake"></i>
+        <article class="feature-card" style="flex: 1 1 280px; max-width: 350px; text-align: center; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid #e74c3c;">
+          <div class="feature-icon" style="font-size: 40px; margin-bottom: 15px;">
+            <i class="fas fa-snowflake" style="color: #e74c3c;"></i>
+          </div>
           <h3>Cold Chain सुविधा</h3>
           <p>क्यान्सरका इन्जेक्सनहरूका लागि २°C देखि ८°C सम्मको तापक्रममा सुरक्षित भण्डारण।</p>
-        </div>
-      </div>
+        </article>
 
-      <article class="info-content">
+      </div>
+    </section>
+
+    <!-- ---------- ABOUT / DETAILED INFO ---------- -->
+    <section class="container" style="text-align: center;">
+      <article class="about-content" style="max-width: 800px; margin: 50px auto; text-align: center;">
         <h2>बिमल फार्मेसी: भरतपुरको एक विश्वसनीय स्वास्थ्य केन्द्र</h2>
-        <p>बिमल फार्मेसी भरतपुर-७, चितवनको क्यान्सर अस्पताल रोडमा अवस्थित छ। हाम्रो मुख्य उद्देश्य बिरामीहरूलाई सस्तो र सुलभ दरमा गुणस्तरीय औषधीहरू उपलब्ध गराउनु हो। हामीले विशेषगरी बी.पी. कोइराला मेमोरियल क्यान्सर अस्पतालमा उपचाररत बिरामीहरूलाई ध्यानमा राख्दै दुर्लभ र जीवनरक्षक औषधीहरूको भण्डारण गरेका छौं।</p>
+        
+        <p>बिमल फार्मेसी <strong>भरतपुर-७, चितवन</strong> को क्यान्सर अस्पताल रोडमा अवस्थित छ। हाम्रो मुख्य उद्देश्य बिरामीहरूलाई <strong>सस्तो र सुलभ दर</strong> मा गुणस्तरीय औषधीहरू उपलब्ध गराउनु हो। हामीले विशेषगरी <strong>बी.पी. कोइराला मेमोरियल क्यान्सर अस्पताल</strong> मा उपचाररत बिरामीहरूलाई ध्यानमा राख्दै दुर्लभ र जीवनरक्षक औषधीहरूको भण्डारण गरेका छौं।</p>
 
         <h3>न्युट्रास्युटिकल्स (Nutraceuticals) र यसको महत्व</h3>
-        <p>हामी केवल औषधी मात्र होइन, बिरामीको समग्र स्वास्थ्य सुधारका लागि आवश्यक पर्ने **Nutraceuticals** (मल्टिभिटामिन, प्रोटिन पाउडर र सप्लिमेन्ट) हरू पनि उपलब्ध गराउँछौं। यी उत्पादनहरूले शरीरको रोग प्रतिरोधात्मक क्षमता बढाउन र औषधीको उपचार प्रक्रियालाई थप प्रभावकारी बनाउन मद्दत गर्दछन्।</p>
+        <p>हामी केवल औषधी मात्र होइन, बिरामीको समग्र स्वास्थ्य सुधारका लागि आवश्यक पर्ने <strong>Nutraceuticals</strong> (मल्टिभिटामिन, प्रोटिन पाउडर र सप्लिमेन्ट) हरू पनि उपलब्ध गराउँछौं। यी उत्पादनहरूले शरीरको <strong>रोग प्रतिरोधात्मक क्षमता बढाउन</strong> र औषधीको उपचार प्रक्रियालाई थप प्रभावकारी बनाउन मद्दत गर्दछन्।</p>
         
-        <p>हाम्रो फार्मेसीमा दक्ष फर्मासिस्टहरू हुनुहुन्छ जसले तपाईंलाई औषधी सेवन गर्ने सही तरिका, यसका असरहरू र सावधानीहरूका बारेमा नि:शुल्क परामर्श दिनुहुन्छ।</p>
+        <p>हाम्रो फार्मेसीमा दक्ष फर्मासिस्टहरू हुनुहुन्छ जसले तपाईंलाई औषधी सेवन गर्ने सही तरिका, यसका असरहरू र सावधानीहरूका बारेमा <strong>नि:शुल्क परामर्श</strong> दिनुहुन्छ।</p>
+        
+        <!-- Quick Stats -->
+        <div class="stats-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px;">
+          <div class="stat-item" style="text-align: center;">
+            <span class="stat-number" style="display: block; font-size: 36px; font-weight: bold; color: #2d6a4f;">२०+</span>
+            <span class="stat-label" style="font-size: 16px; color: #555;">वर्षको अनुभव</span>
+          </div>
+          <div class="stat-item" style="text-align: center;">
+            <span class="stat-number" style="display: block; font-size: 36px; font-weight: bold; color: #2d6a4f;">१०,०००+</span>
+            <span class="stat-label" style="font-size: 16px; color: #555;">सन्तुष्ट बिरामी</span>
+          </div>
+          <div class="stat-item" style="text-align: center;">
+            <span class="stat-number" style="display: block; font-size: 36px; font-weight: bold; color: #2d6a4f;">२४/७</span>
+            <span class="stat-label" style="font-size: 16px; color: #555;">आकस्मिक सेवा</span>
+          </div>
+        </div>
       </article>
-    </div>
+    </section>
+
+    <!-- ---------- CTA BANNER ---------- -->
+    <section class="cta-banner" style="background: #f8f9fa; padding: 50px 20px; text-align: center; margin-top: 40px;">
+      <div class="container" style="max-width: 600px; margin: 0 auto;">
+        <h2>औषधी चाहिन्छ?</h2>
+        <p style="text-align: center;">हामीलाई WhatsApp मा सम्पर्क गर्नुहोस् वा सिधै फार्मेसीमा आउनुहोस्।</p>
+        <a href="https://wa.me/9779855065327" class="btn-whatsapp" target="_blank" rel="noopener" style="display: inline-block; padding: 15px 35px; background: #25D366; color: white; border-radius: 50px; text-decoration: none; font-size: 18px; font-weight: bold; margin-top: 15px;">
+          <i class="fab fa-whatsapp"></i> WhatsApp मा सम्पर्क गर्नुहोस्
+        </a>
+      </div>
+    </section>
+
   </main>
 
+  <!-- ========== FOOTER ========== -->
   <site-footer></site-footer>
 
+  <!-- ========== SCRIPTS ========== -->
   <script src="script.js" defer></script>
 </body>
 </html>
