@@ -4,21 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>औषधी अर्डर गर्नुहोस् | बिमल फार्मेसी - भरपुर-७, चितवन</title>
-  
   <meta name="description" content="बिमल फार्मेसीबाट घरमै औषधी अर्डर गर्ने सजिलो तरिका। डाक्टरको पुर्जी पेस गर्नुहोस् र सुरक्षित डेलिभरी प्राप्त गर्नुहोस्।">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  
+  <!-- This script injects your Header, Footer, and Navigation -->
+  <script src="components.js" defer></script>
 </head>
 <body>
 
-  <header class="branding-header">
-    <div class="logo-container"><img src="logo.svg" alt="Bimal Pharmacy"></div>
-    <div class="brand-text">
-      <h1>बिमल फार्मेसी</h1>
-      <p>सुरक्षित अनलाइन अर्डर सेवा | भरतपुर-७, चितवन</p>
-    </div>
-  </header>
+  <!-- Injected Header & Navbar -->
+  <site-header></site-header>
 
   <div class="news-ticker">
     <div class="ticker-content">
@@ -26,30 +23,11 @@
     </div>
   </div>
 
-  <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html">गृहपृष्ठ</a></li>
-      <li><a href="medical-guide.html">औषधी गाइड</a></li>
-      <li><a href="order.html" class="active">अर्डर</a></li>
-      <li class="dropdown">
-        <a href="#" aria-haspopup="true" aria-expanded="false">थप जानकारी <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
-        <ul class="dropdown-content">
-          <li><a href="about.html">हाम्रो बारेमा</a></li>
-          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
-          <li><a href="insurance.html">बीमा सुविधा</a></li>
-          <li><a href="notice.html">सूचना</a></li>
-        </ul>
-      </li>
-      <li><a href="contact.html">सम्पर्क</a></li>
-    </ul>
-  </nav>
-
-  <div class="container">
+  <main class="container">
     
-    <article class="order-guide">
-      <h2><i class="fas fa-info-circle"></i> औषधी अर्डर गर्ने प्रक्रिया</h2>
-      
-      <ul class="step-list">
+    <article class="order-guide card">
+      <h2 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-info-circle"></i> औषधी अर्डर गर्ने प्रक्रिया</h2>
+      <ul class="step-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">
         <li><b>१.</b> फारममा आफ्नो सही नाम, ठेगाना र मोबाइल नम्बर भर्नुहोस्।</li>
         <li><b>२.</b> 'ह्वाट्सएप मार्फत अर्डर' बटन थिचेर हाम्रो च्याटमा पुग्नुहोस्।</li>
         <li><b>३.</b> ह्वाट्सएपमा पुगेपछि आफ्नो डाक्टरको पुर्जी (Prescription) को फोटो पठाउनुहोस्।</li>
@@ -57,64 +35,50 @@
       </ul>
     </article>
 
-    <div class="form-card">
-      <h2 style="text-align: center; margin-bottom: 25px;"><i class="fas fa-shopping-basket"></i> अर्डर विवरण</h2>
+    <div class="form-card card">
+      <h2 style="text-align: center; margin-bottom: 25px; color: var(--primary);"><i class="fas fa-shopping-basket"></i> अर्डर विवरण</h2>
       <form id="deliveryForm">
-        <div class="input-group">
-          <label>पूरा नाम *</label>
-          <input type="text" id="cName" class="input-field" placeholder="तपाईंको नाम">
+        <div class="input-group" style="margin-bottom: 15px;">
+          <label style="display: block; margin-bottom: 5px; font-weight: bold;">पूरा नाम *</label>
+          <input type="text" id="cName" placeholder="तपाईंको नाम" required>
         </div>
 
-        <div class="input-group">
-          <label>डेलिभरी ठेगाना *</label>
-          <input type="text" id="cAddress" class="input-field" placeholder="टोल, चोक वा घर नम्बर">
+        <div class="input-group" style="margin-bottom: 15px;">
+          <label style="display: block; margin-bottom: 5px; font-weight: bold;">डेलिभरी ठेगाना *</label>
+          <input type="text" id="cAddress" placeholder="टोल, चोक वा घर नम्बर" required>
         </div>
 
-        <div class="input-group">
-          <label>सम्पर्क नम्बर *</label>
-          <input type="tel" id="cPhone" class="input-field" placeholder="९८XXXXXXXX">
+        <div class="input-group" style="margin-bottom: 15px;">
+          <label style="display: block; margin-bottom: 5px; font-weight: bold;">सम्पर्क नम्बर *</label>
+          <input type="tel" id="cPhone" placeholder="९८XXXXXXXX" required>
         </div>
 
-        <div class="agreement-box">
-          <input type="checkbox" id="agreeRules" onchange="toggleButton()" style="margin-top: 5px;">
-          <label for="agreeRules" class="agreement-text">
+        <div class="agreement-box" style="display: flex; gap: 10px; margin-top: 20px; align-items: flex-start;">
+          <input type="checkbox" id="agreeRules" onchange="toggleButton()" style="width: auto; margin-top: 5px;">
+          <label for="agreeRules" class="agreement-text" style="font-size: 0.9rem; color: var(--text-muted);">
             म पुष्टि गर्दछु कि मसँग वैध पुर्जी छ र म बिमल फार्मेसीका सर्तहरूमा सहमत छु।
           </label>
         </div>
         
-        <button type="button" id="submitBtn" onclick="sendOrder()" class="btn-submit" disabled>
+        <button type="button" id="submitBtn" onclick="sendOrder()" class="btn-main" style="width: 100%; justify-content: center; margin-top: 20px; background: #25D366; color: white;" disabled>
           <i class="fab fa-whatsapp"></i> ह्वाट्सएप मार्फत अर्डर पठाउनुहोस्
         </button>
       </form>
     </div>
 
-    <article class="order-guide" style="margin-top: 30px; border-left-color: var(--primary);">
-      <h2><i class="fas fa-truck"></i> डेलिभरी र भुक्तानी</h2>
-      <p>हामी भरतपुर र आसपासका क्षेत्रमा छिटो सेवा प्रदान गर्दछौं।</p>
-      <ul>
+    <article class="order-guide card" style="margin-top: 30px; border-left: 5px solid var(--primary);">
+      <h2 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-truck"></i> डेलिभरी र भुक्तानी</h2>
+      <p style="margin-bottom: 10px;">हामी भरतपुर र आसपासका क्षेत्रमा छिटो सेवा प्रदान गर्दछौं।</p>
+      <ul style="margin-left: 20px;">
         <li><strong>Home Delivery:</strong> सुरक्षित र गोप्य प्याकेजिङ।</li>
         <li><strong>Cold Chain:</strong> क्यान्सरका औषधीहरू विशेष आइस-बक्समा पठाइन्छ।</li>
         <li><strong>भुक्तानी:</strong> eSewa, Khalti वा बैंक ट्रान्सफर मार्फत।</li>
       </ul>
     </article>
-  </div>
+  </main>
 
-  <footer>
-    <div class="footer-links">
-      <a href="privacy-policy.html">Privacy Policy</a> | 
-      <a href="terms.html">Terms</a> | 
-      <a href="contact.html">Contact</a>
-    </div>
-    <p style="margin-top: 15px;">&copy; २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-  </footer>
-
-  <nav class="mobile-nav">
-    <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
-    <a href="order.html" class="nav-item active"><i class="fas fa-shopping-cart"></i> अर्डर</a>
-    <a href="medical-guide.html" class="nav-item"><i class="fas fa-book-medical"></i> गाइड</a>
-    <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i> Emergency</a>
-    <a href="contact.html" class="nav-item"><i class="fas fa-phone"></i> सम्पर्क</a>
-  </nav>
+  <!-- Injected Footer, Mobile Nav, & Floating Buttons -->
+  <site-footer></site-footer>
 
   <script>
     function toggleButton() {
