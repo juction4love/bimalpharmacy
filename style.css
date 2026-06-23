@@ -463,7 +463,7 @@ input[type="checkbox"], input[type="radio"] { width: auto; cursor: pointer; acce
 /* =========================================
    26. FOOTER
    ========================================= */
-footer { background: var(--glass-bg-strong); border-top: 1px solid var(--glass-border); padding: var(--space-2xl) 5% 7rem; text-align: center; margin-top: var(--space-3xl); }
+footer { background: var(--glass-bg-strong); border-top: 1px solid var(--glass-border); padding: var(--space-2xl) 5% 6rem; text-align: center; margin-top: var(--space-3xl); }
 .footer-brand strong { color: var(--text-main); font-size: var(--text-2xl); }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin-top: var(--space-md); }
 .footer-links a { color: var(--text-muted); font-size: var(--text-sm); }
@@ -480,14 +480,59 @@ footer { background: var(--glass-bg-strong); border-top: 1px solid var(--glass-b
 #backToTop:hover { background: var(--primary); color: var(--white); }
 
 /* =========================================
-   28. MOBILE NAVIGATION
+   28. MOBILE NAVIGATION (FIXED OVERLAP)
    ========================================= */
 .mobile-nav { display: none; }
+
 @media (max-width: 768px) {
-  .mobile-nav { display: flex; position: fixed; bottom: 0; left: 0; right: 0; background: var(--glass-bg-strong); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--glass-border); z-index: var(--z-modal); padding-bottom: env(safe-area-inset-bottom, 0); }
-  .mobile-nav .nav-item { flex: 1; text-align: center; padding: var(--space-sm) var(--space-xs); color: var(--text-muted); font-size: 11px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-decoration: none; }
-  .mobile-nav .nav-item i { font-size: 20px; }
-  .mobile-nav .nav-item.active, .mobile-nav .nav-item:hover { color: var(--primary); }
+  body { padding-bottom: 70px; }
+  main { padding-bottom: 20px; }
+  .container:last-of-type { margin-bottom: 80px; }
+  .cta-banner { margin-bottom: 90px !important; }
+  footer { padding-bottom: 90px !important; margin-bottom: 0 !important; }
+
+  .mobile-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--glass-border);
+    z-index: var(--z-modal);
+    padding: 6px 0;
+    padding-bottom: env(safe-area-inset-bottom, 6px);
+    height: auto;
+  }
+  
+  .mobile-nav .nav-item {
+    flex: 1;
+    text-align: center;
+    padding: 6px 4px;
+    color: var(--text-muted);
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  
+  .mobile-nav .nav-item i { font-size: 18px; }
+  
+  .mobile-nav .nav-item span { display: block; font-size: 9px; margin-top: 1px; }
+  
+  .mobile-nav .nav-item.active,
+  .mobile-nav .nav-item:hover { color: var(--primary); }
+
+  .mobile-call-box { bottom: 70px !important; }
+  .whatsapp-float { bottom: 85px !important; right: 15px; padding: 10px 15px; font-size: 1.2rem; }
+  #backToTop { bottom: 145px !important; right: 15px; }
 }
 
 /* =========================================
@@ -535,8 +580,6 @@ footer { background: var(--glass-bg-strong); border-top: 1px solid var(--glass-b
   .step-grid { grid-template-columns: 1fr 1fr; }
   .tag { font-size: var(--text-xs); padding: var(--space-xs) var(--space-md); }
   .emergency-contact-grid { grid-template-columns: 1fr; }
-  .whatsapp-float { bottom: 70px; right: 15px; padding: var(--space-sm) var(--space-md); font-size: var(--text-xl); }
-  #backToTop { bottom: 130px; right: 15px; }
 }
 
 @media (max-width: 480px) {
