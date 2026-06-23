@@ -4,40 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>हाम्रा सेवाहरू | बिमल फार्मेसी - भरतपुर-७, चितवन</title>
-  
   <meta name="description" content="बिमल फार्मेसीका आधिकारिक सेवाहरू: २४ घण्टा क्यान्सर औषधी आपूर्ति, सुरक्षित कोल्ड-चेन भण्डारण र नेपालभर होम डेलिभरी।">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  
+  <script src="components.js" defer></script>
 </head>
 <body>
 
-  <header class="branding-header">
-    <div class="logo-container"><img src="logo.svg" alt="Bimal Pharmacy"></div>
-    <div class="brand-text">
-      <h1>बिमल फार्मेसी</h1>
-      <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र | भरतपुर-७, चितवन</p>
-    </div>
-  </header>
-
-  <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html">गृहपृष्ठ</a></li>
-      <li><a href="medical-guide.html">औषधी गाइड</a></li>
-      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-      <li class="dropdown">
-        <a href="service.html" class="active">सेवाहरू <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
-        <ul class="dropdown-content">
-          <li><a href="about.html">हाम्रो बारेमा</a></li>
-          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
-          <li><a href="insurance.html">बीमा सुविधा</a></li>
-          <li><a href="notice.html">सूचना</a></li>
-        </ul>
-      </li>
-      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
-      <li><a href="contact.html">सम्पर्क</a></li>
-    </ul>
-  </nav>
+  <site-header></site-header>
 
   <section class="hero">
     <h2>हाम्रा विशिष्ट स्वास्थ्य सेवाहरू</h2>
@@ -63,7 +39,7 @@
 
     <article class="card" style="border-top-color: var(--danger);">
       <h3><i class="fas fa-vials"></i> २. क्यान्सर औषधी (Oncology Care)</h3>
-      <p>भरतपुर क्यान्सर अस्पतालको नजिकै अवस्थित हुनाले हामी क्यान्सर उपचारका जटिल औषधीहरूको आपूर्तिमा विशेषज्ञता राख्छौं。</p>
+      <p>भरतपुर क्यान्सर अस्पतालको नजिकै अवस्थित हुनाले हामी क्यान्सर उपचारका जटिल औषधीहरूको आपूर्तिमा विशेषज्ञता राख्छौं।</p>
       
       <div class="service-detail">
         <h4>हाम्रो क्षमता:</h4>
@@ -93,24 +69,7 @@
 
   </main>
 
-  <div class="mobile-call-box">
-    <a href="tel:056593288" style="color:white; text-decoration:none; font-weight:bold;">
-      <i class="fas fa-phone-alt"></i> कल गर्नुहोस्: ०५६-५९३२८८
-    </a>
-  </div>
-
-  <footer>
-    <div style="margin-bottom: 20px;">
-      <strong style="color:white; font-size:1.5rem;">बिमल फार्मेसी</strong><br>
-      भरतपुर-७, चितवन, नेपाल
-    </div>
-    <div class="footer-links">
-      <a href="about.html">हाम्रो बारेमा</a> | 
-      <a href="privacy-policy.html">Privacy Policy</a> | 
-      <a href="disclaimer.html">Disclaimer</a>
-    </div>
-    <p style="margin-top: 20px; font-size: 0.8rem;">© २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-  </footer>
+  <site-footer></site-footer>
 
   <script src="script.js" defer></script>
 </body>
