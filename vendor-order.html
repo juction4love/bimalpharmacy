@@ -54,15 +54,36 @@
       </div>
     </div>
 
-    <!-- Items Textarea -->
+    <!-- ========== ORDER TABLE ========== -->
     <div class="input-group-order">
-      <label>सामानको विवरण (Items List):</label>
-      <div class="textarea-with-mic">
-        <textarea id="itemList" rows="8" placeholder="उदा: &#10;1. Paracetamol 500mg - 10 Boxes"></textarea>
-        <button onclick="startDictation()" class="mic-btn" title="बोलेर लेख्नुहोस्">
-          <i class="fas fa-microphone"></i>
-        </button>
-      </div>
+      <label>सामानको विवरण (Items Table):</label>
+      
+      <table class="order-table" id="orderTable">
+        <thead>
+          <tr>
+            <th width="5%">#</th>
+            <th width="35%">औषधी / सामानको नाम</th>
+            <th width="15%">Strength</th>
+            <th width="12%">Qty</th>
+            <th width="23%">Remarks</th>
+            <th width="10%"></th>
+          </tr>
+        </thead>
+        <tbody id="orderTableBody">
+          <tr>
+            <td class="row-num">1</td>
+            <td><input type="text" class="table-input item-name" placeholder="औषधीको नाम"></td>
+            <td><input type="text" class="table-input item-strength" placeholder="उदा: 500mg"></td>
+            <td><input type="text" class="table-input item-qty" placeholder="उदा: 10"></td>
+            <td><input type="text" class="table-input item-remarks" placeholder="टिप्पणी"></td>
+            <td><button class="row-delete-btn" onclick="deleteRow(this)" title="Delete">✕</button></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <button onclick="addRow()" class="btn-add-row">
+        <i class="fas fa-plus-circle"></i> सामान थप्नुहोस्
+      </button>
     </div>
 
     <!-- Main Action Buttons -->
@@ -98,6 +119,70 @@
   <!-- ========== SCRIPTS ========== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
+    // 0. Table Management
+    function addRow() {
+      const tbody = document.getElementById('orderTableBody');
+      const rowCount = tbody.querySelectorAll('tr').length + 1;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="row-num">${rowCount}</td>
+        <td><input type="text" class="table-input item-name" placeholder="औषधीको नाम"></td>
+        <td><input type="text" class="table-input item-strength" placeholder="उदा: 500mg"></td>
+        <td><input type="text" class="table-input item-qty" placeholder="उदा: 10"></td>
+        <td><input type="text" class="table-input item-remarks" placeholder="टिप्पणी"></td>
+        <td><button class="row-delete-btn" onclick="deleteRow(this)" title="Delete">✕</button></td>
+      `;
+      tbody.appendChild(tr);
+      updateRowNumbers();
+    }
+
+    function deleteRow(btn) {
+      const tbody = document.getElementById('orderTableBody');
+      if (tbody.querySelectorAll('tr').length > 1) {
+        btn.closest('tr').remove();
+        updateRowNumbers();
+      }
+    }
+
+    function updateRowNumbers() {
+      document.querySelectorAll('#orderTableBody .row-num').forEach((td, i) => td.textContent = i + 1);
+    }
+
+    function getTableData() {
+      const rows = document.querySelectorAll('#orderTableBody tr');
+      let items = '';
+      rows.forEach((row, i) => {
+        const name = row.querySelector('.item-name').value.trim();
+        const strength = row.querySelector('.item-strength').value.trim();
+        const qty = row.querySelector('.item-qty').value.trim();
+        const remarks = row.querySelector('.item-remarks').value.trim();
+        if (name) {
+          items += `${i + 1}. ${name}`;
+          if (strength) items += ` (${strength})`;
+          if (qty) items += ` - Qty: ${qty}`;
+          if (remarks) items += ` [${remarks}]`;
+          items += '\n';
+        }
+      });
+      return items.trim();
+    }
+
+    function getTableHTML() {
+      const rows = document.querySelectorAll('#orderTableBody tr');
+      let html = '<table style="width:100%;border-collapse:collapse;margin:15px 0;font-size:14px;"><thead><tr style="background:#2e7d32;color:white;"><th>#</th><th>Item</th><th>Strength</th><th>Qty</th><th>Remarks</th></tr></thead><tbody>';
+      rows.forEach((row, i) => {
+        const name = row.querySelector('.item-name').value.trim();
+        const strength = row.querySelector('.item-strength').value.trim();
+        const qty = row.querySelector('.item-qty').value.trim();
+        const remarks = row.querySelector('.item-remarks').value.trim();
+        if (name) {
+          html += `<tr style="border-bottom:1px solid #ddd;"><td style="padding:8px;">${i+1}</td><td style="padding:8px;">${name}</td><td style="padding:8px;">${strength||'-'}</td><td style="padding:8px;">${qty||'-'}</td><td style="padding:8px;">${remarks||'-'}</td></tr>`;
+        }
+      });
+      html += '</tbody></table>';
+      return html;
+    }
+
     // 1. Auto Generation
     function setupOrder() {
       const now = new Date();
@@ -107,100 +192,76 @@
     }
     setupOrder();
 
-    // 2. Message Logic
+    // 2. Message Logic - SIMPLE PURCHASE ORDER
     function createMessage() {
-      const vName = document.getElementById('vendorName').value.trim() || "ज्यू";
-      const items = document.getElementById('itemList').value.trim();
+      const vName = document.getElementById('vendorName').value.trim() || "Supplier";
+      const items = getTableData();
       const id = document.getElementById('orderID').innerText;
       const date = document.getElementById('currentDate').innerText;
 
-      if (!items) { alert("कृपया सामानको विवरण भर्नुहोस्।"); return null; }
+      if (!items) { alert("कृपया कम्तिमा एउटा सामान भर्नुहोस्।"); return null; }
 
-      return "नमस्ते " + vName + ", 🙏%0A" +
-             "म बिमल फार्मेसी (भरतपुर) बाट बिमल लामिछाने। हाम्रो फार्मेसीको लागि आवश्यक केही सामानहरूको *नयाँ खरिद अर्डर (Purchase Order)* पठाएको छु। कृपया उल्लेखित सामानहरू उपलब्ध गराई सहयोग गरिदिनुहुन हार्दिक अनुरोध गर्दछु:%0A%0A" +
+      return "📋 *PURCHASE ORDER*%0A" +
              "━━━━━━━━━━━━━━━━━━%0A" +
-             "📌 *ORDER LIST:*%0A" + 
-             "━━━━━━━━━━━━━━━━━━%0A" +
-             encodeURIComponent(items) + "%0A" +
-             "━━━━━━━━━━━━━━━━━━%0A%0A" +
              "📅 मिति: " + date + "%0A" +
-             "📋 अर्डर ID: #" + id + "%0A%0A" +
-             "सामान कन्फर्म भएपछि मलाई जानकारी दिनुहोला।%0A" +
-             "धन्यवाद। - बिमल लामिछाने%0A" +
-             "📞 ९८५५०६५३२७";
+             "🔢 Order ID: #" + id + "%0A" +
+             "🏥 बिमल फार्मेसी, भरतपुर-७%0A" +
+             "📞 ९८५५०६५३२७%0A" +
+             "━━━━━━━━━━━━━━━━━━%0A%0A" +
+             "📌 *ORDER ITEMS:*%0A" +
+             encodeURIComponent(items) + "%0A%0A" +
+             "━━━━━━━━━━━━━━━━━━%0A" +
+             "कृपया उपलब्धता जानकारी दिनुहोला।%0A" +
+             "धन्यवाद।";
     }
 
     // 3. Print Function
     function printOrder() {
       const vendor = document.getElementById('vendorName').value || "N/A";
-      const items = document.getElementById('itemList').value;
       const id = document.getElementById('orderID').innerText;
       const date = document.getElementById('currentDate').innerText;
-
-      if (!items) return alert("Items list is empty!");
+      const tableHTML = getTableHTML();
+      if (!getTableData()) return alert("Items list is empty!");
 
       const win = window.open('', '', 'height=700,width=900');
-      win.document.write(`
-        <html>
-        <head>
-          <title>Order #${id}</title>
-          <link rel="stylesheet" href="style.css">
-        </head>
-        <body>
-          <div class="bill-container">
-            <div class="hd">
-              <h1>बिमल फार्मेसी</h1>
-              <p>भरतपुर-७, चितवन | फोन: ९८५५०६५३२७</p>
-              <h2>PURCHASE ORDER</h2>
-            </div>
-            <div class="meta">
-              <div><strong>To (विक्रेता):</strong> ${vendor}</div>
-              <div style="text-align: right;"><strong>मिति:</strong> ${date}<br><strong>Order ID:</strong> #${id}</div>
-            </div>
-            <div style="font-weight: bold; margin-bottom: 10px; font-size: 18px;">Items Details:</div>
-            <div class="items-box">${items}</div>
-            <div class="footer">
-              <p>यो बिमल फार्मेसीको आधिकारिक डिजिटल अर्डर कपी हो।</p>
-              <strong>बिमल लामिछाने (Proprietor)</strong>
-            </div>
-          </div>
-        </body>
-        </html>
-      `);
+      win.document.write(`<html><head><title>Order #${id}</title><link rel="stylesheet" href="style.css"></head><body><div class="bill-container"><div class="hd"><h1>बिमल फार्मेसी</h1><p>भरतपुर-७, चितवन | फोन: ९८५५०६५३२७</p><h2>PURCHASE ORDER</h2></div><div class="meta"><div><strong>To:</strong> ${vendor}</div><div style="text-align:right;"><strong>मिति:</strong> ${date}<br><strong>ID:</strong> #${id}</div></div><div style="font-weight:bold;margin-bottom:10px;">Items:</div>${tableHTML}<div class="footer"><p>बिमल फार्मेसी - आधिकारिक अर्डर</p><strong>Bimal Lamichhane</strong></div></div></body></html>`);
       win.document.close();
       win.focus();
       setTimeout(() => { win.print(); win.close(); }, 600);
     }
 
     // 4. Other Functions
-    function startDictation() {
-      if (window.hasOwnProperty('webkitSpeechRecognition')) {
-        var recognition = new webkitSpeechRecognition();
-        recognition.lang = "ne-NP";
-        recognition.onresult = (e) => { document.getElementById('itemList').value += e.results[0][0].transcript + "\n"; recognition.stop(); };
-        recognition.start();
-      } else { alert("Speech not supported"); }
-    }
-
     function generatePDF() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
+      doc.setFontSize(14);
       doc.text("BIMAL PHARMACY - PURCHASE ORDER", 10, 15);
+      doc.setFontSize(10);
       doc.text("ID: " + document.getElementById('orderID').innerText, 10, 25);
-      doc.text("Vendor: " + document.getElementById('vendorName').value, 10, 35);
-      doc.text("Items List:\n" + document.getElementById('itemList').value, 10, 50);
+      doc.text("Date: " + document.getElementById('currentDate').innerText, 10, 35);
+      doc.text("Items:", 10, 45);
+      const items = getTableData().split('\n');
+      let y = 55;
+      items.forEach(item => {
+        if (y > 270) { doc.addPage(); y = 20; }
+        doc.text(item, 10, y);
+        y += 7;
+      });
       doc.save(`Bimal_Order_${document.getElementById('orderID').innerText}.pdf`);
     }
 
-    function toggleDarkMode() {
-      const app = document.getElementById('orderApp');
-      app.classList.toggle('dark-mode');
-    }
-
+    function toggleDarkMode() { document.getElementById('orderApp').classList.toggle('dark-mode'); }
     function sendToMe() { const msg = createMessage(); if(msg) window.open("https://wa.me/9779855065327?text=" + msg, '_blank'); }
     function chooseSupplier() { const msg = createMessage(); if(msg) window.open("https://wa.me/?text=" + msg, '_blank'); }
     async function nativeShare() { const msg = createMessage(); if(msg) navigator.share({title:'Order Slip', text:decodeURIComponent(msg)}); }
-    function clearForm() { if(confirm("नयाँ अर्डरका लागि फर्म खाली गर्ने?")) { document.getElementById('vendorName').value=""; document.getElementById('itemList').value=""; setupOrder(); } }
+    
+    function clearForm() { 
+      if(confirm("नयाँ अर्डरका लागि फर्म खाली गर्ने?")) { 
+        document.getElementById('vendorName').value = ""; 
+        document.getElementById('orderTableBody').innerHTML = `<tr><td class="row-num">1</td><td><input type="text" class="table-input item-name" placeholder="औषधीको नाम"></td><td><input type="text" class="table-input item-strength" placeholder="उदा: 500mg"></td><td><input type="text" class="table-input item-qty" placeholder="उदा: 10"></td><td><input type="text" class="table-input item-remarks" placeholder="टिप्पणी"></td><td><button class="row-delete-btn" onclick="deleteRow(this)" title="Delete">✕</button></td></tr>`;
+        setupOrder(); 
+      } 
+    }
   </script>
 </body>
 </html>
