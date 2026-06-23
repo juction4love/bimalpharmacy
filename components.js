@@ -16,9 +16,14 @@ class SiteHeader extends HTMLElement {
             <p>गुणस्तरीय औषधी र भरपर्दो सेवा | भरतपुर-७, चितवन</p>
           </div>
         </a>
+        <button class="hamburger-toggle" id="hamburgerBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </header>
 
-      <nav class="navbar">
+      <nav class="navbar" id="mainNav">
         <ul class="nav-links">
           <li><a href="index.html">गृहपृष्ठ</a></li>
           <li><a href="medical-guide.html">औषधी गाइड</a></li>
@@ -32,6 +37,8 @@ class SiteHeader extends HTMLElement {
           <li><a href="contact.html">सम्पर्क</a></li>
         </ul>
       </nav>
+      
+      <div class="drawer-overlay" id="drawerOverlay"></div>
     `;
 
     // Auto-highlight active link
@@ -42,6 +49,42 @@ class SiteHeader extends HTMLElement {
         link.classList.add('active');
       }
     });
+
+    // Hamburger Menu Toggle
+    const hamburger = this.querySelector('#hamburgerBtn');
+    const nav = this.querySelector('#mainNav');
+    const overlay = this.querySelector('#drawerOverlay');
+
+    function openDrawer() {
+      hamburger.classList.add('active');
+      nav.classList.add('open');
+      overlay.classList.add('active');
+      document.body.classList.add('drawer-open');
+    }
+
+    function closeDrawer() {
+      hamburger.classList.remove('active');
+      nav.classList.remove('open');
+      overlay.classList.remove('active');
+      document.body.classList.remove('drawer-open');
+    }
+
+    if (hamburger && nav && overlay) {
+      hamburger.addEventListener('click', () => {
+        if (nav.classList.contains('open')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
+      });
+
+      overlay.addEventListener('click', closeDrawer);
+
+      // Close drawer when a nav link is clicked
+      navLinks.forEach(link => {
+        link.addEventListener('click', closeDrawer);
+      });
+    }
   }
 }
 customElements.define('site-header', SiteHeader);
@@ -81,7 +124,7 @@ class SiteFooter extends HTMLElement {
       <a href="https://wa.me/9779855065327" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
       </a>
-      <button id="backToTop" class="back-to-top" title="Back to top" aria-label="Back to top">&#8679;</button>
+      <button id="backToTop" title="Back to top" aria-label="Back to top">&#8679;</button>
     `;
 
     // Auto-highlight active link for mobile nav
@@ -97,11 +140,7 @@ class SiteFooter extends HTMLElement {
     const backToTopBtn = this.querySelector('#backToTop');
     if (backToTopBtn) {
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backToTopBtn.style.display = 'flex';
-        } else {
-          backToTopBtn.style.display = 'none';
-        }
+        backToTopBtn.classList.toggle('show', window.scrollY > 300);
       });
       
       backToTopBtn.addEventListener('click', () => {
