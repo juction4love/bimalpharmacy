@@ -3,20 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>आकस्मिक सेवा र प्राथमिक उपचार गाइड | बिमल फार्मेसी - भरतपुर</title>
   
+  <!-- SEO Meta Tags -->
+  <title>आकस्मिक सेवा र प्राथमिक उपचार गाइड | बिमल फार्मेसी - भरतपुर</title>
   <meta name="description" content="नेपालभरका एम्बुलेन्स, शव वाहन र अस्पतालका नम्बरहरू। साथै सर्पले टोक्दा, हृदयघात र पोल्दा गरिने प्राथमिक उपचारको विस्तृत जानकारी।">
   <meta name="keywords" content="Emergency Nepal, First Aid Tips Nepali, Ambulance Bharatpur, Snake Bite First Aid, Blood Donor Nepal">
   
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Components Script -->
+  <script src="components.js" defer></script>
 </head>
 <body>
 
+  <!-- ========== HEADER ========== -->
   <header class="app-header">
     <div class="brand-section">
-      <div class="logo-container"><img src="logo.svg" alt="Bimal Pharmacy"></div>
+      <div class="logo-container">
+        <img src="logo.svg" alt="Bimal Pharmacy Logo">
+      </div>
       <div class="brand-text">
         <h1>बिमल फार्मेसी</h1>
         <p>आकस्मिक सेवा र प्राथमिक उपचार गाइड</p>
@@ -24,30 +31,30 @@
     </div>
   </header>
 
+  <!-- ========== NAVIGATION ========== -->
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">गृहपृष्ठ</a></li>
       <li><a href="medical-guide.html">औषधी गाइड</a></li>
       <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-      <li class="dropdown">
-        <a href="#" class="active">थप जानकारी <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
-        <ul class="dropdown-content">
-          <li><a href="about.html">हाम्रो बारेमा</a></li>
-          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
-          <li><a href="insurance.html">बीमा सुविधा</a></li>
-          <li><a href="notice.html">सूचना</a></li>
-        </ul>
-      </li>
+      <li><a href="about.html">हाम्रो बारेमा</a></li>
+      <li><a href="emergency.html" class="active">आकस्मिक सेवा</a></li>
+      <li><a href="insurance.html">बीमा सुविधा</a></li>
+      <li><a href="notice.html">सूचना</a></li>
       <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
       <li><a href="contact.html">सम्पर्क</a></li>
     </ul>
   </nav>
 
-  <div class="container">
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="container">
+
+    <!-- ---------- FIRST AID GUIDE ---------- -->
     <article class="aid-card">
       <h2><i class="fas fa-first-aid"></i> प्राथमिक उपचार: जीवन जोगाउने महत्वपूर्ण सुझाव</h2>
       <p>दुर्घटना वा आकस्मिक बिमारीको समयमा अस्पताल पुग्नु अघि गरिने प्राथमिक उपचारले बिरामीको ज्यान जोगाउन निर्णायक भूमिका खेल्छ। बिमल फार्मेसी तपाईंलाई निम्न महत्वपूर्ण अवस्थामा गरिने उपचारबारे जानकारी दिन्छ:</p>
 
+      <!-- Snake Bite -->
       <h3>१. सर्पले टोक्दा के गर्ने? (Snake Bite)</h3>
       <p>सर्पले टोकेमा अत्तालिनु हुँदैन। धेरैजसो सर्प विषालु हुँदैनन्।</p>
       <ul>
@@ -55,6 +62,7 @@
         <li><strong>नगर्ने काम:</strong> टोकेको ठाउँमा ब्लेडले नकाट्ने, मुखले विष तान्ने प्रयास नगर्ने र डोरीले धेरै कसिलो गरी नबाँध्ने।</li>
       </ul>
 
+      <!-- Heart Attack -->
       <h3>२. हृदयघात हुँदा (Heart Attack)</h3>
       <p>यदि छातीको बीच भागमा असह्य दुखाइ भयो र पसिना आयो भने त्यो हृदयघात हुन सक्छ।</p>
       <ul>
@@ -62,6 +70,7 @@
         <li>तुरुन्त एम्बुलेन्स (१०२) बोलाउने र अस्पताल लैजाने।</li>
       </ul>
 
+      <!-- Burn Injuries -->
       <h3>३. पोलेको घाउ (Burn Injuries)</h3>
       <ul>
         <li>पोलेको भागमा कम्तिमा १५ मिनेटसम्म धाराको सफा चिसो पानी खन्याउने।</li>
@@ -69,31 +78,77 @@
       </ul>
     </article>
 
-    <div class="category-title"><i class="fas fa-phone-alt"></i> राष्ट्रिय आपतकालीन नम्बरहरू</div>
+    <!-- ---------- NATIONAL EMERGENCY NUMBERS ---------- -->
+    <div class="category-title category-emergency">
+      <i class="fas fa-phone-alt"></i> राष्ट्रिय आपतकालीन नम्बरहरू
+    </div>
     <div class="contact-grid">
-      <div class="contact-card"><div><h4>नेपाल प्रहरी</h4><p>Emergency: 100</p></div><a href="tel:100" class="call-btn"><i class="fas fa-phone"></i></a></div>
-      <div class="contact-card"><div><h4>दमकल</h4><p>Fire: 101</p></div><a href="tel:101" class="call-btn"><i class="fas fa-phone"></i></a></div>
-      <div class="contact-card"><div><h4>एम्बुलेन्स</h4><p>Ambulance: 102</p></div><a href="tel:102" class="call-btn"><i class="fas fa-phone"></i></a></div>
+      <div class="contact-card">
+        <div class="contact-info">
+          <h4>नेपाल प्रहरी</h4>
+          <p>Emergency: 100</p>
+        </div>
+        <a href="tel:100" class="call-btn"><i class="fas fa-phone"></i></a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-info">
+          <h4>दमकल</h4>
+          <p>Fire: 101</p>
+        </div>
+        <a href="tel:101" class="call-btn"><i class="fas fa-phone"></i></a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-info">
+          <h4>एम्बुलेन्स</h4>
+          <p>Ambulance: 102</p>
+        </div>
+        <a href="tel:102" class="call-btn"><i class="fas fa-phone"></i></a>
+      </div>
     </div>
 
-    <div class="category-title" style="background: var(--danger);"><i class="fas fa-tint"></i> चितवनका रक्तदाता र ब्लड बैंक</div>
+    <!-- ---------- BLOOD DONORS & BLOOD BANK ---------- -->
+    <div class="category-title category-blood">
+      <i class="fas fa-tint"></i> चितवनका रक्तदाता र ब्लड बैंक
+    </div>
     <div class="blood-section">
       <p>रगतको अभावमा छटपटिएका बिरामीका लागि यी नम्बरहरूमा सम्पर्क गर्न सक्नुहुन्छ:</p>
       <div class="table-responsive">
-        <table>
+        <table class="blood-table">
           <thead>
-            <tr><th>सँस्था / व्यक्ति</th><th>ठेगाना</th><th>ग्रुप</th><th>फोन नम्बर</th></tr>
+            <tr>
+              <th>सँस्था / व्यक्ति</th>
+              <th>ठेगाना</th>
+              <th>ग्रुप</th>
+              <th>फोन नम्बर</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>क्षेत्रीय रक्तसञ्चार केन्द्र</td><td>भरतपुर</td><td>All Groups</td><td>०५६-५२४७५७</td></tr>
-            <tr><td>बिमल लामिछाने</td><td>भरतपुर-७</td><td>A+</td><td>९८५५०६५३२७</td></tr>
-            <tr><td>नेपाल रेडक्रस सोसाइटी</td><td>चितवन</td><td>Emergency</td><td>०५६-५२०५५५</td></tr>
+            <tr>
+              <td>क्षेत्रीय रक्तसञ्चार केन्द्र</td>
+              <td>भरतपुर</td>
+              <td>All Groups</td>
+              <td>०५६-५२४७५७</td>
+            </tr>
+            <tr>
+              <td>बिमल लामिछाने</td>
+              <td>भरतपुर-७</td>
+              <td>A+</td>
+              <td>९८५५०६५३२७</td>
+            </tr>
+            <tr>
+              <td>नेपाल रेडक्रस सोसाइटी</td>
+              <td>चितवन</td>
+              <td>Emergency</td>
+              <td>०५६-५२०५५५</td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
-  </div>
 
+  </main>
+
+  <!-- ========== MOBILE NAVIGATION ========== -->
   <nav class="mobile-nav">
     <a href="index.html" class="nav-item"><i class="fas fa-home"></i> होम</a>
     <a href="medical-guide.html" class="nav-item"><i class="fas fa-book-medical"></i> गाइड</a>
@@ -102,17 +157,19 @@
     <a href="contact.html" class="nav-item"><i class="fas fa-phone"></i> सम्पर्क</a>
   </nav>
 
+  <!-- ========== FOOTER ========== -->
   <footer>
-    <div style="margin-bottom: 20px;">
-      <h3 style="color: white; margin-bottom: 10px;">बिमल फार्मेसी</h3>
+    <div class="footer-brand">
+      <h3>बिमल फार्मेसी</h3>
       <p>भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन | सम्पर्क: ९८५५०६५३२७</p>
     </div>
-    <div style="border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem;">
+    <div class="footer-bottom">
       <p>&copy; २०२६ बिमल फार्मेसी। सबै अधिकार सुरक्षित।</p>
       <p>Managed by: <strong>Bimal Lamichhane</strong></p>
     </div>
   </footer>
 
+  <!-- ========== SCRIPTS ========== -->
   <script src="script.js" defer></script>
 </body>
 </html>
