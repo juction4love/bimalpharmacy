@@ -60,6 +60,7 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
+  text-align: center; /* ✅ Global center alignment */
   transition: background-color var(--transition), color var(--transition);
 }
 
@@ -97,14 +98,17 @@ a {
 }
 
 /* --- 4. Layout & Components --- */
+
+/* ✅ Centered Container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 5%;
+  text-align: center;
   animation: fadeInUp 0.5s ease-out;
 }
 
-/* Frosted Glass Navigation */
+/* ✅ Frosted Glass Navigation - Centered */
 .branding-header, .navbar {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
@@ -114,6 +118,13 @@ a {
   top: 0;
   z-index: 100;
   padding: 1rem 5%;
+  text-align: center;
+}
+
+.branding-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-links {
@@ -134,22 +145,26 @@ a {
   content: '';
   position: absolute;
   width: 0; height: 2px;
-  bottom: -4px; left: 0;
+  bottom: -4px; left: 50%;
+  transform: translateX(-50%); /* ✅ Center the underline */
   background-color: var(--primary);
   transition: var(--transition);
 }
 
 .nav-links a:hover::after, .nav-links a.active::after {
   width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-/* Modern Hero Section */
+/* ✅ Modern Hero Section - Centered */
 .hero {
   text-align: center;
   padding: 4rem 5%;
   background: linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(14,165,233,0.1) 100%);
   border-radius: var(--radius-lg);
-  margin: 2rem 5%;
+  margin: 2rem auto; /* ✅ Centered */
+  max-width: 1000px;
   box-shadow: var(--glass-shadow);
   border: 1px solid var(--glass-border);
 }
@@ -160,10 +175,59 @@ a {
   background: -webkit-linear-gradient(45deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-align: center;
 }
 
-/* Glassmorphism Cards with Hover Lift */
-.card, .knowledge-card, .aid-card {
+.hero-subtitle {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 25px auto;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* ✅ Search Bar - Centered */
+.search-wrapper {
+  max-width: 600px;
+  margin: 25px auto;
+  text-align: center;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+#medicineSearch {
+  width: 100%;
+  padding: 15px 20px 15px 50px;
+  border-radius: 30px;
+  border: 1px solid var(--glass-border);
+  font-size: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  outline: none;
+}
+
+.search-results {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  max-height: 400px;
+  overflow-y: auto;
+  text-align: left; /* ✅ Results left-aligned for readability */
+  margin-top: 10px;
+  display: none;
+}
+
+/* ✅ Glassmorphism Cards with Hover Lift - Centered */
+.card, .knowledge-card, .aid-card, .feature-card {
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -173,24 +237,103 @@ a {
   box-shadow: var(--glass-shadow);
   transition: var(--transition);
   margin-bottom: 2rem;
+  text-align: center;
 }
 
-.card:hover, .knowledge-card:hover {
+.card:hover, .knowledge-card:hover, .feature-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(0,0,0,0.1);
   border-color: var(--primary);
 }
 
-/* Grid Layouts */
-.main-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+/* ✅ Feature Card Icons */
+.feature-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
-/* Buttons */
-.btn-main, button {
+/* ✅ Grid Layouts - Centered */
+.main-grid, .features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.feature-card {
+  flex: 1 1 280px;
+  max-width: 350px;
+}
+
+/* ✅ About Content - Centered */
+.about-content {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.about-content h2,
+.about-content h3 {
+  text-align: center;
+}
+
+.about-content p {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+/* ✅ Stats Row - Centered */
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.stat-label {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+/* ✅ CTA Banner - Centered */
+.cta-banner {
+  background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(14,165,233,0.08) 100%);
+  padding: 50px 20px;
+  text-align: center;
+  margin: 40px 5%;
+  border-radius: var(--radius-lg);
+}
+
+.cta-banner .container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-banner h2 {
+  text-align: center;
+}
+
+.cta-banner p {
+  text-align: center;
+}
+
+/* ✅ Buttons - Centered */
+.btn-main, button, .btn-whatsapp {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: white;
   padding: 0.8rem 1.8rem;
@@ -202,16 +345,30 @@ a {
   transition: var(--transition);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  margin: 10px auto;
+  text-align: center;
 }
 
-.btn-main:hover, button:hover {
+.btn-main:hover, button:hover, .btn-whatsapp:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
   color: white;
 }
 
-/* Forms & Inputs */
+.btn-whatsapp {
+  background: #25D366;
+  font-size: 18px;
+  padding: 15px 35px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* ✅ Forms & Inputs */
 input, textarea, select {
   width: 100%;
   padding: 1rem;
@@ -229,7 +386,21 @@ input:focus, textarea:focus {
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
 }
 
-/* Floating WhatsApp / Action Buttons */
+/* ✅ News Ticker - Centered */
+.news-ticker {
+  background: var(--accent);
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.ticker-content {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ✅ Floating WhatsApp Button */
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
@@ -242,20 +413,112 @@ input:focus, textarea:focus {
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   z-index: 1000;
   animation: pulse 2s infinite;
+  text-align: center;
 }
 
-/* Footer */
+/* ✅ Back to Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* ✅ Mobile Bottom Navigation */
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--glass-border);
+    z-index: 999;
+  }
+  
+  .mobile-nav .nav-item {
+    flex: 1;
+    text-align: center;
+    padding: 12px 5px;
+    color: var(--text-muted);
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .mobile-nav .nav-item i {
+    font-size: 18px;
+  }
+  
+  .mobile-nav .nav-item.active {
+    color: var(--primary);
+  }
+}
+
+/* ✅ Footer - Centered */
 footer {
   background: var(--glass-bg);
   border-top: 1px solid var(--glass-border);
-  padding: 3rem 5%;
+  padding: 3rem 5% 6rem 5%;
   text-align: center;
   margin-top: 4rem;
 }
 
-/* Responsive Adjustments */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+}
+
+/* ✅ Responsive Adjustments */
 @media (max-width: 768px) {
   .hero h2 { font-size: 2rem; }
   .nav-links { flex-direction: column; gap: 1rem; text-align: center; }
   .container { padding: 1rem 5%; }
+  
+  .hero {
+    margin: 1rem;
+    padding: 2rem 1rem;
+  }
+  
+  .stats-row {
+    gap: 20px;
+  }
+  
+  .stat-number {
+    font-size: 28px;
+  }
 }
