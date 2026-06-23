@@ -4,41 +4,65 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://www.bimalpharmacy.com.np/contact.html" />
-  <title>सम्पर्क गर्नुहोस् | बिमल फार्मेसी - भरतपुर, चितवन</title>
-  <meta name="description" content="बिमल फार्मेसीसँग सम्पर्क गर्नुहोस्। ठेगाना: भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन। फोन: ०५६-५९३२८८।">
   
+  <!-- SEO Meta Tags -->
+  <title>सम्पर्क गर्नुहोस् | बिमल फार्मेसी - भरतपुर, चितवन</title>
+  <meta name="description" content="बिमल फार्मेसीसँग सम्पर्क गर्नुहोस्। ठेगाना: भरतपुर-७, क्यान्सर अस्पताल रोड, चितवन। फोन: ०५६-५९३२८८। WhatsApp: ९८५५०६५३२७।">
+  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Components Script -->
   <script src="components.js" defer></script>
 </head>
 <body>
 
+  <!-- ========== HEADER / NAVIGATION ========== -->
   <site-header></site-header>
 
+  <!-- ========== MAIN CONTENT ========== -->
   <main class="container">
-    <div class="card" style="text-align: center; max-width: 800px; margin: 0 auto;">
-      <h2 style="color: var(--primary); margin-bottom: 20px;"><i class="fas fa-map-marker-alt"></i> हाम्रो ठेगाना र सम्पर्क विवरण</h2>
+
+    <!-- ---------- CONTACT CARD ---------- -->
+    <div class="contact-card">
+      <h2 class="contact-heading">
+        <i class="fas fa-map-marker-alt"></i> हाम्रो ठेगाना र सम्पर्क विवरण
+      </h2>
       
-      <p style="font-size: 1.2rem; margin-bottom: 15px;">
+      <p class="contact-address">
         <strong>बिमल फार्मेसी</strong><br>
-        भरतपुर-७, क्यान्सर अस्पताल रोड (बी.पी. कोइराला मेमोरियल क्यान्सर अस्पताल अगाडि), चितवन, नेपाल
+        भरतपुर-७, क्यान्सर अस्पताल रोड<br>
+        (बी.पी. कोइराला मेमोरियल क्यान्सर अस्पताल अगाडि)<br>
+        चितवन, नेपाल
       </p>
 
-      <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 30px;">
-        <a href="tel:056593288" class="btn-main" style="justify-content: center; font-size: 1.2rem;">
+      <!-- Contact Buttons -->
+      <div class="contact-buttons">
+        <a href="tel:056593288" class="btn-contact btn-landline">
           <i class="fas fa-phone-alt"></i> ल्यान्डलाइन: ०५६-५९३२८८
         </a>
-        <a href="tel:9855065327" class="btn-main" style="justify-content: center; font-size: 1.2rem; background: var(--secondary);">
+        <a href="tel:9855065327" class="btn-contact btn-mobile">
           <i class="fas fa-mobile-alt"></i> मोबाइल: ९८५५०६५३२७
         </a>
-        <a href="https://wa.me/9779855065327" target="_blank" class="btn-main" style="justify-content: center; font-size: 1.2rem; background: #25D366;">
+        <a href="https://wa.me/9779855065327" target="_blank" rel="noopener" class="btn-contact btn-whatsapp-contact">
           <i class="fab fa-whatsapp"></i> WhatsApp मा म्यासेज गर्नुहोस्
         </a>
       </div>
+
+      <!-- No-Call Notice -->
+      <div class="no-call-notice">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p><strong>सूचना:</strong> कृपया भ्वाइस कल नगर्नुहोस्। WhatsApp म्यासेज मात्र गर्नुहोला। फार्मेसी सञ्चालनमा ध्यान केन्द्रित गर्न यो नियम लागू गरिएको छ।</p>
+      </div>
     </div>
+
   </main>
 
+  <!-- ========== FOOTER ========== -->
   <site-footer></site-footer>
 
+  <!-- ========== SCRIPTS ========== -->
+  <script src="script.js" defer></script>
 </body>
 </html>
