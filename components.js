@@ -1,3 +1,4 @@
+// --- Header & Navigation Component ---
 class SiteHeader extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
@@ -19,15 +20,10 @@ class SiteHeader extends HTMLElement {
           <li><a href="medical-guide.html">औषधी गाइड</a></li>
           <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
           <li><a href="service.html">सेवाहरू</a></li>
-          <li class="dropdown">
-            <a href="#" aria-haspopup="true" aria-expanded="false">थप जानकारी <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
-            <ul class="dropdown-content">
-              <li><a href="about.html">हाम्रो बारेमा</a></li>
-              <li><a href="emergency.html">आकस्मिक सेवा</a></li>
-              <li><a href="insurance.html">बीमा सुविधा</a></li>
-              <li><a href="notice.html">सूचना</a></li>
-            </ul>
-          </li>
+          <li><a href="about.html">हाम्रो बारेमा</a></li>
+          <li><a href="emergency.html">आकस्मिक सेवा</a></li>
+          <li><a href="insurance.html">बीमा सुविधा</a></li>
+          <li><a href="notice.html">सूचना</a></li>
           <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
           <li><a href="contact.html">सम्पर्क</a></li>
         </ul>
@@ -46,20 +42,21 @@ class SiteHeader extends HTMLElement {
 }
 customElements.define('site-header', SiteHeader);
 
+// --- Footer Component ---
 class SiteFooter extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <footer>
         <strong>बिमल फार्मेसी</strong><br>
         भरतपुर-७, चितवन | DDA दर्ता नं: १७२२३/२०६३<br>
-        <div class="footer-links">
+        <div class="footer-links" style="margin-top: 15px;">
           <a href="index.html">गृहपृष्ठ</a> | 
           <a href="about.html">About Us</a> | 
           <a href="privacy-policy.html">Privacy Policy</a> | 
           <a href="disclaimer.html">Disclaimer</a> | 
           <a href="contact.html">Contact Us</a>
         </div>
-        <p>© 2026 बिमल फार्मेसी | Managed by: Bimal Lamichhane</p>
+        <p style="margin-top: 20px;">© 2026 बिमल फार्मेसी | Managed by: Bimal Lamichhane</p>
       </footer>
 
       <nav class="mobile-nav">
