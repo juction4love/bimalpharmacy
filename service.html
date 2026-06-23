@@ -3,26 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <!-- SEO Meta Tags -->
   <title>हाम्रा सेवाहरू | बिमल फार्मेसी - भरतपुर-७, चितवन</title>
   <meta name="description" content="बिमल फार्मेसीका आधिकारिक सेवाहरू: २४ घण्टा क्यान्सर औषधी आपूर्ति, सुरक्षित कोल्ड-चेन भण्डारण र नेपालभर होम डेलिभरी।">
   
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   
+  <!-- Components Script -->
   <script src="components.js" defer></script>
 </head>
 <body>
 
+  <!-- ========== HEADER / NAVIGATION ========== -->
   <site-header></site-header>
 
+  <!-- ========== HERO SECTION ========== -->
   <section class="hero">
     <h2>हाम्रा विशिष्ट स्वास्थ्य सेवाहरू</h2>
     <p>विगत दुई दशकदेखि हामी बिरामीको सेवामा समर्पित छौं।</p>
     <div class="trust-tag"><i class="fas fa-award"></i> DDA दर्ता नं: १७२२३/२०६३</div>
   </section>
 
+  <!-- ========== MAIN CONTENT ========== -->
   <main class="container">
     
+    <!-- ---------- Home Delivery ---------- -->
     <article class="card">
       <h3><i class="fas fa-truck"></i> १. सुरक्षित होम डेलिभरी सेवा</h3>
       <p>बिमल फार्मेसीले भरतपुर क्षेत्रभित्र द्रुत होम डेलिभरी र चितवन बाहिर नेपालका प्रमुख शहरहरूमा कुरियर मार्फत औषधी पुर्याउने व्यवस्था गरेको छ।</p>
@@ -37,7 +45,8 @@
       </div>
     </article>
 
-    <article class="card" style="border-top-color: var(--danger);">
+    <!-- ---------- Oncology Care ---------- -->
+    <article class="card card-danger">
       <h3><i class="fas fa-vials"></i> २. क्यान्सर औषधी (Oncology Care)</h3>
       <p>भरतपुर क्यान्सर अस्पतालको नजिकै अवस्थित हुनाले हामी क्यान्सर उपचारका जटिल औषधीहरूको आपूर्तिमा विशेषज्ञता राख्छौं।</p>
       
@@ -47,7 +56,8 @@
       </div>
     </article>
 
-    <article class="card" style="border-top-color: var(--accent);">
+    <!-- ---------- Pharmacist Consultation ---------- -->
+    <article class="card card-accent">
       <h3><i class="fas fa-user-md"></i> ३. फर्मासिस्ट परामर्श सेवा</h3>
       <p>हामी बिरामीलाई औषधीसँगै सही मार्गदर्शन पनि प्रदान गर्दछौं:</p>
       <ul>
@@ -57,20 +67,35 @@
       </ul>
     </article>
 
+    <!-- ---------- How to Order ---------- -->
     <div class="card">
       <h3><i class="fas fa-tasks"></i> औषधी अर्डर गर्ने सजिलो तरिका</h3>
       <div class="step-grid">
-        <div class="step-item"><div class="step-number">१</div><p>पुर्जा (Prescription) को फोटो खिच्नुहोस्।</p></div>
-        <div class="step-item"><div class="step-number">२</div><p>९८५५०६५३२७ मा ह्वाट्सएप गर्नुहोस्।</p></div>
-        <div class="step-item"><div class="step-number">३</div><p>मूल्य र उपलब्धता पुष्टि गर्नुहोस्।</p></div>
-        <div class="step-item"><div class="step-number">४</div><p>सुरक्षित डेलिभरी प्राप्त गर्नुहोस्।</p></div>
+        <div class="step-item">
+          <div class="step-number">१</div>
+          <p>पुर्जा (Prescription) को फोटो खिच्नुहोस्।</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">२</div>
+          <p>९८५५०६५३२७ मा ह्वाट्सएप गर्नुहोस्।</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">३</div>
+          <p>मूल्य र उपलब्धता पुष्टि गर्नुहोस्।</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">४</div>
+          <p>सुरक्षित डेलिभरी प्राप्त गर्नुहोस्।</p>
+        </div>
       </div>
     </div>
 
   </main>
 
+  <!-- ========== FOOTER ========== -->
   <site-footer></site-footer>
 
+  <!-- ========== SCRIPTS ========== -->
   <script src="script.js" defer></script>
 </body>
 </html>
