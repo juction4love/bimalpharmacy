@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
       dropdown.addEventListener('mouseenter', () => toggleLink.setAttribute('aria-expanded', 'true'));
       dropdown.addEventListener('mouseleave', () => toggleLink.setAttribute('aria-expanded', 'false'));
       
-      // For keyboard navigation
       toggleLink.addEventListener('focus', () => toggleLink.setAttribute('aria-expanded', 'true'));
       dropdown.addEventListener('focusout', (e) => {
         if (!dropdown.contains(e.relatedTarget)) {
@@ -35,14 +34,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // २. औषधी खोज्ने मेकानिजम (JSON Fetch API)
   let medicines = [];
+  let isLoading = false;
 
   async function loadMedicines() {
+    const resultsBox = document.getElementById("searchResults");
+    if (resultsBox) {
+      resultsBox.innerHTML = '<div class="search-item" style="text-align:center;padding:15px;">🔄 औषधी डाटा लोड हुँदैछ...</div>';
+      resultsBox.style.display = "block";
+    }
+    
     try {
+      const startTime = performance.now();
       const res = await fetch("./medicines.json");
       medicines = await res.json();
-      console.log("Medicines loaded:", medicines.length);
+      const loadTime = ((performance.now() - startTime) / 1000).toFixed(1);
+      console.log(`✅ Medicines loaded: ${medicines.length} (${loadTime}s)`);
+      
+      if (resultsBox) {
+        resultsBox.innerHTML = "";
+        resultsBox.style.display = "none";
+      }
     } catch (err) {
-      console.error("Failed to load medicines.json", err);
+      console.error("❌ Failed to load medicines.json", err);
+      if (resultsBox) {
+        resultsBox.innerHTML = '<div class="search-item search-no-result">⚠️ डाटा लोड गर्न सकिएन। कृपया पछि प्रयास गर्नुहोस्।</div>';
+      }
     }
   }
 
@@ -52,7 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultsBox = document.getElementById("searchResults");
 
   if (searchInput && resultsBox) {
-    // Performance Upgrade: Debounce to prevent browser freezing on large datasets
+    
+    // Debounce for performance
     function debounce(fn, delay) {
       let timer;
       return function (...args) {
@@ -70,34 +87,78 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const filtered = medicines.filter(m => {
-        return (
-          (m["Brand Name "] && m["Brand Name "].toLowerCase().includes(query)) ||
-          (m["Generic Name"] && m["Generic Name"].toLowerCase().includes(query)) ||
-          (m.name && m.name.toLowerCase().includes(query)) ||
-          (m.category && m.category.toLowerCase().includes(query)) ||
-          (m.brand && m.brand.toLowerCase().includes(query))
-        );
-      }).slice(0, 50);
-
-      renderResults(filtered);
-    }, 200));
-
-    function renderResults(items) {
-      if (!items || items.length === 0) {
-        resultsBox.innerHTML = `<div class="search-item search-no-result">औषधी फेला परेन</div>`;
+      if (query.length < 2) {
+        resultsBox.innerHTML = '<div class="search-item" style="text-align:center;padding:10px;color:#999;">कम्तिमा २ अक्षर लेख्नुहोस्...</div>';
         resultsBox.style.display = "block";
         return;
       }
 
-      resultsBox.innerHTML = items.slice(0, 20).map(item => `
-        <div class="search-item">
-          <strong class="search-brand-name">${item["Brand Name "] || item.name || "Unknown"}</strong>
-          <small class="search-generic-name">${item["Generic Name"] || item.category || "N/A"}</small>
-          <span class="search-strength">💊 ${item.Strength || item.dosage || ""}</span>
-        </div>
-      `).join("");
+      if (medicines.length === 0) {
+        resultsBox.innerHTML = '<div class="search-item" style="text-align:center;padding:15px;">🔄 डाटा लोड हुँदैछ... कृपया पर्खनुहोस्</div>';
+        resultsBox.style.display = "block";
+        return;
+      }
+
+      // Search in brand name, generic name, category, and strength
+      const filtered = medicines.filter(m => {
+        const brand = (m["Brand Name "] || "").toLowerCase();
+        const generic = (m["Generic Name"] || "").toLowerCase();
+        const category = (m["category"] || "").toLowerCase();
+        const strength = (m["Strength"] || "").toLowerCase();
+        
+        return brand.includes(query) || 
+               generic.includes(query) || 
+               category.includes(query) || 
+               strength.includes(query);
+      }).slice(0, 50);
+
+      renderResults(filtered, query);
+    }, 250));
+
+    function renderResults(items, query) {
+      if (!items || items.length === 0) {
+        resultsBox.innerHTML = `
+          <div class="search-item search-no-result">
+            <i class="fas fa-search" style="margin-right:8px;"></i> 
+            "${query}" को लागि कुनै औषधी फेला परेन
+            <br><small style="color:#999;">कृपया अर्को नामले प्रयास गर्नुहोस्</small>
+          </div>`;
+        resultsBox.style.display = "block";
+        return;
+      }
+
+      resultsBox.innerHTML = items.slice(0, 20).map((item, index) => {
+        const brand = item["Brand Name "] || "Unknown";
+        const generic = item["Generic Name"] || "N/A";
+        const strength = item["Strength"] || "";
+        const category = item["category"] || "General";
+        
+        // WhatsApp message
+        const waMessage = encodeURIComponent(
+          `नमस्ते बिमल फार्मेसी,\n\nमलाई यो औषधीको बारेमा जानकारी चाहियो:\n\n` +
+          `💊 औषधी: ${brand}\n` +
+          `🧬 साल्ट: ${generic}\n` +
+          `📦 ${strength ? 'शक्ति: ' + strength : ''}\n` +
+          `📋 श्रेणी: ${category}\n\n` +
+          `कृपया उपलब्धता र मूल्य जानकारी दिनुहोस्।`
+        );
+        
+        return `
+        <div class="search-item" onclick="window.open('https://wa.me/9779855065327?text=${waMessage}', '_blank')" 
+             title="Click for WhatsApp inquiry">
+          <div class="search-item-header">
+            <strong class="search-brand-name">💊 ${brand}</strong>
+            <span class="search-category-tag">${category}</span>
+          </div>
+          <small class="search-generic-name">🧬 ${generic}</small>
+          ${strength ? `<span class="search-strength">📦 ${strength}</span>` : ''}
+          <div class="search-wa-hint">
+            <i class="fab fa-whatsapp"></i> जानकारी लिन ट्याप गर्नुहोस्
+          </div>
+        </div>`;
+      }).join("");
       
+      resultsBox.innerHTML += `<div class="search-footer">कुल ${items.length} परिणाम | माथि २० देखाइएको</div>`;
       resultsBox.style.display = "block";
     }
 
@@ -110,20 +171,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show results when focusing on search
     searchInput.addEventListener('focus', function() {
-      if (this.value.trim() && resultsBox.innerHTML) {
+      if (this.value.trim().length >= 2 && resultsBox.innerHTML) {
         resultsBox.style.display = "block";
+      }
+    });
+
+    // Keyboard navigation
+    searchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        resultsBox.style.display = "none";
+        this.blur();
       }
     });
   }
 
   // ३. इमेज एरर ह्यान्डलिङ र लेजी लोडिङ
   document.querySelectorAll('img').forEach(img => {
-    // Performance सुधार गर्न लेजी लोडिङ थप्ने
     img.setAttribute('loading', 'lazy');
     
     img.onerror = function() {
-      // Fallback image if original fails to load
-      this.src = 'placeholder.png';
+      this.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="%23ddd"><rect width="100" height="100"/><text x="50" y="55" text-anchor="middle" fill="%23999" font-size="14">No Image</text></svg>';
       this.alt = 'Image not available';
       this.classList.add('img-error');
     };
@@ -133,11 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const backToTopBtn = document.getElementById('backToTop');
   if (backToTopBtn) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTopBtn.classList.add('show');
-      } else {
-        backToTopBtn.classList.remove('show');
-      }
+      backToTopBtn.classList.toggle('show', window.scrollY > 300);
     });
     
     backToTopBtn.addEventListener('click', () => {
