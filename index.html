@@ -16,17 +16,7 @@
 </head>
 <body>
 
-  <header class="branding-header">
-    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 20px; width: 100%;">
-      <div class="logo-container">
-        <img src="logo.svg" alt="Bimal Pharmacy Logo">
-      </div>
-      <div class="brand-text">
-        <h1 style="color: var(--primary);">बिमल फार्मेसी</h1>
-        <p style="color: #555;">गुणस्तरीय औषधी र भरपर्दो सेवा | भरतपुर-७, चितवन</p>
-      </div>
-    </a>
-  </header>
+  <site-header></site-header>
 
   <div class="news-ticker">
     <div class="ticker-content">
@@ -62,17 +52,7 @@
       <div style="margin: 25px auto; max-width: 600px; position: relative;">
         <input type="text" id="medicineSearch" placeholder="औषधी खोज्नुहोस्..." style="width: 100%; padding: 15px 20px; border-radius: 30px; border: none; font-size: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); outline: none;">
         <div id="searchResults" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-height: 400px; overflow-y: auto; z-index: 1000; margin-top: 10px;"></div>
-      </div>
-
-      <a href="order.html" class="btn-main"><i class="fab fa-whatsapp"></i> औषधी अर्डर गर्नुहोस्</a>
-    </section>
-
-    <div class="container">
-      <div class="main-grid">
-        <div class="card">
-          <i class="fas fa-certificate"></i>
-          <h3>आधिकारिक सेवा</h3>
-          <p>औषधि व्यवस्था विभाग (DDA) मा दर्ता भएको र अनुभवी फर्मासिस्टद्वारा सञ्चालित आधिकारिक फार्मेसी।</p>
+      <site-header></site-header>औषधि व्यवस्था विभाग (DDA) मा दर्ता भएको र अनुभवी फर्मासिस्टद्वारा सञ्चालित आधिकारिक फार्मेसी।</p>
         </div>
 
         <div class="card" style="border-top-color: var(--accent);">
@@ -100,18 +80,7 @@
     </div>
   </main>
 
-  <footer>
-    <strong>बिमल फार्मेसी</strong><br>
-    भरतपुर-७, चितवन | DDA दर्ता नं: १७२२३/२०६३<br>
-    <div class="footer-links">
-      <a href="index.html">गृहपृष्ठ</a> | 
-      <a href="about.html">About Us</a> | 
-      <a href="privacy-policy.html">Privacy Policy</a> | 
-      <a href="disclaimer.html">Disclaimer</a> | 
-      <a href="contact.html">Contact Us</a>
-    </div>
-    <p>© २०२६ बिमल फार्मेसी | Managed by: Bimal Lamichhane</p>
-  </footer>
+  <site-footer></site-footer>
 
   <nav class="mobile-nav">
     <a href="index.html" class="nav-item active"><i class="fas fa-home"></i> होम</a>
@@ -125,6 +94,7 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <script src="script.js" defer></script>
+  <button id="backToTop" title="Back to top">&#8679;</button>
+<script src="script.js" defer></script>
 </body>
 </html>

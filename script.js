@@ -108,4 +108,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Performance सुधार गर्न लेजी लोडिङ थप्ने
     img.setAttribute('loading', 'lazy');
     
-    img.onerror = function()
+    img.onerror = function() {
+        // Fallback image if original fails to load
+        this.src = 'placeholder.png';
+        this.alt = 'Image not available';
+    };
+    // Back-to-Top button functionality
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
