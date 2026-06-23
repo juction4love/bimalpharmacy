@@ -12,14 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const linkPath = link.getAttribute('href');
     if (linkPath === currentPath || (currentPath === "" && linkPath === "index.html")) {
       link.classList.add('active');
-      // Inline styling for immediate visual feedback
-      if(link.tagName === 'A') {
-        link.style.color = "var(--accent)";
-      }
     }
   });
 
-  // Dropdown Accessibility Toggle
+  // Dropdown Accessibility Toggle (for pages that still have dropdowns)
   const dropdowns = document.querySelectorAll('.dropdown');
   dropdowns.forEach(dropdown => {
     const toggleLink = dropdown.querySelector('a[aria-haspopup="true"]');
@@ -70,11 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!query) {
         resultsBox.innerHTML = "";
+        resultsBox.style.display = "none";
         return;
       }
 
       const filtered = medicines.filter(m => {
-        // Modified slightly to match the actual JSON keys + user's keys
         return (
           (m["Brand Name "] && m["Brand Name "].toLowerCase().includes(query)) ||
           (m["Generic Name"] && m["Generic Name"].toLowerCase().includes(query)) ||
@@ -82,25 +78,42 @@ document.addEventListener('DOMContentLoaded', () => {
           (m.category && m.category.toLowerCase().includes(query)) ||
           (m.brand && m.brand.toLowerCase().includes(query))
         );
-      }).slice(0, 50); // Kept slice to protect DOM rendering
+      }).slice(0, 50);
 
       renderResults(filtered);
     }, 200));
 
     function renderResults(items) {
       if (!items || items.length === 0) {
-        resultsBox.innerHTML = "<div class='search-item' style='padding:10px; text-align:center; color:red;'>No medicine found</div>";
+        resultsBox.innerHTML = `<div class="search-item search-no-result">औषधी फेला परेन</div>`;
+        resultsBox.style.display = "block";
         return;
       }
 
       resultsBox.innerHTML = items.slice(0, 20).map(item => `
-        <div class="search-item" style="padding: 10px; border-bottom: 1px solid #eee; cursor: pointer;">
-          <strong style="color: var(--primary);">${item["Brand Name "] || item.name || "Unknown"}</strong><br>
-          <small style="color: #666;">${item["Generic Name"] || item.category || "N/A"}</small><br>
-          <span style="font-size: 13px;">💊 ${item.Strength || item.dosage || ""}</span>
+        <div class="search-item">
+          <strong class="search-brand-name">${item["Brand Name "] || item.name || "Unknown"}</strong>
+          <small class="search-generic-name">${item["Generic Name"] || item.category || "N/A"}</small>
+          <span class="search-strength">💊 ${item.Strength || item.dosage || ""}</span>
         </div>
       `).join("");
+      
+      resultsBox.style.display = "block";
     }
+
+    // Hide results when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!searchInput.contains(e.target) && !resultsBox.contains(e.target)) {
+        resultsBox.style.display = "none";
+      }
+    });
+
+    // Show results when focusing on search
+    searchInput.addEventListener('focus', function() {
+      if (this.value.trim() && resultsBox.innerHTML) {
+        resultsBox.style.display = "block";
+      }
+    });
   }
 
   // ३. इमेज एरर ह्यान्डलिङ र लेजी लोडिङ
@@ -109,22 +122,47 @@ document.addEventListener('DOMContentLoaded', () => {
     img.setAttribute('loading', 'lazy');
     
     img.onerror = function() {
-        // Fallback image if original fails to load
-        this.src = 'placeholder.png';
-        this.alt = 'Image not available';
+      // Fallback image if original fails to load
+      this.src = 'placeholder.png';
+      this.alt = 'Image not available';
+      this.classList.add('img-error');
     };
-    // Back-to-Top button functionality
-    const backToTopBtn = document.getElementById('backToTop');
-    if (backToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
-            }
-        });
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
+  });
 
+  // ४. Back-to-Top Button Functionality
+  const backToTopBtn = document.getElementById('backToTop');
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ५. Smooth Scroll for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ६. Mobile Nav Active State Sync
+  const mobileNavItems = document.querySelectorAll('.mobile-nav .nav-item');
+  mobileNavItems.forEach(item => {
+    const itemPath = item.getAttribute('href');
+    if (itemPath === currentPath || (currentPath === "" && itemPath === "index.html")) {
+      item.classList.add('active');
+    }
+  });
+
+});
