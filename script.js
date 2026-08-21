@@ -127,34 +127,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      resultsBox.innerHTML = items.slice(0, 20).map((item, index) => {
+      resultsBox.innerHTML = items.slice(0, 20).map((item) => {
         const brand = item["Brand Name "] || "Unknown";
         const generic = item["Generic Name"] || "N/A";
         const strength = item["Strength"] || "";
         const category = item["category"] || "General";
-        
-        // WhatsApp message
-        const waMessage = encodeURIComponent(
-          `नमस्ते बिमल फार्मेसी,\n\nमलाई यो औषधीको बारेमा जानकारी चाहियो:\n\n` +
-          `💊 औषधी: ${brand}\n` +
-          `🧬 साल्ट: ${generic}\n` +
-          `📦 ${strength ? 'शक्ति: ' + strength : ''}\n` +
-          `📋 श्रेणी: ${category}\n\n` +
-          `कृपया उपलब्धता र मूल्य जानकारी दिनुहोस्।`
-        );
-        
+
         return `
-        <div class="search-item" onclick="window.open('https://wa.me/9779855065327?text=${waMessage}', '_blank')" 
-             title="Click for WhatsApp inquiry">
+        <div class="search-item">
           <div class="search-item-header">
             <strong class="search-brand-name">💊 ${brand}</strong>
             <span class="search-category-tag">${category}</span>
           </div>
           <small class="search-generic-name">🧬 ${generic}</small>
           ${strength ? `<span class="search-strength">📦 ${strength}</span>` : ''}
-          <div class="search-wa-hint">
-            <i class="fab fa-whatsapp"></i> जानकारी लिन ट्याप गर्नुहोस्
-          </div>
         </div>`;
       }).join("");
       

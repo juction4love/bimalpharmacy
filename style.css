@@ -136,15 +136,13 @@ body.drawer-open{overflow:hidden}
 #medicineSearch{width:100%;padding:var(--space-md) var(--space-lg) var(--space-md) 50px;border-radius:var(--radius-full);border:2px solid transparent;font-size:var(--text-base);box-shadow:var(--shadow-md);outline:none;background:var(--white);color:var(--text-main);transition:var(--transition)}
 #medicineSearch:focus{border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-100)}
 .search-results{background:var(--white);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);max-height:400px;overflow-y:auto;text-align:left;margin-top:var(--space-sm);display:none;border:1px solid var(--border-color)}
-.search-item{padding:var(--space-sm) var(--space-md);border-bottom:1px solid var(--border-color);cursor:pointer;text-align:left;transition:var(--transition-fast)}
+.search-item{padding:var(--space-sm) var(--space-md);border-bottom:1px solid var(--border-color);cursor:default;text-align:left;transition:var(--transition-fast)}
 .search-item:hover{background:var(--primary-50)}
 .search-item-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
 .search-brand-name{color:var(--primary);display:block;font-weight:600;font-size:var(--text-sm)}
 .search-generic-name{color:var(--text-muted);display:block;font-size:var(--text-xs);margin:2px 0}
 .search-strength{font-size:var(--text-xs);color:var(--text-light)}
 .search-category-tag{display:inline-block;background:var(--primary-100);color:var(--primary-dark);padding:2px 10px;border-radius:12px;font-size:0.7rem;font-weight:600;white-space:nowrap}
-.search-wa-hint{font-size:0.7rem;color:var(--whatsapp-green);margin-top:5px;opacity:0;transition:opacity 0.2s}
-.search-item:hover .search-wa-hint{opacity:1}
 .search-footer{text-align:center;padding:8px;font-size:0.75rem;color:var(--text-light);border-top:1px solid var(--border-color);background:var(--gray-50)}
 .search-no-result{text-align:center;color:var(--danger);padding:var(--space-md);cursor:default;font-weight:500}
 
