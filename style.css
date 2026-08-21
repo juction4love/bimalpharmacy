@@ -16,7 +16,7 @@
   --accent-50: rgba(245,158,11,0.05); --accent-100: rgba(245,158,11,0.1);
   --danger: #ef4444; --danger-light: #f87171; --danger-dark: #dc2626;
   --danger-50: rgba(239,68,68,0.05); --danger-100: rgba(239,68,68,0.1);
-  --price-blue: #3b82f6; --ime-red: #d32f2f; --whatsapp-green: #25D366; --whatsapp-dark: #075E54;
+  --price-blue: #3b82f6; --ime-red: #d32f2f; --play-store-green: #25D366; --whatsapp-dark: #075E54;
   --white: #ffffff; --gray-50: #f8fafc; --gray-100: #f1f5f9; --gray-200: #e2e8f0;
   --gray-300: #cbd5e1; --gray-400: #94a3b8; --gray-500: #64748b; --gray-600: #475569;
   --gray-700: #334155; --gray-800: #1e293b; --gray-900: #0f172a;
@@ -138,6 +138,7 @@ body.drawer-open{overflow:hidden}
 .search-results{background:var(--white);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);max-height:400px;overflow-y:auto;text-align:left;margin-top:var(--space-sm);display:none;border:1px solid var(--border-color)}
 .search-item{padding:var(--space-sm) var(--space-md);border-bottom:1px solid var(--border-color);cursor:default;text-align:left;transition:var(--transition-fast)}
 .search-item:hover{background:var(--primary-50)}
+.search-status{text-align:center;color:var(--text-light)}
 .search-item-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
 .search-brand-name{color:var(--primary);display:block;font-weight:600;font-size:var(--text-sm)}
 .search-generic-name{color:var(--text-muted);display:block;font-size:var(--text-xs);margin:2px 0}
@@ -168,16 +169,13 @@ body.drawer-open{overflow:hidden}
 /* =========================================
    11. BUTTONS
    ========================================= */
-.btn-main,.btn-whatsapp,.btn-secondary,.btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-sm);padding:0.9rem 2rem;border-radius:var(--radius-full);font-weight:600;font-size:var(--text-base);border:none;cursor:pointer;transition:var(--transition);text-align:center;font-family:var(--font-body);white-space:nowrap}
+.btn-main,.btn-android,.btn-secondary,.btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-sm);padding:0.9rem 2rem;border-radius:var(--radius-full);font-weight:600;font-size:var(--text-base);border:none;cursor:pointer;transition:var(--transition);text-align:center;font-family:var(--font-body);white-space:nowrap}
 .btn-main{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);color:var(--white);box-shadow:0 4px 15px var(--primary-200)}
 .btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 25px var(--primary-200);color:var(--white)}
-.btn-whatsapp{background:var(--whatsapp-green);color:var(--white);box-shadow:0 4px 15px rgba(37,211,102,0.3);font-size:var(--text-lg);padding:1rem 2.2rem}
-.btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,0.4);color:var(--white)}
+.btn-android{background:var(--play-store-green);color:var(--white);box-shadow:0 4px 15px rgba(37,211,102,0.3);font-size:var(--text-lg);padding:1rem 2.2rem}
+.btn-android:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,0.4);color:var(--white)}
 .btn-secondary{background:var(--secondary);color:var(--white);box-shadow:0 4px 15px var(--secondary-100)}
 .btn-outline{background:transparent;color:var(--primary);border:2px solid var(--primary)}.btn-outline:hover{background:var(--primary);color:var(--white)}
-.btn-whatsapp-order{width:100%;background:var(--whatsapp-green);color:var(--white);padding:1rem 2rem;border-radius:var(--radius-full);font-weight:600;font-size:var(--text-base);border:none;cursor:pointer;box-shadow:0 4px 15px rgba(37,211,102,0.3);transition:var(--transition);display:inline-flex;align-items:center;justify-content:center;gap:var(--space-sm);margin-top:var(--space-lg);font-family:var(--font-body)}
-.btn-whatsapp-order:disabled{background:var(--gray-300);cursor:not-allowed;box-shadow:none;color:var(--gray-500)}
-.btn-whatsapp-order:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,0.4)}
 
 /* =========================================
    12. FORMS & INPUTS
@@ -234,7 +232,6 @@ input[type="checkbox"],input[type="radio"]{width:auto;cursor:pointer;accent-colo
 .btn-contact:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);color:var(--white)}
 .btn-landline{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%)}
 .btn-mobile{background:linear-gradient(135deg,var(--secondary) 0%,var(--secondary-dark) 100%)}
-.btn-whatsapp-contact{background:var(--whatsapp-green)}
 .no-call-notice{background:var(--danger-50);border:1px solid var(--danger-100);border-radius:var(--radius-md);padding:var(--space-lg);margin-top:var(--space-xl);display:flex;align-items:flex-start;gap:var(--space-sm)}
 .no-call-notice i{color:var(--danger);font-size:var(--text-xl);flex-shrink:0}.no-call-notice strong{color:var(--danger)}
 
@@ -372,7 +369,6 @@ footer{background:var(--glass-bg-strong);border-top:1px solid var(--glass-border
 /* =========================================
    27. FLOATING ELEMENTS
    ========================================= */
-.whatsapp-float{position:fixed;bottom:80px;right:20px;background:var(--whatsapp-green);color:var(--white);border-radius:var(--radius-full);padding:var(--space-md) var(--space-lg);font-size:var(--text-2xl);box-shadow:0 4px 15px rgba(37,211,102,0.4);z-index:var(--z-toast);animation:pulse-ring 2s infinite;display:flex;align-items:center;gap:var(--space-sm)}
 #backToTop{position:fixed;bottom:140px;right:20px;background:var(--glass-bg-strong);color:var(--primary);border:2px solid var(--primary-200);border-radius:var(--radius-circle);width:48px;height:48px;font-size:var(--text-xl);cursor:pointer;box-shadow:var(--shadow-md);z-index:var(--z-modal);display:none;align-items:center;justify-content:center;backdrop-filter:blur(12px)}
 #backToTop.show{display:flex}#backToTop:hover{background:var(--primary);color:var(--white)}
 
@@ -408,7 +404,6 @@ footer{background:var(--glass-bg-strong);border-top:1px solid var(--glass-border
 
   /* Spacing */
   body{padding-bottom:65px}footer{padding-bottom:80px!important}
-  .whatsapp-float{bottom:80px!important;right:15px;padding:10px 15px;font-size:1.2rem}
   #backToTop{bottom:140px!important;right:15px}.mobile-call-box{bottom:60px!important}
 }
 
@@ -457,7 +452,7 @@ footer{background:var(--glass-bg-strong);border-top:1px solid var(--glass-border
    31. PRINT STYLES
    ========================================= */
 @media print {
-  .navbar,.mobile-nav,.whatsapp-float,#backToTop,.news-ticker,.dark-toggle-btn,.mic-btn,footer{display:none!important}
+  .navbar,.mobile-nav,#backToTop,.news-ticker,.dark-toggle-btn,.mic-btn,footer{display:none!important}
   body{background:white;color:black}.container{padding:0;max-width:100%}
   .card,.feature-card{box-shadow:none;border:1px solid #ddd;break-inside:avoid}
 }

@@ -3,7 +3,6 @@
 [![Website Status](https://img.shields.io/badge/Status-Live-brightgreen)](https://juction4love.github.io/bimalpharmacy)
 [![DDA Reg](https://img.shields.io/badge/DDA%20Reg-१७२२३%2F२०६३-blue)](https://www.bimalpharmacy.com.np)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-9855065327-25D366)](https://wa.me/9779855065327)
 
 > **"तपाईंको स्वास्थ्य, हाम्रो प्राथमिकता"**  
 > Official responsive website for **Bimal Pharmacy**, located in Bharatpur-7, Chitwan, Nepal.  
@@ -22,8 +21,8 @@
 
 | Feature | Description |
 |---------|-------------|
-| 🔍 **Medicine Search** | Live filtering of medicine availability with debounced search |
-| 💬 **WhatsApp Integration** | All inquiries directed to WhatsApp for faster, documented service |
+| 🔍 **Medicine Search** | Information-only filtering by brand, generic name, strength, and category |
+| 📱 **Android Ordering** | Customer medicine orders are completed through the Bimal Pharmacy Android app |
 | 📵 **No-Call Policy** | Explicit warnings — voice calls not accepted to maintain pharmacy operations |
 | 📢 **Sticky Notice Bar** | Urgent scrolling marquee for important announcements |
 | ⚠️ **Payment Notice** | Dedicated page (`notice.html`) for clearing outstanding credit (बक्यौता रकम) |
@@ -45,9 +44,9 @@ bimalpharmacy/
 ├── emergency.html # Emergency contacts, first aid & blood donors
 ├── insurance.html # IME Life Insurance guide & premium calculator
 ├── notice.html # Urgent credit payment notice with QR codes
-├── order.html # Online medicine order form (WhatsApp)
-├── vendor-order.html # Smart purchase order slip for suppliers
-├── contact.html # Location, phone & WhatsApp contacts
+├── order.html # Android app ordering guide
+├── vendor-order.html # Smart supplier purchase order slip with WhatsApp sharing
+├── contact.html # Location and phone contacts
 ├── thanks.html # Thank you page after form submission
 ├── privacy-policy.html # Privacy policy
 ├── disclaimer.html # Medical disclaimer
@@ -94,13 +93,12 @@ bimalpharmacy/
 
 | Method | Detail |
 |--------|--------|
-| 💬 **WhatsApp Only** | [+977 9855065327](https://wa.me/9779855065327) |
 | 📞 **Landline** | 056-593288 |
 | 📍 **Location** | Bharatpur-7, Cancer Hospital Road, Chitwan, Nepal |
 | 🏥 **Nearby** | B.P. Koirala Memorial Cancer Hospital |
 | 📋 **DDA Reg No** | १७२२३/२०६३ |
 
-> ⚠️ **Note:** All medical inquiries must be made via **WhatsApp Messenger**. Voice calls are not accepted.
+> Customer medicine ordering is available through the **Bimal Pharmacy Android app**. The website medicine search provides information only.
 
 ---
 

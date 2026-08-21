@@ -57,10 +57,11 @@
             id="medicineSearch" 
             placeholder="औषधीको नाम लेख्नुहोस्..." 
             aria-label="Search medicines"
+            aria-controls="searchResults"
             autocomplete="off"
           >
         </div>
-        <div id="searchResults" class="search-results" role="listbox" aria-label="Search results"></div>
+        <div id="searchResults" class="search-results" role="list" aria-label="Search results" aria-live="polite" aria-atomic="false" aria-busy="false"></div>
       </div>
       
       <!-- CTA Button -->
@@ -135,7 +136,7 @@
       <div class="container">
         <h2>औषधी चाहिन्छ?</h2>
         <p>औषधी अर्डर गर्न Bimal Pharmacy Android App प्रयोग गर्नुहोस्।</p>
-        <a href="https://play.google.com/store/apps/details?id=com.bimalpharmacy.app" class="btn-whatsapp" target="_blank" rel="noopener">
+        <a href="https://play.google.com/store/apps/details?id=com.bimalpharmacy.app" class="btn-android" target="_blank" rel="noopener">
           <i class="fab fa-google-play"></i> Android App डाउनलोड गर्नुहोस्
         </a>
       </div>

@@ -33,42 +33,60 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // २. औषधी खोज्ने मेकानिजम (JSON Fetch API)
-  let medicines = [];
-  let isLoading = false;
-
-  async function loadMedicines() {
-    const resultsBox = document.getElementById("searchResults");
-    if (resultsBox) {
-      resultsBox.innerHTML = '<div class="search-item" style="text-align:center;padding:15px;">🔄 औषधी डाटा लोड हुँदैछ...</div>';
-      resultsBox.style.display = "block";
-    }
-    
-    try {
-      const startTime = performance.now();
-      const res = await fetch("./medicines.json");
-      medicines = await res.json();
-      const loadTime = ((performance.now() - startTime) / 1000).toFixed(1);
-      console.log(`✅ Medicines loaded: ${medicines.length} (${loadTime}s)`);
-      
-      if (resultsBox) {
-        resultsBox.innerHTML = "";
-        resultsBox.style.display = "none";
-      }
-    } catch (err) {
-      console.error("❌ Failed to load medicines.json", err);
-      if (resultsBox) {
-        resultsBox.innerHTML = '<div class="search-item search-no-result">⚠️ डाटा लोड गर्न सकिएन। कृपया पछि प्रयास गर्नुहोस्।</div>';
-      }
-    }
-  }
-
-  loadMedicines();
-
   const searchInput = document.getElementById("medicineSearch");
   const resultsBox = document.getElementById("searchResults");
 
   if (searchInput && resultsBox) {
-    
+    let medicines = [];
+    let medicineLoadState = "loading";
+
+    function createSearchItem(classNames, text) {
+      const item = document.createElement("div");
+      item.className = classNames;
+      item.setAttribute("role", "listitem");
+      item.textContent = text;
+      return item;
+    }
+
+    function showSearchMessage(text, classNames = "search-item search-status") {
+      resultsBox.replaceChildren(createSearchItem(classNames, text));
+      resultsBox.style.display = "block";
+    }
+
+    async function loadMedicines() {
+      resultsBox.setAttribute("aria-busy", "true");
+      showSearchMessage("🔄 औषधी डाटा लोड हुँदैछ...");
+
+      try {
+        const startTime = performance.now();
+        const response = await fetch("./medicines.json");
+        if (!response.ok) {
+          throw new Error(`Medicine data request failed with status ${response.status}`);
+        }
+
+        const data = await response.json();
+        if (!Array.isArray(data)) {
+          throw new Error("Medicine data is not an array");
+        }
+
+        medicines = data;
+        medicineLoadState = "ready";
+        const loadTime = ((performance.now() - startTime) / 1000).toFixed(1);
+        console.log(`✅ Medicines loaded: ${medicines.length} (${loadTime}s)`);
+        resultsBox.setAttribute("aria-busy", "false");
+        resultsBox.replaceChildren();
+        resultsBox.style.display = "none";
+      } catch (error) {
+        medicines = [];
+        medicineLoadState = "error";
+        console.error("❌ Failed to load medicine data", error);
+        resultsBox.setAttribute("aria-busy", "false");
+        showSearchMessage("⚠️ डाटा लोड गर्न सकिएन। कृपया पछि प्रयास गर्नुहोस्।", "search-item search-no-result");
+      }
+    }
+
+    loadMedicines();
+
     // Debounce for performance
     function debounce(fn, delay) {
       let timer;
@@ -82,20 +100,23 @@ document.addEventListener('DOMContentLoaded', () => {
       const query = this.value.toLowerCase().trim();
 
       if (!query) {
-        resultsBox.innerHTML = "";
+        resultsBox.replaceChildren();
         resultsBox.style.display = "none";
         return;
       }
 
       if (query.length < 2) {
-        resultsBox.innerHTML = '<div class="search-item" style="text-align:center;padding:10px;color:#999;">कम्तिमा २ अक्षर लेख्नुहोस्...</div>';
-        resultsBox.style.display = "block";
+        showSearchMessage("कम्तिमा २ अक्षर लेख्नुहोस्...");
         return;
       }
 
-      if (medicines.length === 0) {
-        resultsBox.innerHTML = '<div class="search-item" style="text-align:center;padding:15px;">🔄 डाटा लोड हुँदैछ... कृपया पर्खनुहोस्</div>';
-        resultsBox.style.display = "block";
+      if (medicineLoadState === "error") {
+        showSearchMessage("⚠️ डाटा लोड गर्न सकिएन। कृपया पछि प्रयास गर्नुहोस्।", "search-item search-no-result");
+        return;
+      }
+
+      if (medicineLoadState === "loading") {
+        showSearchMessage("🔄 डाटा लोड हुँदैछ... कृपया पर्खनुहोस्");
         return;
       }
 
@@ -117,34 +138,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderResults(items, query) {
       if (!items || items.length === 0) {
-        resultsBox.innerHTML = `
-          <div class="search-item search-no-result">
-            <i class="fas fa-search" style="margin-right:8px;"></i> 
-            "${query}" को लागि कुनै औषधी फेला परेन
-            <br><small style="color:#999;">कृपया अर्को नामले प्रयास गर्नुहोस्</small>
-          </div>`;
+        const noResult = createSearchItem("search-item search-no-result", "");
+        const message = document.createElement("div");
+        message.textContent = `🔍 “${query}” को लागि कुनै औषधी फेला परेन`;
+        const suggestion = document.createElement("small");
+        suggestion.textContent = "कृपया अर्को नामले प्रयास गर्नुहोस्";
+        noResult.append(message, suggestion);
+        resultsBox.replaceChildren(noResult);
         resultsBox.style.display = "block";
         return;
       }
 
-      resultsBox.innerHTML = items.slice(0, 20).map((item) => {
+      const fragment = document.createDocumentFragment();
+
+      items.slice(0, 20).forEach((item) => {
         const brand = item["Brand Name "] || "Unknown";
         const generic = item["Generic Name"] || "N/A";
         const strength = item["Strength"] || "";
         const category = item["category"] || "General";
 
-        return `
-        <div class="search-item">
-          <div class="search-item-header">
-            <strong class="search-brand-name">💊 ${brand}</strong>
-            <span class="search-category-tag">${category}</span>
-          </div>
-          <small class="search-generic-name">🧬 ${generic}</small>
-          ${strength ? `<span class="search-strength">📦 ${strength}</span>` : ''}
-        </div>`;
-      }).join("");
-      
-      resultsBox.innerHTML += `<div class="search-footer">कुल ${items.length} परिणाम | माथि २० देखाइएको</div>`;
+        const resultItem = createSearchItem("search-item", "");
+        const header = document.createElement("div");
+        header.className = "search-item-header";
+
+        const brandName = document.createElement("strong");
+        brandName.className = "search-brand-name";
+        brandName.textContent = `💊 ${brand}`;
+
+        const categoryTag = document.createElement("span");
+        categoryTag.className = "search-category-tag";
+        categoryTag.textContent = category;
+        header.append(brandName, categoryTag);
+
+        const genericName = document.createElement("small");
+        genericName.className = "search-generic-name";
+        genericName.textContent = `🧬 ${generic}`;
+        resultItem.append(header, genericName);
+
+        if (strength) {
+          const strengthValue = document.createElement("span");
+          strengthValue.className = "search-strength";
+          strengthValue.textContent = `📦 ${strength}`;
+          resultItem.append(strengthValue);
+        }
+
+        fragment.append(resultItem);
+      });
+
+      const footer = createSearchItem("search-footer", `कुल ${items.length} परिणाम | माथि २० देखाइएको`);
+      fragment.append(footer);
+      resultsBox.replaceChildren(fragment);
       resultsBox.style.display = "block";
     }
 
@@ -157,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show results when focusing on search
     searchInput.addEventListener('focus', function() {
-      if (this.value.trim().length >= 2 && resultsBox.innerHTML) {
+      if (this.value.trim().length >= 2 && resultsBox.childElementCount > 0) {
         resultsBox.style.display = "block";
       }
     });
