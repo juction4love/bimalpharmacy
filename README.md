@@ -55,7 +55,8 @@ bimalpharmacy/
 ├── script.js # Search, back-to-top, lazy loading & UX scripts
 ├── components.js # Reusable header, footer & mobile nav components
 ├── logo.svg # Pharmacy logo
-├── medicines.json # Medicine database for search
+├── medicine-search/ # Generated lazy-loaded public search index
+├── tools/build-medicine-index.py # Reproducible catalogue generator
 ├── robots.txt # SEO robots file
 ├── sitemap.xml # XML sitemap
 ├── ads.txt # Google AdSense verification
@@ -76,6 +77,18 @@ bimalpharmacy/
 | **jsPDF** | Client-side PDF generation for vendor orders |
 | **Formspree** | Contact form backend |
 | **GitHub Pages** | Free hosting & deployment |
+
+## 🔄 Rebuilding the Medicine Search Index
+
+The public search index is generated from the canonical medicine catalog in the local `data/` folder. Source databases and raw source unions are build inputs and are intentionally excluded from Git because they contain redundant and source-only fields. The generated `medicine-search/` directory is required by the static website and is committed.
+
+From the repository root, run:
+
+```powershell
+python tools/build-medicine-index.py
+```
+
+The standard-library-only generator validates the available catalogs, selects the newest intact canonical version, normalizes public medicine fields, excludes prices/importer/internal source data, and writes deterministic term and detail shards plus `manifest.json` and `build-report.json`. Run it twice and confirm the second run produces no Git diff before publishing.
 
 ---
 

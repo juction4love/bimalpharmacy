@@ -143,6 +143,7 @@ body.drawer-open{overflow:hidden}
 .search-brand-name{color:var(--primary);display:block;font-weight:600;font-size:var(--text-sm)}
 .search-generic-name{color:var(--text-muted);display:block;font-size:var(--text-xs);margin:2px 0}
 .search-strength{font-size:var(--text-xs);color:var(--text-light)}
+.search-meta{display:block;font-size:var(--text-xs);color:var(--text-muted);margin-top:2px}
 .search-category-tag{display:inline-block;background:var(--primary-100);color:var(--primary-dark);padding:2px 10px;border-radius:12px;font-size:0.7rem;font-weight:600;white-space:nowrap}
 .search-footer{text-align:center;padding:8px;font-size:0.75rem;color:var(--text-light);border-top:1px solid var(--border-color);background:var(--gray-50)}
 .search-no-result{text-align:center;color:var(--danger);padding:var(--space-md);cursor:default;font-weight:500}
