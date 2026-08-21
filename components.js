@@ -12,7 +12,7 @@ class SiteHeader extends HTMLElement {
             <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/7f3b99114723f8e765d48999f353830f21cbcce3/logo.svg" alt="Bimal Pharmacy Logo">
           </div>
           <div class="brand-text">
-            <h1>बिमल फार्मेसी</h1>
+          <div class="site-name">बिमल फार्मेसी</div>
             <p>गुणस्तरीय औषधी र भरपर्दो सेवा | भरतपुर-७, चितवन</p>
           </div>
         </a>

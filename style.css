@@ -88,7 +88,7 @@ img{max-width:100%;height:auto;display:block}strong{font-weight:700}
 .header-logo-link{text-decoration:none;display:flex;align-items:center;gap:var(--space-lg);width:100%;justify-content:center}
 .logo-container{height:65px;width:65px;border-radius:var(--radius-circle);overflow:hidden;background:var(--white);flex-shrink:0;box-shadow:var(--shadow-sm);border:2px solid var(--primary-100);transition:var(--transition)}
 .logo-container img{width:100%;height:100%;object-fit:cover}
-.brand-text h1{color:var(--primary);font-size:var(--text-3xl);margin-bottom:2px}
+.brand-text h1,.brand-text .site-name{color:var(--primary);font-size:var(--text-3xl);font-weight:700;margin-bottom:2px}
 .brand-text p{color:var(--text-muted);font-size:var(--text-sm);margin:0}
 .nav-links{list-style:none;display:flex;gap:var(--space-lg);justify-content:center;flex-wrap:wrap;margin:0;padding:0}
 .nav-links a{color:var(--text-main);font-weight:600;position:relative;font-size:var(--text-sm);white-space:nowrap;padding:var(--space-xs) 0;transition:var(--transition)}
@@ -96,9 +96,9 @@ img{max-width:100%;height:auto;display:block}strong{font-weight:700}
 .nav-links a:hover{color:var(--primary)}.nav-links a:hover::after,.nav-links a.active::after{width:100%}.nav-links a.active{color:var(--primary)}
 .app-header{background:var(--glass-bg-strong);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border);padding:var(--space-md) 5%;text-align:center}
 .app-header .brand-section{display:flex;justify-content:center;align-items:center;gap:var(--space-md);flex-wrap:wrap}
-.app-header .brand-text h1{color:var(--primary)}
+.app-header .brand-text h1,.app-header .brand-text .site-name{color:var(--primary)}
 .text-header{padding:var(--space-xl) 5%;text-align:center;background:var(--glass-bg);border-bottom:1px solid var(--glass-border)}
-.text-header h1{color:var(--primary);font-size:var(--text-3xl)}
+.text-header h1,.text-header .site-name{color:var(--primary);font-size:var(--text-3xl);font-weight:700}
 
 /* Hamburger Menu Button */
 .hamburger-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:10px;z-index:101;box-shadow:none;margin:0;width:auto;height:auto;border-radius:0}
@@ -253,7 +253,6 @@ input[type="checkbox"],input[type="radio"]{width:auto;cursor:pointer;accent-colo
    18. INSURANCE PAGE
    ========================================= */
 .agent-banner{background:linear-gradient(135deg,var(--ime-red) 0%,#b71c1c 100%);color:var(--white);padding:var(--space-2xl) 5%;text-align:center}
-.agent-banner h2{font-size:var(--text-3xl);margin:var(--space-xs) 0 var(--space-md)}
 .phone-link{color:var(--white);font-size:var(--text-xl);font-weight:700;background:rgba(255,255,255,0.2);padding:var(--space-sm) var(--space-xl);border-radius:var(--radius-full);display:inline-block}
 .calc-card{background:var(--glass-bg);border-radius:var(--radius-xl);padding:var(--space-xl);box-shadow:var(--glass-shadow);margin-bottom:var(--space-xl);border:1px solid var(--glass-border)}
 .calc-tabs{display:flex;justify-content:center;gap:var(--space-xs);margin-bottom:var(--space-xl);flex-wrap:wrap}
@@ -261,7 +260,7 @@ input[type="checkbox"],input[type="radio"]{width:auto;cursor:pointer;accent-colo
 .tab-btn.active{background:var(--primary);color:var(--white)}
 .btn-action{background:var(--primary);color:var(--white);border:none;padding:var(--space-sm) var(--space-xl);border-radius:var(--radius-full);font-weight:600;cursor:pointer;margin-top:var(--space-md)}
 .calc-result{margin-top:var(--space-lg);padding:var(--space-md);background:var(--accent-50);border-radius:var(--radius-sm);border:1px solid var(--accent);text-align:center}
-.calc-result h2{color:var(--primary)}
+.calc-result .res-title{font-weight:700;margin-bottom:var(--space-xs)}.calc-result .res-value{display:block;color:var(--primary);font-size:var(--text-2xl);font-weight:700}
 .bonus-table{width:100%;border-collapse:collapse;margin:var(--space-md) 0;background:var(--glass-bg);border-radius:var(--radius-md);overflow:hidden}
 .bonus-table th{background:var(--ime-red);color:var(--white);padding:var(--space-sm) var(--space-md)}
 .bonus-table td{padding:var(--space-sm) var(--space-md);border-bottom:1px solid var(--border-color)}
@@ -274,6 +273,7 @@ input[type="checkbox"],input[type="radio"]{width:auto;cursor:pointer;accent-colo
 .highlight-box{background:var(--accent-50);border:1px solid var(--accent);border-radius:var(--radius-md);padding:var(--space-md);margin:var(--space-lg) 0;text-align:center}
 .insurance-card{border-left:4px solid var(--ime-red)}
 .agent-box{background:var(--danger-50);border:1px solid var(--danger-100);border-radius:var(--radius-md);padding:var(--space-lg);margin-top:var(--space-lg);text-align:center}
+.agent-banner .agent-name{font-size:var(--text-2xl);font-weight:700;margin:var(--space-xs) 0 var(--space-md)}
 .agent-box h4{color:var(--ime-red)}.call-link{color:var(--ime-red);font-weight:700;font-size:var(--text-lg)}
 
 /* =========================================
@@ -289,6 +289,17 @@ input[type="checkbox"],input[type="radio"]{width:auto;cursor:pointer;accent-colo
 .notice-icon{font-size:5rem;color:var(--danger);margin-bottom:var(--space-md);animation:bounce 2s infinite}
 .notice-title{color:var(--danger);margin-bottom:var(--space-lg);font-size:var(--text-3xl)}
 .warning-box{background:var(--danger-50);border-left:5px solid var(--danger);padding:var(--space-lg);border-radius:var(--radius-sm);margin:var(--space-lg) 0;text-align:left}
+.article-content{max-width:900px;margin:0 auto}
+.article-section{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:var(--space-xl);margin-bottom:var(--space-xl);box-shadow:var(--glass-shadow);text-align:left}
+.article-section h2{margin-top:0}.article-section h3{margin-top:var(--space-lg)}
+.article-section p,.article-section li{line-height:1.75}
+.article-section ul,.article-section ol{padding-left:1.4rem;margin:var(--space-md) 0}
+.article-faq details{border-bottom:1px solid var(--border-color);padding:var(--space-md) 0}
+.article-faq details:last-child{border-bottom:0}
+.article-faq summary{cursor:pointer;font-weight:700;color:var(--primary-dark)}
+.article-faq details p{margin:var(--space-sm) 0 0}
+.medical-note{background:var(--secondary-50);border-left:5px solid var(--secondary);padding:var(--space-lg);border-radius:var(--radius-sm);margin:var(--space-lg) 0;text-align:left}
+.quick-links{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-lg)}
 .warning-title{color:var(--danger)}.warning-list{list-style:disc;padding-left:var(--space-xl);margin-top:var(--space-sm);font-weight:600}
 .urgent-msg{font-weight:700;color:var(--secondary);text-align:center;font-size:var(--text-xl);margin:var(--space-lg) 0}
 .payment-section{text-align:center;margin-top:var(--space-2xl)}
@@ -385,7 +396,7 @@ footer{background:var(--glass-bg-strong);border-top:1px solid var(--glass-border
   .branding-header{justify-content:space-between;padding:0.5rem 5%}
   .header-logo-link{width:auto;flex:1;justify-content:flex-start;gap:10px}
   .logo-container{height:45px;width:45px}
-  .brand-text h1{font-size:1.2rem}.brand-text p{display:none}
+  .brand-text h1,.brand-text .site-name{font-size:1.2rem}.brand-text p{display:none}
 
   /* Side Drawer */
   .navbar{position:fixed;top:0;right:-300px;width:280px;height:100vh;background:var(--glass-bg-strong);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-left:1px solid var(--glass-border);z-index:100;transition:right 0.3s ease;padding:80px 20px 30px;overflow-y:auto}
@@ -445,7 +456,7 @@ footer{background:var(--glass-bg-strong);border-top:1px solid var(--glass-border
   .stats-row{gap:var(--space-sm)}.stat-item{padding:var(--space-md) var(--space-lg)}.stat-number{font-size:28px}
   .features-grid{gap:var(--space-md)}.step-grid{grid-template-columns:1fr}
   .calc-tabs{flex-direction:column}.qr-grid{flex-direction:column;align-items:center}
-  .logo-container{height:55px;width:55px}.brand-text h1{font-size:var(--text-2xl)}
+  .logo-container{height:55px;width:55px}.brand-text h1,.brand-text .site-name{font-size:var(--text-2xl)}
 }
 
 /* =========================================
