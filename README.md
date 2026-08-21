@@ -88,7 +88,7 @@ From the repository root, run:
 python tools/build-medicine-index.py
 ```
 
-The standard-library-only generator validates the available catalogs, selects the newest intact canonical version, normalizes public medicine fields, excludes prices/importer/internal source data, and writes deterministic term and detail shards plus `manifest.json` and `build-report.json`. Run it twice and confirm the second run produces no Git diff before publishing.
+The standard-library-only generator validates the available catalogs, selects the newest intact canonical version, normalizes public medicine fields (including compact strength units such as `500mg`), excludes prices/importer/internal source data, and writes deterministic search assets. Large term groups are adaptively split from two to three or four characters, broad short queries use bounded summaries, and final ranking reads small 64-record detail blocks. The browser keeps bounded Promise/LRU caches so sequential queries reuse parsed shards without retaining the full catalogue. Run the generator twice and confirm the second run produces no Git diff before publishing.
 
 ---
 

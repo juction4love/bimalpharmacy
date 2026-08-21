@@ -40,8 +40,27 @@ document.addEventListener('DOMContentLoaded', () => {
     let searchManifest = null;
     let medicineLoadState = "loading";
     let requestSequence = 0;
-    const termChunkCache = new Map();
-    const recordChunkCache = new Map();
+    function createPromiseCache(limit) {
+      const entries = new Map();
+      return {
+        getOrLoad(key, loader) {
+          if (entries.has(key)) {
+            const cached = entries.get(key);
+            entries.delete(key);
+            entries.set(key, cached);
+            return cached;
+          }
+          const pending = Promise.resolve().then(loader);
+          entries.set(key, pending);
+          pending.catch(() => entries.delete(key));
+          while (entries.size > limit) entries.delete(entries.keys().next().value);
+          return pending;
+        }
+      };
+    }
+
+    const termChunkCache = createPromiseCache(12);
+    const recordChunkCache = createPromiseCache(96);
 
     function createSearchItem(classNames, text) {
       const item = document.createElement("div");
@@ -63,12 +82,27 @@ document.addEventListener('DOMContentLoaded', () => {
         .toLocaleLowerCase()
         .replace(/[^\p{L}\p{N}]+/gu, " ")
         .trim()
-        .replace(/\s+/g, " ");
+        .replace(/\s+/g, " ")
+        .replace(/(\d)\s+(?=(?:mcg|mg|kg|ml|iu|units?|g|l)\b)/g, "$1");
     }
 
     function searchBucket(token) {
       const prefix = token.slice(0, 2);
       return /^[a-z0-9]{1,2}$/.test(prefix) ? prefix.padEnd(2, "_") : "other";
+    }
+
+    function termChunkKey(token) {
+      const base = searchBucket(token);
+      const children = searchManifest.splitRoutes[base];
+      if (!children) return searchManifest.termChunkKeys.includes(base) ? base : null;
+      if (token.length === 2) return `${base}-broad`;
+      const child = token.slice(0, 3).padEnd(3, "_");
+      if (!children.includes(child)) return null;
+      const grandchildren = searchManifest.splitRoutesLevelThree[child];
+      if (!grandchildren) return child;
+      if (token.length === 3) return `${child}-broad`;
+      const grandchild = token.slice(0, 4).padEnd(4, "_");
+      return grandchildren.includes(grandchild) ? grandchild : null;
     }
 
     async function fetchJson(path, description) {
@@ -86,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         const startTime = performance.now();
         const manifest = await fetchJson("./medicine-search/manifest.json", "Medicine search manifest");
-        if (!manifest || !manifest.termChunks || !manifest.recordChunks || !Array.isArray(manifest.recordBucketNames)) {
+        if (!manifest || !manifest.splitRoutes || !manifest.splitRoutesLevelThree || !Array.isArray(manifest.termChunkKeys) || !Number.isInteger(manifest.recordBucketCount)) {
           throw new Error("Medicine search manifest has an invalid structure");
         }
 
@@ -107,19 +141,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadTermChunk(bucket) {
-      if (!termChunkCache.has(bucket)) {
-        const entry = searchManifest.termChunks[bucket];
-        termChunkCache.set(bucket, entry ? fetchJson(`./medicine-search/${entry.file}`, `Search index ${bucket}`) : Promise.resolve({ terms: [] }));
-      }
-      return termChunkCache.get(bucket);
+      return termChunkCache.getOrLoad(bucket || "missing", () => {
+        return bucket ? fetchJson(`./medicine-search/terms/terms-${bucket}.json`, `Search index ${bucket}`) : { terms: [] };
+      });
     }
 
     function loadRecordChunk(bucket) {
-      if (!recordChunkCache.has(bucket)) {
-        const entry = searchManifest.recordChunks[bucket];
-        recordChunkCache.set(bucket, entry ? fetchJson(`./medicine-search/${entry.file}`, `Medicine records ${bucket}`) : Promise.resolve({ records: [] }));
-      }
-      return recordChunkCache.get(bucket);
+      return recordChunkCache.getOrLoad(bucket, () => {
+        return fetchJson(`./medicine-search/records/records-${bucket}.json`, `Medicine records ${bucket}`);
+      });
     }
 
     loadSearchManifest();
@@ -133,10 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
       };
     }
 
-    searchInput.addEventListener("input", debounce(async function () {
-      const query = this.value.trim();
+    const runSearch = debounce(async function (rawQuery, currentRequest) {
+      const query = rawQuery.trim();
       const normalizedQuery = normalizeSearchText(query);
-      const currentRequest = ++requestSequence;
 
       if (!normalizedQuery) {
         resultsBox.replaceChildren();
@@ -176,42 +205,80 @@ document.addEventListener('DOMContentLoaded', () => {
           resultsBox.setAttribute("aria-busy", "false");
         }
       }
-    }, 250));
+    }, 250);
+
+    searchInput.addEventListener("input", function () {
+      const currentRequest = ++requestSequence;
+      if (!this.value.trim()) {
+        resultsBox.replaceChildren();
+        resultsBox.style.display = "none";
+        runSearch("", currentRequest);
+        return;
+      }
+      runSearch(this.value, currentRequest);
+    });
 
     async function searchMedicines(normalizedQuery) {
       const tokens = [...new Set(normalizedQuery.split(" ").filter(Boolean))];
-      const buckets = [...new Set(tokens.map(searchBucket))];
-      const chunks = await Promise.all(buckets.map(loadTermChunk));
-      const chunkByBucket = new Map(buckets.map((bucket, index) => [bucket, chunks[index]]));
-      const candidates = new Map();
+      const chunkKeys = tokens.map(termChunkKey);
+      const uniqueChunkKeys = [...new Set(chunkKeys)];
+      const chunks = await Promise.all(uniqueChunkKeys.map(loadTermChunk));
+      const chunkByKey = new Map(uniqueChunkKeys.map((key, index) => [key, chunks[index]]));
+      const tokenCandidateMaps = [];
 
       tokens.forEach((token, tokenIndex) => {
-        const chunk = chunkByBucket.get(searchBucket(token));
+        const chunk = chunkByKey.get(chunkKeys[tokenIndex]);
+        const tokenCandidates = new Map();
         for (const [term, postings] of chunk.terms || []) {
           if (!term.includes(token)) continue;
           const termScore = term === token ? 120 : term.startsWith(token) ? 80 : 40;
-          for (const [id, recordBucketId, fieldMask] of postings) {
-            const candidate = candidates.get(id) || { id, recordBucketId, fieldMask: 0, tokenMatches: new Set(), termScore: 0 };
+          for (const [id, recordBucketId, fieldMask, exactMask, prefixMask] of postings) {
+            const candidate = tokenCandidates.get(id) || { id, recordBucketId, fieldMask: 0, exactMask: 0, prefixMask: 0, termScore: 0 };
             candidate.fieldMask |= fieldMask;
-            candidate.tokenMatches.add(tokenIndex);
+            candidate.exactMask |= exactMask;
+            candidate.prefixMask |= prefixMask;
             candidate.termScore += termScore;
-            candidates.set(id, candidate);
+            tokenCandidates.set(id, candidate);
           }
         }
+        const bounded = [...tokenCandidates.values()]
+          .sort(comparePostingCandidates)
+          .slice(0, searchManifest.clientCandidateLimit);
+        tokenCandidateMaps.push(new Map(bounded.map(candidate => [candidate.id, candidate])));
       });
 
-      const preliminary = [...candidates.values()]
+      const anchor = tokenCandidateMaps.reduce((smallest, current) => current.size < smallest.size ? current : smallest, tokenCandidateMaps[0]);
+      const candidates = [];
+      for (const anchorCandidate of anchor.values()) {
+        const candidate = { ...anchorCandidate, tokenMatches: 0 };
+        for (const tokenCandidates of tokenCandidateMaps) {
+          const match = tokenCandidates.get(candidate.id);
+          if (!match) continue;
+          candidate.tokenMatches += 1;
+          candidate.fieldMask |= match.fieldMask;
+          candidate.exactMask |= match.exactMask;
+          candidate.prefixMask |= match.prefixMask;
+          candidate.termScore += match.termScore;
+        }
+        candidates.push(candidate);
+      }
+
+      const preliminary = candidates
         .sort((left, right) =>
-          right.tokenMatches.size - left.tokenMatches.size ||
-          Number(right.tokenMatches.size === tokens.length) - Number(left.tokenMatches.size === tokens.length) ||
+          Number(right.tokenMatches === tokens.length) - Number(left.tokenMatches === tokens.length) ||
+          Number(Boolean(right.exactMask & 1)) - Number(Boolean(left.exactMask & 1)) ||
+          Number(Boolean(right.prefixMask & 1)) - Number(Boolean(left.prefixMask & 1)) ||
+          Number(Boolean(right.exactMask & 2)) - Number(Boolean(left.exactMask & 2)) ||
+          Number(Boolean(right.prefixMask & 2)) - Number(Boolean(left.prefixMask & 2)) ||
+          right.tokenMatches - left.tokenMatches ||
           Number(Boolean(right.fieldMask & 1)) - Number(Boolean(left.fieldMask & 1)) ||
           Number(Boolean(right.fieldMask & 2)) - Number(Boolean(left.fieldMask & 2)) ||
           right.termScore - left.termScore ||
           left.id - right.id
         )
-        .slice(0, 120);
+        .slice(0, searchManifest.detailCandidateLimit);
 
-      const recordBuckets = [...new Set(preliminary.map(candidate => searchManifest.recordBucketNames[candidate.recordBucketId]))];
+      const recordBuckets = [...new Set(preliminary.map(candidate => candidate.recordBucketId.toString(16).padStart(4, "0")))];
       const recordChunks = await Promise.all(recordBuckets.map(loadRecordChunk));
       const wantedIds = new Set(preliminary.map(candidate => candidate.id));
       const records = [];
@@ -227,6 +294,17 @@ document.addEventListener('DOMContentLoaded', () => {
         .sort((left, right) => right.score - left.score || left.record[1].localeCompare(right.record[1]) || left.record[0] - right.record[0])
         .slice(0, 50)
         .map(item => item.record);
+    }
+
+    function comparePostingCandidates(left, right) {
+      return Number(Boolean(right.exactMask & 1)) - Number(Boolean(left.exactMask & 1)) ||
+        Number(Boolean(right.prefixMask & 1)) - Number(Boolean(left.prefixMask & 1)) ||
+        Number(Boolean(right.fieldMask & 1)) - Number(Boolean(left.fieldMask & 1)) ||
+        Number(Boolean(right.exactMask & 2)) - Number(Boolean(left.exactMask & 2)) ||
+        Number(Boolean(right.prefixMask & 2)) - Number(Boolean(left.prefixMask & 2)) ||
+        Number(Boolean(right.fieldMask & 2)) - Number(Boolean(left.fieldMask & 2)) ||
+        right.termScore - left.termScore ||
+        left.id - right.id;
     }
 
     function rankRecord(record, query, tokens) {
