@@ -120,10 +120,6 @@ class SiteFooter extends HTMLElement {
         <a href="emergency.html" class="nav-item"><i class="fas fa-ambulance"></i><span>Emergency</span></a>
         <a href="contact.html" class="nav-item"><i class="fas fa-phone"></i><span>सम्पर्क</span></a>
       </nav>
-
-      <a href="https://play.google.com/store/apps/details?id=com.bimalpharmacy.app" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Bimal Pharmacy Android App">
-        <i class="fab fa-google-play"></i>
-      </a>
       <button id="backToTop" title="Back to top" aria-label="Back to top">&#8679;</button>
     `;
 
@@ -150,3 +146,4 @@ class SiteFooter extends HTMLElement {
   }
 }
 customElements.define('site-footer', SiteFooter);
+
