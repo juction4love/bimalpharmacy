@@ -3,15 +3,6 @@
 
 User-agent: *
 Allow: /
-Allow: /index.html
-Allow: /medical-guide.html
-Allow: /knowledge.html
-Allow: /service.html
-Allow: /about.html
-Allow: /contact.html
-Allow: /privacy-policy.html
-Allow: /disclaimer.html
-Allow: /insurance.html
 
 # Block old/removed pages to fix Search Console redirect/404 errors
 Disallow: /gallery.html
@@ -23,8 +14,14 @@ Disallow: /tmp/
 Disallow: /thanks.html
 Disallow: /vendor-order.html
 
-# AdSense Specific (Allowing AdSense bot to crawl the entire site)
+# Google AdSense and Search Crawlers
 User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Google-Display-Ads-Bot
+Allow: /
+
+User-agent: Googlebot
 Allow: /
 
 # Sitemap Location
