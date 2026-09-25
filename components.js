@@ -9,21 +9,21 @@ class SiteHeader extends HTMLElement {
       <header class="branding-header">
         <a href="index.html" class="header-logo-link">
           <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/juction4love/bimalpharmacy/7f3b99114723f8e765d48999f353830f21cbcce3/logo.svg" alt="Bimal Pharmacy Logo">
+            <img src="logo.svg" alt="Bimal Pharmacy Logo">
           </div>
           <div class="brand-text">
-          <div class="site-name">बिमल फार्मेसी</div>
+            <div class="site-name">बिमल फार्मेसी</div>
             <p>गुणस्तरीय औषधी र भरपर्दो सेवा | भरतपुर-७, चितवन</p>
           </div>
         </a>
-        <button class="hamburger-toggle" id="hamburgerBtn" aria-label="Toggle menu">
+        <button class="hamburger-toggle" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mainNav">
           <span></span>
           <span></span>
           <span></span>
         </button>
       </header>
 
-      <nav class="navbar" id="mainNav">
+      <nav class="navbar" id="mainNav" aria-label="Main Navigation">
         <ul class="nav-links">
           <li><a href="index.html">गृहपृष्ठ</a></li>
           <li><a href="medical-guide.html">औषधी गाइड</a></li>
@@ -37,15 +37,15 @@ class SiteHeader extends HTMLElement {
           <li><a href="contact.html">सम्पर्क</a></li>
         </ul>
       </nav>
-      
-      <div class="drawer-overlay" id="drawerOverlay"></div>
+
+      <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
     `;
 
     // Auto-highlight active link
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = this.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
-      if (link.getAttribute('href') === currentPage) {
+      if (link.getAttribute('href') === currentPage || (currentPage === '' && link.getAttribute('href') === 'index.html')) {
         link.classList.add('active');
       }
     });
@@ -57,6 +57,7 @@ class SiteHeader extends HTMLElement {
 
     function openDrawer() {
       hamburger.classList.add('active');
+      hamburger.setAttribute('aria-expanded', 'true');
       nav.classList.add('open');
       overlay.classList.add('active');
       document.body.classList.add('drawer-open');
@@ -64,6 +65,7 @@ class SiteHeader extends HTMLElement {
 
     function closeDrawer() {
       hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
       nav.classList.remove('open');
       overlay.classList.remove('active');
       document.body.classList.remove('drawer-open');
@@ -83,6 +85,14 @@ class SiteHeader extends HTMLElement {
       // Close drawer when a nav link is clicked
       navLinks.forEach(link => {
         link.addEventListener('click', closeDrawer);
+      });
+
+      // Close drawer on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('open')) {
+          closeDrawer();
+          hamburger.focus();
+        }
       });
     }
   }
@@ -138,7 +148,7 @@ class SiteFooter extends HTMLElement {
       window.addEventListener('scroll', () => {
         backToTopBtn.classList.toggle('show', window.scrollY > 300);
       });
-      
+
       backToTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });

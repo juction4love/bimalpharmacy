@@ -2,8 +2,8 @@
 <html lang="ne">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="canonical" href="https://www.bimalpharmacy.com.np/knowledge.html" />
 
   <!-- SEO Meta Tags -->
@@ -11,37 +11,45 @@
   <meta name="description" content="स्वास्थ्य सल्लाह, औषधिको सही प्रयोग र IME Life Insurance सम्बन्धी विस्तृत जानकारी। बिमल लामिछानेबाट निःशुल्क बिमा परामर्श लिनुहोस्।">
   <meta name="keywords" content="Health Knowledge Nepal, Insurance Guide Nepal, IME Life Bharatpur, Bimal Pharmacy Knowledge, जीवन बिमा जानकारी, बिमल लामिछाने">
 
+    <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="स्वास्थ्य तथा बिमा ज्ञान केन्द्र | बिमल फार्मेसी - IME Life Insurance Guide">
+  <meta property="og:description" content="स्वास्थ्य सल्लाह, औषधिको सही प्रयोग र IME Life Insurance सम्बन्धी विस्तृत जानकारी।">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.bimalpharmacy.com.np/knowledge.html">
+  <meta property="og:image" content="https://www.bimalpharmacy.com.np/photo1.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="स्वास्थ्य तथा बिमा ज्ञान केन्द्र | बिमल फार्मेसी">
+  <meta name="twitter:description" content="स्वास्थ्य सल्लाह र जीवन बिमा ज्ञान केन्द्र।">
+
+  <!-- Structured Data (MedicalWebPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "स्वास्थ्य तथा बिमा ज्ञान केन्द्र",
+    "description": "स्वास्थ्य सल्लाह, औषधिको सही प्रयोग र IME Life Insurance सम्बन्धी विस्तृत जानकारी।",
+    "url": "https://www.bimalpharmacy.com.np/knowledge.html",
+    "publisher": {
+      "@type": "Pharmacy",
+      "name": "बिमल फार्मेसी (Bimal Pharmacy)",
+      "url": "https://www.bimalpharmacy.com.np/"
+    }
+  }
+  </script>
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Components Script -->
+  <script src="components.js" defer></script>
 </head>
 <body>
 
-  <!-- ========== HEADER ========== -->
-  <header class="branding-header">
-    <div class="logo-container">
-      <img src="logo.svg" alt="Bimal Pharmacy Logo">
-    </div>
-    <div class="brand-text">
-      <div class="site-name">बिमल फार्मेसी</div>
-      <p>स्वास्थ्य र भविष्य सुरक्षाको सारथी | भरतपुर-७, चितवन</p>
-    </div>
-  </header>
-
-  <!-- ========== NAVIGATION ========== -->
-  <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html">गृहपृष्ठ</a></li>
-      <li><a href="medical-guide.html">औषधी गाइड</a></li>
-      <li><a href="knowledge.html" class="active">स्वास्थ्य ज्ञान</a></li>
-      <li><a href="about.html">हाम्रो बारेमा</a></li>
-      <li><a href="emergency.html">आकस्मिक सेवा</a></li>
-      <li><a href="insurance.html">बीमा सुविधा</a></li>
-      <li><a href="notice.html">सूचना</a></li>
-      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
-      <li><a href="contact.html">सम्पर्क</a></li>
-    </ul>
-  </nav>
+  <!-- ========== HEADER / NAVIGATION ========== -->
+  <site-header></site-header>
 
   <!-- ========== MAIN CONTENT ========== -->
   <main class="container article-content">

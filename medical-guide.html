@@ -3,44 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <link rel="canonical" href="https://www.bimalpharmacy.com.np/medical-guide.html" />
 
   <!-- SEO Meta Tags -->
   <title>मेडिकल गाइड र स्वास्थ्य जानकारी | बिमल फार्मेसी - भरतपुर-७, चितवन</title>
   <meta name="description" content="बिमल फार्मेसीको आधिकारिक मेडिकल गाइड। यहाँ क्यान्सरका औषधी, एन्टिबायोटिकको सही प्रयोग र स्वास्थ्य टिप्स बारे विस्तृत जानकारी पाउनुहोस्।">
-  
+
+    <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="मेडिकल गाइड र स्वास्थ्य जानकारी | बिमल फार्मेसी - भरतपुर-७, चितवन">
+  <meta property="og:description" content="क्यान्सरका औषधी, एन्टिबायोटिकको सही प्रयोग र स्वास्थ्य परामर्श बारे आधिकारिक मेडिकल गाइड।">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.bimalpharmacy.com.np/medical-guide.html">
+  <meta property="og:image" content="https://www.bimalpharmacy.com.np/photo1.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="मेडिकल गाइड र स्वास्थ्य जानकारी | बिमल फार्मेसी">
+  <meta name="twitter:description" content="औषधी सुरक्षा र स्वास्थ्य सल्लाहको आधिकारिक गाइड।">
+
+  <!-- Structured Data (MedicalWebPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "मेडिकल गाइड र स्वास्थ्य जानकारी",
+    "description": "क्यान्सरका औषधी, एन्टिबायोटिकको सही प्रयोग र स्वास्थ्य सल्लाह बारे विस्तृत जानकारी।",
+    "url": "https://www.bimalpharmacy.com.np/medical-guide.html",
+    "publisher": {
+      "@type": "Pharmacy",
+      "name": "बिमल फार्मेसी (Bimal Pharmacy)",
+      "url": "https://www.bimalpharmacy.com.np/"
+    }
+  }
+  </script>
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Components Script -->
+  <script src="components.js" defer></script>
 </head>
 <body>
 
-  <!-- ========== HEADER ========== -->
-  <header class="branding-header">
-    <div class="logo-container">
-      <img src="logo.svg" alt="Bimal Pharmacy Logo">
-    </div>
-    <div class="brand-text">
-      <div class="site-name">बिमल फार्मेसी</div>
-      <p>तपाईंको स्वास्थ्य र विश्वासको केन्द्र | भरतपुर-७, चितवन</p>
-    </div>
-  </header>
-
-  <!-- ========== NAVIGATION ========== -->
-  <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html">गृहपृष्ठ</a></li>
-      <li><a href="medical-guide.html" class="active">औषधी गाइड</a></li>
-      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-      <li><a href="about.html">हाम्रो बारेमा</a></li>
-      <li><a href="emergency.html">आकस्मिक सेवा</a></li>
-      <li><a href="insurance.html">बीमा सुविधा</a></li>
-      <li><a href="notice.html">सूचना</a></li>
-      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
-      <li><a href="contact.html">सम्पर्क</a></li>
-    </ul>
-  </nav>
+  <!-- ========== HEADER / NAVIGATION ========== -->
+  <site-header></site-header>
 
   <!-- ========== HERO SECTION ========== -->
   <section class="hero">
@@ -113,26 +121,8 @@
     </article>
   </main>
 
-  <!-- ========== MOBILE CALL BOX ========== -->
-  <div class="mobile-call-box">
-    <a href="tel:056593288">
-      <i class="fas fa-phone-alt"></i> फार्मेसीमा सम्पर्क: ०५६-५९३२८८
-    </a>
-  </div>
-
   <!-- ========== FOOTER ========== -->
-  <footer>
-    <div class="footer-brand">
-      <strong>बिमल फार्मेसी</strong><br>
-      भरतपुर-७, चितवन, नेपाल | DDA दर्ता नं: १७२२३/२०६३
-    </div>
-    <div class="footer-links">
-      <a href="about.html">हाम्रो बारेमा</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="disclaimer.html">Disclaimer</a>
-    </div>
-    <p class="footer-copy">© २०२६ बिमल फार्मेसी। सर्वाधिकार सुरक्षित।</p>
-  </footer>
+  <site-footer></site-footer>
 
   <!-- ========== SCRIPTS ========== -->
   <script src="script.js" defer></script>

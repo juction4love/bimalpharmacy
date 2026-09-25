@@ -11,7 +11,7 @@ Allow: /about.html
 Allow: /contact.html
 Allow: /privacy-policy.html
 Allow: /disclaimer.html
-Allow: /Insurance.html
+Allow: /insurance.html
 
 # Block old/removed pages to fix Search Console redirect/404 errors
 Disallow: /gallery.html

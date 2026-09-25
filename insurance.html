@@ -2,50 +2,59 @@
 <html lang="ne">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- SEO Meta Tags -->
   <title>जीवन बिमा जानकारी र प्रक्रिया | Bimal Pharmacy, Chitwan</title>
   <meta name="description" content="जीवन बिमाको उद्देश्य, आवश्यक कागजात, proposal, premium, nominee, claim प्रक्रिया र policy जाँचबारे सामान्य जानकारी।">
   <meta name="keywords" content="Life Insurance Nepal, Bimal Lamichhane IME Life, Insurance Process Nepal, Insurance Documents, बिमल फार्मेसी">
   <link rel="canonical" href="https://www.bimalpharmacy.com.np/insurance.html">
-  
+
+    <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="जीवन बिमा जानकारी र प्रक्रिया | Bimal Pharmacy, Chitwan">
+  <meta property="og:description" content="जीवन बिमाको उद्देश्य, आवश्यक कागजात, proposal, premium र claim प्रक्रिया सम्बन्धी जानकारी।">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.bimalpharmacy.com.np/insurance.html">
+  <meta property="og:image" content="https://www.bimalpharmacy.com.np/photo1.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="जीवन बिमा जानकारी र प्रक्रिया | Bimal Pharmacy">
+  <meta name="twitter:description" content="IME Life Insurance जानकारी र किस्ता अनुमानक गाइड।">
+
+  <!-- Structured Data (WebPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "जीवन बिमा जानकारी र प्रक्रिया",
+    "description": "जीवन बिमाको उद्देश्य, आवश्यक कागजात, proposal, premium र claim प्रक्रिया बारे सामान्य जानकारी।",
+    "url": "https://www.bimalpharmacy.com.np/insurance.html",
+    "publisher": {
+      "@type": "Pharmacy",
+      "name": "बिमल फार्मेसी (Bimal Pharmacy)",
+      "url": "https://www.bimalpharmacy.com.np/"
+    }
+  }
+  </script>
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Components Script -->
+  <script src="components.js" defer></script>
 </head>
 <body>
 
-  <!-- ========== HEADER ========== -->
-  <header class="app-header">
-    <div class="logo-container">
-      <img src="logo.svg" alt="Bimal Pharmacy Logo">
-    </div>
-    <div class="brand-text">
-      <div class="site-name">बिमल फार्मेसी</div>
-    </div>
-  </header>
-
-  <!-- ========== NAVIGATION ========== -->
-  <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html">गृहपृष्ठ</a></li>
-      <li><a href="medical-guide.html">औषधी गाइड</a></li>
-      <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
-      <li><a href="about.html">हाम्रो बारेमा</a></li>
-      <li><a href="emergency.html">आकस्मिक सेवा</a></li>
-      <li><a href="insurance.html" class="active">बीमा सुविधा</a></li>
-      <li><a href="notice.html">सूचना</a></li>
-      <li><a href="order.html">अर्डर गर्नुहोस्</a></li>
-      <li><a href="contact.html">सम्पर्क</a></li>
-    </ul>
-  </nav>
+  <!-- ========== HEADER / NAVIGATION ========== -->
+  <site-header></site-header>
 
   <!-- ========== AGENT BANNER ========== -->
   <div class="agent-banner">
     <p>IME Life Insurance आधिकारिक अभिकर्ता</p>
     <div class="agent-name">बिमल लामिछाने</div>
-    <a href="tel:9855065327" class="phone-link"><i class="fas fa-phone-alt"></i> 9855065327</a>
+    <a href="contact.html" class="phone-link"><i class="fas fa-phone-alt"></i> सम्पर्क: ०५६-५९३२८८</a>
   </div>
 
   <!-- ========== MAIN CONTENT ========== -->
@@ -208,6 +217,10 @@
       document.getElementById('resDisplay').style.display = 'block';
     }
   </script>
+  <!-- ========== FOOTER ========== -->
+  <site-footer></site-footer>
+
+  <!-- ========== SCRIPTS ========== -->
   <script src="script.js" defer></script>
 </body>
 </html>

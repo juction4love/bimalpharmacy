@@ -3,7 +3,7 @@
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
   // १. सक्रिय मेनु हाइलाइट गर्ने (Desktop & Mobile Navigation)
   const currentPath = window.location.pathname.split("/").pop() || "index.html";
   const navLinks = document.querySelectorAll('.nav-links a, .nav-item');
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (toggleLink) {
       dropdown.addEventListener('mouseenter', () => toggleLink.setAttribute('aria-expanded', 'true'));
       dropdown.addEventListener('mouseleave', () => toggleLink.setAttribute('aria-expanded', 'false'));
-      
+
       toggleLink.addEventListener('focus', () => toggleLink.setAttribute('aria-expanded', 'true'));
       dropdown.addEventListener('focusout', (e) => {
         if (!dropdown.contains(e.relatedTarget)) {
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         const items = await searchMedicines(normalizedQuery);
         if (currentRequest === requestSequence) {
-          renderResults(items, query);
+          renderResults(items, query, normalizedQuery.split(" ").filter(Boolean));
         }
       } catch (error) {
         console.error("❌ Medicine search failed", error);
@@ -331,7 +331,33 @@ document.addEventListener('DOMContentLoaded', () => {
       return score;
     }
 
-    function renderResults(items, query) {
+    function appendHighlightedText(parent, prefixText, text, queryTokens) {
+      if (prefixText) {
+        parent.appendChild(document.createTextNode(prefixText));
+      }
+      if (!text) return;
+      const validTokens = (queryTokens || []).filter(t => t.length >= 2);
+      if (validTokens.length === 0) {
+        parent.appendChild(document.createTextNode(text));
+        return;
+      }
+      const regex = new RegExp('(' + validTokens.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')', 'gi');
+      const parts = String(text).split(regex);
+      for (let i = 0; i < parts.length; i++) {
+        const part = parts[i];
+        if (!part) continue;
+        const isMatch = validTokens.some(t => t.toLowerCase() === part.toLowerCase());
+        if (isMatch) {
+          const mark = document.createElement('mark');
+          mark.className = 'search-highlight';
+          mark.textContent = part;
+          parent.appendChild(mark);
+        } else {
+          parent.appendChild(document.createTextNode(part));
+        }
+      }
+    }
+    function renderResults(items, query, tokens) {
       if (!items || items.length === 0) {
         const noResult = createSearchItem("search-item search-no-result", "");
         const message = document.createElement("div");
@@ -355,22 +381,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const brandName = document.createElement("strong");
         brandName.className = "search-brand-name";
-        brandName.textContent = `💊 ${brand}`;
+        appendHighlightedText(brandName, "💊 ", brand, tokens);
 
         const categoryTag = document.createElement("span");
         categoryTag.className = "search-category-tag";
-        categoryTag.textContent = category;
+        categoryTag.textContent = category || "Medicine";
         header.append(brandName, categoryTag);
 
         const genericName = document.createElement("small");
         genericName.className = "search-generic-name";
-        genericName.textContent = `🧬 ${generic || "Generic information not listed"}`;
+        appendHighlightedText(genericName, "🧬 ", generic || "Generic information not listed", tokens);
         resultItem.append(header, genericName);
 
         if (strength) {
           const strengthValue = document.createElement("span");
           strengthValue.className = "search-strength";
-          strengthValue.textContent = `📦 ${strength}`;
+          appendHighlightedText(strengthValue, "📦 ", strength, tokens);
           resultItem.append(strengthValue);
         }
 
@@ -384,7 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (manufacturer) {
           const manufacturerValue = document.createElement("span");
           manufacturerValue.className = "search-meta";
-          manufacturerValue.textContent = `🏭 Manufacturer: ${manufacturer}`;
+          appendHighlightedText(manufacturerValue, "🏭 Manufacturer: ", manufacturer, tokens);
           resultItem.append(manufacturerValue);
         }
 
@@ -398,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fragment.append(resultItem);
       });
 
-      const footer = createSearchItem("search-footer", `शीर्ष ${Math.min(items.length, 20)} जानकारीमूलक परिणाम`);
+      const footer = createSearchItem("search-footer", `शीर्ष ${Math.min(items.length, 20)} जानकारीमूलक परिणाम (Information Only)`);
       fragment.append(footer);
       resultsBox.replaceChildren(fragment);
       resultsBox.style.display = "block";
@@ -430,7 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ३. इमेज एरर ह्यान्डलिङ र लेजी लोडिङ
   document.querySelectorAll('img').forEach(img => {
     img.setAttribute('loading', 'lazy');
-    
+
     img.onerror = function() {
       this.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="%23ddd"><rect width="100" height="100"/><text x="50" y="55" text-anchor="middle" fill="%23999" font-size="14">No Image</text></svg>';
       this.alt = 'Image not available';
@@ -444,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
       backToTopBtn.classList.toggle('show', window.scrollY > 300);
     });
-    
+
     backToTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });

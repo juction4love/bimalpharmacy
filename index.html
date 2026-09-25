@@ -4,23 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://www.bimalpharmacy.com.np/" />
-  
+
   <!-- SEO Meta Tags -->
   <title>बिमल फार्मेसी | Bimal Pharmacy - Trusted Medical Store in Bharatpur, Chitwan</title>
   <meta name="description" content="बिमल फार्मेसी (DDA दर्ता नं: १७२२३/२०६३): भरतपुर-७, चितवनमा अवस्थित भरपर्दो औषधि पसल। क्यान्सर विरुद्धका औषधी, न्युट्रास्युटिकल्स र स्वास्थ्य परामर्शका लागि सम्पर्क गर्नुहोस्।">
   <meta name="keywords" content="Pharmacy in Bharatpur, Cancer Medicine Nepal, Bimal Pharmacy, Online Medicine Delivery Chitwan, Bimal Lamichhane, Health Care Nepal">
-  
+
   <!-- Open Graph / Social Media -->
   <meta property="og:title" content="बिमल फार्मेसी | Trusted Medical Store in Bharatpur, Chitwan">
   <meta property="og:description" content="क्यान्सर औषधी, न्युट्रास्युटिकल्स र स्वास्थ्य परामर्शका लागि विश्वसनीय फार्मेसी। भरतपुर-७, चितवन।">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.bimalpharmacy.com.np/">
-  <meta property="og:image" content="https://www.bimalpharmacy.com.np/images/og-image.jpg">
-  
+  <meta property="og:image" content="https://www.bimalpharmacy.com.np/photo1.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="बिमल फार्मेसी | Bimal Pharmacy">
+  <meta name="twitter:description" content="भरतपुर-७, चितवनमा अवस्थित भरपर्दो औषधि पसल। DDA दर्ता नं: १७२२३/२०६३">
+  <meta name="twitter:image" content="https://www.bimalpharmacy.com.np/photo1.jpg">
+
+  <!-- Structured Data (Pharmacy & WebSite) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Pharmacy",
+        "@id": "https://www.bimalpharmacy.com.np/#pharmacy",
+        "name": "बिमल फार्मेसी (Bimal Pharmacy)",
+        "image": "https://www.bimalpharmacy.com.np/photo1.jpg",
+        "url": "https://www.bimalpharmacy.com.np/",
+        "telephone": "+977-56-593288",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Cancer Hospital Road, Bharatpur-7",
+          "addressLocality": "Bharatpur",
+          "addressRegion": "Bagmati",
+          "postalCode": "44200",
+          "addressCountry": "NP"
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Bimal Lamichhane"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.bimalpharmacy.com.np/#website",
+        "url": "https://www.bimalpharmacy.com.np/",
+        "name": "Bimal Pharmacy",
+        "publisher": {
+          "@id": "https://www.bimalpharmacy.com.np/#pharmacy"
+        }
+      }
+    ]
+  }
+  </script>
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
-  
+
   <!-- Scripts -->
   <script src="components.js" defer></script>
 </head>
@@ -32,8 +77,8 @@
   <!-- ========== NEWS TICKER ========== -->
   <div class="news-ticker" role="alert" aria-live="polite">
     <div class="ticker-content">
-      <i class="fas fa-info-circle"></i> 
-      सूचना: बिमल फार्मेसीमा रहेको आफ्नो बाँकी बक्यौता रकम समयमै भुक्तानी गरी सहयोग गरिदिनुहोला। थप जानकारीका लागि 
+      <i class="fas fa-info-circle"></i>
+      सूचना: बिमल फार्मेसीमा रहेको आफ्नो बाँकी बक्यौता रकम समयमै भुक्तानी गरी सहयोग गरिदिनुहोला। थप जानकारीका लागि
       <a href="notice.html">'सूचना' पेज</a> हेर्नुहोस्।
     </div>
   </div>
@@ -47,15 +92,15 @@
       <p class="hero-subtitle">
         विगत <strong>२० वर्ष</strong> देखि बिरामीहरूको सेवामा समर्पित। हामी क्यान्सरका औषधी, जीवनरक्षक इन्जेक्सन र गुणस्तरीय न्युट्रास्युटिकल्सका लागि <strong>विश्वसनीय नाम</strong> हौं।
       </p>
-      
+
       <!-- Medicine Search -->
       <div class="search-wrapper">
         <div class="search-box">
           <i class="fas fa-search search-icon"></i>
-          <input 
-            type="text" 
-            id="medicineSearch" 
-            placeholder="औषधीको नाम लेख्नुहोस्..." 
+          <input
+            type="text"
+            id="medicineSearch"
+            placeholder="औषधीको नाम लेख्नुहोस्..."
             aria-label="Search medicines"
             aria-controls="searchResults"
             autocomplete="off"
@@ -63,7 +108,7 @@
         </div>
         <div id="searchResults" class="search-results" role="list" aria-label="Search results" aria-live="polite" aria-atomic="false" aria-busy="false"></div>
       </div>
-      
+
       <!-- CTA Button -->
       <a href="order.html" class="btn-main">
         <i class="fab fa-google-play"></i> Android App बाट अर्डर गर्नुहोस्
@@ -74,7 +119,7 @@
     <section class="container">
       <h2>मुख्य फार्मेसी सुविधाहरू</h2>
       <div class="features-grid">
-        
+
         <article class="feature-card card-green-top">
           <div class="feature-icon">
             <i class="fas fa-certificate icon-green"></i>
@@ -106,14 +151,14 @@
     <section class="container">
       <article class="about-content">
         <h2>बिमल फार्मेसी: भरतपुरको एक विश्वसनीय स्वास्थ्य केन्द्र</h2>
-        
+
         <p>बिमल फार्मेसी <strong>भरतपुर-७, चितवन</strong> को क्यान्सर अस्पताल रोडमा अवस्थित छ। हाम्रो मुख्य उद्देश्य बिरामीहरूलाई <strong>सस्तो र सुलभ दर</strong> मा गुणस्तरीय औषधीहरू उपलब्ध गराउनु हो। हामीले विशेषगरी <strong>बी.पी. कोइराला मेमोरियल क्यान्सर अस्पताल</strong> मा उपचाररत बिरामीहरूलाई ध्यानमा राख्दै दुर्लभ र जीवनरक्षक औषधीहरूको भण्डारण गरेका छौं।</p>
 
         <h3>न्युट्रास्युटिकल्स (Nutraceuticals) र यसको महत्व</h3>
         <p>हामी केवल औषधी मात्र होइन, बिरामीको समग्र स्वास्थ्य सुधारका लागि आवश्यक पर्ने <strong>Nutraceuticals</strong> (मल्टिभिटामिन, प्रोटिन पाउडर र सप्लिमेन्ट) हरू पनि उपलब्ध गराउँछौं। यी उत्पादनहरूले शरीरको <strong>रोग प्रतिरोधात्मक क्षमता बढाउन</strong> र औषधीको उपचार प्रक्रियालाई थप प्रभावकारी बनाउन मद्दत गर्दछन्।</p>
-        
+
         <p>हाम्रो फार्मेसीमा दक्ष फर्मासिस्टहरू हुनुहुन्छ जसले तपाईंलाई औषधी सेवन गर्ने सही तरिका, यसका असरहरू र सावधानीहरूका बारेमा <strong>नि:शुल्क परामर्श</strong> दिनुहुन्छ।</p>
-        
+
         <!-- Quick Stats -->
         <div class="stats-row">
           <div class="stat-item">
