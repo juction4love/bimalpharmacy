@@ -116,6 +116,8 @@ class SiteFooter extends HTMLElement {
           <span class="footer-separator">|</span>
           <a href="privacy-policy.html">Privacy Policy</a>
           <span class="footer-separator">|</span>
+          <a href="terms.html">Terms</a>
+          <span class="footer-separator">|</span>
           <a href="disclaimer.html">Disclaimer</a>
           <span class="footer-separator">|</span>
           <a href="contact.html">Contact Us</a>
