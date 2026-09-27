@@ -10,49 +10,49 @@
 
   <url>
     <loc>https://www.bimalpharmacy.com.np/medical-guide.html</loc>
-    <lastmod>2026-03-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
     <loc>https://www.bimalpharmacy.com.np/knowledge.html</loc>
-    <lastmod>2026-03-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
     <loc>https://www.bimalpharmacy.com.np/cancer-medicine-guide.html</loc>
-    <lastmod>2026-03-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://www.bimalpharmacy.com.np/medicine-safety.html</loc>
-    <lastmod>2026-03-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://www.bimalpharmacy.com.np/antibiotics-guide.html</loc>
-    <lastmod>2026-03-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://www.bimalpharmacy.com.np/chronic-disease-guide.html</loc>
-    <lastmod>2026-03-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://www.bimalpharmacy.com.np/medicine-storage.html</loc>
-    <lastmod>2026-03-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
@@ -66,14 +66,14 @@
 
   <url>
     <loc>https://www.bimalpharmacy.com.np/prescription-guide.html</loc>
-    <lastmod>2026-03-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://www.bimalpharmacy.com.np/children-elderly-safety.html</loc>
-    <lastmod>2026-03-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
@@ -151,6 +151,76 @@
   <url>
     <loc>https://www.bimalpharmacy.com.np/eye-drops-usage-expiry-safety.html</loc>
     <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bimalpharmacy.com.np/insulin-storage-injection-technique.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bimalpharmacy.com.np/painkiller-nsaid-safety-nepal.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bimalpharmacy.com.np/steroid-medicine-safety-tapering.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bimalpharmacy.com.np/statin-cholesterol-medicine-guide.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bimalpharmacy.com.np/ors-jeevan-jal-diarrhea-medicine-safety.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bimalpharmacy.com.np/pregnancy-breastfeeding-medicine-safety.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bimalpharmacy.com.np/elderly-polypharmacy-pill-box-safety.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bimalpharmacy.com.np/antihistamine-allergy-medicine-guide.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bimalpharmacy.com.np/cold-chain-medicine-travel-storage.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bimalpharmacy.com.np/missed-dose-medicine-timing-rules.html</loc>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
