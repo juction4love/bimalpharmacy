@@ -51,6 +51,7 @@ INSTALLATION INSTRUCTIONS
    - Note: The BIPRO PharmaOne setup requires PostgreSQL to be present before installation begins.
 
 2. Run BIPRO PharmaOne Installer:
+   - Download 'BIPRO_PharmaOne_Free_Setup_v1.0.0.exe' from the official GitHub Release (https://github.com/juction4love/bimalpharmacy/releases/tag/v1.0.0) or https://www.bimalpharmacy.com.np/bipro-pharmaone.html.
    - Run 'BIPRO_PharmaOne_Free_Setup_v1.0.0.exe' as Administrator.
    - The installer verifies PostgreSQL presence, copies application binaries, provisions the local database schema, and securely configures credentials in Windows Credential Manager.
 
