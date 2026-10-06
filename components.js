@@ -29,7 +29,7 @@ class SiteHeader extends HTMLElement {
           <li><a href="medical-guide.html">औषधी गाइड</a></li>
           <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
           <li><a href="service.html">सेवाहरू</a></li>
-          <li><a href="bipro-pharmaone.html">BIPRO PharmaOne</a></li>
+          <li><a href="/bipro-pharmaone">BIPRO PharmaOne</a></li>
           <li><a href="about.html">हाम्रो बारेमा</a></li>
           <li><a href="emergency.html">आकस्मिक सेवा</a></li>
           <li><a href="insurance.html">बीमा सुविधा</a></li>
@@ -44,9 +44,12 @@ class SiteHeader extends HTMLElement {
 
     // Auto-highlight active link
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const cleanCurrent = currentPage.replace(/\.html$/, '') || 'index';
     const navLinks = this.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
-      if (link.getAttribute('href') === currentPage || (currentPage === '' && link.getAttribute('href') === 'index.html')) {
+      const href = link.getAttribute('href') || '';
+      const cleanHref = href.split('/').pop().replace(/\.html$/, '');
+      if (cleanHref === cleanCurrent) {
         link.classList.add('active');
       }
     });
@@ -113,7 +116,7 @@ class SiteFooter extends HTMLElement {
         <div class="footer-links">
           <a href="index.html">गृहपृष्ठ</a>
           <span class="footer-separator">|</span>
-          <a href="bipro-pharmaone.html">BIPRO PharmaOne</a>
+          <a href="/bipro-pharmaone">BIPRO PharmaOne</a>
           <span class="footer-separator">|</span>
           <a href="about.html">About Us</a>
           <span class="footer-separator">|</span>
@@ -140,9 +143,12 @@ class SiteFooter extends HTMLElement {
 
     // Auto-highlight active link for mobile nav
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const cleanCurrent = currentPage.replace(/\.html$/, '') || 'index';
     const mobileLinks = this.querySelectorAll('.mobile-nav a');
     mobileLinks.forEach(link => {
-      if (link.getAttribute('href') === currentPage) {
+      const href = link.getAttribute('href') || '';
+      const cleanHref = href.split('/').pop().replace(/\.html$/, '');
+      if (cleanHref === cleanCurrent) {
         link.classList.add('active');
       }
     });
