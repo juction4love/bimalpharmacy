@@ -29,6 +29,7 @@ class SiteHeader extends HTMLElement {
           <li><a href="medical-guide.html">औषधी गाइड</a></li>
           <li><a href="knowledge.html">स्वास्थ्य ज्ञान</a></li>
           <li><a href="service.html">सेवाहरू</a></li>
+          <li><a href="bipro-pharmaone.html">BIPRO PharmaOne</a></li>
           <li><a href="about.html">हाम्रो बारेमा</a></li>
           <li><a href="emergency.html">आकस्मिक सेवा</a></li>
           <li><a href="insurance.html">बीमा सुविधा</a></li>
@@ -111,6 +112,8 @@ class SiteFooter extends HTMLElement {
         </div>
         <div class="footer-links">
           <a href="index.html">गृहपृष्ठ</a>
+          <span class="footer-separator">|</span>
+          <a href="bipro-pharmaone.html">BIPRO PharmaOne</a>
           <span class="footer-separator">|</span>
           <a href="about.html">About Us</a>
           <span class="footer-separator">|</span>

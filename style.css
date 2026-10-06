@@ -482,3 +482,64 @@ footer{background:var(--glass-bg-strong);border-top:1px solid var(--glass-border
   body{background:white;color:black}.container{padding:0;max-width:100%}
   .card,.feature-card{box-shadow:none;border:1px solid #ddd;break-inside:avoid}
 }
+
+/* =========================================
+   32. BIPRO PHARMAONE SOFTWARE DOWNLOAD STYLES
+   ========================================= */
+.bipro-badge-row{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-xs);margin-bottom:var(--space-md)}
+.bipro-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.badge-free{background:var(--primary);color:var(--white)}
+.badge-offline{background:var(--secondary);color:var(--white)}
+.badge-win{background:var(--gray-700);color:var(--white)}
+
+.download-hero-box{background:var(--glass-bg-strong);border:2px solid var(--primary-200);border-radius:var(--radius-xl);padding:var(--space-2xl) var(--space-xl);box-shadow:var(--shadow-xl);margin:var(--space-xl) auto;max-width:850px;text-align:center}
+.btn-download-lg{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-md);background:linear-gradient(135deg,#059669 0%,#10b981 100%);color:var(--white);font-size:var(--text-xl);font-weight:700;padding:1.1rem 2.8rem;border-radius:var(--radius-full);box-shadow:0 8px 25px rgba(16,185,129,0.4);transition:var(--transition);text-decoration:none}
+.btn-download-lg:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(16,185,129,0.5);color:var(--white)}
+.download-meta-list{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-md);margin-top:var(--space-lg);font-size:var(--text-sm);color:var(--text-muted)}
+.download-meta-item{display:inline-flex;align-items:center;gap:6px}
+
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-md);margin:var(--space-xl) 0;text-align:left}
+.meta-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:var(--space-md);display:flex;gap:var(--space-md);align-items:flex-start}
+.meta-card-icon{font-size:24px;color:var(--primary);margin-top:2px;flex-shrink:0}
+.meta-card-content h4{font-size:var(--text-sm);margin-bottom:2px;color:var(--text-main)}
+.meta-card-content p{font-size:var(--text-xs);color:var(--text-muted);margin:0}
+
+.spec-table{width:100%;border-collapse:collapse;margin:var(--space-md) 0;background:var(--glass-bg);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-color);text-align:left}
+.spec-table th,.spec-table td{padding:12px 16px;border-bottom:1px solid var(--border-color);font-size:var(--text-sm)}
+.spec-table th{background:var(--primary-50);color:var(--primary-dark);font-weight:700;width:35%}
+.spec-table td{color:var(--text-main)}
+.spec-table tr:last-child th,.spec-table tr:last-child td{border-bottom:none}
+
+.features-category-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:var(--space-lg);margin:var(--space-xl) 0;text-align:left}
+.feature-cat-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:var(--space-xl);box-shadow:var(--glass-shadow);display:flex;flex-direction:column;transition:var(--transition)}
+.feature-cat-card:hover{transform:translateY(-4px);border-color:var(--primary-200);box-shadow:var(--glass-shadow-hover)}
+.feature-cat-header{display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-md);padding-bottom:var(--space-sm);border-bottom:2px solid var(--primary-100)}
+.feature-cat-header i{font-size:22px;color:var(--primary)}
+.feature-cat-header h3{font-size:var(--text-lg);margin:0;color:var(--text-main)}
+.feature-pill-list{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.feature-pill{background:var(--primary-50);border:1px solid var(--primary-100);color:var(--text-main);padding:6px 12px;border-radius:var(--radius-sm);font-size:var(--text-xs);font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.feature-pill i{color:var(--primary);font-size:10px}
+
+.checksum-box{background:var(--gray-900);color:#f1f5f9;border-radius:var(--radius-md);padding:var(--space-lg);margin:var(--space-lg) 0;text-align:left;position:relative;border:1px solid #334155}
+.checksum-label{font-size:var(--text-xs);color:var(--primary-light);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+.checksum-code{font-family:Consolas,Monaco,'Courier New',monospace;font-size:var(--text-sm);word-break:break-all;color:#38bdf8;background:#0f172a;padding:10px 14px;border-radius:var(--radius-sm);border:1px solid #1e293b;display:block;margin-top:6px;user-select:all}
+.code-block{background:var(--gray-900);color:#e2e8f0;font-family:Consolas,Monaco,'Courier New',monospace;font-size:var(--text-xs);padding:12px;border-radius:var(--radius-sm);overflow-x:auto;margin:var(--space-sm) 0;border:1px solid #334155;text-align:left}
+
+.btn-copy-hash{background:var(--primary);color:var(--white);border:none;border-radius:var(--radius-sm);padding:4px 10px;font-size:var(--text-xs);font-weight:600;cursor:pointer;transition:var(--transition)}
+.btn-copy-hash:hover{background:var(--primary-dark)}
+
+.install-steps-list{list-style:none;padding:0;margin:var(--space-lg) 0;display:flex;flex-direction:column;gap:var(--space-md);text-align:left}
+.install-step-item{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:var(--space-lg);display:flex;gap:var(--space-lg);align-items:flex-start}
+.install-step-num{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--primary);color:var(--white);border-radius:var(--radius-circle);font-size:var(--text-lg);font-weight:700;flex-shrink:0}
+.install-step-body h4{font-size:var(--text-base);margin-bottom:var(--space-xs);color:var(--text-main)}
+.install-step-body p{font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-xs);line-height:1.6}
+.install-step-body p:last-child{margin-bottom:0}
+
+.alert-notice{background:var(--accent-50);border-left:5px solid var(--accent);padding:var(--space-lg);border-radius:var(--radius-sm);margin:var(--space-lg) 0;text-align:left}
+.alert-notice h4{color:var(--accent-dark);margin-bottom:var(--space-xs);display:flex;align-items:center;gap:var(--space-xs)}
+.alert-danger{background:var(--danger-50);border-left:5px solid var(--danger)}
+.alert-danger h4{color:var(--danger-dark)}
+
+.btn-pill-group{display:flex;flex-wrap:wrap;gap:var(--space-sm);justify-content:center;margin-top:var(--space-md)}
+.btn-pill{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:var(--radius-full);font-size:var(--text-sm);font-weight:600;text-decoration:none;border:1px solid var(--border-color);background:var(--glass-bg);color:var(--text-main);transition:var(--transition)}
+.btn-pill:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px)}
