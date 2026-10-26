@@ -39,11 +39,11 @@
 BIPRO PharmaOne is a free Windows desktop pharmacy management and accounting application for local/offline single-PC use.
 
 - **Product Page:** [https://www.bimalpharmacy.com.np/bipro-pharmaone.html](https://www.bimalpharmacy.com.np/bipro-pharmaone.html)
-- **Current Version:** `v1.0.1`
-- **Official GitHub Release:** [v1.0.1 Release](https://github.com/juction4love/bimalpharmacy/releases/tag/v1.0.1)
-- **Installer Download:** [`BIPRO_PharmaOne_Free_Setup_v1.0.1.exe`](https://github.com/juction4love/bimalpharmacy/releases/download/v1.0.1/BIPRO_PharmaOne_Free_Setup_v1.0.1.exe)
-- **Installer Size:** `76,718,214 bytes` (~73.16 MB)
-- **SHA-256 Checksum:** `CDB58219802FED658E78C50D02955D549F5702D904623234DEA9196FB086B512`
+- **Current Version:** `v1.0.2`
+- **Official GitHub Release:** [v1.0.2 Release](https://github.com/juction4love/bimalpharmacy/releases/tag/v1.0.2)
+- **Installer Download:** [`BIPRO_PharmaOne_Free_Setup_v1.0.2.exe`](https://github.com/juction4love/bimalpharmacy/releases/download/v1.0.2/BIPRO_PharmaOne_Free_Setup_v1.0.2.exe)
+- **Installer Size:** `76,736,774 bytes` (~73.18 MB)
+- **SHA-256 Checksum:** `487F6FD3F3771E6821D808F45CE0AE480797867FE93534AEF302ECD0B65FF11A`
 - **System Prerequisite:** PostgreSQL 17 must be installed locally before running the BIPRO PharmaOne installer.
 - **Database & Architecture:** Uses local PostgreSQL storage; normal daily operation is 100% offline.
 - **Document Terminology:** Current sales documents are **CHALLAN**. *(Note: Not an IRD-approved, DDA-approved, CBMS-certified, government-approved, or authorized tax invoice system).*
