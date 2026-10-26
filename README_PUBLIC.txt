@@ -1,7 +1,7 @@
 ================================================================================
 BIPRO PharmaOne — Free Retail Pharmacy Management Software
 Edition: Public Clean Free Edition
-Version: 1.0.0
+Version: 1.0.2
 Platform: Windows x64 (Windows 10 / 11 / Windows Server)
 Architecture: Offline Local PostgreSQL Database Engine
 ================================================================================
@@ -32,6 +32,7 @@ CORE FEATURES
 • Enter-first keyboard workflow for high-volume retail billing
 • Thermal (58mm / 80mm) and A4 Challan / Bill printing with customizable headers
 • Instant verified local PostgreSQL backup and restore tools
+• 53 verified database migrations (0001–0053) with zero balance discrepancy controls
 
 
 SYSTEM REQUIREMENTS
@@ -51,9 +52,9 @@ INSTALLATION INSTRUCTIONS
    - Note: The BIPRO PharmaOne setup requires PostgreSQL to be present before installation begins.
 
 2. Run BIPRO PharmaOne Installer:
-   - Download 'BIPRO_PharmaOne_Free_Setup_v1.0.0.exe' from the official GitHub Release (https://github.com/juction4love/bimalpharmacy/releases/tag/v1.0.0) or https://www.bimalpharmacy.com.np/bipro-pharmaone.html.
-   - Run 'BIPRO_PharmaOne_Free_Setup_v1.0.0.exe' as Administrator.
-   - The installer verifies PostgreSQL presence, copies application binaries, provisions the local database schema, and securely configures credentials in Windows Credential Manager.
+   - Download 'BIPRO_PharmaOne_Free_Setup_v1.0.2.exe' from the official GitHub Release (https://github.com/juction4love/bimalpharmacy/releases/tag/v1.0.2) or https://www.bimalpharmacy.com.np/bipro-pharmaone.html.
+   - Run 'BIPRO_PharmaOne_Free_Setup_v1.0.2.exe' as Administrator.
+   - The installer verifies PostgreSQL presence, copies application binaries, provisions the local database schema (53 migrations), and securely configures credentials in Windows Credential Manager.
 
 3. First-Run Setup:
    - Launch BIPRO PharmaOne from the Desktop shortcut or Start Menu.
@@ -77,4 +78,4 @@ drive or external storage device.
 SUPPORT & UPDATES
 -----------------
 For documentation, user guides, and new releases, visit:
-https://bipro.com.np
+https://www.bimalpharmacy.com.np/bipro-pharmaone.html
