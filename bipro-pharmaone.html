@@ -1,547 +1,139 @@
-﻿∩╗┐<!DOCTYPE html>
-<html lang="ne">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="canonical" href="https://www.bimalpharmacy.com.np/bipro-pharmaone" />
-
-  <!-- SEO Meta Tags -->
-  <title>BIPRO PharmaOne ΓÇö Free Pharmacy Management Software for Windows</title>
-  <meta name="description" content="Download BIPRO PharmaOne, free Windows pharmacy management software with sales, purchase, inventory, accounting, Nepali BS dates, expiry tracking, reports and local offline data storage.">
-  <meta name="keywords" content="BIPRO PharmaOne, Free Pharmacy Software Nepal, Pharmacy Management Software Windows, Offline Pharmacy Billing Software, Nepali BS Date Pharmacy Accounting, Bimal Pharmacy">
-
-  <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="BIPRO PharmaOne ΓÇö Free Pharmacy Management Software for Windows">
-  <meta property="og:description" content="Download BIPRO PharmaOne: Free retail pharmacy management and accounting desktop software for Windows with offline PostgreSQL database and Nepali BS date support.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.bimalpharmacy.com.np/bipro-pharmaone">
-  <meta property="og:image" content="https://www.bimalpharmacy.com.np/photo1.jpg">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BIPRO PharmaOne ΓÇö Free Pharmacy Management Software">
-  <meta name="twitter:description" content="Free Windows desktop pharmacy management and accounting application with local offline database.">
-  <meta name="twitter:image" content="https://www.bimalpharmacy.com.np/photo1.jpg">
-
-  <!-- Structured Data (SoftwareApplication) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "BIPRO PharmaOne",
-    "operatingSystem": "Windows 10, Windows 11, Windows Server 2019+",
-    "applicationCategory": "BusinessApplication",
-    "description": "BIPRO PharmaOne is a Windows desktop pharmacy management and accounting application designed for day-to-day retail pharmacy operations with local PostgreSQL offline data storage.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "NPR"
-    },
-    "fileSize": "73.18MB",
-    "softwareVersion": "1.0.2",
-    "downloadUrl": "https://github.com/juction4love/bimalpharmacy/releases/download/v1.0.2/BIPRO_PharmaOne_Free_Setup_v1.0.2.exe"
-  }
-  </script>
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BIPRO PharmaOne | Pharmacy Management Software for Nepal</title>
+  <meta name="description" content="BIPRO PharmaOne — offline pharmacy management software for Windows. Sales, purchases, inventory, accounting, and backup. Clean-install verified.">
+  <link rel="canonical" href="https://www.bimalpharmacy.com.np/bipro-pharmaone">
   <link rel="stylesheet" href="style.css">
-
-  <!-- Components Script -->
   <script src="components.js" defer></script>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3898364439256735"
-     crossorigin="anonymous"></script>
+  <style>
+    .pharma-hero { background: linear-gradient(135deg,#064e3b 0%,#065f46 60%,#047857 100%); color: #fff; border-radius: 16px; padding: 2.25rem 2rem; margin: 1.5rem 0; }
+    .pharma-hero h1 { margin: 0 0 .4rem; font-size: 2rem; letter-spacing: -.01em; }
+    .pharma-hero .version-badge { display: inline-block; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35); border-radius: 20px; padding: .25rem .9rem; font-size: .85rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: .03em; }
+    .pharma-hero p { margin: .5rem 0 1.25rem; opacity: .92; line-height: 1.6; max-width: 640px; }
+    .dl-btn { display: inline-block; background: #fff; color: #065f46; font-weight: 800; padding: .85rem 1.8rem; border-radius: 10px; text-decoration: none; font-size: 1.05rem; box-shadow: 0 2px 12px rgba(0,0,0,.18); transition: box-shadow .15s; }
+    .dl-btn:hover { box-shadow: 0 4px 18px rgba(0,0,0,.28); }
+    .dl-meta { margin-top: .7rem; font-size: .82rem; opacity: .8; }
+    .pharma-note { border-left: 4px solid #0284c7; padding: .8rem 1rem; background: #eff6ff; color: #1e3a5f; border-radius: 0 8px 8px 0; margin: 1.2rem 0; }
+    .pharma-warn { border-left: 4px solid #d97706; padding: .8rem 1rem; background: #fffbeb; color: #422006; border-radius: 0 8px 8px 0; margin: 1.2rem 0; }
+    .bipro-table { width: 100%; border-collapse: collapse; }
+    .bipro-table th, .bipro-table td { padding: .7rem; text-align: left; border-bottom: 1px solid #d1d5db; vertical-align: top; }
+    .bipro-table th { width: 30%; color: #374151; font-weight: 700; }
+    .checksum-box { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; padding: .75rem 1rem; font-family: monospace; font-size: .8rem; word-break: break-all; margin: .75rem 0; }
+    .step-list { counter-reset: step; list-style: none; padding: 0; }
+    .step-list li { counter-increment: step; padding: .45rem 0 .45rem 2.4rem; position: relative; }
+    .step-list li::before { content: counter(step); position: absolute; left: 0; top: .35rem; background: #047857; color: #fff; border-radius: 50%; width: 1.6rem; height: 1.6rem; line-height: 1.6rem; text-align: center; font-weight: 700; font-size: .82rem; }
+    .bipro-small { color: #475569; font-size: .94rem; }
+    @media print { site-header, site-footer { display: none; } }
+  </style>
 </head>
 <body>
+<site-header></site-header>
+<main class="container article-content">
+  <nav aria-label="Breadcrumb"><a href="index.html">Home</a> / BIPRO PharmaOne</nav>
 
-  <!-- ========== HEADER / NAVIGATION ========== -->
-  <site-header></site-header>
+  <div class="pharma-hero">
+    <div class="version-badge">v1.0.3 — Released 2026-10-28</div>
+    <h1>BIPRO PharmaOne</h1>
+    <p>Offline pharmacy management software for Windows — sales, purchases, inventory, accounting, backup, and reports. Designed for retail pharmacies in Nepal. Clean-install tested on 2026-10-28.</p>
+    <a class="dl-btn" href="https://github.com/juction4love/BIPRO_PHARMAONE/releases/download/v1.0.3/BIPRO_PharmaOne_Setup_v1.0.3.exe" rel="noopener">
+      Download v1.0.3 (73 MB)
+    </a>
+    <p class="dl-meta">Windows 10 / 11 &nbsp;·&nbsp; PostgreSQL 17 bundled &nbsp;·&nbsp; .NET 8 Runtime bundled</p>
+  </div>
 
-  <!-- ========== MAIN CONTENT ========== -->
-  <main class="container article-content">
+  <section class="article-section">
+    <h2>What is BIPRO PharmaOne?</h2>
+    <p>BIPRO PharmaOne is a single-PC, offline retail pharmacy management application. It stores all data in a local PostgreSQL database — no cloud account, no internet subscription, no third-party server receives your pharmacy or patient data during normal operation.</p>
+    <ul>
+      <li><strong>Sales:</strong> Cash sales, credit sales with customer ledger, challan history, and sales returns.</li>
+      <li><strong>Purchases:</strong> Cash and credit purchases, purchase returns, and supplier claims.</li>
+      <li><strong>Inventory:</strong> Batch tracking (FEFO), stock adjustments, physical count, expiry warnings, and negative-stock recovery.</li>
+      <li><strong>Accounting:</strong> Double-entry general ledger, trial balance, profit &amp; loss, balance sheet, and cash/bank books.</li>
+      <li><strong>Finance:</strong> Customer receipts, supplier payments, expense records, and other income.</li>
+      <li><strong>Reports:</strong> Purchase book, sales book, party statements, outstanding dues, and inventory valuation.</li>
+      <li><strong>Backup:</strong> Daily automatic backup and manual backup with the option to restore from a local archive.</li>
+    </ul>
+    <p class="bipro-note"><strong>Regulatory note:</strong> Sales documents are called CHALLAN (चालान). BIPRO PharmaOne is not IRD-approved, CBMS-certified, DDA-approved, or an authorized tax invoice system. It is a local record-keeping tool.</p>
+  </section>
 
-    <!-- Breadcrumb Navigation -->
-    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="text-align: left; margin-bottom: var(--space-md); font-size: var(--text-sm);">
-      <a href="index.html"><i class="fas fa-home"></i> αñùαÑâαñ╣αñ¬αÑâαñ╖αÑìαñá</a>
-      <span style="margin: 0 6px; color: var(--text-light);">/</span>
-      <span aria-current="page" style="color: var(--text-muted); font-weight: 600;">BIPRO PharmaOne</span>
-    </nav>
+  <section class="article-section">
+    <h2>System requirements</h2>
+    <table class="bipro-table">
+      <tbody>
+        <tr><th>Operating system</th><td>Windows 10 or Windows 11 (64-bit)</td></tr>
+        <tr><th>PostgreSQL</th><td>PostgreSQL 17 for Windows — bundled with the installer; no separate download needed.</td></tr>
+        <tr><th>.NET Runtime</th><td>.NET 8 Desktop Runtime — bundled with the installer; no separate download needed.</td></tr>
+        <tr><th>RAM</th><td>4 GB or more recommended</td></tr>
+        <tr><th>Disk space</th><td>1 GB for the application; additional space for your pharmacy database and daily backups</td></tr>
+        <tr><th>Internet</th><td>Only needed to download the installer. The application works fully offline after installation.</td></tr>
+        <tr><th>Printer</th><td>Any Windows-compatible printer. Thermal receipt printers are supported through Windows printing.</td></tr>
+      </tbody>
+    </table>
+  </section>
 
-    <!-- ---------- HERO SECTION ---------- -->
-    <section class="download-hero-box">
-      <div class="bipro-badge-row">
-        <span class="bipro-badge badge-free"><i class="fas fa-gift"></i> FREE TO USE</span>
-        <span class="bipro-badge badge-win"><i class="fab fa-windows"></i> WINDOWS X64</span>
-        <span class="bipro-badge badge-offline"><i class="fas fa-database"></i> OFFLINE LOCAL POSTGRESQL</span>
-      </div>
+  <section class="article-section">
+    <h2>Installation instructions</h2>
+    <ol class="step-list">
+      <li>Download <code>BIPRO_PharmaOne_Setup_v1.0.3.exe</code> using the button above.</li>
+      <li>Verify the SHA-256 checksum (see below) if you want to confirm the file is unmodified.</li>
+      <li>Run the installer. Accept the User Account Control (UAC) prompt if asked — PostgreSQL requires administrator rights to install as a Windows service.</li>
+      <li>Follow the setup wizard. PostgreSQL 17 and the .NET 8 Runtime are installed automatically if not already present.</li>
+      <li>When setup finishes, launch <strong>BIPRO PharmaOne</strong> from the Start menu or desktop shortcut.</li>
+      <li>On first run, the setup wizard asks for your business name, address, phone number, and optional PAN/VAT and drug licence numbers. It also creates an <strong>Administrator</strong> account (username and password) for the application.</li>
+      <li>Set your fiscal year, starting challan number, and beginning stock as instructed by the wizard.</li>
+    </ol>
+    <p class="pharma-warn"><strong>Never uninstall and reinstall to reset data.</strong> Reinstalling does not erase the database. Use the in-app backup and restore workflow to manage your data safely. Keep backup copies in a separate safe location (USB drive, external drive, or cloud storage of your choice).</p>
+  </section>
 
-      <h1 style="font-size: var(--text-4xl); margin-bottom: 4px; color: var(--primary);">BIPRO PharmaOne</h1>
-      <h2 style="font-size: var(--text-2xl); color: var(--text-main); margin-bottom: var(--space-md); font-weight: 600;">
-        Free Pharmacy Management Software for Windows
-      </h2>
+  <section class="article-section">
+    <h2>Your data stays on your computer</h2>
+    <p>BIPRO PharmaOne stores all pharmacy data — sales, purchases, customers, products, accounting journals — in a local PostgreSQL database on your PC. No data is sent to any remote server during normal operation. The application does not require a login to a cloud service to function.</p>
+    <p>Backup files are saved to a folder on your computer. You can copy them to any storage of your choice. The application does not upload backups automatically.</p>
+    <p>The CBMS transport feature (if present in a future version) has live sending disabled in the current release.</p>
+  </section>
 
-      <p style="font-size: var(--text-base); color: var(--text-muted); max-width: 720px; margin: 0 auto var(--space-xl); line-height: 1.8;">
-        BIPRO PharmaOne is a Windows desktop pharmacy management and accounting application designed for day-to-day retail pharmacy operations. It works with a local PostgreSQL database and is designed for offline, single-PC use.
-      </p>
+  <section class="article-section">
+    <h2>Release notes — v1.0.3 (2026-10-28)</h2>
+    <ul>
+      <li>55 database migrations applied; full clean-install acceptance test passed.</li>
+      <li>Canonical party master: a customer and supplier with the same PAN/VAT number are now unified under a single party record, eliminating double-counting in subledger reports.</li>
+      <li>COGS and accounting restoration: cost-of-goods-sold and journal posting functions fully restored after previous phase migration.</li>
+      <li>Application Administrator authentication: first-run wizard now creates an Administrator login; login is required on subsequent starts.</li>
+      <li>Administrator password reset requires maintenance-access credential (migration 0055).</li>
+      <li>Books and reports function fixes (migration 0053).</li>
+      <li>Startup deadlock fix: the database upgrade progress window no longer causes the application to appear as "Not Responding" on slow machines.</li>
+      <li>All 577 source-level checks and full clean-install integration tests pass on the release build.</li>
+    </ul>
+  </section>
 
-      <!-- Single Free Edition Download Card (v1.0.2) -->
-      <div style="max-width: 680px; margin: var(--space-xl) auto var(--space-lg); text-align: left;">
-        <div class="download-card card-featured" style="background: var(--glass-bg); border: 2px solid var(--primary); border-radius: var(--radius-lg); padding: var(--space-xl); display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 8px 30px rgba(16, 185, 129, 0.15); position: relative;">
-          <div style="position: absolute; top: -13px; right: var(--space-lg); background: var(--primary); color: var(--white); padding: 4px 14px; border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);">
-            <i class="fas fa-star"></i> LATEST RELEASE
-          </div>
-          <div>
-            <h3 style="font-size: var(--text-xl); color: var(--text-main); margin-top: var(--space-xs); margin-bottom: var(--space-xs); font-weight: 700;">
-              BIPRO PharmaOne Free Edition v1.0.2
-            </h3>
-            <p style="font-size: var(--text-sm); color: var(--text-muted); line-height: 1.6; margin-bottom: var(--space-md);">
-              Download the latest Free Edition of BIPRO PharmaOne, featuring verified application improvements and bug fixes. This edition is designed for a fresh installation with your own pharmacy profile and empty local database.
-            </p>
-            <ul style="list-style: none; padding: 0; margin: 0 0 var(--space-lg) 0; display: flex; flex-direction: column; gap: 8px; font-size: var(--text-xs); color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: var(--space-sm);">
-              <li style="display: flex; justify-content: space-between;"><span><i class="fas fa-file"></i> File:</span> <strong style="color: var(--text-main); font-family: Consolas, monospace;">BIPRO_PharmaOne_Free_Setup_v1.0.2.exe</strong></li>
-              <li style="display: flex; justify-content: space-between;"><span><i class="fas fa-hdd"></i> Verified Size:</span> <strong style="color: var(--text-main);">73.18 MB (76,736,774 bytes)</strong></li>
-              <li style="display: flex; justify-content: space-between;"><span><i class="fab fa-windows"></i> Platform:</span> <strong style="color: var(--text-main);">Windows 10 / 11 / Server (64-bit)</strong></li>
-              <li style="display: flex; justify-content: space-between;"><span><i class="fas fa-database"></i> Database:</span> <strong style="color: var(--text-main);">PostgreSQL 17 (Localhost)</strong></li>
-            </ul>
-          </div>
-          <div>
-            <a href="https://github.com/juction4love/bimalpharmacy/releases/download/v1.0.2/BIPRO_PharmaOne_Free_Setup_v1.0.2.exe" class="btn-download-lg" id="downloadLatestBtn" style="width: 100%; box-sizing: border-box; text-align: center; justify-content: center; font-size: var(--text-base); padding: 1rem 1.5rem;">
-              <i class="fas fa-download"></i> Download Free Edition v1.0.2
-            </a>
-          </div>
-        </div>
-      </div>
+  <section class="article-section">
+    <h2>Known limitations</h2>
+    <ul>
+      <li>Single-PC local setup only. There is no built-in multi-user networking or remote access in the current version.</li>
+      <li>Sales documents are labelled CHALLAN, not VAT invoice. This application is not a substitute for a government-approved billing system.</li>
+      <li>Printer compatibility is tested with common laser and thermal printers but not verified across all printer models.</li>
+      <li>Nepali BS date entry is supported for expiry fields. Full BS-calendar input for all date fields may be added in a future version.</li>
+    </ul>
+  </section>
 
-      <!-- Quick Navigation Pills -->
-      <div class="btn-pill-group">
-        <a href="#features" class="btn-pill"><i class="fas fa-list-check"></i> Features</a>
-        <a href="#requirements" class="btn-pill"><i class="fas fa-microchip"></i> System Requirements</a>
-        <a href="#installation" class="btn-pill"><i class="fas fa-wrench"></i> Installation Guide</a>
-        <a href="#verify" class="btn-pill"><i class="fas fa-shield-check"></i> Verify SHA-256</a>
-        <a href="#license" class="btn-pill"><i class="fas fa-file-contract"></i> License</a>
-        <a href="#faq" class="btn-pill"><i class="fas fa-circle-question"></i> FAQ</a>
-      </div>
-    </section>
+  <section class="article-section">
+    <h2>File checksum</h2>
+    <p>Verify the installer using PowerShell before running it:</p>
+    <div class="checksum-box">Get-FileHash BIPRO_PharmaOne_Setup_v1.0.3.exe -Algorithm SHA256</div>
+    <p>Expected SHA-256:</p>
+    <div class="checksum-box">F53BC0B9484BBD4C51F43412E78D3FF2426A25C86CB1611E90994DE02ACB70F8</div>
+    <p>A mismatch means the file was corrupted or substituted in transit. Do not run a file that does not match.</p>
+    <p><a href="SHA256SUMS.txt">Full historical checksum list (SHA256SUMS.txt)</a></p>
+  </section>
 
-    <!-- ---------- IMPORTANT PRODUCT INFORMATION ---------- -->
-    <section class="article-section">
-      <h2><i class="fas fa-circle-info" style="color: var(--primary);"></i> Important Product Information</h2>
-      <p>
-        BIPRO PharmaOne provides retail pharmacies and clinics with a fast, keyboard-first desktop workflow for daily transactions, batch-level inventory tracking, customer credits, supplier payables, and general ledger accounting.
-      </p>
-
-      <div class="meta-grid">
-        <div class="meta-card">
-          <i class="fas fa-hand-holding-dollar meta-card-icon"></i>
-          <div class="meta-card-content">
-            <h4>100% Free to Use</h4>
-            <p>No monthly subscription fees, no user seat lock, and no trial expiration.</p>
-          </div>
-        </div>
-
-        <div class="meta-card">
-          <i class="fas fa-desktop meta-card-icon"></i>
-          <div class="meta-card-content">
-            <h4>Windows Desktop Application</h4>
-            <p>Fast native 64-bit Windows software designed for high-speed counter billing.</p>
-          </div>
-        </div>
-
-        <div class="meta-card">
-          <i class="fas fa-database meta-card-icon"></i>
-          <div class="meta-card-content">
-            <h4>Local PostgreSQL Database</h4>
-            <p>Robust enterprise-grade SQL database running securely on your local computer.</p>
-          </div>
-        </div>
-
-        <div class="meta-card">
-          <i class="fas fa-shield-halved meta-card-icon"></i>
-          <div class="meta-card-content">
-            <h4>Local Pharmacy Data Storage</h4>
-            <p>BIPRO PharmaOne stores its operational pharmacy database locally on your PC and does not require cloud database storage for normal operation.</p>
-          </div>
-        </div>
-
-        <div class="meta-card">
-          <i class="fas fa-wifi-slash meta-card-icon"></i>
-          <div class="meta-card-content">
-            <h4>Offline First</h4>
-            <p>Internet connection is not required for normal local day-to-day operations.</p>
-          </div>
-        </div>
-
-        <div class="meta-card">
-          <i class="fas fa-computer meta-card-icon"></i>
-          <div class="meta-card-content">
-            <h4>Single-PC Use</h4>
-            <p>Architected for single-PC retail counter workstations.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Regulatory Notice -->
-      <div class="alert-notice">
-        <h4><i class="fas fa-triangle-exclamation"></i> Sales Document & Regulatory Notice</h4>
-        <p style="margin-bottom: var(--space-xs); color: var(--text-main);">
-          Current sales document terminology in BIPRO PharmaOne is <strong>CHALLAN</strong> (αñÜαñ╛αñ▓αñ╛αñ¿ / αñ¼αñ┐αñ▓).
-        </p>
-        <p style="margin-bottom: 0; font-size: var(--text-sm); color: var(--text-muted);">
-          BIPRO PharmaOne is an internal management and retail accounting tool. Do <strong>NOT</strong> treat this software as an IRD-approved, government-approved, DDA-approved, CBMS-certified, or tax invoice certified system unless separately verified and authorized. It is designed for operational sales challans, estimates, stock management, and double-entry financial bookkeeping.
-        </p>
-      </div>
-    </section>
-
-    <!-- ---------- FEATURES SECTION ---------- -->
-    <section class="article-section" id="features">
-      <h2><i class="fas fa-layer-group" style="color: var(--primary);"></i> Core Features & Capabilities</h2>
-      <p>
-        BIPRO PharmaOne includes all essential modules required to operate a full-service retail pharmacy in Nepal:
-      </p>
-
-      <div class="features-category-grid">
-
-        <!-- Sales & Billing -->
-        <div class="feature-cat-card">
-          <div class="feature-cat-header">
-            <i class="fas fa-cash-register"></i>
-            <h3>Sales & Billing</h3>
-          </div>
-          <ul class="feature-pill-list">
-            <li class="feature-pill"><i class="fas fa-check"></i> Sales / Cash Sale (F2)</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Credit Sale (F3)</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Sales Return & Cancellation (F10)</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> FEFO Stock Allocation</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Below-Cost Price Warning</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Auto Sequential Document Numbers</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Cash / Change Calculation</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Thermal (58/80mm) & A4 Printing</li>
-          </ul>
-        </div>
-
-        <!-- Purchases & Inventory -->
-        <div class="feature-cat-card">
-          <div class="feature-cat-header">
-            <i class="fas fa-boxes-stacked"></i>
-            <h3>Purchases & Inventory</h3>
-          </div>
-          <ul class="feature-pill-list">
-            <li class="feature-pill"><i class="fas fa-check"></i> Purchase Entry (F7) & PRN</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Purchase Return & Claims</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Product Master & Pack Ratios</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Supplier & Customer Ledgers</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Batch Expiry Risk Levels</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Expired Batch Sale Blocking</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Negative Stock FIFO Reconciliation</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> F6 Universal Stock Explorer</li>
-          </ul>
-        </div>
-
-        <!-- Accounting & Financials -->
-        <div class="feature-cat-card">
-          <div class="feature-cat-header">
-            <i class="fas fa-book"></i>
-            <h3>Accounting & Books</h3>
-          </div>
-          <ul class="feature-pill-list">
-            <li class="feature-pill"><i class="fas fa-check"></i> Customer Receipts (F4)</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Supplier Payments</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Operating Expenses & Income</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Day Book & Cash/Bank Books</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Standard IRD VAT Book</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Double-Entry General Ledger</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Stock Ledger & Write-Offs</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Trial Balance, P&L, Balance Sheet</li>
-          </ul>
-        </div>
-
-        <!-- Statements, Reports & Nepal Localization -->
-        <div class="feature-cat-card">
-          <div class="feature-cat-header">
-            <i class="fas fa-file-invoice-dollar"></i>
-            <h3>Reports & Nepal Tools</h3>
-          </div>
-          <ul class="feature-pill-list">
-            <li class="feature-pill"><i class="fas fa-check"></i> Customer & Supplier Statements</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Expiry / Breakage Claim Register</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Bikram Sambat (BS) Nepali Dates</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> F1 Quick Financial Calculator</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> F1ΓÇôF12 Global Shortcut Filter</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> F12 System Health & Reconciliation</li>
-            <li class="feature-pill"><i class="fas fa-check"></i> Instant Verified Backup / Restore</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ---------- SYSTEM REQUIREMENTS ---------- -->
-    <section class="article-section" id="requirements">
-      <h2><i class="fas fa-microchip" style="color: var(--primary);"></i> System Requirements</h2>
-      <p>
-        Please ensure your system meets the verified requirements below before proceeding with the installation:
-      </p>
-
-      <table class="spec-table">
-        <tbody>
-          <tr>
-            <th>Operating System</th>
-            <td>64-bit Windows 10, Windows 11, or Windows Server 2019+</td>
-          </tr>
-          <tr>
-            <th>Processor Architecture</th>
-            <td>x64 compatible processor (Intel / AMD 64-bit)</td>
-          </tr>
-          <tr>
-            <th>Database Engine</th>
-            <td>
-              <strong>PostgreSQL 17 for Windows</strong> (installed on localhost).<br>
-              <small style="color: var(--text-muted);">Prerequisite: PostgreSQL 17 is not bundled inside the setup binary and must be installed on your computer first. The installer verifies PostgreSQL presence on startup.</small>
-            </td>
-          </tr>
-          <tr>
-            <th>Storage</th>
-            <td>Local disk space for application files, PostgreSQL database data, and regular backups</td>
-          </tr>
-          <tr>
-            <th>Printers (Optional)</th>
-            <td>Standard 58mm / 80mm thermal receipt printer or A4 laser/inkjet printer for Challans and accounting reports</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- ---------- INSTALLATION GUIDE ---------- -->
-    <section class="article-section" id="installation">
-      <h2><i class="fas fa-wrench" style="color: var(--primary);"></i> Step-by-Step Installation Guide</h2>
-      <p>
-        Follow these steps to set up BIPRO PharmaOne on your Windows computer:
-      </p>
-
-      <ol class="install-steps-list">
-        <li class="install-step-item">
-          <div class="install-step-num">1</div>
-          <div class="install-step-body">
-            <h4>Install PostgreSQL 17 for Windows (Prerequisite)</h4>
-            <p>Download the official PostgreSQL 17 Windows installer from <a href="https://www.postgresql.org/download/windows/" target="_blank" rel="noopener noreferrer">postgresql.org/download/windows</a>.</p>
-            <p>Run the PostgreSQL installer with standard default settings (Port <code>5432</code>, Superuser <code>postgres</code>). Keep note of your administrative postgres master password. <em>(Note: BIPRO PharmaOne requires PostgreSQL to be installed on your computer before running the setup wizard.)</em></p>
-          </div>
-        </li>
-
-        <li class="install-step-item">
-          <div class="install-step-num">2</div>
-          <div class="install-step-body">
-            <h4>Download BIPRO PharmaOne Installer</h4>
-            <p>Download the latest release <a href="https://github.com/juction4love/bimalpharmacy/releases/download/v1.0.2/BIPRO_PharmaOne_Free_Setup_v1.0.2.exe"><code>BIPRO_PharmaOne_Free_Setup_v1.0.2.exe</code></a> (~73.18 MB) via official GitHub Releases.</p>
-            <p>Optionally verify the SHA-256 hash using the instructions in the Verify Download section below.</p>
-          </div>
-        </li>
-
-        <li class="install-step-item">
-          <div class="install-step-num">3</div>
-          <div class="install-step-body">
-            <h4>Run Installer as Administrator</h4>
-            <p>Right-click the downloaded setup file (<code>BIPRO_PharmaOne_Free_Setup_v1.0.2.exe</code>) and select <strong>"Run as Administrator"</strong>.</p>
-            <p>The installer checks for PostgreSQL presence, copies application binaries, automatically provisions the verified local database schema (applying all 53 verified migrations), and securely configures credentials in Windows Credential Manager.</p>
-          </div>
-        </li>
-
-        <li class="install-step-item">
-          <div class="install-step-num">4</div>
-          <div class="install-step-body">
-            <h4>Open BIPRO PharmaOne</h4>
-            <p>Launch BIPRO PharmaOne from the newly created Desktop shortcut or Start Menu.</p>
-          </div>
-        </li>
-
-        <li class="install-step-item">
-          <div class="install-step-num">5</div>
-          <div class="install-step-body">
-            <h4>Complete First-Run Pharmacy Setup</h4>
-            <p>Enter your pharmacy business information: <strong>Business Name, Address, Phone Number, optional PAN/VAT / DDA number, Fiscal Year, and starting Challan number</strong>.</p>
-          </div>
-        </li>
-
-        <li class="install-step-item">
-          <div class="install-step-num">6</div>
-          <div class="install-step-body">
-            <h4>Add Products & Begin Daily Billing</h4>
-            <p>Create your medicine master list, setup supplier and customer accounts, and begin recording purchases and issuing sales challans.</p>
-          </div>
-        </li>
-
-        <li class="install-step-item">
-          <div class="install-step-num">7</div>
-          <div class="install-step-body">
-            <h4>Take Regular Backups</h4>
-            <p>Regularly create database backups from inside the software (Settings / Backup) and store backup files on an external USB drive.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <!-- ---------- FIRST-RUN SETUP & CLEAN DATABASE ---------- -->
-    <section class="article-section">
-      <h2><i class="fas fa-building" style="color: var(--primary);"></i> First-Run Pharmacy Setup & Data Privacy</h2>
-      <p>
-        The public download edition of BIPRO PharmaOne is a <strong>clean installation</strong>. It contains zero private data or transaction records from Bimal Pharmacy.
-      </p>
-      <p>
-        During first launch, you enter your own pharmacy or clinic business profile:
-      </p>
-      <ul style="margin-left: var(--space-lg); margin-bottom: var(--space-md);">
-        <li><strong>Business / Pharmacy Name:</strong> Appears on Challans and reports</li>
-        <li><strong>Address & Contact Phone:</strong> Your store location & phone number</li>
-        <li><strong>PAN / VAT / DDA Number (Optional):</strong> Your legal business registration details</li>
-        <li><strong>Fiscal Year:</strong> Active Nepali Fiscal Year (e.g., 2081/2082)</li>
-        <li><strong>Starting Challan Number:</strong> Customize your sales challan sequence number</li>
-      </ul>
-      <p>
-        All records you create belong 100% to you and are stored exclusively on your local computer.
-      </p>
-    </section>
-
-    <!-- ---------- DATA & BACKUP NOTICE ---------- -->
-    <section class="article-section">
-      <h2><i class="fas fa-shield-virus" style="color: var(--primary);"></i> Data Safety & Backup Responsibility</h2>
-      <div class="alert-notice alert-danger">
-        <h4><i class="fas fa-triangle-exclamation"></i> Mandatory Backup Notice</h4>
-        <p style="font-weight: 600; color: var(--danger-dark); font-size: var(--text-base); margin-bottom: var(--space-xs);">
-          "Your pharmacy data is stored locally on your computer. Keep regular backups and store at least one backup in a separate safe location."
-        </p>
-        <p style="margin-bottom: var(--space-xs); font-size: var(--text-sm); color: var(--text-main);">
-          Because BIPRO PharmaOne runs 100% offline, only you have access to your database. If your hard drive fails or Windows crashes, data can only be recovered from your own backup copies.
-        </p>
-        <p style="margin-bottom: 0; font-size: var(--text-sm); color: var(--text-muted);">
-          <strong>Important:</strong> Uninstalling or reinstalling the application should never be treated as a substitute for database backups. Always click the <strong>Backup</strong> button to export your <code>.backup</code> file and save it to an external USB flash drive regularly.
-        </p>
-      </div>
-    </section>
-
-    <!-- ---------- VERIFY DOWNLOAD / CHECKSUM ---------- -->
-    <section class="article-section" id="verify">
-      <h2><i class="fas fa-fingerprint" style="color: var(--primary);"></i> Verify Your Download (SHA-256 Checksum)</h2>
-      <p>
-        To ensure your downloaded installer is genuine, unmodified, and free from corruption, verify its cryptographic SHA-256 hash before running setup:
-      </p>
-
-      <!-- Free Edition v1.0.2 Checksum -->
-      <div class="checksum-box" style="margin-bottom: var(--space-lg); border: 2px solid var(--primary-200);">
-        <div class="checksum-label">
-          <span><i class="fas fa-star" style="color: var(--primary-light);"></i> SHA-256 Hash for BIPRO_PharmaOne_Free_Setup_v1.0.2.exe (Latest Edition v1.0.2)</span>
-          <button type="button" class="btn-copy-hash" id="copyHashBtnV102" onclick="copyChecksumHash('checksumValueV102', 'copyHashBtnV102')">
-            <i class="fas fa-copy"></i> Copy Hash v1.0.2
-          </button>
-        </div>
-        <code class="checksum-code" id="checksumValueV102">487F6FD3F3771E6821D808F45CE0AE480797867FE93534AEF302ECD0B65FF11A</code>
-        <div style="margin-top: 8px; font-size: var(--text-xs); color: #94a3b8;">
-          PowerShell: <code style="background:#0f172a; color:#38bdf8; padding:3px 8px; border-radius:4px; border:1px solid #1e293b;">Get-FileHash BIPRO_PharmaOne_Free_Setup_v1.0.2.exe -Algorithm SHA256</code>
-        </div>
-      </div>
-
-      <div class="btn-pill-group" style="margin-top: var(--space-lg); justify-content: flex-start;">
-        <a href="SHA256SUMS.txt" class="btn-pill" target="_blank"><i class="fas fa-file-code"></i> View SHA256SUMS.txt</a>
-        <a href="README_PUBLIC.txt" class="btn-pill" target="_blank"><i class="fas fa-file-lines"></i> View README_PUBLIC.txt</a>
-      </div>
-    </section>
-
-    <!-- ---------- LICENSE INFORMATION ---------- -->
-    <section class="article-section" id="license">
-      <h2><i class="fas fa-file-contract" style="color: var(--primary);"></i> Free License Information</h2>
-      <p>
-        BIPRO PharmaOne is distributed under the official <strong>BIPRO PharmaOne End User License Agreement (EULA)</strong>.
-      </p>
-
-      <div style="background: var(--glass-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-lg); margin: var(--space-md) 0; text-align: left;">
-        <h4 style="margin-bottom: var(--space-xs); color: var(--primary);">License Summary:</h4>
-        <ul style="margin-left: var(--space-lg); font-size: var(--text-sm); line-height: 1.8; color: var(--text-main);">
-          <li><strong>1. Grant of License:</strong> Provided free of charge for operational use by retail pharmacies, clinics, and healthcare businesses on any compatible Windows PC.</li>
-          <li><strong>2. Reservation of Rights:</strong> Copyright and source code ownership remain exclusively with the author. Reverse engineering, decompilation, unauthorized repackaging, or selling the binary for monetary gain is strictly prohibited.</li>
-          <li><strong>3. No Warranty / Disclaimer:</strong> The software is provided "AS IS", without warranty of any kind. The authors shall not be liable for any claim, loss of data, loss of profits, or tax compliance issues.</li>
-          <li><strong>4. Data & Backup Responsibility:</strong> The pharmacy operator is solely responsible for maintaining local database integrity, accounting verification, and regular secure backups.</li>
-        </ul>
-      </div>
-
-      <div style="margin-top: var(--space-md);">
-        <a href="LICENSE.txt" class="btn-main" target="_blank" style="font-size: var(--text-sm); padding: 0.7rem 1.6rem;">
-          <i class="fas fa-eye"></i> View Full LICENSE.txt
-        </a>
-      </div>
-    </section>
-
-    <!-- ---------- FAQ SECTION ---------- -->
-    <section class="article-section article-faq" id="faq">
-      <h2><i class="fas fa-circle-question" style="color: var(--primary);"></i> Frequently Asked Questions (FAQ)</h2>
-
-      <details>
-        <summary>Is BIPRO PharmaOne really 100% free?</summary>
-        <p>Yes. BIPRO PharmaOne Clean Public Edition is free for operational use by retail pharmacies and clinics. There are no monthly subscriptions, hidden fees, or time-limited trials.</p>
-      </details>
-
-      <details>
-        <summary>Does the software need an active internet connection?</summary>
-        <p>No. BIPRO PharmaOne runs on a local PostgreSQL database on your PC. It is built offline-first and functions completely without internet.</p>
-      </details>
-
-      <details>
-        <summary>Where is my pharmacy customer and sales data stored?</summary>
-        <p>BIPRO PharmaOne stores its operational pharmacy database locally in PostgreSQL on your computer. Normal day-to-day operation does not require cloud database storage.</p>
-      </details>
-
-      <details>
-        <summary>Does BIPRO PharmaOne print authorized IRD Tax Invoices?</summary>
-        <p>No. Current sales document terminology is CHALLAN (αñÜαñ╛αñ▓αñ╛αñ¿ / αñ¼αñ┐αñ▓). The software is not certified as an authorized Nepal Tax Invoice or CBMS system. It is designed for internal retail pharmacy management, sales challans, estimates, inventory, and double-entry accounting.</p>
-      </details>
-
-      <details>
-        <summary>Why do I need to install PostgreSQL 17?</summary>
-        <p>PostgreSQL is a world-class, free, open-source database engine that safely stores your medicines, stock, customers, bills, and accounting ledgers. Installing PostgreSQL 17 ensures your pharmacy database remains fast, reliable, and secure.</p>
-      </details>
-
-      <details>
-        <summary>How do I transfer my data to a new computer?</summary>
-        <p>You can create a backup using the Backup tool inside the software, copy the <code>.backup</code> file to a USB drive, install PostgreSQL and BIPRO PharmaOne on the new PC, and restore your database.</p>
-      </details>
-    </section>
-
-    <!-- ---------- BOTTOM DOWNLOAD CTA BANNER ---------- -->
-    <section class="cta-banner" style="margin: var(--space-2xl) 0 0;">
-      <div class="container" style="padding: 0;">
-        <h2 style="color: var(--primary-dark);">Ready to manage your retail pharmacy?</h2>
-        <p>Download BIPRO PharmaOne for Windows and start organizing your sales, stock, and accounting.</p>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-md); margin-top: var(--space-lg);">
-          <a href="https://github.com/juction4love/bimalpharmacy/releases/download/v1.0.2/BIPRO_PharmaOne_Free_Setup_v1.0.2.exe" class="btn-main" style="font-size: var(--text-base); padding: 0.9rem 2.2rem;">
-            <i class="fas fa-download"></i> DOWNLOAD FREE v1.0.2 (LATEST)
-          </a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ========== FOOTER ========== -->
-  <site-footer></site-footer>
-
-  <!-- ========== SCRIPTS ========== -->
-  <script src="script.js" defer></script>
-  <script>
-    function copyChecksumHash(elementId, buttonId) {
-      const hashText = document.getElementById(elementId).innerText.trim();
-      navigator.clipboard.writeText(hashText).then(() => {
-        const btn = document.getElementById(buttonId);
-        const origHTML = btn.innerHTML;
-        const origBg = btn.style.background;
-        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        btn.style.background = '#059669';
-        setTimeout(() => {
-          btn.innerHTML = origHTML;
-          btn.style.background = origBg;
-        }, 2500);
-      }).catch(err => {
-        console.error('Failed to copy hash: ', err);
-      });
-    }
-  </script>
+  <section class="article-section">
+    <h2>नेपाली सारांश</h2>
+    <p>BIPRO PharmaOne एउटा Windows-आधारित अफलाइन फार्मेसी व्यवस्थापन सफ्टवेयर हो। बिक्री, खरिद, स्टक, हिसाबकिताब, र ब्याकअप सबै तपाईंकै कम्प्युटरमा सुरक्षित रहन्छ — कुनै क्लाउड सर्भरमा डेटा पठाइँदैन। PostgreSQL 17 र .NET 8 इन्स्टलरसँगै आउँछ, छुट्टै डाउनलोड गर्नु पर्दैन। पहिलो पटक चलाउँदा व्यापारको नाम, ठेगाना, र Administrator खाता बनाउने wizard आउँछ।</p>
+  </section>
+</main>
+<site-footer></site-footer>
 </body>
 </html>
