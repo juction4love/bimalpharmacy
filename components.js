@@ -1,6 +1,49 @@
 // =========================================
 // BIMAL PHARMACY - COMPONENTS SYSTEM
 // =========================================
+//
+// ── ANALYTICS & TRACKING INTEGRATION POINTS ──────────────────────────────────
+//
+// STEP 1 — Google Search Console verification
+//   After GSC ownership is verified, add the meta tag to each page <head> OR
+//   inject it from this file by appending to document.head once per page.
+//   Owner action: go to search.google.com/search-console → verify via HTML tag →
+//   copy the content="..." value and replace OWNER_VERIFICATION_TOKEN below.
+//
+// const gscMeta = document.createElement('meta');
+// gscMeta.name = 'google-site-verification';
+// gscMeta.content = 'OWNER_VERIFICATION_TOKEN';  // ← replace with real token
+// document.head.appendChild(gscMeta);
+//
+// STEP 2 — Google Tag Manager (recommended: manages GA4 + Ads via one snippet)
+//   Owner action: create container at tagmanager.google.com → copy GTM-XXXXXX →
+//   replace GTM_CONTAINER_ID below → uncomment both blocks.
+//
+// (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),
+// event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),
+// dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+// 'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+// f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM_CONTAINER_ID');
+//
+// After the GTM head snippet is active, configure these tags INSIDE GTM:
+//   • GA4 Configuration tag  (Measurement ID: G-XXXXXXXXXX)
+//   • Google Ads Conversion Linker
+//   • Google Ads Conversion tag  (Conversion ID: AW-XXXXXXXXXX, Label: ...)
+//   • Event tags: page_view, search (medicine search), cta_click, download_click
+//
+// STEP 3 — GTM body noscript (paste at top of <body> in each page, or via this file)
+// const gtmNs = document.createElement('noscript');
+// const gtmIframe = document.createElement('iframe');
+// gtmIframe.src = 'https://www.googletagmanager.com/ns.html?id=GTM_CONTAINER_ID';
+// gtmIframe.height = '0'; gtmIframe.width = '0';
+// gtmIframe.style.cssText = 'display:none;visibility:hidden';
+// gtmNs.appendChild(gtmIframe);
+// document.body.prepend(gtmNs);
+//
+// NOTE: Do NOT load GA4 directly AND via GTM — that creates duplicate events.
+//       Use GTM as the single entry point for all Google tags.
+//
+// ─────────────────────────────────────────────────────────────────────────────
 
 // --- Header & Navigation Component ---
 class SiteHeader extends HTMLElement {

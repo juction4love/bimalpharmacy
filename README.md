@@ -64,7 +64,6 @@ bimalpharmacy/
 ├── insurance.html                # IME Life Insurance guide & premium calculator
 ├── notice.html                   # Urgent credit payment notice with QR codes
 ├── order.html                    # Android app ordering guide
-├── vendor-order.html             # Smart supplier purchase order slip with WhatsApp sharing
 ├── contact.html                  # Location and phone contacts
 ├── thanks.html                   # Thank you page after form submission
 ├── privacy-policy.html           # Privacy policy
@@ -100,7 +99,6 @@ bimalpharmacy/
 | **CSS3** | Glassmorphism design, CSS variables, animations, dark mode |
 | **JavaScript (Vanilla)** | Search, components, form handling, PDF generation |
 | **Font Awesome 6** | Icons throughout the site |
-| **jsPDF** | Client-side PDF generation for vendor orders |
 | **Formspree** | Contact form backend |
 | **Cloudflare Pages** | Production website deployment and edge functions |
 | **GitHub** | Source code repository |

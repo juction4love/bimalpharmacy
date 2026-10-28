@@ -6,6 +6,16 @@
   <title>BIPRO PharmaOne | Pharmacy Management Software for Nepal</title>
   <meta name="description" content="BIPRO PharmaOne — offline pharmacy management software for Windows. Sales, purchases, inventory, accounting, and backup. Clean-install verified.">
   <link rel="canonical" href="https://www.bimalpharmacy.com.np/bipro-pharmaone">
+  <meta property="og:title" content="BIPRO PharmaOne | Pharmacy Management Software for Nepal">
+  <meta property="og:description" content="BIPRO PharmaOne — offline pharmacy management software for Windows. Sales, purchases, inventory, accounting, and backup. Clean-install verified.">
+  <meta property="og:url" content="https://www.bimalpharmacy.com.np/bipro-pharmaone">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.bimalpharmacy.com.np/photo1.jpg">
+  <meta property="og:site_name" content="Bimal Pharmacy">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BIPRO PharmaOne | Pharmacy Management Software for Nepal">
+  <meta name="twitter:description" content="BIPRO PharmaOne — offline pharmacy management software for Windows. Sales, purchases, inventory, accounting, and backup. Clean-install verified.">
+  <meta name="twitter:image" content="https://www.bimalpharmacy.com.np/photo1.jpg">
   <link rel="stylesheet" href="style.css">
   <script src="components.js" defer></script>
   <style>
@@ -27,6 +37,33 @@
     .step-list li::before { content: counter(step); position: absolute; left: 0; top: .35rem; background: #047857; color: #fff; border-radius: 50%; width: 1.6rem; height: 1.6rem; line-height: 1.6rem; text-align: center; font-weight: 700; font-size: .82rem; }
     .bipro-small { color: #475569; font-size: .94rem; }
     @media print { site-header, site-footer { display: none; } }
+    /* Nepali guide */
+    .np-guide { border-top: 3px solid #047857; margin-top: 2.5rem; padding-top: 1.5rem; }
+    .np-guide > h2 { color: #064e3b; }
+    .np-toc { background: #f0fdf4; border: 1px solid #a7f3d0; border-radius: 10px; padding: 1rem 1.4rem 1rem 1.8rem; margin: .8rem 0 1.5rem; }
+    .np-toc p { margin: 0 0 .4rem; font-weight: 700; font-size: .9rem; color: #047857; }
+    .np-toc ol { margin: 0; padding-left: 1.2rem; }
+    .np-toc li { margin: .25rem 0; font-size: .92rem; }
+    .np-toc a { color: #065f46; text-decoration: none; }
+    .np-toc a:hover { text-decoration: underline; }
+    details.np-sec { border: 1px solid #d1fae5; border-radius: 10px; margin: .65rem 0; overflow: hidden; }
+    details.np-sec[open] { border-color: #6ee7b7; }
+    details.np-sec > summary { cursor: pointer; padding: .9rem 1.2rem; background: #f0fdf4; font-weight: 700; font-size: 1rem; list-style: none; display: flex; align-items: center; gap: .6rem; color: #064e3b; user-select: none; }
+    details.np-sec > summary::before { content: "▶"; font-size: .7rem; transition: transform .18s; color: #047857; flex-shrink: 0; }
+    details.np-sec[open] > summary::before { transform: rotate(90deg); }
+    details.np-sec > summary::-webkit-details-marker { display: none; }
+    .np-body { padding: 1rem 1.5rem 1.3rem; }
+    .np-body p, .np-body li { line-height: 1.65; }
+    .np-steps { list-style: none; padding: 0; margin: .5rem 0; }
+    .np-steps li { display: grid; grid-template-columns: 1.7rem 1fr; gap: .1rem .65rem; margin: .5rem 0; align-items: start; }
+    .np-steps li span.n { background: #047857; color: #fff; border-radius: 50%; width: 1.5rem; height: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 700; flex-shrink: 0; margin-top: .2rem; }
+    .np-note2 { border-left: 4px solid #0284c7; background: #eff6ff; padding: .65rem 1rem; border-radius: 0 6px 6px 0; margin: .7rem 0; color: #1e3a5f; font-size: .93rem; }
+    .np-warn2 { border-left: 4px solid #d97706; background: #fffbeb; padding: .65rem 1rem; border-radius: 0 6px 6px 0; margin: .7rem 0; color: #422006; font-size: .93rem; }
+    .np-tbl { width: 100%; border-collapse: collapse; margin: .5rem 0; font-size: .92rem; }
+    .np-tbl th, .np-tbl td { padding: .55rem .75rem; border-bottom: 1px solid #d1d5db; text-align: left; vertical-align: top; }
+    .np-tbl th { color: #374151; font-weight: 700; width: 36%; background: #f9fafb; }
+    .np-code { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 5px; padding: .2rem .55rem; font-family: monospace; font-size: .8rem; }
+    @media (max-width: 480px) { .np-body { padding: .85rem 1rem 1rem; } }
   </style>
 </head>
 <body>
@@ -129,9 +166,228 @@
     <p><a href="SHA256SUMS.txt">Full historical checksum list (SHA256SUMS.txt)</a></p>
   </section>
 
-  <section class="article-section">
-    <h2>नेपाली सारांश</h2>
-    <p>BIPRO PharmaOne एउटा Windows-आधारित अफलाइन फार्मेसी व्यवस्थापन सफ्टवेयर हो। बिक्री, खरिद, स्टक, हिसाबकिताब, र ब्याकअप सबै तपाईंकै कम्प्युटरमा सुरक्षित रहन्छ — कुनै क्लाउड सर्भरमा डेटा पठाइँदैन। PostgreSQL 17 र .NET 8 इन्स्टलरसँगै आउँछ, छुट्टै डाउनलोड गर्नु पर्दैन। पहिलो पटक चलाउँदा व्यापारको नाम, ठेगाना, र Administrator खाता बनाउने wizard आउँछ।</p>
+  <section class="article-section np-guide" id="np-guide">
+    <h2>नेपाली स्थापना तथा प्रयोगकर्ता पुस्तिका</h2>
+    <p>यो पुस्तिका BIPRO PharmaOne को स्थापनादेखि दैनिक सञ्चालनसम्मका सबै मूल कार्यहरू नेपालीमा वर्णन गर्छ।</p>
+
+    <nav class="np-toc" aria-label="पुस्तिकाको विषयसूची">
+      <p>विषयसूची</p>
+      <ol>
+        <li><a href="#np-s1">१. प्रणाली आवश्यकताहरू</a></li>
+        <li><a href="#np-s2">२. स्थापना (Installation)</a></li>
+        <li><a href="#np-s3">३. पहिलो पटकको सेटअप</a></li>
+        <li><a href="#np-s4">४. दैनिक सञ्चालन</a></li>
+        <li><a href="#np-s5">५. औषधि / उत्पादन Master</a></li>
+        <li><a href="#np-s6">६. ब्याकअप र पुनर्स्थापना</a></li>
+        <li><a href="#np-s7">७. अपग्रेड गर्ने तरिका</a></li>
+        <li><a href="#np-s8">८. समस्या समाधान</a></li>
+      </ol>
+    </nav>
+
+    <!-- S1 -->
+    <details class="np-sec" id="np-s1">
+      <summary>१. प्रणाली आवश्यकताहरू</summary>
+      <div class="np-body">
+        <table class="np-tbl">
+          <tbody>
+            <tr><th>अपरेटिङ सिस्टम</th><td>Windows 10 वा Windows 11 (64-bit)</td></tr>
+            <tr><th>PostgreSQL</th><td>PostgreSQL 17 — इन्स्टलरसँगै बन्डल, छुट्टै डाउनलोड आवश्यक छैन</td></tr>
+            <tr><th>.NET Runtime</th><td>.NET 8 Desktop Runtime — इन्स्टलरसँगै बन्डल</td></tr>
+            <tr><th>RAM</th><td>कम्तिमा 4 GB सिफारिस</td></tr>
+            <tr><th>डिस्क स्पेस</th><td>Application को लागि 1 GB; थप स्पेस database र ब्याकअपका लागि</td></tr>
+            <tr><th>इन्टरनेट</th><td>केवल इन्स्टलर डाउनलोड गर्न; स्थापनापछि पूर्णतः अफलाइन चल्छ</td></tr>
+            <tr><th>प्रिन्टर</th><td>Windows-compatible जुनसुकै प्रिन्टर; थर्मल रसिद प्रिन्टर पनि समर्थित</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- S2 -->
+    <details class="np-sec" id="np-s2">
+      <summary>२. स्थापना (Installation)</summary>
+      <div class="np-body">
+        <ol class="np-steps">
+          <li><span class="n">१</span><div>माथिको <strong>Download v1.0.3</strong> बटनबाट <code class="np-code">BIPRO_PharmaOne_Setup_v1.0.3.exe</code> डाउनलोड गर्नुहोस्।</div></li>
+          <li><span class="n">२</span><div>चाहेमा SHA-256 checksum मिलाएर फाइलको अखण्डता जाँच गर्नुहोस् (तलको "File checksum" खण्ड हेर्नुहोस्)।</div></li>
+          <li><span class="n">३</span><div>इन्स्टलर चलाउनुहोस्। Windows ले UAC (User Account Control) अनुमति माग्नेछ — <strong>Yes</strong> क्लिक गर्नुहोस्। PostgreSQL 17 Windows service को रूपमा स्थापना गर्न administrator अधिकार आवश्यक छ।</div></li>
+          <li><span class="n">४</span><div>Setup Wizard को निर्देशन पालना गर्नुहोस्। PostgreSQL 17 र .NET 8 Runtime नभएमा स्वचालित रूपमा स्थापना हुन्छ।</div></li>
+          <li><span class="n">५</span><div>Setup सकिएपछि Start Menu वा Desktop Shortcut बाट <strong>BIPRO PharmaOne</strong> खोल्नुहोस्।</div></li>
+          <li><span class="n">६</span><div>पहिलो पटक खुल्दा First-Run Setup Wizard आउँछ — तलको खण्ड ३ हेर्नुहोस्।</div></li>
+        </ol>
+        <div class="np-warn2"><strong>महत्त्वपूर्ण:</strong> डेटा मेटाउन वा reset गर्न application uninstall र reinstall गर्नु उचित होइन। Reinstall गर्दा database मेटिँदैन। डेटा व्यवस्थापनका लागि in-app ब्याकअप र restore प्रयोग गर्नुहोस्।</div>
+        <p><strong>स्थापना स्थान:</strong> पूर्वनिर्धारित रूपमा <code class="np-code">C:\BIPRO PharmaOne</code> मा स्थापना हुन्छ।</p>
+      </div>
+    </details>
+
+    <!-- S3 -->
+    <details class="np-sec" id="np-s3">
+      <summary>३. पहिलो पटकको सेटअप</summary>
+      <div class="np-body">
+        <p>पहिलो पटक application खोल्दा <strong>Initial Pharmacy Setup</strong> wizard देखिन्छ। निम्न जानकारी भर्नुहोस्:</p>
+        <table class="np-tbl">
+          <thead><tr><th>फिल्ड</th><th>विवरण</th></tr></thead>
+          <tbody>
+            <tr><th>Pharmacy / Business Name <span style="color:#dc2626">*</span></th><td>तपाईंको फार्मेसीको पूरा नाम (जस्तै: EVEREST PHARMACY)</td></tr>
+            <tr><th>Trade / Display Name</th><td>प्रदर्शन नाम — खाली छाड्न मिल्छ</td></tr>
+            <tr><th>Address <span style="color:#dc2626">*</span></th><td>फार्मेसीको ठेगाना (जस्तै: Main Road, Kathmandu)</td></tr>
+            <tr><th>Phone Number <span style="color:#dc2626">*</span></th><td>सम्पर्क फोन नम्बर</td></tr>
+            <tr><th>Email Address</th><td>ईमेल — ऐच्छिक</td></tr>
+            <tr><th>PAN / VAT Number</th><td>PAN वा VAT दर्ता नम्बर — दर्ता नभएमा खाली छाड्नुहोस्</td></tr>
+            <tr><th>DDA / Drug License Number</th><td>औषधि अनुज्ञापत्र नम्बर — ऐच्छिक</td></tr>
+            <tr><th>Starting Cash Memo No.</th><td>पहिलो challan नम्बर — पूर्वनिर्धारित <code class="np-code">BARE1001</code></td></tr>
+            <tr><th>Administrator Username <span style="color:#dc2626">*</span></th><td>3–32 अक्षर, अंक, dot, underscore वा hyphen</td></tr>
+            <tr><th>Administrator Password <span style="color:#dc2626">*</span></th><td>12–128 अक्षर</td></tr>
+            <tr><th>Confirm Password <span style="color:#dc2626">*</span></th><td>माथिकै password फेरि टाइप गर्नुहोस्</td></tr>
+          </tbody>
+        </table>
+        <div class="np-note2">Fiscal year को पूर्वनिर्धारित मान <strong>FY 2083/84</strong> (code: <code class="np-code">FY-2083-84</code>) हो। आवश्यकतानुसार परिवर्तन गर्न सकिन्छ।</div>
+        <p>Setup सकिएपछि तपाईंले सेट गरेको Administrator username र password बाट login गर्नुहोस्।</p>
+      </div>
+    </details>
+
+    <!-- S4 -->
+    <details class="np-sec" id="np-s4">
+      <summary>४. दैनिक सञ्चालन</summary>
+      <div class="np-body">
+        <p>Application खोल्दा login screen आउँछ। Administrator (वा सिर्जना गरिएको) username र password हाल्नुहोस्।</p>
+        <table class="np-tbl">
+          <thead><tr><th>कार्य</th><th>Menu बाट कसरी जाने</th></tr></thead>
+          <tbody>
+            <tr><th>नयाँ बिक्री challan</th><td><strong>Sales</strong> मेनु → New Challan</td></tr>
+            <tr><th>बिक्री इतिहास</th><td><strong>Sales</strong> → Challan History</td></tr>
+            <tr><th>बिक्री फिर्ता</th><td><strong>Sales</strong> → Sales Returns</td></tr>
+            <tr><th>नयाँ खरिद</th><td><strong>Purchase</strong> → New Purchase</td></tr>
+            <tr><th>खरिद फिर्ता</th><td><strong>Purchase</strong> → Purchase Returns</td></tr>
+            <tr><th>Supplier claim</th><td><strong>Purchase</strong> → Supplier Claims</td></tr>
+            <tr><th>स्टक हेर्ने</th><td><strong>Inventory</strong> मेनु → Stock Explorer</td></tr>
+            <tr><th>स्टक समायोजन</th><td><strong>Inventory</strong> → Stock Adjustment</td></tr>
+            <tr><th>ग्राहक भुक्तानी</th><td><strong>Finance</strong> → Customer Receipts</td></tr>
+            <tr><th>Supplier भुक्तानी</th><td><strong>Finance</strong> → Supplier Payments</td></tr>
+            <tr><th>हिसाबकिताब</th><td><strong>Accounts</strong> मेनु → Ledger, Trial Balance, P&amp;L, Balance Sheet</td></tr>
+            <tr><th>Report हेर्ने</th><td><strong>Reports</strong> मेनु</td></tr>
+            <tr><th>ब्याकअप</th><td><strong>Tools &amp; Settings</strong> → Backup / Restore</td></tr>
+          </tbody>
+        </table>
+        <div class="np-note2">Challan print गर्न बिक्री पछि <strong>Print</strong> बटन थिच्नुहोस्। Thermal र laser दुवै प्रिन्टर Windows printing मार्फत काम गर्छन्।</div>
+      </div>
+    </details>
+
+    <!-- S5 -->
+    <details class="np-sec" id="np-s5">
+      <summary>५. औषधि / उत्पादन Master</summary>
+      <div class="np-body">
+        <p>नयाँ औषधि थप्न: <strong>Masters</strong> मेनु → <strong>Medicine / Product Master</strong> → <strong>Add New</strong> बटन क्लिक गर्नुहोस्।</p>
+        <p><strong>Basic Information</strong></p>
+        <table class="np-tbl">
+          <tbody>
+            <tr><th>Product Code</th><td>स्वचालित रूपमा भरिन्छ (AUTO) — save गर्दा system ले नम्बर दिन्छ</td></tr>
+            <tr><th>Medicine / Brand Name <span style="color:#dc2626">*</span></th><td>औषधिको brand नाम (अनिवार्य)</td></tr>
+            <tr><th>Generic Name</th><td>सामान्य/generic नाम — ऐच्छिक</td></tr>
+            <tr><th>Manufacturer</th><td>निर्माता कम्पनी — ऐच्छिक</td></tr>
+            <tr><th>Category</th><td>वर्ग (जस्तै: Antibiotic, Vitamin) — ऐच्छिक</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Unit / Packing</strong></p>
+        <table class="np-tbl">
+          <tbody>
+            <tr><th>Base Retail Unit <span style="color:#dc2626">*</span></th><td>TABLET, CAPSULE, BOTTLE, PCS, PKT, VIAL, AMP, TUBE, SACHET, STRIP, BOX, JAR मध्ये छान्नुहोस्</td></tr>
+            <tr><th>Pack Size <span style="color:#dc2626">*</span></th><td>प्रति packet/strip मा एकाइ संख्या (जस्तै: 10 tablets = 10)</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Pricing</strong></p>
+        <table class="np-tbl">
+          <tbody>
+            <tr><th>Purchase Rate</th><td>खरिद मूल्य (प्रति unit)</td></tr>
+            <tr><th>Margin %</th><td>नाफा प्रतिशत — पूर्वनिर्धारित 16%</td></tr>
+            <tr><th>Suggested Rate</th><td>System ले Purchase Rate र Margin बाट गणना गर्छ — स्वचालित, सम्पादन गर्न मिल्दैन</td></tr>
+            <tr><th>Sale Rate</th><td>बिक्री मूल्य — Suggested Rate अनुसार स्वत: भरिन्छ, आवश्यकतानुसार बदल्न मिल्छ</td></tr>
+            <tr><th>MRP</th><td>Maximum Retail Price — ऐच्छिक</td></tr>
+            <tr><th>Discount %</th><td>पूर्वनिर्धारित छूट — ऐच्छिक</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Tax / Stock Control</strong></p>
+        <table class="np-tbl">
+          <tbody>
+            <tr><th>Taxable (VAT 13%)</th><td>VAT लाग्ने भए checkbox टिक गर्नुहोस्</td></tr>
+            <tr><th>Reorder Level</th><td>यति मात्रा बाँकी हुँदा कम स्टकको सूचना आउँछ</td></tr>
+            <tr><th>Safety Stock</th><td>न्यूनतम सुरक्षित स्टक</td></tr>
+            <tr><th>Active</th><td>सक्रिय छ भने टिक राख्नुहोस्; निष्क्रिय गर्न uncheck गर्नुहोस्</td></tr>
+          </tbody>
+        </table>
+        <div class="np-note2">Supplier बाट खरिद गर्दा batch, expiry, र purchase rate प्रत्येक पटक छुट्टाछुट्टै राख्न सकिन्छ — medicine master मा राखेको purchase rate एउटा पूर्वनिर्धारित मान मात्र हो।</div>
+      </div>
+    </details>
+
+    <!-- S6 -->
+    <details class="np-sec" id="np-s6">
+      <summary>६. ब्याकअप र पुनर्स्थापना</summary>
+      <div class="np-body">
+        <p><strong>ब्याकअप गर्ने तरिका:</strong> <strong>Tools &amp; Settings</strong> मेनु → <strong>Backup / Restore</strong> → <strong>Take Backup Now</strong> बटन थिच्नुहोस्।</p>
+        <p><strong>ब्याकअप फाइल कहाँ जान्छ?</strong></p>
+        <p>पूर्वनिर्धारित रूपमा ब्याकअप फाइलहरू यी स्थानहरूमा सुरक्षित हुन्छन्:</p>
+        <ul>
+          <li>पहिलो प्राथमिकता: <code class="np-code">%LOCALAPPDATA%\BIPRO PharmaOne\Backups</code><br><small style="color:#6b7280">(अर्थात् <code class="np-code">C:\Users\&lt;तपाईंको नाम&gt;\AppData\Local\BIPRO PharmaOne\Backups</code>)</small></li>
+          <li>वैकल्पिक: <code class="np-code">My Documents\BIPRO PharmaOne Backups</code></li>
+        </ul>
+        <p>ब्याकअप फोल्डर Tools &amp; Settings मा परिवर्तन गर्न सकिन्छ।</p>
+        <div class="np-warn2"><strong>अत्यन्त महत्त्वपूर्ण:</strong> नियमित रूपमा ब्याकअप फाइलहरू USB drive वा external hard disk मा copy गर्नुहोस्। केवल computer मा राखिएको ब्याकअप computer बिग्रिएमा काम लाग्दैन। Application ले आफैँ ब्याकअप cloud मा upload गर्दैन।</div>
+        <p>Application ले स्वचालित रूपमा दैनिक ब्याकअप पनि लिन्छ र पछिल्ला 30 ब्याकअप राख्छ; पुरानाहरू हटाइन्छन्।</p>
+        <p><strong>पुनर्स्थापना (Restore) गर्ने तरिका:</strong> <strong>Tools &amp; Settings</strong> → <strong>Backup / Restore</strong> → <strong>Restore from Backup</strong> → ब्याकअप फाइल छान्नुहोस् → निर्देशन पालना गर्नुहोस्।</p>
+        <div class="np-note2">Restore गर्नु अघि system ले ब्याकअप फाइलको SHA-256 hash स्वचालित रूपमा प्रमाणित गर्छ। corrupted फाइलबाट restore हुँदैन।</div>
+      </div>
+    </details>
+
+    <!-- S7 -->
+    <details class="np-sec" id="np-s7">
+      <summary>७. अपग्रेड गर्ने तरिका</summary>
+      <div class="np-body">
+        <ol class="np-steps">
+          <li><span class="n">१</span><div>यो page बाट नयाँ संस्करणको installer डाउनलोड गर्नुहोस्।</div></li>
+          <li><span class="n">२</span><div>ब्याकअप लिनुहोस् — अपग्रेड गर्नु अघि सुरक्षित प्रति राख्नु राम्रो अभ्यास हो।</div></li>
+          <li><span class="n">३</span><div>नयाँ installer चलाउनुहोस् र UAC अनुमति दिनुहोस्।</div></li>
+          <li><span class="n">४</span><div>Setup सकिएपछि application खोल्नुहोस् — database upgrade स्वचालित रूपमा हुन्छ।</div></li>
+          <li><span class="n">५</span><div>Login गरेर सामान्य कार्य जारी राख्नुहोस्।</div></li>
+        </ol>
+        <div class="np-note2">अपग्रेड गर्दा आफ्नो फार्मेसीको डेटा, ब्याकअप, र सेटिङहरू कायमै रहन्छन्। Uninstall गर्नु आवश्यक छैन।</div>
+      </div>
+    </details>
+
+    <!-- S8 -->
+    <details class="np-sec" id="np-s8">
+      <summary>८. समस्या समाधान</summary>
+      <div class="np-body">
+        <table class="np-tbl">
+          <thead><tr><th>समस्या</th><th>सम्भावित समाधान</th></tr></thead>
+          <tbody>
+            <tr>
+              <th>"PostgreSQL Server must be installed" भन्ने सन्देश आयो</th>
+              <td>PostgreSQL 17 installer संगै बन्डल छ तर EDB (EnterpriseDB) को Windows installer बाट मात्र detect हुन्छ। Docker वा msys2 बाट install भएको PostgreSQL काम गर्दैन। EDB installer बाट PostgreSQL 17 install गर्नुहोस्।</td>
+            </tr>
+            <tr>
+              <th>Application खोल्दा "Not Responding" देखिन्छ</th>
+              <td>पहिलो पटक वा upgrade पछि database migration चल्दा केही समय लाग्न सक्छ — प्रतीक्षा गर्नुहोस्। Progress window बन्द नगर्नुहोस्।</td>
+            </tr>
+            <tr>
+              <th>Backup setup माग्ने सन्देश आयो</th>
+              <td>पहिलो पटक ब्याकअप गर्दा PostgreSQL administrator password एक पटक माग्न सक्छ — यो Windows Credential Manager मा सुरक्षित गरिन्छ, पुनः माग्दैन।</td>
+            </tr>
+            <tr>
+              <th>Login password बिर्सनुभयो</th>
+              <td>Administrator password reset गर्न Maintenance credential आवश्यक पर्छ। फार्मेसी स्थापना गर्ने ब्यक्तिलाई सम्पर्क गर्नुहोस्।</td>
+            </tr>
+            <tr>
+              <th>Challan print भएन</th>
+              <td>Windows मा default printer set गरिएको छ कि छैन जाँच गर्नुहोस्। Tools &amp; Settings → Printer Settings मा जाँच गर्नुहोस्।</td>
+            </tr>
+            <tr>
+              <th>Application सुरु हुँदैन — error message आयो</th>
+              <td>PostgreSQL 17 service चलिरहेको छ कि छैन जाँच गर्नुहोस्: Start → Services → postgresql-x64-17 → Start। Windows Event Log मा थप विवरण हेर्न सकिन्छ।</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="np-note2"><strong>डेटा सुरक्षा सम्बन्धी:</strong> BIPRO PharmaOne तपाईंको कम्प्युटरमा सबै डेटा राख्छ — कुनै cloud सर्भरमा पठाइँदैन। नियमित ब्याकअप तपाईंको जिम्मेवारी हो।</div>
+      </div>
+    </details>
   </section>
 </main>
 <site-footer></site-footer>

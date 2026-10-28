@@ -8,11 +8,11 @@ Allow: /
 Disallow: /gallery.html
 Disallow: /vlog.html
 
-# Prevent indexing of temporary, thank you, or private files
+# Prevent indexing of temporary, thank you, or removed/private files
 Disallow: /private/
 Disallow: /tmp/
 Disallow: /thanks.html
-Disallow: /vendor-order.html
+Disallow: /vendor-order.html  # removed from source; disallow retained for any residual crawl
 
 # Google AdSense and Search Crawlers
 User-agent: Mediapartners-Google
