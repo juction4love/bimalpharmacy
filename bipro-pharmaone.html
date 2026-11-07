@@ -72,13 +72,13 @@
   <nav aria-label="Breadcrumb"><a href="index.html">Home</a> / BIPRO PharmaOne</nav>
 
   <div class="pharma-hero">
-    <div class="version-badge">v1.0.3 — Released 2026-10-28</div>
+    <div class="version-badge">v1.0.6 — Released 2026-11-07</div>
     <h1>BIPRO PharmaOne</h1>
-    <p>Offline pharmacy management software for Windows — sales, purchases, inventory, accounting, backup, and reports. Designed for retail pharmacies in Nepal. Clean-install tested on 2026-10-28.</p>
-    <a class="dl-btn" href="https://github.com/juction4love/BIPRO_PHARMAONE/releases/download/v1.0.3/BIPRO_PharmaOne_Setup_v1.0.3.exe" rel="noopener">
-      Download v1.0.3 (73 MB)
+    <p>Offline pharmacy management software for Windows — sales, purchases, inventory, accounting, backup, and reports. Designed for retail pharmacies in Nepal. Clean-install tested on 2026-11-07.</p>
+    <a class="dl-btn" href="https://github.com/juction4love/BIPRO_PHARMAONE/releases/download/v1.0.6/BIPRO_PharmaOne_Setup.exe" rel="noopener">
+      Download v1.0.6 (436 MB)
     </a>
-    <p class="dl-meta">Windows 10 / 11 &nbsp;·&nbsp; PostgreSQL 17 bundled &nbsp;·&nbsp; .NET 8 Runtime bundled</p>
+    <p class="dl-meta">Windows 10 / 11 &nbsp;·&nbsp; PostgreSQL 17.11-5 bundled &nbsp;·&nbsp; .NET 10 Runtime bundled</p>
   </div>
 
   <section class="article-section">
@@ -102,7 +102,7 @@
       <tbody>
         <tr><th>Operating system</th><td>Windows 10 or Windows 11 (64-bit)</td></tr>
         <tr><th>PostgreSQL</th><td>PostgreSQL 17 for Windows — bundled with the installer; no separate download needed.</td></tr>
-        <tr><th>.NET Runtime</th><td>.NET 8 Desktop Runtime — bundled with the installer; no separate download needed.</td></tr>
+        <tr><th>.NET Runtime</th><td>.NET 10 Desktop Runtime — bundled with the installer; no separate download needed.</td></tr>
         <tr><th>RAM</th><td>4 GB or more recommended</td></tr>
         <tr><th>Disk space</th><td>1 GB for the application; additional space for your pharmacy database and daily backups</td></tr>
         <tr><th>Internet</th><td>Only needed to download the installer. The application works fully offline after installation.</td></tr>
@@ -114,10 +114,10 @@
   <section class="article-section">
     <h2>Installation instructions</h2>
     <ol class="step-list">
-      <li>Download <code>BIPRO_PharmaOne_Setup_v1.0.3.exe</code> using the button above.</li>
+      <li>Download <code>BIPRO_PharmaOne_Setup.exe</code> using the button above.</li>
       <li>Verify the SHA-256 checksum (see below) if you want to confirm the file is unmodified.</li>
       <li>Run the installer. Accept the User Account Control (UAC) prompt if asked — PostgreSQL requires administrator rights to install as a Windows service.</li>
-      <li>Follow the setup wizard. PostgreSQL 17 and the .NET 8 Runtime are installed automatically if not already present.</li>
+      <li>Follow the setup wizard. PostgreSQL 17 and the .NET 10 Runtime are installed automatically if not already present.</li>
       <li>When setup finishes, launch <strong>BIPRO PharmaOne</strong> from the Start menu or desktop shortcut.</li>
       <li>On first run, the setup wizard asks for your business name, address, phone number, and optional PAN/VAT and drug licence numbers. It also creates an <strong>Administrator</strong> account (username and password) for the application.</li>
       <li>Set your fiscal year, starting challan number, and beginning stock as instructed by the wizard.</li>
@@ -133,16 +133,25 @@
   </section>
 
   <section class="article-section">
+    <h2>Release notes — v1.0.6 (2026-11-07)</h2>
+    <ul>
+      <li><strong>Activation Key licensing:</strong> RSA-2048 offline license with device binding (MachineGuid). The application requires a valid Activation Key on startup.</li>
+      <li><strong>Controlled Drug Register (CDR):</strong> Records controlled substance dispensing per Nepal DDA schedule A–D. Each entry is immutable after save.</li>
+      <li><strong>Prescription management:</strong> Prescription records with product linkage and immutability enforcement.</li>
+      <li><strong>Inventory revaluation (AUD-001 fix):</strong> When a purchase rate changes after GRN posting, the carrying-cost difference is now correctly journalised (DR 1200 / CR 1210). Retroactive revaluation applied for all existing batches on first upgrade.</li>
+      <li><strong>.NET 10 LTS:</strong> Runtime upgraded from .NET 8 to .NET 10 LTS (self-contained).</li>
+      <li><strong>PostgreSQL 17.11-5:</strong> Updated EDB bundled installer.</li>
+      <li><strong>Security:</strong> Trigger EXECUTE privilege revoked from PUBLIC (migration 0065); balance sheet Current Earnings sign corrected (migration 0066).</li>
+      <li>67 database migrations applied; 2083/2083 tests pass on the release build.</li>
+    </ul>
     <h2>Release notes — v1.0.3 (2026-10-28)</h2>
     <ul>
       <li>55 database migrations applied; full clean-install acceptance test passed.</li>
-      <li>Canonical party master: a customer and supplier with the same PAN/VAT number are now unified under a single party record, eliminating double-counting in subledger reports.</li>
-      <li>COGS and accounting restoration: cost-of-goods-sold and journal posting functions fully restored after previous phase migration.</li>
-      <li>Application Administrator authentication: first-run wizard now creates an Administrator login; login is required on subsequent starts.</li>
+      <li>Canonical party master: a customer and supplier with the same PAN/VAT number are now unified under a single party record.</li>
+      <li>COGS and accounting restoration: cost-of-goods-sold and journal posting functions fully restored.</li>
+      <li>Application Administrator authentication: first-run wizard now creates an Administrator login.</li>
       <li>Administrator password reset requires maintenance-access credential (migration 0055).</li>
-      <li>Books and reports function fixes (migration 0053).</li>
-      <li>Startup deadlock fix: the database upgrade progress window no longer causes the application to appear as "Not Responding" on slow machines.</li>
-      <li>All 577 source-level checks and full clean-install integration tests pass on the release build.</li>
+      <li>Startup deadlock fix: database upgrade progress window no longer causes "Not Responding".</li>
     </ul>
   </section>
 
@@ -159,9 +168,9 @@
   <section class="article-section">
     <h2>File checksum</h2>
     <p>Verify the installer using PowerShell before running it:</p>
-    <div class="checksum-box">Get-FileHash BIPRO_PharmaOne_Setup_v1.0.3.exe -Algorithm SHA256</div>
+    <div class="checksum-box">Get-FileHash BIPRO_PharmaOne_Setup.exe -Algorithm SHA256</div>
     <p>Expected SHA-256:</p>
-    <div class="checksum-box">5356A24535AC7DBA360AE9362FC5F98A6954CEA16F7A2538429F782982923814</div>
+    <div class="checksum-box">707bb990b5ed271e14ea95c881e9a6bf7a7188f43e9a9f2d88a08052a480daa3</div>
     <p>A mismatch means the file was corrupted or substituted in transit. Do not run a file that does not match.</p>
     <p><a href="SHA256SUMS.txt">Full historical checksum list (SHA256SUMS.txt)</a></p>
   </section>
@@ -192,7 +201,7 @@
           <tbody>
             <tr><th>अपरेटिङ सिस्टम</th><td>Windows 10 वा Windows 11 (64-bit)</td></tr>
             <tr><th>PostgreSQL</th><td>PostgreSQL 17 — इन्स्टलरसँगै बन्डल, छुट्टै डाउनलोड आवश्यक छैन</td></tr>
-            <tr><th>.NET Runtime</th><td>.NET 8 Desktop Runtime — इन्स्टलरसँगै बन्डल</td></tr>
+            <tr><th>.NET Runtime</th><td>.NET 10 Desktop Runtime — इन्स्टलरसँगै बन्डल</td></tr>
             <tr><th>RAM</th><td>कम्तिमा 4 GB सिफारिस</td></tr>
             <tr><th>डिस्क स्पेस</th><td>Application को लागि 1 GB; थप स्पेस database र ब्याकअपका लागि</td></tr>
             <tr><th>इन्टरनेट</th><td>केवल इन्स्टलर डाउनलोड गर्न; स्थापनापछि पूर्णतः अफलाइन चल्छ</td></tr>
@@ -207,10 +216,10 @@
       <summary>२. स्थापना (Installation)</summary>
       <div class="np-body">
         <ol class="np-steps">
-          <li><span class="n">१</span><div>माथिको <strong>Download v1.0.3</strong> बटनबाट <code class="np-code">BIPRO_PharmaOne_Setup_v1.0.3.exe</code> डाउनलोड गर्नुहोस्।</div></li>
+          <li><span class="n">१</span><div>माथिको <strong>Download v1.0.6</strong> बटनबाट <code class="np-code">BIPRO_PharmaOne_Setup.exe</code> डाउनलोड गर्नुहोस्।</div></li>
           <li><span class="n">२</span><div>चाहेमा SHA-256 checksum मिलाएर फाइलको अखण्डता जाँच गर्नुहोस् (तलको "File checksum" खण्ड हेर्नुहोस्)।</div></li>
           <li><span class="n">३</span><div>इन्स्टलर चलाउनुहोस्। Windows ले UAC (User Account Control) अनुमति माग्नेछ — <strong>Yes</strong> क्लिक गर्नुहोस्। PostgreSQL 17 Windows service को रूपमा स्थापना गर्न administrator अधिकार आवश्यक छ।</div></li>
-          <li><span class="n">४</span><div>Setup Wizard को निर्देशन पालना गर्नुहोस्। PostgreSQL 17 र .NET 8 Runtime नभएमा स्वचालित रूपमा स्थापना हुन्छ।</div></li>
+          <li><span class="n">४</span><div>Setup Wizard को निर्देशन पालना गर्नुहोस्। PostgreSQL 17 र .NET 10 Runtime नभएमा स्वचालित रूपमा स्थापना हुन्छ।</div></li>
           <li><span class="n">५</span><div>Setup सकिएपछि Start Menu वा Desktop Shortcut बाट <strong>BIPRO PharmaOne</strong> खोल्नुहोस्।</div></li>
           <li><span class="n">६</span><div>पहिलो पटक खुल्दा First-Run Setup Wizard आउँछ — तलको खण्ड ३ हेर्नुहोस्।</div></li>
         </ol>
