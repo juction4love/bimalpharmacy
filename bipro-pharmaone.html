@@ -85,15 +85,17 @@
     <h2>What is BIPRO PharmaOne?</h2>
     <p>BIPRO PharmaOne is a single-PC, offline retail pharmacy management application. It stores all data in a local PostgreSQL database — no cloud account, no internet subscription, no third-party server receives your pharmacy or patient data during normal operation.</p>
     <ul>
-      <li><strong>Sales:</strong> Cash sales, credit sales with customer ledger, challan history, and sales returns.</li>
-      <li><strong>Purchases:</strong> Cash and credit purchases, purchase returns, and supplier claims.</li>
-      <li><strong>Inventory:</strong> Batch tracking (FEFO), stock adjustments, physical count, expiry warnings, and negative-stock recovery.</li>
-      <li><strong>Accounting:</strong> Double-entry general ledger, trial balance, profit &amp; loss, balance sheet, and cash/bank books.</li>
-      <li><strong>Finance:</strong> Customer receipts, supplier payments, expense records, and other income.</li>
-      <li><strong>Reports:</strong> Purchase book, sales book, party statements, outstanding dues, and inventory valuation.</li>
-      <li><strong>Backup:</strong> Daily automatic backup and manual backup with the option to restore from a local archive.</li>
+      <li><strong>Sales:</strong> Cash sales and credit sales with customer ledger, cash memo history, and sales returns. Documents are printed as A4 or thermal challan.</li>
+      <li><strong>Purchases:</strong> Cash and credit purchases, purchase returns, and supplier claim register.</li>
+      <li><strong>Inventory:</strong> Batch tracking (FEFO), stock &amp; expiry control, stock adjustments, physical counts, inventory valuation, and carrying-cost revaluation.</li>
+      <li><strong>Prescription Register:</strong> Immutable prescription records with product linkage (v1.0.6).</li>
+      <li><strong>Controlled Drug Register:</strong> Dispensing records for Nepal DDA schedule A–D controlled substances, immutable after save (v1.0.6).</li>
+      <li><strong>Accounting:</strong> Double-entry general ledger, trial balance, profit &amp; loss, balance sheet, and day/cash/bank books.</li>
+      <li><strong>Finance:</strong> Customer receipts, supplier payments, expense records, other income, and fund transfers.</li>
+      <li><strong>Reports:</strong> Purchase book, sales book, VAT register, party statements, outstanding dues, and inventory valuation.</li>
+      <li><strong>Backup:</strong> Daily automatic backup (last 30 kept) and manual backup on demand. Backup files are saved to your local computer — no automatic cloud upload.</li>
     </ul>
-    <p class="bipro-note"><strong>Regulatory note:</strong> Sales documents are called CHALLAN (चालान). BIPRO PharmaOne is not IRD-approved, CBMS-certified, DDA-approved, or an authorized tax invoice system. It is a local record-keeping tool.</p>
+    <p class="pharma-note"><strong>Regulatory note:</strong> Sales documents are labelled CHALLAN (चालान). BIPRO PharmaOne is not IRD-approved, CBMS-certified, DDA-approved, or an authorised VAT invoice system. Live CBMS transmission is not enabled in this release. It is a local record-keeping tool for retail pharmacy operations.</p>
   </section>
 
   <section class="article-section">
@@ -101,12 +103,12 @@
     <table class="bipro-table">
       <tbody>
         <tr><th>Operating system</th><td>Windows 10 or Windows 11 (64-bit)</td></tr>
-        <tr><th>PostgreSQL</th><td>PostgreSQL 17 for Windows — bundled with the installer; no separate download needed.</td></tr>
+        <tr><th>PostgreSQL</th><td>PostgreSQL 17.11-5 for Windows — bundled with the installer; no separate download needed.</td></tr>
         <tr><th>.NET Runtime</th><td>.NET 10 Desktop Runtime — bundled with the installer; no separate download needed.</td></tr>
         <tr><th>RAM</th><td>4 GB or more recommended</td></tr>
         <tr><th>Disk space</th><td>1 GB for the application; additional space for your pharmacy database and daily backups</td></tr>
         <tr><th>Internet</th><td>Only needed to download the installer. The application works fully offline after installation.</td></tr>
-        <tr><th>Printer</th><td>Any Windows-compatible printer. Thermal receipt printers are supported through Windows printing.</td></tr>
+        <tr><th>Printer</th><td>Any Windows-compatible printer. Sales challans print A4 or 80 mm thermal. Reports, books, and accounts print A4.</td></tr>
       </tbody>
     </table>
   </section>
@@ -120,29 +122,35 @@
       <li>Follow the setup wizard. PostgreSQL 17 and the .NET 10 Runtime are installed automatically if not already present.</li>
       <li>When setup finishes, launch <strong>BIPRO PharmaOne</strong> from the Start menu or desktop shortcut.</li>
       <li>On first run, the setup wizard asks for your business name, address, phone number, and optional PAN/VAT and drug licence numbers. It also creates an <strong>Administrator</strong> account (username and password) for the application.</li>
-      <li>Set your fiscal year, starting challan number, and beginning stock as instructed by the wizard.</li>
+      <li>Set your fiscal year and starting cash memo number as instructed by the wizard.</li>
     </ol>
-    <p class="pharma-warn"><strong>Never uninstall and reinstall to reset data.</strong> Reinstalling does not erase the database. Use the in-app backup and restore workflow to manage your data safely. Keep backup copies in a separate safe location (USB drive, external drive, or cloud storage of your choice).</p>
+    <p class="pharma-warn"><strong>Never uninstall and reinstall to reset data.</strong> Reinstalling does not erase the database. Take a manual backup from <strong>Settings → Database Backup</strong> before any major change, and store copies on a USB drive or external disk.</p>
   </section>
 
   <section class="article-section">
     <h2>Your data stays on your computer</h2>
-    <p>BIPRO PharmaOne stores all pharmacy data — sales, purchases, customers, products, accounting journals — in a local PostgreSQL database on your PC. No data is sent to any remote server during normal operation. The application does not require a login to a cloud service to function.</p>
-    <p>Backup files are saved to a folder on your computer. You can copy them to any storage of your choice. The application does not upload backups automatically.</p>
-    <p>The CBMS transport feature (if present in a future version) has live sending disabled in the current release.</p>
+    <p>BIPRO PharmaOne stores all pharmacy data — sales, purchases, customers, products, accounting journals — in a local PostgreSQL database on your PC. No data is sent to any remote server during normal operation. The application works fully offline after installation and does not require a cloud login to function.</p>
+    <p>Backup files are saved to a folder on your local computer (<code>%LOCALAPPDATA%\BIPRO PharmaOne\Backups</code> by default). The application does not upload backups to any cloud service automatically. Copy backup files to a USB drive or external disk regularly — if your PC fails, backups stored only on the same machine may be lost.</p>
+    <p>The Nepal IRD / CBMS Readiness page is included in <strong>Settings</strong> for future configuration. Live CBMS transmission is not enabled in this release.</p>
+  </section>
+
+  <section class="article-section">
+    <h2>Activation Key</h2>
+    <p>BIPRO PharmaOne v1.0.6 requires an Activation Key issued by the software developer. The key is verified offline using RSA-2048 device binding — no internet connection is needed for activation or day-to-day use.</p>
+    <p>To activate: open <strong>Settings → Business Profile</strong> and use the activation panel. Paste the key provided by the developer. A key is tied to this installation and cannot be transferred to a different machine without a new key.</p>
+    <p>If you need an Activation Key, contact the developer who installed the software.</p>
   </section>
 
   <section class="article-section">
     <h2>Release notes — v1.0.6 (2026-11-07)</h2>
     <ul>
-      <li><strong>Activation Key licensing:</strong> RSA-2048 offline license with device binding (MachineGuid). The application requires a valid Activation Key on startup.</li>
-      <li><strong>Controlled Drug Register (CDR):</strong> Records controlled substance dispensing per Nepal DDA schedule A–D. Each entry is immutable after save.</li>
-      <li><strong>Prescription management:</strong> Prescription records with product linkage and immutability enforcement.</li>
-      <li><strong>Inventory revaluation (AUD-001 fix):</strong> When a purchase rate changes after GRN posting, the carrying-cost difference is now correctly journalised (DR 1200 / CR 1210). Retroactive revaluation applied for all existing batches on first upgrade.</li>
-      <li><strong>.NET 10 LTS:</strong> Runtime upgraded from .NET 8 to .NET 10 LTS (self-contained).</li>
-      <li><strong>PostgreSQL 17.11-5:</strong> Updated EDB bundled installer.</li>
-      <li><strong>Security:</strong> Trigger EXECUTE privilege revoked from PUBLIC (migration 0065); balance sheet Current Earnings sign corrected (migration 0066).</li>
-      <li>67 database migrations applied; 2083/2083 tests pass on the release build.</li>
+      <li><strong>Activation Key licensing:</strong> RSA-2048 offline license with device binding. The application requires a valid Activation Key; activation and all subsequent use are fully offline.</li>
+      <li><strong>Controlled Drug Register (CDR):</strong> Records controlled substance dispensing per Nepal DDA schedule A–D. Each CDR entry is immutable after save.</li>
+      <li><strong>Prescription Register:</strong> Immutable prescription records with product linkage.</li>
+      <li><strong>Inventory carrying-cost revaluation:</strong> When a purchase rate changes after a goods receipt is posted, the difference in carrying cost is now correctly journalised, keeping COGS accurate. Applied retroactively on first upgrade.</li>
+      <li><strong>.NET 10 LTS:</strong> Runtime upgraded from .NET 8 to .NET 10 LTS (self-contained, no separate .NET install required).</li>
+      <li><strong>PostgreSQL 17.11-5:</strong> Updated EDB bundled PostgreSQL installer.</li>
+      <li><strong>Security improvements:</strong> Database trigger privileges tightened; balance sheet Current Earnings sign corrected.</li>
     </ul>
     <h2>Release notes — v1.0.3 (2026-10-28)</h2>
     <ul>
@@ -187,7 +195,7 @@
         <li><a href="#np-s3">३. पहिलो पटकको सेटअप</a></li>
         <li><a href="#np-s4">४. दैनिक सञ्चालन</a></li>
         <li><a href="#np-s5">५. औषधि / उत्पादन Master</a></li>
-        <li><a href="#np-s6">६. ब्याकअप र पुनर्स्थापना</a></li>
+        <li><a href="#np-s6">६. ब्याकअप</a></li>
         <li><a href="#np-s7">७. अपग्रेड गर्ने तरिका</a></li>
         <li><a href="#np-s8">८. समस्या समाधान</a></li>
       </ol>
@@ -200,7 +208,7 @@
         <table class="np-tbl">
           <tbody>
             <tr><th>अपरेटिङ सिस्टम</th><td>Windows 10 वा Windows 11 (64-bit)</td></tr>
-            <tr><th>PostgreSQL</th><td>PostgreSQL 17 — इन्स्टलरसँगै बन्डल, छुट्टै डाउनलोड आवश्यक छैन</td></tr>
+            <tr><th>PostgreSQL</th><td>PostgreSQL 17.11-5 — इन्स्टलरसँगै बन्डल, छुट्टै डाउनलोड आवश्यक छैन</td></tr>
             <tr><th>.NET Runtime</th><td>.NET 10 Desktop Runtime — इन्स्टलरसँगै बन्डल</td></tr>
             <tr><th>RAM</th><td>कम्तिमा 4 GB सिफारिस</td></tr>
             <tr><th>डिस्क स्पेस</th><td>Application को लागि 1 GB; थप स्पेस database र ब्याकअपका लागि</td></tr>
@@ -223,7 +231,7 @@
           <li><span class="n">५</span><div>Setup सकिएपछि Start Menu वा Desktop Shortcut बाट <strong>BIPRO PharmaOne</strong> खोल्नुहोस्।</div></li>
           <li><span class="n">६</span><div>पहिलो पटक खुल्दा First-Run Setup Wizard आउँछ — तलको खण्ड ३ हेर्नुहोस्।</div></li>
         </ol>
-        <div class="np-warn2"><strong>महत्त्वपूर्ण:</strong> डेटा मेटाउन वा reset गर्न application uninstall र reinstall गर्नु उचित होइन। Reinstall गर्दा database मेटिँदैन। डेटा व्यवस्थापनका लागि in-app ब्याकअप र restore प्रयोग गर्नुहोस्।</div>
+        <div class="np-warn2"><strong>महत्त्वपूर्ण:</strong> डेटा मेटाउन वा reset गर्न application uninstall र reinstall गर्नु उचित होइन। Reinstall गर्दा database मेटिँदैन। ठूलो परिवर्तन गर्नुअघि <strong>Settings → Database Backup</strong> बाट ब्याकअप लिनुहोस् र USB drive मा copy राख्नुहोस्।</div>
         <p><strong>स्थापना स्थान:</strong> पूर्वनिर्धारित रूपमा <code class="np-code">C:\BIPRO PharmaOne</code> मा स्थापना हुन्छ।</p>
       </div>
     </details>
@@ -243,14 +251,15 @@
             <tr><th>Email Address</th><td>ईमेल — ऐच्छिक</td></tr>
             <tr><th>PAN / VAT Number</th><td>PAN वा VAT दर्ता नम्बर — दर्ता नभएमा खाली छाड्नुहोस्</td></tr>
             <tr><th>DDA / Drug License Number</th><td>औषधि अनुज्ञापत्र नम्बर — ऐच्छिक</td></tr>
-            <tr><th>Starting Cash Memo No.</th><td>पहिलो challan नम्बर — पूर्वनिर्धारित <code class="np-code">BARE1001</code></td></tr>
+            <tr><th>Starting Cash Memo Number</th><td>पहिलो Cash Memo नम्बर — पूर्वनिर्धारित <code class="np-code">BARE1001</code></td></tr>
             <tr><th>Administrator Username <span style="color:#dc2626">*</span></th><td>3–32 अक्षर, अंक, dot, underscore वा hyphen</td></tr>
             <tr><th>Administrator Password <span style="color:#dc2626">*</span></th><td>12–128 अक्षर</td></tr>
-            <tr><th>Confirm Password <span style="color:#dc2626">*</span></th><td>माथिकै password फेरि टाइप गर्नुहोस्</td></tr>
+            <tr><th>Confirm Administrator Password <span style="color:#dc2626">*</span></th><td>माथिकै password फेरि टाइप गर्नुहोस्</td></tr>
           </tbody>
         </table>
         <div class="np-note2">Fiscal year को पूर्वनिर्धारित मान <strong>FY 2083/84</strong> (code: <code class="np-code">FY-2083-84</code>) हो। आवश्यकतानुसार परिवर्तन गर्न सकिन्छ।</div>
         <p>Setup सकिएपछि तपाईंले सेट गरेको Administrator username र password बाट login गर्नुहोस्।</p>
+        <div class="np-note2"><strong>Activation Key (v1.0.6):</strong> BIPRO PharmaOne v1.0.6 मा software developer ले दिएको Activation Key आवश्यक पर्छ। Key activate गर्न: <strong>Settings → Business Profile</strong> खोल्नुहोस् र activation panel मा key paste गर्नुहोस्। Internet connection आवश्यक छैन — activation पूर्णतः offline हुन्छ।</div>
       </div>
     </details>
 
@@ -262,22 +271,25 @@
         <table class="np-tbl">
           <thead><tr><th>कार्य</th><th>Menu बाट कसरी जाने</th></tr></thead>
           <tbody>
-            <tr><th>नयाँ बिक्री challan</th><td><strong>Sales</strong> मेनु → New Challan</td></tr>
-            <tr><th>बिक्री इतिहास</th><td><strong>Sales</strong> → Challan History</td></tr>
+            <tr><th>नगद बिक्री challan</th><td><strong>Sales</strong> → Cash Sale</td></tr>
+            <tr><th>उधारो बिक्री</th><td><strong>Sales</strong> → Credit Sale</td></tr>
+            <tr><th>बिक्री इतिहास</th><td><strong>Sales</strong> → Cash Memo History</td></tr>
             <tr><th>बिक्री फिर्ता</th><td><strong>Sales</strong> → Sales Returns</td></tr>
-            <tr><th>नयाँ खरिद</th><td><strong>Purchase</strong> → New Purchase</td></tr>
+            <tr><th>नगद खरिद</th><td><strong>Purchase</strong> → Cash Purchase</td></tr>
+            <tr><th>उधारो खरिद</th><td><strong>Purchase</strong> → Credit Purchase</td></tr>
             <tr><th>खरिद फिर्ता</th><td><strong>Purchase</strong> → Purchase Returns</td></tr>
-            <tr><th>Supplier claim</th><td><strong>Purchase</strong> → Supplier Claims</td></tr>
-            <tr><th>स्टक हेर्ने</th><td><strong>Inventory</strong> मेनु → Stock Explorer</td></tr>
-            <tr><th>स्टक समायोजन</th><td><strong>Inventory</strong> → Stock Adjustment</td></tr>
-            <tr><th>ग्राहक भुक्तानी</th><td><strong>Finance</strong> → Customer Receipts</td></tr>
-            <tr><th>Supplier भुक्तानी</th><td><strong>Finance</strong> → Supplier Payments</td></tr>
-            <tr><th>हिसाबकिताब</th><td><strong>Accounts</strong> मेनु → Ledger, Trial Balance, P&amp;L, Balance Sheet</td></tr>
-            <tr><th>Report हेर्ने</th><td><strong>Reports</strong> मेनु</td></tr>
-            <tr><th>ब्याकअप</th><td><strong>Tools &amp; Settings</strong> → Backup / Restore</td></tr>
+            <tr><th>Supplier claim</th><td><strong>Purchase</strong> → Supplier Claim Register</td></tr>
+            <tr><th>स्टक र म्याद हेर्ने</th><td><strong>Inventory</strong> → Stock &amp; Expiry Control</td></tr>
+            <tr><th>स्टक समायोजन</th><td><strong>Inventory</strong> → Stock Adjustments</td></tr>
+            <tr><th>भौतिक गणना</th><td><strong>Inventory</strong> → Physical Counts</td></tr>
+            <tr><th>ग्राहक भुक्तानी</th><td><strong>Finance</strong> → Customer Receipt Entry</td></tr>
+            <tr><th>Supplier भुक्तानी</th><td><strong>Finance</strong> → Supplier Payment Entry</td></tr>
+            <tr><th>हिसाबकिताब</th><td><strong>Accounts</strong> → General Ledger, Trial Balance, Profit &amp; Loss, Balance Sheet</td></tr>
+            <tr><th>Report हेर्ने</th><td><strong>Reports</strong> → Books &amp; Reports Center</td></tr>
+            <tr><th>ब्याकअप</th><td><strong>Settings</strong> → Database Backup</td></tr>
           </tbody>
         </table>
-        <div class="np-note2">Challan print गर्न बिक्री पछि <strong>Print</strong> बटन थिच्नुहोस्। Thermal र laser दुवै प्रिन्टर Windows printing मार्फत काम गर्छन्।</div>
+        <div class="np-note2">Challan print गर्न बिक्री पछि <strong>Print</strong> बटन थिच्नुहोस्। A4 र 80 mm thermal दुवै format Settings → Printer Settings मा छान्न मिल्छ।</div>
       </div>
     </details>
 
@@ -329,20 +341,18 @@
 
     <!-- S6 -->
     <details class="np-sec" id="np-s6">
-      <summary>६. ब्याकअप र पुनर्स्थापना</summary>
+      <summary>६. ब्याकअप</summary>
       <div class="np-body">
-        <p><strong>ब्याकअप गर्ने तरिका:</strong> <strong>Tools &amp; Settings</strong> मेनु → <strong>Backup / Restore</strong> → <strong>Take Backup Now</strong> बटन थिच्नुहोस्।</p>
+        <p><strong>ब्याकअप गर्ने तरिका:</strong> <strong>Settings</strong> मेनु → <strong>Database Backup</strong> → <strong>Backup Now</strong> बटन थिच्नुहोस्।</p>
         <p><strong>ब्याकअप फाइल कहाँ जान्छ?</strong></p>
-        <p>पूर्वनिर्धारित रूपमा ब्याकअप फाइलहरू यी स्थानहरूमा सुरक्षित हुन्छन्:</p>
+        <p>पूर्वनिर्धारित रूपमा ब्याकअप फाइलहरू यहाँ सुरक्षित हुन्छन्:</p>
         <ul>
-          <li>पहिलो प्राथमिकता: <code class="np-code">%LOCALAPPDATA%\BIPRO PharmaOne\Backups</code><br><small style="color:#6b7280">(अर्थात् <code class="np-code">C:\Users\&lt;तपाईंको नाम&gt;\AppData\Local\BIPRO PharmaOne\Backups</code>)</small></li>
-          <li>वैकल्पिक: <code class="np-code">My Documents\BIPRO PharmaOne Backups</code></li>
+          <li><code class="np-code">%LOCALAPPDATA%\BIPRO PharmaOne\Backups</code><br><small style="color:#6b7280">(अर्थात् <code class="np-code">C:\Users\&lt;तपाईंको नाम&gt;\AppData\Local\BIPRO PharmaOne\Backups</code>)</small></li>
         </ul>
-        <p>ब्याकअप फोल्डर Tools &amp; Settings मा परिवर्तन गर्न सकिन्छ।</p>
-        <div class="np-warn2"><strong>अत्यन्त महत्त्वपूर्ण:</strong> नियमित रूपमा ब्याकअप फाइलहरू USB drive वा external hard disk मा copy गर्नुहोस्। केवल computer मा राखिएको ब्याकअप computer बिग्रिएमा काम लाग्दैन। Application ले आफैँ ब्याकअप cloud मा upload गर्दैन।</div>
-        <p>Application ले स्वचालित रूपमा दैनिक ब्याकअप पनि लिन्छ र पछिल्ला 30 ब्याकअप राख्छ; पुरानाहरू हटाइन्छन्।</p>
-        <p><strong>पुनर्स्थापना (Restore) गर्ने तरिका:</strong> <strong>Tools &amp; Settings</strong> → <strong>Backup / Restore</strong> → <strong>Restore from Backup</strong> → ब्याकअप फाइल छान्नुहोस् → निर्देशन पालना गर्नुहोस्।</p>
-        <div class="np-note2">Restore गर्नु अघि system ले ब्याकअप फाइलको SHA-256 hash स्वचालित रूपमा प्रमाणित गर्छ। corrupted फाइलबाट restore हुँदैन।</div>
+        <p>ब्याकअप फोल्डर <strong>Settings → Database Backup</strong> मा परिवर्तन गर्न सकिन्छ। Database Backup page मा ब्याकअप सूची (Backup History) पनि देख्न मिल्छ।</p>
+        <p>Application ले स्वचालित रूपमा दैनिक ब्याकअप लिन्छ र पछिल्ला 30 routine ब्याकअप राख्छ — पुरानाहरू स्वतः हटाइन्छन्। Manual, pre-upgrade, र year-end ब्याकअपहरू सधैँ राखिन्छन्।</p>
+        <div class="np-warn2"><strong>अत्यन्त महत्त्वपूर्ण:</strong> नियमित रूपमा ब्याकअप फाइलहरू USB drive वा external hard disk मा copy गर्नुहोस्। केवल computer मा राखिएको ब्याकअप computer बिग्रिएमा काम लाग्दैन। Application ले ब्याकअप cloud मा upload गर्दैन।</div>
+        <div class="np-note2">Database डेटा restore गर्नु पर्ने भएमा software developer लाई सम्पर्क गर्नुहोस्।</div>
       </div>
     </details>
 
@@ -386,7 +396,7 @@
             </tr>
             <tr>
               <th>Challan print भएन</th>
-              <td>Windows मा default printer set गरिएको छ कि छैन जाँच गर्नुहोस्। Tools &amp; Settings → Printer Settings मा जाँच गर्नुहोस्।</td>
+              <td>Windows मा default printer set गरिएको छ कि छैन जाँच गर्नुहोस्। <strong>Settings → Printer Settings</strong> मा A4 वा Thermal format र printer छानिएको छ कि छैन जाँच गर्नुहोस्।</td>
             </tr>
             <tr>
               <th>Application सुरु हुँदैन — error message आयो</th>
