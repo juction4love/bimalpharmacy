@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BIPRO PharmaOne | Pharmacy Management Software for Nepal</title>
-  <meta name="description" content="BIPRO PharmaOne — offline pharmacy management software for Windows. Sales, purchases, inventory, accounting, and backup. Clean-install verified.">
+  <meta name="description" content="BIPRO PharmaOne — offline pharmacy management software for Windows. Sales, purchases, inventory, accounting, and backup. 30-day free trial included.">
   <link rel="canonical" href="https://www.bimalpharmacy.com.np/bipro-pharmaone">
   <meta property="og:title" content="BIPRO PharmaOne | Pharmacy Management Software for Nepal">
-  <meta property="og:description" content="BIPRO PharmaOne — offline pharmacy management software for Windows. Sales, purchases, inventory, accounting, and backup. Clean-install verified.">
+  <meta property="og:description" content="BIPRO PharmaOne — offline pharmacy management software for Windows. Sales, purchases, inventory, accounting, and backup. 30-day free trial included.">
   <meta property="og:url" content="https://www.bimalpharmacy.com.np/bipro-pharmaone">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.bimalpharmacy.com.np/photo1.jpg">
   <meta property="og:site_name" content="Bimal Pharmacy">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BIPRO PharmaOne | Pharmacy Management Software for Nepal">
-  <meta name="twitter:description" content="BIPRO PharmaOne — offline pharmacy management software for Windows. Sales, purchases, inventory, accounting, and backup. Clean-install verified.">
+  <meta name="twitter:description" content="BIPRO PharmaOne — offline pharmacy management software for Windows. Sales, purchases, inventory, accounting, and backup. 30-day free trial included.">
   <meta name="twitter:image" content="https://www.bimalpharmacy.com.np/photo1.jpg">
   <link rel="stylesheet" href="style.css">
   <script src="components.js" defer></script>
@@ -74,7 +74,7 @@
   <div class="pharma-hero">
     <div class="version-badge">v1.0.7 — Released 2026-11-08</div>
     <h1>BIPRO PharmaOne</h1>
-    <p>Offline pharmacy management software for Windows — sales, purchases, inventory, accounting, backup, and reports. Designed for retail pharmacies in Nepal. Includes a 30-day free trial. Clean-install tested on 2026-11-08.</p>
+    <p>Offline pharmacy management software for Windows — sales, purchases, inventory, accounting, backup, and reports. Designed for retail pharmacies in Nepal. Includes a 30-day free trial.</p>
     <a class="dl-btn" href="https://github.com/juction4love/BIPRO_PHARMAONE_RELEASES/releases/download/v1.0.7/BIPRO_PharmaOne_Bundled_v1.0.7.exe" rel="noopener">
       Download v1.0.7 (437 MB)
     </a>
@@ -137,7 +137,8 @@
   <section class="article-section">
     <h2>Free Trial and Activation</h2>
     <p>New installations of BIPRO PharmaOne v1.0.7 start a <strong>30-day free trial</strong> automatically. No registration is required during the trial. The trial status is shown in the application status bar.</p>
-    <p>After the trial period, activate the application by emailing <strong>admin@bimalpharmacy.com.np</strong>. Use the <strong>Activate License</strong> dialog in the Dashboard — it generates a unique Activation Key request with your pharmacy details. Email this request to the owner for review and approval. The owner will send back a signed license key by email. Paste the key in the same activation dialog to activate.</p>
+    <p>After the trial period, activate the application by emailing <strong>admin@bimalpharmacy.com.np</strong>. Use the <strong>Activate License</strong> dialog in the Dashboard — it generates an activation request containing your pharmacy name, installation identifier, and registration details. Email this request to the owner for review and approval. After the owner approves, a signed license key is returned by email. Paste the key in the same activation dialog to activate.</p>
+    <p class="pharma-note"><strong>Privacy note:</strong> The activation request intentionally includes your pharmacy details and installation metadata so the owner can verify the request. This information is shared with admin@bimalpharmacy.com.np during the activation email exchange. Normal day-to-day operation of the application does not send any data to a remote server.</p>
     <p>License verification is performed offline using RSA-2048 device binding — no internet connection is needed for day-to-day use after activation. A license is tied to this installation and cannot be transferred to a different machine without a new key.</p>
     <p>After license expiry: Dashboard and Sales Billing remain accessible. Purchase, Inventory, Returns, and Claims require a renewed license. Renewal reminders appear on the Dashboard starting 30 days before expiry.</p>
   </section>
@@ -146,7 +147,7 @@
     <h2>Release notes — v1.0.7 (2026-11-08)</h2>
     <ul>
       <li><strong>30-day free trial:</strong> New installations start a 30-day trial automatically. Trial is machine-keyed and clock-rollback resistant. Trial status shown in the application status bar throughout the trial period.</li>
-      <li><strong>Email-based activation:</strong> After the trial, submit an activation request from the Dashboard. The owner reviews and approves by email and returns a signed license key. No data leaves the device during activation.</li>
+      <li><strong>Email-based activation:</strong> After the trial, submit an activation request from the Dashboard. The activation request includes your pharmacy name, installation identifier, and registration details, which are shared with the owner by email for review and approval. The owner returns a signed license key by email after approval.</li>
       <li><strong>Annual renewal reminders:</strong> Licensed installations display a renewal reminder on the Dashboard starting 30 days before expiry, with follow-up reminders at 15, 7, 1 day, and on the expiry date. Each reminder can be dismissed individually. "Renew via Email" opens a pre-drafted email in the system mail client.</li>
       <li><strong>Post-expiry access policy:</strong> Dashboard and Sales Billing always accessible after expiry. Purchase, Inventory, Returns, and Claims restricted until a renewed license is activated.</li>
       <li><strong>Data-safe upgrade from v1.0.6:</strong> All pharmacy data, settings, and existing licenses are preserved on upgrade. No manual migration required.</li>
@@ -181,7 +182,7 @@
       <li>Printer compatibility is tested with common laser and thermal printers but not verified across all printer models.</li>
       <li>Nepali BS date entry is supported for expiry fields. Full BS-calendar input for all date fields may be added in a future version.</li>
       <li>Activation requires email exchange with the owner (admin@bimalpharmacy.com.np). There is no instant automated online activation in this release.</li>
-      <li>The 30-day trial is per-device. Installing on a new machine starts a new trial on that machine.</li>
+      <li>The 30-day trial is machine-keyed. Reinstalling on the same machine does not reset the trial period.</li>
     </ul>
   </section>
 
