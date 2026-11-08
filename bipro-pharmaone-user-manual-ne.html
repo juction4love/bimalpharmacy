@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIPRO PharmaOne — प्रयोगकर्ता मार्गदर्शिका</title>
+<style>
+:root {
+  --primary: #16a34a;
+  --primary-dark: #15803d;
+  --primary-light: #dcfce7;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --accent: #0f172a;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+  --info: #3b82f6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Nirmala UI', 'Mangal', 'Arial Unicode MS', Segoe UI, sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  background: var(--bg);
+  color: var(--text);
+}
+a { color: var(--primary-dark); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Cover page */
+.cover {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 40px;
+  page-break-after: always;
+}
+.cover .logo-box {
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 24px 48px;
+  margin-bottom: 40px;
+  display: inline-block;
+}
+.cover .product-name { font-size: 42px; font-weight: 700; letter-spacing: -1px; }
+.cover .product-sub  { font-size: 18px; opacity: 0.85; margin-top: 6px; }
+.cover h1 { font-size: 28px; font-weight: 700; margin: 32px 0 12px; line-height: 1.4; }
+.cover .subtitle { font-size: 17px; opacity: 0.80; max-width: 540px; }
+.cover .meta { margin-top: 60px; opacity: 0.65; font-size: 14px; }
+.cover .meta div { margin: 4px 0; }
+
+/* Layout */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: 300px;
+  background: #0f172a;
+  color: #cbd5e1;
+  overflow-y: auto;
+  padding: 20px 0;
+  z-index: 100;
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid #1e293b;
+  margin-bottom: 8px;
+}
+.sidebar-header .brand { color: #4ade80; font-weight: 700; font-size: 15px; }
+.sidebar-header .brand-sub { font-size: 12px; color: #64748b; margin-top: 2px; }
+.sidebar nav a {
+  display: block;
+  padding: 6px 20px;
+  font-size: 13px;
+  color: #94a3b8;
+  transition: background 0.15s;
+}
+.sidebar nav a:hover { background: #1e293b; color: #e2e8f0; text-decoration: none; }
+.sidebar nav a.section-header {
+  color: #4ade80;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 16px;
+  padding: 4px 20px;
+  cursor: default;
+}
+.sidebar nav a.section-header:hover { background: none; color: #4ade80; }
+
+main {
+  margin-left: 300px;
+  padding: 48px 56px;
+  max-width: 1000px;
+}
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  main { margin-left: 0; padding: 24px 20px; }
+}
+
+/* Typography */
+h1 { font-size: 30px; font-weight: 700; color: #0f172a; border-bottom: 3px solid var(--primary); padding-bottom: 12px; margin: 48px 0 20px; }
+h1:first-child { margin-top: 0; }
+h2 { font-size: 22px; font-weight: 700; color: #1e293b; margin: 36px 0 14px; }
+h3 { font-size: 18px; font-weight: 600; color: var(--primary-dark); margin: 28px 0 10px; }
+h4 { font-size: 15px; font-weight: 600; color: #374151; margin: 20px 0 8px; }
+p { margin-bottom: 14px; }
+ul, ol { margin: 12px 0 16px 24px; }
+li { margin-bottom: 6px; }
+
+/* Callouts */
+.note, .warning, .tip, .important {
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 20px 0;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.note     { background: #eff6ff; border-left: 4px solid #3b82f6; }
+.warning  { background: #fffbeb; border-left: 4px solid #f59e0b; }
+.tip      { background: #f0fdf4; border-left: 4px solid #22c55e; }
+.important{ background: #fef2f2; border-left: 4px solid #dc2626; }
+.note .icon     { color: #3b82f6; font-size: 18px; flex-shrink: 0; }
+.warning .icon  { color: #f59e0b; font-size: 18px; flex-shrink: 0; }
+.tip .icon      { color: #22c55e; font-size: 18px; flex-shrink: 0; }
+.important .icon{ color: #dc2626; font-size: 18px; flex-shrink: 0; }
+
+/* Steps */
+.steps { counter-reset: step; margin: 16px 0; }
+.step  { display: flex; gap: 16px; margin-bottom: 14px; align-items: flex-start; }
+.step-num {
+  counter-increment: step;
+  content: counter(step);
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.step-num::before { content: counter(step); }
+.steps .step-num { counter-increment: step; }
+.step-content { flex: 1; }
+
+/* Field table */
+.field-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14px; }
+.field-table th { background: #0f172a; color: white; padding: 10px 14px; text-align: left; }
+.field-table td { padding: 9px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.field-table tr:last-child td { border-bottom: none; }
+.field-table tr:nth-child(even) td { background: #f8fafc; }
+.required { color: var(--danger); font-weight: 700; }
+.optional { color: var(--text-muted); }
+
+/* Keyboard shortcuts */
+kbd {
+  background: #1e293b;
+  color: #f1f5f9;
+  border: 1px solid #334155;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+/* Nav path */
+.nav-path {
+  background: #1e293b;
+  color: #4ade80;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-family: monospace;
+  margin: 12px 0;
+  display: inline-block;
+}
+
+/* Chapter badge */
+.chapter-badge {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  border-radius: 20px;
+  padding: 3px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* Quick start box */
+.quick-box {
+  background: var(--primary-light);
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+.quick-box h4 { color: var(--primary-dark); margin-top: 0; }
+
+/* Checklist */
+.checklist { list-style: none; margin-left: 0; }
+.checklist li { padding: 6px 0; padding-left: 28px; position: relative; }
+.checklist li::before { content: "☐"; position: absolute; left: 0; color: var(--primary); font-size: 16px; }
+
+/* Print styles */
+@media print {
+  .sidebar { display: none; }
+  main { margin-left: 0; padding: 20px; }
+  h1 { page-break-before: always; }
+  .cover { page-break-after: always; }
+  .note, .warning, .tip { page-break-inside: avoid; }
+  a { color: inherit; }
+}
+
+.toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin: 20px 0; }
+@media (max-width: 600px) { .toc-grid { grid-template-columns: 1fr; } }
+.toc-item { font-size: 14px; padding: 4px 0; border-bottom: 1px dotted var(--border); }
+.toc-item a { display: flex; justify-content: space-between; gap: 8px; }
+.toc-ch { color: var(--primary-dark); font-weight: 600; white-space: nowrap; }
+.toc-title { flex: 1; }
+
+.print-btn {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 200;
+  font-family: 'Nirmala UI', 'Mangal', sans-serif;
+}
+.print-btn:hover { background: var(--primary-dark); }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover" id="cover">
+  <div class="logo-box">
+    <div class="product-name">BIPRO PharmaOne</div>
+    <div class="product-sub">RETAIL PHARMACY ERP</div>
+  </div>
+  <h1>प्रयोगकर्ता मार्गदर्शिका<br><small style="font-size:18px;font-weight:400;opacity:0.9">Nepali User Guide</small></h1>
+  <p class="subtitle">फार्मेसी व्यवस्थापनका लागि सम्पूर्ण निर्देशिका —<br>संस्थापन, दैनिक सञ्चालन, रिपोर्टिङ र लेखा।</p>
+  <div class="meta">
+    <div>संस्करण: v1.0.6 &nbsp;|&nbsp; .NET 10, Windows &nbsp;|&nbsp; PostgreSQL 17</div>
+    <div>भाषा: नेपाली (Nepali) &nbsp;|&nbsp; Developed by Bimal Lamichhane</div>
+    <div>सम्पर्क: admin@bimalpharmacy.com.np</div>
+  </div>
+</div>
+
+<!-- SIDEBAR NAV -->
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="brand">BIPRO PharmaOne</div>
+    <div class="brand-sub">प्रयोगकर्ता मार्गदर्शिका v1.0.6</div>
+  </div>
+  <nav>
+    <a href="#cover" class="section-header">सुरु</a>
+    <a href="#toc">विषय-सूची</a>
+    <a href="#ch01" class="section-header">परिचय</a>
+    <a href="#ch01">१. परिचय</a>
+    <a href="#ch02">२. संस्थापन</a>
+    <a href="#ch03">३. लगइन र लाइसेन्स</a>
+    <a href="#ch04">४. ड्यासबोर्ड</a>
+    <a href="#ch05">५. व्यापार प्रोफाइल</a>
+    <a href="#ch06" class="section-header">मास्टर डेटा</a>
+    <a href="#ch06">६. उत्पादन मास्टर</a>
+    <a href="#ch07">७. आपूर्तिकर्ता</a>
+    <a href="#ch08">८. ग्राहक</a>
+    <a href="#ch09" class="section-header">खरिद</a>
+    <a href="#ch09">९. खरिद प्रविष्टि</a>
+    <a href="#ch10">१०. खरिद फिर्ता</a>
+    <a href="#ch11" class="section-header">स्टक</a>
+    <a href="#ch11">११. ब्याच र म्याद</a>
+    <a href="#ch12">१२. स्टक समायोजन</a>
+    <a href="#ch13">१३. भौतिक गणना</a>
+    <a href="#ch14" class="section-header">बिक्री</a>
+    <a href="#ch14">१४. नगद बिक्री</a>
+    <a href="#ch15">१५. उधारो बिक्री</a>
+    <a href="#ch16">१६. बिक्री फिर्ता</a>
+    <a href="#ch17" class="section-header">वित्त</a>
+    <a href="#ch17">१७. ग्राहक भुक्तान</a>
+    <a href="#ch18">१८. आपूर्तिकर्ता भुक्तानी</a>
+    <a href="#ch19">१९. खर्च र आय</a>
+    <a href="#ch20">२०. नगद/बैंक स्थानान्तरण</a>
+    <a href="#ch21" class="section-header">लेखा</a>
+    <a href="#ch21">२१. खाता र Journal</a>
+    <a href="#ch22">२२. ट्रायल ब्यालेन्स</a>
+    <a href="#ch23">२३. नाफा-नोक्सान</a>
+    <a href="#ch24">२४. ब्यालेन्स सिट</a>
+    <a href="#ch25" class="section-header">रिपोर्ट</a>
+    <a href="#ch25">२५. रिपोर्ट गाइड</a>
+    <a href="#ch26" class="section-header">सेटिङ</a>
+    <a href="#ch26">२६. प्रिन्टर सेटिङ</a>
+    <a href="#ch27">२७. डेटाबेस ब्याकअप</a>
+    <a href="#ch28">२८. CBMS / भ्याट</a>
+    <a href="#ch29" class="section-header">सहयोग</a>
+    <a href="#ch29">२९. समस्या समाधान</a>
+    <a href="#ch30">३०. दैनिक जाँचसूची</a>
+  </nav>
+</div>
+
+<!-- MAIN CONTENT -->
+<main>
+
+<!-- TABLE OF CONTENTS -->
+<section id="toc">
+<h1>विषय-सूची</h1>
+<div class="toc-grid">
+  <div class="toc-item"><a href="#ch01"><span class="toc-ch">अ. १</span><span class="toc-title">परिचय</span></a></div>
+  <div class="toc-item"><a href="#ch02"><span class="toc-ch">अ. २</span><span class="toc-title">संस्थापन</span></a></div>
+  <div class="toc-item"><a href="#ch03"><span class="toc-ch">अ. ३</span><span class="toc-title">लगइन र लाइसेन्स</span></a></div>
+  <div class="toc-item"><a href="#ch04"><span class="toc-ch">अ. ४</span><span class="toc-title">ड्यासबोर्ड</span></a></div>
+  <div class="toc-item"><a href="#ch05"><span class="toc-ch">अ. ५</span><span class="toc-title">व्यापार प्रोफाइल र आर्थिक वर्ष</span></a></div>
+  <div class="toc-item"><a href="#ch06"><span class="toc-ch">अ. ६</span><span class="toc-title">उत्पादन (मेडिसिन) मास्टर</span></a></div>
+  <div class="toc-item"><a href="#ch07"><span class="toc-ch">अ. ७</span><span class="toc-title">आपूर्तिकर्ता व्यवस्थापन</span></a></div>
+  <div class="toc-item"><a href="#ch08"><span class="toc-ch">अ. ८</span><span class="toc-title">ग्राहक व्यवस्थापन</span></a></div>
+  <div class="toc-item"><a href="#ch09"><span class="toc-ch">अ. ९</span><span class="toc-title">खरिद प्रविष्टि</span></a></div>
+  <div class="toc-item"><a href="#ch10"><span class="toc-ch">अ. १०</span><span class="toc-title">खरिद फिर्ता</span></a></div>
+  <div class="toc-item"><a href="#ch11"><span class="toc-ch">अ. ११</span><span class="toc-title">ब्याच र म्याद व्यवस्थापन</span></a></div>
+  <div class="toc-item"><a href="#ch12"><span class="toc-ch">अ. १२</span><span class="toc-title">स्टक समायोजन</span></a></div>
+  <div class="toc-item"><a href="#ch13"><span class="toc-ch">अ. १३</span><span class="toc-title">भौतिक स्टक गणना</span></a></div>
+  <div class="toc-item"><a href="#ch14"><span class="toc-ch">अ. १४</span><span class="toc-title">नगद बिक्री</span></a></div>
+  <div class="toc-item"><a href="#ch15"><span class="toc-ch">अ. १५</span><span class="toc-title">उधारो बिक्री</span></a></div>
+  <div class="toc-item"><a href="#ch16"><span class="toc-ch">अ. १६</span><span class="toc-title">बिक्री फिर्ता र रद्द बिल</span></a></div>
+  <div class="toc-item"><a href="#ch17"><span class="toc-ch">अ. १७</span><span class="toc-title">ग्राहक भुक्तान प्रविष्टि</span></a></div>
+  <div class="toc-item"><a href="#ch18"><span class="toc-ch">अ. १८</span><span class="toc-title">आपूर्तिकर्ता भुक्तानी</span></a></div>
+  <div class="toc-item"><a href="#ch19"><span class="toc-ch">अ. १९</span><span class="toc-title">खर्च र अन्य आय</span></a></div>
+  <div class="toc-item"><a href="#ch20"><span class="toc-ch">अ. २०</span><span class="toc-title">नगद / बैंक स्थानान्तरण</span></a></div>
+  <div class="toc-item"><a href="#ch21"><span class="toc-ch">अ. २१</span><span class="toc-title">खाता, Journal र Ledger</span></a></div>
+  <div class="toc-item"><a href="#ch22"><span class="toc-ch">अ. २२</span><span class="toc-title">ट्रायल ब्यालेन्स</span></a></div>
+  <div class="toc-item"><a href="#ch23"><span class="toc-ch">अ. २३</span><span class="toc-title">नाफा-नोक्सान विवरण</span></a></div>
+  <div class="toc-item"><a href="#ch24"><span class="toc-ch">अ. २४</span><span class="toc-title">ब्यालेन्स सिट</span></a></div>
+  <div class="toc-item"><a href="#ch25"><span class="toc-ch">अ. २५</span><span class="toc-title">सम्पूर्ण रिपोर्ट गाइड</span></a></div>
+  <div class="toc-item"><a href="#ch26"><span class="toc-ch">अ. २६</span><span class="toc-title">प्रिन्टर सेटिङ र इनभ्वाइस</span></a></div>
+  <div class="toc-item"><a href="#ch27"><span class="toc-ch">अ. २७</span><span class="toc-title">डेटाबेस ब्याकअप र सुरक्षा</span></a></div>
+  <div class="toc-item"><a href="#ch28"><span class="toc-ch">अ. २८</span><span class="toc-title">नेपाल भ्याट र CBMS</span></a></div>
+  <div class="toc-item"><a href="#ch29"><span class="toc-ch">अ. २९</span><span class="toc-title">सामान्य समस्या र समाधान</span></a></div>
+  <div class="toc-item"><a href="#ch30"><span class="toc-ch">अ. ३०</span><span class="toc-title">दैनिक/साप्ताहिक/मासिक जाँचसूची</span></a></div>
+</div>
+
+<div class="tip"><span class="icon">💡</span><div><strong>प्रिन्ट गर्न:</strong> यो मार्गदर्शिका PDF मा सेभ गर्न ब्राउजरमा <kbd>Ctrl+P</kbd> थिचेर "Save as PDF" छान्नुहोस्।</div></div>
+</section>
+
+<!-- CHAPTER 1 -->
+<section id="ch01">
+<div class="chapter-badge">अध्याय १</div>
+<h1>BIPRO PharmaOne को परिचय</h1>
+
+<h2>BIPRO PharmaOne के हो?</h2>
+<p>BIPRO PharmaOne एउटा सम्पूर्ण फार्मेसी व्यवस्थापन प्रणाली (ERP) हो जुन नेपालका खुद्रा फार्मेसीहरूका लागि विशेष रूपमा बनाइएको छ। यसले बिक्री, खरिद, स्टक, वित्त, लेखा, र नेपाल सरकारको कर प्रणाली (भ्याट र CBMS) सबैलाई एकै ठाउँमा व्यवस्थापन गर्छ।</p>
+
+<h2>मुख्य विशेषताहरू</h2>
+<ul>
+  <li><strong>बिक्री:</strong> नगद र उधारो बिक्री, POS काउन्टर, स्वचालित इनभ्वाइस नम्बर</li>
+  <li><strong>खरिद:</strong> नगद र उधारो खरिद, ब्याच ट्र्याकिङ, FEFO स्टक नियन्त्रण</li>
+  <li><strong>स्टक:</strong> म्याद नजिकिएका औषधिहरूको अलर्ट, भौतिक गणना, समायोजन</li>
+  <li><strong>वित्त:</strong> ग्राहक भुक्तान, आपूर्तिकर्ता भुक्तानी, खर्च, आय</li>
+  <li><strong>लेखा:</strong> Double-entry accounting, Trial Balance, P&amp;L, Balance Sheet</li>
+  <li><strong>रिपोर्ट:</strong> खरिद/बिक्री बुक, VAT रजिस्टर, Ledger, Debtors/Creditors</li>
+  <li><strong>CBMS:</strong> IRD को CBMS प्रणालीसँग जडान गर्ने सुविधा</li>
+</ul>
+
+<h2>सफ्टवेयरको आवश्यकता</h2>
+<table class="field-table">
+  <tr><th>कुरा</th><th>आवश्यकता</th></tr>
+  <tr><td>अपरेटिङ सिस्टम</td><td>Windows 10 वा Windows 11 (64-bit)</td></tr>
+  <tr><td>RAM</td><td>कम्तीमा 4 GB (8 GB सिफारिस)</td></tr>
+  <tr><td>Disk</td><td>500 MB खाली ठाउँ (डेटाका लागि थप)</td></tr>
+  <tr><td>डेटाबेस</td><td>PostgreSQL 17 (Installer ले स्वतः संस्थापन गर्छ)</td></tr>
+  <tr><td>नेटवर्क</td><td>CBMS का लागि इन्टरनेट (अन्य काम Offline पनि हुन्छ)</td></tr>
+</table>
+</section>
+
+<!-- CHAPTER 2 -->
+<section id="ch02">
+<div class="chapter-badge">अध्याय २</div>
+<h1>संस्थापन र पहिलो सुरुवात</h1>
+
+<h2>Installer चलाउने</h2>
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content"><code>BIPRO_PharmaOne_v1.0.6.exe</code> फाइलमा double-click गर्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Windows ले Administrator अनुमति माग्छ — <strong>Yes</strong> थिच्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Installation Wizard को निर्देशन पछ्याउनुहोस्। Default path: <code>C:\BIPRO PharmaOne</code></div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Database Credential Setup सोधिन्छ — PostgreSQL को runtime user को Password राख्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Desktop मा <strong>BIPRO PharmaOne</strong> shortcut बन्छ।</div></div>
+</div>
+
+<h2>पहिलो पटक सुरु गर्दा (First Run Setup)</h2>
+<p>पहिलो पटक खोल्दा एउटा Setup Wizard देखिन्छ:</p>
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content"><strong>फार्मेसीको विवरण:</strong> Business Name, PAN, Drug License नम्बर राख्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><strong>Administrator खाता:</strong> Username र Password बनाउनुहोस् (कम्तीमा ८ अक्षर)।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><strong>आर्थिक वर्ष:</strong> चालु आर्थिक वर्ष (जस्तै: २०८३/०८४) छान्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Setup पूरा भएपछि application मुख्य स्क्रिनमा जान्छ।</div></div>
+</div>
+
+<div class="important"><span class="icon">⚠</span><div><strong>सुरक्षा:</strong> Administrator Password कहिल्यै नभुल्नुहोस्। यो नभए system मा login गर्न सकिँदैन।</div></div>
+</section>
+
+<!-- CHAPTER 3 -->
+<section id="ch03">
+<div class="chapter-badge">अध्याय ३</div>
+<h1>लगइन, लाइसेन्स र डेटाबेस जडान</h1>
+
+<h2>Application खोल्दा</h2>
+<p>BIPRO PharmaOne खुल्दा स्वतः डेटाबेससँग जडान हुन्छ। तलको Status Bar मा:</p>
+<ul>
+  <li><strong>DB: Connected</strong> — डेटाबेस सफलतापूर्वक जोडिएको छ (हरियो रंग)</li>
+  <li><strong>DB: Connecting…</strong> — जडान भैरहेको छ</li>
+  <li><strong>DB: Disconnected</strong> — जडान भएन (रातो रंग)</li>
+</ul>
+
+<h2>लाइसेन्स</h2>
+<p>BIPRO PharmaOne को Full Edition प्रयोग गर्न एउटा valid License आवश्यक छ। License नभएमा बिक्री Finalize गर्न सकिँदैन।</p>
+<h3>License स्थिति जाँच्न</h3>
+<p class="nav-path">Settings → Business Profile</p>
+<p>मुख्य स्क्रिनको तलको status bar मा फार्मेसीको नाम देखिन्छ।</p>
+
+<h2>Keyboard Shortcuts — छिटो Navigation</h2>
+<table class="field-table">
+  <tr><th>Key</th><th>काम</th></tr>
+  <tr><td><kbd>F1</kbd></td><td>Quick Calculator</td></tr>
+  <tr><td><kbd>F2</kbd></td><td>नगद बिक्री (Cash Sale)</td></tr>
+  <tr><td><kbd>F3</kbd></td><td>उधारो बिक्री (Credit Sale)</td></tr>
+  <tr><td><kbd>F4</kbd></td><td>ग्राहक भुक्तान प्रविष्टि</td></tr>
+  <tr><td><kbd>F5</kbd></td><td>Refresh / पुनः लोड</td></tr>
+  <tr><td><kbd>F7</kbd></td><td>नगद खरिद (Cash Purchase)</td></tr>
+  <tr><td><kbd>F8</kbd></td><td>Save / Finalize</td></tr>
+  <tr><td><kbd>F9</kbd></td><td>Print</td></tr>
+  <tr><td><kbd>F11</kbd></td><td>Maximize/Restore Window</td></tr>
+  <tr><td><kbd>F12</kbd></td><td>System Health Dashboard</td></tr>
+  <tr><td><kbd>?</kbd></td><td>Keyboard Shortcuts सूची (जहाँसुकैबाट)</td></tr>
+</table>
+</section>
+
+<!-- CHAPTER 4 -->
+<section id="ch04">
+<div class="chapter-badge">अध्याय ४</div>
+<h1>ड्यासबोर्ड (Dashboard)</h1>
+
+<p class="nav-path">Dashboard (माथिल्लो मेनुको पहिलो बटन)</p>
+
+<h2>Dashboard ले के देखाउँछ?</h2>
+<p>Dashboard BIPRO PharmaOne खोल्दा सबैभन्दा पहिले देखिने स्क्रिन हो। यसले फार्मेसीको आजको र हालसम्मको वित्तीय अवस्था एकै नजरमा देखाउँछ।</p>
+
+<h3>Dashboard मा देखिने जानकारीहरू:</h3>
+<ul>
+  <li><strong>आजको बिक्री कुल (Today's Sales)</strong> — नगद र उधारो सहित</li>
+  <li><strong>आजको खरिद (Today's Purchases)</strong></li>
+  <li><strong>बकाया रकम (Outstanding)</strong> — ग्राहकले तिर्न बाँकी</li>
+  <li><strong>Creditors Balance</strong> — आपूर्तिकर्तालाई तिर्न बाँकी</li>
+  <li><strong>Gross Profit</strong> — नाफाको संक्षिप्त अवलोकन</li>
+  <li><strong>म्याद सकिन लागेका स्टक</strong> — आउँदा ३०/६० दिनभित्र expire हुने</li>
+</ul>
+
+<div class="tip"><span class="icon">💡</span><div>Dashboard लाई <kbd>F5</kbd> थिचेर जहिलेसुकै Refresh गर्न सकिन्छ।</div></div>
+</section>
+
+<!-- CHAPTER 5 -->
+<section id="ch05">
+<div class="chapter-badge">अध्याय ५</div>
+<h1>व्यापार प्रोफाइल र आर्थिक वर्ष</h1>
+
+<h2>Business Profile</h2>
+<p class="nav-path">Settings → Business Profile</p>
+
+<p>व्यापार प्रोफाइलमा फार्मेसीको आधारभूत जानकारी राखिन्छ जुन सबै Invoice र Statement मा छाप्न प्रयोग हुन्छ।</p>
+
+<h3>महत्त्वपूर्ण फिल्डहरू:</h3>
+<table class="field-table">
+  <tr><th>फिल्ड</th><th>विवरण</th><th></th></tr>
+  <tr><td>Business Name</td><td>फार्मेसीको पूरा नाम</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>PAN Number</td><td>कर दर्ता नम्बर (Permanent Account Number)</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>Drug License No.</td><td>औषधि विभागको लाइसेन्स नम्बर</td><td class="optional">ऐच्छिक</td></tr>
+  <tr><td>Address</td><td>फार्मेसीको ठेगाना</td><td class="optional">ऐच्छिक</td></tr>
+  <tr><td>Phone</td><td>सम्पर्क नम्बर</td><td class="optional">ऐच्छिक</td></tr>
+</table>
+
+<div class="note"><span class="icon">ℹ</span><div>Business Name र PAN नम्बर सबै Invoice मा स्वतः आउँछन्। यी सही राख्नु अत्यन्त महत्त्वपूर्ण छ।</div></div>
+
+<h2>Fiscal Year (आर्थिक वर्ष)</h2>
+<p class="nav-path">Settings → Fiscal Year</p>
+
+<p>BIPRO PharmaOne ले बिक्रम सम्वत् (BS) क्यालेन्डर प्रयोग गर्छ। आर्थिक वर्ष सेटिङमा:</p>
+<ul>
+  <li>चालु आर्थिक वर्ष सक्रिय (Active) हुन्छ</li>
+  <li>नयाँ आर्थिक वर्ष थप गर्न सकिन्छ</li>
+  <li>पुराना आर्थिक वर्षका रेकर्डहरू पढ्न सकिन्छ</li>
+</ul>
+
+<div class="warning"><span class="icon">⚠</span><div>आर्थिक वर्ष परिवर्तन गर्नु अघि Accountant वा System Administrator सँग सल्लाह गर्नुहोस्।</div></div>
+</section>
+
+<!-- CHAPTER 6 -->
+<section id="ch06">
+<div class="chapter-badge">अध्याय ६</div>
+<h1>उत्पादन (मेडिसिन) मास्टर</h1>
+
+<p class="nav-path">Masters → Product Master</p>
+
+<h2>Product Master के हो?</h2>
+<p>Product Master मा फार्मेसीमा बेचिने सबै औषधि र वस्तुहरूको मूल जानकारी राखिन्छ। कुनै पनि खरिद वा बिक्री गर्नु अघि सम्बन्धित Product यहाँ दर्ता हुनु पर्छ।</p>
+
+<h3>नयाँ Product थप्न:</h3>
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Masters → Product Master मा जानुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><strong>Add New Product</strong> बटन थिच्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">तलका फिल्डहरू भर्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><strong>Save</strong> थिच्नुहोस्।</div></div>
+</div>
+
+<table class="field-table">
+  <tr><th>फिल्ड</th><th>विवरण</th><th></th></tr>
+  <tr><td>Product Name</td><td>औषधिको पूरा नाम (जस्तै: Paracetamol 500mg Tab)</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>Generic Name</td><td>Generic नाम (जस्तै: Paracetamol)</td><td class="optional">ऐच्छिक</td></tr>
+  <tr><td>Manufacturer</td><td>उत्पादक कम्पनीको नाम</td><td class="optional">ऐच्छिक</td></tr>
+  <tr><td>Category</td><td>वर्गीकरण (Tablet, Syrup, Injection, आदि)</td><td class="optional">ऐच्छिक</td></tr>
+  <tr><td>Unit</td><td>मापन इकाई (Pcs, Strip, Bottle)</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>MRP / Sale Rate</td><td>बिक्री मूल्य</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>VAT Applicable</td><td>भ्याट लाग्ने/नलाग्ने (13% VAT)</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>Drug Classification</td><td>OTC / Prescription / Controlled Drug</td><td class="optional">ऐच्छिक</td></tr>
+  <tr><td>Reorder Level</td><td>न्यूनतम स्टक सतर्कता स्तर</td><td class="optional">ऐच्छिक</td></tr>
+</table>
+
+<div class="tip"><span class="icon">💡</span><div>Product खोज्दा नाम, Generic नाम, वा Manufacturer ले खोज्न सकिन्छ। बिक्री स्क्रिनमा नाम टाइप गर्दा auto-suggestion देखिन्छ।</div></div>
+</section>
+
+<!-- CHAPTER 7 -->
+<section id="ch07">
+<div class="chapter-badge">अध्याय ७</div>
+<h1>आपूर्तिकर्ता (Supplier) व्यवस्थापन</h1>
+
+<p class="nav-path">Masters → Supplier Master</p>
+
+<h2>Supplier Master किन महत्त्वपूर्ण छ?</h2>
+<p>Supplier Master मा फार्मेसीले औषधि किन्ने सबै वितरक र कम्पनीहरूको जानकारी राखिन्छ। खरिद गर्दा, उधारो लिँदा, र भुक्तानी दिँदा यहाँका रेकर्डहरू प्रयोग हुन्छन्।</p>
+
+<h3>नयाँ Supplier थप्न:</h3>
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Masters → Supplier Master → <strong>Add New</strong></div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">नाम, ठेगाना, PAN/VAT नम्बर, सम्पर्क भर्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Opening Balance राख्नुहोस् (पुरानो बाँकी भए)।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Save थिच्नुहोस्।</div></div>
+</div>
+
+<table class="field-table">
+  <tr><th>फिल्ड</th><th>विवरण</th></tr>
+  <tr><td>Supplier Name</td><td>कम्पनी वा वितरकको नाम</td></tr>
+  <tr><td>PAN / VAT No.</td><td>कर दर्ता नम्बर</td></tr>
+  <tr><td>Address / Phone</td><td>ठेगाना र सम्पर्क</td></tr>
+  <tr><td>Opening Balance</td><td>प्रणाली शुरू गर्दाको पुरानो बाँकी रकम</td></tr>
+  <tr><td>Credit Limit</td><td>उधारोको अधिकतम सीमा</td></tr>
+</table>
+</section>
+
+<!-- CHAPTER 8 -->
+<section id="ch08">
+<div class="chapter-badge">अध्याय ८</div>
+<h1>ग्राहक (Customer) व्यवस्थापन</h1>
+
+<p class="nav-path">Masters → Customer Master</p>
+
+<p>Customer Master मा उधारोमा औषधि किन्ने ग्राहकहरूको रेकर्ड राखिन्छ। Walk-in नगद ग्राहकका लागि Customer Master आवश्यक पर्दैन।</p>
+
+<table class="field-table">
+  <tr><th>फिल्ड</th><th>विवरण</th></tr>
+  <tr><td>Customer Name</td><td>ग्राहकको पूरा नाम / संस्था</td></tr>
+  <tr><td>Phone</td><td>सम्पर्क नम्बर</td></tr>
+  <tr><td>Opening Balance</td><td>प्रणाली शुरू गर्दाको पुरानो बाँकी</td></tr>
+  <tr><td>Credit Limit</td><td>उधारोको अधिकतम सीमा</td></tr>
+</table>
+
+<div class="note"><span class="icon">ℹ</span><div>Credit Sale गर्दा Customer Master मा दर्ता भएको ग्राहक छान्न सकिन्छ। Cash Sale का लागि यो आवश्यक छैन।</div></div>
+</section>
+
+<!-- CHAPTER 9 -->
+<section id="ch09">
+<div class="chapter-badge">अध्याय ९</div>
+<h1>खरिद प्रविष्टि (Purchase Entry)</h1>
+
+<p class="nav-path">Purchase → Cash Purchase &nbsp;वा&nbsp; Purchase → Credit Purchase</p>
+<p>Shortcut: <kbd>F7</kbd> (Cash Purchase)</p>
+
+<h2>खरिद भनेको के हो?</h2>
+<p>खरिद भनेको Supplier बाट औषधि किन्दा BIPRO PharmaOne मा दर्ता गर्ने प्रक्रिया हो। खरिद Finalize गरेपछि:</p>
+<ul>
+  <li>Stock बढ्छ (Batch र Expiry सहित)</li>
+  <li>Supplier को Payable बढ्छ (Credit Purchase मा)</li>
+  <li>COGS (Cost of Goods) रेकर्ड हुन्छ</li>
+  <li>Accounting Journal Entry स्वतः बन्छ</li>
+</ul>
+
+<h3>नगद खरिद (Cash Purchase) प्रविष्टि:</h3>
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Purchase → Cash Purchase मा जानुहोस् वा <kbd>F7</kbd> थिच्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><strong>Supplier</strong> छान्नुहोस् (छान्दा Supplier को बाँकी रकम देखिन्छ)।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><strong>Supplier Invoice No.</strong> भर्नुहोस् (Supplier को बिल नम्बर)।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><strong>Invoice Date</strong> (बिलको मिति) राख्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">औषधि खोज्न Product को नाम टाइप गर्नुहोस् — auto-suggestion देखिन्छ।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><strong>Batch No., Expiry Date, Quantity, Rate</strong> भर्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><kbd>Enter</kbd> थिचेर लाइन थप्नुहोस्। थप औषधिहरूका लागि ५–७ दोहोर्याउनुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">सबै Item थपेपछि <strong>Finalize / Save</strong> बटन थिच्नुहोस् वा <kbd>F8</kbd> थिच्नुहोस्।</div></div>
+</div>
+
+<table class="field-table">
+  <tr><th>फिल्ड</th><th>विवरण</th><th></th></tr>
+  <tr><td>Supplier</td><td>खरिद गर्ने Supplier</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>Invoice No.</td><td>Supplier को बिल नम्बर</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>Invoice Date</td><td>बिलको मिति (BS)</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>Product</td><td>औषधिको नाम</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>Batch No.</td><td>उत्पादन ब्याच नम्बर</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>Expiry Date</td><td>Expiry मिति (MM/YYYY)</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>Quantity</td><td>परिमाण (मूल इकाईमा)</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>Purchase Rate</td><td>खरिद दर (VAT बाहेक)</td><td class="required">अनिवार्य</td></tr>
+  <tr><td>Discount %</td><td>छुट प्रतिशत</td><td class="optional">ऐच्छिक</td></tr>
+  <tr><td>VAT</td><td>13% VAT (VAT applicable Product मा)</td><td class="optional">स्वतः</td></tr>
+</table>
+
+<div class="important"><span class="icon">⚠</span><div>Batch No. र Expiry Date अनिवार्य रूपमा राख्नुहोस्। यी नराखेमा म्याद नजिकिएका औषधिको अलर्ट आउँदैन।</div></div>
+
+<h3>उधारो खरिद (Credit Purchase):</h3>
+<p>Credit Purchase पनि Cash Purchase जस्तै हो, तर अन्तरमा Supplier लाई तुरुन्त नगद नतिर्नु हो। Payable रकम Supplier को खातामा जम्मा हुन्छ र पछि <strong>Supplier Payment Entry</strong> बाट भुक्तानी दिनुपर्छ।</p>
+</section>
+
+<!-- CHAPTER 10 -->
+<section id="ch10">
+<div class="chapter-badge">अध्याय १०</div>
+<h1>खरिद फिर्ता (Purchase Returns)</h1>
+
+<p class="nav-path">Purchase → Purchase Returns</p>
+
+<p>म्याद सकिएका, खराब, वा गलत औषधिहरू Supplier लाई फिर्ता गर्दा यो प्रयोग गरिन्छ। Purchase Return गर्दा:</p>
+<ul>
+  <li>Stock घट्छ</li>
+  <li>Supplier को Payable घट्छ (Debit Note बन्छ)</li>
+</ul>
+
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Purchase → Purchase Returns मा जानुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">मूल खरिद Invoice खोज्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">फिर्ता गर्ने औषधि र परिमाण छान्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Reason (कारण) राख्नुहोस् र Finalize गर्नुहोस्।</div></div>
+</div>
+</section>
+
+<!-- CHAPTER 11 -->
+<section id="ch11">
+<div class="chapter-badge">अध्याय ११</div>
+<h1>ब्याच र म्याद व्यवस्थापन</h1>
+
+<p class="nav-path">Inventory → Stock &amp; Expiry Control</p>
+
+<h2>Stock &amp; Expiry Control के हो?</h2>
+<p>यो स्क्रिनले सबै उत्पादनहरूको हालको स्टक, ब्याच नम्बर, र म्याद मिति देखाउँछ। म्याद नजिकिएका औषधिहरू रंगले चिन्हित हुन्छन्:</p>
+
+<ul>
+  <li><span style="color:#dc2626;font-weight:700">■ रातो</span> — म्याद सकिसकेको (Expired)</li>
+  <li><span style="color:#f59e0b;font-weight:700">■ पहेँलो</span> — ३० दिनभित्र expire हुने</li>
+  <li><span style="color:#fb923c;font-weight:700">■ सुन्तला</span> — ६० दिनभित्र expire हुने</li>
+  <li><span style="color:#3b82f6;font-weight:700">■ नीलो</span> — ९० दिनभित्र expire हुने</li>
+</ul>
+
+<h3>FEFO नियम:</h3>
+<p>BIPRO PharmaOne ले <strong>FEFO (First Expired, First Out)</strong> नियम पालन गर्छ — अर्थात् पहिले म्याद सकिने औषधि पहिले बेचिन्छ। बिक्री गर्दा system ले स्वतः सही Batch छान्छ।</p>
+
+<div class="tip"><span class="icon">💡</span><div>हरेक दिन सुरुमा Stock &amp; Expiry Control स्क्रिन खोलेर म्याद नजिकिएका औषधिहरू जाँच गर्ने बानी बनाउनुहोस्।</div></div>
+</section>
+
+<!-- CHAPTER 12 -->
+<section id="ch12">
+<div class="chapter-badge">अध्याय १२</div>
+<h1>स्टक समायोजन (Stock Adjustments)</h1>
+
+<p class="nav-path">Inventory → Stock Adjustments</p>
+
+<p>स्टक समायोजन तब गरिन्छ जब:</p>
+<ul>
+  <li>गनेर हेर्दा system को स्टक र वास्तविक स्टक फरक हुन्छ</li>
+  <li>क्षति भएका, चोरी भएका, वा नष्ट गरिएका औषधि</li>
+  <li>Opening Stock प्रविष्टि गर्दा</li>
+</ul>
+
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Inventory → Stock Adjustments मा जानुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><strong>New Adjustment</strong> बटन थिच्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">समायोजन प्रकार छान्नुहोस्: <strong>Increase</strong> (थप्ने) वा <strong>Decrease</strong> (घटाउने)।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Product, Batch, परिमाण, र कारण राख्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Finalize गर्नुहोस्।</div></div>
+</div>
+
+<div class="warning"><span class="icon">⚠</span><div>Stock Adjustment Finalize भइसकेपछि सम्पादन गर्न सकिँदैन। कारण (Reason) स्पष्ट लेख्नुहोस्।</div></div>
+</section>
+
+<!-- CHAPTER 13 -->
+<section id="ch13">
+<div class="chapter-badge">अध्याय १३</div>
+<h1>भौतिक स्टक गणना (Physical Counts)</h1>
+
+<p class="nav-path">Inventory → Physical Counts</p>
+
+<p>भौतिक गणना भनेको वास्तवमा औषधिहरू गनेर system को रेकर्डसँग मिलाउने प्रक्रिया हो। महिनाको अन्तमा वा त्रैमासिक गर्नु राम्रो हुन्छ।</p>
+
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Inventory → Physical Counts → <strong>New Count</strong></div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">System ले हालको स्टक देखाउँछ — वास्तविक गणना टाइप गर्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Variance (फरक) देखिन्छ — समीक्षा गरेर Finalize गर्नुहोस्।</div></div>
+</div>
+</section>
+
+<!-- CHAPTER 14 -->
+<section id="ch14">
+<div class="chapter-badge">अध्याय १४</div>
+<h1>नगद बिक्री (Cash Sale)</h1>
+
+<p class="nav-path">Sales → Cash Sale &nbsp;&nbsp; Shortcut: <kbd>F2</kbd></p>
+
+<h2>नगद बिक्री कहिले प्रयोग गर्ने?</h2>
+<p>नगद बिक्री तब गरिन्छ जब ग्राहकले तुरुन्त नगद तिर्छन्। यो POS (Point of Sale) काउन्टर मोड हो।</p>
+
+<h3>Cash Sale गर्ने तरिका:</h3>
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content"><kbd>F2</kbd> थिच्नुहोस् वा Sales → Cash Sale मा जानुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Search बक्समा औषधिको नाम टाइप गर्नुहोस् — dropdown मा matching products देखिन्छन्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">सही औषधि छानेर <kbd>Enter</kbd> थिच्नुहोस् — bill मा line add हुन्छ।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Quantity परिवर्तन गर्नुपरे line मा click गरेर सम्पादन गर्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">सबै औषधि थपेपछि <kbd>F8</kbd> थिचेर Finalize गर्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Invoice Finalize भएपछि <kbd>F9</kbd> थिचेर Print गर्नुहोस्।</div></div>
+</div>
+
+<h3>Bill मा भ्याट:</h3>
+<p>VAT applicable उत्पादनमा 13% VAT स्वतः जोडिन्छ। Invoice मा VAT र Grand Total छुट्टाछुट्टै देखाइन्छ।</p>
+
+<div class="tip"><span class="icon">💡</span><div>बिल Finalize गर्नु अघि <kbd>Delete</kbd> key थिचेर गलत line हटाउन सकिन्छ।</div></div>
+
+<div class="important"><span class="icon">⚠</span><div>म्याद सकिसकेको औषधि बेच्न system ले अनुमति दिँदैन। तुरुन्त Stock Adjustment गरेर हटाउनुहोस्।</div></div>
+</section>
+
+<!-- CHAPTER 15 -->
+<section id="ch15">
+<div class="chapter-badge">अध्याय १५</div>
+<h1>उधारो बिक्री (Credit Sale)</h1>
+
+<p class="nav-path">Sales → Credit Sale &nbsp;&nbsp; Shortcut: <kbd>F3</kbd></p>
+
+<h2>उधारो बिक्री भनेको के हो?</h2>
+<p>Credit Sale मा ग्राहकले तुरुन्त नगद तिर्दैनन् — पछि तिर्ने सहमतिमा औषधि लैजान्छन्। बिक्री Finalize भएपछि ग्राहकको Receivable (बाँकी) रकम बढ्छ।</p>
+
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content"><kbd>F3</kbd> थिच्नुहोस् वा Sales → Credit Sale मा जानुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><strong>Customer</strong> खोजेर छान्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Cash Sale जस्तै औषधिहरू थप्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><kbd>F8</kbd> थिचेर Finalize गर्नुहोस्।</div></div>
+</div>
+
+<h3>Credit Limit:</h3>
+<p>Customer Master मा Credit Limit राखेको छ भने, त्यो सीमा नाघ्दा system ले चेतावनी दिन्छ।</p>
+
+<h2>बिक्री इतिहास (Cash Memo History)</h2>
+<p class="nav-path">Sales → Cash Memo History</p>
+<p>यहाँ Finalize भएका सबै बिलहरूको इतिहास देखिन्छ। बिल नम्बर, मिति, ग्राहक, वा रकम अनुसार खोज्न सकिन्छ। पुरानो बिल दोबारा Print गर्न पनि यहाँबाट सकिन्छ।</p>
+</section>
+
+<!-- CHAPTER 16 -->
+<section id="ch16">
+<div class="chapter-badge">अध्याय १६</div>
+<h1>बिक्री फिर्ता र रद्द बिल</h1>
+
+<p class="nav-path">Sales → Sales Returns</p>
+
+<h2>Sales Return कहिले गर्ने?</h2>
+<p>ग्राहकले औषधि फिर्ता गर्दा Sales Return गरिन्छ। Return गरेपछि:</p>
+<ul>
+  <li>Stock फिर्ता आउँछ</li>
+  <li>ग्राहकको Receivable घट्छ (Credit Note बन्छ)</li>
+</ul>
+
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Sales → Sales Returns मा जानुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">मूल Invoice खोज्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">फिर्ता गर्ने items र परिमाण छान्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Return को कारण लेख्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Finalize थिच्नुहोस्।</div></div>
+</div>
+
+<h2>बिल रद्द (Cancel Bill)</h2>
+<p>सम्पूर्ण बिल रद्द गर्न <kbd>F10</kbd> थिच्नुहोस् वा Sales → Cash Memo History बाट बिल खोलेर Cancel गर्नुहोस्। रद्द भएका बिलहरू <strong>Reports → Cancelled Invoices</strong> मा देख्न सकिन्छ।</p>
+</section>
+
+<!-- CHAPTER 17 -->
+<section id="ch17">
+<div class="chapter-badge">अध्याय १७</div>
+<h1>ग्राहक भुक्तान प्रविष्टि (Customer Receipt)</h1>
+
+<p class="nav-path">Finance → Customer Receipt Entry &nbsp;&nbsp; Shortcut: <kbd>F4</kbd></p>
+
+<h2>Customer Receipt कहिले गर्ने?</h2>
+<p>Credit Sale गरेको ग्राहकले पछि नगद वा Cheque तिर्दा यो प्रयोग गरिन्छ। यसले ग्राहकको Receivable घटाउँछ र Cash/Bank बढाउँछ।</p>
+
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content"><kbd>F4</kbd> थिच्नुहोस् वा Finance → Customer Receipt Entry मा जानुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><strong>Customer</strong> छान्नुहोस् — उनको बाँकी invoice list देखिन्छ।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">कुन invoice विरुद्ध भुक्तानी हो छान्नुहोस् वा Advance Entry गर्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Payment Mode (Cash / Cheque / Bank Transfer) छान्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Amount राखेर <kbd>F8</kbd> थिचेर Post गर्नुहोस्।</div></div>
+</div>
+
+<h3>Customer Statement:</h3>
+<p class="nav-path">Finance → Customer Statement</p>
+<p>कुनै ग्राहकको सबै transaction (बिक्री + भुक्तान) को विवरण यहाँ देखिन्छ। बकाया रकम कति छ भनेर जाँच गर्न सकिन्छ।</p>
+</section>
+
+<!-- CHAPTER 18 -->
+<section id="ch18">
+<div class="chapter-badge">अध्याय १८</div>
+<h1>आपूर्तिकर्ता भुक्तानी (Supplier Payment)</h1>
+
+<p class="nav-path">Finance → Supplier Payment Entry</p>
+
+<p>Supplier लाई उधारो खरिदको बदलामा भुक्तानी दिँदा यो प्रयोग गरिन्छ। यसले Supplier को Payable घटाउँछ र Cash/Bank घट्छ।</p>
+
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Finance → Supplier Payment Entry मा जानुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Supplier छान्नुहोस् — उनीसँग बाँकी invoice देखिन्छ।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">कुन invoice तिर्ने छान्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Payment Mode र Amount राखेर Post गर्नुहोस्।</div></div>
+</div>
+
+<h3>Supplier Statement:</h3>
+<p class="nav-path">Finance → Supplier Statement</p>
+<p>Supplier सँगको सबै transaction र बाँकी रकम यहाँ देख्न सकिन्छ।</p>
+
+<h3>Party Dues &amp; Balances:</h3>
+<p class="nav-path">Finance → Party Dues &amp; Balances</p>
+<p>सबै Customers र Suppliers को बाँकी रकम एकै स्क्रिनमा देख्न यो प्रयोग गर्नुहोस्।</p>
+</section>
+
+<!-- CHAPTER 19 -->
+<section id="ch19">
+<div class="chapter-badge">अध्याय १९</div>
+<h1>खर्च र अन्य आय</h1>
+
+<h2>खर्च प्रविष्टि (Expense)</h2>
+<p class="nav-path">Finance → Expense</p>
+<p>फार्मेसीको दैनिक खर्चहरू — बिजुली, पानी, कर्मचारी तलब, भाडा, आदि — यहाँ दर्ता गरिन्छ।</p>
+
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Finance → Expense → <strong>New Entry</strong></div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Expense Type (खर्चको प्रकार), Amount, र Description राख्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Payment Mode (Cash / Bank) छान्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Post थिच्नुहोस्।</div></div>
+</div>
+
+<h2>अन्य आय (Other Income)</h2>
+<p class="nav-path">Finance → Other Income</p>
+<p>बिक्री बाहेकका आयहरू — Discount प्राप्त, Commission, आदि — यहाँ दर्ता गरिन्छ।</p>
+</section>
+
+<!-- CHAPTER 20 -->
+<section id="ch20">
+<div class="chapter-badge">अध्याय २०</div>
+<h1>नगद / बैंक स्थानान्तरण</h1>
+
+<p class="nav-path">Finance → Cash / Bank Transfer</p>
+
+<p>नगद र बैंक खाताबीच पैसा सार्दा यो प्रयोग गरिन्छ — जस्तै Counter Cash बाट Bank मा जम्मा गर्दा, वा Bank बाट Cash झिक्दा।</p>
+
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Finance → Cash / Bank Transfer मा जानुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">From Account र To Account छान्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Amount र मिति राखेर Post गर्नुहोस्।</div></div>
+</div>
+</section>
+
+<!-- CHAPTER 21 -->
+<section id="ch21">
+<div class="chapter-badge">अध्याय २१</div>
+<h1>खाता, Journal र General Ledger</h1>
+
+<h2>Chart of Accounts</h2>
+<p class="nav-path">Accounts → Chart of Accounts</p>
+<p>Chart of Accounts मा BIPRO PharmaOne का सबै Ledger खाताहरूको सूची छ। यी खाताहरूमा Cash (GL 1000), Bank (GL 1010), Debtors, Creditors, Sales, Purchase, Expenses, र अन्य सबै पर्छन्।</p>
+
+<h2>Journals Ledger</h2>
+<p class="nav-path">Accounts → Journals Ledger</p>
+<p>सबै accounting journal entries यहाँ देख्न सकिन्छ। प्रत्येक बिक्री, खरिद, भुक्तान, र खर्चको Journal entry स्वतः बन्छ।</p>
+
+<h2>General Ledger</h2>
+<p class="nav-path">Accounts → General Ledger</p>
+<p>कुनै एउटा खाता (जस्तै: Cash, Bank, कुनै ग्राहक) को सबै transactions यहाँ Opening Balance र Running Balance सहित देख्न सकिन्छ। Date range filter गरेर हेर्न सकिन्छ।</p>
+
+<h2>Accounting Periods</h2>
+<p class="nav-path">Accounts → Accounting Periods</p>
+<p>Accounting Period बन्द गर्दा त्यो अवधिको entries मा परिवर्तन गर्न रोकिन्छ। आर्थिक वर्ष सकिएपछि Period बन्द गर्नुहोस्।</p>
+</section>
+
+<!-- CHAPTER 22 -->
+<section id="ch22">
+<div class="chapter-badge">अध्याय २२</div>
+<h1>ट्रायल ब्यालेन्स (Trial Balance)</h1>
+
+<p class="nav-path">Accounts → Trial Balance</p>
+
+<p>Trial Balance मा निश्चित मितिसम्मका सबै खाताहरूको Debit र Credit मिलेको विवरण देखिन्छ। यदि Total Debit = Total Credit छ भने Accounts सही छ।</p>
+
+<h3>Trial Balance कसरी हेर्ने:</h3>
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Accounts → Trial Balance मा जानुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">मिति Range (From Date र To Date) राख्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Generate थिच्नुहोस्।</div></div>
+</div>
+</section>
+
+<!-- CHAPTER 23 -->
+<section id="ch23">
+<div class="chapter-badge">अध्याय २३</div>
+<h1>नाफा-नोक्सान विवरण (Profit &amp; Loss)</h1>
+
+<p class="nav-path">Accounts → Profit &amp; Loss</p>
+
+<p>Profit &amp; Loss Statement मा निश्चित अवधिको:</p>
+<ul>
+  <li><strong>कुल बिक्री (Sales)</strong></li>
+  <li><strong>बेचिएका मालको लागत (COGS — Cost of Goods Sold)</strong></li>
+  <li><strong>Gross Profit</strong> = Sales − COGS</li>
+  <li><strong>खर्चहरू (Operating Expenses)</strong></li>
+  <li><strong>Net Profit / Loss</strong></li>
+</ul>
+
+<div class="note"><span class="icon">ℹ</span><div>COGS FEFO आधारमा स्वतः गणना हुन्छ। सबै खरिदमा Batch र Rate राख्नु भयो भने COGS सही हुन्छ।</div></div>
+</section>
+
+<!-- CHAPTER 24 -->
+<section id="ch24">
+<div class="chapter-badge">अध्याय २४</div>
+<h1>ब्यालेन्स सिट (Balance Sheet)</h1>
+
+<p class="nav-path">Accounts → Balance Sheet</p>
+
+<p>Balance Sheet मा निश्चित मितिसम्मको फार्मेसीको:</p>
+<ul>
+  <li><strong>Assets (सम्पत्ति):</strong> Cash, Bank, Stock, Debtors</li>
+  <li><strong>Liabilities (दायित्व):</strong> Creditors, Loans</li>
+  <li><strong>Equity (पूँजी):</strong> Owner's Capital, Retained Earnings</li>
+</ul>
+<p>Total Assets = Total Liabilities + Equity हुनुपर्छ।</p>
+</section>
+
+<!-- CHAPTER 25 -->
+<section id="ch25">
+<div class="chapter-badge">अध्याय २५</div>
+<h1>सम्पूर्ण रिपोर्ट गाइड</h1>
+
+<p class="nav-path">Reports मेनु</p>
+
+<h2>Books &amp; Reports Center</h2>
+<p class="nav-path">Reports → Books &amp; Reports Center</p>
+<p>सबै रिपोर्टहरूको केन्द्रीय स्क्रिन। यहाँबाट सबै प्रकारका रिपोर्ट एकै ठाउँबाट generate गर्न सकिन्छ।</p>
+
+<h2>खरिद र बिक्री बुकहरू</h2>
+<table class="field-table">
+  <tr><th>रिपोर्ट</th><th>प्रयोजन</th></tr>
+  <tr><td>Purchase Book</td><td>अवधिको सबै खरिद Invoice सूची</td></tr>
+  <tr><td>Purchase Return Book (Debit Notes)</td><td>खरिद फिर्ताको सूची</td></tr>
+  <tr><td>Sales Book</td><td>अवधिको सबै बिक्री Invoice सूची</td></tr>
+  <tr><td>Sales Return Book (Credit Notes)</td><td>बिक्री फिर्ताको सूची</td></tr>
+  <tr><td>VAT Book (Tax Register)</td><td>VAT दाखिला गर्न चाहिने कर रजिस्टर</td></tr>
+  <tr><td>Cancelled Invoices</td><td>रद्द भएका सबै बिलहरू</td></tr>
+</table>
+
+<h2>नगद र बैंक बुकहरू</h2>
+<table class="field-table">
+  <tr><th>रिपोर्ट</th><th>प्रयोजन</th></tr>
+  <tr><td>Day Book</td><td>दिनको सम्पूर्ण transaction सूची</td></tr>
+  <tr><td>Cash Book (GL 1000)</td><td>Counter Cash को Opening, Receipts, Payments, Closing Balance</td></tr>
+  <tr><td>Bank Book (GL 1010)</td><td>बैंक खाताको सम्पूर्ण हिसाब</td></tr>
+  <tr><td>Contra Voucher Book</td><td>Cash-Bank र Bank-Cash Transfer को सूची</td></tr>
+</table>
+
+<h2>भुक्तान बुकहरू</h2>
+<table class="field-table">
+  <tr><th>रिपोर्ट</th><th>प्रयोजन</th></tr>
+  <tr><td>Customer Receipt Book</td><td>ग्राहकबाट प्राप्त भुक्तानको सूची</td></tr>
+  <tr><td>Supplier Payment Book</td><td>Supplier लाई दिएको भुक्तानको सूची</td></tr>
+  <tr><td>Expense Book</td><td>खर्चको सूची</td></tr>
+  <tr><td>Other Income Book</td><td>अन्य आयको सूची</td></tr>
+</table>
+
+<h2>बकाया र Aging रिपोर्टहरू</h2>
+<table class="field-table">
+  <tr><th>रिपोर्ट</th><th>प्रयोजन</th></tr>
+  <tr><td>Debtors Outstanding</td><td>ग्राहकहरूले तिर्न बाँकी रकमको सूची</td></tr>
+  <tr><td>Creditors Outstanding</td><td>Suppliers लाई तिर्न बाँकी रकमको सूची</td></tr>
+</table>
+
+<h2>स्टक रिपोर्टहरू</h2>
+<table class="field-table">
+  <tr><th>रिपोर्ट</th><th>प्रयोजन</th></tr>
+  <tr><td>Stock Ledger</td><td>प्रत्येक उत्पादनको खरिद, बिक्री, र बाँकी स्टक</td></tr>
+  <tr><td>Stock Adjustment Register</td><td>गरिएका सबै समायोजनको रेकर्ड</td></tr>
+  <tr><td>Damaged &amp; Expired Write-offs</td><td>नष्ट वा म्याद सकिएर हटाइएका औषधि</td></tr>
+  <tr><td>Stock Count Reconciliation</td><td>भौतिक गणना र system को फरक</td></tr>
+  <tr><td>Inventory Valuation</td><td>हालको स्टकको कुल मूल्य</td></tr>
+  <tr><td>Purchase Suggestion</td><td>Reorder Level भन्दा कम स्टक भएका औषधि</td></tr>
+  <tr><td>Dead / Slow Stock</td><td>लामो समयदेखि नबिकेका औषधि</td></tr>
+</table>
+
+<h2>विश्लेषण रिपोर्टहरू</h2>
+<table class="field-table">
+  <tr><th>रिपोर्ट</th><th>प्रयोजन</th></tr>
+  <tr><td>Sales Report</td><td>अवधि, उत्पादन, वा ग्राहक अनुसार बिक्री विश्लेषण</td></tr>
+  <tr><td>Purchase Report</td><td>खरिद विश्लेषण</td></tr>
+  <tr><td>Gross Profit Report</td><td>Gross Profit margin विश्लेषण</td></tr>
+  <tr><td>Medicine Profitability</td><td>प्रत्येक औषधिको नाफा/नोक्सान</td></tr>
+  <tr><td>VAT Register</td><td>कर रजिस्टर (IRD को लागि)</td></tr>
+  <tr><td>Payment Methods</td><td>नगद, Cheque, Bank Transfer अनुसार बिक्री</td></tr>
+</table>
+
+<h2>दैनिक सारांश रिपोर्टहरू</h2>
+<table class="field-table">
+  <tr><th>रिपोर्ट</th><th>प्रयोजन</th></tr>
+  <tr><td>Daily Closing Summary</td><td>दिनको अन्तमा Cash, Credit, VAT, Expenses को सारांश</td></tr>
+  <tr><td>Today's Work Activity</td><td>आजको सबै गतिविधिको सूची</td></tr>
+  <tr><td>Audit Trail &amp; Activity Log</td><td>System मा भएका सबै परिवर्तनको रेकर्ड</td></tr>
+</table>
+
+<div class="tip"><span class="icon">💡</span><div>सबैजसो रिपोर्टमा मिति Range (From Date − To Date) छान्न सकिन्छ र Print बटन थिचेर प्रिन्ट गर्न सकिन्छ।</div></div>
+</section>
+
+<!-- CHAPTER 26 -->
+<section id="ch26">
+<div class="chapter-badge">अध्याय २६</div>
+<h1>प्रिन्टर सेटिङ र Invoice प्रिन्टिङ</h1>
+
+<p class="nav-path">Settings → Printer Settings</p>
+
+<h2>प्रिन्टर कन्फिगर गर्न:</h2>
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Settings → Printer Settings मा जानुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Thermal Printer वा A4 Printer छान्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Paper Size र Margin सेट गर्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Test Print गरेर हेर्नुहोस्।</div></div>
+</div>
+
+<h3>Invoice प्रिन्ट गर्न:</h3>
+<p>बिक्री Finalize गरेपछि <kbd>F9</kbd> थिच्नुहोस् — Invoice प्रिन्ट हुन्छ। Invoice मा फार्मेसीको नाम, PAN, बिल नम्बर, मिति, औषधिको सूची, VAT, र Grand Total छापिन्छ।</p>
+</section>
+
+<!-- CHAPTER 27 -->
+<section id="ch27">
+<div class="chapter-badge">अध्याय २७</div>
+<h1>डेटाबेस ब्याकअप र डेटा सुरक्षा</h1>
+
+<p class="nav-path">Settings → Database Backup</p>
+
+<h2>Backup किन महत्त्वपूर्ण छ?</h2>
+<p>Computer खराब भयो, virus आयो, वा data delete भयो भने Backup नभई सबै data हराउन सक्छ। नियमित Backup गर्नु अत्यन्त महत्त्वपूर्ण छ।</p>
+
+<h2>Manual Backup गर्न:</h2>
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Settings → Database Backup थिच्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Backup Now बटन थिच्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Backup सफल भयो भन्ने सन्देश आउँछ।</div></div>
+</div>
+
+<h2>Auto Backup:</h2>
+<p>BIPRO PharmaOne ले दैनिक रूपमा स्वतः Backup गर्छ। Backup Files <code>%LocalAppData%\BIPRO PharmaOne\Backups\</code> मा सेभ हुन्छन्।</p>
+
+<div class="important"><span class="icon">⚠</span><div><strong>बाहिरी ड्राइभमा Copy गर्नुहोस्:</strong> Backup Files लाई USB Drive वा External Hard Disk मा पनि Copy गरेर राख्नुहोस्। Computer नै खराब भयो भने Local Backup पनि काम लाग्दैन।</div></div>
+</section>
+
+<!-- CHAPTER 28 -->
+<section id="ch28">
+<div class="chapter-badge">अध्याय २८</div>
+<h1>नेपाल भ्याट र CBMS</h1>
+
+<h2>भ्याट (VAT) भनेको के हो?</h2>
+<p>नेपालमा औषधि र सम्बन्धित वस्तुहरूमा 13% मूल्य अभिवृद्धि कर (VAT) लाग्छ। BIPRO PharmaOne ले VAT Applicable उत्पादनहरूमा स्वतः VAT गणना गर्छ।</p>
+
+<h2>CBMS (Central Billing Monitoring System)</h2>
+<p>IRD (Inland Revenue Department) को CBMS प्रणालीले बिलिङ डेटा Real-time मा Monitor गर्छ। BIPRO PharmaOne मा CBMS Integration छ तर यो सक्रिय (Enable) गर्न निम्न कदम चाहिन्छ:</p>
+<ul>
+  <li>IRD मा दर्ता र CBMS Credentials प्राप्त गर्नुहोस्</li>
+  <li>CBMS Credentials Windows Credential Manager मा राख्नुहोस्</li>
+  <li>System Administrator बाट CBMS Configuration सेट गर्नुहोस्</li>
+</ul>
+
+<div class="note"><span class="icon">ℹ</span><div>CBMS Configuration गर्न Technical Support सम्पर्क गर्नुहोस्: admin@bimalpharmacy.com.np</div></div>
+
+<h2>VAT रिपोर्ट:</h2>
+<p class="nav-path">Reports → VAT Book (Tax Register) &nbsp;वा&nbsp; Reports → VAT Register</p>
+<p>IRD को Tax Return दाखिला गर्दा यी रिपोर्टहरू प्रयोग गर्नुहोस्।</p>
+</section>
+
+<!-- CHAPTER 29 -->
+<section id="ch29">
+<div class="chapter-badge">अध्याय २९</div>
+<h1>सामान्य समस्या र समाधान</h1>
+
+<table class="field-table">
+  <tr><th>समस्या</th><th>सम्भावित कारण र समाधान</th></tr>
+  <tr>
+    <td><strong>DB: Disconnected देखिन्छ</strong></td>
+    <td>PostgreSQL service बन्द भएको हुन सक्छ। Windows Services मा <em>postgresql-x64-17</em> Start गर्नुहोस्।</td>
+  </tr>
+  <tr>
+    <td><strong>License Not Found</strong></td>
+    <td>License activate गरिएको छैन। <em>Help → Business Profile</em> चेक गर्नुहोस् वा admin@bimalpharmacy.com.np सम्पर्क गर्नुहोस्।</td>
+  </tr>
+  <tr>
+    <td><strong>बिल Finalize हुँदैन (Subscription Expired)</strong></td>
+    <td>License Subscription समाप्त भयो। नवीकरण गर्न admin@bimalpharmacy.com.np सम्पर्क गर्नुहोस्।</td>
+  </tr>
+  <tr>
+    <td><strong>म्याद सकिएको औषधि बेच्न सकिँदैन</strong></td>
+    <td>यो सुरक्षा सुविधा हो। उक्त Batch लाई Stock Adjustment गरेर हटाउनुहोस्।</td>
+  </tr>
+  <tr>
+    <td><strong>Invoice Print हुँदैन</strong></td>
+    <td>Settings → Printer Settings मा Printer छनोट गर्नुहोस् र Test Print गर्नुहोस्।</td>
+  </tr>
+  <tr>
+    <td><strong>Trial Balance नमिल्ने</strong></td>
+    <td>Accounts → Journals Ledger हेरेर unbalanced entry खोज्नुहोस्।</td>
+  </tr>
+  <tr>
+    <td><strong>Stock Negative देखिन्छ</strong></td>
+    <td>खरिद नगरी बिक्री भएको हुन सक्छ। Purchase Entry जाँच गर्नुहोस् वा Stock Adjustment गर्नुहोस्।</td>
+  </tr>
+  <tr>
+    <td><strong>Application खुल्दैन</strong></td>
+    <td>.NET 10 Runtime install भएको जाँच गर्नुहोस्। Installer ले स्वतः Install गर्छ।</td>
+  </tr>
+</table>
+
+<h2>थप सहायता:</h2>
+<p>तकनिकी समस्याका लागि सम्पर्क गर्नुहोस्:<br>
+<strong>Bimal Lamichhane / BIPRO</strong><br>
+📧 admin@bimalpharmacy.com.np</p>
+</section>
+
+<!-- CHAPTER 30 -->
+<section id="ch30">
+<div class="chapter-badge">अध्याय ३०</div>
+<h1>दैनिक, साप्ताहिक र मासिक जाँचसूची</h1>
+
+<h2>दैनिक जाँचसूची (हरेक दिन गर्ने)</h2>
+<ul class="checklist">
+  <li>BIPRO PharmaOne खोल्नुहोस् र DB: Connected देखिन्छ कि जाँच्नुहोस्</li>
+  <li>Dashboard हेरेर हिजोको closing balance जाँच्नुहोस्</li>
+  <li>Stock &amp; Expiry Control हेरेर म्याद नजिकिएका औषधि जाँच्नुहोस्</li>
+  <li>सबै खरिद Invoice तुरुन्त प्रविष्टि गर्नुहोस्</li>
+  <li>बिक्री नगद र उधारो छुट्टाछुट्टै राख्नुहोस्</li>
+  <li>ग्राहकबाट नगद प्राप्त भए Customer Receipt Entry गर्नुहोस्</li>
+  <li>दिनको खर्च (Expense) दर्ता गर्नुहोस्</li>
+  <li>Counter Cash Bank मा जम्मा गरे Cash/Bank Transfer गर्नुहोस्</li>
+  <li>Reports → Daily Closing Summary हेर्नुहोस्</li>
+  <li>Settings → Database Backup थिचेर Manual Backup गर्नुहोस्</li>
+</ul>
+
+<h2>साप्ताहिक जाँचसूची (हरेक हप्ता गर्ने)</h2>
+<ul class="checklist">
+  <li>Debtors Outstanding हेरेर बाँकी उधारो जाँच्नुहोस्</li>
+  <li>Creditors Outstanding हेरेर Supplier लाई तिर्न बाँकी जाँच्नुहोस्</li>
+  <li>Purchase Suggestion हेरेर कम stock भएका औषधि order गर्नुहोस्</li>
+  <li>Bank Statement सँग Cash Book मिलाउनुहोस्</li>
+  <li>Backup Files बाहिरी ड्राइभमा Copy गर्नुहोस्</li>
+</ul>
+
+<h2>मासिक जाँचसूची (हरेक महिना गर्ने)</h2>
+<ul class="checklist">
+  <li>Physical Count (भौतिक स्टक गणना) गर्नुहोस्</li>
+  <li>VAT Book हेरेर VAT दाखिला गर्नुहोस् (IRD को deadline अनुसार)</li>
+  <li>Trial Balance generate गरेर Accounts मिलाउनुहोस्</li>
+  <li>Profit &amp; Loss हेरेर महिनाको नाफा/नोक्सान जाँच्नुहोस्</li>
+  <li>Expired Batch हरू Stock Adjustment गरेर हटाउनुहोस्</li>
+  <li>Dead/Slow Stock Report हेर्नुहोस्</li>
+  <li>Reports → Audit Trail हेरेर असाधारण transaction जाँच्नुहोस्</li>
+</ul>
+
+<div class="quick-box">
+  <h4>🌟 सफल फार्मेसी व्यवस्थापनको सूत्र</h4>
+  <p><strong>दैनिक:</strong> सबै खरिद र बिक्री तुरुन्त दर्ता गर्नुहोस्।<br>
+  <strong>साप्ताहिक:</strong> बाँकी र Backup जाँच्नुहोस्।<br>
+  <strong>मासिक:</strong> स्टक गन्नुहोस्, VAT दाखिला गर्नुहोस्, Accounts मिलाउनुहोस्।</p>
+</div>
+</section>
+
+<!-- FOOTER -->
+<div style="margin-top:60px;padding-top:24px;border-top:2px solid var(--border);text-align:center;color:var(--text-muted);font-size:13px;">
+  <p><strong>BIPRO PharmaOne v1.0.6</strong> — प्रयोगकर्ता मार्गदर्शिका</p>
+  <p>Developed by Bimal Lamichhane &nbsp;|&nbsp; admin@bimalpharmacy.com.np</p>
+  <p style="margin-top:8px;">यो मार्गदर्शिका BIPRO PharmaOne v1.0.6 को वास्तविक source code मा आधारित छ।</p>
+  <p>PDF मा सेभ गर्न: <kbd>Ctrl+P</kbd> → "Save as PDF" छान्नुहोस्</p>
+</div>
+
+</main>
+
+<button class="print-btn" onclick="window.print()" title="PDF मा सेभ गर्नुहोस्">🖨 PDF सेभ</button>
+
+</body>
+</html>
