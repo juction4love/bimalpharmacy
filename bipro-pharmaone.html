@@ -72,11 +72,11 @@
   <nav aria-label="Breadcrumb"><a href="index.html">Home</a> / BIPRO PharmaOne</nav>
 
   <div class="pharma-hero">
-    <div class="version-badge">v1.0.6 — Released 2026-11-07</div>
+    <div class="version-badge">v1.0.7 — Released 2026-11-08</div>
     <h1>BIPRO PharmaOne</h1>
-    <p>Offline pharmacy management software for Windows — sales, purchases, inventory, accounting, backup, and reports. Designed for retail pharmacies in Nepal. Clean-install tested on 2026-11-07.</p>
-    <a class="dl-btn" href="https://github.com/juction4love/BIPRO_PHARMAONE_RELEASES/releases/download/v1.0.6/BIPRO_PharmaOne_Setup.exe" rel="noopener">
-      Download v1.0.6 (436 MB)
+    <p>Offline pharmacy management software for Windows — sales, purchases, inventory, accounting, backup, and reports. Designed for retail pharmacies in Nepal. Includes a 30-day free trial. Clean-install tested on 2026-11-08.</p>
+    <a class="dl-btn" href="https://github.com/juction4love/BIPRO_PHARMAONE_RELEASES/releases/download/v1.0.7/BIPRO_PharmaOne_Bundled_v1.0.7.exe" rel="noopener">
+      Download v1.0.7 (437 MB)
     </a>
     <p class="dl-meta">Windows 10 / 11 &nbsp;·&nbsp; PostgreSQL 17.11-5 bundled &nbsp;·&nbsp; .NET 10 Runtime bundled</p>
   </div>
@@ -116,7 +116,7 @@
   <section class="article-section">
     <h2>Installation instructions</h2>
     <ol class="step-list">
-      <li>Download <code>BIPRO_PharmaOne_Setup.exe</code> using the button above.</li>
+      <li>Download <code>BIPRO_PharmaOne_Bundled_v1.0.7.exe</code> using the button above.</li>
       <li>Verify the SHA-256 checksum (see below) if you want to confirm the file is unmodified.</li>
       <li>Run the installer. Accept the User Account Control (UAC) prompt if asked — PostgreSQL requires administrator rights to install as a Windows service.</li>
       <li>Follow the setup wizard. PostgreSQL 17 and the .NET 10 Runtime are installed automatically if not already present.</li>
@@ -135,13 +135,23 @@
   </section>
 
   <section class="article-section">
-    <h2>Activation Key</h2>
-    <p>BIPRO PharmaOne v1.0.6 requires an Activation Key issued by the software developer. The key is verified offline using RSA-2048 device binding — no internet connection is needed for activation or day-to-day use.</p>
-    <p>To activate: open <strong>Settings → Business Profile</strong> and use the activation panel. Paste the key provided by the developer. A key is tied to this installation and cannot be transferred to a different machine without a new key.</p>
-    <p>If you need an Activation Key, contact the developer who installed the software.</p>
+    <h2>Free Trial and Activation</h2>
+    <p>New installations of BIPRO PharmaOne v1.0.7 start a <strong>30-day free trial</strong> automatically. No registration is required during the trial. The trial status is shown in the application status bar.</p>
+    <p>After the trial period, activate the application by emailing <strong>admin@bimalpharmacy.com.np</strong>. Use the <strong>Activate License</strong> dialog in the Dashboard — it generates a unique Activation Key request with your pharmacy details. Email this request to the owner for review and approval. The owner will send back a signed license key by email. Paste the key in the same activation dialog to activate.</p>
+    <p>License verification is performed offline using RSA-2048 device binding — no internet connection is needed for day-to-day use after activation. A license is tied to this installation and cannot be transferred to a different machine without a new key.</p>
+    <p>After license expiry: Dashboard and Sales Billing remain accessible. Purchase, Inventory, Returns, and Claims require a renewed license. Renewal reminders appear on the Dashboard starting 30 days before expiry.</p>
   </section>
 
   <section class="article-section">
+    <h2>Release notes — v1.0.7 (2026-11-08)</h2>
+    <ul>
+      <li><strong>30-day free trial:</strong> New installations start a 30-day trial automatically. Trial is machine-keyed and clock-rollback resistant. Trial status shown in the application status bar throughout the trial period.</li>
+      <li><strong>Email-based activation:</strong> After the trial, submit an activation request from the Dashboard. The owner reviews and approves by email and returns a signed license key. No data leaves the device during activation.</li>
+      <li><strong>Annual renewal reminders:</strong> Licensed installations display a renewal reminder on the Dashboard starting 30 days before expiry, with follow-up reminders at 15, 7, 1 day, and on the expiry date. Each reminder can be dismissed individually. "Renew via Email" opens a pre-drafted email in the system mail client.</li>
+      <li><strong>Post-expiry access policy:</strong> Dashboard and Sales Billing always accessible after expiry. Purchase, Inventory, Returns, and Claims restricted until a renewed license is activated.</li>
+      <li><strong>Data-safe upgrade from v1.0.6:</strong> All pharmacy data, settings, and existing licenses are preserved on upgrade. No manual migration required.</li>
+      <li><strong>Installer ACL fix:</strong> Standard Windows user accounts can now write trial and renewal state files without requiring administrator elevation after installation.</li>
+    </ul>
     <h2>Release notes — v1.0.6 (2026-11-07)</h2>
     <ul>
       <li><strong>Activation Key licensing:</strong> RSA-2048 offline license with device binding. The application requires a valid Activation Key; activation and all subsequent use are fully offline.</li>
@@ -170,15 +180,17 @@
       <li>Sales documents are labelled CHALLAN, not VAT invoice. This application is not a substitute for a government-approved billing system.</li>
       <li>Printer compatibility is tested with common laser and thermal printers but not verified across all printer models.</li>
       <li>Nepali BS date entry is supported for expiry fields. Full BS-calendar input for all date fields may be added in a future version.</li>
+      <li>Activation requires email exchange with the owner (admin@bimalpharmacy.com.np). There is no instant automated online activation in this release.</li>
+      <li>The 30-day trial is per-device. Installing on a new machine starts a new trial on that machine.</li>
     </ul>
   </section>
 
   <section class="article-section">
     <h2>File checksum</h2>
     <p>Verify the installer using PowerShell before running it:</p>
-    <div class="checksum-box">Get-FileHash BIPRO_PharmaOne_Setup.exe -Algorithm SHA256</div>
+    <div class="checksum-box">Get-FileHash BIPRO_PharmaOne_Bundled_v1.0.7.exe -Algorithm SHA256</div>
     <p>Expected SHA-256:</p>
-    <div class="checksum-box">707bb990b5ed271e14ea95c881e9a6bf7a7188f43e9a9f2d88a08052a480daa3</div>
+    <div class="checksum-box">c3779884f71b3bcea5e28f3607bce34735886cbfbe659b60cf64dcfdf180ff3a</div>
     <p>A mismatch means the file was corrupted or substituted in transit. Do not run a file that does not match.</p>
     <p><a href="SHA256SUMS.txt">Full historical checksum list (SHA256SUMS.txt)</a></p>
   </section>
@@ -224,7 +236,7 @@
       <summary>२. स्थापना (Installation)</summary>
       <div class="np-body">
         <ol class="np-steps">
-          <li><span class="n">१</span><div>माथिको <strong>Download v1.0.6</strong> बटनबाट <code class="np-code">BIPRO_PharmaOne_Setup.exe</code> डाउनलोड गर्नुहोस्।</div></li>
+          <li><span class="n">१</span><div>माथिको <strong>Download v1.0.7</strong> बटनबाट <code class="np-code">BIPRO_PharmaOne_Bundled_v1.0.7.exe</code> डाउनलोड गर्नुहोस्।</div></li>
           <li><span class="n">२</span><div>चाहेमा SHA-256 checksum मिलाएर फाइलको अखण्डता जाँच गर्नुहोस् (तलको "File checksum" खण्ड हेर्नुहोस्)।</div></li>
           <li><span class="n">३</span><div>इन्स्टलर चलाउनुहोस्। Windows ले UAC (User Account Control) अनुमति माग्नेछ — <strong>Yes</strong> क्लिक गर्नुहोस्। PostgreSQL 17 Windows service को रूपमा स्थापना गर्न administrator अधिकार आवश्यक छ।</div></li>
           <li><span class="n">४</span><div>Setup Wizard को निर्देशन पालना गर्नुहोस्। PostgreSQL 17 र .NET 10 Runtime नभएमा स्वचालित रूपमा स्थापना हुन्छ।</div></li>
@@ -259,7 +271,7 @@
         </table>
         <div class="np-note2">Fiscal year को पूर्वनिर्धारित मान <strong>FY 2083/84</strong> (code: <code class="np-code">FY-2083-84</code>) हो। आवश्यकतानुसार परिवर्तन गर्न सकिन्छ।</div>
         <p>Setup सकिएपछि तपाईंले सेट गरेको Administrator username र password बाट login गर्नुहोस्।</p>
-        <div class="np-note2"><strong>Activation Key (v1.0.6):</strong> BIPRO PharmaOne v1.0.6 मा software developer ले दिएको Activation Key आवश्यक पर्छ। Key activate गर्न: <strong>Settings → Business Profile</strong> खोल्नुहोस् र activation panel मा key paste गर्नुहोस्। Internet connection आवश्यक छैन — activation पूर्णतः offline हुन्छ।</div>
+        <div class="np-note2"><strong>Trial र Activation (v1.0.7):</strong> नयाँ installation मा 30-दिनको free trial स्वचालित रूपमा सुरु हुन्छ। Trial सकिएपछि Dashboard को <strong>Activate License</strong> dialog बाट activation request पठाउनुहोस् र <strong>admin@bimalpharmacy.com.np</strong> मा email गर्नुहोस्। Owner ले approve गरेपछि signed license key email मार्फत आउँछ।</div>
       </div>
     </details>
 
