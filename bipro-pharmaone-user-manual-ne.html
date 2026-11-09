@@ -258,7 +258,7 @@ kbd {
   <h1>प्रयोगकर्ता मार्गदर्शिका<br><small style="font-size:18px;font-weight:400;opacity:0.9">Nepali User Guide</small></h1>
   <p class="subtitle">फार्मेसी व्यवस्थापनका लागि सम्पूर्ण निर्देशिका —<br>संस्थापन, दैनिक सञ्चालन, रिपोर्टिङ र लेखा।</p>
   <div class="meta">
-    <div>संस्करण: v1.0.6 &nbsp;|&nbsp; .NET 10, Windows &nbsp;|&nbsp; PostgreSQL 17</div>
+    <div>संस्करण: v1.0.9 &nbsp;|&nbsp; .NET 10, Windows &nbsp;|&nbsp; PostgreSQL 17.11</div>
     <div>भाषा: नेपाली (Nepali) &nbsp;|&nbsp; Developed by Bimal Lamichhane</div>
     <div>सम्पर्क: admin@bimalpharmacy.com.np</div>
   </div>
@@ -268,7 +268,7 @@ kbd {
 <div class="sidebar">
   <div class="sidebar-header">
     <div class="brand">BIPRO PharmaOne</div>
-    <div class="brand-sub">प्रयोगकर्ता मार्गदर्शिका v1.0.6</div>
+    <div class="brand-sub">प्रयोगकर्ता मार्गदर्शिका v1.0.9</div>
   </div>
   <nav>
     <a href="#cover" class="section-header">सुरु</a>
@@ -395,10 +395,10 @@ kbd {
 
 <h2>Installer चलाउने</h2>
 <div class="steps">
-  <div class="step"><div class="step-num"></div><div class="step-content"><code>BIPRO_PharmaOne_v1.0.6.exe</code> फाइलमा double-click गर्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><code>BIPRO_PharmaOne_Bundled_v1.0.9.exe</code> फाइलमा double-click गर्नुहोस्।</div></div>
   <div class="step"><div class="step-num"></div><div class="step-content">Windows ले Administrator अनुमति माग्छ — <strong>Yes</strong> थिच्नुहोस्।</div></div>
   <div class="step"><div class="step-num"></div><div class="step-content">Installation Wizard को निर्देशन पछ्याउनुहोस्। Default path: <code>C:\BIPRO PharmaOne</code></div></div>
-  <div class="step"><div class="step-num"></div><div class="step-content">Database Credential Setup सोधिन्छ — PostgreSQL को runtime user को Password राख्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">PostgreSQL 17.11 र .NET 10 Runtime स्वत: install हुन्छन् — कुनै password छुट्टै राख्न पर्दैन।</div></div>
   <div class="step"><div class="step-num"></div><div class="step-content">Desktop मा <strong>BIPRO PharmaOne</strong> shortcut बन्छ।</div></div>
 </div>
 
@@ -471,6 +471,16 @@ kbd {
 </ul>
 
 <div class="tip"><span class="icon">💡</span><div>Dashboard लाई <kbd>F5</kbd> थिचेर जहिलेसुकै Refresh गर्न सकिन्छ।</div></div>
+
+<h2>Wallpaper र Data/Wallpaper Toggle (v1.0.9)</h2>
+<p>BIPRO PharmaOne मा एउटा आकर्षक background wallpaper छ जुन सबै पेजहरूमा — Sales, Purchases, Inventory, Finance, Accounts, Reports, Settings र Dashboard — ३०% opacity मा देखिन्छ। अगाडिको content (card, table, button) पूर्ण रूपमा देखिन्छन्।</p>
+<h3>Dashboard Data / Wallpaper Toggle:</h3>
+<p>Dashboard को माथिल्लो दायाँ कुनामा एउटा toggle बटन छ:</p>
+<ul>
+  <li><strong>Data Mode (default):</strong> सबै metric card, chart र banner देखिन्छन्।</li>
+  <li><strong>Wallpaper Mode:</strong> सबै dashboard content लुक्छन्, केवल navigation र header देखिन्छ। Wallpaper पूर्ण रूपमा देखिन्छ।</li>
+</ul>
+<div class="note"><span class="icon">ℹ</span><div>Toggle ले कुनै डेटा नमेट्छ र नमेटिन्छ। Application restart गरेमा Data Mode मा फर्कन्छ।</div></div>
 </section>
 
 <!-- CHAPTER 5 -->
@@ -610,7 +620,7 @@ kbd {
 <h3>नगद खरिद (Cash Purchase) प्रविष्टि:</h3>
 <div class="steps">
   <div class="step"><div class="step-num"></div><div class="step-content">Purchase → Cash Purchase मा जानुहोस् वा <kbd>F7</kbd> थिच्नुहोस्।</div></div>
-  <div class="step"><div class="step-num"></div><div class="step-content"><strong>Supplier</strong> छान्नुहोस् (छान्दा Supplier को बाँकी रकम देखिन्छ)।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><strong>Supplier</strong> छान्नुहोस् (छान्दा Supplier को बाँकी रकम देखिन्छ)। नयाँ Supplier थप्न तलको Quick Add हेर्नुहोस्।</div></div>
   <div class="step"><div class="step-num"></div><div class="step-content"><strong>Supplier Invoice No.</strong> भर्नुहोस् (Supplier को बिल नम्बर)।</div></div>
   <div class="step"><div class="step-num"></div><div class="step-content"><strong>Invoice Date</strong> (बिलको मिति) राख्नुहोस्।</div></div>
   <div class="step"><div class="step-num"></div><div class="step-content">औषधि खोज्न Product को नाम टाइप गर्नुहोस् — auto-suggestion देखिन्छ।</div></div>
@@ -634,6 +644,16 @@ kbd {
 </table>
 
 <div class="important"><span class="icon">⚠</span><div>Batch No. र Expiry Date अनिवार्य रूपमा राख्नुहोस्। यी नराखेमा म्याद नजिकिएका औषधिको अलर्ट आउँदैन।</div></div>
+
+<h3>Supplier Quick Add — खरिद बीचमै नयाँ Supplier थप्न (v1.0.9)</h3>
+<p>खरिद form खुला छँदै नयाँ Supplier थप्न सकिन्छ — Masters मा जान पर्दैन।</p>
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content">Supplier field मा Supplier को नाम टाइप गर्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">List मा नभेटिएमा Supplier row मा <strong>⊕ Add New</strong> link देखिन्छ — त्यसमा click गर्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Add Supplier dialog खुल्छ — नाम, PAN, फोन, र ठेगाना भर्नुहोस्।</div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content">Save थिच्नुहोस् — नयाँ Supplier स्वत: छानिन्छ, खरिद draft सुरक्षित रहन्छ।</div></div>
+</div>
+<div class="note"><span class="icon">ℹ</span><div>Duplicate Detection: पहिल्यै दर्ता भएको Supplier को नाम, PAN, वा फोन मेल खाएमा system ले सचेत गराउँछ र पुरानो Supplier छान्न सुझाव दिन्छ।</div></div>
 
 <h3>उधारो खरिद (Credit Purchase):</h3>
 <p>Credit Purchase पनि Cash Purchase जस्तै हो, तर अन्तरमा Supplier लाई तुरुन्त नगद नतिर्नु हो। Payable रकम Supplier को खातामा जम्मा हुन्छ र पछि <strong>Supplier Payment Entry</strong> बाट भुक्तानी दिनुपर्छ।</p>
@@ -1204,9 +1224,9 @@ kbd {
 
 <!-- FOOTER -->
 <div style="margin-top:60px;padding-top:24px;border-top:2px solid var(--border);text-align:center;color:var(--text-muted);font-size:13px;">
-  <p><strong>BIPRO PharmaOne v1.0.6</strong> — प्रयोगकर्ता मार्गदर्शिका</p>
+  <p><strong>BIPRO PharmaOne v1.0.9</strong> — प्रयोगकर्ता मार्गदर्शिका</p>
   <p>Developed by Bimal Lamichhane &nbsp;|&nbsp; admin@bimalpharmacy.com.np</p>
-  <p style="margin-top:8px;">यो मार्गदर्शिका BIPRO PharmaOne v1.0.6 को वास्तविक source code मा आधारित छ।</p>
+  <p style="margin-top:8px;">यो मार्गदर्शिका BIPRO PharmaOne v1.0.9 को वास्तविक source code मा आधारित छ।</p>
   <p>PDF मा सेभ गर्न: <kbd>Ctrl+P</kbd> → "Save as PDF" छान्नुहोस्</p>
 </div>
 

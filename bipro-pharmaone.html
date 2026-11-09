@@ -72,11 +72,11 @@
   <nav aria-label="Breadcrumb"><a href="index.html">Home</a> / BIPRO PharmaOne</nav>
 
   <div class="pharma-hero">
-    <div class="version-badge">v1.0.8 — Released 2026-11-08</div>
+    <div class="version-badge">v1.0.9 — Released 2026-11-09</div>
     <h1>BIPRO PharmaOne</h1>
     <p>Offline pharmacy management software for Windows — sales, purchases, inventory, accounting, backup, and reports. Designed for retail pharmacies in Nepal. Includes a 30-day free trial.</p>
-    <a class="dl-btn" href="https://github.com/juction4love/BIPRO_PHARMAONE_RELEASES/releases/download/v1.0.8/BIPRO_PharmaOne_Bundled_v1.0.8.exe" rel="noopener">
-      Download v1.0.8 (437 MB)
+    <a class="dl-btn" href="https://github.com/juction4love/BIPRO_PHARMAONE_RELEASES/releases/download/v1.0.9/BIPRO_PharmaOne_Bundled_v1.0.9.exe" rel="noopener">
+      Download v1.0.9 (422 MB)
     </a>
     <p class="dl-meta">Windows 10 / 11 &nbsp;·&nbsp; PostgreSQL 17.11-5 bundled &nbsp;·&nbsp; .NET 10 Runtime bundled</p>
   </div>
@@ -86,7 +86,7 @@
     <p>BIPRO PharmaOne is a single-PC, offline retail pharmacy management application. It stores all data in a local PostgreSQL database — no cloud account, no internet subscription, no third-party server receives your pharmacy or patient data during normal operation.</p>
     <ul>
       <li><strong>Sales:</strong> Cash sales and credit sales with customer ledger, cash memo history, and sales returns. Documents are printed as A4 or thermal challan.</li>
-      <li><strong>Purchases:</strong> Cash and credit purchases, purchase returns, and supplier claim register.</li>
+      <li><strong>Purchases:</strong> Cash and credit purchases, inline supplier quick-add during purchase entry with duplicate detection, purchase returns, and supplier claim register.</li>
       <li><strong>Inventory:</strong> Batch tracking (FEFO), stock &amp; expiry control, stock adjustments, physical counts, inventory valuation, and carrying-cost revaluation.</li>
       <li><strong>Prescription Register:</strong> Immutable prescription records with product linkage (v1.0.6).</li>
       <li><strong>Controlled Drug Register:</strong> Dispensing records for Nepal DDA schedule A–D controlled substances, immutable after save (v1.0.6).</li>
@@ -94,6 +94,7 @@
       <li><strong>Finance:</strong> Customer receipts, supplier payments, expense records, other income, and fund transfers.</li>
       <li><strong>Reports:</strong> Purchase book, sales book, VAT register, party statements, outstanding dues, and inventory valuation.</li>
       <li><strong>Backup:</strong> Daily automatic backup (last 30 kept) and manual backup on demand. Backup files are saved to your local computer — no automatic cloud upload.</li>
+      <li><strong>Appearance:</strong> Global wallpaper displayed at 30% opacity across all pages. Dashboard data/wallpaper toggle hides metric cards to show the wallpaper full-screen.</li>
     </ul>
     <p class="pharma-note"><strong>Regulatory note:</strong> Sales documents are labelled CHALLAN (चालान). BIPRO PharmaOne is not IRD-approved, CBMS-certified, DDA-approved, or an authorised VAT invoice system. Live CBMS transmission is not enabled in this release. It is a local record-keeping tool for retail pharmacy operations.</p>
   </section>
@@ -116,10 +117,10 @@
   <section class="article-section">
     <h2>Installation instructions</h2>
     <ol class="step-list">
-      <li>Download <code>BIPRO_PharmaOne_Bundled_v1.0.8.exe</code> using the button above.</li>
+      <li>Download <code>BIPRO_PharmaOne_Bundled_v1.0.9.exe</code> using the button above.</li>
       <li>Verify the SHA-256 checksum (see below) if you want to confirm the file is unmodified.</li>
       <li>Run the installer. Accept the User Account Control (UAC) prompt if asked — PostgreSQL requires administrator rights to install as a Windows service.</li>
-      <li>Follow the setup wizard. PostgreSQL 17 and the .NET 10 Runtime are installed automatically if not already present.</li>
+      <li>Follow the setup wizard. PostgreSQL 17.11 and the .NET 10 Runtime are installed automatically — no password entry is required during installation.</li>
       <li>When setup finishes, launch <strong>BIPRO PharmaOne</strong> from the Start menu or desktop shortcut.</li>
       <li>On first run, the setup wizard asks for your business name, address, phone number, and optional PAN/VAT and drug licence numbers. It also creates an <strong>Administrator</strong> account (username and password) for the application.</li>
       <li>Set your fiscal year and starting cash memo number as instructed by the wizard.</li>
@@ -136,7 +137,7 @@
 
   <section class="article-section">
     <h2>Free Trial and Activation</h2>
-    <p>New installations of BIPRO PharmaOne v1.0.7 start a <strong>30-day free trial</strong> automatically. No registration is required during the trial. The trial status is shown in the application status bar.</p>
+    <p>New installations of BIPRO PharmaOne v1.0.9 start a <strong>30-day free trial</strong> automatically. No registration is required during the trial. The trial status is shown in the application status bar.</p>
     <p>After the trial period, activate the application by emailing <strong>admin@bimalpharmacy.com.np</strong>. Use the <strong>Activate License</strong> dialog in the Dashboard — it generates an activation request containing your pharmacy name, installation identifier, and registration details. Email this request to the owner for review and approval. After the owner approves, a signed license key is returned by email. Paste the key in the same activation dialog to activate.</p>
     <p class="pharma-note"><strong>Privacy note:</strong> The activation request intentionally includes your pharmacy details and installation metadata so the owner can verify the request. This information is shared with admin@bimalpharmacy.com.np during the activation email exchange. Normal day-to-day operation of the application does not send any data to a remote server.</p>
     <p>License verification is performed offline using RSA-2048 device binding — no internet connection is needed for day-to-day use after activation. A license is tied to this installation and cannot be transferred to a different machine without a new key.</p>
@@ -144,6 +145,13 @@
   </section>
 
   <section class="article-section">
+    <h2>Release notes — v1.0.9 (2026-11-09)</h2>
+    <ul>
+      <li><strong>Global wallpaper:</strong> The application wallpaper now appears at 30% opacity across all pages — Sales, Purchases, Inventory, Finance, Accounts, Reports, and Settings — in addition to the Dashboard. Foreground content remains fully opaque and readable in both light and dark themes.</li>
+      <li><strong>Purchase supplier quick-add:</strong> An inline <em>Add New</em> link appears in the Supplier row of the Purchase form. Type a supplier name, click Add New, fill in the details, and the new supplier is saved and auto-selected without leaving the purchase draft. Duplicate detection prevents creating suppliers with matching names, PAN numbers, or phone numbers.</li>
+      <li><strong>Runtime cleanup:</strong> Eliminated stale .NET 8 WPF DLLs that were left in the application package from a prior build. All bundled runtime components are now consistently .NET 10.0.14.</li>
+      <li><strong>Data-safe upgrade from v1.0.8:</strong> No database schema changes in v1.0.9. The installer upgrades application files in place; all pharmacy data, settings, and license are preserved.</li>
+    </ul>
     <h2>Release notes — v1.0.8 (2026-11-08)</h2>
     <ul>
       <li><strong>Dashboard wallpaper background:</strong> The Dashboard content area now shows the application wallpaper at 30% opacity. Metric cards remain fully opaque and readable. All other pages are unaffected.</li>
@@ -196,9 +204,9 @@
   <section class="article-section">
     <h2>File checksum</h2>
     <p>Verify the installer using PowerShell before running it:</p>
-    <div class="checksum-box">Get-FileHash BIPRO_PharmaOne_Bundled_v1.0.8.exe -Algorithm SHA256</div>
+    <div class="checksum-box">Get-FileHash BIPRO_PharmaOne_Bundled_v1.0.9.exe -Algorithm SHA256</div>
     <p>Expected SHA-256:</p>
-    <div class="checksum-box">9528c517ae104b433f4cf52f5d5cbd77aad68ae7f20738cb5e0dee452a3cb3c7</div>
+    <div class="checksum-box">eaa6dc8a67e16f5250283fc0f4ddee8d1ebe4a40bc2ab93c2d3ad3788e893e66</div>
     <p>A mismatch means the file was corrupted or substituted in transit. Do not run a file that does not match.</p>
     <p><a href="SHA256SUMS.txt">Full historical checksum list (SHA256SUMS.txt)</a></p>
   </section>
