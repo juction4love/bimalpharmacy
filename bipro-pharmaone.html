@@ -72,11 +72,11 @@
   <nav aria-label="Breadcrumb"><a href="index.html">Home</a> / BIPRO PharmaOne</nav>
 
   <div class="pharma-hero">
-    <div class="version-badge">v1.0.9 — Released 2026-11-09</div>
+    <div class="version-badge">v1.0.10 — Released 2026-11-12</div>
     <h1>BIPRO PharmaOne</h1>
     <p>Offline pharmacy management software for Windows — sales, purchases, inventory, accounting, backup, and reports. Designed for retail pharmacies in Nepal. Includes a 30-day free trial.</p>
-    <a class="dl-btn" href="https://github.com/juction4love/BIPRO_PHARMAONE_RELEASES/releases/download/v1.0.9/BIPRO_PharmaOne_Bundled_v1.0.9.exe" rel="noopener">
-      Download v1.0.9 (422 MB)
+    <a class="dl-btn" href="https://github.com/juction4love/BIPRO_PHARMAONE_RELEASES/releases/download/v1.0.10/BIPRO_PharmaOne_Bundled_v1.0.10.exe" rel="noopener">
+      Download v1.0.10 (422 MB)
     </a>
     <p class="dl-meta">Windows 10 / 11 &nbsp;·&nbsp; PostgreSQL 17.11-5 bundled &nbsp;·&nbsp; .NET 10 Runtime bundled</p>
   </div>
@@ -117,7 +117,7 @@
   <section class="article-section">
     <h2>Installation instructions</h2>
     <ol class="step-list">
-      <li>Download <code>BIPRO_PharmaOne_Bundled_v1.0.9.exe</code> using the button above.</li>
+      <li>Download <code>BIPRO_PharmaOne_Bundled_v1.0.10.exe</code> using the button above.</li>
       <li>Verify the SHA-256 checksum (see below) if you want to confirm the file is unmodified.</li>
       <li>Run the installer. Accept the User Account Control (UAC) prompt if asked — PostgreSQL requires administrator rights to install as a Windows service.</li>
       <li>Follow the setup wizard. PostgreSQL 17.11 and the .NET 10 Runtime are installed automatically — no password entry is required during installation.</li>
@@ -137,7 +137,7 @@
 
   <section class="article-section">
     <h2>Free Trial and Activation</h2>
-    <p>New installations of BIPRO PharmaOne v1.0.9 start a <strong>30-day free trial</strong> automatically. No registration is required during the trial. The trial status is shown in the application status bar.</p>
+    <p>New installations of BIPRO PharmaOne v1.0.10 start a <strong>30-day free trial</strong> automatically. No registration is required during the trial. The trial status is shown in the application status bar.</p>
     <p>After the trial period, activate the application by emailing <strong>admin@bimalpharmacy.com.np</strong>. Use the <strong>Activate License</strong> dialog in the Dashboard — it generates an activation request containing your pharmacy name, installation identifier, and registration details. Email this request to the owner for review and approval. After the owner approves, a signed license key is returned by email. Paste the key in the same activation dialog to activate.</p>
     <p class="pharma-note"><strong>Privacy note:</strong> The activation request intentionally includes your pharmacy details and installation metadata so the owner can verify the request. This information is shared with admin@bimalpharmacy.com.np during the activation email exchange. Normal day-to-day operation of the application does not send any data to a remote server.</p>
     <p>License verification is performed offline using RSA-2048 device binding — no internet connection is needed for day-to-day use after activation. A license is tied to this installation and cannot be transferred to a different machine without a new key.</p>
@@ -145,6 +145,14 @@
   </section>
 
   <section class="article-section">
+    <h2>Release notes — v1.0.10 (2026-11-12)</h2>
+    <ul>
+      <li><strong>Controlled Drug Register — automatic dispensing:</strong> When a sale is finalized, any controlled drug items (Nepal DDA schedule A–D) are now automatically posted to the Controlled Drug Register as dispensing entries. Each entry is idempotent and immutable after save. Normal (non-controlled) products are never posted.</li>
+      <li><strong>CBMS configuration toggle:</strong> The CBMS Readiness page now includes an explicit Enable/Disable toggle for the CBMS integration feature. Enabling activates mock testing mode; live IRD transmission remains blocked by compile-time lock and requires official IRD authorization.</li>
+      <li><strong>CBMS status badges:</strong> The CBMS Readiness page status bar now reflects the actual enabled/disabled state from the saved configuration.</li>
+      <li><strong>Documentation corrections:</strong> User manual version references updated. Post-expiry billing behavior documented accurately (Sales Billing remains accessible after trial/license expiry). CBMS live-transmission disclaimer added.</li>
+      <li><strong>Data-safe upgrade from v1.0.9:</strong> No destructive database changes in v1.0.10. The installer upgrades application files in place; all pharmacy data, settings, and license are preserved.</li>
+    </ul>
     <h2>Release notes — v1.0.9 (2026-11-09)</h2>
     <ul>
       <li><strong>Global wallpaper:</strong> The application wallpaper now appears at 30% opacity across all pages — Sales, Purchases, Inventory, Finance, Accounts, Reports, and Settings — in addition to the Dashboard. Foreground content remains fully opaque and readable in both light and dark themes.</li>
@@ -204,9 +212,9 @@
   <section class="article-section">
     <h2>File checksum</h2>
     <p>Verify the installer using PowerShell before running it:</p>
-    <div class="checksum-box">Get-FileHash BIPRO_PharmaOne_Bundled_v1.0.9.exe -Algorithm SHA256</div>
+    <div class="checksum-box">Get-FileHash BIPRO_PharmaOne_Bundled_v1.0.10.exe -Algorithm SHA256</div>
     <p>Expected SHA-256:</p>
-    <div class="checksum-box">eaa6dc8a67e16f5250283fc0f4ddee8d1ebe4a40bc2ab93c2d3ad3788e893e66</div>
+    <div class="checksum-box">954cf4ccf39cf391712ec24a3bddd3271979952ded9060dad3ca2262c94614dc</div>
     <p>A mismatch means the file was corrupted or substituted in transit. Do not run a file that does not match.</p>
     <p><a href="SHA256SUMS.txt">Full historical checksum list (SHA256SUMS.txt)</a></p>
   </section>
@@ -267,7 +275,7 @@
       <summary>२. स्थापना (Installation)</summary>
       <div class="np-body">
         <ol class="np-steps">
-          <li><span class="n">१</span><div>माथिको <strong>Download v1.0.8</strong> बटनबाट <code class="np-code">BIPRO_PharmaOne_Bundled_v1.0.8.exe</code> डाउनलोड गर्नुहोस्।</div></li>
+          <li><span class="n">१</span><div>माथिको <strong>Download v1.0.10</strong> बटनबाट <code class="np-code">BIPRO_PharmaOne_Bundled_v1.0.10.exe</code> डाउनलोड गर्नुहोस्।</div></li>
           <li><span class="n">२</span><div>चाहेमा SHA-256 checksum मिलाएर फाइलको अखण्डता जाँच गर्नुहोस् (तलको "File checksum" खण्ड हेर्नुहोस्)।</div></li>
           <li><span class="n">३</span><div>इन्स्टलर चलाउनुहोस्। Windows ले UAC (User Account Control) अनुमति माग्नेछ — <strong>Yes</strong> क्लिक गर्नुहोस्। PostgreSQL 17 Windows service को रूपमा स्थापना गर्न administrator अधिकार आवश्यक छ।</div></li>
           <li><span class="n">४</span><div>Setup Wizard को निर्देशन पालना गर्नुहोस्। PostgreSQL 17 र .NET 10 Runtime नभएमा स्वचालित रूपमा स्थापना हुन्छ।</div></li>
@@ -302,7 +310,7 @@
         </table>
         <div class="np-note2">Fiscal year को पूर्वनिर्धारित मान <strong>FY 2083/84</strong> (code: <code class="np-code">FY-2083-84</code>) हो। आवश्यकतानुसार परिवर्तन गर्न सकिन्छ।</div>
         <p>Setup सकिएपछि तपाईंले सेट गरेको Administrator username र password बाट login गर्नुहोस्।</p>
-        <div class="np-note2"><strong>Trial र Activation (v1.0.8):</strong> नयाँ installation मा 30-दिनको free trial स्वचालित रूपमा सुरु हुन्छ। Trial सकिएपछि Dashboard को <strong>Activate License</strong> dialog बाट activation request पठाउनुहोस् र <strong>admin@bimalpharmacy.com.np</strong> मा email गर्नुहोस्। Owner ले approve गरेपछि signed license key email मार्फत आउँछ।</div>
+        <div class="np-note2"><strong>Trial र Activation (v1.0.10):</strong> नयाँ installation मा 30-दिनको free trial स्वचालित रूपमा सुरु हुन्छ। Trial सकिएपछि Dashboard को <strong>Activate License</strong> dialog बाट activation request पठाउनुहोस् र <strong>admin@bimalpharmacy.com.np</strong> मा email गर्नुहोस्। Owner ले approve गरेपछि signed license key email मार्फत आउँछ।</div>
       </div>
     </details>
 
