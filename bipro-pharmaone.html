@@ -4,25 +4,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BIPRO PharmaOne | Pharmacy Management Software for Nepal</title>
-  <meta name="description" content="BIPRO PharmaOne — offline pharmacy management software for Windows. Sales, purchases, inventory, accounting, and backup. 30-day free trial included.">
+  <meta name="description" content="BIPRO PharmaOne — complete offline pharmacy management software for Windows. Sales billing, inventory, accounting, controlled drug register, backup, and reports. Designed for retail pharmacies in Nepal.">
   <link rel="canonical" href="https://www.bimalpharmacy.com.np/bipro-pharmaone">
   <meta property="og:title" content="BIPRO PharmaOne | Pharmacy Management Software for Nepal">
-  <meta property="og:description" content="BIPRO PharmaOne — offline pharmacy management software for Windows. Sales, purchases, inventory, accounting, and backup. 30-day free trial included.">
+  <meta property="og:description" content="BIPRO PharmaOne — complete offline pharmacy management software. Sales, inventory, accounting, CDR, backup, and reports. 30-day free trial.">
   <meta property="og:url" content="https://www.bimalpharmacy.com.np/bipro-pharmaone">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.bimalpharmacy.com.np/photo1.jpg">
   <meta property="og:site_name" content="Bimal Pharmacy">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BIPRO PharmaOne | Pharmacy Management Software for Nepal">
-  <meta name="twitter:description" content="BIPRO PharmaOne — offline pharmacy management software for Windows. Sales, purchases, inventory, accounting, and backup. 30-day free trial included.">
+  <meta name="twitter:description" content="BIPRO PharmaOne — complete offline pharmacy management software. Sales, inventory, accounting, CDR, backup, and reports.">
   <meta name="twitter:image" content="https://www.bimalpharmacy.com.np/photo1.jpg">
   <link rel="stylesheet" href="style.css">
   <script src="components.js" defer></script>
   <style>
-    .pharma-hero { background: linear-gradient(135deg,#064e3b 0%,#065f46 60%,#047857 100%); color: #fff; border-radius: 16px; padding: 2.25rem 2rem; margin: 1.5rem 0; }
+    .pharma-hero { background: linear-gradient(135deg,#064e3b 0%,#065f46 60%,#047857 100%); color: #fff; border-radius: 16px; padding: 2.25rem 2rem; margin: 1.5rem 0; display: flex; gap: 2rem; align-items: center; }
+    .pharma-hero-logo { flex-shrink: 0; width: 120px; height: 80px; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,.35)); }
+    .pharma-hero-body { flex: 1; min-width: 0; }
     .pharma-hero h1 { margin: 0 0 .4rem; font-size: 2rem; letter-spacing: -.01em; }
     .pharma-hero .version-badge { display: inline-block; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35); border-radius: 20px; padding: .25rem .9rem; font-size: .85rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: .03em; }
     .pharma-hero p { margin: .5rem 0 1.25rem; opacity: .92; line-height: 1.6; max-width: 640px; }
+    @media (max-width: 600px) { .pharma-hero { flex-direction: column; align-items: flex-start; gap: 1rem; } .pharma-hero-logo { width: 90px; height: 60px; } }
     .dl-btn { display: inline-block; background: #fff; color: #065f46; font-weight: 800; padding: .85rem 1.8rem; border-radius: 10px; text-decoration: none; font-size: 1.05rem; box-shadow: 0 2px 12px rgba(0,0,0,.18); transition: box-shadow .15s; }
     .dl-btn:hover { box-shadow: 0 4px 18px rgba(0,0,0,.28); }
     .dl-meta { margin-top: .7rem; font-size: .82rem; opacity: .8; }
@@ -30,14 +33,21 @@
     .pharma-warn { border-left: 4px solid #d97706; padding: .8rem 1rem; background: #fffbeb; color: #422006; border-radius: 0 8px 8px 0; margin: 1.2rem 0; }
     .bipro-table { width: 100%; border-collapse: collapse; }
     .bipro-table th, .bipro-table td { padding: .7rem; text-align: left; border-bottom: 1px solid #d1d5db; vertical-align: top; }
-    .bipro-table th { width: 30%; color: #374151; font-weight: 700; }
+    .bipro-table th { width: 32%; color: #374151; font-weight: 700; }
     .checksum-box { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; padding: .75rem 1rem; font-family: monospace; font-size: .8rem; word-break: break-all; margin: .75rem 0; }
     .step-list { counter-reset: step; list-style: none; padding: 0; }
     .step-list li { counter-increment: step; padding: .45rem 0 .45rem 2.4rem; position: relative; }
     .step-list li::before { content: counter(step); position: absolute; left: 0; top: .35rem; background: #047857; color: #fff; border-radius: 50%; width: 1.6rem; height: 1.6rem; line-height: 1.6rem; text-align: center; font-weight: 700; font-size: .82rem; }
     .bipro-small { color: #475569; font-size: .94rem; }
-    @media print { site-header, site-footer { display: none; } }
-    /* Nepali guide */
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .feature-card { background: #f0fdf4; border: 1px solid #a7f3d0; border-radius: 10px; padding: 1rem 1.1rem; }
+    .feature-card h3 { margin: 0 0 .4rem; font-size: .97rem; color: #064e3b; }
+    .feature-card p { margin: 0; font-size: .9rem; color: #374151; line-height: 1.55; }
+    .faq-item { border-bottom: 1px solid #e5e7eb; padding: .9rem 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-weight: 700; color: #064e3b; margin: 0 0 .4rem; }
+    .faq-a { margin: 0; color: #374151; font-size: .95rem; line-height: 1.6; }
+    /* Nepali manual section */
     .np-guide { border-top: 3px solid #047857; margin-top: 2.5rem; padding-top: 1.5rem; }
     .np-guide > h2 { color: #064e3b; }
     .np-toc { background: #f0fdf4; border: 1px solid #a7f3d0; border-radius: 10px; padding: 1rem 1.4rem 1rem 1.8rem; margin: .8rem 0 1.5rem; }
@@ -63,7 +73,8 @@
     .np-tbl th, .np-tbl td { padding: .55rem .75rem; border-bottom: 1px solid #d1d5db; text-align: left; vertical-align: top; }
     .np-tbl th { color: #374151; font-weight: 700; width: 36%; background: #f9fafb; }
     .np-code { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 5px; padding: .2rem .55rem; font-family: monospace; font-size: .8rem; }
-    @media (max-width: 480px) { .np-body { padding: .85rem 1rem 1rem; } }
+    @media (max-width: 480px) { .np-body { padding: .85rem 1rem 1rem; } .pharma-hero { padding: 1.5rem 1.1rem; } .pharma-hero h1 { font-size: 1.5rem; } }
+    @media print { site-header, site-footer { display: none; } }
   </style>
 </head>
 <body>
@@ -71,154 +82,328 @@
 <main class="container article-content">
   <nav aria-label="Breadcrumb"><a href="index.html">Home</a> / BIPRO PharmaOne</nav>
 
+  <!-- HERO -->
   <div class="pharma-hero">
-    <div class="version-badge">v1.0.10 — Released 2026-11-12</div>
-    <h1>BIPRO PharmaOne</h1>
-    <p>Offline pharmacy management software for Windows — sales, purchases, inventory, accounting, backup, and reports. Designed for retail pharmacies in Nepal. Includes a 30-day free trial.</p>
-    <a class="dl-btn" href="https://github.com/juction4love/BIPRO_PHARMAONE_RELEASES/releases/download/v1.0.10/BIPRO_PharmaOne_Bundled_v1.0.10.exe" rel="noopener">
-      Download v1.0.10 (422 MB)
-    </a>
-    <p class="dl-meta">Windows 10 / 11 &nbsp;·&nbsp; PostgreSQL 17.11-5 bundled &nbsp;·&nbsp; .NET 10 Runtime bundled</p>
+    <img src="bipro-logo.png" alt="BIPRO PharmaOne" class="pharma-hero-logo">
+    <div class="pharma-hero-body">
+      <div class="version-badge">v1.0.11 — Current Release</div>
+      <h1>BIPRO PharmaOne</h1>
+      <p>Complete offline pharmacy management software for Windows — sales billing, purchases, inventory, accounting, controlled drug register, backup, and reports. Designed for retail pharmacies in Nepal. Includes a 30-day free trial.</p>
+      <a class="dl-btn" href="https://github.com/juction4love/BIPRO_PHARMAONE_RELEASES/releases/download/v1.0.11/BIPRO_PharmaOne_Bundled_v1.0.11.exe" rel="noopener">
+        Download v1.0.11
+      </a>
+      <p class="dl-meta">Windows 10 / 11 (64-bit) &nbsp;·&nbsp; PostgreSQL 17.11-5 bundled &nbsp;·&nbsp; .NET 10 Runtime bundled &nbsp;·&nbsp; No internet required after install</p>
+    </div>
   </div>
 
+  <!-- OVERVIEW -->
   <section class="article-section">
     <h2>What is BIPRO PharmaOne?</h2>
-    <p>BIPRO PharmaOne is a single-PC, offline retail pharmacy management application. It stores all data in a local PostgreSQL database — no cloud account, no internet subscription, no third-party server receives your pharmacy or patient data during normal operation.</p>
-    <ul>
-      <li><strong>Sales:</strong> Cash sales and credit sales with customer ledger, cash memo history, and sales returns. Documents are printed as A4 or thermal challan.</li>
-      <li><strong>Purchases:</strong> Cash and credit purchases, inline supplier quick-add during purchase entry with duplicate detection, purchase returns, and supplier claim register.</li>
-      <li><strong>Inventory:</strong> Batch tracking (FEFO), stock &amp; expiry control, stock adjustments, physical counts, inventory valuation, and carrying-cost revaluation.</li>
-      <li><strong>Prescription Register:</strong> Immutable prescription records with product linkage (v1.0.6).</li>
-      <li><strong>Controlled Drug Register:</strong> Dispensing records for Nepal DDA schedule A–D controlled substances, immutable after save (v1.0.6).</li>
-      <li><strong>Accounting:</strong> Double-entry general ledger, trial balance, profit &amp; loss, balance sheet, and day/cash/bank books.</li>
-      <li><strong>Finance:</strong> Customer receipts, supplier payments, expense records, other income, and fund transfers.</li>
-      <li><strong>Reports:</strong> Purchase book, sales book, VAT register, party statements, outstanding dues, and inventory valuation.</li>
-      <li><strong>Backup:</strong> Daily automatic backup (last 30 kept) and manual backup on demand. Backup files are saved to your local computer — no automatic cloud upload.</li>
-      <li><strong>Appearance:</strong> Global wallpaper displayed at 30% opacity across all pages. Dashboard data/wallpaper toggle hides metric cards to show the wallpaper full-screen.</li>
-    </ul>
-    <p class="pharma-note"><strong>Regulatory note:</strong> Sales documents are labelled CHALLAN (चालान). BIPRO PharmaOne is not IRD-approved, CBMS-certified, DDA-approved, or an authorised VAT invoice system. Live CBMS transmission is not enabled in this release. It is a local record-keeping tool for retail pharmacy operations.</p>
+    <p>BIPRO PharmaOne is a single-PC, fully offline retail pharmacy ERP (Enterprise Resource Planning) application built for Nepal. All pharmacy data is stored in a secure local PostgreSQL database on your own computer. No cloud account, no internet subscription, and no third-party server receives your pharmacy data during normal operation.</p>
+    <p>The application is built with .NET 10 and PostgreSQL 17 and runs on Windows 10 and Windows 11 (64-bit). Both the database engine and the .NET runtime are bundled in the installer — customers do not need to install or configure any software separately.</p>
+    <p class="pharma-note"><strong>Regulatory note:</strong> Sales documents are labelled CHALLAN (चालान). BIPRO PharmaOne is not IRD-approved, CBMS-certified, DDA-approved, or an authorised VAT billing system. Live CBMS transmission is not enabled in this release. It is a local record-keeping and management tool for retail pharmacy operations.</p>
   </section>
 
+  <!-- FEATURES -->
+  <section class="article-section">
+    <h2>Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Sales and Billing</h3>
+        <p>Cash and credit sales with FEFO batch allocation. Challan printing (A4 and 80 mm thermal). Full sales history, cancellations, and reversals. Post-expiry dashboard and billing access retained.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Purchase Management</h3>
+        <p>Cash and credit purchases with inline supplier quick-add. Duplicate detection. Purchase receipt numbers (PRN). Full purchase history. Discard unfinalized drafts. Credit note processing.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Inventory and Batch Tracking</h3>
+        <p>FEFO (First Expiry First Out) stock allocation. Batch-level stock and cost tracking. Expiry monitoring with EXPIRED / NEAR_EXPIRY / VALID classification. Physical stock counts. Reorder level alerts. Low stock and dead stock reports.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Supplier and Customer Management</h3>
+        <p>Unified party master — same PAN/VAT links customer and supplier records. Customer and supplier ledgers, outstanding dues, and statement generation. Advance payment and receipt processing. Credit limit and payment rules.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Sales and Purchase Returns</h3>
+        <p>Sales returns linked to original invoice line items — exact batch and cost reversal. Purchase returns with debit note and batch restoration. Supplier claim and claim recovery register.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Accounting and Double Entry</h3>
+        <p>Full double-entry general ledger. Automatic journal posting on every transaction (sale, purchase, return, receipt, payment, expense). Closed-period protection. Trial balance, profit and loss, and balance sheet.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Finance and Cash Management</h3>
+        <p>Customer receipts, supplier payments, expense records, other income. Fund transfers between payment methods. Cash, bank, and digital payment tracking. Day book, cash book, and bank book.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Reports and Analytics</h3>
+        <p>Purchase book, sales book, VAT register, party statements, inventory valuation, gross profit, payment method reconciliation. Daily summary and operational dashboard KPIs.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Controlled Drug Register (CDR)</h3>
+        <p>Automatic dispensing entries posted on sale finalization. Automatic receipt entries posted on purchase finalization. Nepal DDA schedule A–D controlled substances only. Each entry is immutable after save. Manual corrections via ADJUSTMENT entries.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Prescription Management</h3>
+        <p>Immutable prescription records with product linkage. Prescription register for controlled drug dispensing traceability.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Backup and Restore</h3>
+        <p>Daily automatic backup (last 30 kept). Manual backup on demand. Backups saved to <code>%LOCALAPPDATA%\BIPRO PharmaOne\Backups</code>. Pre-upgrade backup created automatically before every version upgrade. Restore workflow with verified integrity check.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Printing and Documents</h3>
+        <p>A4 and 80 mm thermal cash memo printing. Official print mark (ORIGINAL / COPY). Reprint history. Report printing. Keyboard shortcuts for fast workflow (F1–F12).</p>
+      </div>
+      <div class="feature-card">
+        <h3>Business Settings</h3>
+        <p>Business profile (name, address, PAN/VAT, drug licence). Fiscal year management. Product categories, manufacturers, generics. CBMS configuration page (mock mode; live IRD transmission not enabled).</p>
+      </div>
+      <div class="feature-card">
+        <h3>Licensing and Activation</h3>
+        <p>30-day free trial included. RSA-2048 offline license with device binding. Email-based activation via admin@bimalpharmacy.com.np. Annual license with 30-day renewal reminder. Post-expiry: Dashboard and Sales Billing always accessible.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYSTEM REQUIREMENTS -->
   <section class="article-section">
     <h2>System requirements</h2>
     <table class="bipro-table">
       <tbody>
-        <tr><th>Operating system</th><td>Windows 10 or Windows 11 (64-bit)</td></tr>
-        <tr><th>PostgreSQL</th><td>PostgreSQL 17.11-5 for Windows — bundled with the installer; no separate download needed.</td></tr>
-        <tr><th>.NET Runtime</th><td>.NET 10 Desktop Runtime — bundled with the installer; no separate download needed.</td></tr>
+        <tr><th>Operating system</th><td>Windows 10 or Windows 11 (64-bit only)</td></tr>
+        <tr><th>Architecture</th><td>x64 (Intel or AMD 64-bit processor)</td></tr>
+        <tr><th>PostgreSQL</th><td>PostgreSQL 17.11-5 for Windows x64 — bundled with the installer. No separate database download or configuration needed.</td></tr>
+        <tr><th>.NET Runtime</th><td>.NET 10 Desktop Runtime for Windows x64 — bundled with the installer. No separate .NET download needed.</td></tr>
         <tr><th>RAM</th><td>4 GB or more recommended</td></tr>
-        <tr><th>Disk space</th><td>1 GB for the application; additional space for your pharmacy database and daily backups</td></tr>
-        <tr><th>Internet</th><td>Only needed to download the installer. The application works fully offline after installation.</td></tr>
-        <tr><th>Printer</th><td>Any Windows-compatible printer. Sales challans print A4 or 80 mm thermal. Reports, books, and accounts print A4.</td></tr>
+        <tr><th>Disk space</th><td>Approximately 2 GB for the application and database engine. Additional space for your pharmacy database and daily backups.</td></tr>
+        <tr><th>Internet</th><td>Only needed to download the installer. The application runs fully offline after installation. No internet subscription required.</td></tr>
+        <tr><th>Printer</th><td>Any Windows-compatible printer. Sales challans print on A4 or 80 mm thermal paper. Reports and accounts print on A4.</td></tr>
       </tbody>
     </table>
   </section>
 
+  <!-- DOWNLOAD -->
   <section class="article-section">
-    <h2>Installation instructions</h2>
+    <h2>Download</h2>
+    <p>Download the current release installer for Windows x64. The installer includes PostgreSQL 17.11-5 and the .NET 10 Runtime — no separate downloads required.</p>
+    <a class="dl-btn" style="background:#047857;color:#fff;" href="https://github.com/juction4love/BIPRO_PHARMAONE_RELEASES/releases/download/v1.0.11/BIPRO_PharmaOne_Bundled_v1.0.11.exe" rel="noopener">
+      Download BIPRO_PharmaOne_Bundled_v1.0.11.exe
+    </a>
+    <p style="margin-top:.7rem;font-size:.9rem;color:#475569;">Version: v1.0.11 &nbsp;|&nbsp; Windows x64 &nbsp;|&nbsp; 422 MB &nbsp;|&nbsp; PostgreSQL 17.11-5 + .NET 10 bundled</p>
+    <h3>Verify the installer (recommended)</h3>
+    <p>Run this command in Windows PowerShell after downloading to verify the file is unmodified:</p>
+    <div class="checksum-box">Get-FileHash BIPRO_PharmaOne_Bundled_v1.0.11.exe -Algorithm SHA256</div>
+    <p>Expected SHA-256:</p>
+    <div class="checksum-box" id="sha256-box">d8cebd9ec8b6297eb4cbe50dc301f61ea5d48f5e2bb85c7baba2e3222ee64d51</div>
+    <p>A mismatch means the file was corrupted or modified in transit. Do not run a file that does not match the expected checksum.</p>
+    <p><a href="SHA256SUMS.txt">Full checksum list (SHA256SUMS.txt)</a></p>
+  </section>
+
+  <!-- INSTALLATION -->
+  <section class="article-section">
+    <h2>Installation guide</h2>
+    <p>The installer handles all required components automatically. You do not need to install PostgreSQL or .NET separately.</p>
     <ol class="step-list">
-      <li>Download <code>BIPRO_PharmaOne_Bundled_v1.0.10.exe</code> using the button above.</li>
-      <li>Verify the SHA-256 checksum (see below) if you want to confirm the file is unmodified.</li>
-      <li>Run the installer. Accept the User Account Control (UAC) prompt if asked — PostgreSQL requires administrator rights to install as a Windows service.</li>
-      <li>Follow the setup wizard. PostgreSQL 17.11 and the .NET 10 Runtime are installed automatically — no password entry is required during installation.</li>
-      <li>When setup finishes, launch <strong>BIPRO PharmaOne</strong> from the Start menu or desktop shortcut.</li>
-      <li>On first run, the setup wizard asks for your business name, address, phone number, and optional PAN/VAT and drug licence numbers. It also creates an <strong>Administrator</strong> account (username and password) for the application.</li>
-      <li>Set your fiscal year and starting cash memo number as instructed by the wizard.</li>
+      <li>Download <code>BIPRO_PharmaOne_Bundled_v1.0.11.exe</code> using the Download button above.</li>
+      <li>Optionally verify the SHA-256 checksum as shown above.</li>
+      <li>Right-click the installer and select <strong>Run as administrator</strong>, or accept the User Account Control (UAC) prompt if shown. PostgreSQL requires administrator rights to install as a Windows service.</li>
+      <li>Follow the setup wizard. PostgreSQL 17.11 and the .NET 10 Runtime install automatically in the background — you do not need to enter any database passwords or connection strings during installation.</li>
+      <li>When setup finishes, launch <strong>BIPRO PharmaOne</strong> from the Start Menu or the desktop shortcut.</li>
+      <li>On first launch, the <strong>First-Run Setup Wizard</strong> opens automatically.</li>
     </ol>
-    <p class="pharma-warn"><strong>Never uninstall and reinstall to reset data.</strong> Reinstalling does not erase the database. Take a manual backup from <strong>Settings → Database Backup</strong> before any major change, and store copies on a USB drive or external disk.</p>
+
+    <h3>First-run setup wizard</h3>
+    <p>The first-run wizard runs only on a new installation. It collects your pharmacy information and creates your Administrator account.</p>
+    <ol class="step-list">
+      <li>Enter your <strong>Business Name</strong>, address, and phone number. Optionally enter your PAN/VAT number and drug licence number.</li>
+      <li>Create an <strong>Administrator username and password</strong>. This is your BIPRO application login — it is separate from Windows and from PostgreSQL. Choose a password you can remember; you will use it every day.</li>
+      <li>Set your active <strong>Fiscal Year</strong> (Nepali BS year).</li>
+      <li>Set your starting <strong>Cash Memo number</strong>.</li>
+      <li>The application database is created and initialized automatically. When the wizard finishes, the main Dashboard opens.</li>
+    </ol>
+    <p class="pharma-warn"><strong>Remember your Administrator password.</strong> If you forget it, recovery requires the maintenance-access credential which is set separately. Write your password down and store it securely.</p>
+
+    <h3>Upgrading from an earlier version</h3>
+    <p>Run the new installer over the existing installation. The installer:</p>
+    <ul>
+      <li>Detects the existing installation and upgrades application files in place.</li>
+      <li>Creates a verified backup of your database before applying any database changes.</li>
+      <li>Applies only new approved database migrations — existing data is never deleted or overwritten.</li>
+      <li>Preserves your business profile, products, purchases, sales, accounting journals, settings, and license.</li>
+    </ul>
+    <p class="pharma-warn"><strong>Never delete the PostgreSQL data directory or uninstall PostgreSQL during an upgrade.</strong> Your entire pharmacy database lives in the PostgreSQL data directory. Deleting it permanently destroys all your data. The installer does not delete PostgreSQL or its data under any normal upgrade scenario.</p>
   </section>
 
+  <!-- FIRST-TIME CONFIGURATION -->
   <section class="article-section">
-    <h2>Your data stays on your computer</h2>
-    <p>BIPRO PharmaOne stores all pharmacy data — sales, purchases, customers, products, accounting journals — in a local PostgreSQL database on your PC. No data is sent to any remote server during normal operation. The application works fully offline after installation and does not require a cloud login to function.</p>
-    <p>Backup files are saved to a folder on your local computer (<code>%LOCALAPPDATA%\BIPRO PharmaOne\Backups</code> by default). The application does not upload backups to any cloud service automatically. Copy backup files to a USB drive or external disk regularly — if your PC fails, backups stored only on the same machine may be lost.</p>
-    <p>The Nepal IRD / CBMS Readiness page is included in <strong>Settings</strong> for future configuration. Live CBMS transmission is not enabled in this release.</p>
+    <h2>First-time configuration</h2>
+    <p>After the first-run wizard completes, configure these settings before recording real transactions:</p>
+    <ol class="step-list">
+      <li><strong>Business profile:</strong> Go to <strong>Settings → Business Profile</strong>. Verify your pharmacy name, address, PAN/VAT, and drug licence number. These appear on printed challans.</li>
+      <li><strong>Fiscal year:</strong> Go to <strong>Settings → Fiscal Years</strong>. Confirm the active fiscal year matches your Nepal BS fiscal year.</li>
+      <li><strong>Products:</strong> Go to <strong>Inventory → Products</strong>. Add your medicines and products. Mark controlled substances with the Controlled Drug flag so they are automatically posted to the Controlled Drug Register.</li>
+      <li><strong>Suppliers and customers:</strong> Go to <strong>Parties → Suppliers</strong> and <strong>Parties → Customers</strong>. Add your suppliers first so they are available during purchase entry.</li>
+      <li><strong>Printer settings:</strong> Go to <strong>Settings → Printing</strong>. Select your default printer and paper size (A4 or 80 mm thermal). Print a test challan to verify the layout.</li>
+      <li><strong>Backup settings:</strong> Go to <strong>Settings → Database Backup</strong>. Confirm the backup folder. The application saves daily automatic backups. Copy backups to a USB drive or external disk regularly.</li>
+      <li><strong>Licensing:</strong> The application starts with a 30-day free trial. After the trial, use <strong>Activate License</strong> from the Dashboard to begin the activation process by email.</li>
+    </ol>
   </section>
 
+  <!-- DAILY OPERATION -->
   <section class="article-section">
-    <h2>Free Trial and Activation</h2>
-    <p>New installations of BIPRO PharmaOne v1.0.10 start a <strong>30-day free trial</strong> automatically. No registration is required during the trial. The trial status is shown in the application status bar.</p>
-    <p>After the trial period, activate the application by emailing <strong>admin@bimalpharmacy.com.np</strong>. Use the <strong>Activate License</strong> dialog in the Dashboard — it generates an activation request containing your pharmacy name, installation identifier, and registration details. Email this request to the owner for review and approval. After the owner approves, a signed license key is returned by email. Paste the key in the same activation dialog to activate.</p>
-    <p class="pharma-note"><strong>Privacy note:</strong> The activation request intentionally includes your pharmacy details and installation metadata so the owner can verify the request. This information is shared with admin@bimalpharmacy.com.np during the activation email exchange. Normal day-to-day operation of the application does not send any data to a remote server.</p>
-    <p>License verification is performed offline using RSA-2048 device binding — no internet connection is needed for day-to-day use after activation. A license is tied to this installation and cannot be transferred to a different machine without a new key.</p>
-    <p>After license expiry: Dashboard and Sales Billing remain accessible. Purchase, Inventory, Returns, and Claims require a renewed license. Renewal reminders appear on the Dashboard starting 30 days before expiry.</p>
+    <h2>Daily operation guide</h2>
+
+    <h3>Recording a purchase</h3>
+    <ol class="step-list">
+      <li>Go to <strong>Purchases → New Purchase</strong> (or press <kbd>F7</kbd>).</li>
+      <li>Select or add the supplier. Enter the supplier invoice number and purchase date.</li>
+      <li>Add each medicine line: select product, enter batch number, expiry date, quantity, free quantity if applicable, and purchase rate.</li>
+      <li>Select payment method (Cash / Bank / Credit).</li>
+      <li>Click <strong>Finalize Purchase</strong>. Stock is posted to inventory, the supplier ledger is updated, and accounting journals are created automatically. If the purchase includes controlled drugs, CDR receipt entries are posted automatically.</li>
+    </ol>
+
+    <h3>Recording a sale (Cash Memo / Challan)</h3>
+    <ol class="step-list">
+      <li>Go to <strong>Sales → New Sale</strong> (or press <kbd>F2</kbd> for cash, <kbd>F3</kbd> for credit).</li>
+      <li>Optionally enter the customer name.</li>
+      <li>Search for each medicine and enter the quantity. The system allocates stock using FEFO — nearest-expiry batches are used first.</li>
+      <li>Apply discounts if applicable. Enter the payment method.</li>
+      <li>Click <strong>Finalize Cash Memo</strong>. The challan is printed automatically. Stock is deducted, the customer ledger is updated, and accounting journals are created. CDR dispensing entries are posted automatically for controlled drugs.</li>
+    </ol>
+
+    <h3>Returns</h3>
+    <ul>
+      <li><strong>Customer returns:</strong> Go to <strong>Sales → Sales Returns</strong>. Select the original invoice, choose the item and quantity to return. Batch stock and accounting are reversed exactly.</li>
+      <li><strong>Purchase returns:</strong> Go to <strong>Purchases → Purchase Returns</strong>. Select the original purchase. The supplier ledger and batch stock are updated.</li>
+    </ul>
+
+    <h3>Reports and accounts</h3>
+    <ul>
+      <li>Daily summary: <strong>Dashboard → Today's Work Report</strong></li>
+      <li>Sales book: <strong>Reports → Sales Book</strong></li>
+      <li>Purchase book: <strong>Reports → Purchase Book</strong></li>
+      <li>Inventory: <strong>Inventory → Inventory Valuation</strong> or <kbd>F8</kbd></li>
+      <li>Profit and loss: <strong>Accounts → Profit and Loss</strong></li>
+      <li>Balance sheet: <strong>Accounts → Balance Sheet</strong></li>
+      <li>Party statements: <strong>Parties → Customer / Supplier Statement</strong></li>
+    </ul>
+
+    <h3>Controlled Drug Register</h3>
+    <p>Go to <strong>Settings → Controlled Drug Register</strong> to view the full dispensing and receipt history for all controlled substances. Entries are posted automatically on every sale and purchase finalization. Manual ADJUSTMENT entries can be added if needed. No entry can be edited or deleted after save — this is required by Nepal DDA regulations.</p>
+
+    <h3>Backup</h3>
+    <p>Go to <strong>Settings → Database Backup</strong> to run a manual backup at any time. Automatic daily backups run in the background. Backup files are saved to <code>%LOCALAPPDATA%\BIPRO PharmaOne\Backups</code>. Copy these files to a USB drive, external disk, or another location regularly. The application keeps the last 30 automatic backups.</p>
   </section>
 
+  <!-- DATA SAFETY -->
   <section class="article-section">
-    <h2>Release notes — v1.0.10 (2026-11-12)</h2>
+    <h2>Your data and backups</h2>
+    <p>BIPRO PharmaOne stores all pharmacy data in a local PostgreSQL database on your PC. No data is sent to any remote server during normal operation.</p>
     <ul>
-      <li><strong>Controlled Drug Register — automatic dispensing:</strong> When a sale is finalized, any controlled drug items (Nepal DDA schedule A–D) are now automatically posted to the Controlled Drug Register as dispensing entries. Each entry is idempotent and immutable after save. Normal (non-controlled) products are never posted.</li>
-      <li><strong>CBMS configuration toggle:</strong> The CBMS Readiness page now includes an explicit Enable/Disable toggle for the CBMS integration feature. Enabling activates mock testing mode; live IRD transmission remains blocked by compile-time lock and requires official IRD authorization.</li>
-      <li><strong>CBMS status badges:</strong> The CBMS Readiness page status bar now reflects the actual enabled/disabled state from the saved configuration.</li>
-      <li><strong>Documentation corrections:</strong> User manual version references updated. Post-expiry billing behavior documented accurately (Sales Billing remains accessible after trial/license expiry). CBMS live-transmission disclaimer added.</li>
-      <li><strong>Data-safe upgrade from v1.0.9:</strong> No destructive database changes in v1.0.10. The installer upgrades application files in place; all pharmacy data, settings, and license are preserved.</li>
+      <li><strong>Database location:</strong> The PostgreSQL data directory is managed by the Windows PostgreSQL service. Do not move, rename, or delete this directory.</li>
+      <li><strong>Backup location:</strong> <code>%LOCALAPPDATA%\BIPRO PharmaOne\Backups</code> (for example <code>C:\Users\YourName\AppData\Local\BIPRO PharmaOne\Backups</code>). Backups are <code>.pgdump</code> files — do not delete them manually unless you have verified copies elsewhere.</li>
+      <li><strong>Upgrade safety:</strong> The installer creates a verified backup automatically before applying any database migrations. If the backup fails, the upgrade stops safely without touching the database.</li>
+      <li><strong>Restore procedure:</strong> To restore from a backup, go to <strong>Settings → Database Backup → Restore</strong>. Select the backup file. The application verifies the backup before restoring and reports any errors.</li>
     </ul>
-    <h2>Release notes — v1.0.9 (2026-11-09)</h2>
-    <ul>
-      <li><strong>Global wallpaper:</strong> The application wallpaper now appears at 30% opacity across all pages — Sales, Purchases, Inventory, Finance, Accounts, Reports, and Settings — in addition to the Dashboard. Foreground content remains fully opaque and readable in both light and dark themes.</li>
-      <li><strong>Purchase supplier quick-add:</strong> An inline <em>Add New</em> link appears in the Supplier row of the Purchase form. Type a supplier name, click Add New, fill in the details, and the new supplier is saved and auto-selected without leaving the purchase draft. Duplicate detection prevents creating suppliers with matching names, PAN numbers, or phone numbers.</li>
-      <li><strong>Runtime cleanup:</strong> Eliminated stale .NET 8 WPF DLLs that were left in the application package from a prior build. All bundled runtime components are now consistently .NET 10.0.14.</li>
-      <li><strong>Data-safe upgrade from v1.0.8:</strong> No database schema changes in v1.0.9. The installer upgrades application files in place; all pharmacy data, settings, and license are preserved.</li>
-    </ul>
-    <h2>Release notes — v1.0.8 (2026-11-08)</h2>
-    <ul>
-      <li><strong>Dashboard wallpaper background:</strong> The Dashboard content area now shows the application wallpaper at 30% opacity. Metric cards remain fully opaque and readable. All other pages are unaffected.</li>
-      <li><strong>Dashboard Data / Wallpaper toggle:</strong> A compact toggle button at the top right of the Dashboard switches between Data Mode (all cards visible) and Wallpaper Mode (cards hidden; navigation and header remain). No data is deleted or modified. State resets to Data Mode on restart.</li>
-      <li><strong>Nepali User Manual online:</strong> The complete Nepali user manual is now available at <a href="bipro-pharmaone-user-manual-ne.html" rel="noopener" target="_blank">bipro-pharmaone-user-manual-ne.html</a>. Direct View and Download buttons are provided on this page.</li>
-      <li><strong>Data-safe upgrade from v1.0.7:</strong> No database schema changes in v1.0.8. The installer upgrades application files in place; all pharmacy data, settings, and license are preserved.</li>
-    </ul>
-    <h2>Release notes — v1.0.7 (2026-11-08)</h2>
-    <ul>
-      <li><strong>30-day free trial:</strong> New installations start a 30-day trial automatically. Trial is machine-keyed and clock-rollback resistant. Trial status shown in the application status bar throughout the trial period.</li>
-      <li><strong>Email-based activation:</strong> After the trial, submit an activation request from the Dashboard. The activation request includes your pharmacy name, installation identifier, and registration details, which are shared with the owner by email for review and approval. The owner returns a signed license key by email after approval.</li>
-      <li><strong>Annual renewal reminders:</strong> Licensed installations display a renewal reminder on the Dashboard starting 30 days before expiry, with follow-up reminders at 15, 7, 1 day, and on the expiry date. Each reminder can be dismissed individually. "Renew via Email" opens a pre-drafted email in the system mail client.</li>
-      <li><strong>Post-expiry access policy:</strong> Dashboard and Sales Billing always accessible after expiry. Purchase, Inventory, Returns, and Claims restricted until a renewed license is activated.</li>
-      <li><strong>Data-safe upgrade from v1.0.6:</strong> All pharmacy data, settings, and existing licenses are preserved on upgrade. No manual migration required.</li>
-      <li><strong>Installer ACL fix:</strong> Standard Windows user accounts can now write trial and renewal state files without requiring administrator elevation after installation.</li>
-    </ul>
-    <h2>Release notes — v1.0.6 (2026-11-07)</h2>
-    <ul>
-      <li><strong>Activation Key licensing:</strong> RSA-2048 offline license with device binding. The application requires a valid Activation Key; activation and all subsequent use are fully offline.</li>
-      <li><strong>Controlled Drug Register (CDR):</strong> Records controlled substance dispensing per Nepal DDA schedule A–D. Each CDR entry is immutable after save.</li>
-      <li><strong>Prescription Register:</strong> Immutable prescription records with product linkage.</li>
-      <li><strong>Inventory carrying-cost revaluation:</strong> When a purchase rate changes after a goods receipt is posted, the difference in carrying cost is now correctly journalised, keeping COGS accurate. Applied retroactively on first upgrade.</li>
-      <li><strong>.NET 10 LTS:</strong> Runtime upgraded from .NET 8 to .NET 10 LTS (self-contained, no separate .NET install required).</li>
-      <li><strong>PostgreSQL 17.11-5:</strong> Updated EDB bundled PostgreSQL installer.</li>
-      <li><strong>Security improvements:</strong> Database trigger privileges tightened; balance sheet Current Earnings sign corrected.</li>
-    </ul>
-    <h2>Release notes — v1.0.3 (2026-10-28)</h2>
-    <ul>
-      <li>55 database migrations applied; full clean-install acceptance test passed.</li>
-      <li>Canonical party master: a customer and supplier with the same PAN/VAT number are now unified under a single party record.</li>
-      <li>COGS and accounting restoration: cost-of-goods-sold and journal posting functions fully restored.</li>
-      <li>Application Administrator authentication: first-run wizard now creates an Administrator login.</li>
-      <li>Administrator password reset requires maintenance-access credential (migration 0055).</li>
-      <li>Startup deadlock fix: database upgrade progress window no longer causes "Not Responding".</li>
-    </ul>
+    <p class="pharma-warn"><strong>Keep copies of your backups off the computer.</strong> If your PC fails, backups stored only on the same machine may be lost along with everything else. Copy backup files to a USB drive or external disk at least weekly.</p>
   </section>
 
+  <!-- FREE TRIAL AND ACTIVATION -->
+  <section class="article-section">
+    <h2>Free trial and activation</h2>
+    <p>New installations of BIPRO PharmaOne start a <strong>30-day free trial</strong> automatically. No registration is required during the trial. The trial status is shown in the application status bar.</p>
+    <p>To activate after the trial:</p>
+    <ol class="step-list">
+      <li>Open the Dashboard and click <strong>Activate License</strong>.</li>
+      <li>The dialog generates an activation request containing your pharmacy name, installation identifier, and registration details.</li>
+      <li>Email this request to <strong>admin@bimalpharmacy.com.np</strong>.</li>
+      <li>After the owner reviews and approves the request, a signed license key is returned by email.</li>
+      <li>Paste the key in the same activation dialog to activate.</li>
+    </ol>
+    <p class="pharma-note"><strong>Privacy note:</strong> The activation request intentionally includes your pharmacy details and installation metadata so the owner can verify the request. This information is shared with admin@bimalpharmacy.com.np during the activation email exchange only. Normal day-to-day operation of the application does not send any data to any server.</p>
+    <p>License verification is performed <strong>offline</strong> using RSA-2048 device binding — no internet is needed for daily use after activation. A license is tied to this installation and cannot be transferred to a different machine without a new key.</p>
+    <p><strong>Post-expiry access:</strong> Dashboard and Sales Billing remain accessible after expiry. Purchase, Inventory, Returns, and Claims require a renewed license. Renewal reminders appear on the Dashboard starting 30 days before expiry.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="article-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <p class="faq-q">The installer asks for a password during installation. What do I enter?</p>
+      <p class="faq-a">The installer sets up PostgreSQL automatically. You are not asked to enter a PostgreSQL password. If a PostgreSQL-related dialog appears requesting a superuser password, it is from the standard PostgreSQL installer component — accept the default or leave it blank and click Next. For the BIPRO application Administrator password, the first-run wizard inside BIPRO will ask you to create your own username and password after installation is complete.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">I forgot my BIPRO Administrator password. How do I reset it?</p>
+      <p class="faq-a">Password reset requires the maintenance-access credential that is configured separately. Contact admin@bimalpharmacy.com.np for assistance. Do not uninstall BIPRO PharmaOne to try to reset the password — uninstalling does not reset the database password and may cause additional problems.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">I upgraded to a new version. Where is my data?</p>
+      <p class="faq-a">Your data is preserved. The installer upgrades only the application files and applies new database migrations safely. Your products, purchases, sales, accounting journals, settings, and license are all retained. If the upgrade applied successfully but you cannot see recent data, go to Settings → Database Backup and restore from the most recent backup.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">The application says it cannot connect to the database. What should I do?</p>
+      <p class="faq-a">The PostgreSQL service may have stopped. Open Windows Services (search for "Services" in the Start Menu), find the PostgreSQL service (usually named "postgresql-x64-17"), and start it. Then relaunch BIPRO PharmaOne. If the service is running but the error persists, check that your Windows user account has not had its permissions changed.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">I reinstalled Windows. How do I recover my data?</p>
+      <p class="faq-a">If you have backup files (<code>.pgdump</code> files from <code>%LOCALAPPDATA%\BIPRO PharmaOne\Backups</code> or from a USB drive), install BIPRO PharmaOne fresh on the new Windows installation. Then go to Settings → Database Backup → Restore and select your backup file to restore your pharmacy data.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">My printer is not printing correctly. What do I do?</p>
+      <p class="faq-a">Go to Settings → Printing and verify the selected printer and paper size. For 80 mm thermal printing, select the thermal printer and choose Thermal (80 mm) paper. For A4 printing, choose your laser or inkjet printer and A4 paper. Print a test challan. Printer compatibility is tested with common laser and 80 mm thermal printers but cannot be verified for every model.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Can multiple computers share the same database?</p>
+      <p class="faq-a">BIPRO PharmaOne is a single-PC application. Multi-user network access from multiple computers is not available in the current version. All transactions are recorded from the one PC where the application is installed.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Does BIPRO PharmaOne submit bills to IRD or CBMS?</p>
+      <p class="faq-a">No. Live IRD/CBMS transmission is not enabled in this release. The CBMS settings page is included for future configuration. Sales documents are labelled CHALLAN and are not government-approved VAT invoices. BIPRO PharmaOne is a local pharmacy management tool, not a certified IRD billing system.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">The 30-day trial has expired. Can I still use the application?</p>
+      <p class="faq-a">Yes, partially. After the trial expires, the Dashboard and Sales Billing remain fully accessible. Purchase entry, Inventory management, Returns, and Claims are restricted until a license is activated. Email admin@bimalpharmacy.com.np to begin the activation process.</p>
+    </div>
+  </section>
+
+  <!-- KNOWN LIMITATIONS -->
   <section class="article-section">
     <h2>Known limitations</h2>
     <ul>
-      <li>Single-PC local setup only. There is no built-in multi-user networking or remote access in the current version.</li>
-      <li>Sales documents are labelled CHALLAN, not VAT invoice. This application is not a substitute for a government-approved billing system.</li>
+      <li>Single-PC local setup only. Multi-user networking is not available in this version.</li>
+      <li>Sales documents are labelled CHALLAN, not VAT invoice. This application is not a substitute for a government-approved IRD billing system.</li>
       <li>Printer compatibility is tested with common laser and thermal printers but not verified across all printer models.</li>
       <li>Nepali BS date entry is supported for expiry fields. Full BS-calendar input for all date fields may be added in a future version.</li>
-      <li>Activation requires email exchange with the owner (admin@bimalpharmacy.com.np). There is no instant automated online activation in this release.</li>
+      <li>Activation requires email exchange with the owner. There is no instant automated online activation in this release.</li>
       <li>The 30-day trial is machine-keyed. Reinstalling on the same machine does not reset the trial period.</li>
+      <li>The Controlled Drug Register UNIQUE constraint on (reference_id, reference_table) is enforced at the application level only — the database table does not have a UNIQUE index on these columns in this release. Duplicate entries in a concurrent scenario (extremely unlikely on a single-PC installation) would require a manual ADJUSTMENT correction.</li>
     </ul>
   </section>
 
+  <!-- SUPPORT -->
   <section class="article-section">
-    <h2>File checksum</h2>
-    <p>Verify the installer using PowerShell before running it:</p>
-    <div class="checksum-box">Get-FileHash BIPRO_PharmaOne_Bundled_v1.0.10.exe -Algorithm SHA256</div>
-    <p>Expected SHA-256:</p>
-    <div class="checksum-box">954cf4ccf39cf391712ec24a3bddd3271979952ded9060dad3ca2262c94614dc</div>
-    <p>A mismatch means the file was corrupted or substituted in transit. Do not run a file that does not match.</p>
-    <p><a href="SHA256SUMS.txt">Full historical checksum list (SHA256SUMS.txt)</a></p>
+    <h2>Support and contact</h2>
+    <p>For technical support, licensing, and activation:</p>
+    <ul>
+      <li><strong>Email:</strong> admin@bimalpharmacy.com.np</li>
+      <li><strong>Phone:</strong> 056-593288</li>
+      <li><strong>Address:</strong> Bimal Pharmacy, Cancer Hospital Road, Bharatpur-7, Chitwan</li>
+    </ul>
+    <p>For activation requests, use the <strong>Activate License</strong> dialog in the Dashboard to generate your activation request and email it to the address above.</p>
   </section>
 
+  <!-- NEPALI MANUAL SECTION -->
   <section class="article-section np-guide" id="np-guide">
     <h2>नेपाली स्थापना तथा प्रयोगकर्ता पुस्तिका</h2>
     <p>यो पुस्तिका BIPRO PharmaOne को स्थापनादेखि दैनिक सञ्चालनसम्मका सबै मूल कार्यहरू नेपालीमा वर्णन गर्छ।</p>
@@ -238,227 +423,368 @@
       </div>
     </section>
 
-    <nav class="np-toc" aria-label="पुस्तिकाको विषयसूची">
+    <div class="np-toc">
       <p>विषयसूची</p>
       <ol>
-        <li><a href="#np-s1">१. प्रणाली आवश्यकताहरू</a></li>
-        <li><a href="#np-s2">२. स्थापना (Installation)</a></li>
-        <li><a href="#np-s3">३. पहिलो पटकको सेटअप</a></li>
-        <li><a href="#np-s4">४. दैनिक सञ्चालन</a></li>
-        <li><a href="#np-s5">५. औषधि / उत्पादन Master</a></li>
-        <li><a href="#np-s6">६. ब्याकअप</a></li>
-        <li><a href="#np-s7">७. अपग्रेड गर्ने तरिका</a></li>
-        <li><a href="#np-s8">८. समस्या समाधान</a></li>
+        <li><a href="#np-intro">BIPRO PharmaOne के हो?</a></li>
+        <li><a href="#np-sysreq">System Requirements</a></li>
+        <li><a href="#np-install">स्थापना (Installation)</a></li>
+        <li><a href="#np-firstrun">पहिलो पटक सुरु गर्दा</a></li>
+        <li><a href="#np-login">Login र Security</a></li>
+        <li><a href="#np-products">Products र Stock Setup</a></li>
+        <li><a href="#np-purchase">खरिद प्रक्रिया (Purchase)</a></li>
+        <li><a href="#np-sales">बिक्री प्रक्रिया (Sales / Cash Memo)</a></li>
+        <li><a href="#np-returns">फिर्ता (Returns)</a></li>
+        <li><a href="#np-parties">Supplier र Customer</a></li>
+        <li><a href="#np-inventory">Inventory र FEFO</a></li>
+        <li><a href="#np-accounting">Accounting र Finance</a></li>
+        <li><a href="#np-cdr">Controlled Drug Register</a></li>
+        <li><a href="#np-reports">Reports</a></li>
+        <li><a href="#np-printing">Printing</a></li>
+        <li><a href="#np-backup">Backup र Restore</a></li>
+        <li><a href="#np-license">Trial र Activation</a></li>
+        <li><a href="#np-troubleshoot">Troubleshooting</a></li>
+        <li><a href="#np-support">Support</a></li>
       </ol>
-    </nav>
+    </div>
 
-    <!-- S1 -->
-    <details class="np-sec" id="np-s1">
-      <summary>१. प्रणाली आवश्यकताहरू</summary>
+    <!-- NP-1: INTRO -->
+    <details class="np-sec" id="np-intro" open>
+      <summary>१. BIPRO PharmaOne के हो?</summary>
       <div class="np-body">
+        <p>BIPRO PharmaOne एउटा Windows desktop software हो जसले फार्मेसीको सम्पूर्ण कारोबार — खरिद, बिक्री, स्टक, वित्त, र लेखा — एकै ठाउँमा व्यवस्थापन गर्छ। यो software Nepal का retail pharmacy हरूका लागि बनाइएको छ।</p>
+        <p>सबै data तपाईँको आफ्नै computer मा PostgreSQL database मा सुरक्षित रूपमा भण्डारण हुन्छ। Internet नभई पनि पूर्ण रूपमा काम गर्छ।</p>
         <table class="np-tbl">
           <tbody>
-            <tr><th>अपरेटिङ सिस्टम</th><td>Windows 10 वा Windows 11 (64-bit)</td></tr>
-            <tr><th>PostgreSQL</th><td>PostgreSQL 17.11-5 — इन्स्टलरसँगै बन्डल, छुट्टै डाउनलोड आवश्यक छैन</td></tr>
-            <tr><th>.NET Runtime</th><td>.NET 10 Desktop Runtime — इन्स्टलरसँगै बन्डल</td></tr>
-            <tr><th>RAM</th><td>कम्तिमा 4 GB सिफारिस</td></tr>
-            <tr><th>डिस्क स्पेस</th><td>Application को लागि 1 GB; थप स्पेस database र ब्याकअपका लागि</td></tr>
-            <tr><th>इन्टरनेट</th><td>केवल इन्स्टलर डाउनलोड गर्न; स्थापनापछि पूर्णतः अफलाइन चल्छ</td></tr>
-            <tr><th>प्रिन्टर</th><td>Windows-compatible जुनसुकै प्रिन्टर; थर्मल रसिद प्रिन्टर पनि समर्थित</td></tr>
+            <tr><th>Software</th><td>BIPRO PharmaOne v1.0.11</td></tr>
+            <tr><th>Technology</th><td>.NET 10, PostgreSQL 17, Windows Forms</td></tr>
+            <tr><th>License</th><td>Commercial — 30-day free trial included</td></tr>
+            <tr><th>Language</th><td>English interface (Nepali manual available)</td></tr>
           </tbody>
         </table>
       </div>
     </details>
 
-    <!-- S2 -->
-    <details class="np-sec" id="np-s2">
-      <summary>२. स्थापना (Installation)</summary>
+    <!-- NP-2: SYSTEM REQUIREMENTS -->
+    <details class="np-sec" id="np-sysreq">
+      <summary>२. System Requirements (के चाहिन्छ?)</summary>
+      <div class="np-body">
+        <table class="np-tbl">
+          <tbody>
+            <tr><th>Operating System</th><td>Windows 10 वा Windows 11 (64-bit)</td></tr>
+            <tr><th>Processor</th><td>64-bit Intel वा AMD processor</td></tr>
+            <tr><th>RAM</th><td>४ GB वा बढी</td></tr>
+            <tr><th>Disk Space</th><td>२ GB (application) + database को लागि अतिरिक्त</td></tr>
+            <tr><th>PostgreSQL</th><td>Installer मा bundled — छुट्टै download गर्नु पर्दैन</td></tr>
+            <tr><th>.NET Runtime</th><td>Installer मा bundled — छुट्टै download गर्नु पर्दैन</td></tr>
+            <tr><th>Internet</th><td>Installer download का लागि मात्र; पछि offline काम गर्छ</td></tr>
+            <tr><th>Printer</th><td>Windows-compatible printer (A4 वा 80mm thermal)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- NP-3: INSTALLATION -->
+    <details class="np-sec" id="np-install">
+      <summary>३. स्थापना (Installation)</summary>
+      <div class="np-body">
+        <div class="np-warn2"><strong>ध्यान दिनुहोस्:</strong> यदि पहिले नै BIPRO PharmaOne install छ भने, upgrade गर्दा database र सबै data सुरक्षित रहन्छ। पुरानो version uninstall नगर्नुहोस्।</div>
+        <ol class="np-steps">
+          <li><span class="n">१</span><div>माथिको <strong>Download</strong> button बाट <code>BIPRO_PharmaOne_Bundled_v1.0.11.exe</code> file download गर्नुहोस्।</div></li>
+          <li><span class="n">२</span><div>File मा right-click गरेर <strong>Run as administrator</strong> click गर्नुहोस्। UAC prompt आए <strong>Yes</strong> click गर्नुहोस्।</div></li>
+          <li><span class="n">३</span><div>Setup wizard चल्छ। PostgreSQL 17 र .NET 10 automatically install हुन्छन् — कुनै password वा database setting manually गर्नु पर्दैन।</div></li>
+          <li><span class="n">४</span><div>Installation सकिएपछि Start Menu वा Desktop बाट <strong>BIPRO PharmaOne</strong> open गर्नुहोस्।</div></li>
+          <li><span class="n">५</span><div>नयाँ installation मा <strong>First-Run Setup Wizard</strong> automatically खुल्छ।</div></li>
+        </ol>
+        <div class="np-warn2"><strong>Upgrade गर्दा:</strong> नयाँ installer पुरानो installation माथि नै run गर्नुहोस्। Installer ले automatically पुरानो data backup लिन्छ र नयाँ updates apply गर्छ।</div>
+      </div>
+    </details>
+
+    <!-- NP-4: FIRST RUN -->
+    <details class="np-sec" id="np-firstrun">
+      <summary>४. पहिलो पटक सुरु गर्दा (First-Run Wizard)</summary>
+      <div class="np-body">
+        <p>नयाँ installation पछि पहिलो पटक BIPRO PharmaOne खोल्दा Setup Wizard खुल्छ:</p>
+        <ol class="np-steps">
+          <li><span class="n">१</span><div><strong>Business Name</strong> (Pharmacy को नाम), address, phone number भर्नुहोस्। PAN/VAT नम्बर र Drug Licence नम्बर optional छन्।</div></li>
+          <li><span class="n">२</span><div><strong>Administrator Username</strong> र <strong>Password</strong> बनाउनुहोस्। यो BIPRO को login हो — Windows password होइन। Password याद राख्नुहोस्।</div></li>
+          <li><span class="n">३</span><div><strong>Fiscal Year</strong> set गर्नुहोस् (Nepal BS year)।</div></li>
+          <li><span class="n">४</span><div>Starting <strong>Cash Memo Number</strong> set गर्नुहोस्।</div></li>
+          <li><span class="n">५</span><div>Wizard सकिएपछि main Dashboard खुल्छ।</div></li>
+        </ol>
+        <div class="np-warn2"><strong>Password भुल्नु भयो भने:</strong> Recovery को लागि maintenance credential चाहिन्छ। admin@bimalpharmacy.com.np मा सम्पर्क गर्नुहोस्।</div>
+      </div>
+    </details>
+
+    <!-- NP-5: LOGIN -->
+    <details class="np-sec" id="np-login">
+      <summary>५. Login र Security</summary>
+      <div class="np-body">
+        <p>BIPRO PharmaOne खोल्दा Administrator username र password माग्छ। ५ पटक गलत password हाल्दा account temporarily lock हुन्छ।</p>
+        <p>Password change गर्न: <strong>Settings → Change Password</strong>।</p>
+        <div class="np-note2">BIPRO को Administrator account PostgreSQL database को superuser account होइन। यी दुई छुट्टाछुट्टै accounts हुन्।</div>
+      </div>
+    </details>
+
+    <!-- NP-6: PRODUCTS -->
+    <details class="np-sec" id="np-products">
+      <summary>६. Products र Stock Setup</summary>
+      <div class="np-body">
+        <p>पहिलो पटक use गर्नु अघि आफ्ना medicines र products add गर्नुहोस्।</p>
+        <ol class="np-steps">
+          <li><span class="n">१</span><div><strong>Inventory → Products → Add New</strong> मा जानुहोस्।</div></li>
+          <li><span class="n">२</span><div>Medicine को नाम, Generic Name, Manufacturer, Category, र Pack Size भर्नुहोस्।</div></li>
+          <li><span class="n">३</span><div>Nepal DDA schedule मा पर्ने controlled substances का लागि <strong>"Controlled Drug"</strong> checkbox check गर्नुहोस्। यसले CDR मा automatically entry हुन्छ।</div></li>
+          <li><span class="n">४</span><div>Reorder Level set गर्नुहोस् — stock यो level भन्दा कम भएमा Low Stock alert आउँछ।</div></li>
+        </ol>
+        <p>Opening stock add गर्न: खरिद entry गर्दा Supplier Invoice Number मा <code>OP-</code> prefix use गर्नुहोस्।</p>
+      </div>
+    </details>
+
+    <!-- NP-7: PURCHASE -->
+    <details class="np-sec" id="np-purchase">
+      <summary>७. खरिद प्रक्रिया (Purchase Entry)</summary>
       <div class="np-body">
         <ol class="np-steps">
-          <li><span class="n">१</span><div>माथिको <strong>Download v1.0.10</strong> बटनबाट <code class="np-code">BIPRO_PharmaOne_Bundled_v1.0.10.exe</code> डाउनलोड गर्नुहोस्।</div></li>
-          <li><span class="n">२</span><div>चाहेमा SHA-256 checksum मिलाएर फाइलको अखण्डता जाँच गर्नुहोस् (तलको "File checksum" खण्ड हेर्नुहोस्)।</div></li>
-          <li><span class="n">३</span><div>इन्स्टलर चलाउनुहोस्। Windows ले UAC (User Account Control) अनुमति माग्नेछ — <strong>Yes</strong> क्लिक गर्नुहोस्। PostgreSQL 17 Windows service को रूपमा स्थापना गर्न administrator अधिकार आवश्यक छ।</div></li>
-          <li><span class="n">४</span><div>Setup Wizard को निर्देशन पालना गर्नुहोस्। PostgreSQL 17 र .NET 10 Runtime नभएमा स्वचालित रूपमा स्थापना हुन्छ।</div></li>
-          <li><span class="n">५</span><div>Setup सकिएपछि Start Menu वा Desktop Shortcut बाट <strong>BIPRO PharmaOne</strong> खोल्नुहोस्।</div></li>
-          <li><span class="n">६</span><div>पहिलो पटक खुल्दा First-Run Setup Wizard आउँछ — तलको खण्ड ३ हेर्नुहोस्।</div></li>
+          <li><span class="n">१</span><div><strong>Purchases → New Purchase</strong> (वा <kbd>F7</kbd>) मा जानुहोस्।</div></li>
+          <li><span class="n">२</span><div>Supplier छान्नुहोस्। नयाँ supplier थप्न <strong>Add New</strong> click गर्नुहोस्।</div></li>
+          <li><span class="n">३</span><div>Supplier Invoice Number र Purchase Date भर्नुहोस्।</div></li>
+          <li><span class="n">४</span><div>प्रत्येक medicine line थप्नुहोस्: Product, Batch Number, Expiry Date, Quantity, Free Quantity, Purchase Rate।</div></li>
+          <li><span class="n">५</span><div>Payment Method छान्नुहोस्: Cash, Bank, वा Credit।</div></li>
+          <li><span class="n">६</span><div><strong>Finalize Purchase</strong> click गर्नुहोस्। Stock, supplier ledger र accounting automatically update हुन्छ। Controlled drugs को CDR receipt entry automatically post हुन्छ।</div></li>
         </ol>
-        <div class="np-warn2"><strong>महत्त्वपूर्ण:</strong> डेटा मेटाउन वा reset गर्न application uninstall र reinstall गर्नु उचित होइन। Reinstall गर्दा database मेटिँदैन। ठूलो परिवर्तन गर्नुअघि <strong>Settings → Database Backup</strong> बाट ब्याकअप लिनुहोस् र USB drive मा copy राख्नुहोस्।</div>
-        <p><strong>स्थापना स्थान:</strong> पूर्वनिर्धारित रूपमा <code class="np-code">C:\BIPRO PharmaOne</code> मा स्थापना हुन्छ।</p>
+        <div class="np-note2">Finalize गरेपछि खरिद edit हुँदैन। गल्ती भए Purchase Return गर्नुहोस्।</div>
       </div>
     </details>
 
-    <!-- S3 -->
-    <details class="np-sec" id="np-s3">
-      <summary>३. पहिलो पटकको सेटअप</summary>
+    <!-- NP-8: SALES -->
+    <details class="np-sec" id="np-sales">
+      <summary>८. बिक्री प्रक्रिया (Cash Memo / Challan)</summary>
       <div class="np-body">
-        <p>पहिलो पटक application खोल्दा <strong>Initial Pharmacy Setup</strong> wizard देखिन्छ। निम्न जानकारी भर्नुहोस्:</p>
-        <table class="np-tbl">
-          <thead><tr><th>फिल्ड</th><th>विवरण</th></tr></thead>
-          <tbody>
-            <tr><th>Pharmacy / Business Name <span style="color:#dc2626">*</span></th><td>तपाईंको फार्मेसीको पूरा नाम (जस्तै: EVEREST PHARMACY)</td></tr>
-            <tr><th>Trade / Display Name</th><td>प्रदर्शन नाम — खाली छाड्न मिल्छ</td></tr>
-            <tr><th>Address <span style="color:#dc2626">*</span></th><td>फार्मेसीको ठेगाना (जस्तै: Main Road, Kathmandu)</td></tr>
-            <tr><th>Phone Number <span style="color:#dc2626">*</span></th><td>सम्पर्क फोन नम्बर</td></tr>
-            <tr><th>Email Address</th><td>ईमेल — ऐच्छिक</td></tr>
-            <tr><th>PAN / VAT Number</th><td>PAN वा VAT दर्ता नम्बर — दर्ता नभएमा खाली छाड्नुहोस्</td></tr>
-            <tr><th>DDA / Drug License Number</th><td>औषधि अनुज्ञापत्र नम्बर — ऐच्छिक</td></tr>
-            <tr><th>Starting Cash Memo Number</th><td>पहिलो Cash Memo नम्बर — पूर्वनिर्धारित <code class="np-code">BARE1001</code></td></tr>
-            <tr><th>Administrator Username <span style="color:#dc2626">*</span></th><td>3–32 अक्षर, अंक, dot, underscore वा hyphen</td></tr>
-            <tr><th>Administrator Password <span style="color:#dc2626">*</span></th><td>12–128 अक्षर</td></tr>
-            <tr><th>Confirm Administrator Password <span style="color:#dc2626">*</span></th><td>माथिकै password फेरि टाइप गर्नुहोस्</td></tr>
-          </tbody>
-        </table>
-        <div class="np-note2">Fiscal year को पूर्वनिर्धारित मान <strong>FY 2083/84</strong> (code: <code class="np-code">FY-2083-84</code>) हो। आवश्यकतानुसार परिवर्तन गर्न सकिन्छ।</div>
-        <p>Setup सकिएपछि तपाईंले सेट गरेको Administrator username र password बाट login गर्नुहोस्।</p>
-        <div class="np-note2"><strong>Trial र Activation (v1.0.10):</strong> नयाँ installation मा 30-दिनको free trial स्वचालित रूपमा सुरु हुन्छ। Trial सकिएपछि Dashboard को <strong>Activate License</strong> dialog बाट activation request पठाउनुहोस् र <strong>admin@bimalpharmacy.com.np</strong> मा email गर्नुहोस्। Owner ले approve गरेपछि signed license key email मार्फत आउँछ।</div>
+        <ol class="np-steps">
+          <li><span class="n">१</span><div>Cash sale को लागि <strong>Sales → New Sale</strong> (वा <kbd>F2</kbd>), Credit sale को लागि <kbd>F3</kbd> press गर्नुहोस्।</div></li>
+          <li><span class="n">२</span><div>Customer नाम optional — Walk-in customer को लागि blank छाड्न मिल्छ।</div></li>
+          <li><span class="n">३</span><div>Medicine search गर्नुहोस् र quantity भर्नुहोस्। System ले FEFO (First Expiry First Out) अनुसार automatically batch allocate गर्छ — नजिकको expire हुने batch पहिले बिक्री हुन्छ।</div></li>
+          <li><span class="n">४</span><div>Discount लागू गर्नुहोस् (optional)। Payment method छान्नुहोस्।</div></li>
+          <li><span class="n">५</span><div><strong>Finalize Cash Memo</strong> click गर्नुहोस्। Challan print हुन्छ। Stock, customer ledger र accounting automatically update हुन्छ। Controlled drugs को CDR dispensing entry automatically post हुन्छ।</div></li>
+        </ol>
+        <div class="np-warn2">Sale finalize भएपछि edit गर्न मिल्दैन। गल्ती भए Sales Return गर्नुहोस्।</div>
       </div>
     </details>
 
-    <!-- S4 -->
-    <details class="np-sec" id="np-s4">
-      <summary>४. दैनिक सञ्चालन</summary>
+    <!-- NP-9: RETURNS -->
+    <details class="np-sec" id="np-returns">
+      <summary>९. फिर्ता (Returns)</summary>
       <div class="np-body">
-        <p>Application खोल्दा login screen आउँछ। Administrator (वा सिर्जना गरिएको) username र password हाल्नुहोस्।</p>
-        <table class="np-tbl">
-          <thead><tr><th>कार्य</th><th>Menu बाट कसरी जाने</th></tr></thead>
-          <tbody>
-            <tr><th>नगद बिक्री challan</th><td><strong>Sales</strong> → Cash Sale</td></tr>
-            <tr><th>उधारो बिक्री</th><td><strong>Sales</strong> → Credit Sale</td></tr>
-            <tr><th>बिक्री इतिहास</th><td><strong>Sales</strong> → Cash Memo History</td></tr>
-            <tr><th>बिक्री फिर्ता</th><td><strong>Sales</strong> → Sales Returns</td></tr>
-            <tr><th>नगद खरिद</th><td><strong>Purchase</strong> → Cash Purchase</td></tr>
-            <tr><th>उधारो खरिद</th><td><strong>Purchase</strong> → Credit Purchase</td></tr>
-            <tr><th>खरिद फिर्ता</th><td><strong>Purchase</strong> → Purchase Returns</td></tr>
-            <tr><th>Supplier claim</th><td><strong>Purchase</strong> → Supplier Claim Register</td></tr>
-            <tr><th>स्टक र म्याद हेर्ने</th><td><strong>Inventory</strong> → Stock &amp; Expiry Control</td></tr>
-            <tr><th>स्टक समायोजन</th><td><strong>Inventory</strong> → Stock Adjustments</td></tr>
-            <tr><th>भौतिक गणना</th><td><strong>Inventory</strong> → Physical Counts</td></tr>
-            <tr><th>ग्राहक भुक्तानी</th><td><strong>Finance</strong> → Customer Receipt Entry</td></tr>
-            <tr><th>Supplier भुक्तानी</th><td><strong>Finance</strong> → Supplier Payment Entry</td></tr>
-            <tr><th>हिसाबकिताब</th><td><strong>Accounts</strong> → General Ledger, Trial Balance, Profit &amp; Loss, Balance Sheet</td></tr>
-            <tr><th>Report हेर्ने</th><td><strong>Reports</strong> → Books &amp; Reports Center</td></tr>
-            <tr><th>ब्याकअप</th><td><strong>Settings</strong> → Database Backup</td></tr>
-          </tbody>
-        </table>
-        <div class="np-note2">Challan print गर्न बिक्री पछि <strong>Print</strong> बटन थिच्नुहोस्। A4 र 80 mm thermal दुवै format Settings → Printer Settings मा छान्न मिल्छ।</div>
+        <p><strong>Customer Return (Sales Return):</strong></p>
+        <ol class="np-steps">
+          <li><span class="n">१</span><div><strong>Sales → Sales Returns</strong> मा जानुहोस्।</div></li>
+          <li><span class="n">२</span><div>Original invoice छान्नुहोस्।</div></li>
+          <li><span class="n">३</span><div>फिर्ता हुने item र quantity भर्नुहोस्।</div></li>
+          <li><span class="n">४</span><div><strong>Save Return</strong> click गर्नुहोस्। Batch stock र accounting automatically reverse हुन्छ।</div></li>
+        </ol>
+        <p><strong>Purchase Return:</strong></p>
+        <ol class="np-steps">
+          <li><span class="n">१</span><div><strong>Purchases → Purchase Returns</strong> मा जानुहोस्।</div></li>
+          <li><span class="n">२</span><div>Original purchase छान्नुहोस् र item select गर्नुहोस्।</div></li>
+          <li><span class="n">३</span><div><strong>Save Return</strong> click गर्नुहोस्। Supplier ledger update हुन्छ।</div></li>
+        </ol>
       </div>
     </details>
 
-    <!-- S5 -->
-    <details class="np-sec" id="np-s5">
-      <summary>५. औषधि / उत्पादन Master</summary>
+    <!-- NP-10: PARTIES -->
+    <details class="np-sec" id="np-parties">
+      <summary>१०. Supplier र Customer व्यवस्थापन</summary>
       <div class="np-body">
-        <p>नयाँ औषधि थप्न: <strong>Masters</strong> मेनु → <strong>Medicine / Product Master</strong> → <strong>Add New</strong> बटन क्लिक गर्नुहोस्।</p>
-        <p><strong>Basic Information</strong></p>
-        <table class="np-tbl">
-          <tbody>
-            <tr><th>Product Code</th><td>स्वचालित रूपमा भरिन्छ (AUTO) — save गर्दा system ले नम्बर दिन्छ</td></tr>
-            <tr><th>Medicine / Brand Name <span style="color:#dc2626">*</span></th><td>औषधिको brand नाम (अनिवार्य)</td></tr>
-            <tr><th>Generic Name</th><td>सामान्य/generic नाम — ऐच्छिक</td></tr>
-            <tr><th>Manufacturer</th><td>निर्माता कम्पनी — ऐच्छिक</td></tr>
-            <tr><th>Category</th><td>वर्ग (जस्तै: Antibiotic, Vitamin) — ऐच्छिक</td></tr>
-          </tbody>
-        </table>
-        <p><strong>Unit / Packing</strong></p>
-        <table class="np-tbl">
-          <tbody>
-            <tr><th>Base Retail Unit <span style="color:#dc2626">*</span></th><td>TABLET, CAPSULE, BOTTLE, PCS, PKT, VIAL, AMP, TUBE, SACHET, STRIP, BOX, JAR मध्ये छान्नुहोस्</td></tr>
-            <tr><th>Pack Size <span style="color:#dc2626">*</span></th><td>प्रति packet/strip मा एकाइ संख्या (जस्तै: 10 tablets = 10)</td></tr>
-          </tbody>
-        </table>
-        <p><strong>Pricing</strong></p>
-        <table class="np-tbl">
-          <tbody>
-            <tr><th>Purchase Rate</th><td>खरिद मूल्य (प्रति unit)</td></tr>
-            <tr><th>Margin %</th><td>नाफा प्रतिशत — पूर्वनिर्धारित 16%</td></tr>
-            <tr><th>Suggested Rate</th><td>System ले Purchase Rate र Margin बाट गणना गर्छ — स्वचालित, सम्पादन गर्न मिल्दैन</td></tr>
-            <tr><th>Sale Rate</th><td>बिक्री मूल्य — Suggested Rate अनुसार स्वत: भरिन्छ, आवश्यकतानुसार बदल्न मिल्छ</td></tr>
-            <tr><th>MRP</th><td>Maximum Retail Price — ऐच्छिक</td></tr>
-            <tr><th>Discount %</th><td>पूर्वनिर्धारित छूट — ऐच्छिक</td></tr>
-          </tbody>
-        </table>
-        <p><strong>Tax / Stock Control</strong></p>
-        <table class="np-tbl">
-          <tbody>
-            <tr><th>Taxable (VAT 13%)</th><td>VAT लाग्ने भए checkbox टिक गर्नुहोस्</td></tr>
-            <tr><th>Reorder Level</th><td>यति मात्रा बाँकी हुँदा कम स्टकको सूचना आउँछ</td></tr>
-            <tr><th>Safety Stock</th><td>न्यूनतम सुरक्षित स्टक</td></tr>
-            <tr><th>Active</th><td>सक्रिय छ भने टिक राख्नुहोस्; निष्क्रिय गर्न uncheck गर्नुहोस्</td></tr>
-          </tbody>
-        </table>
-        <div class="np-note2">Supplier बाट खरिद गर्दा batch, expiry, र purchase rate प्रत्येक पटक छुट्टाछुट्टै राख्न सकिन्छ — medicine master मा राखेको purchase rate एउटा पूर्वनिर्धारित मान मात्र हो।</div>
-      </div>
-    </details>
-
-    <!-- S6 -->
-    <details class="np-sec" id="np-s6">
-      <summary>६. ब्याकअप</summary>
-      <div class="np-body">
-        <p><strong>ब्याकअप गर्ने तरिका:</strong> <strong>Settings</strong> मेनु → <strong>Database Backup</strong> → <strong>Backup Now</strong> बटन थिच्नुहोस्।</p>
-        <p><strong>ब्याकअप फाइल कहाँ जान्छ?</strong></p>
-        <p>पूर्वनिर्धारित रूपमा ब्याकअप फाइलहरू यहाँ सुरक्षित हुन्छन्:</p>
+        <p>Suppliers र Customers <strong>Parties</strong> menu बाट manage गर्नुहोस्।</p>
         <ul>
-          <li><code class="np-code">%LOCALAPPDATA%\BIPRO PharmaOne\Backups</code><br><small style="color:#6b7280">(अर्थात् <code class="np-code">C:\Users\&lt;तपाईंको नाम&gt;\AppData\Local\BIPRO PharmaOne\Backups</code>)</small></li>
+          <li><strong>Supplier add:</strong> Parties → Suppliers → Add New</li>
+          <li><strong>Customer add:</strong> Parties → Customers → Add New</li>
+          <li><strong>Party statement:</strong> Parties → Statement — कुनै पनि supplier वा customer को ledger हेर्न</li>
+          <li><strong>Outstanding dues:</strong> Parties → Outstanding — कुन customer ले कति बाँकी छ र कुन supplier लाई कति तिर्नु छ</li>
         </ul>
-        <p>ब्याकअप फोल्डर <strong>Settings → Database Backup</strong> मा परिवर्तन गर्न सकिन्छ। Database Backup page मा ब्याकअप सूची (Backup History) पनि देख्न मिल्छ।</p>
-        <p>Application ले स्वचालित रूपमा दैनिक ब्याकअप लिन्छ र पछिल्ला 30 routine ब्याकअप राख्छ — पुरानाहरू स्वतः हटाइन्छन्। Manual, pre-upgrade, र year-end ब्याकअपहरू सधैँ राखिन्छन्।</p>
-        <div class="np-warn2"><strong>अत्यन्त महत्त्वपूर्ण:</strong> नियमित रूपमा ब्याकअप फाइलहरू USB drive वा external hard disk मा copy गर्नुहोस्। केवल computer मा राखिएको ब्याकअप computer बिग्रिएमा काम लाग्दैन। Application ले ब्याकअप cloud मा upload गर्दैन।</div>
-        <div class="np-note2">Database डेटा restore गर्नु पर्ने भएमा software developer लाई सम्पर्क गर्नुहोस्।</div>
+        <div class="np-note2">एउटै PAN/VAT number भएको customer र supplier एउटै Party मा जोडिन्छ।</div>
       </div>
     </details>
 
-    <!-- S7 -->
-    <details class="np-sec" id="np-s7">
-      <summary>७. अपग्रेड गर्ने तरिका</summary>
+    <!-- NP-11: INVENTORY -->
+    <details class="np-sec" id="np-inventory">
+      <summary>११. Inventory र FEFO</summary>
       <div class="np-body">
-        <ol class="np-steps">
-          <li><span class="n">१</span><div>यो page बाट नयाँ संस्करणको installer डाउनलोड गर्नुहोस्।</div></li>
-          <li><span class="n">२</span><div>ब्याकअप लिनुहोस् — अपग्रेड गर्नु अघि सुरक्षित प्रति राख्नु राम्रो अभ्यास हो।</div></li>
-          <li><span class="n">३</span><div>नयाँ installer चलाउनुहोस् र UAC अनुमति दिनुहोस्।</div></li>
-          <li><span class="n">४</span><div>Setup सकिएपछि application खोल्नुहोस् — database upgrade स्वचालित रूपमा हुन्छ।</div></li>
-          <li><span class="n">५</span><div>Login गरेर सामान्य कार्य जारी राख्नुहोस्।</div></li>
-        </ol>
-        <div class="np-note2">अपग्रेड गर्दा आफ्नो फार्मेसीको डेटा, ब्याकअप, र सेटिङहरू कायमै रहन्छन्। Uninstall गर्नु आवश्यक छैन।</div>
+        <p><strong>FEFO (First Expiry, First Out):</strong> Sales finalize हुँदा system ले automatically सबैभन्दा चाँडो expire हुने batch पहिले allocate गर्छ।</p>
+        <ul>
+          <li><strong>Stock check:</strong> Inventory → Stock Balance — हाल कुन product कति stock छ</li>
+          <li><strong>Expiry monitoring:</strong> Inventory → Expiry Monitor — expire हुन लागेका batches</li>
+          <li><strong>Low stock alert:</strong> Dashboard मा low stock products देखिन्छ</li>
+          <li><strong>Stock adjustment:</strong> Inventory → Stock Adjustment — गल्ती सुधार्न वा expired stock write-off गर्न</li>
+          <li><strong>Physical count:</strong> Inventory → Stock Count — physical count गरेर system stock reconcile गर्न</li>
+          <li><strong>Inventory valuation:</strong> Inventory → Inventory Valuation (वा <kbd>F8</kbd>)</li>
+        </ul>
       </div>
     </details>
 
-    <!-- S8 -->
-    <details class="np-sec" id="np-s8">
-      <summary>८. समस्या समाधान</summary>
+    <!-- NP-12: ACCOUNTING -->
+    <details class="np-sec" id="np-accounting">
+      <summary>१२. Accounting र Finance</summary>
+      <div class="np-body">
+        <p>BIPRO PharmaOne मा double-entry accounting automatically हुन्छ — हर transaction मा balanced journal entry automatically post हुन्छ।</p>
+        <ul>
+          <li><strong>Customer receipt:</strong> Finance → Customer Receipt (वा <kbd>F4</kbd>) — customer ले payment दिएमा</li>
+          <li><strong>Supplier payment:</strong> Finance → Supplier Payment — supplier लाई payment गरेमा</li>
+          <li><strong>Expense:</strong> Finance → Expense — pharmacy को खर्च record गर्न</li>
+          <li><strong>Fund transfer:</strong> Finance → Fund Transfer — Cash/Bank बीच transfer</li>
+          <li><strong>Trial Balance:</strong> Accounts → Trial Balance</li>
+          <li><strong>Profit and Loss:</strong> Accounts → Profit and Loss</li>
+          <li><strong>Balance Sheet:</strong> Accounts → Balance Sheet</li>
+          <li><strong>Day Book:</strong> Accounts → Day Book</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- NP-13: CDR -->
+    <details class="np-sec" id="np-cdr">
+      <summary>१३. Controlled Drug Register (CDR)</summary>
+      <div class="np-body">
+        <p>Nepal DDA schedule A–D मा पर्ने controlled substances का लागि CDR automatically maintain हुन्छ।</p>
+        <ul>
+          <li>Sale finalize हुँदा dispensing entry automatically post हुन्छ।</li>
+          <li>Purchase finalize हुँदा receipt entry automatically post हुन्छ।</li>
+          <li>CDR entries immutable हुन्छन् — save भएपछि edit वा delete गर्न मिल्दैन।</li>
+          <li>गल्ती भए ADJUSTMENT entry use गर्नुहोस्: <strong>Settings → Controlled Drug Register → Add Correction</strong></li>
+        </ul>
+        <div class="np-warn2">CDR entry post हुन product को "Controlled Drug" flag checked हुनु पर्छ। Products setup गर्दा नबिर्सनुहोस्।</div>
+        <div class="np-note2">यदि CDR post गर्न कुनै technical error आयो भने application मा warning toast देखिन्छ। Sale/Purchase finalized भइसकेको हुन्छ — CDR Register page बाट manual correction add गर्नुहोस्।</div>
+      </div>
+    </details>
+
+    <!-- NP-14: REPORTS -->
+    <details class="np-sec" id="np-reports">
+      <summary>१४. Reports</summary>
       <div class="np-body">
         <table class="np-tbl">
-          <thead><tr><th>समस्या</th><th>सम्भावित समाधान</th></tr></thead>
+          <thead><tr><th>Report</th><th>कहाँ पाइन्छ</th></tr></thead>
+          <tbody>
+            <tr><td>Daily Summary</td><td>Dashboard → Today's Work Report</td></tr>
+            <tr><td>Sales Book</td><td>Reports → Sales Book</td></tr>
+            <tr><td>Purchase Book</td><td>Reports → Purchase Book</td></tr>
+            <tr><td>VAT Register</td><td>Reports → VAT Register</td></tr>
+            <tr><td>Inventory Valuation</td><td>Inventory → Valuation (वा F8)</td></tr>
+            <tr><td>Party Statement</td><td>Parties → Statement</td></tr>
+            <tr><td>Profit and Loss</td><td>Accounts → Profit and Loss</td></tr>
+            <tr><td>Balance Sheet</td><td>Accounts → Balance Sheet</td></tr>
+            <tr><td>Gross Profit</td><td>Accounts → Gross Profit</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- NP-15: PRINTING -->
+    <details class="np-sec" id="np-printing">
+      <summary>१५. Printing</summary>
+      <div class="np-body">
+        <p>BIPRO PharmaOne ले A4 र 80 mm thermal paper दुवैमा print गर्न सक्छ।</p>
+        <ul>
+          <li><strong>Printer setup:</strong> Settings → Printing → Default Printer छान्नुहोस्।</li>
+          <li><strong>Paper size:</strong> A4 वा Thermal (80mm) छान्नुहोस्।</li>
+          <li><strong>Reprint:</strong> Sales → Sales History → Print — पहिलेको challan reprint गर्न।</li>
+          <li><strong>Print shortcut:</strong> <kbd>F9</kbd> — current view print गर्न।</li>
+        </ul>
+        <div class="np-note2">Thermal printer को लागि paper width 80mm set गर्नु पर्छ। Printer ले Windows मा correctly install भएको हुनु पर्छ।</div>
+      </div>
+    </details>
+
+    <!-- NP-16: BACKUP -->
+    <details class="np-sec" id="np-backup">
+      <summary>१६. Backup र Restore</summary>
+      <div class="np-body">
+        <p><strong>Automatic Backup:</strong> Application ले daily automatically backup लिन्छ। Last 30 backups सुरक्षित रहन्छन्।</p>
+        <p><strong>Manual Backup:</strong></p>
+        <ol class="np-steps">
+          <li><span class="n">१</span><div><strong>Settings → Database Backup</strong> मा जानुहोस्।</div></li>
+          <li><span class="n">२</span><div><strong>Backup Now</strong> click गर्नुहोस्।</div></li>
+          <li><span class="n">३</span><div>Backup file <code>%LOCALAPPDATA%\BIPRO PharmaOne\Backups</code> मा save हुन्छ।</div></li>
+        </ol>
+        <p><strong>Restore:</strong></p>
+        <ol class="np-steps">
+          <li><span class="n">१</span><div><strong>Settings → Database Backup → Restore</strong> मा जानुहोस्।</div></li>
+          <li><span class="n">२</span><div>Backup file select गर्नुहोस्।</div></li>
+          <li><span class="n">३</span><div>Confirm गर्नुहोस्। Application ले backup verify गरेर restore गर्छ।</div></li>
+        </ol>
+        <div class="np-warn2"><strong>महत्त्वपूर्ण:</strong> Backup files USB drive वा external disk मा copy गर्नुहोस्। Computer नै बिग्रिए एउटै machine मा भएका backup files पनि नष्ट हुन सक्छन्।</div>
+      </div>
+    </details>
+
+    <!-- NP-17: LICENSE -->
+    <details class="np-sec" id="np-license">
+      <summary>१७. Trial र Activation (v1.0.11)</summary>
+      <div class="np-body">
+        <p>नयाँ installation मा <strong>30-day free trial</strong> automatically सुरु हुन्छ। Trial status application को status bar मा देखिन्छ।</p>
+        <p><strong>Activation प्रक्रिया:</strong></p>
+        <ol class="np-steps">
+          <li><span class="n">१</span><div>Dashboard मा <strong>Activate License</strong> button click गर्नुहोस्।</div></li>
+          <li><span class="n">२</span><div>System ले activation request generate गर्छ।</div></li>
+          <li><span class="n">३</span><div>यो request <strong>admin@bimalpharmacy.com.np</strong> मा email गर्नुहोस्।</div></li>
+          <li><span class="n">४</span><div>Owner ले review गरेर license key email गर्छन्।</div></li>
+          <li><span class="n">५</span><div>License key Activate License dialog मा paste गरेर activate गर्नुहोस्।</div></li>
+        </ol>
+        <div class="np-note2">License offline RSA-2048 technology use गर्छ। Activate भएपछि internet नभई पनि काम गर्छ।</div>
+        <div class="np-warn2">Trial expire भएपछि: Dashboard र Sales Billing accessible रहन्छन्। Purchase, Inventory, Returns restricted हुन्छन्।</div>
+      </div>
+    </details>
+
+    <!-- NP-18: TROUBLESHOOT -->
+    <details class="np-sec" id="np-troubleshoot">
+      <summary>१८. Troubleshooting</summary>
+      <div class="np-body">
+        <table class="np-tbl">
+          <thead><tr><th>समस्या</th><th>समाधान</th></tr></thead>
           <tbody>
             <tr>
-              <th>"PostgreSQL Server must be installed" भन्ने सन्देश आयो</th>
-              <td>PostgreSQL 17 installer संगै बन्डल छ तर EDB (EnterpriseDB) को Windows installer बाट मात्र detect हुन्छ। Docker वा msys2 बाट install भएको PostgreSQL काम गर्दैन। EDB installer बाट PostgreSQL 17 install गर्नुहोस्।</td>
+              <td>Database connect हुँदैन</td>
+              <td>Windows Services मा "postgresql-x64-17" service start छ कि छैन check गर्नुहोस्। Start गर्नुहोस् र BIPRO restart गर्नुहोस्।</td>
             </tr>
             <tr>
-              <th>Application खोल्दा "Not Responding" देखिन्छ</th>
-              <td>पहिलो पटक वा upgrade पछि database migration चल्दा केही समय लाग्न सक्छ — प्रतीक्षा गर्नुहोस्। Progress window बन्द नगर्नुहोस्।</td>
+              <td>Password बिर्सें</td>
+              <td>admin@bimalpharmacy.com.np मा सम्पर्क गर्नुहोस्। BIPRO uninstall नगर्नुहोस्।</td>
             </tr>
             <tr>
-              <th>Backup setup माग्ने सन्देश आयो</th>
-              <td>पहिलो पटक ब्याकअप गर्दा PostgreSQL administrator password एक पटक माग्न सक्छ — यो Windows Credential Manager मा सुरक्षित गरिन्छ, पुनः माग्दैन।</td>
+              <td>Printer print गर्दैन</td>
+              <td>Settings → Printing मा correct printer र paper size set छ कि check गर्नुहोस्। Windows मा printer correctly install छ कि verify गर्नुहोस्।</td>
             </tr>
             <tr>
-              <th>Login password बिर्सनुभयो</th>
-              <td>Administrator password reset गर्न Maintenance credential आवश्यक पर्छ। फार्मेसी स्थापना गर्ने ब्यक्तिलाई सम्पर्क गर्नुहोस्।</td>
+              <td>Stock negative देखिन्छ</td>
+              <td>Inventory → Negative Stock Reconciliation use गर्नुहोस्। Opening stock purchase entry add भएको छैन भने थप्नुहोस्।</td>
             </tr>
             <tr>
-              <th>Challan print भएन</th>
-              <td>Windows मा default printer set गरिएको छ कि छैन जाँच गर्नुहोस्। <strong>Settings → Printer Settings</strong> मा A4 वा Thermal format र printer छानिएको छ कि छैन जाँच गर्नुहोस्।</td>
+              <td>Upgrade पछि data देखिँदैन</td>
+              <td>Settings → Database Backup → Restore बाट last backup restore गर्नुहोस्।</td>
             </tr>
             <tr>
-              <th>Application सुरु हुँदैन — error message आयो</th>
-              <td>PostgreSQL 17 service चलिरहेको छ कि छैन जाँच गर्नुहोस्: Start → Services → postgresql-x64-17 → Start। Windows Event Log मा थप विवरण हेर्न सकिन्छ।</td>
+              <td>CDR entry post भएन</td>
+              <td>Application मा warning toast आउँछ। Settings → Controlled Drug Register बाट manually ADJUSTMENT entry add गर्नुहोस्।</td>
             </tr>
           </tbody>
         </table>
-        <div class="np-note2"><strong>डेटा सुरक्षा सम्बन्धी:</strong> BIPRO PharmaOne तपाईंको कम्प्युटरमा सबै डेटा राख्छ — कुनै cloud सर्भरमा पठाइँदैन। नियमित ब्याकअप तपाईंको जिम्मेवारी हो।</div>
       </div>
     </details>
-  </section>
+
+    <!-- NP-19: SUPPORT -->
+    <details class="np-sec" id="np-support">
+      <summary>१९. Support र सम्पर्क</summary>
+      <div class="np-body">
+        <table class="np-tbl">
+          <tbody>
+            <tr><th>Email</th><td>admin@bimalpharmacy.com.np</td></tr>
+            <tr><th>Phone</th><td>056-593288</td></tr>
+            <tr><th>Address</th><td>Bimal Pharmacy, Cancer Hospital Road, Bharatpur-7, Chitwan</td></tr>
+          </tbody>
+        </table>
+        <p>Activation, license renewal, वा technical support को लागि email गर्नुहोस्।</p>
+      </div>
+    </details>
+
+  </section><!-- end np-guide -->
+
 </main>
 <site-footer></site-footer>
 </body>
